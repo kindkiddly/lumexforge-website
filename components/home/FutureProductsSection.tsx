@@ -14,13 +14,14 @@ export function FutureProductsSection() {
       />
 
       <AnimatedSection>
-        <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] aspect-[21/9] sm:aspect-[2.5/1] min-h-[220px]">
+        <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] aspect-[16/10] sm:aspect-[21/9] min-h-[220px]">
           <ArtworkImage
             src={IMAGES.products.future}
             alt="Future LumexForge products abstract artwork"
+            sizes="(max-width: 768px) 100vw, 1280px"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
-          <div className="absolute inset-0 flex items-center p-8 sm:p-12">
+          <div className="absolute inset-y-0 left-0 w-full max-w-md bg-gradient-to-r from-background/50 via-background/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 flex items-center p-8 sm:p-12 z-10">
             <div className="max-w-lg">
               <p className="eyebrow mb-3">Coming Soon</p>
               <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
