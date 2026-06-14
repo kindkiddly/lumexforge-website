@@ -2,7 +2,7 @@
 
 import { ArtworkImage } from "@/components/shared/ArtworkImage";
 import { Badge } from "@/components/ui/Badge";
-import { PRODUCT_IMAGE_MAP } from "@/lib/images";
+import { PRODUCT_FEATURED_IMAGE_MAP, PRODUCT_IMAGE_MAP } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { motion } from "framer-motion";
@@ -15,7 +15,10 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className, featured = false }: ProductCardProps) {
-  const imageSrc = PRODUCT_IMAGE_MAP[product.id] || PRODUCT_IMAGE_MAP.future;
+  const imageSrc =
+    featured && PRODUCT_FEATURED_IMAGE_MAP[product.id]
+      ? PRODUCT_FEATURED_IMAGE_MAP[product.id]
+      : PRODUCT_IMAGE_MAP[product.id] || PRODUCT_IMAGE_MAP.future;
 
   return (
     <motion.article
@@ -38,6 +41,7 @@ export function ProductCard({ product, className, featured = false }: ProductCar
           src={imageSrc}
           alt={`${product.name} artwork`}
           priority={featured}
+          sizes={featured ? "(max-width: 768px) 100vw, 1280px" : undefined}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

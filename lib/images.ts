@@ -6,6 +6,7 @@ export const IMAGES = {
   favicon: "/images/favicon.png",
   products: {
     proteinsnap: "/images/proteinsnap-hero.jpg",
+    proteinsnapWide: "/images/proteinsnap-hero-wide.jpg",
     amora: "/images/amora-artwork.jpg",
     kepaso: "/images/kepaso-artwork.jpg",
     future: "/images/future-products-artwork.jpg",
@@ -19,4 +20,8 @@ export const PRODUCT_IMAGE_MAP: Record<string, string> = {
   amora: IMAGES.products.amora,
   kepaso: IMAGES.products.kepaso,
   future: IMAGES.products.future,
+};
+
+export const PRODUCT_FEATURED_IMAGE_MAP: Record<string, string> = {
+  proteinsnap: IMAGES.products.proteinsnapWide,
 };
