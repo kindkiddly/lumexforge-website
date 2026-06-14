@@ -17,7 +17,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-left"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
@@ -87,6 +87,7 @@ export function Hero() {
                 alt="LumexForge digital product ecosystem visualization"
                 priority
                 fit="cover"
+                className="object-left"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
             </div>

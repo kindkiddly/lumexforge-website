@@ -13,6 +13,7 @@ export const IMAGES = {
   },
   proteinsnapMobile: "/images/proteinsnap-mobile.png",
   proteinsnapScreenshot2: "/images/proteinsnap-screenshot-2.jpg",
+  kepasoArtwork2: "/images/kepaso-artwork-2.jpg",
 } as const;
 
 export const PRODUCT_IMAGE_MAP: Record<string, string> = {

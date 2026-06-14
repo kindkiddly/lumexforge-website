@@ -1,3 +1,4 @@
+import { KePasoFeature } from "@/components/products/KePasoFeature";
 import { ProductCard } from "@/components/products/ProductCard";
 import { GradientMesh } from "@/components/shared/GradientMesh";
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -38,6 +39,8 @@ export default function ProductsPage() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        <KePasoFeature />
       </Container>
     </div>
   );
