@@ -1,7 +1,8 @@
 "use client";
 
-import { AbstractArtwork } from "@/components/shared/AbstractArtwork";
+import { ArtworkImage } from "@/components/shared/ArtworkImage";
 import { Badge } from "@/components/ui/Badge";
+import { PRODUCT_IMAGE_MAP } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { motion } from "framer-motion";
@@ -14,7 +15,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className, featured = false }: ProductCardProps) {
-  const variant = product.variant || "future";
+  const imageSrc = PRODUCT_IMAGE_MAP[product.id] || PRODUCT_IMAGE_MAP.future;
 
   return (
     <motion.article
@@ -27,11 +28,17 @@ export function ProductCard({ product, className, featured = false }: ProductCar
       whileHover={{ y: -6 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className={cn(
-        "relative overflow-hidden",
-        featured ? "aspect-[21/9] sm:aspect-[2.2/1]" : "aspect-[16/10]"
-      )}>
-        <AbstractArtwork variant={variant} className="h-full w-full rounded-none border-0" />
+      <div
+        className={cn(
+          "relative overflow-hidden bg-background-secondary",
+          featured ? "aspect-[21/9] sm:aspect-[2.2/1]" : "aspect-[16/10]"
+        )}
+      >
+        <ArtworkImage
+          src={imageSrc}
+          alt={`${product.name} artwork`}
+          priority={featured}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -48,16 +55,20 @@ export function ProductCard({ product, className, featured = false }: ProductCar
       <div className={cn("p-6 sm:p-7", featured && "sm:p-8")}>
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className={cn(
-              "font-semibold tracking-tight text-foreground",
-              featured ? "text-2xl sm:text-3xl" : "text-xl"
-            )}>
+            <h3
+              className={cn(
+                "font-semibold tracking-tight text-foreground",
+                featured ? "text-2xl sm:text-3xl" : "text-xl"
+              )}
+            >
               {product.name}
             </h3>
-            <p className={cn(
-              "mt-2 leading-relaxed text-foreground-secondary",
-              featured ? "text-base max-w-2xl" : "text-sm"
-            )}>
+            <p
+              className={cn(
+                "mt-2 leading-relaxed text-foreground-secondary",
+                featured ? "text-base max-w-2xl" : "text-sm"
+              )}
+            >
               {product.description}
             </p>
           </div>

@@ -1,6 +1,7 @@
+import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { CONTACT_EMAILS, FOOTER_LINKS, FOUNDER, SITE_NAME } from "@/lib/constants";
+import { CONTACT_EMAILS, FOOTER_LINKS, FOUNDER } from "@/lib/constants";
 import Link from "next/link";
 
 const SOCIAL_LINKS = [
@@ -15,18 +16,9 @@ export function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent" />
 
       <Container className="py-16 lg:py-20">
-        {/* Brand + CTA row */}
         <div className="flex flex-col gap-10 border-b border-white/[0.06] pb-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.1] bg-gradient-to-br from-accent-primary/20 to-accent-secondary/10">
-                <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden="true">
-                  <path d="M3 12L8 4L13 12H3Z" stroke="#4F46E5" strokeWidth="1.2" />
-                  <circle cx="8" cy="9" r="1" fill="#00C2FF" />
-                </svg>
-              </div>
-              <span className="text-base font-semibold text-foreground">{SITE_NAME}</span>
-            </Link>
+            <Logo size="sm" />
             <p className="mt-4 text-sm leading-relaxed text-foreground-secondary">
               Building the next generation of digital products. Independent technology studio focused on innovation, quality, and long-term impact.
             </p>
@@ -43,7 +35,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Link columns */}
         <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:gap-12">
           <FooterColumn title="Products" links={FOOTER_LINKS.products} />
           <FooterColumn title="Company" links={FOOTER_LINKS.company} />
@@ -51,11 +42,10 @@ export function Footer() {
           <FooterColumn title="Support" links={FOOTER_LINKS.support} />
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-white/[0.06] pt-8 sm:flex-row">
           <div className="text-center sm:text-left">
             <p className="text-sm text-foreground-secondary">
-              © 2026 {SITE_NAME}. All rights reserved.
+              © 2026 LumexForge. All rights reserved.
             </p>
             <p className="mt-1 text-xs text-foreground-muted">
               <a href={`mailto:${CONTACT_EMAILS.business}`} className="hover:text-foreground-secondary transition-colors">

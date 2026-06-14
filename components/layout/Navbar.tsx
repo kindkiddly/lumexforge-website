@@ -1,8 +1,9 @@
 "use client";
 
+import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -45,15 +46,7 @@ export function Navbar() {
           className="flex h-16 items-center justify-between lg:h-[4.5rem]"
           aria-label="Main navigation"
         >
-          <Link
-            href="/"
-            className="group flex items-center gap-2.5 transition-opacity hover:opacity-90"
-          >
-            <LogoMark />
-            <span className="text-base font-semibold tracking-tight text-foreground">
-              {SITE_NAME}
-            </span>
-          </Link>
+          <Logo size="md" />
 
           <div className="hidden items-center gap-1 md:flex">
             <div className="flex items-center rounded-full border border-white/[0.06] bg-white/[0.03] p-1 backdrop-blur-sm">
@@ -149,16 +142,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  );
-}
-
-function LogoMark() {
-  return (
-    <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.1] bg-gradient-to-br from-accent-primary/20 to-accent-secondary/10">
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden="true">
-        <path d="M3 12L8 4L13 12H3Z" stroke="#4F46E5" strokeWidth="1.2" />
-        <circle cx="8" cy="9" r="1" fill="#00C2FF" />
-      </svg>
-    </div>
   );
 }

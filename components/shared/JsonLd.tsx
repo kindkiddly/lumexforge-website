@@ -1,4 +1,5 @@
 import { CONTACT_EMAILS, FOUNDER, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { IMAGES } from "@/lib/images";
 
 export function JsonLd() {
   const organization = {
@@ -6,7 +7,7 @@ export function JsonLd() {
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: `${SITE_URL}${IMAGES.logo}`,
     description:
       "Independent technology studio creating software, AI-powered solutions, intelligent agents, automation systems, and digital platforms.",
     founder: {

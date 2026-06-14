@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { IMAGES } from "./images";
 import { SITE_NAME, SITE_URL } from "./constants";
+
+const ogImageUrl = `${SITE_URL}${IMAGES.og}`;
 
 const defaultDescription =
   "LumexForge is an independent technology studio creating software, AI-powered solutions, intelligent agents, automation systems, and digital platforms.";
@@ -32,6 +35,10 @@ export const rootMetadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [{ url: IMAGES.favicon, sizes: "32x32", type: "image/png" }],
+    apple: [{ url: IMAGES.appleTouchIcon, sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -39,11 +46,20 @@ export const rootMetadata: Metadata = {
     title: "LumexForge | Building the Next Generation of Digital Products",
     description: defaultDescription,
     url: SITE_URL,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "LumexForge — Building the Next Generation of Digital Products",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LumexForge | Building the Next Generation of Digital Products",
     description: defaultDescription,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,
@@ -85,11 +101,20 @@ export function createMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: noTemplate ? title : `${title} | ${SITE_NAME}`,
       description,
+      images: [ogImageUrl],
     },
   };
 }

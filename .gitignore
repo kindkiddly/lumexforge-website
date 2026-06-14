@@ -30,6 +30,10 @@ yarn-error.log*
 # env files
 .env*.local
 
+# raw source images (processed copies live in public/images)
+LumexForge-images/
+lumexforge-images/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
