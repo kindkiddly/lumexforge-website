@@ -11,7 +11,7 @@ export const IMAGES = {
     future: "/images/future-products-artwork.jpg",
   },
   proteinsnapMobile: "/images/proteinsnap-mobile.png",
-  proteinsnapScreenshot2: "/images/proteinsnap-screenshot-2.png",
+  proteinsnapScreenshot2: "/images/proteinsnap-screenshot-2.jpg",
 } as const;
 
 export const PRODUCT_IMAGE_MAP: Record<string, string> = {
