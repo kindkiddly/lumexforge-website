@@ -146,4 +146,200 @@
   .shine:hover::after {
     transform: translateX(100%);
   }
+
+  /* What We Build — animated card backgrounds */
+  .wwb-anim-paused,
+  .wwb-anim-paused * {
+    animation-play-state: paused !important;
+  }
+
+  @keyframes wwb-float-a {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes wwb-float-b {
+    0%, 100% { transform: translateY(4px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @keyframes wwb-particle-drift {
+    0%, 100% { transform: translate(0, 0); opacity: 0.35; }
+    50% { transform: translate(14px, -6px); opacity: 0.75; }
+  }
+
+  @keyframes wwb-node-pulse {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.35); }
+  }
+
+  @keyframes wwb-link-glow {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes wwb-agent-path-1 {
+    0% { transform: translate(48px, 110px); opacity: 0.45; }
+    25% { transform: translate(110px, 55px); opacity: 0.85; }
+    50% { transform: translate(170px, 100px); opacity: 0.5; }
+    75% { transform: translate(230px, 70px); opacity: 0.9; }
+    100% { transform: translate(48px, 110px); opacity: 0.45; }
+  }
+
+  @keyframes wwb-agent-path-2 {
+    0% { transform: translate(260px, 130px); opacity: 0.4; }
+    33% { transform: translate(180px, 50px); opacity: 0.8; }
+    66% { transform: translate(90px, 140px); opacity: 0.55; }
+    100% { transform: translate(260px, 130px); opacity: 0.4; }
+  }
+
+  @keyframes wwb-agent-path-3 {
+    0% { transform: translate(140px, 160px); opacity: 0.5; }
+    50% { transform: translate(200px, 90px); opacity: 0.85; }
+    100% { transform: translate(140px, 160px); opacity: 0.5; }
+  }
+
+  @keyframes wwb-agent-path-4 {
+    0% { transform: translate(70px, 70px); opacity: 0.4; }
+    40% { transform: translate(160px, 120px); opacity: 0.75; }
+    80% { transform: translate(240px, 110px); opacity: 0.5; }
+    100% { transform: translate(70px, 70px); opacity: 0.4; }
+  }
+
+  @keyframes wwb-agent-path-5 {
+    0% { transform: translate(200px, 150px); opacity: 0.45; }
+    50% { transform: translate(120px, 80px); opacity: 0.8; }
+    100% { transform: translate(200px, 150px); opacity: 0.45; }
+  }
+
+  @keyframes wwb-gear-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes wwb-flow-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.75; }
+  }
+
+  @keyframes wwb-platform-pulse {
+    0%, 88%, 100% { opacity: 0; }
+    8%, 22% { opacity: 0.85; }
+  }
+
+  @keyframes wwb-orbit-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .wwb-mobile-phone-a {
+    animation: wwb-float-a 6s ease-in-out infinite;
+  }
+
+  .wwb-mobile-phone-b {
+    animation: wwb-float-b 6s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .wwb-mobile-particle {
+    animation: wwb-particle-drift 5s ease-in-out infinite;
+  }
+
+  .wwb-mobile-particle-1 { animation-delay: 0s; }
+  .wwb-mobile-particle-2 { animation-delay: 0.8s; }
+  .wwb-mobile-particle-3 { animation-delay: 1.6s; }
+  .wwb-mobile-particle-4 { animation-delay: 2.4s; }
+  .wwb-mobile-particle-5 { animation-delay: 3.2s; }
+
+  .wwb-ai-node {
+    animation: wwb-node-pulse 4s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .wwb-ai-node-glow {
+    animation: wwb-node-pulse 4s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0.25;
+  }
+
+  .wwb-ai-link {
+    animation: wwb-link-glow 4s ease-in-out infinite;
+    opacity: 0.2;
+  }
+
+  .wwb-agent-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+
+  .wwb-agent-1 { animation: wwb-agent-path-1 8s ease-in-out infinite; }
+  .wwb-agent-2 { animation: wwb-agent-path-2 7s ease-in-out infinite; animation-delay: 0.6s; }
+  .wwb-agent-3 { animation: wwb-agent-path-3 6.5s ease-in-out infinite; animation-delay: 1.2s; }
+  .wwb-agent-4 { animation: wwb-agent-path-4 7.5s ease-in-out infinite; animation-delay: 0.3s; }
+  .wwb-agent-5 { animation: wwb-agent-path-5 6s ease-in-out infinite; animation-delay: 1.8s; }
+
+  .wwb-gear-slow {
+    animation: wwb-gear-rotate 12s linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .wwb-gear-fast {
+    animation: wwb-gear-rotate 5s linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .wwb-gear-fast-reverse {
+    animation: wwb-gear-rotate 4s linear infinite reverse;
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .wwb-flow-arrow {
+    animation: wwb-flow-pulse 3s ease-in-out infinite;
+  }
+
+  .wwb-flow-arrow-1 { animation-delay: 0s; }
+  .wwb-flow-arrow-2 { animation-delay: 1.5s; }
+
+  .wwb-platform-pulse {
+    animation: wwb-platform-pulse 3s ease-in-out infinite;
+    opacity: 0;
+  }
+
+  .wwb-orbit-ring-tilt {
+    transform: rotate(35deg);
+    transform-origin: 160px 100px;
+  }
+
+  .wwb-orbit-ring-tilt-2 {
+    transform: rotate(-25deg);
+    transform-origin: 160px 100px;
+  }
+
+  .wwb-orbit-spin-1,
+  .wwb-orbit-spin-2,
+  .wwb-orbit-spin-3 {
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .wwb-orbit-spin-1 {
+    animation: wwb-orbit-spin 8s linear infinite;
+  }
+
+  .wwb-orbit-spin-2 {
+    animation: wwb-orbit-spin 6s linear infinite reverse;
+  }
+
+  .wwb-orbit-spin-3 {
+    animation: wwb-orbit-spin 10s linear infinite;
+  }
 }
