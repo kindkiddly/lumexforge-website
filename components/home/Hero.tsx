@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-16 lg:pt-20">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-8 md:pt-12 lg:pt-16">
       <div className="absolute inset-0 -z-20">
         <Image
           src={IMAGES.hero}
@@ -23,9 +23,10 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
-      <Container className="relative py-16 sm:py-20 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <Container className="relative pt-4 pb-16 sm:pt-6 sm:pb-20 lg:pt-8 lg:pb-28">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <motion.div
+            className="order-2 lg:order-1 lg:self-center"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -37,7 +38,7 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="mt-8 text-3xl font-bold tracking-tight leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
+            <h1 className="mt-6 text-3xl font-bold tracking-tight leading-tight md:text-4xl lg:text-5xl xl:text-5xl">
               <span className="text-gradient">Building the Next</span>
               <br />
               <span className="text-gradient-accent">Generation of Digital Products</span>
@@ -52,7 +53,7 @@ export function Hero() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Button
                 href="/products"
-                className="min-w-[180px] justify-center px-6 py-3 text-base font-medium"
+                className="min-w-[180px] justify-center px-6 py-3 text-base font-medium lg:px-5 lg:py-2.5 lg:text-base"
               >
                 Explore Products
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -62,7 +63,7 @@ export function Hero() {
               <Button
                 href="/contact"
                 variant="secondary"
-                className="min-w-[180px] justify-center px-6 py-3 text-base font-medium"
+                className="min-w-[180px] justify-center px-6 py-3 text-base font-medium lg:px-5 lg:py-2.5 lg:text-base"
               >
                 Get In Touch
               </Button>
@@ -83,7 +84,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="relative mx-auto w-full max-w-lg lg:max-w-none"
+            className="relative order-1 mx-auto w-full max-w-lg lg:order-2 lg:max-w-none lg:self-center"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
