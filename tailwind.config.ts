@@ -29,6 +29,10 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+      },
+      maxWidth: {
+        legal: "48rem",
       },
       fontSize: {
         "display-sm": ["2.5rem", { lineHeight: "1.1", letterSpacing: "-0.03em" }],
