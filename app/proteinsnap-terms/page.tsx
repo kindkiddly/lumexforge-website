@@ -4,6 +4,10 @@ import { proteinsnapTermsMetadata } from "@/lib/metadata";
 
 export const metadata = proteinsnapTermsMetadata;
 
+function Brand() {
+  return <span className="text-accent-secondary">LumexForge</span>;
+}
+
 export default function ProteinSnapTermsPage() {
   return (
     <LegalLayout
@@ -20,8 +24,8 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="1. About the Service">
         <p>
-          ProteinSnap is a nutrition and fitness tracking app made by LumexForge
-          studio. It helps you log meals, track macros, get AI coaching, and
+          ProteinSnap is a nutrition and fitness tracking app made by{" "}
+          <Brand />. It helps you log meals, track macros, get AI coaching, and
           monitor body measurements.
         </p>
       </LegalSection>
@@ -149,7 +153,7 @@ export default function ProteinSnapTermsPage() {
       <LegalSection title="9. Limitation of Liability">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            LumexForge is not liable for any indirect, incidental, or
+            <Brand /> is not liable for any indirect, incidental, or
             consequential damages from using the app
           </li>
           <li>
@@ -186,8 +190,8 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="12. Governing Law and Disputes">
         <p>
-          These terms are governed by the laws of the jurisdiction where
-          LumexForge is established. Any disputes will be resolved through
+          These terms are governed by the laws of the jurisdiction where{" "}
+          <Brand /> is established. Any disputes will be resolved through
           good-faith negotiation first. For US residents, your consumer
           protection rights under federal and state law still apply. For EU
           residents, your applicable consumer protection rights still apply.
@@ -204,7 +208,7 @@ export default function ProteinSnapTermsPage() {
             {CONTACT_EMAILS.business}
           </a>
         </p>
-        <p>LumexForge Studio</p>
+        <p><Brand /></p>
       </LegalSection>
     </LegalLayout>
   );
