@@ -14,7 +14,7 @@ export default function ProteinSnapPrivacyPage() {
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
           ProteinSnap is a nutrition and fitness tracking app made by LumexForge
-          studio (Karachi, Pakistan). We built it to help you log meals, track
+          studio. We built it to help you log meals, track
           macros, monitor progress, and get thoughtful AI coaching — and we
           know that means trusting us with personal health data.
         </p>
@@ -248,10 +248,10 @@ export default function ProteinSnapPrivacyPage() {
 
       <LegalSection title="11. Governing Law">
         <p>
-          This policy and any disputes related to it are governed by the laws of
-          Pakistan, where LumexForge operates. For US residents, your privacy
-          rights under CCPA, COPPA, and other applicable US laws still fully
-          apply.
+          This policy is governed by the laws of the jurisdiction where LumexForge
+          is established. For US residents, your privacy rights under CCPA,
+          COPPA, and other applicable US laws still fully apply. For EU
+          residents, your GDPR rights still apply.
         </p>
       </LegalSection>
 
@@ -267,7 +267,6 @@ export default function ProteinSnapPrivacyPage() {
           </a>
         </p>
         <p>LumexForge Studio</p>
-        <p>Karachi, Pakistan</p>
       </LegalSection>
     </LegalLayout>
   );

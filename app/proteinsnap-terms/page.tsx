@@ -186,12 +186,11 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="12. Governing Law and Disputes">
         <p>
-          These terms are governed by the laws of Pakistan. Any disputes will be
-          resolved in the courts of Karachi, Pakistan.
-        </p>
-        <p>
-          For US residents, your consumer protection rights under US federal
-          and state law still apply.
+          These terms are governed by the laws of the jurisdiction where
+          LumexForge is established. Any disputes will be resolved through
+          good-faith negotiation first. For US residents, your consumer
+          protection rights under federal and state law still apply. For EU
+          residents, your applicable consumer protection rights still apply.
         </p>
       </LegalSection>
 
@@ -206,7 +205,6 @@ export default function ProteinSnapTermsPage() {
           </a>
         </p>
         <p>LumexForge Studio</p>
-        <p>Karachi, Pakistan</p>
       </LegalSection>
     </LegalLayout>
   );
