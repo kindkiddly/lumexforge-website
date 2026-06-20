@@ -159,3 +159,17 @@ export const termsMetadata = createMetadata({
     "AMORA terms of service — eligibility, acceptable use, voice cloning, subscriptions, and disclaimers.",
   path: "/terms",
 });
+
+export const proteinsnapPrivacyMetadata = createMetadata({
+  title: "ProteinSnap Privacy Policy",
+  description:
+    "ProteinSnap privacy policy — how LumexForge collects, uses, and protects your nutrition, fitness, and meal data.",
+  path: "/proteinsnap-privacy",
+});
+
+export const proteinsnapTermsMetadata = createMetadata({
+  title: "ProteinSnap Terms of Service",
+  description:
+    "ProteinSnap terms of service — eligibility, AI disclaimers, subscriptions, acceptable use, and liability.",
+  path: "/proteinsnap-terms",
+});
