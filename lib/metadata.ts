@@ -173,3 +173,15 @@ export const proteinsnapTermsMetadata = createMetadata({
     "ProteinSnap terms of service — eligibility, AI disclaimers, subscriptions, acceptable use, and liability.",
   path: "/proteinsnap-terms",
 });
+
+export const authCallbackMetadata: Metadata = {
+  title: "Opening ProteinSnap",
+  description: "Redirecting you to the ProteinSnap app…",
+  robots: { index: false, follow: false },
+};
+
+export const authConfirmMetadata: Metadata = {
+  title: "Verifying your account",
+  description: "Opening ProteinSnap to complete account verification…",
+  robots: { index: false, follow: false },
+};
