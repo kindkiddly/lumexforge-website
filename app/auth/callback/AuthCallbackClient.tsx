@@ -30,7 +30,7 @@ export function AuthCallbackClient() {
 
     // Forward all Supabase PKCE params (code, state, etc.) to the mobile app
     const params = searchParams.toString()
-    const deepLink = `${APP_SCHEME}://auth/callback${params ? `?${params}` : ''}`
+    const deepLink = `${APP_SCHEME}://auth/callback${params ? `?${params}` : ''}${typeof window !== 'undefined' ? window.location.hash : ''}`
 
     window.location.href = deepLink
 

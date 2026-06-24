@@ -30,7 +30,7 @@ export function AuthConfirmClient() {
 
     // Forward all Supabase params (token_hash, type, code, etc.) to the mobile app
     const params = searchParams.toString()
-    const deepLink = `${APP_SCHEME}://auth/confirm${params ? `?${params}` : ''}`
+    const deepLink = `${APP_SCHEME}://auth/confirm${params ? `?${params}` : ''}${typeof window !== 'undefined' ? window.location.hash : ''}`
 
     window.location.href = deepLink
 
