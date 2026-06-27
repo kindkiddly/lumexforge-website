@@ -174,6 +174,13 @@ export const proteinsnapTermsMetadata = createMetadata({
   path: "/proteinsnap-terms",
 });
 
+export const proteinsnapDeletionMetadata = createMetadata({
+  title: "ProteinSnap Account Deletion Policy",
+  description:
+    "How to permanently delete your ProteinSnap account and what data is removed, retained, and protected.",
+  path: "/proteinsnap-deletion",
+});
+
 export const authCallbackMetadata: Metadata = {
   title: "Opening ProteinSnap",
   description: "Redirecting you to the ProteinSnap app…",
