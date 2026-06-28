@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 const APP_SCHEME = 'proteinsnap'
 // Update this URL once ProteinSnap is published on Google Play
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.lumexforge.proteinsnap'
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.proteinsnap.app'
 
 type Status = 'redirecting' | 'no-app' | 'error'
 
