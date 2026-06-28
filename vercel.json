@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/((?!\\.well-known/).*)",
+      "destination": "https://www.lumexforge.com/$1",
+      "permanent": true,
+      "has": [{ "type": "host", "value": "lumexforge.com" }]
+    }
+  ]
+}
