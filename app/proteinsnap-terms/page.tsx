@@ -12,19 +12,19 @@ export default function ProteinSnapTermsPage() {
   return (
     <LegalLayout
       title="Terms of Service"
-      breadcrumbLabel="ProteinSnap Terms"
+      breadcrumbLabel="ProteinSnaps Terms"
       lastUpdated="June 21, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
-          By using ProteinSnap, you agree to these terms. If you don&apos;t
+          By using ProteinSnaps, you agree to these terms. If you don&apos;t
           agree, please don&apos;t use the app.
         </p>
       </div>
 
       <LegalSection title="1. About the Service">
         <p>
-          ProteinSnap is a nutrition and fitness tracking app made by{" "}
+          ProteinSnaps is a nutrition and fitness tracking app made by{" "}
           <Brand />. It helps you log meals, track macros, get AI coaching, and
           monitor body measurements.
         </p>
@@ -32,7 +32,7 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="2. Your Account">
         <ul className="list-disc space-y-2 pl-5">
-          <li>You must be at least 13 years old to use ProteinSnap</li>
+          <li>You must be at least 13 years old to use ProteinSnaps</li>
           <li>You&apos;re responsible for keeping your password secure</li>
           <li>You&apos;re responsible for all activity under your account</li>
           <li>One person, one account — no sharing</li>
@@ -80,7 +80,7 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="5. AI-Generated Content Disclaimer">
         <p>
-          <strong className="text-foreground">Important:</strong> ProteinSnap
+          <strong className="text-foreground">Important:</strong> ProteinSnaps
           uses AI (Google Gemini and Anthropic Claude) to analyze meal photos and
           provide coaching.
         </p>
@@ -137,7 +137,7 @@ export default function ProteinSnapTermsPage() {
       <LegalSection title="8. Disclaimers">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            ProteinSnap is provided &quot;as is&quot; — we work hard to keep it
+            ProteinSnaps is provided &quot;as is&quot; — we work hard to keep it
             reliable but can&apos;t guarantee zero bugs or downtime
           </li>
           <li>AI analysis may be inaccurate</li>
@@ -169,7 +169,7 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="10. Termination">
         <ul className="list-disc space-y-2 pl-5">
-          <li>You can stop using ProteinSnap anytime and delete your account</li>
+          <li>You can stop using ProteinSnaps anytime and delete your account</li>
           <li>We can suspend or terminate accounts that violate these terms</li>
           <li>
             Upon termination, your access ends and your data is deleted within

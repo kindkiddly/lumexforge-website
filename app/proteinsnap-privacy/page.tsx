@@ -12,12 +12,12 @@ export default function ProteinSnapPrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      breadcrumbLabel="ProteinSnap Privacy"
+      breadcrumbLabel="ProteinSnaps Privacy"
       lastUpdated="June 21, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
-          ProteinSnap is a nutrition and fitness tracking app made by{" "}
+          ProteinSnaps is a nutrition and fitness tracking app made by{" "}
           <Brand />. We built it to help you log meals, track
           macros, monitor progress, and get thoughtful AI coaching — and we
           know that means trusting us with personal health data.
@@ -203,7 +203,7 @@ export default function ProteinSnapPrivacyPage() {
 
       <LegalSection title="7. Children's Privacy (COPPA)">
         <ul className="list-disc space-y-2 pl-5">
-          <li>ProteinSnap is intended for users 13 years and older</li>
+          <li>ProteinSnaps is intended for users 13 years and older</li>
           <li>We do not knowingly collect data from children under 13</li>
           <li>
             If you believe a child has signed up, contact us and we will delete
@@ -226,7 +226,7 @@ export default function ProteinSnapPrivacyPage() {
       </LegalSection>
 
       <LegalSection title="9. International Users">
-        <p>ProteinSnap is available globally.</p>
+        <p>ProteinSnaps is available globally.</p>
         <p>
           By using the app, you understand your data may be processed in the
           United States (Google, Anthropic), the EU (Supabase), or other

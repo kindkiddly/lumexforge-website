@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ProteinSnaps Account Deletion",
   description:
-    "How to delete your ProteinSnaps iOS account, what data is removed, subscription management, and support contact information.",
+    "How to delete your ProteinSnaps iOS account, what data is removed, subscription management, and contact information.",
 };
 
 const SUPPORT_EMAIL = "support@lumexforge.com";
@@ -63,15 +63,15 @@ export default function ProteinSnapsDeletionPage() {
         </ol>
         <p>
           If you are unable to access the app, you may also request account deletion
-          by emailing{" "}
-          <a
-            href={`mailto:${SUPPORT_EMAIL}`}
+          through our{" "}
+          <Link
+            href="/contact"
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {SUPPORT_EMAIL}
-          </a>{" "}
-          from the email address associated with your ProteinSnaps account. We may
-          ask you to verify your identity before processing the request.
+            Contact page
+          </Link>
+          . Please provide the email address associated with your ProteinSnaps account.
+          We may ask you to verify your identity before processing the request.
         </p>
       </LegalSection>
 
@@ -89,9 +89,9 @@ export default function ProteinSnapsDeletionPage() {
         </p>
         <p>
           We do not specify a fixed number of days for every deletion step, as timing
-          may depend on system processing and legal requirements. If you contact
-          support regarding a deletion request, we will respond and assist you with
-          the status of your request.
+          may depend on system processing and legal requirements. If you contact us
+          regarding a deletion request, we will respond and assist you with the
+          status of your request.
         </p>
       </LegalSection>
 
@@ -151,8 +151,8 @@ export default function ProteinSnapsDeletionPage() {
             your account or personal data.
           </strong>{" "}
           Your account and stored data remain on our servers until you complete the
-          in-app account deletion process or submit a verified deletion request to
-          support.
+          in-app account deletion process or submit a verified deletion request through
+          our Contact page.
         </p>
         <p>
           If you reinstall ProteinSnaps after uninstalling, you may still be able to
@@ -196,7 +196,7 @@ export default function ProteinSnapsDeletionPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Contact & Support">
+      <LegalSection title="Contact">
         <p>
           If you need help deleting your account, verifying a deletion request, or
           have questions about your data, contact us:

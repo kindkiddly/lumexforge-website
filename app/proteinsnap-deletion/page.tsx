@@ -8,13 +8,13 @@ export default function ProteinSnapDeletionPage() {
   return (
     <div className="bg-black">
       <LegalLayout
-        title="ProteinSnap Account Deletion Policy"
+        title="ProteinSnaps Account Deletion Policy"
         breadcrumbLabel="Account Deletion"
         lastUpdated="June 21, 2026"
       >
         <div className="space-y-4 text-base leading-[1.75]">
           <p>
-            At ProteinSnap, we believe in providing you with full control over your
+            At ProteinSnaps, we believe in providing you with full control over your
             digital footprint. We are committed to transparency regarding how your
             data is handled, stored, and deleted.
           </p>
@@ -22,12 +22,12 @@ export default function ProteinSnapDeletionPage() {
 
         <LegalSection title="How to Request Account Deletion">
           <p>
-            You can permanently delete your ProteinSnap account and all associated
+            You can permanently delete your ProteinSnaps account and all associated
             data directly from within our application. Please follow these simple
             steps:
           </p>
           <ol className="list-decimal space-y-2 pl-5">
-            <li>Open the ProteinSnap app.</li>
+            <li>Open the ProteinSnaps app.</li>
             <li>Go to the &apos;Me&apos; tab.</li>
             <li>Scroll to the footer of the page.</li>
             <li>
