@@ -181,6 +181,27 @@ export const proteinsnapDeletionMetadata = createMetadata({
   path: "/proteinsnap-deletion",
 });
 
+export const posthuntPrivacyMetadata = createMetadata({
+  title: "PostHunt Privacy Policy",
+  description:
+    "Privacy Policy for PostHunt, the AI-powered social media content creation and automation platform by LumexForge.",
+  path: "/posthunt-privacy",
+});
+
+export const posthuntTermsMetadata = createMetadata({
+  title: "PostHunt Terms of Use",
+  description:
+    "Terms of Use for PostHunt, LumexForge's AI-powered social media content creation and automation platform.",
+  path: "/posthunt-terms",
+});
+
+export const posthuntDeletionMetadata = createMetadata({
+  title: "PostHunt Account & Data Deletion",
+  description:
+    "Learn how to delete your PostHunt account and request deletion of associated data.",
+  path: "/posthunt-deletion",
+});
+
 export const authCallbackMetadata: Metadata = {
   title: "Opening ProteinSnap",
   description: "Redirecting you to the ProteinSnap app…",

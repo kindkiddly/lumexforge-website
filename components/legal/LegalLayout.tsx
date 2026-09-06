@@ -6,6 +6,7 @@ interface LegalLayoutProps {
   title: string;
   breadcrumbLabel: string;
   lastUpdated?: string;
+  beforeTitle?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -13,6 +14,7 @@ export function LegalLayout({
   title,
   breadcrumbLabel,
   lastUpdated,
+  beforeTitle,
   children,
 }: LegalLayoutProps) {
   return (
@@ -32,6 +34,8 @@ export function LegalLayout({
             <span className="mx-2 text-foreground-muted">/</span>
             <span className="text-foreground">{breadcrumbLabel}</span>
           </nav>
+
+          {beforeTitle}
 
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {title}
