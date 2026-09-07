@@ -822,31 +822,11 @@ export function HeroSection() {
             background-color: #050811 !important;
             animation: ps-hero-images-glow 4s ease-in-out infinite !important;
             -webkit-mask-image:
-              linear-gradient(
-                to right,
-                transparent 0,
-                rgba(0, 0, 0, 0.06) 80px,
-                rgba(0, 0, 0, 0.18) 160px,
-                rgba(0, 0, 0, 0.38) 240px,
-                rgba(0, 0, 0, 0.62) 320px,
-                rgba(0, 0, 0, 0.84) 400px,
-                #000 460px
-              ),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
             -webkit-mask-composite: source-in;
             mask-image:
-              linear-gradient(
-                to right,
-                transparent 0,
-                rgba(0, 0, 0, 0.06) 80px,
-                rgba(0, 0, 0, 0.18) 160px,
-                rgba(0, 0, 0, 0.38) 240px,
-                rgba(0, 0, 0, 0.62) 320px,
-                rgba(0, 0, 0, 0.84) 400px,
-                #000 460px
-              ),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
@@ -882,6 +862,28 @@ export function HeroSection() {
             max-height: 100% !important;
             object-fit: contain !important;
             object-position: right center !important;
+            -webkit-mask-image: linear-gradient(
+              to right,
+              transparent 0%,
+              rgba(0, 0, 0, 0.1) 16%,
+              rgba(0, 0, 0, 0.32) 24%,
+              rgba(0, 0, 0, 0.58) 32%,
+              rgba(0, 0, 0, 0.82) 40%,
+              #000 48%
+            );
+            mask-image: linear-gradient(
+              to right,
+              transparent 0%,
+              rgba(0, 0, 0, 0.1) 16%,
+              rgba(0, 0, 0, 0.32) 24%,
+              rgba(0, 0, 0, 0.58) 32%,
+              rgba(0, 0, 0, 0.82) 40%,
+              #000 48%
+            );
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
           }
           .ps-hero-slide-image.ps-hero-slide-psl9 {
             object-position: right 30% !important;
