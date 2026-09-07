@@ -865,20 +865,28 @@ export function HeroSection() {
             -webkit-mask-image: linear-gradient(
               to right,
               transparent 0%,
-              rgba(0, 0, 0, 0.1) 16%,
-              rgba(0, 0, 0, 0.32) 24%,
-              rgba(0, 0, 0, 0.58) 32%,
-              rgba(0, 0, 0, 0.82) 40%,
-              #000 48%
+              rgba(0, 0, 0, 0.04) 10%,
+              rgba(0, 0, 0, 0.12) 20%,
+              rgba(0, 0, 0, 0.24) 30%,
+              rgba(0, 0, 0, 0.38) 38%,
+              rgba(0, 0, 0, 0.52) 46%,
+              rgba(0, 0, 0, 0.66) 54%,
+              rgba(0, 0, 0, 0.78) 62%,
+              rgba(0, 0, 0, 0.9) 68%,
+              #000 74%
             );
             mask-image: linear-gradient(
               to right,
               transparent 0%,
-              rgba(0, 0, 0, 0.1) 16%,
-              rgba(0, 0, 0, 0.32) 24%,
-              rgba(0, 0, 0, 0.58) 32%,
-              rgba(0, 0, 0, 0.82) 40%,
-              #000 48%
+              rgba(0, 0, 0, 0.04) 10%,
+              rgba(0, 0, 0, 0.12) 20%,
+              rgba(0, 0, 0, 0.24) 30%,
+              rgba(0, 0, 0, 0.38) 38%,
+              rgba(0, 0, 0, 0.52) 46%,
+              rgba(0, 0, 0, 0.66) 54%,
+              rgba(0, 0, 0, 0.78) 62%,
+              rgba(0, 0, 0, 0.9) 68%,
+              #000 74%
             );
             -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%;
