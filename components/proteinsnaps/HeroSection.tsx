@@ -4,6 +4,7 @@ import { HERO_SLIDES, PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import QRCode from "react-qr-code";
 import { StoreButtons } from "./StoreButtons";
 
 const NAVBAR_HEIGHT = "4rem";
@@ -11,103 +12,109 @@ const AUTO_PLAY_MS = 4500;
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
+const LABEL_DELAY = 0;
+const HEADLINE_DELAY = 0.1;
+const DESCRIPTION_DELAY = 0.3;
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share";
+const IOS_PLACEHOLDER_URL = "https://apps.apple.com/proteinsnaps";
 
 const DESKTOP_SLIDES = [
   {
-    headline: "Track Protein. Snap Meals. Win.",
+    headline: "Smarter Tracking. Better Results. Every Day.",
     description:
-      "Snap meals, track protein and macros, get personalized AI coaching, and achieve your fitness goals — all in one intelligent app.",
-    accentWords: ["Protein.", "Meals.", "Win."],
+      "Track meals, hit your protein goals, log workouts and get AI insights — all from one clean dashboard built for your daily routine.",
+    accentWords: ["Tracking.", "Results.", "Day."],
     name: "fadeUp",
     duration: 1.0,
-    headlineClass: "font-serif font-black not-italic",
+    headlineClass: "font-sans font-extrabold not-italic",
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "AI Knows What You Eat.",
+    headline: "Snap It. Track It. Achieve It.",
     description:
-      "Point your camera at any meal and our AI instantly identifies foods, estimates portions, and calculates protein, carbs, fat and calories in seconds.",
-    accentWords: ["AI", "Eat."],
+      "Point your camera at any meal and AI instantly identifies foods, estimates portions and logs your nutrition in seconds — no guessing needed.",
+    accentWords: ["Snap", "Track", "Achieve"],
     name: "blurReveal",
     duration: 1.1,
-    headlineClass: "font-mono font-bold not-italic",
-    accentClass: "text-[#00C2FF]",
-  },
-  {
-    headline: "Hit Your Macros. Every Day.",
-    description:
-      "Protein-first dashboard with smart daily targets, Fill the Gap suggestions, and macro balance insights that keep you on track every single day.",
-    accentWords: ["Macros.", "Every", "Day."],
-    name: "stagger",
-    duration: 1.2,
-    headlineClass: "font-sans font-extrabold uppercase",
+    headlineClass: "font-sans font-black uppercase",
     accentClass: "text-white",
   },
   {
-    headline: "Your AI Coach. Always On.",
+    headline: "Your AI Coach. Always By Your Side.",
     description:
-      "Chat with your personal AI nutrition coach 24/7. Get weekly insights, goal-based guidance, and smarter recommendations tailored to your journey.",
-    accentWords: ["AI", "Coach.", "Always"],
-    name: "zoomIn",
-    duration: 0.9,
+      "Ask anything, get real guidance. Your personal AI nutrition and fitness coach gives you smarter plans, better advice and real results every day.",
+    accentWords: ["AI", "Coach.", "Side."],
+    name: "stagger",
+    duration: 1.2,
     headlineClass: "font-serif font-light italic",
-    accentClass: "ps-headline-gradient",
+    accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Log Workouts. Break Records.",
+    headline: "Every Mile Builds a Stronger You.",
     description:
-      "Track sets, reps, weights and training volume. Monitor personal records, strength trends and weekly performance with your built-in plate calculator.",
-    accentWords: ["Workouts.", "Records."],
-    name: "sweepLeft",
-    duration: 1.0,
+      "Track your runs, monitor calories burned, see your weekly progress and get AI insights that keep you moving forward every single day.",
+    accentWords: ["Mile", "Stronger", "You."],
+    name: "zoomIn",
+    duration: 0.9,
     headlineClass: "font-sans font-black tracking-tighter",
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "See Your Progress. Stay Motivated.",
+    headline: "Stronger Every Day.",
     description:
-      "Log body measurements, capture progress photos, track weight changes and celebrate every milestone with detailed analytics and visual charts.",
-    accentWords: ["Progress.", "Motivated."],
-    name: "typewriter",
-    duration: 1.2,
-    headlineClass: "font-mono font-normal not-italic",
+      "Log every set, track every rep and monitor your workout performance with smart nutrition guidance that fuels your gym sessions perfectly.",
+    accentWords: ["Stronger", "Every", "Day."],
+    name: "sweepLeft",
+    duration: 1.0,
+    headlineClass: "font-sans font-extrabold uppercase tracking-widest",
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Snap. Track. Transform.",
+    headline: "Good Food. Better You.",
     description:
-      "From your first meal snap to your biggest personal record — ProteinSnaps keeps your nutrition and training in one place so you never lose momentum.",
-    accentWords: ["Snap.", "Track.", "Transform."],
-    name: "dropTop",
-    duration: 1.0,
-    headlineClass: "font-sans font-extrabold tracking-widest",
-    accentClass: "text-white ps-headline-glow",
+      "Track every meal wherever you are — at home, at a restaurant or on the go. See your 30-day trends, weekly summaries and stay on your goals.",
+    accentWords: ["Food.", "Better", "You."],
+    name: "typewriter",
+    duration: 1.2,
+    headlineClass: "font-mono font-normal not-italic",
+    accentClass: "text-white",
   },
   {
-    headline: "Nutrition Made Intelligent.",
+    headline: "Finish Strong. Recover Smarter.",
     description:
-      "Understand your eating patterns, protein trends and macro gaps with AI-powered smart insights that help you make better food choices every day.",
-    accentWords: ["Intelligent."],
-    name: "glitch",
-    duration: 0.8,
+      "Track your protein goals, hydration, workout completion and recovery all in one daily summary that keeps you ready for what is next.",
+    accentWords: ["Strong.", "Smarter."],
+    name: "dropTop",
+    duration: 1.0,
     headlineClass: "font-serif font-bold italic",
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "Built for Athletes. Made for Everyone.",
+    headline: "Real Food. Real Progress. That's ProteinSnaps.",
     description:
-      "Whether you are bulking, cutting, doing yoga, managing your diet or chasing a new PR — ProteinSnaps adapts to your goals and lifestyle.",
-    accentWords: ["Athletes.", "Everyone."],
+      "Whether you are a beginner or a champion — ProteinSnaps gives you personalized nutrition plans, AI coaching and smart tracking to win every day.",
+    accentWords: ["Food.", "Progress.", "ProteinSnaps."],
+    name: "glitch",
+    duration: 0.8,
+    headlineClass: "font-sans font-black italic",
+    accentClass: "ps-headline-gradient",
+  },
+  {
+    headline: "Real Progress. Real You.",
+    description:
+      "Track your transformation with progress photos, body measurements and AI coaching that celebrates every milestone on your journey to a stronger you.",
+    accentWords: ["Progress.", "You."],
     name: "scaleSmall",
     duration: 1.0,
     headlineClass: "font-sans font-semibold not-italic",
-    accentClass: "ps-headline-gradient-lr",
+    accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Your Goals. Your Journey. Your App.",
+    headline: "Fuel Your Stronger You.",
     description:
-      "Start free today. Snap your first meal, set your targets, and let ProteinSnaps guide you every step of the way to a healthier, stronger you.",
-    accentWords: ["Goals.", "Journey.", "App."],
+      "Personalized nutrition, smart workouts and AI progress tracking — everything you need to build the body you want, all in one powerful app.",
+    accentWords: ["Fuel", "Stronger", "You."],
     name: "shimmer",
     duration: 1.2,
     headlineClass: "font-sans font-black italic",
@@ -156,14 +163,24 @@ function HighlightedHeadline({
 function TypewriterHeadline({
   slide,
   className,
+  delay,
 }: {
   slide: DesktopSlide;
   className: string;
+  delay: number;
 }) {
   const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     setDisplayed("");
+    setStarted(false);
+    const startTimer = setTimeout(() => setStarted(true), delay * 1000);
+    return () => clearTimeout(startTimer);
+  }, [slide.headline, delay]);
+
+  useEffect(() => {
+    if (!started) return;
     let i = 0;
     const interval = setInterval(() => {
       i += 1;
@@ -171,7 +188,7 @@ function TypewriterHeadline({
       if (i >= slide.headline.length) clearInterval(interval);
     }, 38);
     return () => clearInterval(interval);
-  }, [slide.headline]);
+  }, [slide.headline, started]);
 
   const partialSlide = {
     headline: displayed,
@@ -189,9 +206,11 @@ function TypewriterHeadline({
 function StaggerHeadline({
   slide,
   className,
+  delay,
 }: {
   slide: DesktopSlide;
   className: string;
+  delay: number;
 }) {
   const words = slide.headline.split(" ");
 
@@ -200,7 +219,7 @@ function StaggerHeadline({
       className={`${className} ${slide.headlineClass}`}
       initial="hidden"
       animate="visible"
-      variants={{ visible: { transition: { staggerChildren: 0.09 } } }}
+      variants={{ visible: { transition: { staggerChildren: 0.09, delayChildren: delay } } }}
     >
       {words.map((word, i) => (
         <motion.span
@@ -225,48 +244,55 @@ function StaggerHeadline({
 function GlitchHeadline({
   slide,
   className,
+  delay,
 }: {
   slide: DesktopSlide;
   className: string;
+  delay: number;
 }) {
   const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     setSettled(false);
-    const timer = setTimeout(() => setSettled(true), 480);
+    const timer = setTimeout(() => setSettled(true), delay * 1000 + 480);
     return () => clearTimeout(timer);
-  }, [slide.headline]);
+  }, [slide.headline, delay]);
 
-  if (settled) {
+  if (!settled) {
     return (
-      <span className={`${className} ${slide.headlineClass}`}>
-        <HighlightedHeadline slide={slide} />
-      </span>
+      <motion.span
+        className={`${className} ${slide.headlineClass}`}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          color: ["#00C2FF", "#00E6A8", "#FFFFFF", "#00C2FF", "#00E6A8", "#FFFFFF"],
+          x: [0, -2, 2, -1, 1, 0],
+        }}
+        transition={{ duration: 0.48, delay, ease: "linear" }}
+      >
+        {slide.headline}
+      </motion.span>
     );
   }
 
   return (
-    <motion.span
-      className={`${className} ${slide.headlineClass}`}
-      animate={{
-        color: ["#00C2FF", "#00E6A8", "#FFFFFF", "#00C2FF", "#00E6A8", "#FFFFFF"],
-        x: [0, -2, 2, -1, 1, 0],
-      }}
-      transition={{ duration: 0.48, ease: "linear" }}
-    >
-      {slide.headline}
-    </motion.span>
+    <span className={`${className} ${slide.headlineClass}`}>
+      <HighlightedHeadline slide={slide} />
+    </span>
   );
 }
 
 function AnimatedHeadline({
   slideIndex,
   className,
+  delay,
 }: {
   slideIndex: number;
   className: string;
+  delay: number;
 }) {
   const slide = DESKTOP_SLIDES[slideIndex];
+  const ease = [0.22, 1, 0.36, 1] as const;
 
   switch (slide.name) {
     case "fadeUp":
@@ -274,7 +300,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -285,7 +311,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, filter: "blur(14px)", y: 6 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -294,7 +320,7 @@ function AnimatedHeadline({
     case "stagger":
       return (
         <h1 className={className}>
-          <StaggerHeadline slide={slide} className="" />
+          <StaggerHeadline slide={slide} className="" delay={delay} />
         </h1>
       );
     case "zoomIn":
@@ -302,7 +328,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -313,7 +339,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, x: -48 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -322,7 +348,7 @@ function AnimatedHeadline({
     case "typewriter":
       return (
         <h1 className={className}>
-          <TypewriterHeadline slide={slide} className="" />
+          <TypewriterHeadline slide={slide} className="" delay={delay} />
         </h1>
       );
     case "dropTop":
@@ -330,7 +356,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: -36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -339,7 +365,7 @@ function AnimatedHeadline({
     case "glitch":
       return (
         <h1 className={`${className} ${slide.headlineClass}`}>
-          <GlitchHeadline slide={slide} className="" />
+          <GlitchHeadline slide={slide} className="" delay={delay} />
         </h1>
       );
     case "scaleSmall":
@@ -347,7 +373,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, scale: 0.55 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -358,7 +384,7 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: slide.duration, delay, ease }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />
@@ -371,10 +397,7 @@ function AnimatedHeadline({
 
 function DesktopAmbientGlow() {
   return (
-    <div
-      className="pointer-events-none absolute left-0 top-1/2 z-[2] hidden h-full w-[min(560px,58%)] -translate-y-1/2 lg:block"
-      aria-hidden="true"
-    >
+    <>
       <motion.div
         className="absolute left-[6%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full blur-[120px]"
         animate={{
@@ -403,54 +426,94 @@ function DesktopAmbientGlow() {
         }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
-    </div>
+    </>
   );
 }
 
 function DesktopImageBleedGlow() {
   return (
     <motion.div
-      className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+      className="absolute inset-0"
       aria-hidden="true"
-      animate={{ opacity: [0.55, 0.85, 0.68, 0.55] }}
+      animate={{ opacity: [0.45, 0.72, 0.58, 0.45] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
     >
-      {/* Image-area halo — right side */}
-      <div className="absolute inset-y-[6%] right-[2%] w-[min(58%,720px)]">
-        <div
-          className="absolute inset-[4%] rounded-[2.5rem]"
-          style={{
-            boxShadow: `
-              0 0 70px 35px rgba(0, 194, 255, 0.22),
-              0 0 110px 55px rgba(27, 15, 219, 0.18),
-              0 0 150px 75px rgba(123, 47, 255, 0.14),
-              inset 0 0 60px 20px rgba(0, 194, 255, 0.08)
-            `,
-          }}
-        />
-        <div
-          className="absolute inset-[8%] rounded-[2rem] blur-[50px]"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(0,194,255,0.2) 0%, rgba(27,15,219,0.12) 45%, rgba(123,47,255,0.08) 70%, transparent 85%)",
-          }}
-        />
-      </div>
-
-      {/* Stronger left bleed merging into text ambient glow */}
       <motion.div
-        className="absolute left-[18%] top-1/2 h-[72%] w-[38%] -translate-y-1/2 blur-[100px]"
+        className="absolute inset-y-0 right-0 w-[62%] blur-[100px]"
+        animate={{ opacity: [0.5, 0.75, 0.6, 0.5] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(0,194,255,0.18) 0%, rgba(27,15,219,0.12) 40%, rgba(123,47,255,0.08) 65%, transparent 85%)",
+        }}
+      />
+      <motion.div
+        className="absolute left-[12%] top-1/2 h-[80%] w-[42%] -translate-y-1/2 blur-[110px]"
         animate={{
-          opacity: [0.35, 0.55, 0.42, 0.35],
+          opacity: [0.3, 0.5, 0.38, 0.3],
           scale: [1, 1.06, 1.03, 1],
         }}
         transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
         style={{
           background:
-            "radial-gradient(ellipse at right center, rgba(0,194,255,0.28) 0%, rgba(27,15,219,0.2) 35%, rgba(123,47,255,0.14) 60%, transparent 80%)",
+            "radial-gradient(ellipse at right center, rgba(0,194,255,0.22) 0%, rgba(27,15,219,0.16) 35%, rgba(123,47,255,0.1) 60%, transparent 82%)",
         }}
       />
     </motion.div>
+  );
+}
+
+function DesktopHeroStorePanel() {
+  return (
+    <div className="ps-hero-desktop-store mt-5">
+      <div className="flex items-start gap-5">
+        <div className="flex flex-col items-center">
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ps-hero-desktop-btn ps-hero-desktop-play inline-flex w-[11.5rem] items-center justify-center gap-1.5 rounded-full text-[#00E6A8] transition-all"
+          >
+            <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
+            </svg>
+            Get it on Google Play
+          </a>
+          <div className="mt-3 rounded bg-white p-1">
+            <QRCode
+              value={PLAY_STORE_URL}
+              size={80}
+              bgColor="#ffffff"
+              fgColor="#050811"
+              level="M"
+            />
+          </div>
+          <p className="ps-hero-desktop-scan mt-1.5 text-center text-white/55">Scan for Android</p>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <span
+            aria-disabled="true"
+            className="ps-hero-desktop-btn ps-hero-desktop-appstore inline-flex w-[11.5rem] cursor-not-allowed items-center justify-center gap-1.5 rounded-full text-white/45"
+          >
+            <svg className="h-4 w-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store — Coming Soon
+          </span>
+          <div className="mt-3 rounded bg-white p-1 opacity-40">
+            <QRCode
+              value={IOS_PLACEHOLDER_URL}
+              size={80}
+              bgColor="#ffffff"
+              fgColor="#050811"
+              level="M"
+            />
+          </div>
+          <p className="ps-hero-desktop-scan mt-1.5 text-center text-white/40">Coming Soon — iOS</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -484,40 +547,31 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
-      className="relative z-10 max-w-[380px] text-left"
+      className="relative max-w-[380px] text-left"
     >
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.05 }}
+        transition={{ duration: 0.5, delay: LABEL_DELAY }}
         className="ps-hero-desktop-label font-bold uppercase text-[#00E6A8]"
       >
         {PROTEINSNAPS.name}
       </motion.p>
 
-      <AnimatedHeadline slideIndex={slideIndex} className="ps-hero-desktop-h1 mt-2 text-white" />
+      <AnimatedHeadline
+        slideIndex={slideIndex}
+        className="ps-hero-desktop-h1 mt-2 text-white"
+        delay={HEADLINE_DELAY}
+      />
 
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 0.15 }}
+        transition={{ duration: 0.55, delay: DESCRIPTION_DELAY }}
         className="ps-hero-desktop-sub mt-3 text-white/80"
       >
         {slide.description}
       </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 0.25 }}
-        className="mt-4"
-      >
-        <StoreButtons
-          size="lg"
-          variant="hero"
-          className="ps-hero-desktop-store lg:[&>div:first-child]:!flex-row lg:[&>div:first-child]:!flex-wrap lg:[&>div:first-child]:!items-center lg:[&>div:first-child]:!gap-2 lg:[&>div:first-child]:!justify-start lg:[&>div:last-child]:!mt-3 lg:[&>div:last-child_p]:ps-hero-desktop-scan lg:[&>div:last-child>div]:!p-1.5 lg:[&>div:last-child_svg]:!h-[80px] lg:[&>div:last-child_svg]:!w-[80px]"
-        />
-      </motion.div>
     </motion.div>
   );
 }
@@ -596,7 +650,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative mt-16 w-full max-w-[100vw] overflow-hidden"
+      className="relative mt-16 w-full max-w-[100vw] overflow-hidden bg-[#050811]"
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
       {/* Desktop-only styles — mobile handled separately */}
@@ -616,38 +670,35 @@ export function HeroSection() {
             line-height: 1.55 !important;
             max-width: 380px !important;
           }
-          .ps-hero-desktop-store a,
-          .ps-hero-desktop-store span[aria-disabled="true"] {
-            width: auto !important;
+          .ps-hero-desktop-btn {
             height: 2.25rem !important;
             min-height: 2.25rem !important;
             max-height: 2.25rem !important;
             padding: 0 1rem !important;
             font-size: 0.8rem !important;
-            border-radius: 9999px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
             line-height: 1 !important;
+          }
+          .ps-hero-desktop-play {
+            border: 1px solid rgba(0, 230, 168, 0.45) !important;
+            background: rgba(0, 230, 168, 0.1) !important;
+            box-shadow: 0 0 18px rgba(0, 230, 168, 0.35) !important;
+          }
+          .ps-hero-desktop-play:hover {
+            background: rgba(0, 230, 168, 0.18) !important;
+            box-shadow: 0 0 24px rgba(0, 230, 168, 0.45) !important;
+          }
+          .ps-hero-desktop-appstore {
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            background: rgba(255, 255, 255, 0.04) !important;
           }
           .ps-hero-desktop-scan {
             font-size: 0.7rem !important;
-            margin-bottom: 0.375rem !important;
           }
           .ps-headline-gradient {
             background: linear-gradient(135deg, #00e6a8, #00c2ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-          }
-          .ps-headline-gradient-lr {
-            background: linear-gradient(90deg, #00e6a8, #00c2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-          }
-          .ps-headline-glow {
-            text-shadow: 0 0 18px rgba(0, 230, 168, 0.55), 0 0 32px rgba(0, 230, 168, 0.25);
           }
           .ps-headline-shimmer {
             position: relative;
@@ -673,40 +724,46 @@ export function HeroSection() {
         }
       `}</style>
 
-      {/* Background slides */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#050811]">
-        <AnimatePresence initial={false} mode="wait">
+      {/* z-0: glow effects */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
+        aria-hidden="true"
+      >
+        <DesktopAmbientGlow />
+        <DesktopImageBleedGlow />
+      </div>
+
+      {/* z-1: background images — stacked opacity crossfade, no gaps */}
+      <div className="absolute inset-0 z-[1] overflow-hidden">
+        {HERO_SLIDES.map((slide, i) => (
           <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={slide.src}
+            className="absolute inset-0 h-full w-full"
+            initial={false}
+            animate={{ opacity: i === index ? 1 : 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0"
+            style={{ zIndex: i === index ? 2 : 1 }}
           >
             <Image
-              src={HERO_SLIDES[index].src}
+              src={slide.src}
               alt=""
               fill
-              priority={index === 0}
+              priority={i === 0}
               sizes="100vw"
-              className={`object-cover object-center lg:object-contain lg:object-right${
-                index === PSL_9_INDEX ? " lg:![object-position:center_30%]" : ""
+              className={`object-cover object-center lg:object-cover lg:object-right${
+                i === PSL_9_INDEX ? " lg:![object-position:center_30%]" : ""
               }`}
               aria-hidden
             />
           </motion.div>
-        </AnimatePresence>
-
-        <DesktopImageBleedGlow />
+        ))}
       </div>
 
+      {/* z-2: gradient overlay */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
         aria-hidden="true"
       />
-
-      <DesktopAmbientGlow />
 
       {/* Desktop image controls — arrows + drag */}
       <div
@@ -742,8 +799,9 @@ export function HeroSection() {
         </button>
       </div>
 
-      <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
-        <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none lg:pl-[60px]">
+      {/* z-10: text content */}
+      <div className="relative z-10 flex h-full w-full items-center overflow-visible px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
+        <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet — unchanged */}
           <div className="max-w-lg lg:hidden">
             <motion.p
@@ -786,11 +844,19 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Desktop only — per-slide text animations */}
-          <div className="relative hidden lg:block">
+          {/* Desktop only — per-slide text + fixed store panel */}
+          <div className="relative hidden min-w-0 pl-[60px] lg:block">
             <AnimatePresence mode="wait">
               <DesktopHeroTextBlock key={index} slideIndex={index} />
             </AnimatePresence>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <DesktopHeroStorePanel />
+            </motion.div>
           </div>
         </div>
       </div>
