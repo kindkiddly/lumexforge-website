@@ -20,6 +20,7 @@ export const PRODUCTS: Product[] = [
       "AI-powered nutrition and fitness platform designed to simplify meal tracking, nutrition analysis, and performance monitoring.",
     status: "Launching",
     variant: "proteinsnap",
+    href: "/proteinsnaps",
   },
   {
     id: "amora",

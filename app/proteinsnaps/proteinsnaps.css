@@ -1,0 +1,63 @@
+.proteinsnaps-site {
+  --ps-mint: #00e6a8;
+  --ps-cyan: #00c2ff;
+  --ps-glow-mint: rgba(0, 230, 168, 0.35);
+  --ps-glow-cyan: rgba(0, 194, 255, 0.25);
+}
+
+.ps-glow-card {
+  border: 1px solid rgba(0, 230, 168, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ps-glow-card:hover {
+  border-color: rgba(0, 230, 168, 0.35);
+  box-shadow:
+    0 0 32px -8px var(--ps-glow-mint),
+    0 0 48px -12px var(--ps-glow-cyan);
+}
+
+.ps-glow-frame {
+  border: 1px solid rgba(0, 230, 168, 0.2);
+  box-shadow:
+    0 0 40px -10px var(--ps-glow-mint),
+    0 0 60px -15px var(--ps-glow-cyan),
+    inset 0 0 40px -20px rgba(0, 194, 255, 0.08);
+}
+
+.ps-glow-button {
+  box-shadow:
+    0 0 24px -4px var(--ps-glow-mint),
+    0 0 32px -8px var(--ps-glow-cyan);
+}
+
+.ps-glow-button:hover {
+  box-shadow:
+    0 0 32px -4px var(--ps-glow-mint),
+    0 0 48px -8px var(--ps-glow-cyan);
+}
+
+.ps-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 230, 168, 0.3),
+    rgba(0, 194, 255, 0.3),
+    transparent
+  );
+}
+
+.ps-text-gradient {
+  background: linear-gradient(135deg, var(--ps-mint), var(--ps-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ps-hero-glow {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(0, 230, 168, 0.12), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0, 194, 255, 0.1), transparent 60%);
+}

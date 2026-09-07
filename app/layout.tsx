@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { rootMetadata } from "@/lib/metadata";
 import { Inter, Playfair_Display } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,24 +20,27 @@ const playfair = Playfair_Display({
 
 export const metadata = rootMetadata;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerList = await headers();
+  const isProteinSnapsSite = headerList.get("x-proteinsnaps-site") === "1";
+
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen font-sans">
-        <JsonLd />
+        {!isProteinSnapsSite && <JsonLd />}
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-accent-primary px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0 focus:outline-none focus:ring-0"
         >
           Skip to content
         </a>
-        <Navbar />
+        {!isProteinSnapsSite && <Navbar />}
         <main id="main-content">{children}</main>
-        <Footer />
+        {!isProteinSnapsSite && <Footer />}
       </body>
     </html>
   );
