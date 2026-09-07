@@ -4,7 +4,6 @@ import { HERO_SLIDES, PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { BlurRevealText } from "./animations/BlurRevealText";
 import { StoreButtons } from "./StoreButtons";
 
 export function HeroSection() {
@@ -18,17 +17,17 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[88vh] overflow-hidden sm:min-h-[92vh] lg:min-h-[95vh]">
+    <section className="relative h-svh w-full overflow-hidden">
       {/* Full-width background slides */}
-      <div className="absolute inset-0">
-        <AnimatePresence mode="sync">
+      <div className="absolute inset-0 overflow-hidden">
+        <AnimatePresence initial={false}>
           <motion.div
             key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
           >
             <Image
               src={HERO_SLIDES[index].src}
@@ -36,7 +35,7 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-right"
             />
           </motion.div>
         </AnimatePresence>
@@ -44,17 +43,17 @@ export function HeroSection() {
 
       {/* Left-to-right dark gradient for text readability */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050811] from-0% via-[#050811]/92 via-45% to-transparent to-100% lg:via-40%"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050811] from-0% via-[#050811] via-35% to-transparent to-75% lg:via-30% lg:to-65%"
         aria-hidden="true"
       />
       {/* Mobile bottom fade for depth */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050811]/70 via-transparent to-[#050811]/30 lg:hidden"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050811]/80 via-transparent to-[#050811]/40 lg:hidden"
         aria-hidden="true"
       />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-[88vh] items-center pt-20 pb-10 sm:min-h-[92vh] sm:pt-24 sm:pb-12 lg:min-h-[95vh] lg:pt-28">
+      <div className="relative z-10 flex h-full w-full items-center overflow-hidden pt-16 pb-8 sm:pt-20 sm:pb-10">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl lg:max-w-2xl">
             <motion.p
@@ -80,9 +79,14 @@ export function HeroSection() {
               <span className="text-[#00E6A8]">Win.</span>
             </motion.h1>
 
-            <p className="mt-5 max-w-lg text-base leading-[1.7] text-white/75 sm:mt-6 sm:text-lg sm:leading-[1.75]">
-              <BlurRevealText text={PROTEINSNAPS.description} delay={0.35} />
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-5 max-w-lg text-base leading-[1.7] text-white/75 sm:mt-6 sm:text-lg sm:leading-[1.75]"
+            >
+              {PROTEINSNAPS.description}
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
