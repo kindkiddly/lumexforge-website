@@ -8,6 +8,8 @@ import QRCode from "react-qr-code";
 import { StoreButtons } from "./StoreButtons";
 
 const NAVBAR_HEIGHT = "4rem";
+/** Navbar inner row is h-16 (64px); header also has border-b (+1px). */
+const NAVBAR_OFFSET_PX = 65;
 const AUTO_PLAY_MS = 4500;
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
@@ -650,7 +652,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="ps-hero-section relative mt-16 w-full max-w-[100vw] overflow-hidden bg-[#050811]"
+      className="ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]"
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
       {/* Desktop-only styles — mobile handled separately */}
@@ -722,22 +724,49 @@ export function HeroSection() {
             100% { transform: translateX(120%); opacity: 0; }
           }
           .ps-hero-section {
-            margin-top: 64px !important;
-            height: calc(100vh - 64px) !important;
-            max-height: calc(100vh - 64px) !important;
+            margin-top: ${NAVBAR_OFFSET_PX}px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: calc(100svh - ${NAVBAR_OFFSET_PX}px) !important;
+            max-height: calc(100svh - ${NAVBAR_OFFSET_PX}px) !important;
             overflow: hidden !important;
+            box-sizing: border-box !important;
+            isolation: isolate !important;
           }
           .ps-hero-images {
+            position: absolute !important;
+            inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            overflow: hidden !important;
+          }
+          .ps-hero-slide {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
             overflow: hidden !important;
           }
           .ps-hero-slide-image {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
             object-fit: cover !important;
             object-position: center !important;
           }
           .ps-hero-slide-image.ps-hero-slide-psl9 {
             object-position: center 30% !important;
+          }
+          .ps-hero-text-layer {
+            overflow: hidden !important;
+            max-width: 100% !important;
           }
         }
       `}</style>
@@ -756,7 +785,7 @@ export function HeroSection() {
         {HERO_SLIDES.map((slide, i) => (
           <motion.div
             key={slide.src}
-            className="absolute inset-0 h-full w-full overflow-hidden"
+            className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
             initial={false}
             animate={{ opacity: i === index ? 1 : 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -767,7 +796,7 @@ export function HeroSection() {
               alt=""
               fill
               priority={i === 0}
-              sizes="100vw"
+              sizes="(min-width: 1024px) 100vw, 100vw"
               className={`ps-hero-slide-image object-cover object-center${
                 i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
               }`}
@@ -818,7 +847,7 @@ export function HeroSection() {
       </div>
 
       {/* z-10: text content */}
-      <div className="relative z-10 flex h-full w-full items-center overflow-visible px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
+      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
         <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet — unchanged */}
           <div className="max-w-lg lg:hidden">
