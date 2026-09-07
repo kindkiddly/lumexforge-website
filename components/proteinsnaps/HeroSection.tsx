@@ -15,7 +15,7 @@ const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
 const DESKTOP_IMAGE_GLOW =
-  "inset 0 0 60px 12px rgba(0, 194, 255, 0.25), inset 0 0 120px 24px rgba(123, 47, 255, 0.15)";
+  "inset 0 0 72px 14px rgba(0, 194, 255, 0.30), inset 0 0 144px 29px rgba(123, 47, 255, 0.18)";
 const LABEL_DELAY = 0;
 const HEADLINE_DELAY = 0.1;
 const DESCRIPTION_DELAY = 0.3;
@@ -821,17 +821,29 @@ export function HeroSection() {
             overflow: hidden !important;
             background-color: #050811 !important;
             animation: ps-hero-images-glow 4s ease-in-out infinite !important;
+            -webkit-mask-image:
+              linear-gradient(to right, transparent 0, #000 60px),
+              linear-gradient(to left, transparent 0, #000 40px),
+              linear-gradient(to bottom, transparent 0, #000 30px),
+              linear-gradient(to top, transparent 0, #000 30px);
+            -webkit-mask-composite: source-in;
+            mask-image:
+              linear-gradient(to right, transparent 0, #000 60px),
+              linear-gradient(to left, transparent 0, #000 40px),
+              linear-gradient(to bottom, transparent 0, #000 30px),
+              linear-gradient(to top, transparent 0, #000 30px);
+            mask-composite: intersect;
           }
           @keyframes ps-hero-images-glow {
             0%, 100% {
               box-shadow:
-                inset 0 0 60px 12px rgba(0, 194, 255, 0.22),
-                inset 0 0 120px 24px rgba(123, 47, 255, 0.12);
+                inset 0 0 72px 14px rgba(0, 194, 255, 0.264),
+                inset 0 0 144px 29px rgba(123, 47, 255, 0.144);
             }
             50% {
               box-shadow:
-                inset 0 0 68px 14px rgba(0, 194, 255, 0.32),
-                inset 0 0 132px 26px rgba(123, 47, 255, 0.2);
+                inset 0 0 82px 17px rgba(0, 194, 255, 0.384),
+                inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
             }
           }
           .ps-hero-slide {
