@@ -834,10 +834,10 @@ export function HeroSection() {
           }
           .ps-hero-image-vignette {
             background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.72) 0%, rgba(5, 8, 17, 0.28) 14%, transparent 36%),
-              linear-gradient(to left, rgba(5, 8, 17, 0.22) 0%, transparent 10%),
-              linear-gradient(to bottom, rgba(5, 8, 17, 0.28) 0%, transparent 14%),
-              linear-gradient(to top, rgba(5, 8, 17, 0.24) 0%, transparent 12%);
+              linear-gradient(to right, rgba(5, 8, 17, 0.43) 0%, rgba(5, 8, 17, 0.17) 20%, rgba(5, 8, 17, 0.06) 38%, transparent 52%),
+              linear-gradient(to left, rgba(5, 8, 17, 0.13) 0%, rgba(5, 8, 17, 0.04) 12%, transparent 22%),
+              linear-gradient(to bottom, rgba(5, 8, 17, 0.17) 0%, rgba(5, 8, 17, 0.05) 14%, transparent 24%),
+              linear-gradient(to top, rgba(5, 8, 17, 0.14) 0%, rgba(5, 8, 17, 0.04) 12%, transparent 22%);
           }
         }
       `}</style>
