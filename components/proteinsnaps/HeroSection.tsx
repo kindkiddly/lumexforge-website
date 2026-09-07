@@ -555,9 +555,10 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: LABEL_DELAY }}
-        className="ps-hero-desktop-label font-bold uppercase text-[#00E6A8]"
+        className="ps-hero-desktop-label"
       >
-        {PROTEINSNAPS.name}
+        <span className="text-white">Protein</span>
+        <span className="text-[#00E6A8]">Snaps</span>
       </motion.p>
 
       <AnimatedHeadline
@@ -660,7 +661,9 @@ export function HeroSection() {
         @media (min-width: 1024px) {
           .ps-hero-desktop-label {
             font-size: 0.75rem !important;
-            letter-spacing: 0.25em !important;
+            font-weight: 400 !important;
+            letter-spacing: normal !important;
+            text-transform: none !important;
           }
           .ps-hero-desktop-h1 {
             font-size: 2rem !important;
@@ -829,6 +832,13 @@ export function HeroSection() {
             overflow: hidden !important;
             max-width: 100% !important;
           }
+          .ps-hero-image-vignette {
+            background:
+              linear-gradient(to right, rgba(5, 8, 17, 0.72) 0%, rgba(5, 8, 17, 0.28) 14%, transparent 36%),
+              linear-gradient(to left, rgba(5, 8, 17, 0.22) 0%, transparent 10%),
+              linear-gradient(to bottom, rgba(5, 8, 17, 0.28) 0%, transparent 14%),
+              linear-gradient(to top, rgba(5, 8, 17, 0.24) 0%, transparent 12%);
+          }
         }
       `}</style>
 
@@ -865,6 +875,10 @@ export function HeroSection() {
             />
           </motion.div>
         ))}
+        <div
+          className="ps-hero-image-vignette pointer-events-none absolute inset-0 z-[3] hidden lg:block"
+          aria-hidden="true"
+        />
       </div>
 
       {/* z-2: gradient overlay */}
