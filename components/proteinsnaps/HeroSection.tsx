@@ -467,21 +467,21 @@ function DesktopImageBleedGlow() {
 
 function DesktopHeroStorePanel() {
   return (
-    <div className="ps-hero-desktop-store mt-5">
+    <div className="ps-hero-desktop-store">
       <div className="flex items-start gap-5">
         <div className="flex flex-col items-center">
           <a
             href={PLAY_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="ps-hero-desktop-btn ps-hero-desktop-play inline-flex w-[11.5rem] items-center justify-center gap-1.5 rounded-full text-[#00E6A8] transition-all"
+            className="ps-hero-desktop-btn ps-hero-desktop-play inline-flex w-[11.5rem] items-center justify-center gap-1.5 rounded-full text-[#00E6A8]"
           >
             <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
             </svg>
             Get it on Google Play
           </a>
-          <div className="mt-3 rounded bg-white p-1">
+          <div className="ps-hero-qr-android mt-3 rounded bg-white p-1">
             <QRCode
               value={PLAY_STORE_URL}
               size={80}
@@ -503,7 +503,7 @@ function DesktopHeroStorePanel() {
             </svg>
             App Store — Coming Soon
           </span>
-          <div className="mt-3 rounded bg-white p-1 opacity-40">
+          <div className="ps-hero-qr-ios mt-3 rounded bg-white p-1 opacity-40">
             <QRCode
               value={IOS_PLACEHOLDER_URL}
               size={80}
@@ -681,17 +681,77 @@ export function HeroSection() {
             line-height: 1 !important;
           }
           .ps-hero-desktop-play {
-            border: 1px solid rgba(0, 230, 168, 0.45) !important;
+            border: 1px solid rgba(0, 230, 168, 0.5) !important;
             background: rgba(0, 230, 168, 0.1) !important;
-            box-shadow: 0 0 18px rgba(0, 230, 168, 0.35) !important;
-          }
-          .ps-hero-desktop-play:hover {
-            background: rgba(0, 230, 168, 0.18) !important;
-            box-shadow: 0 0 24px rgba(0, 230, 168, 0.45) !important;
+            animation: ps-glow-breathe-mint 3.5s ease-in-out infinite !important;
           }
           .ps-hero-desktop-appstore {
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(0, 194, 255, 0.4) !important;
             background: rgba(255, 255, 255, 0.04) !important;
+            animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
+          }
+          .ps-hero-qr-android {
+            box-shadow:
+              0 0 0 1px rgba(0, 230, 168, 0.28),
+              0 0 12px rgba(0, 230, 168, 0.22),
+              0 0 24px rgba(0, 230, 168, 0.1) !important;
+          }
+          .ps-hero-qr-ios {
+            box-shadow:
+              0 0 0 1px rgba(0, 194, 255, 0.2),
+              0 0 10px rgba(0, 194, 255, 0.14),
+              0 0 20px rgba(0, 194, 255, 0.08) !important;
+          }
+          @keyframes ps-glow-breathe-mint {
+            0%, 100% {
+              box-shadow:
+                0 0 0 1px rgba(0, 230, 168, 0.45),
+                0 0 14px rgba(0, 230, 168, 0.35),
+                0 0 28px rgba(0, 230, 168, 0.12);
+            }
+            50% {
+              box-shadow:
+                0 0 0 1px rgba(0, 230, 168, 0.65),
+                0 0 20px rgba(0, 230, 168, 0.5),
+                0 0 36px rgba(0, 230, 168, 0.2);
+            }
+          }
+          @keyframes ps-glow-breathe-cyan {
+            0%, 100% {
+              box-shadow:
+                0 0 0 1px rgba(0, 194, 255, 0.35),
+                0 0 14px rgba(0, 194, 255, 0.28),
+                0 0 28px rgba(0, 194, 255, 0.1);
+            }
+            50% {
+              box-shadow:
+                0 0 0 1px rgba(0, 194, 255, 0.55),
+                0 0 20px rgba(0, 194, 255, 0.42),
+                0 0 36px rgba(0, 194, 255, 0.18);
+            }
+          }
+          .ps-hero-desktop-left {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            height: 100% !important;
+            width: 440px !important;
+            max-width: 440px !important;
+          }
+          .ps-hero-desktop-text {
+            position: absolute !important;
+            left: 60px !important;
+            top: 12% !important;
+            bottom: 240px !important;
+            width: 380px !important;
+            max-width: 380px !important;
+            overflow: hidden !important;
+          }
+          .ps-hero-desktop-store-fixed {
+            position: absolute !important;
+            left: 60px !important;
+            bottom: 60px !important;
+            z-index: 10 !important;
           }
           .ps-hero-desktop-scan {
             font-size: 0.7rem !important;
@@ -848,8 +908,8 @@ export function HeroSection() {
       </div>
 
       {/* z-10: text content */}
-      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
-        <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none">
+      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-stretch lg:px-0 lg:py-0">
+        <div className="relative mx-auto h-full w-full max-w-7xl lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet — unchanged */}
           <div className="max-w-lg lg:hidden">
             <motion.p
@@ -892,19 +952,17 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Desktop only — per-slide text + fixed store panel */}
-          <div className="relative hidden min-w-0 pl-[60px] lg:block">
-            <AnimatePresence mode="wait">
-              <DesktopHeroTextBlock key={index} slideIndex={index} />
-            </AnimatePresence>
+          {/* Desktop only — fixed store panel + animated text above */}
+          <div className="ps-hero-desktop-left hidden lg:block">
+            <div className="ps-hero-desktop-text">
+              <AnimatePresence mode="wait">
+                <DesktopHeroTextBlock key={index} slideIndex={index} />
+              </AnimatePresence>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
+            <div className="ps-hero-desktop-store-fixed">
               <DesktopHeroStorePanel />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
