@@ -17,38 +17,38 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-svh w-full overflow-hidden">
-      {/* Full-width background slides */}
-      <div className="absolute inset-0 overflow-hidden">
-        <AnimatePresence initial={false}>
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background slides — PSL artwork contains its own left-side headline text */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-            className="absolute inset-0 overflow-hidden"
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
           >
             <Image
               src={HERO_SLIDES[index].src}
-              alt={HERO_SLIDES[index].alt}
+              alt=""
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-right"
+              className="object-cover object-center"
+              aria-hidden
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Left-to-right dark gradient for text readability */}
+      {/* Opaque scrim — masks baked-in text/logo from PSL slide artwork on the left */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050811] from-0% via-[#050811] via-35% to-transparent to-75% lg:via-30% lg:to-65%"
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[55%] bg-[#050811]"
         aria-hidden="true"
       />
-      {/* Mobile bottom fade for depth */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050811]/80 via-transparent to-[#050811]/40 lg:hidden"
+        className="pointer-events-none absolute inset-y-0 left-[55%] z-[1] w-[10%] bg-gradient-to-r from-[#050811] to-transparent"
         aria-hidden="true"
       />
 
