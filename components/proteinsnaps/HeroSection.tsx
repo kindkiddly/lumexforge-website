@@ -805,6 +805,19 @@ export function HeroSection() {
             max-height: 100% !important;
             overflow: hidden !important;
             background-color: #050811 !important;
+            animation: ps-hero-images-glow 4s ease-in-out infinite !important;
+          }
+          @keyframes ps-hero-images-glow {
+            0%, 100% {
+              box-shadow:
+                0 0 40px 8px rgba(0, 194, 255, 0.11),
+                0 0 80px 16px rgba(123, 47, 255, 0.07);
+            }
+            50% {
+              box-shadow:
+                0 0 40px 8px rgba(0, 194, 255, 0.15),
+                0 0 80px 16px rgba(123, 47, 255, 0.10);
+            }
           }
           .ps-hero-slide {
             position: absolute !important;
@@ -834,10 +847,10 @@ export function HeroSection() {
           }
           .ps-hero-image-vignette {
             background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.43) 0%, rgba(5, 8, 17, 0.17) 20%, rgba(5, 8, 17, 0.06) 38%, transparent 52%),
-              linear-gradient(to left, rgba(5, 8, 17, 0.13) 0%, rgba(5, 8, 17, 0.04) 12%, transparent 22%),
-              linear-gradient(to bottom, rgba(5, 8, 17, 0.17) 0%, rgba(5, 8, 17, 0.05) 14%, transparent 24%),
-              linear-gradient(to top, rgba(5, 8, 17, 0.14) 0%, rgba(5, 8, 17, 0.04) 12%, transparent 22%);
+              linear-gradient(to right, rgba(5, 8, 17, 0.30) 0%, rgba(5, 8, 17, 0.12) 18%, rgba(5, 8, 17, 0.04) 42%, transparent 58%),
+              linear-gradient(to left, rgba(5, 8, 17, 0.09) 0%, rgba(5, 8, 17, 0.03) 16%, transparent 30%),
+              linear-gradient(to bottom, rgba(5, 8, 17, 0.12) 0%, rgba(5, 8, 17, 0.035) 18%, transparent 30%),
+              linear-gradient(to top, rgba(5, 8, 17, 0.10) 0%, rgba(5, 8, 17, 0.03) 16%, transparent 30%);
           }
         }
       `}</style>
