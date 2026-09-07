@@ -8,42 +8,152 @@ import { StoreButtons } from "./StoreButtons";
 
 const NAVBAR_HEIGHT = "4rem";
 
-const HEADLINE_TEXT = "Track Protein. Snap Meals. Win.";
-
-const SLIDE_VARIANTS = [
-  { name: "fadeUp", duration: 1.0, accent: "#00E6A8", headlineClass: "font-sans font-bold", accentClass: "text-[#00E6A8]" },
-  { name: "blurReveal", duration: 1.1, accent: "#00C2FF", headlineClass: "font-sans italic font-bold", accentClass: "text-[#00C2FF]" },
-  { name: "stagger", duration: 1.2, accent: "#FFFFFF", headlineClass: "font-sans font-bold tracking-tight uppercase", accentClass: "text-white" },
-  { name: "zoomIn", duration: 0.9, accent: "gradient", headlineClass: "font-sans font-light", accentClass: "ps-headline-gradient" },
-  { name: "sweepLeft", duration: 1.0, accent: "#00E6A8", headlineClass: "font-sans font-bold uppercase tracking-wide", accentClass: "text-[#00E6A8]" },
-  { name: "typewriter", duration: 1.2, accent: "#00C2FF", headlineClass: "font-mono font-bold", accentClass: "text-[#00C2FF]" },
-  { name: "dropTop", duration: 1.0, accent: "#FFFFFF", headlineClass: "font-sans font-black", accentClass: "text-white ps-headline-glow" },
-  { name: "glitch", duration: 0.8, accent: "#00E6A8", headlineClass: "font-sans font-bold", accentClass: "text-[#00E6A8]" },
-  { name: "scaleSmall", duration: 1.0, accent: "gradient-lr", headlineClass: "font-sans font-semibold", accentClass: "ps-headline-gradient-lr" },
-  { name: "shimmer", duration: 1.2, accent: "#FFD700", headlineClass: "font-sans italic font-bold", accentClass: "text-[#FFD700] ps-headline-shimmer" },
+const DESKTOP_SLIDES = [
+  {
+    headline: "Track Protein. Snap Meals. Win.",
+    description:
+      "Snap meals, track protein and macros, get personalized AI coaching, and achieve your fitness goals — all in one intelligent app.",
+    accentWords: ["Protein.", "Meals.", "Win."],
+    name: "fadeUp",
+    duration: 1.0,
+    headlineClass: "font-sans font-bold",
+    accentClass: "text-[#00E6A8]",
+  },
+  {
+    headline: "AI Knows What You Eat.",
+    description:
+      "Point your camera at any meal and our AI instantly identifies foods, estimates portions, and calculates protein, carbs, fat and calories in seconds.",
+    accentWords: ["AI", "Eat."],
+    name: "blurReveal",
+    duration: 1.1,
+    headlineClass: "font-sans italic font-bold",
+    accentClass: "text-[#00C2FF]",
+  },
+  {
+    headline: "Hit Your Macros. Every Day.",
+    description:
+      "Protein-first dashboard with smart daily targets, Fill the Gap suggestions, and macro balance insights that keep you on track every single day.",
+    accentWords: ["Macros.", "Every", "Day."],
+    name: "stagger",
+    duration: 1.2,
+    headlineClass: "font-sans font-bold tracking-tight uppercase",
+    accentClass: "text-white",
+  },
+  {
+    headline: "Your AI Coach. Always On.",
+    description:
+      "Chat with your personal AI nutrition coach 24/7. Get weekly insights, goal-based guidance, and smarter recommendations tailored to your journey.",
+    accentWords: ["AI", "Coach.", "Always"],
+    name: "zoomIn",
+    duration: 0.9,
+    headlineClass: "font-sans font-light",
+    accentClass: "ps-headline-gradient",
+  },
+  {
+    headline: "Log Workouts. Break Records.",
+    description:
+      "Track sets, reps, weights and training volume. Monitor personal records, strength trends and weekly performance with your built-in plate calculator.",
+    accentWords: ["Workouts.", "Records."],
+    name: "sweepLeft",
+    duration: 1.0,
+    headlineClass: "font-sans font-bold uppercase tracking-wide",
+    accentClass: "text-[#00E6A8]",
+  },
+  {
+    headline: "See Your Progress. Stay Motivated.",
+    description:
+      "Log body measurements, capture progress photos, track weight changes and celebrate every milestone with detailed analytics and visual charts.",
+    accentWords: ["Progress.", "Motivated."],
+    name: "typewriter",
+    duration: 1.2,
+    headlineClass: "font-mono font-bold",
+    accentClass: "text-[#00C2FF]",
+  },
+  {
+    headline: "Snap. Track. Transform.",
+    description:
+      "From your first meal snap to your biggest personal record — ProteinSnaps keeps your nutrition and training in one place so you never lose momentum.",
+    accentWords: ["Snap.", "Track.", "Transform."],
+    name: "dropTop",
+    duration: 1.0,
+    headlineClass: "font-sans font-black",
+    accentClass: "text-white ps-headline-glow",
+  },
+  {
+    headline: "Nutrition Made Intelligent.",
+    description:
+      "Understand your eating patterns, protein trends and macro gaps with AI-powered smart insights that help you make better food choices every day.",
+    accentWords: ["Intelligent."],
+    name: "glitch",
+    duration: 0.8,
+    headlineClass: "font-sans font-bold",
+    accentClass: "text-[#00E6A8]",
+  },
+  {
+    headline: "Built for Athletes. Made for Everyone.",
+    description:
+      "Whether you are bulking, cutting, doing yoga, managing your diet or chasing a new PR — ProteinSnaps adapts to your goals and lifestyle.",
+    accentWords: ["Athletes.", "Everyone."],
+    name: "scaleSmall",
+    duration: 1.0,
+    headlineClass: "font-sans font-semibold",
+    accentClass: "ps-headline-gradient-lr",
+  },
+  {
+    headline: "Your Goals. Your Journey. Your App.",
+    description:
+      "Start free today. Snap your first meal, set your targets, and let ProteinSnaps guide you every step of the way to a healthier, stronger you.",
+    accentWords: ["Goals.", "Journey.", "App."],
+    name: "shimmer",
+    duration: 1.2,
+    headlineClass: "font-sans italic font-bold",
+    accentClass: "text-[#FFD700] ps-headline-shimmer",
+  },
 ] as const;
 
-function HeadlineParts({
-  variant,
+type DesktopSlide = (typeof DESKTOP_SLIDES)[number];
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function HighlightedHeadline({
+  slide,
   className,
 }: {
-  variant: (typeof SLIDE_VARIANTS)[number];
-  className: string;
+  slide: {
+    headline: string;
+    accentWords: readonly string[];
+    accentClass: string;
+  };
+  className?: string;
 }) {
+  const pattern = new RegExp(
+    `(${slide.accentWords.map(escapeRegExp).join("|")})`,
+    "g"
+  );
+  const parts = slide.headline.split(pattern).filter(Boolean);
+
   return (
     <span className={className}>
-      Track <span className={variant.accentClass}>Protein.</span> Snap{" "}
-      <span className={variant.accentClass}>Meals.</span>{" "}
-      <span className={variant.accentClass}>Win.</span>
+      {parts.map((part, i) =>
+        (slide.accentWords as readonly string[]).includes(part) ? (
+          <span key={i} className={slide.accentClass}>
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
     </span>
   );
 }
 
 function TypewriterHeadline({
-  variant,
+  slide,
   className,
 }: {
-  variant: (typeof SLIDE_VARIANTS)[number];
+  slide: DesktopSlide;
   className: string;
 }) {
   const [displayed, setDisplayed] = useState("");
@@ -53,40 +163,37 @@ function TypewriterHeadline({
     let i = 0;
     const interval = setInterval(() => {
       i += 1;
-      setDisplayed(HEADLINE_TEXT.slice(0, i));
-      if (i >= HEADLINE_TEXT.length) clearInterval(interval);
+      setDisplayed(slide.headline.slice(0, i));
+      if (i >= slide.headline.length) clearInterval(interval);
     }, 38);
     return () => clearInterval(interval);
-  }, []);
+  }, [slide.headline]);
+
+  const partialSlide = {
+    headline: displayed,
+    accentWords: slide.accentWords,
+    accentClass: slide.accentClass,
+  };
 
   return (
-    <span className={`${className} ${variant.headlineClass}`}>
-      {displayed.split(/(Protein\.|Meals\.|Win\.)/).map((part, i) => {
-        if (part === "Protein." || part === "Meals." || part === "Win.") {
-          return (
-            <span key={i} className={variant.accentClass}>
-              {part}
-            </span>
-          );
-        }
-        return <span key={i}>{part}</span>;
-      })}
+    <span className={`${className} ${slide.headlineClass}`}>
+      <HighlightedHeadline slide={partialSlide} />
     </span>
   );
 }
 
 function StaggerHeadline({
-  variant,
+  slide,
   className,
 }: {
-  variant: (typeof SLIDE_VARIANTS)[number];
+  slide: DesktopSlide;
   className: string;
 }) {
-  const words = HEADLINE_TEXT.split(" ");
+  const words = slide.headline.split(" ");
 
   return (
     <motion.span
-      className={`${className} ${variant.headlineClass}`}
+      className={`${className} ${slide.headlineClass}`}
       initial="hidden"
       animate="visible"
       variants={{ visible: { transition: { staggerChildren: 0.09 } } }}
@@ -100,8 +207,8 @@ function StaggerHeadline({
           }}
           className={`inline-block ${i < words.length - 1 ? "mr-[0.28em]" : ""}`}
         >
-          {["Protein.", "Meals.", "Win."].includes(word) ? (
-            <span className={variant.accentClass}>{word}</span>
+          {(slide.accentWords as readonly string[]).includes(word) ? (
+            <span className={slide.accentClass}>{word}</span>
           ) : (
             word
           )}
@@ -112,10 +219,10 @@ function StaggerHeadline({
 }
 
 function GlitchHeadline({
-  variant,
+  slide,
   className,
 }: {
-  variant: (typeof SLIDE_VARIANTS)[number];
+  slide: DesktopSlide;
   className: string;
 }) {
   const [settled, setSettled] = useState(false);
@@ -124,22 +231,26 @@ function GlitchHeadline({
     setSettled(false);
     const timer = setTimeout(() => setSettled(true), 480);
     return () => clearTimeout(timer);
-  }, [variant.name]);
+  }, [slide.headline]);
 
   if (settled) {
-    return <HeadlineParts variant={variant} className={`${className} ${variant.headlineClass}`} />;
+    return (
+      <span className={`${className} ${slide.headlineClass}`}>
+        <HighlightedHeadline slide={slide} />
+      </span>
+    );
   }
 
   return (
     <motion.span
-      className={`${className} ${variant.headlineClass}`}
+      className={`${className} ${slide.headlineClass}`}
       animate={{
         color: ["#00C2FF", "#00E6A8", "#FFFFFF", "#00C2FF", "#00E6A8", "#FFFFFF"],
         x: [0, -2, 2, -1, 1, 0],
       }}
       transition={{ duration: 0.48, ease: "linear" }}
     >
-      Track <span>Protein.</span> Snap <span>Meals.</span> <span>Win.</span>
+      {slide.headline}
     </motion.span>
   );
 }
@@ -151,18 +262,18 @@ function AnimatedHeadline({
   slideIndex: number;
   className: string;
 }) {
-  const variant = SLIDE_VARIANTS[slideIndex];
+  const slide = DESKTOP_SLIDES[slideIndex];
 
-  switch (variant.name) {
+  switch (slide.name) {
     case "fadeUp":
       return (
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "blurReveal":
@@ -170,16 +281,16 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, filter: "blur(14px)", y: 6 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "stagger":
       return (
         <h1 className={className}>
-          <StaggerHeadline variant={variant} className="" />
+          <StaggerHeadline slide={slide} className="" />
         </h1>
       );
     case "zoomIn":
@@ -187,10 +298,10 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "sweepLeft":
@@ -198,16 +309,16 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, x: -48 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "typewriter":
       return (
         <h1 className={className}>
-          <TypewriterHeadline variant={variant} className="" />
+          <TypewriterHeadline slide={slide} className="" />
         </h1>
       );
     case "dropTop":
@@ -215,16 +326,16 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: -36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "glitch":
       return (
-        <h1 className={`${className} ${variant.headlineClass}`}>
-          <GlitchHeadline variant={variant} className="" />
+        <h1 className={`${className} ${slide.headlineClass}`}>
+          <GlitchHeadline slide={slide} className="" />
         </h1>
       );
     case "scaleSmall":
@@ -232,10 +343,10 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, scale: 0.55 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     case "shimmer":
@@ -243,10 +354,10 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: variant.duration, ease: [0.22, 1, 0.36, 1] }}
-          className={`${className} ${variant.headlineClass}`}
+          transition={{ duration: slide.duration, ease: [0.22, 1, 0.36, 1] }}
+          className={`${className} ${slide.headlineClass}`}
         >
-          <HeadlineParts variant={variant} className="" />
+          <HighlightedHeadline slide={slide} />
         </motion.h1>
       );
     default:
@@ -254,14 +365,54 @@ function AnimatedHeadline({
   }
 }
 
+function DesktopAmbientGlow() {
+  return (
+    <div
+      className="pointer-events-none absolute left-0 top-1/2 z-[2] hidden h-full w-[min(520px,55%)] -translate-y-1/2 lg:block"
+      aria-hidden="true"
+    >
+      <motion.div
+        className="absolute left-[10%] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full blur-[100px]"
+        animate={{
+          opacity: [0.35, 0.5, 0.42, 0.35],
+          scale: [1, 1.1, 1.05, 1],
+          background: [
+            "radial-gradient(circle, rgba(123,47,255,0.55) 0%, rgba(123,47,255,0.15) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,194,255,0.5) 0%, rgba(0,194,255,0.12) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,230,168,0.48) 0%, rgba(0,230,168,0.1) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(123,47,255,0.55) 0%, rgba(123,47,255,0.15) 45%, transparent 70%)",
+          ],
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute left-[18%] top-[42%] h-[280px] w-[280px] -translate-y-1/2 rounded-full blur-[90px]"
+        animate={{
+          opacity: [0.25, 0.4, 0.3, 0.25],
+          scale: [1.05, 0.95, 1.08, 1.05],
+          background: [
+            "radial-gradient(circle, rgba(0,194,255,0.45) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(0,230,168,0.4) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(123,47,255,0.42) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(0,194,255,0.45) 0%, transparent 65%)",
+          ],
+        }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+    </div>
+  );
+}
+
 function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
+  const slide = DESKTOP_SLIDES[slideIndex];
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
-      className="ps-hero-desktop-block max-w-[380px] text-left"
+      className="relative z-10 max-w-[380px] text-left"
     >
       <motion.p
         initial={{ opacity: 0, y: 10 }}
@@ -280,7 +431,7 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
         transition={{ duration: 0.55, delay: 0.15 }}
         className="ps-hero-desktop-sub mt-3 text-white/80"
       >
-        {PROTEINSNAPS.description}
+        {slide.description}
       </motion.p>
 
       <motion.div
@@ -417,6 +568,8 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
+      <DesktopAmbientGlow />
+
       <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
         <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none lg:pl-[60px]">
           {/* Mobile/tablet — unchanged */}
@@ -462,7 +615,7 @@ export function HeroSection() {
           </div>
 
           {/* Desktop only — per-slide text animations */}
-          <div className="hidden lg:block">
+          <div className="relative hidden lg:block">
             <AnimatePresence mode="wait">
               <DesktopHeroTextBlock key={index} slideIndex={index} />
             </AnimatePresence>
