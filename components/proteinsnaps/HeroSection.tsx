@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { StoreButtons } from "./StoreButtons";
 
+const NAVBAR_HEIGHT = "4rem";
+
 export function HeroSection() {
   const [index, setIndex] = useState(0);
 
@@ -17,8 +19,11 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background slides — PSL artwork contains its own left-side headline text */}
+    <section
+      className="relative mt-16 w-full max-w-[100vw] overflow-hidden"
+      style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
+    >
+      {/* Background slides */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence initial={false} mode="wait">
           <motion.div
@@ -42,20 +47,16 @@ export function HeroSection() {
         </AnimatePresence>
       </div>
 
-      {/* Opaque scrim — masks baked-in text/logo from PSL slide artwork on the left */}
+      {/* Subtle left gradient — readability only, image stays visible on the right */}
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[55%] bg-[#050811]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 left-[55%] z-[1] w-[10%] bg-gradient-to-r from-[#050811] to-transparent"
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%]"
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full w-full items-center overflow-hidden pt-16 pb-8 sm:pt-20 sm:pb-10">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl lg:max-w-2xl">
+      {/* Content — sits below fixed navbar via section mt-16 */}
+      <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="max-w-lg lg:max-w-xl">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -66,16 +67,15 @@ export function HeroSection() {
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 font-sans text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
+              className="mt-2 font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl"
             >
               Track{" "}
-              <span className="text-[#00E6A8]">Protein.</span>
-              <br className="hidden sm:block" /> Snap{" "}
-              <span className="text-[#00E6A8]">Meals.</span>
-              <br className="hidden sm:block" />{" "}
+              <span className="text-[#00E6A8]">Protein.</span>{" "}
+              Snap{" "}
+              <span className="text-[#00E6A8]">Meals.</span>{" "}
               <span className="text-[#00E6A8]">Win.</span>
             </motion.h1>
 
@@ -83,7 +83,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 max-w-lg text-base leading-[1.7] text-white/75 sm:mt-6 sm:text-lg sm:leading-[1.75]"
+              className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7]"
             >
               {PROTEINSNAPS.description}
             </motion.p>
@@ -92,7 +92,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-7 sm:mt-8"
+              className="mt-6 sm:mt-7"
             >
               <StoreButtons size="lg" variant="hero" />
             </motion.div>
@@ -101,7 +101,7 @@ export function HeroSection() {
       </div>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2 lg:bottom-8">
+      <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-6">
         {HERO_SLIDES.map((_, i) => (
           <button
             key={i}
