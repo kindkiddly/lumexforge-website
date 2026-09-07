@@ -822,13 +822,31 @@ export function HeroSection() {
             background-color: #050811 !important;
             animation: ps-hero-images-glow 4s ease-in-out infinite !important;
             -webkit-mask-image:
-              linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 70px, #000 115px),
+              linear-gradient(
+                to right,
+                transparent 0,
+                rgba(0, 0, 0, 0.06) 80px,
+                rgba(0, 0, 0, 0.18) 160px,
+                rgba(0, 0, 0, 0.38) 240px,
+                rgba(0, 0, 0, 0.62) 320px,
+                rgba(0, 0, 0, 0.84) 400px,
+                #000 460px
+              ),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
             -webkit-mask-composite: source-in;
             mask-image:
-              linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 70px, #000 115px),
+              linear-gradient(
+                to right,
+                transparent 0,
+                rgba(0, 0, 0, 0.06) 80px,
+                rgba(0, 0, 0, 0.18) 160px,
+                rgba(0, 0, 0, 0.38) 240px,
+                rgba(0, 0, 0, 0.62) 320px,
+                rgba(0, 0, 0, 0.84) 400px,
+                #000 460px
+              ),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
@@ -874,7 +892,7 @@ export function HeroSection() {
           }
           .ps-hero-image-vignette {
             background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.52) 0%, rgba(5, 8, 17, 0.22) 22%, rgba(5, 8, 17, 0.08) 48%, transparent 64%),
+              linear-gradient(to right, rgba(5, 8, 17, 0.72) 0%, rgba(5, 8, 17, 0.42) 16%, rgba(5, 8, 17, 0.2) 32%, rgba(5, 8, 17, 0.08) 48%, rgba(5, 8, 17, 0.02) 58%, transparent 72%),
               linear-gradient(to left, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%),
               linear-gradient(to bottom, rgba(5, 8, 17, 0.22) 0%, rgba(5, 8, 17, 0.07) 20%, transparent 36%),
               linear-gradient(to top, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%);
