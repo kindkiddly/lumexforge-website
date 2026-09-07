@@ -650,7 +650,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative mt-16 w-full max-w-[100vw] overflow-hidden bg-[#050811]"
+      className="ps-hero-section relative mt-16 w-full max-w-[100vw] overflow-hidden bg-[#050811]"
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
       {/* Desktop-only styles — mobile handled separately */}
@@ -721,6 +721,24 @@ export function HeroSection() {
             30% { opacity: 1; }
             100% { transform: translateX(120%); opacity: 0; }
           }
+          .ps-hero-section {
+            margin-top: 64px !important;
+            height: calc(100vh - 64px) !important;
+            max-height: calc(100vh - 64px) !important;
+            overflow: hidden !important;
+          }
+          .ps-hero-images {
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+          }
+          .ps-hero-slide-image {
+            object-fit: cover !important;
+            object-position: center !important;
+          }
+          .ps-hero-slide-image.ps-hero-slide-psl9 {
+            object-position: center 30% !important;
+          }
         }
       `}</style>
 
@@ -734,11 +752,11 @@ export function HeroSection() {
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
-      <div className="absolute inset-0 z-[1] overflow-hidden">
+      <div className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden">
         {HERO_SLIDES.map((slide, i) => (
           <motion.div
             key={slide.src}
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 h-full w-full overflow-hidden"
             initial={false}
             animate={{ opacity: i === index ? 1 : 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -750,8 +768,8 @@ export function HeroSection() {
               fill
               priority={i === 0}
               sizes="100vw"
-              className={`object-cover object-center lg:object-cover lg:object-right${
-                i === PSL_9_INDEX ? " lg:![object-position:center_30%]" : ""
+              className={`ps-hero-slide-image object-cover object-center${
+                i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
               }`}
               aria-hidden
             />
