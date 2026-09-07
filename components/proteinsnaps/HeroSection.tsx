@@ -741,6 +741,7 @@ export function HeroSection() {
             max-width: 100% !important;
             max-height: 100% !important;
             overflow: hidden !important;
+            background-color: #050811 !important;
           }
           .ps-hero-slide {
             position: absolute !important;
@@ -758,11 +759,11 @@ export function HeroSection() {
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
-            object-fit: cover !important;
-            object-position: center !important;
+            object-fit: contain !important;
+            object-position: right center !important;
           }
           .ps-hero-slide-image.ps-hero-slide-psl9 {
-            object-position: center 30% !important;
+            object-position: right 30% !important;
           }
           .ps-hero-text-layer {
             overflow: hidden !important;
@@ -781,7 +782,7 @@ export function HeroSection() {
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
-      <div className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden">
+      <div className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]">
         {HERO_SLIDES.map((slide, i) => (
           <motion.div
             key={slide.src}
