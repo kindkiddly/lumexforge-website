@@ -3,7 +3,7 @@
 import { HERO_SLIDES, PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import QRCode from "react-qr-code";
 import { StoreButtons } from "./StoreButtons";
 
@@ -14,6 +14,8 @@ const AUTO_PLAY_MS = 4500;
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
+const DESKTOP_IMAGE_GLOW =
+  "inset 0 0 60px 12px rgba(0, 194, 255, 0.25), inset 0 0 120px 24px rgba(123, 47, 255, 0.15)";
 const LABEL_DELAY = 0;
 const HEADLINE_DELAY = 0.1;
 const DESCRIPTION_DELAY = 0.3;
@@ -581,6 +583,7 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
 
 export function HeroSection() {
   const [index, setIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
@@ -621,6 +624,18 @@ export function HeroSection() {
       clearResume();
     };
   }, [startAutoPlay, clearAutoPlay, clearResume]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const updateDesktop = () => setIsDesktop(mediaQuery.matches);
+    updateDesktop();
+    mediaQuery.addEventListener("change", updateDesktop);
+    return () => mediaQuery.removeEventListener("change", updateDesktop);
+  }, []);
+
+  const desktopImageContainerStyle: CSSProperties | undefined = isDesktop
+    ? { boxShadow: DESKTOP_IMAGE_GLOW }
+    : undefined;
 
   const goToSlide = (i: number) => {
     setIndex(i);
@@ -810,13 +825,13 @@ export function HeroSection() {
           @keyframes ps-hero-images-glow {
             0%, 100% {
               box-shadow:
-                0 0 40px 8px rgba(0, 194, 255, 0.11),
-                0 0 80px 16px rgba(123, 47, 255, 0.07);
+                inset 0 0 60px 12px rgba(0, 194, 255, 0.22),
+                inset 0 0 120px 24px rgba(123, 47, 255, 0.12);
             }
             50% {
               box-shadow:
-                0 0 40px 8px rgba(0, 194, 255, 0.15),
-                0 0 80px 16px rgba(123, 47, 255, 0.10);
+                inset 0 0 68px 14px rgba(0, 194, 255, 0.32),
+                inset 0 0 132px 26px rgba(123, 47, 255, 0.2);
             }
           }
           .ps-hero-slide {
@@ -847,10 +862,10 @@ export function HeroSection() {
           }
           .ps-hero-image-vignette {
             background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.30) 0%, rgba(5, 8, 17, 0.12) 18%, rgba(5, 8, 17, 0.04) 42%, transparent 58%),
-              linear-gradient(to left, rgba(5, 8, 17, 0.09) 0%, rgba(5, 8, 17, 0.03) 16%, transparent 30%),
-              linear-gradient(to bottom, rgba(5, 8, 17, 0.12) 0%, rgba(5, 8, 17, 0.035) 18%, transparent 30%),
-              linear-gradient(to top, rgba(5, 8, 17, 0.10) 0%, rgba(5, 8, 17, 0.03) 16%, transparent 30%);
+              linear-gradient(to right, rgba(5, 8, 17, 0.52) 0%, rgba(5, 8, 17, 0.22) 22%, rgba(5, 8, 17, 0.08) 48%, transparent 64%),
+              linear-gradient(to left, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%),
+              linear-gradient(to bottom, rgba(5, 8, 17, 0.22) 0%, rgba(5, 8, 17, 0.07) 20%, transparent 36%),
+              linear-gradient(to top, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%);
           }
         }
       `}</style>
@@ -865,7 +880,10 @@ export function HeroSection() {
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
-      <div className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]">
+      <div
+        className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]"
+        style={desktopImageContainerStyle}
+      >
         {HERO_SLIDES.map((slide, i) => (
           <motion.div
             key={slide.src}
@@ -888,15 +906,17 @@ export function HeroSection() {
             />
           </motion.div>
         ))}
-        <div
-          className="ps-hero-image-vignette pointer-events-none absolute inset-0 z-[3] hidden lg:block"
-          aria-hidden="true"
-        />
       </div>
 
       {/* z-2: gradient overlay */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
+        aria-hidden="true"
+      />
+
+      {/* Image edge vignette — above gradient so it remains visible on desktop */}
+      <div
+        className="ps-hero-image-vignette pointer-events-none absolute inset-0 z-[3] hidden lg:block"
         aria-hidden="true"
       />
 
