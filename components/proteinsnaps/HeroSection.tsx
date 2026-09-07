@@ -23,6 +23,26 @@ export function HeroSection() {
       className="relative mt-16 w-full max-w-[100vw] overflow-hidden"
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
+      {/* Desktop-only typography/button overrides (mobile handled separately) */}
+      <style>{`
+        @media (min-width: 1024px) {
+          .ps-hero-desktop-h1 {
+            font-size: 2.5rem !important;
+            line-height: 1.15 !important;
+          }
+          .ps-hero-desktop-sub {
+            font-size: 0.875rem !important;
+          }
+          .ps-hero-desktop-store a,
+          .ps-hero-desktop-store span[aria-disabled="true"] {
+            width: auto !important;
+            min-height: unset !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.875rem !important;
+          }
+        }
+      `}</style>
+
       {/* Background slides */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#050811]">
         <AnimatePresence initial={false} mode="wait">
@@ -40,7 +60,7 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center lg:object-contain lg:object-center"
+              className="object-cover object-center lg:object-contain lg:object-right"
               aria-hidden
             />
           </motion.div>
@@ -74,7 +94,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-2 text-left font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl lg:mt-3 lg:text-4xl lg:leading-[1.15]"
+              className="ps-hero-desktop-h1 mt-2 text-left font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl"
             >
               Track{" "}
               <span className="text-[#00E6A8]">Protein.</span>{" "}
@@ -87,7 +107,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 max-w-md text-left text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7] lg:mt-4 lg:max-w-sm lg:text-sm lg:leading-relaxed"
+              className="ps-hero-desktop-sub mt-4 max-w-md text-left text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7] lg:mt-4 lg:max-w-sm lg:leading-relaxed"
             >
               {PROTEINSNAPS.description}
             </motion.p>
@@ -101,7 +121,7 @@ export function HeroSection() {
               <StoreButtons
                 size="lg"
                 variant="hero"
-                className="lg:[&_a]:!w-auto lg:[&_a]:!min-h-0 lg:[&_a]:!px-4 lg:[&_a]:!py-2 lg:[&_a]:!text-sm lg:[&_span[aria-disabled]]:!w-auto lg:[&_span[aria-disabled]]:!min-h-0 lg:[&_span[aria-disabled]]:!px-4 lg:[&_span[aria-disabled]]:!py-2 lg:[&_span[aria-disabled]]:!text-sm lg:[&>div:first-child]:!flex-row lg:[&>div:first-child]:!flex-wrap lg:[&>div:first-child]:!gap-2 lg:[&>div:first-child]:!justify-start lg:[&>div:last-child]:!mt-4 lg:[&>div:last-child_p]:!mb-2 lg:[&>div:last-child>div]:!p-2 lg:[&>div:last-child_svg]:!h-[88px] lg:[&>div:last-child_svg]:!w-[88px]"
+                className="ps-hero-desktop-store lg:[&>div:first-child]:!flex-row lg:[&>div:first-child]:!flex-wrap lg:[&>div:first-child]:!gap-2 lg:[&>div:first-child]:!justify-start lg:[&>div:last-child]:!mt-4 lg:[&>div:last-child_p]:!mb-2 lg:[&>div:last-child>div]:!p-2 lg:[&>div:last-child_svg]:!h-[88px] lg:[&>div:last-child_svg]:!w-[88px]"
               />
             </motion.div>
           </div>
