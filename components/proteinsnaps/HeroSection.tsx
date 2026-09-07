@@ -24,7 +24,7 @@ export function HeroSection() {
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
       {/* Background slides */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#050811]">
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={index}
@@ -40,7 +40,7 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-center lg:object-contain lg:object-center"
               aria-hidden
             />
           </motion.div>
@@ -49,19 +49,23 @@ export function HeroSection() {
 
       {/* Subtle left gradient — readability only, image stays visible on the right */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
         aria-hidden="true"
       />
 
-      {/* Content — sits below fixed navbar via section mt-16 */}
-      <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="max-w-lg lg:max-w-xl">
+      {/*
+        Content layout:
+        - Below lg: existing mobile/tablet layout (unchanged — mobile styles will be handled separately later)
+        - lg and up: desktop-only spacing, typography, and alignment overrides
+      */}
+      <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
+        <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none lg:pl-[60px]">
+          <div className="max-w-lg lg:max-w-md">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-xs font-bold uppercase tracking-[0.25em] text-[#00E6A8]"
+              className="text-xs font-bold uppercase tracking-[0.25em] text-[#00E6A8] lg:text-left"
             >
               {PROTEINSNAPS.name}
             </motion.p>
@@ -70,7 +74,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-2 font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl"
+              className="mt-2 text-left font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl lg:mt-3 lg:text-4xl lg:leading-[1.15]"
             >
               Track{" "}
               <span className="text-[#00E6A8]">Protein.</span>{" "}
@@ -83,7 +87,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7]"
+              className="mt-4 max-w-md text-left text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7] lg:mt-4 lg:max-w-sm lg:text-sm lg:leading-relaxed"
             >
               {PROTEINSNAPS.description}
             </motion.p>
@@ -92,9 +96,13 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 sm:mt-7"
+              className="mt-6 text-left sm:mt-7 lg:mt-5"
             >
-              <StoreButtons size="lg" variant="hero" />
+              <StoreButtons
+                size="lg"
+                variant="hero"
+                className="lg:[&_a]:!w-auto lg:[&_a]:!min-h-0 lg:[&_a]:!px-4 lg:[&_a]:!py-2 lg:[&_a]:!text-sm lg:[&_span[aria-disabled]]:!w-auto lg:[&_span[aria-disabled]]:!min-h-0 lg:[&_span[aria-disabled]]:!px-4 lg:[&_span[aria-disabled]]:!py-2 lg:[&_span[aria-disabled]]:!text-sm lg:[&>div:first-child]:!flex-row lg:[&>div:first-child]:!flex-wrap lg:[&>div:first-child]:!gap-2 lg:[&>div:first-child]:!justify-start lg:[&>div:last-child]:!mt-4 lg:[&>div:last-child_p]:!mb-2 lg:[&>div:last-child>div]:!p-2 lg:[&>div:last-child_svg]:!h-[88px] lg:[&>div:last-child_svg]:!w-[88px]"
+              />
             </motion.div>
           </div>
         </div>
