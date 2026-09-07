@@ -3,10 +3,14 @@
 import { HERO_SLIDES, PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { StoreButtons } from "./StoreButtons";
 
 const NAVBAR_HEIGHT = "4rem";
+const AUTO_PLAY_MS = 4500;
+const RESUME_AFTER_MS = 5000;
+const DRAG_THRESHOLD_PX = 50;
+const PSL_9_INDEX = 8;
 
 const DESKTOP_SLIDES = [
   {
@@ -16,7 +20,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Protein.", "Meals.", "Win."],
     name: "fadeUp",
     duration: 1.0,
-    headlineClass: "font-sans font-bold",
+    headlineClass: "font-serif font-black not-italic",
     accentClass: "text-[#00E6A8]",
   },
   {
@@ -26,7 +30,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["AI", "Eat."],
     name: "blurReveal",
     duration: 1.1,
-    headlineClass: "font-sans italic font-bold",
+    headlineClass: "font-mono font-bold not-italic",
     accentClass: "text-[#00C2FF]",
   },
   {
@@ -36,7 +40,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Macros.", "Every", "Day."],
     name: "stagger",
     duration: 1.2,
-    headlineClass: "font-sans font-bold tracking-tight uppercase",
+    headlineClass: "font-sans font-extrabold uppercase",
     accentClass: "text-white",
   },
   {
@@ -46,7 +50,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["AI", "Coach.", "Always"],
     name: "zoomIn",
     duration: 0.9,
-    headlineClass: "font-sans font-light",
+    headlineClass: "font-serif font-light italic",
     accentClass: "ps-headline-gradient",
   },
   {
@@ -56,7 +60,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Workouts.", "Records."],
     name: "sweepLeft",
     duration: 1.0,
-    headlineClass: "font-sans font-bold uppercase tracking-wide",
+    headlineClass: "font-sans font-black tracking-tighter",
     accentClass: "text-[#00E6A8]",
   },
   {
@@ -66,7 +70,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Progress.", "Motivated."],
     name: "typewriter",
     duration: 1.2,
-    headlineClass: "font-mono font-bold",
+    headlineClass: "font-mono font-normal not-italic",
     accentClass: "text-[#00C2FF]",
   },
   {
@@ -76,7 +80,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Snap.", "Track.", "Transform."],
     name: "dropTop",
     duration: 1.0,
-    headlineClass: "font-sans font-black",
+    headlineClass: "font-sans font-extrabold tracking-widest",
     accentClass: "text-white ps-headline-glow",
   },
   {
@@ -86,7 +90,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Intelligent."],
     name: "glitch",
     duration: 0.8,
-    headlineClass: "font-sans font-bold",
+    headlineClass: "font-serif font-bold italic",
     accentClass: "text-[#00E6A8]",
   },
   {
@@ -96,7 +100,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Athletes.", "Everyone."],
     name: "scaleSmall",
     duration: 1.0,
-    headlineClass: "font-sans font-semibold",
+    headlineClass: "font-sans font-semibold not-italic",
     accentClass: "ps-headline-gradient-lr",
   },
   {
@@ -106,7 +110,7 @@ const DESKTOP_SLIDES = [
     accentWords: ["Goals.", "Journey.", "App."],
     name: "shimmer",
     duration: 1.2,
-    headlineClass: "font-sans italic font-bold",
+    headlineClass: "font-sans font-black italic",
     accentClass: "text-[#FFD700] ps-headline-shimmer",
   },
 ] as const;
@@ -368,38 +372,106 @@ function AnimatedHeadline({
 function DesktopAmbientGlow() {
   return (
     <div
-      className="pointer-events-none absolute left-0 top-1/2 z-[2] hidden h-full w-[min(520px,55%)] -translate-y-1/2 lg:block"
+      className="pointer-events-none absolute left-0 top-1/2 z-[2] hidden h-full w-[min(560px,58%)] -translate-y-1/2 lg:block"
       aria-hidden="true"
     >
       <motion.div
-        className="absolute left-[10%] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full blur-[100px]"
+        className="absolute left-[6%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full blur-[120px]"
         animate={{
-          opacity: [0.35, 0.5, 0.42, 0.35],
-          scale: [1, 1.1, 1.05, 1],
+          opacity: [0.18, 0.28, 0.22, 0.18],
+          scale: [1, 1.08, 1.04, 1],
           background: [
-            "radial-gradient(circle, rgba(123,47,255,0.55) 0%, rgba(123,47,255,0.15) 45%, transparent 70%)",
-            "radial-gradient(circle, rgba(0,194,255,0.5) 0%, rgba(0,194,255,0.12) 45%, transparent 70%)",
-            "radial-gradient(circle, rgba(0,230,168,0.48) 0%, rgba(0,230,168,0.1) 45%, transparent 70%)",
-            "radial-gradient(circle, rgba(123,47,255,0.55) 0%, rgba(123,47,255,0.15) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
+            "radial-gradient(circle, rgba(123,47,255,0.38) 0%, rgba(74,0,224,0.16) 42%, transparent 74%)",
+            "radial-gradient(circle, rgba(74,0,224,0.4) 0%, rgba(123,47,255,0.17) 41%, transparent 73%)",
+            "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
           ],
         }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute left-[18%] top-[42%] h-[280px] w-[280px] -translate-y-1/2 rounded-full blur-[90px]"
+        className="absolute left-[14%] top-[44%] h-[320px] w-[320px] -translate-y-1/2 rounded-full blur-[110px]"
         animate={{
-          opacity: [0.25, 0.4, 0.3, 0.25],
-          scale: [1.05, 0.95, 1.08, 1.05],
+          opacity: [0.14, 0.24, 0.18, 0.14],
+          scale: [1.04, 0.96, 1.06, 1.04],
           background: [
-            "radial-gradient(circle, rgba(0,194,255,0.45) 0%, transparent 65%)",
-            "radial-gradient(circle, rgba(0,230,168,0.4) 0%, transparent 65%)",
-            "radial-gradient(circle, rgba(123,47,255,0.42) 0%, transparent 65%)",
-            "radial-gradient(circle, rgba(0,194,255,0.45) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,194,255,0.32) 0%, rgba(27,15,219,0.12) 48%, transparent 72%)",
+            "radial-gradient(circle, rgba(27,15,219,0.36) 0%, rgba(0,194,255,0.13) 46%, transparent 71%)",
+            "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
           ],
         }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
     </div>
+  );
+}
+
+function DesktopImageBleedGlow() {
+  return (
+    <motion.div
+      className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+      aria-hidden="true"
+      animate={{ opacity: [0.55, 0.85, 0.68, 0.55] }}
+      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Image-area halo — right side */}
+      <div className="absolute inset-y-[6%] right-[2%] w-[min(58%,720px)]">
+        <div
+          className="absolute inset-[4%] rounded-[2.5rem]"
+          style={{
+            boxShadow: `
+              0 0 70px 35px rgba(0, 194, 255, 0.22),
+              0 0 110px 55px rgba(27, 15, 219, 0.18),
+              0 0 150px 75px rgba(123, 47, 255, 0.14),
+              inset 0 0 60px 20px rgba(0, 194, 255, 0.08)
+            `,
+          }}
+        />
+        <div
+          className="absolute inset-[8%] rounded-[2rem] blur-[50px]"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(0,194,255,0.2) 0%, rgba(27,15,219,0.12) 45%, rgba(123,47,255,0.08) 70%, transparent 85%)",
+          }}
+        />
+      </div>
+
+      {/* Stronger left bleed merging into text ambient glow */}
+      <motion.div
+        className="absolute left-[18%] top-1/2 h-[72%] w-[38%] -translate-y-1/2 blur-[100px]"
+        animate={{
+          opacity: [0.35, 0.55, 0.42, 0.35],
+          scale: [1, 1.06, 1.03, 1],
+        }}
+        transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+        style={{
+          background:
+            "radial-gradient(ellipse at right center, rgba(0,194,255,0.28) 0%, rgba(27,15,219,0.2) 35%, rgba(123,47,255,0.14) 60%, transparent 80%)",
+        }}
+      />
+    </motion.div>
+  );
+}
+
+function HeroChevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      {direction === "left" ? (
+        <path d="M15 18l-6-6 6-6" />
+      ) : (
+        <path d="M9 18l6-6-6-6" />
+      )}
+    </svg>
   );
 }
 
@@ -452,13 +524,75 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
 
 export function HeroSection() {
   const [index, setIndex] = useState(0);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dragStartX = useRef<number | null>(null);
+
+  const clearAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
+  }, []);
+
+  const clearResume = useCallback(() => {
+    if (resumeRef.current) {
+      clearTimeout(resumeRef.current);
+      resumeRef.current = null;
+    }
+  }, []);
+
+  const startAutoPlay = useCallback(() => {
+    clearAutoPlay();
+    autoPlayRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % HERO_SLIDES.length);
+    }, AUTO_PLAY_MS);
+  }, [clearAutoPlay]);
+
+  const pauseAutoPlay = useCallback(() => {
+    clearAutoPlay();
+    clearResume();
+    resumeRef.current = setTimeout(() => {
+      startAutoPlay();
+    }, RESUME_AFTER_MS);
+  }, [clearAutoPlay, clearResume, startAutoPlay]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % HERO_SLIDES.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+    startAutoPlay();
+    return () => {
+      clearAutoPlay();
+      clearResume();
+    };
+  }, [startAutoPlay, clearAutoPlay, clearResume]);
+
+  const goToSlide = (i: number) => {
+    setIndex(i);
+    pauseAutoPlay();
+  };
+
+  const nextSlide = () => {
+    setIndex((i) => (i + 1) % HERO_SLIDES.length);
+    pauseAutoPlay();
+  };
+
+  const prevSlide = () => {
+    setIndex((i) => (i - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    pauseAutoPlay();
+  };
+
+  const handleImageMouseDown = (clientX: number) => {
+    dragStartX.current = clientX;
+  };
+
+  const handleImageMouseUp = (clientX: number) => {
+    if (dragStartX.current === null) return;
+    const delta = clientX - dragStartX.current;
+    dragStartX.current = null;
+    if (Math.abs(delta) >= DRAG_THRESHOLD_PX) {
+      if (delta < 0) nextSlide();
+      else prevSlide();
+    }
+  };
 
   return (
     <section
@@ -556,11 +690,15 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center lg:object-contain lg:object-right"
+              className={`object-cover object-center lg:object-contain lg:object-right${
+                index === PSL_9_INDEX ? " lg:![object-position:center_30%]" : ""
+              }`}
               aria-hidden
             />
           </motion.div>
         </AnimatePresence>
+
+        <DesktopImageBleedGlow />
       </div>
 
       <div
@@ -569,6 +707,40 @@ export function HeroSection() {
       />
 
       <DesktopAmbientGlow />
+
+      {/* Desktop image controls — arrows + drag */}
+      <div
+        className="absolute inset-y-0 right-0 z-20 hidden w-[58%] cursor-grab active:cursor-grabbing lg:block"
+        onMouseDown={(e) => handleImageMouseDown(e.clientX)}
+        onMouseUp={(e) => handleImageMouseUp(e.clientX)}
+        onMouseLeave={(e) => {
+          if (dragStartX.current !== null) handleImageMouseUp(e.clientX);
+        }}
+        onMouseEnter={() => pauseAutoPlay()}
+      >
+        <button
+          type="button"
+          aria-label="Previous slide"
+          onClick={(e) => {
+            e.stopPropagation();
+            prevSlide();
+          }}
+          className="absolute left-3 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/55 backdrop-blur-sm transition-all duration-300 hover:border-[#00C2FF]/45 hover:bg-[#00C2FF]/10 hover:text-white hover:shadow-[0_0_22px_rgba(0,194,255,0.45)]"
+        >
+          <HeroChevron direction="left" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next slide"
+          onClick={(e) => {
+            e.stopPropagation();
+            nextSlide();
+          }}
+          className="absolute right-3 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/55 backdrop-blur-sm transition-all duration-300 hover:border-[#00C2FF]/45 hover:bg-[#00C2FF]/10 hover:text-white hover:shadow-[0_0_22px_rgba(0,194,255,0.45)]"
+        >
+          <HeroChevron direction="right" />
+        </button>
+      </div>
 
       <div className="relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-center lg:px-0 lg:py-8">
         <div className="mx-auto w-full max-w-7xl lg:mx-0 lg:max-w-none lg:pl-[60px]">
@@ -629,7 +801,8 @@ export function HeroSection() {
             key={i}
             type="button"
             aria-label={`Go to slide ${i + 1}`}
-            onClick={() => setIndex(i)}
+            aria-current={i === index ? "true" : undefined}
+            onClick={() => goToSlide(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === index
                 ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
