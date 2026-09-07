@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BlurRevealText } from "./animations/BlurRevealText";
-import { TypewriterText } from "./animations/TypewriterText";
 import { StoreButtons } from "./StoreButtons";
 
 export function HeroSection() {
@@ -19,70 +18,99 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24">
-      <div className="ps-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+    <section className="relative min-h-[88vh] overflow-hidden sm:min-h-[92vh] lg:min-h-[95vh]">
+      {/* Full-width background slides */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={HERO_SLIDES[index].src}
+              alt={HERO_SLIDES[index].alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Text — first on mobile, left on desktop */}
-          <div className="order-1 lg:order-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
+      {/* Left-to-right dark gradient for text readability */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050811] from-0% via-[#050811]/92 via-45% to-transparent to-100% lg:via-40%"
+        aria-hidden="true"
+      />
+      {/* Mobile bottom fade for depth */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050811]/70 via-transparent to-[#050811]/30 lg:hidden"
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 flex min-h-[88vh] items-center pt-20 pb-10 sm:min-h-[92vh] sm:pt-24 sm:pb-12 lg:min-h-[95vh] lg:pt-28">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl lg:max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="text-xs font-bold uppercase tracking-[0.25em] text-[#00E6A8]"
+            >
               {PROTEINSNAPS.name}
-            </p>
-            <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem]">
-              <TypewriterText text="Track Protein. Snap Meals. Win." />
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-secondary">
-              <BlurRevealText
-                text={PROTEINSNAPS.description}
-                delay={0.5}
-              />
-            </p>
-            <div className="mt-8">
-              <StoreButtons size="lg" />
-            </div>
-          </div>
+            </motion.p>
 
-          {/* Slides — below text on mobile, right on desktop */}
-          <div className="order-2 lg:order-2">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
-              <AnimatePresence mode="sync">
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={HERO_SLIDES[index].src}
-                    alt={HERO_SLIDES[index].alt}
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
-              <div className="absolute inset-x-0 bottom-0 flex justify-center gap-2 pb-4">
-                {HERO_SLIDES.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    aria-label={`Go to slide ${i + 1}`}
-                    onClick={() => setIndex(i)}
-                    className={`h-1.5 rounded-full transition-all ${
-                      i === index
-                        ? "w-6 bg-[#00e6a8]"
-                        : "w-1.5 bg-white/30 hover:bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-3 font-sans text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
+            >
+              Track{" "}
+              <span className="text-[#00E6A8]">Protein.</span>
+              <br className="hidden sm:block" /> Snap{" "}
+              <span className="text-[#00E6A8]">Meals.</span>
+              <br className="hidden sm:block" />{" "}
+              <span className="text-[#00E6A8]">Win.</span>
+            </motion.h1>
+
+            <p className="mt-5 max-w-lg text-base leading-[1.7] text-white/75 sm:mt-6 sm:text-lg sm:leading-[1.75]">
+              <BlurRevealText text={PROTEINSNAPS.description} delay={0.35} />
+            </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-7 sm:mt-8"
+            >
+              <StoreButtons size="lg" variant="hero" />
+            </motion.div>
           </div>
         </div>
+      </div>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2 lg:bottom-8">
+        {HERO_SLIDES.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Go to slide ${i + 1}`}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === index
+                ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
+                : "w-1.5 bg-white/35 hover:bg-white/55"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

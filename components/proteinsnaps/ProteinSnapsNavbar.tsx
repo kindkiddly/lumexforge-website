@@ -4,6 +4,7 @@ import { useProteinSnapsPath } from "@/components/proteinsnaps/ProteinSnapsPathC
 import { PROTEINSNAPS, PROTEINSNAPS_NAV } from "@/lib/proteinsnaps/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -15,15 +16,17 @@ export function ProteinSnapsNavbar() {
   const activePath = pathname.replace(/^\/proteinsnaps/, "") || "/";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-background/80 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050811]/75 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={psHref("/")} className="group flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
-            PS
-          </span>
-          <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
-            {PROTEINSNAPS.name}
-          </span>
+        <Link href={psHref("/")} className="group flex items-center gap-2.5">
+          <Image
+            src="/images/proteinsnaps/ProteinSnaps.webp"
+            alt={PROTEINSNAPS.name}
+            width={140}
+            height={36}
+            className="h-8 w-auto sm:h-9"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
@@ -36,8 +39,8 @@ export function ProteinSnapsNavbar() {
                 className={cn(
                   "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   active
-                    ? "text-[#00e6a8]"
-                    : "text-foreground-secondary hover:text-foreground"
+                    ? "text-[#00E6A8]"
+                    : "text-white/70 hover:text-white"
                 )}
               >
                 {link.label}
@@ -51,7 +54,7 @@ export function ProteinSnapsNavbar() {
             href={PROTEINSNAPS.playStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ps-glow-button inline-flex items-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 px-5 py-2 text-sm font-medium text-[#00e6a8] transition-all hover:bg-[#00e6a8]/20"
+            className="ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold"
           >
             Download
           </a>
@@ -59,7 +62,7 @@ export function ProteinSnapsNavbar() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-foreground-secondary hover:bg-white/[0.05] lg:hidden"
+          className="rounded-lg p-2 text-white/70 hover:bg-white/[0.05] hover:text-white lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen(!open)}
         >
@@ -87,7 +90,7 @@ export function ProteinSnapsNavbar() {
                   key={link.href}
                   href={psHref(link.href)}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-foreground-secondary hover:bg-white/[0.04] hover:text-foreground"
+                  className="rounded-lg px-3 py-3 text-base font-medium text-white/70 hover:bg-white/[0.04] hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -96,7 +99,7 @@ export function ProteinSnapsNavbar() {
                 href={PROTEINSNAPS.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 px-5 py-3 text-center text-sm font-medium text-[#00e6a8]"
+                className="ps-play-button mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold"
               >
                 Download on Google Play
               </a>
