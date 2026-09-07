@@ -862,36 +862,18 @@ export function HeroSection() {
             max-height: 100% !important;
             object-fit: contain !important;
             object-position: right center !important;
-            -webkit-mask-image: linear-gradient(
+          }
+          .ps-hero-image-left-seam {
+            left: 22% !important;
+            width: 11% !important;
+            background: linear-gradient(
               to right,
-              transparent 0%,
-              rgba(0, 0, 0, 0.04) 10%,
-              rgba(0, 0, 0, 0.12) 20%,
-              rgba(0, 0, 0, 0.24) 30%,
-              rgba(0, 0, 0, 0.38) 38%,
-              rgba(0, 0, 0, 0.52) 46%,
-              rgba(0, 0, 0, 0.66) 54%,
-              rgba(0, 0, 0, 0.78) 62%,
-              rgba(0, 0, 0, 0.9) 68%,
-              #000 74%
-            );
-            mask-image: linear-gradient(
-              to right,
-              transparent 0%,
-              rgba(0, 0, 0, 0.04) 10%,
-              rgba(0, 0, 0, 0.12) 20%,
-              rgba(0, 0, 0, 0.24) 30%,
-              rgba(0, 0, 0, 0.38) 38%,
-              rgba(0, 0, 0, 0.52) 46%,
-              rgba(0, 0, 0, 0.66) 54%,
-              rgba(0, 0, 0, 0.78) 62%,
-              rgba(0, 0, 0, 0.9) 68%,
-              #000 74%
-            );
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
+              #050811 0%,
+              rgba(5, 8, 17, 0.88) 22%,
+              rgba(5, 8, 17, 0.45) 52%,
+              rgba(5, 8, 17, 0.12) 78%,
+              transparent 100%
+            ) !important;
           }
           .ps-hero-slide-image.ps-hero-slide-psl9 {
             object-position: right 30% !important;
@@ -902,7 +884,7 @@ export function HeroSection() {
           }
           .ps-hero-image-vignette {
             background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.72) 0%, rgba(5, 8, 17, 0.42) 16%, rgba(5, 8, 17, 0.2) 32%, rgba(5, 8, 17, 0.08) 48%, rgba(5, 8, 17, 0.02) 58%, transparent 72%),
+              linear-gradient(to right, rgba(5, 8, 17, 0.52) 0%, rgba(5, 8, 17, 0.22) 18%, rgba(5, 8, 17, 0.06) 28%, transparent 42%),
               linear-gradient(to left, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%),
               linear-gradient(to bottom, rgba(5, 8, 17, 0.22) 0%, rgba(5, 8, 17, 0.07) 20%, transparent 36%),
               linear-gradient(to top, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%);
@@ -951,6 +933,12 @@ export function HeroSection() {
       {/* z-2: gradient overlay */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
+        aria-hidden="true"
+      />
+
+      {/* Desktop: narrow bg-matched strip softens image left border without dimming image body */}
+      <div
+        className="ps-hero-image-left-seam pointer-events-none absolute inset-y-0 z-[2] hidden lg:block"
         aria-hidden="true"
       />
 
