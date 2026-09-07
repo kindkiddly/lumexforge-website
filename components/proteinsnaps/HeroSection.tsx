@@ -822,13 +822,13 @@ export function HeroSection() {
             background-color: #050811 !important;
             animation: ps-hero-images-glow 4s ease-in-out infinite !important;
             -webkit-mask-image:
-              linear-gradient(to right, transparent 0, #000 60px),
+              linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 70px, #000 115px),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
             -webkit-mask-composite: source-in;
             mask-image:
-              linear-gradient(to right, transparent 0, #000 60px),
+              linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 70px, #000 115px),
               linear-gradient(to left, transparent 0, #000 40px),
               linear-gradient(to bottom, transparent 0, #000 30px),
               linear-gradient(to top, transparent 0, #000 30px);
