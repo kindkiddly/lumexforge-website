@@ -59,24 +59,25 @@ export function ScreenshotsSection() {
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
               <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
               <div className="relative mt-4 aspect-[9/19] overflow-hidden rounded-[1.5rem] bg-black">
-                <AnimatePresence mode="sync">
+                {SCREENSHOT_SLIDES.map((screenshot, i) => (
                   <motion.div
-                    key={slide.src}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    key={screenshot.src}
+                    initial={false}
+                    animate={{ opacity: i === index ? 1 : 0 }}
                     transition={{ duration: 0.8 }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 bg-black"
+                    aria-hidden={i !== index}
                   >
                     <Image
-                      src={slide.src}
-                      alt={slide.feature}
+                      src={screenshot.src}
+                      alt={screenshot.feature}
                       fill
                       sizes="280px"
-                      className="object-cover object-top"
+                      className="object-contain object-center"
+                      priority={i <= 1}
                     />
                   </motion.div>
-                </AnimatePresence>
+                ))}
               </div>
             </div>
           </div>
@@ -112,24 +113,25 @@ export function ScreenshotsSection() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame">
               <div className="relative mt-3 aspect-[9/19] overflow-hidden rounded-[1.5rem] bg-black">
-                <AnimatePresence mode="sync">
+                {SCREENSHOT_SLIDES.map((screenshot, i) => (
                   <motion.div
-                    key={slide.src}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    key={screenshot.src}
+                    initial={false}
+                    animate={{ opacity: i === index ? 1 : 0 }}
                     transition={{ duration: 0.8 }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 bg-black"
+                    aria-hidden={i !== index}
                   >
                     <Image
-                      src={slide.src}
-                      alt={slide.feature}
+                      src={screenshot.src}
+                      alt={screenshot.feature}
                       fill
                       sizes="280px"
-                      className="object-cover object-top"
+                      className="object-contain object-center"
+                      priority={i <= 1}
                     />
                   </motion.div>
-                </AnimatePresence>
+                ))}
               </div>
             </div>
           </div>
