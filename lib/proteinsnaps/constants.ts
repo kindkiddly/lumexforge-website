@@ -29,123 +29,145 @@ export const HERO_SLIDES = Array.from({ length: 10 }, (_, i) => ({
 export const SCREENSHOT_SLIDES = [
   {
     src: "/images/proteinsnaps/PS-1.webp",
-    feature: "AI Meal Recognition",
+    feature: "Your All-in-One Fitness Partner",
     description:
-      "Point your camera at any meal and let AI instantly identify foods and estimate nutrition.",
+      "Everything you need to eat smarter, train harder and see real results — all in a single app built around your goals.",
     highlights: [
-      "Photo-based food detection",
-      "Automatic macro estimation",
-      "Multi-item meal support",
+      "Nutrition, workouts and coaching in one place",
+      "Personalized daily plan built around your goals",
+      "Smart insights that adapt as you improve",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-2.webp",
-    feature: "Protein & Macro Tracking",
+    feature: "Workout Logging & Strength Tracking",
     description:
-      "Track protein, carbs, fats, and calories with a clear daily dashboard built for results.",
+      "Log every exercise with precision. Track volume, beat your last session and watch your strength climb week over week.",
     highlights: [
-      "Daily macro rings",
-      "Protein-first tracking",
-      "Custom calorie goals",
+      "Rest timer keeps your sessions sharp and focused",
+      "Set history shows your best lifts at a glance",
+      "Save workouts as templates for faster logging",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-3.webp",
-    feature: "Personalized AI Coach",
+    feature: "AI Meal Recognition",
     description:
-      "Get tailored coaching based on your goals, progress, and nutrition patterns.",
+      "Point your camera at any meal and get a full nutrition breakdown in seconds — no barcodes, no manual entry needed.",
     highlights: [
-      "Goal-aware guidance",
-      "Smart recommendations",
-      "Adaptive coaching",
+      "Identifies ingredients and portions automatically",
+      "98% confidence meal analysis with every snap",
+      "Your data stays private and secure on-device",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-4.webp",
-    feature: "Workout Tracking",
+    feature: "Personalized AI Coach",
     description:
-      "Log workouts, monitor training volume, and connect nutrition to performance.",
+      "Your coach analyzes your nutrition, workouts and habits daily — then gives you prioritized actions to close the gap.",
     highlights: [
-      "Exercise logging",
-      "Session history",
-      "Training consistency",
+      "High, medium and info priority insights daily",
+      "Chat with your AI coach anytime for guidance",
+      "Recommendations adjust as your data changes",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-5.webp",
-    feature: "Gym & Strength Training",
+    feature: "Progress Analytics & Streaks",
     description:
-      "Built for lifters — track strength sessions and fuel your training with precision.",
+      "See exactly how your habits are shifting over time. Protein trends, weight changes and consistency streaks — all in one view.",
     highlights: [
-      "Strength-focused logging",
-      "Workout nutrition sync",
-      "Performance tracking",
+      "4-week protein goal chart shows your trajectory",
+      "Achievements unlock as you hit real milestones",
+      "Goal accuracy score keeps you honest and motivated",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-6.webp",
-    feature: "Body Progress & Measurements",
+    feature: "Body Transformation Tracking",
     description:
-      "Record body measurements and visualize changes over time with structured tracking.",
+      "Compare your before and after side by side. Quantified results — weight lost, body fat reduced, muscle gained.",
     highlights: [
-      "Measurement logs",
-      "Trend visualization",
-      "Progress milestones",
+      "Date-stamped photo pairs for clear comparison",
+      "Three key metrics tracked: weight, fat, muscle",
+      "Visual proof of what consistency actually builds",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-7.webp",
-    feature: "Progress Photos",
+    feature: "Complete Fitness Dashboard",
     description:
-      "Capture and compare progress photos to see real transformation over weeks and months.",
+      "Your daily overview — meals logged, workouts done, water tracked and AI coaching — all visible the moment you open the app.",
     highlights: [
-      "Side-by-side comparisons",
-      "Private photo storage",
-      "Visual progress timeline",
+      "Morning briefing sets your focus for the day",
+      "Today's plan shows meals and workouts at a glance",
+      "Weekly progress summary updated in real time",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-8.webp",
-    feature: "Daily Briefings",
+    feature: "Goal-Based Daily Tracking",
     description:
-      "Start each day with a personalized nutrition briefing tailored to your goals.",
+      "Stay on top of nutrition, hydration, workouts and calories with a live progress ring that tells you exactly where you stand.",
     highlights: [
-      "Daily summary insights",
-      "Goal progress updates",
-      "Actionable tips",
+      "92% daily goal completion tracked in real time",
+      "Nutrition and workout goals shown side by side",
+      "AI coach praises progress and flags what to fix",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-9.webp",
-    feature: "Smart Nutrition Insights",
+    feature: "Hydration Tracking",
     description:
-      "Discover patterns in your eating habits with intelligent analysis and suggestions.",
+      "Log every sip and hit your daily water target. See your 7-day hydration trend and stay consistently on track.",
     highlights: [
-      "Trend detection",
-      "Nutrition gap alerts",
-      "Weekly insights",
+      "Quick-add buttons for 250ml, 500ml and 1L",
+      "Daily goal percentage updates with every log",
+      "7-day bar chart reveals your hydration patterns",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-10.webp",
-    feature: "Fill the Gap",
+    feature: "Body Measurements",
     description:
-      "Know exactly what to eat next to hit your remaining protein and macro targets.",
+      "Track shoulders, chest, waist, hips, arms and thighs over time. Real numbers that show your body actually changing.",
     highlights: [
-      "Remaining macro calculator",
-      "Smart food suggestions",
-      "End-of-day optimization",
+      "Full body map with measurements per zone",
+      "Progress delta shown against your last check-in",
+      "History view reveals long-term shape changes",
     ],
   },
   {
     src: "/images/proteinsnaps/PS-11.webp",
-    feature: "Morning Briefing & Plate Calculator",
+    feature: "Training Progress Hub",
     description:
-      "Wake up to your daily plan and use the plate calculator to portion meals perfectly.",
+      "Your full training picture in one screen — weekly volume, workout streak, last session stats and body check-in photos.",
     highlights: [
-      "Morning goal overview",
-      "Plate portion tool",
-      "Meal planning assist",
+      "Total volume and streak tracked this week",
+      "Last workout summary with vs-average comparison",
+      "Body check-in photos linked directly to training dates",
+    ],
+  },
+  {
+    src: "/images/proteinsnaps/PS-12.webp",
+    feature: "Live Workout Session",
+    description:
+      "Track your workout in real time — exercises ticked off, time elapsed and reps logged as you push through every set.",
+    highlights: [
+      "Live session timer keeps your pace consistent",
+      "Exercises checked off as you complete each set",
+      "End workout saves everything automatically",
+    ],
+  },
+  {
+    src: "/images/proteinsnaps/PS-13.webp",
+    feature: "Meal History & Nutrition Log",
+    description:
+      "Your full 30-day nutrition history in one place — average protein, calories logged, active days and weekly macro trends.",
+    highlights: [
+      "30-day protein average tracked against your goal",
+      "Every meal logged with calories and macros shown",
+      "Weekly summary exportable as CSV anytime",
     ],
   },
 ] as const;
