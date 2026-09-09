@@ -1,8 +1,8 @@
-import { AIFeaturesSection } from "@/components/proteinsnaps/AIFeaturesSection";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
-import { ZoomRevealText } from "@/components/proteinsnaps/animations/ZoomRevealText";
+import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "AI Protein Tracker — ProteinSnaps",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
     url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    images: [{ url: "/images/proteinsnaps/PS-4.webp", width: 1080, height: 1920 }],
     type: "website",
   },
   twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "AI Protein Tracker — ProteinSnaps",
     description:
       "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
-    images: ["/images/proteinsnaps/PS-1.webp"],
+    images: ["/images/proteinsnaps/PS-4.webp"],
   },
 };
 
@@ -59,6 +59,17 @@ const TRACKER_FEATURES = [
   },
 ];
 
+const TRACKER_SCREENSHOTS = [
+  {
+    src: "/images/proteinsnaps/PS-3.webp",
+    alt: "AI Meal Recognition",
+  },
+  {
+    src: "/images/proteinsnaps/PS-4.webp",
+    alt: "Personalized AI Coach",
+  },
+] as const;
+
 export default function AIProteinTrackerPage() {
   return (
     <>
@@ -69,21 +80,43 @@ export default function AIProteinTrackerPage() {
       />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {TRACKER_FEATURES.map((item, i) => (
-              <ZoomRevealText key={item.title} delay={i * 0.08}>
-                <article className="ps-glow-card h-full rounded-2xl p-6">
-                  <h2 className="text-lg font-semibold text-[#00e6a8]">{item.title}</h2>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
-                    {item.description}
-                  </p>
-                </article>
-              </ZoomRevealText>
-            ))}
+          <div className="grid items-start gap-12 lg:grid-cols-2">
+            <div className="flex flex-col items-center gap-10">
+              {TRACKER_SCREENSHOTS.map((screenshot, i) => (
+                <FadeInUp key={screenshot.src} delay={i * 0.1}>
+                  <div className="relative mx-auto w-[280px] shrink-0">
+                    <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
+                    <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
+                      <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
+                      <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
+                        <Image
+                          src={screenshot.src}
+                          alt={screenshot.alt}
+                          fill
+                          sizes="280px"
+                          className="object-contain object-center"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </FadeInUp>
+              ))}
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {TRACKER_FEATURES.map((item, i) => (
+                <FadeInUp key={item.title} delay={0.1 + i * 0.04}>
+                  <article className="ps-glow-card h-full rounded-2xl p-6">
+                    <h2 className="text-lg font-semibold text-[#00e6a8]">{item.title}</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                      {item.description}
+                    </p>
+                  </article>
+                </FadeInUp>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-      <AIFeaturesSection />
       <DownloadCTA />
     </>
   );

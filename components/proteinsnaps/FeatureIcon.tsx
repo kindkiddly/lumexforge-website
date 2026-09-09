@@ -27,10 +27,30 @@ export function FeatureIcon({ name, className = "h-6 w-6" }: FeatureIconProps) {
         </svg>
       );
     case "dumbbell":
+      return (
+        <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5.25 10.125c0-.621.504-1.125 1.125-1.125h1.125c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125H6.375c-.621 0-1.125-.504-1.125-1.125v-3.75z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.375 10.125c0-.621.504-1.125 1.125-1.125h1.125c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-1.125c-.621 0-1.125-.504-1.125-1.125v-3.75z"
+          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.375 12h5.25" />
+        </svg>
+      );
     case "gym":
       return (
         <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 9.75v4.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 9v6" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75v4.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9v6" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 18.75v2.25M19.5 18.75v2.25" />
         </svg>
       );
     case "measure":

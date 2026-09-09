@@ -2,8 +2,9 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
-import { FEATURE_CARDS } from "@/lib/proteinsnaps/constants";
+import { FEATURE_CARDS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Features — ProteinSnaps",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
       "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
     url: "https://proteinsnaps.lumexforge.com/features",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    images: [{ url: "/images/proteinsnaps/PS-7.webp", width: 1080, height: 1920 }],
     type: "website",
   },
   twitter: {
@@ -23,9 +24,19 @@ export const metadata: Metadata = {
     title: "Features — ProteinSnaps",
     description:
       "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
-    images: ["/images/proteinsnaps/PS-1.webp"],
+    images: ["/images/proteinsnaps/PS-7.webp"],
   },
 };
+
+const FEATURE_SCREENSHOT_SRC = [
+  "/images/proteinsnaps/PS-1.webp",
+  "/images/proteinsnaps/PS-4.webp",
+  "/images/proteinsnaps/PS-7.webp",
+] as const;
+
+const FEATURE_SCREENSHOTS = SCREENSHOT_SLIDES.filter((slide) =>
+  (FEATURE_SCREENSHOT_SRC as readonly string[]).includes(slide.src)
+);
 
 export default function FeaturesPage() {
   return (
@@ -49,6 +60,37 @@ export default function FeaturesPage() {
                     {feature.description}
                   </p>
                 </article>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="pb-12 sm:pb-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
+            {FEATURE_SCREENSHOTS.map((slide, i) => (
+              <FadeInUp key={slide.src} delay={i * 0.1} className="text-center">
+                <div className="relative mx-auto w-[280px] shrink-0">
+                  <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
+                  <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
+                    <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
+                    <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
+                      <Image
+                        src={slide.src}
+                        alt={slide.feature}
+                        fill
+                        sizes="280px"
+                        className="object-contain object-center"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
+                  {slide.feature}
+                </p>
+                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
+                  {slide.description}
+                </p>
               </FadeInUp>
             ))}
           </div>

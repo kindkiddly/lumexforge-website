@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
     url: "https://proteinsnaps.lumexforge.com/workout-nutrition",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    images: [{ url: "/images/proteinsnaps/PS-2.webp", width: 1080, height: 1920 }],
     type: "website",
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Workout Nutrition — ProteinSnaps",
     description:
       "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
-    images: ["/images/proteinsnaps/PS-1.webp"],
+    images: ["/images/proteinsnaps/PS-2.webp"],
   },
 };
 
@@ -73,7 +73,7 @@ export default function WorkoutNutritionPage() {
             <FadeInUp>
               <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-sm overflow-hidden rounded-2xl ps-glow-frame">
                 <Image
-                  src="/images/proteinsnaps/PS-5.webp"
+                  src="/images/proteinsnaps/PS-2.webp"
                   alt="ProteinSnaps workout and nutrition tracking"
                   fill
                   sizes="400px"
