@@ -7,9 +7,22 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FadeInUp } from "./animations/FadeInUp";
 
 const SILK = "cubic-bezier(0.16, 1, 0.3, 1)";
+const CLEARWAVE_CARD_TRANSITION = `transform 0.6s ${SILK}, opacity 0.6s ${SILK}`;
 const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
 const ZOOM_STEP = { pw: 196, g1: 217, g2: 387, gh: 546, sh: 504 } as const;
+const CENTER_PHONE_HALF_W = ZOOM_STEP.pw / 2;
+const CENTER_PHONE_SHELL_PAD = 5.6;
+const CENTER_PHONE_SHELL_BORDER = 2.1;
+const CENTER_PHONE_NOTCH_MT = 11.2;
+const CENTER_PHONE_INNER_W =
+  ZOOM_STEP.pw - 2 * (CENTER_PHONE_SHELL_PAD + CENTER_PHONE_SHELL_BORDER);
+const CENTER_PHONE_H =
+  2 * (CENTER_PHONE_SHELL_PAD + CENTER_PHONE_SHELL_BORDER) +
+  CENTER_PHONE_NOTCH_MT +
+  (CENTER_PHONE_INNER_W * 16) / 9;
+const CENTER_PHONE_BOTTOM = (ZOOM_STEP.sh - CENTER_PHONE_H) / 2;
+const CENTER_PHONE_TEXT_GAP = 8;
 
 type CarouselPosition =
   | "center"
@@ -274,7 +287,7 @@ export function ScreenshotsCarousel3D() {
                         transform: styles.transform,
                         opacity: styles.opacity,
                         zIndex: styles.zIndex,
-                        transition: `transform 0.6s ${SILK}, opacity 0.6s ${SILK}`,
+                        transition: CLEARWAVE_CARD_TRANSITION,
                       }}
                     >
                       <div
@@ -335,7 +348,11 @@ export function ScreenshotsCarousel3D() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute bottom-0 left-0 z-20 max-w-xs text-right font-serif text-xl text-white"
+                  className="absolute z-20 max-w-[180px] text-right font-serif text-xl text-white"
+                  style={{
+                    right: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
+                    bottom: CENTER_PHONE_BOTTOM,
+                  }}
                 >
                   {slide.feature}
                 </motion.h3>
@@ -348,7 +365,11 @@ export function ScreenshotsCarousel3D() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute bottom-0 right-0 z-20 max-w-xs line-clamp-2 text-left text-sm text-foreground-secondary"
+                  className="absolute z-20 max-w-[180px] line-clamp-2 text-left text-sm text-foreground-secondary"
+                  style={{
+                    left: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
+                    bottom: CENTER_PHONE_BOTTOM,
+                  }}
                 >
                   {slide.description}
                 </motion.p>
