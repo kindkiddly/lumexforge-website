@@ -7,9 +7,16 @@ import { useEffect, useState } from "react";
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
 
+function getAdjacentSlideIndices(current: number, length: number) {
+  const prev = (current - 1 + length) % length;
+  const next = (current + 1) % length;
+  return new Set([prev, current, next]);
+}
+
 export function ScreenshotsSection() {
   const [index, setIndex] = useState(0);
   const slide = SCREENSHOT_SLIDES[index];
+  const visibleIndices = getAdjacentSlideIndices(index, SCREENSHOT_SLIDES.length);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -59,7 +66,10 @@ export function ScreenshotsSection() {
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
               <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
               <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
-                {SCREENSHOT_SLIDES.map((screenshot, i) => (
+                {SCREENSHOT_SLIDES.map((screenshot, i) => {
+                  if (!visibleIndices.has(i)) return null;
+
+                  return (
                   <motion.div
                     key={screenshot.src}
                     initial={false}
@@ -71,13 +81,15 @@ export function ScreenshotsSection() {
                     <Image
                       src={screenshot.src}
                       alt={screenshot.feature}
-                      fill
+                      width={280}
+                      height={497}
                       sizes="280px"
-                      className="object-contain object-center"
-                      priority={i <= 1}
+                      loading="lazy"
+                      className="h-full w-full object-contain object-center"
                     />
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -113,7 +125,10 @@ export function ScreenshotsSection() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame">
               <div className="relative mt-3 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
-                {SCREENSHOT_SLIDES.map((screenshot, i) => (
+                {SCREENSHOT_SLIDES.map((screenshot, i) => {
+                  if (!visibleIndices.has(i)) return null;
+
+                  return (
                   <motion.div
                     key={screenshot.src}
                     initial={false}
@@ -125,13 +140,15 @@ export function ScreenshotsSection() {
                     <Image
                       src={screenshot.src}
                       alt={screenshot.feature}
-                      fill
+                      width={280}
+                      height={497}
                       sizes="280px"
-                      className="object-contain object-center"
-                      priority={i <= 1}
+                      loading="lazy"
+                      className="h-full w-full object-contain object-center"
                     />
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

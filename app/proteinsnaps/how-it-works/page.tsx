@@ -76,9 +76,11 @@ export default function HowItWorksPage() {
                       <Image
                         src={step.slide.src}
                         alt={step.slide.feature}
-                        fill
+                        width={280}
+                        height={497}
+                        loading="lazy"
                         sizes="280px"
-                        className="object-contain object-center"
+                        className="h-full w-full object-contain object-center"
                       />
                     </div>
                   </div>

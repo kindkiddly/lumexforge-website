@@ -53,9 +53,11 @@ export default function FeaturesPage() {
               <Image
                 src="/images/proteinsnaps/PSL-1.webp"
                 alt="ProteinSnaps complete fitness dashboard"
-                fill
+                width={1536}
+                height={1024}
+                loading="lazy"
                 sizes="(max-width: 1280px) 100vw, 1280px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           </FadeInUp>
@@ -93,9 +95,11 @@ export default function FeaturesPage() {
                       <Image
                         src={slide.src}
                         alt={slide.feature}
-                        fill
+                        width={280}
+                        height={497}
+                        loading="lazy"
                         sizes="280px"
-                        className="object-contain object-center"
+                        className="h-full w-full object-contain object-center"
                       />
                     </div>
                   </div>

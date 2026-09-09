@@ -14,6 +14,13 @@ const AUTO_PLAY_MS = 4500;
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
+
+function getAdjacentSlideIndices(current: number, length: number) {
+  const prev = (current - 1 + length) % length;
+  const next = (current + 1) % length;
+  return new Set([prev, current, next]);
+}
+
 const DESKTOP_IMAGE_GLOW =
   "inset 0 0 72px 14px rgba(0, 194, 255, 0.30), inset 0 0 144px 29px rgba(123, 47, 255, 0.18)";
 const LABEL_DELAY = 0;
@@ -637,6 +644,8 @@ export function HeroSection() {
     ? { boxShadow: DESKTOP_IMAGE_GLOW }
     : undefined;
 
+  const visibleHeroIndices = getAdjacentSlideIndices(index, HERO_SLIDES.length);
+
   const goToSlide = (i: number) => {
     setIndex(i);
     pauseAutoPlay();
@@ -894,7 +903,10 @@ export function HeroSection() {
         className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]"
         style={desktopImageContainerStyle}
       >
-        {HERO_SLIDES.map((slide, i) => (
+        {HERO_SLIDES.map((slide, i) => {
+          if (!visibleHeroIndices.has(i)) return null;
+
+          return (
           <motion.div
             key={slide.src}
             className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
@@ -906,16 +918,19 @@ export function HeroSection() {
             <Image
               src={slide.src}
               alt=""
-              fill
+              width={1536}
+              height={1024}
               priority={i === 0}
-              sizes="(min-width: 1024px) 100vw, 100vw"
-              className={`ps-hero-slide-image object-cover object-center${
+              loading={i === 0 ? undefined : "lazy"}
+              sizes="100vw"
+              className={`ps-hero-slide-image h-full w-full object-cover object-center${
                 i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
               }`}
               aria-hidden
             />
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {/* z-2: gradient overlay */}

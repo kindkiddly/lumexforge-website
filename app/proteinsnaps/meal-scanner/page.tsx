@@ -76,9 +76,11 @@ export default function MealScannerPage() {
                       <Image
                         src={slide.src}
                         alt={slide.feature}
-                        fill
+                        width={280}
+                        height={497}
+                        loading="lazy"
                         sizes="280px"
-                        className="object-contain object-center"
+                        className="h-full w-full object-contain object-center"
                       />
                     </div>
                   </div>
@@ -101,9 +103,11 @@ export default function MealScannerPage() {
               <Image
                 src="/images/proteinsnaps/PSL-2.webp"
                 alt="ProteinSnaps AI meal scanner in action"
-                fill
+                width={1536}
+                height={1024}
+                loading="lazy"
                 sizes="100vw"
-                className="object-cover"
+                className="w-full object-cover"
               />
             </div>
           </FadeInUp>

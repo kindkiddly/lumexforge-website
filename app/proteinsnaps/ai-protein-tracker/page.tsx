@@ -85,9 +85,11 @@ export default function AIProteinTrackerPage() {
               <Image
                 src="/images/proteinsnaps/PSL-7.webp"
                 alt="ProteinSnaps daily macro and recovery summary"
-                fill
+                width={1536}
+                height={1024}
+                loading="lazy"
                 sizes="(max-width: 1280px) 100vw, 1280px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           </FadeInUp>
@@ -107,9 +109,11 @@ export default function AIProteinTrackerPage() {
                         <Image
                           src={screenshot.src}
                           alt={screenshot.alt}
-                          fill
+                          width={280}
+                          height={497}
+                          loading="lazy"
                           sizes="280px"
-                          className="object-contain object-center"
+                          className="h-full w-full object-contain object-center"
                         />
                       </div>
                     </div>

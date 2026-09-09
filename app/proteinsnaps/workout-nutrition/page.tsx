@@ -69,9 +69,11 @@ export default function WorkoutNutritionPage() {
               <Image
                 src="/images/proteinsnaps/PSL-5.webp"
                 alt="ProteinSnaps gym and strength training"
-                fill
+                width={1536}
+                height={1024}
+                loading="lazy"
                 sizes="(max-width: 1280px) 100vw, 1280px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           </FadeInUp>
@@ -90,9 +92,11 @@ export default function WorkoutNutritionPage() {
                 <Image
                   src="/images/proteinsnaps/PS-2.webp"
                   alt="ProteinSnaps workout and nutrition tracking"
-                  fill
+                  width={280}
+                  height={497}
+                  loading="lazy"
                   sizes="400px"
-                  className="object-cover object-top"
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
             </FadeInUp>
