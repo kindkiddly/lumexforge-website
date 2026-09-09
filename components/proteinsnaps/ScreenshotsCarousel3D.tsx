@@ -186,8 +186,25 @@ export function ScreenshotsCarousel3D() {
           </h2>
         </FadeInUp>
 
-        <div className="mt-16 flex flex-col items-center">
-          <div className="flex shrink-0 flex-col items-center">
+        <div className="flex flex-col items-center">
+          <div className="mt-4 mb-4 flex items-center justify-center gap-2">
+            {SCREENSHOT_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                aria-current={i === currentCenter ? "true" : undefined}
+                onClick={() => goTo(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === currentCenter
+                    ? "w-6 bg-[#00e6a8]"
+                    : "w-2 bg-white/20 hover:bg-[#00e6a8]/50"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="flex w-full shrink-0 flex-col items-center">
             <div
               className="relative w-full"
               style={{
@@ -198,6 +215,29 @@ export function ScreenshotsCarousel3D() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
+              <button
+                type="button"
+                onClick={stepBack}
+                aria-label="Previous screen"
+                className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
               <div
                 className="relative flex h-full w-full items-center justify-center"
                 style={{ transformStyle: "preserve-3d" }}
@@ -264,54 +304,12 @@ export function ScreenshotsCarousel3D() {
                     </div>
                 ))}
               </div>
-            </div>
-
-            <div className="mt-12 flex items-center justify-center gap-6">
-              <button
-                type="button"
-                onClick={stepBack}
-                aria-label="Previous screen"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-
-              <div className="flex items-center gap-2">
-                {SCREENSHOT_SLIDES.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    aria-label={`Go to slide ${i + 1}`}
-                    aria-current={i === currentCenter ? "true" : undefined}
-                    onClick={() => goTo(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === currentCenter
-                        ? "w-6 bg-[#00e6a8]"
-                        : "w-2 bg-white/20 hover:bg-[#00e6a8]/50"
-                    }`}
-                  />
-                ))}
-              </div>
 
               <button
                 type="button"
                 onClick={advanceSlide}
                 aria-label="Next screen"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
+                className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
               >
                 <svg
                   width="16"
