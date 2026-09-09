@@ -10,7 +10,7 @@ import { StoreButtons } from "./StoreButtons";
 const NAVBAR_HEIGHT = "4rem";
 /** Navbar inner row is h-16 (64px); header also has border-b (+1px). */
 const NAVBAR_OFFSET_PX = 65;
-const AUTO_PLAY_MS = 4500;
+const AUTO_PLAY_MS = 7000;
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;

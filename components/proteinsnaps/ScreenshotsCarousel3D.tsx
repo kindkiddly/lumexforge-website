@@ -9,6 +9,7 @@ import { FadeInUp } from "./animations/FadeInUp";
 const SILK = "cubic-bezier(0.16, 1, 0.3, 1)";
 const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
+const DESKTOP_MIN_WIDTH = 1024;
 
 const ZOOM_STEP = { pw: 280, g1: 310, g2: 553, gh: 780, sh: 720 } as const;
 
@@ -103,8 +104,18 @@ export function ScreenshotsCarousel3D() {
   const totalCards = SCREENSHOT_SLIDES.length;
   const [currentCenter, setCurrentCenter] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const isAnimatingRef = useRef(false);
   const slide = SCREENSHOT_SLIDES[currentCenter];
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= DESKTOP_MIN_WIDTH);
+    };
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -127,13 +138,15 @@ export function ScreenshotsCarousel3D() {
   }, [currentCenter, goTo, totalCards]);
 
   useEffect(() => {
-    if (isHovered) return;
+    if (!isDesktop || isHovered) return;
     const timer = window.setInterval(next, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [isHovered, next]);
+  }, [isDesktop, isHovered, next]);
+
+  if (!isDesktop) return null;
 
   return (
-    <section className="relative hidden py-20 sm:py-24 lg:block lg:py-28">
+    <section className="relative py-20 sm:py-24 lg:py-28">
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp className="text-center">
@@ -145,28 +158,7 @@ export function ScreenshotsCarousel3D() {
           </h2>
         </FadeInUp>
 
-        <div className="mt-16 grid items-center gap-8 lg:grid-cols-[1fr_auto_1fr]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`left-${currentCenter}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-right"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
-                Feature {currentCenter + 1} of {SCREENSHOT_SLIDES.length}
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
-                {slide.feature}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
-                {slide.description}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-
+        <div className="mt-16 flex flex-col items-center">
           <div className="flex shrink-0 flex-col items-center">
             <div
               className="relative w-full"
@@ -326,27 +318,35 @@ export function ScreenshotsCarousel3D() {
           </div>
 
           <AnimatePresence mode="wait">
-            <motion.ul
-              key={`right-${currentCenter}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+            <motion.div
+              key={currentCenter}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-3"
+              className="mx-auto mt-10 w-full max-w-3xl text-center"
             >
-              {slide.highlights.map((item, i) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-3 text-foreground-secondary"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
+                Feature {currentCenter + 1} of {SCREENSHOT_SLIDES.length}
+              </p>
+              <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
+                {slide.feature}
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+                {slide.description}
+              </p>
+              <ul className="mt-6 space-y-3 text-left">
+                {slide.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-foreground-secondary"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>
