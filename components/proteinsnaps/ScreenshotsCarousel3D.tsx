@@ -23,12 +23,12 @@ type CarouselPosition =
 /** [translateX multiplier, rotateY, scale, opacity] */
 const POS_CONFIG: Record<CarouselPosition, [number, number, number, number]> = {
   center: [0, 0, 1, 1],
-  left1: [-1, 36, 0.76, 1],
-  right1: [1, -36, 0.76, 1],
+  left1: [-1, 36, 0.76, 0.75],
+  right1: [1, -36, 0.76, 0.75],
   left2: [-1, 55, 0.56, 0.55],
   right2: [1, -55, 0.56, 0.55],
-  "hidden-left": [-1, 72, 0.4, 0],
-  "hidden-right": [1, -72, 0.4, 0],
+  "hidden-left": [-1, 72, 0.4, 0.35],
+  "hidden-right": [1, -72, 0.4, 0.35],
 };
 
 const POS_GAP: Record<

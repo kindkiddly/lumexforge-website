@@ -28,10 +28,10 @@ export const HERO_SLIDES = Array.from({ length: 10 }, (_, i) => ({
 
 export const DESKTOP_SLIDES = [
   {
-    headline: "Good Food. Better You.",
+    headline: "Track Your Meals, Stay on Goal.",
     description:
-      "Track every meal wherever you are — at home, at a restaurant or on the go. See your 30-day trends, weekly summaries and stay on your goals.",
-    accentWords: ["Food.", "Better", "You."],
+      "Log every meal, track your nutrition history and stay consistent with your daily goals — wherever you eat.",
+    accentWords: ["Meals,", "Stay", "Goal."],
     name: "fadeUp",
     duration: 1.0,
     headlineClass: "font-sans font-extrabold not-italic",
@@ -40,7 +40,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Stronger Every Day.",
     description:
-      "Log every set, track every rep and monitor your workout performance with smart nutrition guidance that fuels your gym sessions perfectly.",
+      "Log your workouts, track every set and rep, and build real strength with personalized training guidance.",
     accentWords: ["Stronger", "Every", "Day."],
     name: "blurReveal",
     duration: 1.1,
@@ -48,10 +48,10 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Your AI Coach.",
+    headline: "Your AI Coach. Always By Your Side.",
     description:
-      "Real guidance. Better results. Ask anything and get personalized nutrition and fitness coaching whenever you need it.",
-    accentWords: ["AI", "Coach."],
+      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
+    accentWords: ["AI", "Coach.", "Side."],
     name: "stagger",
     duration: 1.2,
     headlineClass: "font-serif font-light italic",
@@ -60,7 +60,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Every Mile Builds a Stronger You.",
     description:
-      "Track your runs, monitor calories burned, see your weekly progress and get AI insights that keep you moving forward every single day.",
+      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
     accentWords: ["Mile", "Stronger", "You."],
     name: "zoomIn",
     duration: 0.9,
@@ -70,7 +70,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Snap It. Track It. Achieve It.",
     description:
-      "Point your camera at any meal and AI instantly identifies foods, estimates portions and logs your nutrition in seconds — no guessing needed.",
+      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
     accentWords: ["Snap", "Track", "Achieve"],
     name: "sweepLeft",
     duration: 1.0,
@@ -78,10 +78,10 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Smarter Tracking. Better Results. Every Day.",
+    headline: "Your All-in-One Fitness Partner.",
     description:
-      "Track meals, hit your protein goals, log workouts and get AI insights — all from one clean dashboard built for your daily routine.",
-    accentWords: ["Tracking.", "Results.", "Day."],
+      "Nutrition tracking, workout logging, AI coaching and progress insights — everything you need in one powerful app.",
+    accentWords: ["All-in-One", "Fitness", "Partner."],
     name: "typewriter",
     duration: 1.2,
     headlineClass: "font-mono font-normal not-italic",
@@ -90,7 +90,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Finish Strong. Recover Smarter.",
     description:
-      "Track your protein goals, hydration, workout completion and recovery all in one daily summary that keeps you ready for what is next.",
+      "End every day knowing you hit your goals. Track protein, hydration, workout completion and recovery in one summary.",
     accentWords: ["Strong.", "Smarter."],
     name: "dropTop",
     duration: 1.0,
@@ -100,7 +100,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Real Food. Real Progress. That's ProteinSnaps.",
     description:
-      "Whether you are a beginner or a champion — ProteinSnaps gives you personalized nutrition plans, AI coaching and smart tracking to win every day.",
+      "From your first meal log to your biggest fitness milestone — ProteinSnaps is your personal nutrition coach and fitness buddy.",
     accentWords: ["Food.", "Progress.", "ProteinSnaps."],
     name: "glitch",
     duration: 0.8,
@@ -110,7 +110,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Real Progress. Real You.",
     description:
-      "Track your transformation with progress photos, body measurements and AI coaching that celebrates every milestone on your journey to a stronger you.",
+      "See your body transform over time. Track weight, body fat and measurements with side-by-side progress comparison.",
     accentWords: ["Progress.", "You."],
     name: "scaleSmall",
     duration: 1.0,
@@ -120,7 +120,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Fuel Your Stronger You.",
     description:
-      "Personalized nutrition, smart workouts and AI progress tracking — everything you need to build the body you want, all in one powerful app.",
+      "Personalized nutrition, smart workouts and AI insights — all working together to help you become your strongest self.",
     accentWords: ["Fuel", "Stronger", "You."],
     name: "shimmer",
     duration: 1.2,

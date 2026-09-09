@@ -107,7 +107,7 @@ export default function MealScannerPage() {
                 height={1024}
                 loading="lazy"
                 sizes="100vw"
-                className="w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
           </FadeInUp>
