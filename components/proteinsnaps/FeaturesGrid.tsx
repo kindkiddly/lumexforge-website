@@ -1,6 +1,9 @@
 import { FEATURE_CARDS } from "@/lib/proteinsnaps/constants";
+import Link from "next/link";
 import { FeatureIcon } from "./FeatureIcon";
 import { FadeInUp } from "./animations/FadeInUp";
+
+const HOME_FEATURE_HIGHLIGHTS = FEATURE_CARDS.slice(0, 4);
 
 export function FeaturesGrid() {
   return (
@@ -21,7 +24,7 @@ export function FeaturesGrid() {
         </FadeInUp>
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-          {FEATURE_CARDS.map((feature, i) => (
+          {HOME_FEATURE_HIGHLIGHTS.map((feature, i) => (
             <FadeInUp key={feature.title} delay={i * 0.05}>
               <article className="ps-glow-card h-full rounded-2xl p-5 sm:p-6">
                 <FeatureIcon name={feature.icon} />
@@ -35,6 +38,16 @@ export function FeaturesGrid() {
             </FadeInUp>
           ))}
         </div>
+
+        <FadeInUp delay={0.25} className="mt-10 text-center">
+          <Link
+            href="/features"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#00e6a8] transition-colors hover:text-[#00c2ff]"
+          >
+            Explore all 12 features
+            <span aria-hidden="true">→</span>
+          </Link>
+        </FadeInUp>
       </div>
     </section>
   );

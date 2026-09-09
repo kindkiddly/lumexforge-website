@@ -29,14 +29,14 @@ export const metadata: Metadata = {
 };
 
 const FEATURE_SCREENSHOT_SRC = [
-  "/images/proteinsnaps/PS-1.webp",
-  "/images/proteinsnaps/PS-4.webp",
-  "/images/proteinsnaps/PS-7.webp",
+  "/images/proteinsnaps/PS-2.webp",
+  "/images/proteinsnaps/PS-6.webp",
+  "/images/proteinsnaps/PS-10.webp",
 ] as const;
 
-const FEATURE_SCREENSHOTS = SCREENSHOT_SLIDES.filter((slide) =>
-  (FEATURE_SCREENSHOT_SRC as readonly string[]).includes(slide.src)
-);
+const FEATURE_SCREENSHOTS = FEATURE_SCREENSHOT_SRC.map(
+  (src) => SCREENSHOT_SLIDES.find((slide) => slide.src === src)!
+).filter(Boolean);
 
 export default function FeaturesPage() {
   return (
@@ -46,6 +46,21 @@ export default function FeaturesPage() {
         title="Built for Serious Nutrition Tracking"
         description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
       />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-1.webp"
+                alt="ProteinSnaps complete fitness dashboard"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

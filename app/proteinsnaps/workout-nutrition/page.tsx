@@ -62,6 +62,21 @@ export default function WorkoutNutritionPage() {
         title="Fuel Your Training with Precision"
         description="Connect workout tracking with intelligent nutrition in ProteinSnaps — built for gym-goers and strength athletes."
       />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-5.webp"
+                alt="ProteinSnaps gym and strength training"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">

@@ -32,9 +32,9 @@ const MEAL_SCANNER_SCREENSHOT_SRC = [
   "/images/proteinsnaps/PS-13.webp",
 ] as const;
 
-const MEAL_SCANNER_SCREENSHOTS = SCREENSHOT_SLIDES.filter((slide) =>
-  (MEAL_SCANNER_SCREENSHOT_SRC as readonly string[]).includes(slide.src)
-);
+const MEAL_SCANNER_SCREENSHOTS = MEAL_SCANNER_SCREENSHOT_SRC.map(
+  (src) => SCREENSHOT_SLIDES.find((slide) => slide.src === src)!
+).filter(Boolean);
 
 const SCANNER_STEPS = [
   "Open ProteinSnaps and tap Snap a Meal",

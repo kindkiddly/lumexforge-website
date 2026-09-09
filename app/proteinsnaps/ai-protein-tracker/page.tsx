@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
     url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/PS-4.webp", width: 1080, height: 1920 }],
+    images: [{ url: "/images/proteinsnaps/PS-8.webp", width: 1080, height: 1920 }],
     type: "website",
   },
   twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "AI Protein Tracker — ProteinSnaps",
     description:
       "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
-    images: ["/images/proteinsnaps/PS-4.webp"],
+    images: ["/images/proteinsnaps/PS-8.webp"],
   },
 };
 
@@ -53,20 +53,20 @@ const TRACKER_FEATURES = [
       "Spot patterns in your nutrition with smart insights and trend analysis over time.",
   },
   {
-    title: "Personalized Coaching",
+    title: "Daily Recovery Summary",
     description:
-      "Get AI coaching tailored to your goals, progress, and eating habits.",
+      "Review protein intake, hydration and workout completion in one end-of-day snapshot.",
   },
 ];
 
 const TRACKER_SCREENSHOTS = [
   {
-    src: "/images/proteinsnaps/PS-3.webp",
-    alt: "AI Meal Recognition",
+    src: "/images/proteinsnaps/PS-8.webp",
+    alt: "Goal-Based Daily Tracking",
   },
   {
-    src: "/images/proteinsnaps/PS-4.webp",
-    alt: "Personalized AI Coach",
+    src: "/images/proteinsnaps/PS-5.webp",
+    alt: "Progress Analytics and Protein Trends",
   },
 ] as const;
 
@@ -78,6 +78,21 @@ export default function AIProteinTrackerPage() {
         title="Track Protein Smarter with AI"
         description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking — so hitting your protein goals feels effortless."
       />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-7.webp"
+                alt="ProteinSnaps daily macro and recovery summary"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-12 lg:grid-cols-2">
