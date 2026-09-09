@@ -58,7 +58,7 @@ export function ScreenshotsSection() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
               <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
-              <div className="relative mt-4 aspect-[9/19] overflow-hidden rounded-[1.5rem] bg-black">
+              <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
                 {SCREENSHOT_SLIDES.map((screenshot, i) => (
                   <motion.div
                     key={screenshot.src}
@@ -112,7 +112,7 @@ export function ScreenshotsSection() {
           <div className="relative mx-auto w-full max-w-[280px]">
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
             <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame">
-              <div className="relative mt-3 aspect-[9/19] overflow-hidden rounded-[1.5rem] bg-black">
+              <div className="relative mt-3 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
                 {SCREENSHOT_SLIDES.map((screenshot, i) => (
                   <motion.div
                     key={screenshot.src}
