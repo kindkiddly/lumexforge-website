@@ -9,7 +9,7 @@ import { FadeInUp } from "./animations/FadeInUp";
 const SILK = "cubic-bezier(0.16, 1, 0.3, 1)";
 const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
-const ZOOM_STEP = { pw: 280, g1: 310, g2: 553, gh: 780, sh: 720 } as const;
+const ZOOM_STEP = { pw: 196, g1: 310, g2: 553, gh: 780, sh: 504 } as const;
 
 type CarouselPosition =
   | "center"
@@ -238,7 +238,7 @@ export function ScreenshotsCarousel3D() {
                       }}
                     >
                       <div
-                        className={`relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 shadow-2xl ${
+                        className={`relative rounded-[1.4rem] border-[2.1px] border-white/10 bg-[#0a0f18] p-[5.6px] shadow-2xl ${
                           isCenter ? "ps-glow-frame" : ""
                         }`}
                         style={{
@@ -246,15 +246,15 @@ export function ScreenshotsCarousel3D() {
                           transition: `box-shadow 0.6s ${SILK}`,
                         }}
                       >
-                        <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
-                        <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
+                        <div className="absolute left-1/2 top-[5.6px] z-10 h-[2.8px] w-[44.8px] -translate-x-1/2 rounded-full bg-white/20" />
+                        <div className="relative mt-[11.2px] aspect-[9/16] overflow-hidden rounded-[1.05rem] bg-black">
                           {Math.abs(offset) <= 2 && (
                             <Image
                               src={screenshot.src}
                               alt={screenshot.feature}
-                              width={280}
-                              height={497}
-                              sizes="280px"
+                              width={196}
+                              height={348}
+                              sizes="196px"
                               loading="lazy"
                               className="h-full w-full object-contain object-center"
                             />
