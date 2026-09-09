@@ -56,19 +56,16 @@ export default function HowItWorksPage() {
               Three Steps to Better Nutrition
             </h2>
           </FadeInUp>
-          <div className="mt-16 grid gap-12 lg:grid-cols-3">
+          <div className="relative mt-16 grid gap-12 lg:grid-cols-3">
+            <div
+              className="pointer-events-none absolute left-[16.67%] right-[16.67%] z-0 hidden h-px lg:top-[calc(33.5rem+2rem+2.5rem)] lg:block"
+              aria-hidden="true"
+            >
+              <div className="h-full bg-gradient-to-r from-[#00e6a8]/50 via-[#00c2ff]/50 to-[#00e6a8]/50" />
+            </div>
             {VISUAL_STEPS.map((step, i) => (
               <FadeInUp key={step.step} delay={i * 0.1} className="text-center">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-lg font-bold text-[#00e6a8]">
-                  {step.step}
-                </span>
-                <h2 className="mt-5 font-serif text-xl font-semibold text-foreground">
-                  {step.title}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
-                  {step.description}
-                </p>
-                <div className="relative mx-auto mt-8 w-[280px] shrink-0">
+                <div className="relative mx-auto w-[280px] shrink-0">
                   <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
                   <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
                     <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
@@ -85,6 +82,15 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
                 </div>
+                <span className="relative z-10 mt-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-lg font-bold text-[#00e6a8]">
+                  {step.step}
+                </span>
+                <h2 className="mt-5 font-serif text-xl font-semibold text-foreground">
+                  {step.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                  {step.description}
+                </p>
                 <p className="mt-5 font-serif text-lg font-semibold text-foreground">
                   {step.slide.feature}
                 </p>
