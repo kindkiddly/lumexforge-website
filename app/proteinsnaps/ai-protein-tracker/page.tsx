@@ -2,9 +2,29 @@ import { AIFeaturesSection } from "@/components/proteinsnaps/AIFeaturesSection";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ZoomRevealText } from "@/components/proteinsnaps/animations/ZoomRevealText";
-import { aiTrackerMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 
-export const metadata = aiTrackerMetadata;
+export const metadata: Metadata = {
+  title: "AI Protein Tracker — ProteinSnaps",
+  description:
+    "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+  openGraph: {
+    title: "AI Protein Tracker — ProteinSnaps",
+    description:
+      "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+    url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Protein Tracker — ProteinSnaps",
+    description:
+      "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 const TRACKER_FEATURES = [
   {

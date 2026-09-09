@@ -2,10 +2,30 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
-import { mealScannerMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = mealScannerMetadata;
+export const metadata: Metadata = {
+  title: "AI Meal Scanner — ProteinSnaps",
+  description:
+    "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+  openGraph: {
+    title: "AI Meal Scanner — ProteinSnaps",
+    description:
+      "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+    url: "https://proteinsnaps.lumexforge.com/meal-scanner",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Meal Scanner — ProteinSnaps",
+    description:
+      "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 const SCANNER_STEPS = [
   "Open ProteinSnaps and tap Snap a Meal",

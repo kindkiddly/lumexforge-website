@@ -2,9 +2,29 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { HowItWorksSection } from "@/components/proteinsnaps/HowItWorksSection";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
-import { howItWorksMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 
-export const metadata = howItWorksMetadata;
+export const metadata: Metadata = {
+  title: "How It Works — ProteinSnaps",
+  description:
+    "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+  openGraph: {
+    title: "How It Works — ProteinSnaps",
+    description:
+      "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+    url: "https://proteinsnaps.lumexforge.com/how-it-works",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How It Works — ProteinSnaps",
+    description:
+      "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 export default function HowItWorksPage() {
   return (

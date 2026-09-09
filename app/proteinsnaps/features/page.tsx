@@ -3,9 +3,29 @@ import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { FEATURE_CARDS } from "@/lib/proteinsnaps/constants";
-import { featuresMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 
-export const metadata = featuresMetadata;
+export const metadata: Metadata = {
+  title: "Features — ProteinSnaps",
+  description:
+    "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+  openGraph: {
+    title: "Features — ProteinSnaps",
+    description:
+      "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+    url: "https://proteinsnaps.lumexforge.com/features",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Features — ProteinSnaps",
+    description:
+      "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 export default function FeaturesPage() {
   return (

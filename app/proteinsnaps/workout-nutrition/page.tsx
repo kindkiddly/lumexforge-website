@@ -2,10 +2,30 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { StaggerWords } from "@/components/proteinsnaps/animations/StaggerWords";
-import { workoutNutritionMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = workoutNutritionMetadata;
+export const metadata: Metadata = {
+  title: "Workout Nutrition — ProteinSnaps",
+  description:
+    "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+  openGraph: {
+    title: "Workout Nutrition — ProteinSnaps",
+    description:
+      "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+    url: "https://proteinsnaps.lumexforge.com/workout-nutrition",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Workout Nutrition — ProteinSnaps",
+    description:
+      "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 const WORKOUT_FEATURES = [
   {

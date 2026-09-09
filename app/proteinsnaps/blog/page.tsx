@@ -1,9 +1,29 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
-import { blogMetadata } from "@/lib/proteinsnaps/metadata";
+import type { Metadata } from "next";
 
-export const metadata = blogMetadata;
+export const metadata: Metadata = {
+  title: "Blog — ProteinSnaps",
+  description:
+    "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+  openGraph: {
+    title: "Blog — ProteinSnaps",
+    description:
+      "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+    url: "https://proteinsnaps.lumexforge.com/blog",
+    siteName: "ProteinSnaps",
+    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — ProteinSnaps",
+    description:
+      "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+    images: ["/images/proteinsnaps/PS-1.webp"],
+  },
+};
 
 const PREVIEW_ARTICLES = [
   {
