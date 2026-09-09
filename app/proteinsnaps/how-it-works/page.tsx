@@ -1,7 +1,7 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
-import { HOW_IT_WORKS_STEPS } from "@/lib/proteinsnaps/constants";
+import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -27,11 +27,16 @@ export const metadata: Metadata = {
   },
 };
 
-const VISUAL_STEP_IMAGES = [
+const VISUAL_STEP_SRC = [
   "/images/proteinsnaps/PS-3.webp",
-  "/images/proteinsnaps/PS-8.webp",
   "/images/proteinsnaps/PS-5.webp",
+  "/images/proteinsnaps/PS-4.webp",
 ] as const;
+
+const VISUAL_STEPS = VISUAL_STEP_SRC.map((src, i) => ({
+  ...HOW_IT_WORKS_STEPS[i],
+  slide: SCREENSHOT_SLIDES.find((s) => s.src === src)!,
+}));
 
 export default function HowItWorksPage() {
   return (
@@ -52,7 +57,7 @@ export default function HowItWorksPage() {
             </h2>
           </FadeInUp>
           <div className="mt-16 grid gap-12 lg:grid-cols-3">
-            {HOW_IT_WORKS_STEPS.map((step, i) => (
+            {VISUAL_STEPS.map((step, i) => (
               <FadeInUp key={step.step} delay={i * 0.1} className="text-center">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-lg font-bold text-[#00e6a8]">
                   {step.step}
@@ -69,8 +74,8 @@ export default function HowItWorksPage() {
                     <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
                     <div className="relative mt-4 aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-black">
                       <Image
-                        src={VISUAL_STEP_IMAGES[i]}
-                        alt={step.title}
+                        src={step.slide.src}
+                        alt={step.slide.feature}
                         fill
                         sizes="280px"
                         className="object-contain object-center"
@@ -78,6 +83,12 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
                 </div>
+                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
+                  {step.slide.feature}
+                </p>
+                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
+                  {step.slide.description}
+                </p>
               </FadeInUp>
             ))}
           </div>
