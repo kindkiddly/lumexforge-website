@@ -327,40 +327,34 @@ export function ScreenshotsCarousel3D() {
                   />
                 </svg>
               </button>
+
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={currentCenter}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute bottom-0 left-0 z-20 max-w-xs text-right font-serif text-xl text-white"
+                >
+                  {slide.feature}
+                </motion.h3>
+              </AnimatePresence>
+
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentCenter}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute bottom-0 right-0 z-20 max-w-xs line-clamp-2 text-left text-sm text-foreground-secondary"
+                >
+                  {slide.description}
+                </motion.p>
+              </AnimatePresence>
             </div>
           </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentCenter}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-10 w-full max-w-3xl text-center"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
-                Feature {currentCenter + 1} of {SCREENSHOT_SLIDES.length}
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
-                {slide.feature}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
-                {slide.description}
-              </p>
-              <ul className="mt-6 space-y-3 text-left">
-                {slide.highlights.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-foreground-secondary"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </AnimatePresence>
         </div>
       </div>
     </section>
