@@ -3,14 +3,12 @@
 import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FadeInUp } from "./animations/FadeInUp";
 
 const SILK = "cubic-bezier(0.16, 1, 0.3, 1)";
 const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
-const DESKTOP_MIN_WIDTH = 1024;
-
 const ZOOM_STEP = { pw: 280, g1: 310, g2: 553, gh: 780, sh: 720 } as const;
 
 type CarouselPosition =
@@ -109,12 +107,11 @@ export function ScreenshotsCarousel3D() {
   const slide = SCREENSHOT_SLIDES[currentCenter];
 
   useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= DESKTOP_MIN_WIDTH);
-    };
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const updateDesktop = () => setIsDesktop(mediaQuery.matches);
+    updateDesktop();
+    mediaQuery.addEventListener("change", updateDesktop);
+    return () => mediaQuery.removeEventListener("change", updateDesktop);
   }, []);
 
   const goTo = useCallback(
@@ -129,19 +126,50 @@ export function ScreenshotsCarousel3D() {
     [totalCards]
   );
 
-  const next = useCallback(() => {
-    goTo((currentCenter + 1) % totalCards);
-  }, [currentCenter, goTo, totalCards]);
+  const advanceSlide = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
+    setCurrentCenter((prev) => (prev + 1) % totalCards);
+    window.setTimeout(() => {
+      isAnimatingRef.current = false;
+    }, ANIM_LOCK_MS);
+  }, [totalCards]);
 
-  const prev = useCallback(() => {
-    goTo((currentCenter - 1 + totalCards) % totalCards);
-  }, [currentCenter, goTo, totalCards]);
+  const stepBack = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
+    setCurrentCenter((prev) => (prev - 1 + totalCards) % totalCards);
+    window.setTimeout(() => {
+      isAnimatingRef.current = false;
+    }, ANIM_LOCK_MS);
+  }, [totalCards]);
 
   useEffect(() => {
     if (!isDesktop || isHovered) return;
-    const timer = window.setInterval(next, AUTOPLAY_MS);
+    const timer = window.setInterval(advanceSlide, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [isDesktop, isHovered, next]);
+  }, [isDesktop, isHovered, advanceSlide]);
+
+  const visibleSlides = useMemo(() => {
+    return SCREENSHOT_SLIDES.flatMap((screenshot, i) => {
+      const offset = getWrappedOffset(i, currentCenter, totalCards);
+      if (Math.abs(offset) > 3) return [];
+
+      const position = getPositionForOffset(i, currentCenter, totalCards);
+      const styles = getCardStyles(position);
+
+      return [
+        {
+          screenshot,
+          i,
+          offset,
+          position,
+          styles,
+          isCenter: position === "center",
+        },
+      ];
+    });
+  }, [currentCenter, totalCards]);
 
   if (!isDesktop) return null;
 
@@ -174,19 +202,7 @@ export function ScreenshotsCarousel3D() {
                 className="relative flex h-full w-full items-center justify-center"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                {SCREENSHOT_SLIDES.map((screenshot, i) => {
-                  const offset = getWrappedOffset(i, currentCenter, totalCards);
-                  if (Math.abs(offset) > 3) return null;
-
-                  const position = getPositionForOffset(
-                    i,
-                    currentCenter,
-                    totalCards
-                  );
-                  const styles = getCardStyles(position);
-                  const isCenter = position === "center";
-
-                  return (
+                {visibleSlides.map(({ screenshot, i, offset, position, styles, isCenter }) => (
                     <div
                       key={screenshot.src}
                       role="button"
@@ -246,15 +262,14 @@ export function ScreenshotsCarousel3D() {
                         </div>
                       </div>
                     </div>
-                  );
-                })}
+                ))}
               </div>
             </div>
 
             <div className="mt-12 flex items-center justify-center gap-6">
               <button
                 type="button"
-                onClick={prev}
+                onClick={stepBack}
                 aria-label="Previous screen"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
               >
@@ -294,7 +309,7 @@ export function ScreenshotsCarousel3D() {
 
               <button
                 type="button"
-                onClick={next}
+                onClick={advanceSlide}
                 aria-label="Next screen"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
               >

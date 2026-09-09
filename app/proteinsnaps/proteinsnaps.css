@@ -88,3 +88,214 @@
     radial-gradient(ellipse 60% 50% at 20% 30%, rgba(0, 230, 168, 0.12), transparent 60%),
     radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0, 194, 255, 0.1), transparent 60%);
 }
+
+@media (min-width: 1024px) {
+  .ps-hero-desktop-label {
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+  .ps-hero-desktop-h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    max-width: 380px !important;
+  }
+  .ps-hero-desktop-sub {
+    font-size: 0.8rem !important;
+    line-height: 1.55 !important;
+    max-width: 380px !important;
+  }
+  .ps-hero-desktop-btn {
+    height: 2.25rem !important;
+    min-height: 2.25rem !important;
+    max-height: 2.25rem !important;
+    padding: 0 1rem !important;
+    font-size: 0.8rem !important;
+    line-height: 1 !important;
+  }
+  .ps-hero-desktop-play {
+    border: 1px solid rgba(0, 230, 168, 0.5) !important;
+    background: rgba(0, 230, 168, 0.1) !important;
+    animation: ps-glow-breathe-mint 3.5s ease-in-out infinite !important;
+  }
+  .ps-hero-desktop-appstore {
+    border: 1px solid rgba(0, 194, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
+  }
+  .ps-hero-qr-android {
+    box-shadow:
+      0 0 0 1px rgba(0, 230, 168, 0.28),
+      0 0 12px rgba(0, 230, 168, 0.22),
+      0 0 24px rgba(0, 230, 168, 0.1) !important;
+  }
+  .ps-hero-qr-ios {
+    box-shadow:
+      0 0 0 1px rgba(0, 194, 255, 0.2),
+      0 0 10px rgba(0, 194, 255, 0.14),
+      0 0 20px rgba(0, 194, 255, 0.08) !important;
+  }
+  @keyframes ps-glow-breathe-mint {
+    0%, 100% {
+      box-shadow:
+        0 0 0 1px rgba(0, 230, 168, 0.45),
+        0 0 14px rgba(0, 230, 168, 0.35),
+        0 0 28px rgba(0, 230, 168, 0.12);
+    }
+    50% {
+      box-shadow:
+        0 0 0 1px rgba(0, 230, 168, 0.65),
+        0 0 20px rgba(0, 230, 168, 0.5),
+        0 0 36px rgba(0, 230, 168, 0.2);
+    }
+  }
+  @keyframes ps-glow-breathe-cyan {
+    0%, 100% {
+      box-shadow:
+        0 0 0 1px rgba(0, 194, 255, 0.35),
+        0 0 14px rgba(0, 194, 255, 0.28),
+        0 0 28px rgba(0, 194, 255, 0.1);
+    }
+    50% {
+      box-shadow:
+        0 0 0 1px rgba(0, 194, 255, 0.55),
+        0 0 20px rgba(0, 194, 255, 0.42),
+        0 0 36px rgba(0, 194, 255, 0.18);
+    }
+  }
+  .ps-hero-desktop-left {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 440px !important;
+    max-width: 440px !important;
+  }
+  .ps-hero-desktop-text {
+    position: absolute !important;
+    left: 60px !important;
+    top: 12% !important;
+    bottom: 240px !important;
+    width: 380px !important;
+    max-width: 380px !important;
+    overflow: hidden !important;
+  }
+  .ps-hero-desktop-store-fixed {
+    position: absolute !important;
+    left: 60px !important;
+    bottom: 60px !important;
+    z-index: 10 !important;
+  }
+  .ps-hero-desktop-scan {
+    font-size: 0.7rem !important;
+  }
+  .ps-headline-gradient {
+    background: linear-gradient(135deg, #00e6a8, #00c2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ps-headline-shimmer {
+    position: relative;
+  }
+  .ps-headline-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 215, 0, 0.35) 50%,
+      transparent 65%
+    );
+    animation: ps-shimmer 1.2s ease-out forwards;
+    pointer-events: none;
+  }
+  @keyframes ps-shimmer {
+    0% { transform: translateX(-120%); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateX(120%); opacity: 0; }
+  }
+  .ps-hero-section {
+    margin-top: 65px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100svh - 65px) !important;
+    max-height: calc(100svh - 65px) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate !important;
+  }
+  .ps-hero-images {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    background-color: #050811 !important;
+    animation: ps-hero-images-glow 4s ease-in-out infinite !important;
+    -webkit-mask-image:
+      linear-gradient(to left, transparent 0, #000 40px),
+      linear-gradient(to bottom, transparent 0, #000 30px),
+      linear-gradient(to top, transparent 0, #000 30px);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to left, transparent 0, #000 40px),
+      linear-gradient(to bottom, transparent 0, #000 30px),
+      linear-gradient(to top, transparent 0, #000 30px);
+    mask-composite: intersect;
+  }
+  @keyframes ps-hero-images-glow {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 72px 14px rgba(0, 194, 255, 0.264),
+        inset 0 0 144px 29px rgba(123, 47, 255, 0.144);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 82px 17px rgba(0, 194, 255, 0.384),
+        inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
+    }
+  }
+  .ps-hero-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+  }
+  .ps-hero-slide-image {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: right center !important;
+  }
+  .ps-hero-slide-image.ps-hero-slide-psl9 {
+    object-position: right 30% !important;
+  }
+  .ps-hero-text-layer {
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+  .ps-hero-image-vignette {
+    background:
+      linear-gradient(to right, rgba(5, 8, 17, 0.52) 0%, rgba(5, 8, 17, 0.22) 22%, rgba(5, 8, 17, 0.08) 48%, transparent 64%),
+      linear-gradient(to left, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%),
+      linear-gradient(to bottom, rgba(5, 8, 17, 0.22) 0%, rgba(5, 8, 17, 0.07) 20%, transparent 36%),
+      linear-gradient(to top, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%);
+  }
+  .ps-hero-section.ps-hero-tab-hidden .ps-hero-desktop-play,
+  .ps-hero-section.ps-hero-tab-hidden .ps-hero-desktop-appstore,
+  .ps-hero-section.ps-hero-tab-hidden .ps-hero-images {
+    animation-play-state: paused !important;
+  }
+}

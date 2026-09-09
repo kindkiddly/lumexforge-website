@@ -406,52 +406,60 @@ function AnimatedHeadline({
   }
 }
 
-function DesktopAmbientGlow() {
+function DesktopAmbientGlow({ isTabVisible }: { isTabVisible: boolean }) {
   return (
     <>
       <motion.div
         className="absolute left-[6%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full blur-[120px]"
-        animate={{
-          opacity: [0.18, 0.28, 0.22, 0.18],
-          scale: [1, 1.08, 1.04, 1],
-          background: [
-            "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
-            "radial-gradient(circle, rgba(123,47,255,0.38) 0%, rgba(74,0,224,0.16) 42%, transparent 74%)",
-            "radial-gradient(circle, rgba(74,0,224,0.4) 0%, rgba(123,47,255,0.17) 41%, transparent 73%)",
-            "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
-          ],
-        }}
+        animate={
+          isTabVisible
+            ? {
+                opacity: [0.18, 0.28, 0.22, 0.18],
+                scale: [1, 1.08, 1.04, 1],
+                background: [
+                  "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
+                  "radial-gradient(circle, rgba(123,47,255,0.38) 0%, rgba(74,0,224,0.16) 42%, transparent 74%)",
+                  "radial-gradient(circle, rgba(74,0,224,0.4) 0%, rgba(123,47,255,0.17) 41%, transparent 73%)",
+                  "radial-gradient(circle, rgba(74,0,224,0.42) 0%, rgba(123,47,255,0.18) 40%, transparent 72%)",
+                ],
+              }
+            : false
+        }
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute left-[14%] top-[44%] h-[320px] w-[320px] -translate-y-1/2 rounded-full blur-[110px]"
-        animate={{
-          opacity: [0.14, 0.24, 0.18, 0.14],
-          scale: [1.04, 0.96, 1.06, 1.04],
-          background: [
-            "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
-            "radial-gradient(circle, rgba(0,194,255,0.32) 0%, rgba(27,15,219,0.12) 48%, transparent 72%)",
-            "radial-gradient(circle, rgba(27,15,219,0.36) 0%, rgba(0,194,255,0.13) 46%, transparent 71%)",
-            "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
-          ],
-        }}
+        animate={
+          isTabVisible
+            ? {
+                opacity: [0.14, 0.24, 0.18, 0.14],
+                scale: [1.04, 0.96, 1.06, 1.04],
+                background: [
+                  "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
+                  "radial-gradient(circle, rgba(0,194,255,0.32) 0%, rgba(27,15,219,0.12) 48%, transparent 72%)",
+                  "radial-gradient(circle, rgba(27,15,219,0.36) 0%, rgba(0,194,255,0.13) 46%, transparent 71%)",
+                  "radial-gradient(circle, rgba(27,15,219,0.38) 0%, rgba(0,194,255,0.14) 45%, transparent 70%)",
+                ],
+              }
+            : false
+        }
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
     </>
   );
 }
 
-function DesktopImageBleedGlow() {
+function DesktopImageBleedGlow({ isTabVisible }: { isTabVisible: boolean }) {
   return (
     <motion.div
       className="absolute inset-0"
       aria-hidden="true"
-      animate={{ opacity: [0.45, 0.72, 0.58, 0.45] }}
+      animate={isTabVisible ? { opacity: [0.45, 0.72, 0.58, 0.45] } : false}
       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
     >
       <motion.div
         className="absolute inset-y-0 right-0 w-[62%] blur-[100px]"
-        animate={{ opacity: [0.5, 0.75, 0.6, 0.5] }}
+        animate={isTabVisible ? { opacity: [0.5, 0.75, 0.6, 0.5] } : false}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
         style={{
           background:
@@ -460,10 +468,14 @@ function DesktopImageBleedGlow() {
       />
       <motion.div
         className="absolute left-[12%] top-1/2 h-[80%] w-[42%] -translate-y-1/2 blur-[110px]"
-        animate={{
-          opacity: [0.3, 0.5, 0.38, 0.3],
-          scale: [1, 1.06, 1.03, 1],
-        }}
+        animate={
+          isTabVisible
+            ? {
+                opacity: [0.3, 0.5, 0.38, 0.3],
+                scale: [1, 1.06, 1.03, 1],
+              }
+            : false
+        }
         transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
         style={{
           background:
@@ -591,6 +603,7 @@ function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
 export function HeroSection() {
   const [index, setIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isTabVisible, setIsTabVisible] = useState(true);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
@@ -640,6 +653,16 @@ export function HeroSection() {
     return () => mediaQuery.removeEventListener("change", updateDesktop);
   }, []);
 
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      setIsTabVisible(document.visibilityState === "visible");
+    };
+    onVisibilityChange();
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+  }, []);
+
   const desktopImageContainerStyle: CSSProperties | undefined = isDesktop
     ? { boxShadow: DESKTOP_IMAGE_GLOW }
     : undefined;
@@ -677,225 +700,16 @@ export function HeroSection() {
 
   return (
     <section
-      className="ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]"
+      className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
       style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
     >
-      {/* Desktop-only styles — mobile handled separately */}
-      <style>{`
-        @media (min-width: 1024px) {
-          .ps-hero-desktop-label {
-            font-size: 0.75rem !important;
-            font-weight: 400 !important;
-            letter-spacing: normal !important;
-            text-transform: none !important;
-          }
-          .ps-hero-desktop-h1 {
-            font-size: 2rem !important;
-            line-height: 1.2 !important;
-            max-width: 380px !important;
-          }
-          .ps-hero-desktop-sub {
-            font-size: 0.8rem !important;
-            line-height: 1.55 !important;
-            max-width: 380px !important;
-          }
-          .ps-hero-desktop-btn {
-            height: 2.25rem !important;
-            min-height: 2.25rem !important;
-            max-height: 2.25rem !important;
-            padding: 0 1rem !important;
-            font-size: 0.8rem !important;
-            line-height: 1 !important;
-          }
-          .ps-hero-desktop-play {
-            border: 1px solid rgba(0, 230, 168, 0.5) !important;
-            background: rgba(0, 230, 168, 0.1) !important;
-            animation: ps-glow-breathe-mint 3.5s ease-in-out infinite !important;
-          }
-          .ps-hero-desktop-appstore {
-            border: 1px solid rgba(0, 194, 255, 0.4) !important;
-            background: rgba(255, 255, 255, 0.04) !important;
-            animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
-          }
-          .ps-hero-qr-android {
-            box-shadow:
-              0 0 0 1px rgba(0, 230, 168, 0.28),
-              0 0 12px rgba(0, 230, 168, 0.22),
-              0 0 24px rgba(0, 230, 168, 0.1) !important;
-          }
-          .ps-hero-qr-ios {
-            box-shadow:
-              0 0 0 1px rgba(0, 194, 255, 0.2),
-              0 0 10px rgba(0, 194, 255, 0.14),
-              0 0 20px rgba(0, 194, 255, 0.08) !important;
-          }
-          @keyframes ps-glow-breathe-mint {
-            0%, 100% {
-              box-shadow:
-                0 0 0 1px rgba(0, 230, 168, 0.45),
-                0 0 14px rgba(0, 230, 168, 0.35),
-                0 0 28px rgba(0, 230, 168, 0.12);
-            }
-            50% {
-              box-shadow:
-                0 0 0 1px rgba(0, 230, 168, 0.65),
-                0 0 20px rgba(0, 230, 168, 0.5),
-                0 0 36px rgba(0, 230, 168, 0.2);
-            }
-          }
-          @keyframes ps-glow-breathe-cyan {
-            0%, 100% {
-              box-shadow:
-                0 0 0 1px rgba(0, 194, 255, 0.35),
-                0 0 14px rgba(0, 194, 255, 0.28),
-                0 0 28px rgba(0, 194, 255, 0.1);
-            }
-            50% {
-              box-shadow:
-                0 0 0 1px rgba(0, 194, 255, 0.55),
-                0 0 20px rgba(0, 194, 255, 0.42),
-                0 0 36px rgba(0, 194, 255, 0.18);
-            }
-          }
-          .ps-hero-desktop-left {
-            position: absolute !important;
-            left: 0 !important;
-            top: 0 !important;
-            height: 100% !important;
-            width: 440px !important;
-            max-width: 440px !important;
-          }
-          .ps-hero-desktop-text {
-            position: absolute !important;
-            left: 60px !important;
-            top: 12% !important;
-            bottom: 240px !important;
-            width: 380px !important;
-            max-width: 380px !important;
-            overflow: hidden !important;
-          }
-          .ps-hero-desktop-store-fixed {
-            position: absolute !important;
-            left: 60px !important;
-            bottom: 60px !important;
-            z-index: 10 !important;
-          }
-          .ps-hero-desktop-scan {
-            font-size: 0.7rem !important;
-          }
-          .ps-headline-gradient {
-            background: linear-gradient(135deg, #00e6a8, #00c2ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-          }
-          .ps-headline-shimmer {
-            position: relative;
-          }
-          .ps-headline-shimmer::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-              105deg,
-              transparent 35%,
-              rgba(255, 215, 0, 0.35) 50%,
-              transparent 65%
-            );
-            animation: ps-shimmer 1.2s ease-out forwards;
-            pointer-events: none;
-          }
-          @keyframes ps-shimmer {
-            0% { transform: translateX(-120%); opacity: 0; }
-            30% { opacity: 1; }
-            100% { transform: translateX(120%); opacity: 0; }
-          }
-          .ps-hero-section {
-            margin-top: ${NAVBAR_OFFSET_PX}px !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            height: calc(100svh - ${NAVBAR_OFFSET_PX}px) !important;
-            max-height: calc(100svh - ${NAVBAR_OFFSET_PX}px) !important;
-            overflow: hidden !important;
-            box-sizing: border-box !important;
-            isolation: isolate !important;
-          }
-          .ps-hero-images {
-            position: absolute !important;
-            inset: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            max-width: 100% !important;
-            max-height: 100% !important;
-            overflow: hidden !important;
-            background-color: #050811 !important;
-            animation: ps-hero-images-glow 4s ease-in-out infinite !important;
-            -webkit-mask-image:
-              linear-gradient(to left, transparent 0, #000 40px),
-              linear-gradient(to bottom, transparent 0, #000 30px),
-              linear-gradient(to top, transparent 0, #000 30px);
-            -webkit-mask-composite: source-in;
-            mask-image:
-              linear-gradient(to left, transparent 0, #000 40px),
-              linear-gradient(to bottom, transparent 0, #000 30px),
-              linear-gradient(to top, transparent 0, #000 30px);
-            mask-composite: intersect;
-          }
-          @keyframes ps-hero-images-glow {
-            0%, 100% {
-              box-shadow:
-                inset 0 0 72px 14px rgba(0, 194, 255, 0.264),
-                inset 0 0 144px 29px rgba(123, 47, 255, 0.144);
-            }
-            50% {
-              box-shadow:
-                inset 0 0 82px 17px rgba(0, 194, 255, 0.384),
-                inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
-            }
-          }
-          .ps-hero-slide {
-            position: absolute !important;
-            inset: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            max-width: 100% !important;
-            max-height: 100% !important;
-            overflow: hidden !important;
-          }
-          .ps-hero-slide-image {
-            position: absolute !important;
-            inset: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            max-width: 100% !important;
-            max-height: 100% !important;
-            object-fit: contain !important;
-            object-position: right center !important;
-          }
-          .ps-hero-slide-image.ps-hero-slide-psl9 {
-            object-position: right 30% !important;
-          }
-          .ps-hero-text-layer {
-            overflow: hidden !important;
-            max-width: 100% !important;
-          }
-          .ps-hero-image-vignette {
-            background:
-              linear-gradient(to right, rgba(5, 8, 17, 0.52) 0%, rgba(5, 8, 17, 0.22) 22%, rgba(5, 8, 17, 0.08) 48%, transparent 64%),
-              linear-gradient(to left, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%),
-              linear-gradient(to bottom, rgba(5, 8, 17, 0.22) 0%, rgba(5, 8, 17, 0.07) 20%, transparent 36%),
-              linear-gradient(to top, rgba(5, 8, 17, 0.18) 0%, rgba(5, 8, 17, 0.06) 18%, transparent 34%);
-          }
-        }
-      `}</style>
-
       {/* z-0: glow effects */}
       <div
         className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
         aria-hidden="true"
       >
-        <DesktopAmbientGlow />
-        <DesktopImageBleedGlow />
+        <DesktopAmbientGlow isTabVisible={isTabVisible} />
+        <DesktopImageBleedGlow isTabVisible={isTabVisible} />
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
