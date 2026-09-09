@@ -37,10 +37,22 @@ const MEAL_SCANNER_SCREENSHOTS = MEAL_SCANNER_SCREENSHOT_SRC.map(
 ).filter(Boolean);
 
 const SCANNER_STEPS = [
-  "Open ProteinSnaps and tap Snap a Meal",
-  "Point your camera at your plate or upload a photo",
-  "AI identifies foods and estimates protein, carbs, fats, and calories",
-  "Review, adjust if needed, and save to your daily log",
+  {
+    title: "Open ProteinSnaps",
+    description: "and tap Snap a Meal",
+  },
+  {
+    title: "Point your camera at your plate",
+    description: "or upload a photo",
+  },
+  {
+    title: "AI identifies foods",
+    description: "and estimates protein, carbs, fats, and calories",
+  },
+  {
+    title: "Review, adjust if needed,",
+    description: "and save to your daily log",
+  },
 ];
 
 export default function MealScannerPage() {
@@ -99,16 +111,21 @@ export default function MealScannerPage() {
             <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
               How the AI Food Scanner Works
             </h2>
-            <ol className="mt-6 space-y-4">
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
               {SCANNER_STEPS.map((step, i) => (
-                <li key={step} className="flex gap-4 text-foreground-secondary">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
-                    {i + 1}
-                  </span>
-                  <span className="pt-1 text-base leading-relaxed">{step}</span>
-                </li>
+                <FadeInUp key={step.title} delay={0.15 + i * 0.06}>
+                  <article className="ps-glow-card h-full rounded-2xl p-6">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
+                      {i + 1}
+                    </span>
+                    <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                      {step.description}
+                    </p>
+                  </article>
+                </FadeInUp>
               ))}
-            </ol>
+            </div>
           </FadeInUp>
         </div>
       </section>
