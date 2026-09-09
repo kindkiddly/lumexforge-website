@@ -1,4 +1,5 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
+import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
@@ -102,6 +103,7 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </section>
+      <ScreenshotsSection />
       <DownloadCTA />
     </>
   );

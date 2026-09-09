@@ -3,7 +3,7 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeaturesGrid } from "@/components/proteinsnaps/FeaturesGrid";
 import { HeroSection } from "@/components/proteinsnaps/HeroSection";
 import { HowItWorksSection } from "@/components/proteinsnaps/HowItWorksSection";
-import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
+import { ScreenshotsCarousel3D } from "@/components/proteinsnaps/ScreenshotsCarousel3D";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function ProteinSnapsHomePage() {
   return (
     <>
       <HeroSection />
-      <ScreenshotsSection />
+      <ScreenshotsCarousel3D />
       <FeaturesGrid />
       <HowItWorksSection />
       <AIFeaturesSection />
