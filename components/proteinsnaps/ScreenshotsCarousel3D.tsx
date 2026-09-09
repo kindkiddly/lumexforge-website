@@ -9,7 +9,7 @@ import { FadeInUp } from "./animations/FadeInUp";
 const SILK = "cubic-bezier(0.16, 1, 0.3, 1)";
 const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
-const ZOOM_STEP = { pw: 196, g1: 310, g2: 553, gh: 780, sh: 504 } as const;
+const ZOOM_STEP = { pw: 196, g1: 217, g2: 387, gh: 546, sh: 504 } as const;
 
 type CarouselPosition =
   | "center"
@@ -23,12 +23,12 @@ type CarouselPosition =
 /** [translateX multiplier, rotateY, scale, opacity] */
 const POS_CONFIG: Record<CarouselPosition, [number, number, number, number]> = {
   center: [0, 0, 1, 1],
-  left1: [-1, 28, 0.82, 1],
-  right1: [1, -28, 0.82, 1],
-  left2: [-1, 45, 0.64, 0.55],
-  right2: [1, -45, 0.64, 0.55],
-  "hidden-left": [-1, 60, 0.48, 0],
-  "hidden-right": [1, -60, 0.48, 0],
+  left1: [-1, 36, 0.76, 1],
+  right1: [1, -36, 0.76, 1],
+  left2: [-1, 55, 0.56, 0.55],
+  right2: [1, -55, 0.56, 0.55],
+  "hidden-left": [-1, 72, 0.4, 0],
+  "hidden-right": [1, -72, 0.4, 0],
 };
 
 const POS_GAP: Record<

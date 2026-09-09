@@ -14,7 +14,7 @@ import { StoreButtons } from "./StoreButtons";
 const NAVBAR_HEIGHT = "4rem";
 /** Navbar inner row is h-16 (64px); header also has border-b (+1px). */
 const NAVBAR_OFFSET_PX = 65;
-const AUTO_PLAY_MS = 7000;
+const getSlideDelay = (index: number) => (index < 3 ? 4500 : 5000);
 const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
@@ -505,13 +505,18 @@ export function HeroSection() {
   const [index, setIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isTabVisible, setIsTabVisible] = useState(true);
-  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
+  const indexRef = useRef(index);
+
+  useEffect(() => {
+    indexRef.current = index;
+  }, [index]);
 
   const clearAutoPlay = useCallback(() => {
     if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
+      clearTimeout(autoPlayRef.current);
       autoPlayRef.current = null;
     }
   }, []);
@@ -525,9 +530,17 @@ export function HeroSection() {
 
   const startAutoPlay = useCallback(() => {
     clearAutoPlay();
-    autoPlayRef.current = setInterval(() => {
-      setIndex((i) => (i + 1) % HERO_SLIDES.length);
-    }, AUTO_PLAY_MS);
+
+    const scheduleNext = () => {
+      autoPlayRef.current = setTimeout(() => {
+        const next = (indexRef.current + 1) % HERO_SLIDES.length;
+        indexRef.current = next;
+        setIndex(next);
+        scheduleNext();
+      }, getSlideDelay(indexRef.current));
+    };
+
+    scheduleNext();
   }, [clearAutoPlay]);
 
   const pauseAutoPlay = useCallback(() => {

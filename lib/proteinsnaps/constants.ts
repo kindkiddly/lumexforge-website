@@ -48,10 +48,10 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Your AI Coach. Always By Your Side.",
+    headline: "Your AI Coach.",
     description:
-      "Ask anything, get real guidance. Your personal AI nutrition and fitness coach gives you smarter plans, better advice and real results every day.",
-    accentWords: ["AI", "Coach.", "Side."],
+      "Real guidance. Better results. Ask anything and get personalized nutrition and fitness coaching whenever you need it.",
+    accentWords: ["AI", "Coach."],
     name: "stagger",
     duration: 1.2,
     headlineClass: "font-serif font-light italic",
