@@ -1,6 +1,10 @@
 "use client";
 
-import { HERO_SLIDES, PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
+import {
+  DESKTOP_SLIDES,
+  HERO_SLIDES,
+  PROTEINSNAPS,
+} from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
@@ -29,109 +33,6 @@ const DESCRIPTION_DELAY = 0.3;
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share";
 const IOS_PLACEHOLDER_URL = "https://apps.apple.com/proteinsnaps";
-
-const DESKTOP_SLIDES = [
-  {
-    headline: "Smarter Tracking. Better Results. Every Day.",
-    description:
-      "Track meals, hit your protein goals, log workouts and get AI insights — all from one clean dashboard built for your daily routine.",
-    accentWords: ["Tracking.", "Results.", "Day."],
-    name: "fadeUp",
-    duration: 1.0,
-    headlineClass: "font-sans font-extrabold not-italic",
-    accentClass: "text-[#00E6A8]",
-  },
-  {
-    headline: "Snap It. Track It. Achieve It.",
-    description:
-      "Point your camera at any meal and AI instantly identifies foods, estimates portions and logs your nutrition in seconds — no guessing needed.",
-    accentWords: ["Snap", "Track", "Achieve"],
-    name: "blurReveal",
-    duration: 1.1,
-    headlineClass: "font-sans font-black uppercase",
-    accentClass: "text-white",
-  },
-  {
-    headline: "Your AI Coach. Always By Your Side.",
-    description:
-      "Ask anything, get real guidance. Your personal AI nutrition and fitness coach gives you smarter plans, better advice and real results every day.",
-    accentWords: ["AI", "Coach.", "Side."],
-    name: "stagger",
-    duration: 1.2,
-    headlineClass: "font-serif font-light italic",
-    accentClass: "text-[#00C2FF]",
-  },
-  {
-    headline: "Every Mile Builds a Stronger You.",
-    description:
-      "Track your runs, monitor calories burned, see your weekly progress and get AI insights that keep you moving forward every single day.",
-    accentWords: ["Mile", "Stronger", "You."],
-    name: "zoomIn",
-    duration: 0.9,
-    headlineClass: "font-sans font-black tracking-tighter",
-    accentClass: "text-[#00E6A8]",
-  },
-  {
-    headline: "Stronger Every Day.",
-    description:
-      "Log every set, track every rep and monitor your workout performance with smart nutrition guidance that fuels your gym sessions perfectly.",
-    accentWords: ["Stronger", "Every", "Day."],
-    name: "sweepLeft",
-    duration: 1.0,
-    headlineClass: "font-sans font-extrabold uppercase tracking-widest",
-    accentClass: "text-[#00C2FF]",
-  },
-  {
-    headline: "Good Food. Better You.",
-    description:
-      "Track every meal wherever you are — at home, at a restaurant or on the go. See your 30-day trends, weekly summaries and stay on your goals.",
-    accentWords: ["Food.", "Better", "You."],
-    name: "typewriter",
-    duration: 1.2,
-    headlineClass: "font-mono font-normal not-italic",
-    accentClass: "text-white",
-  },
-  {
-    headline: "Finish Strong. Recover Smarter.",
-    description:
-      "Track your protein goals, hydration, workout completion and recovery all in one daily summary that keeps you ready for what is next.",
-    accentWords: ["Strong.", "Smarter."],
-    name: "dropTop",
-    duration: 1.0,
-    headlineClass: "font-serif font-bold italic",
-    accentClass: "text-[#00E6A8]",
-  },
-  {
-    headline: "Real Food. Real Progress. That's ProteinSnaps.",
-    description:
-      "Whether you are a beginner or a champion — ProteinSnaps gives you personalized nutrition plans, AI coaching and smart tracking to win every day.",
-    accentWords: ["Food.", "Progress.", "ProteinSnaps."],
-    name: "glitch",
-    duration: 0.8,
-    headlineClass: "font-sans font-black italic",
-    accentClass: "ps-headline-gradient",
-  },
-  {
-    headline: "Real Progress. Real You.",
-    description:
-      "Track your transformation with progress photos, body measurements and AI coaching that celebrates every milestone on your journey to a stronger you.",
-    accentWords: ["Progress.", "You."],
-    name: "scaleSmall",
-    duration: 1.0,
-    headlineClass: "font-sans font-semibold not-italic",
-    accentClass: "text-[#00C2FF]",
-  },
-  {
-    headline: "Fuel Your Stronger You.",
-    description:
-      "Personalized nutrition, smart workouts and AI progress tracking — everything you need to build the body you want, all in one powerful app.",
-    accentWords: ["Fuel", "Stronger", "You."],
-    name: "shimmer",
-    duration: 1.2,
-    headlineClass: "font-sans font-black italic",
-    accentClass: "text-[#FFD700] ps-headline-shimmer",
-  },
-] as const;
 
 type DesktopSlide = (typeof DESKTOP_SLIDES)[number];
 
