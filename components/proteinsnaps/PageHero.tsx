@@ -9,7 +9,7 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16">
+    <section className="relative overflow-hidden pt-20 pb-6 sm:pt-24 sm:pb-8">
       <div className="ps-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <FadeInUp>
