@@ -7,7 +7,49 @@ import {
 } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
+
+type HeroImageBounds = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+};
+
+function measureObjectContainBounds(
+  img: HTMLImageElement,
+  container: HTMLElement,
+  verticalPosition: "center" | "30%"
+): HeroImageBounds | null {
+  if (!img.naturalWidth || !img.naturalHeight) return null;
+
+  const rect = img.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+  const scale = Math.min(
+    rect.width / img.naturalWidth,
+    rect.height / img.naturalHeight
+  );
+  const renderedW = img.naturalWidth * scale;
+  const renderedH = img.naturalHeight * scale;
+  const offsetX = rect.width - renderedW;
+  const offsetY =
+    verticalPosition === "30%"
+      ? (rect.height - renderedH) * 0.3
+      : (rect.height - renderedH) / 2;
+
+  return {
+    top: rect.top - containerRect.top + offsetY,
+    left: rect.left - containerRect.left + offsetX,
+    width: renderedW,
+    height: renderedH,
+  };
+}
 import QRCode from "react-qr-code";
 import { StoreButtons } from "./StoreButtons";
 
@@ -509,6 +551,8 @@ export function HeroSection() {
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const heroImagesRef = useRef<HTMLDivElement>(null);
+  const activeImageRef = useRef<HTMLImageElement | null>(null);
+  const [imageBounds, setImageBounds] = useState<HeroImageBounds | null>(null);
   const indexRef = useRef(index);
 
   useEffect(() => {
@@ -613,24 +657,69 @@ export function HeroSection() {
     }
   };
 
-  const resetHeroTilt = useCallback(() => {
-    heroImagesRef.current?.style.setProperty("--hero-tilt-x", "0deg");
-    heroImagesRef.current?.style.setProperty("--hero-tilt-y", "0deg");
-  }, []);
+  const measureImageBounds = useCallback(() => {
+    if (!isDesktop || !heroImagesRef.current || !activeImageRef.current) {
+      setImageBounds(null);
+      return;
+    }
 
-  const handleHeroTiltMove = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      if (!isDesktop) return;
+    const verticalPosition =
+      index === PSL_9_INDEX ? ("30%" as const) : ("center" as const);
+    const bounds = measureObjectContainBounds(
+      activeImageRef.current,
+      heroImagesRef.current,
+      verticalPosition
+    );
+    setImageBounds(bounds);
+  }, [isDesktop, index]);
 
-      const rect = event.currentTarget.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -3;
+  useEffect(() => {
+    measureImageBounds();
+    const timer = window.setTimeout(measureImageBounds, 1300);
+    return () => window.clearTimeout(timer);
+  }, [measureImageBounds]);
 
-      heroImagesRef.current?.style.setProperty("--hero-tilt-x", `${x}deg`);
-      heroImagesRef.current?.style.setProperty("--hero-tilt-y", `${y}deg`);
-    },
-    [isDesktop]
-  );
+  useEffect(() => {
+    if (!isDesktop || !heroImagesRef.current) return;
+
+    const container = heroImagesRef.current;
+    const observer = new ResizeObserver(() => {
+      measureImageBounds();
+    });
+
+    observer.observe(container);
+    window.addEventListener("resize", measureImageBounds);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measureImageBounds);
+    };
+  }, [isDesktop, measureImageBounds]);
+
+  const depthStyle: CSSProperties | undefined = imageBounds
+    ? {
+        top: imageBounds.top,
+        left: imageBounds.left,
+        width: imageBounds.width,
+        height: imageBounds.height,
+      }
+    : undefined;
+
+  const castStyle: CSSProperties | undefined = imageBounds
+    ? {
+        top: imageBounds.top + imageBounds.height - 12,
+        left: imageBounds.left + imageBounds.width * 0.08,
+        width: imageBounds.width * 0.84,
+      }
+    : undefined;
+
+  const edgeShadowStyle: CSSProperties | undefined = imageBounds
+    ? {
+        top: imageBounds.top,
+        left: imageBounds.left,
+        height: imageBounds.height,
+      }
+    : undefined;
 
   return (
     <section
@@ -652,47 +741,49 @@ export function HeroSection() {
         className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]"
         style={desktopImageContainerStyle}
       >
-        <div className="ps-hero-3d-stage">
-          <div className="ps-hero-3d-stack">
-            <div className="ps-hero-3d-plates hidden lg:block" aria-hidden="true">
+        {isDesktop && imageBounds && depthStyle && (
+          <div className="ps-hero-3d-depth hidden lg:block" aria-hidden="true">
+            <div className="ps-hero-3d-plates" style={depthStyle}>
               <div className="ps-hero-3d-plate ps-hero-3d-plate--3" />
               <div className="ps-hero-3d-plate ps-hero-3d-plate--2" />
               <div className="ps-hero-3d-plate ps-hero-3d-plate--1" />
             </div>
-            <div className="ps-hero-3d-edge-shadow hidden lg:block" aria-hidden="true" />
-            <div className="ps-hero-3d-cast hidden lg:block" aria-hidden="true" />
-            <div className="ps-hero-3d-float">
-              {HERO_SLIDES.map((slide, i) => {
-                if (!visibleHeroIndices.has(i)) return null;
-
-                return (
-                  <motion.div
-                    key={slide.src}
-                    className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
-                    initial={false}
-                    animate={{ opacity: i === index ? 1 : 0 }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
-                    style={{ zIndex: i === index ? 2 : 1 }}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt=""
-                      width={1536}
-                      height={1024}
-                      priority={i === 0}
-                      loading={i === 0 ? undefined : "lazy"}
-                      sizes="100vw"
-                      className={`ps-hero-slide-image h-full w-full object-cover object-center${
-                        i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
-                      }`}
-                      aria-hidden
-                    />
-                  </motion.div>
-                );
-              })}
-            </div>
+            <div className="ps-hero-3d-edge-shadow" style={edgeShadowStyle} />
+            {castStyle && (
+              <div className="ps-hero-3d-cast" style={castStyle} />
+            )}
           </div>
-        </div>
+        )}
+        {HERO_SLIDES.map((slide, i) => {
+          if (!visibleHeroIndices.has(i)) return null;
+
+          return (
+            <motion.div
+              key={slide.src}
+              className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
+              initial={false}
+              animate={{ opacity: i === index ? 1 : 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              style={{ zIndex: i === index ? 2 : 1 }}
+            >
+              <Image
+                ref={i === index ? activeImageRef : undefined}
+                src={slide.src}
+                alt=""
+                width={1536}
+                height={1024}
+                priority={i === 0}
+                loading={i === 0 ? undefined : "lazy"}
+                sizes="100vw"
+                onLoad={i === index ? measureImageBounds : undefined}
+                className={`ps-hero-slide-image h-full w-full object-cover object-center${
+                  i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
+                }`}
+                aria-hidden
+              />
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* z-2: gradient overlay */}
@@ -713,10 +804,8 @@ export function HeroSection() {
         onMouseDown={(e) => handleImageMouseDown(e.clientX)}
         onMouseUp={(e) => handleImageMouseUp(e.clientX)}
         onMouseEnter={() => pauseAutoPlay()}
-        onMouseMove={handleHeroTiltMove}
         onMouseLeave={(e) => {
           if (dragStartX.current !== null) handleImageMouseUp(e.clientX);
-          resetHeroTilt();
         }}
       >
         <button
