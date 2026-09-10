@@ -2,7 +2,6 @@
 
 import { HOW_IT_WORKS_STEPS } from "@/lib/proteinsnaps/constants";
 import { motion } from "framer-motion";
-import { FadeInUp } from "./animations/FadeInUp";
 import { ZoomRevealText } from "./animations/ZoomRevealText";
 
 export function HowItWorksSection() {
@@ -10,15 +9,6 @@ export function HowItWorksSection() {
     <section className="relative py-20 sm:py-24 lg:py-28">
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeInUp className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
-            How It Works
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Three Steps to Better Nutrition
-          </h2>
-        </FadeInUp>
-
         <div className="relative mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
           <div
             className="pointer-events-none absolute left-[16.67%] right-[16.67%] top-12 hidden h-px md:block"

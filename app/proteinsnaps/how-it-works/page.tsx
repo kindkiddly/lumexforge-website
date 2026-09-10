@@ -1,7 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
-import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -49,15 +48,7 @@ export default function HowItWorksPage() {
       />
       <section className="pb-12 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
-              How It Works
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Three Steps to Better Nutrition
-            </h2>
-          </FadeInUp>
-          <div className="relative mt-16 grid gap-12 lg:grid-cols-3">
+          <div className="relative mt-8 grid gap-12 lg:grid-cols-3">
             <div
               className="pointer-events-none absolute left-[16.67%] right-[16.67%] z-0 hidden h-px lg:top-[calc(33.5rem+2rem+2.5rem)] lg:block"
               aria-hidden="true"
