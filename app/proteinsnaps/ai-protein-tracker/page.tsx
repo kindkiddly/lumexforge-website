@@ -62,11 +62,11 @@ const TRACKER_FEATURES = [
 
 const TRACKER_SCREENSHOTS = [
   {
-    src: "/images/proteinsnaps/PS-8.webp",
+    src: "/images/proteinsnaps/PS-7.webp",
     alt: "Goal-Based Daily Tracking",
   },
   {
-    src: "/images/proteinsnaps/PS-5.webp",
+    src: "/images/proteinsnaps/PS-9.webp",
     alt: "Progress Analytics and Protein Trends",
   },
 ] as const;
@@ -102,12 +102,12 @@ export default function AIProteinTrackerPage() {
           </FadeInUp>
         </div>
       </section>
-      <section className="relative py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16 [&_.ps-parallax-inner]:bg-center">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-8.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-14.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-12 lg:grid-cols-2">
