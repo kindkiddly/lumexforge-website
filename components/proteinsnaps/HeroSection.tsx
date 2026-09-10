@@ -17,42 +17,6 @@ import {
 import QRCode from "react-qr-code";
 import { StoreButtons } from "./StoreButtons";
 
-type HeroImageBounds = {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-};
-
-function measureObjectContainBounds(
-  img: HTMLImageElement,
-  container: HTMLElement,
-  verticalPosition: "center" | "30%"
-): HeroImageBounds | null {
-  if (!img.naturalWidth || !img.naturalHeight) return null;
-
-  const rect = img.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
-  const scale = Math.min(
-    rect.width / img.naturalWidth,
-    rect.height / img.naturalHeight
-  );
-  const renderedW = img.naturalWidth * scale;
-  const renderedH = img.naturalHeight * scale;
-  const offsetX = rect.width - renderedW;
-  const offsetY =
-    verticalPosition === "30%"
-      ? (rect.height - renderedH) * 0.3
-      : (rect.height - renderedH) / 2;
-
-  return {
-    top: rect.top - containerRect.top + offsetY,
-    left: rect.left - containerRect.left + offsetX,
-    width: renderedW,
-    height: renderedH,
-  };
-}
-
 const NAVBAR_HEIGHT = "4rem";
 /** Navbar inner row is h-16 (64px); header also has border-b (+1px). */
 const NAVBAR_OFFSET_PX = 65;
@@ -550,10 +514,6 @@ export function HeroSection() {
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
-  const heroImagesRef = useRef<HTMLDivElement>(null);
-  const heroImagesWrapRef = useRef<HTMLDivElement>(null);
-  const activeImageRef = useRef<HTMLImageElement | null>(null);
-  const [imageBounds, setImageBounds] = useState<HeroImageBounds | null>(null);
   const indexRef = useRef(index);
 
   useEffect(() => {
@@ -658,55 +618,6 @@ export function HeroSection() {
     }
   };
 
-  const measureImageBounds = useCallback(() => {
-    const measureContainer = heroImagesWrapRef.current ?? heroImagesRef.current;
-    if (!isDesktop || !measureContainer || !activeImageRef.current) {
-      setImageBounds(null);
-      return;
-    }
-
-    const verticalPosition =
-      index === PSL_9_INDEX ? ("30%" as const) : ("center" as const);
-    const bounds = measureObjectContainBounds(
-      activeImageRef.current,
-      measureContainer,
-      verticalPosition
-    );
-    setImageBounds(bounds);
-  }, [isDesktop, index]);
-
-  useEffect(() => {
-    measureImageBounds();
-    const timer = window.setTimeout(measureImageBounds, 1300);
-    return () => window.clearTimeout(timer);
-  }, [measureImageBounds]);
-
-  useEffect(() => {
-    const container = heroImagesWrapRef.current ?? heroImagesRef.current;
-    if (!isDesktop || !container) return;
-
-    const observer = new ResizeObserver(() => {
-      measureImageBounds();
-    });
-
-    observer.observe(container);
-    window.addEventListener("resize", measureImageBounds);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", measureImageBounds);
-    };
-  }, [isDesktop, measureImageBounds]);
-
-  const leftStripStyle: CSSProperties | undefined = imageBounds
-    ? {
-        top: imageBounds.top,
-        left: imageBounds.left,
-        width: Math.min(64, Math.round(imageBounds.width * 0.07)),
-        height: imageBounds.height,
-      }
-    : undefined;
-
   return (
     <section
       className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
@@ -722,19 +633,8 @@ export function HeroSection() {
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
-      <div
-        ref={heroImagesWrapRef}
-        className="ps-hero-images-wrap absolute inset-0 z-[1] h-full w-full"
-      >
-        {isDesktop && leftStripStyle && (
-          <div
-            className="ps-hero-left-strip hidden lg:block"
-            style={leftStripStyle}
-            aria-hidden="true"
-          />
-        )}
+      <div className="absolute inset-0 z-[1] h-full w-full">
         <div
-          ref={heroImagesRef}
           className="ps-hero-images absolute inset-0 h-full w-full overflow-hidden bg-[#050811]"
           style={desktopImageContainerStyle}
         >
@@ -751,7 +651,6 @@ export function HeroSection() {
                 style={{ zIndex: i === index ? 2 : 1 }}
               >
                 <Image
-                  ref={i === index ? activeImageRef : undefined}
                   src={slide.src}
                   alt=""
                   width={1536}
@@ -759,7 +658,6 @@ export function HeroSection() {
                   priority={i === 0}
                   loading={i === 0 ? undefined : "lazy"}
                   sizes="100vw"
-                  onLoad={i === index ? measureImageBounds : undefined}
                   className={`ps-hero-slide-image h-full w-full object-cover object-center${
                     i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
                   }`}
