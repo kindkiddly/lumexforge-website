@@ -673,33 +673,7 @@ export function HeroSection() {
       verticalPosition
     );
     setImageBounds(bounds);
-
-    if (bounds && heroImagesWrapRef.current) {
-      heroImagesWrapRef.current.style.setProperty(
-        "--hero-pivot-x",
-        `${bounds.left}px`
-      );
-    }
   }, [isDesktop, index]);
-
-  const resetHeroTilt = useCallback(() => {
-    heroImagesWrapRef.current?.style.setProperty("--hero-tilt-x", "0deg");
-    heroImagesWrapRef.current?.style.setProperty("--hero-tilt-y", "0deg");
-  }, []);
-
-  const handleHeroTiltMove = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      if (!isDesktop) return;
-
-      const rect = event.currentTarget.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 5;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -4;
-
-      heroImagesWrapRef.current?.style.setProperty("--hero-tilt-x", `${x}deg`);
-      heroImagesWrapRef.current?.style.setProperty("--hero-tilt-y", `${y}deg`);
-    },
-    [isDesktop]
-  );
 
   useEffect(() => {
     measureImageBounds();
@@ -724,27 +698,11 @@ export function HeroSection() {
     };
   }, [isDesktop, measureImageBounds]);
 
-  const depthStyle: CSSProperties | undefined = imageBounds
+  const leftStripStyle: CSSProperties | undefined = imageBounds
     ? {
         top: imageBounds.top,
         left: imageBounds.left,
-        width: imageBounds.width,
-        height: imageBounds.height,
-      }
-    : undefined;
-
-  const castStyle: CSSProperties | undefined = imageBounds
-    ? {
-        top: imageBounds.top + imageBounds.height - 12,
-        left: imageBounds.left + imageBounds.width * 0.08,
-        width: imageBounds.width * 0.84,
-      }
-    : undefined;
-
-  const edgeShadowStyle: CSSProperties | undefined = imageBounds
-    ? {
-        top: imageBounds.top,
-        left: imageBounds.left,
+        width: Math.min(64, Math.round(imageBounds.width * 0.07)),
         height: imageBounds.height,
       }
     : undefined;
@@ -768,61 +726,48 @@ export function HeroSection() {
         ref={heroImagesWrapRef}
         className="ps-hero-images-wrap absolute inset-0 z-[1] h-full w-full"
       >
-        <div className="ps-hero-3d-tilt-group absolute inset-0">
-          <div className="ps-hero-3d-tilt-inner absolute inset-0">
-            {isDesktop && imageBounds && depthStyle && (
-              <div className="ps-hero-3d-depth hidden lg:block" aria-hidden="true">
-                <div className="ps-hero-3d-plates" style={depthStyle}>
-                  <div className="ps-hero-3d-plate ps-hero-3d-plate--3" />
-                  <div className="ps-hero-3d-plate ps-hero-3d-plate--2" />
-                  <div className="ps-hero-3d-plate ps-hero-3d-plate--1" />
-                </div>
-                <div
-                  className="ps-hero-3d-edge-shadow"
-                  style={edgeShadowStyle}
-                />
-                {castStyle && (
-                  <div className="ps-hero-3d-cast" style={castStyle} />
-                )}
-              </div>
-            )}
-            <div
-              ref={heroImagesRef}
-              className="ps-hero-images absolute inset-0 h-full w-full bg-[#050811]"
-              style={desktopImageContainerStyle}
-            >
-              {HERO_SLIDES.map((slide, i) => {
-                if (!visibleHeroIndices.has(i)) return null;
+        {isDesktop && leftStripStyle && (
+          <div
+            className="ps-hero-left-strip hidden lg:block"
+            style={leftStripStyle}
+            aria-hidden="true"
+          />
+        )}
+        <div
+          ref={heroImagesRef}
+          className="ps-hero-images absolute inset-0 h-full w-full overflow-hidden bg-[#050811]"
+          style={desktopImageContainerStyle}
+        >
+          {HERO_SLIDES.map((slide, i) => {
+            if (!visibleHeroIndices.has(i)) return null;
 
-                return (
-                  <motion.div
-                    key={slide.src}
-                    className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
-                    initial={false}
-                    animate={{ opacity: i === index ? 1 : 0 }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
-                    style={{ zIndex: i === index ? 2 : 1 }}
-                  >
-                    <Image
-                      ref={i === index ? activeImageRef : undefined}
-                      src={slide.src}
-                      alt=""
-                      width={1536}
-                      height={1024}
-                      priority={i === 0}
-                      loading={i === 0 ? undefined : "lazy"}
-                      sizes="100vw"
-                      onLoad={i === index ? measureImageBounds : undefined}
-                      className={`ps-hero-slide-image h-full w-full object-cover object-center${
-                        i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
-                      }`}
-                      aria-hidden
-                    />
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
+            return (
+              <motion.div
+                key={slide.src}
+                className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
+                initial={false}
+                animate={{ opacity: i === index ? 1 : 0 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                style={{ zIndex: i === index ? 2 : 1 }}
+              >
+                <Image
+                  ref={i === index ? activeImageRef : undefined}
+                  src={slide.src}
+                  alt=""
+                  width={1536}
+                  height={1024}
+                  priority={i === 0}
+                  loading={i === 0 ? undefined : "lazy"}
+                  sizes="100vw"
+                  onLoad={i === index ? measureImageBounds : undefined}
+                  className={`ps-hero-slide-image h-full w-full object-cover object-center${
+                    i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
+                  }`}
+                  aria-hidden
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -844,10 +789,8 @@ export function HeroSection() {
         onMouseDown={(e) => handleImageMouseDown(e.clientX)}
         onMouseUp={(e) => handleImageMouseUp(e.clientX)}
         onMouseEnter={() => pauseAutoPlay()}
-        onMouseMove={handleHeroTiltMove}
         onMouseLeave={(e) => {
           if (dragStartX.current !== null) handleImageMouseUp(e.clientX);
-          resetHeroTilt();
         }}
       >
         <button
