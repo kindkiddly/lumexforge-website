@@ -1,5 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -78,8 +79,14 @@ export default function AIProteinTrackerPage() {
         title="Track Protein Smarter with AI"
         description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking — so hitting your protein goals feels effortless."
       />
-      <section className="py-8 sm:py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-8 sm:py-10">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-2.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
               <Image

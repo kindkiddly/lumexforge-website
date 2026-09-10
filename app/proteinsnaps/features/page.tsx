@@ -1,6 +1,7 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { FEATURE_CARDS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -46,8 +47,14 @@ export default function FeaturesPage() {
         title="Built for Serious Nutrition Tracking"
         description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
       />
-      <section className="py-8 sm:py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-8 sm:py-10">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
               <Image

@@ -1,6 +1,7 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { LandscapeBanner } from "@/components/proteinsnaps/LandscapeBanner";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
 
@@ -57,13 +58,21 @@ export default function BlogPage() {
       />
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp className="mb-12">
-            <LandscapeBanner
-              eyebrow="ProteinSnaps Blog"
-              title="Expert Guides for Smarter Nutrition"
-              subtitle="Deep dives on protein science, training fuel, habit building and AI-powered tracking — written for lifters and everyday athletes."
-            />
-          </FadeInUp>
+          <div className="relative mb-12">
+            <div
+              className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+              aria-hidden="true"
+            >
+              <ParallaxImage src="/images/proteinsnaps/BG-9.webp" />
+            </div>
+            <FadeInUp className="relative z-10">
+              <LandscapeBanner
+                eyebrow="ProteinSnaps Blog"
+                title="Expert Guides for Smarter Nutrition"
+                subtitle="Deep dives on protein science, training fuel, habit building and AI-powered tracking — written for lifters and everyday athletes."
+              />
+            </FadeInUp>
+          </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PREVIEW_ARTICLES.map((article, i) => (

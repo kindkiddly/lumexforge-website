@@ -1,5 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -98,19 +99,27 @@ export default function MealScannerPage() {
       </section>
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
-              <Image
-                src="/images/proteinsnaps/PSL-2.webp"
-                alt="ProteinSnaps AI meal scanner in action"
-                width={1536}
-                height={1024}
-                loading="lazy"
-                sizes="100vw"
-                className="h-full w-full object-contain"
-              />
+          <div className="relative">
+            <div
+              className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+              aria-hidden="true"
+            >
+              <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
             </div>
-          </FadeInUp>
+            <FadeInUp className="relative z-10">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
+                <Image
+                  src="/images/proteinsnaps/PSL-2.webp"
+                  alt="ProteinSnaps AI meal scanner in action"
+                  width={1536}
+                  height={1024}
+                  loading="lazy"
+                  sizes="100vw"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </FadeInUp>
+          </div>
           <FadeInUp delay={0.1} className="mt-12">
             <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
               How the AI Food Scanner Works

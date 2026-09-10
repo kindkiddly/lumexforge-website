@@ -293,3 +293,18 @@
     animation-play-state: paused !important;
   }
 }
+
+.ps-parallax-inner {
+  position: absolute;
+  inset: -10%;
+  will-change: transform;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-parallax-inner {
+    transform: none !important;
+  }
+}
