@@ -28,9 +28,9 @@ export const HERO_SLIDES = Array.from({ length: 10 }, (_, i) => ({
 
 export const DESKTOP_SLIDES = [
   {
-    headline: "Track Your Meals, Stay on Goal.",
+    headline: "Your All-in-One Fitness Partner.",
     description:
-      "Log every meal, track your nutrition history and stay consistent with your daily goals — wherever you eat.",
+      "Track meals, workouts, protein and progress in one intelligent app built around your goals.",
     accentWords: ["Meals,", "Stay", "Goal."],
     name: "fadeUp",
     duration: 1.0,
@@ -38,9 +38,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "Stronger Every Day.",
+    headline: "Track Your Meals, Stay on Goal.",
     description:
-      "Log your workouts, track every set and rep, and build real strength with personalized training guidance.",
+      "Log every meal, see your 30-day nutrition history and stay consistent with your daily targets.",
     accentWords: ["Stronger", "Every", "Day."],
     name: "blurReveal",
     duration: 1.1,
@@ -48,9 +48,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Your AI Coach. Always By Your Side.",
+    headline: "Stronger Every Day.",
     description:
-      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
+      "Log your workouts, track every set and rep, and build real strength with smart training guidance.",
     accentWords: ["AI", "Coach.", "Side."],
     name: "stagger",
     duration: 1.2,
@@ -58,9 +58,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Every Mile Builds a Stronger You.",
+    headline: "Your AI Coach. Always By Your Side.",
     description:
-      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
+      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
     accentWords: ["Mile", "Stronger", "You."],
     name: "zoomIn",
     duration: 0.9,
@@ -68,9 +68,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "Snap It. Track It. Achieve It.",
+    headline: "Every Mile Builds a Stronger You.",
     description:
-      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
+      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
     accentWords: ["Snap", "Track", "Achieve"],
     name: "sweepLeft",
     duration: 1.0,
@@ -78,9 +78,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Your All-in-One Fitness Partner.",
+    headline: "Snap It. Track It. Achieve It.",
     description:
-      "Nutrition tracking, workout logging, AI coaching and progress insights — everything you need in one powerful app.",
+      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
     accentWords: ["All-in-One", "Fitness", "Partner."],
     name: "typewriter",
     duration: 1.2,
