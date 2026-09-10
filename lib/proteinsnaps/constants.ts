@@ -38,9 +38,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "Track Your Meals, Stay on Goal.",
+    headline: "Stronger Every Day.",
     description:
-      "Log every meal, see your 30-day nutrition history and stay consistent with your daily targets.",
+      "Log your workouts, track every set and rep, and build real strength with smart training guidance.",
     accentWords: ["Stronger", "Every", "Day."],
     name: "blurReveal",
     duration: 1.1,
@@ -48,9 +48,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Stronger Every Day.",
+    headline: "Your AI Coach. Always By Your Side.",
     description:
-      "Log your workouts, track every set and rep, and build real strength with smart training guidance.",
+      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
     accentWords: ["AI", "Coach.", "Side."],
     name: "stagger",
     duration: 1.2,
@@ -58,9 +58,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Your AI Coach. Always By Your Side.",
+    headline: "Every Mile Builds a Stronger You.",
     description:
-      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
+      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
     accentWords: ["Mile", "Stronger", "You."],
     name: "zoomIn",
     duration: 0.9,
@@ -68,9 +68,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00E6A8]",
   },
   {
-    headline: "Every Mile Builds a Stronger You.",
+    headline: "Snap It. Track It. Achieve It.",
     description:
-      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
+      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
     accentWords: ["Snap", "Track", "Achieve"],
     name: "sweepLeft",
     duration: 1.0,
@@ -78,9 +78,9 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Snap It. Track It. Achieve It.",
+    headline: "Track Your Meals, Stay on Goal.",
     description:
-      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
+      "Log every meal, see your 30-day nutrition history and stay consistent with your daily targets.",
     accentWords: ["All-in-One", "Fitness", "Partner."],
     name: "typewriter",
     duration: 1.2,
