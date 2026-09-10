@@ -95,12 +95,12 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </section>
-      <div className="relative">
+      <div className="relative ps-parallax-bg-right">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-8.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
         </div>
         <div className="relative z-10">
           <ScreenshotsSection />

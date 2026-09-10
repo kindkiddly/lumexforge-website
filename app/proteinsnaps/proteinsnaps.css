@@ -296,11 +296,15 @@
 
 .ps-parallax-inner {
   position: absolute;
-  inset: -30%;
+  inset: -20%;
   will-change: transform;
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+}
+
+.ps-parallax-bg-right .ps-parallax-inner {
+  background-position: right center;
 }
 
 @media (prefers-reduced-motion: reduce) {
