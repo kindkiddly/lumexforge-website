@@ -89,6 +89,12 @@
     radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0, 194, 255, 0.1), transparent 60%);
 }
 
+.ps-hero-3d-stage,
+.ps-hero-3d-float {
+  position: absolute;
+  inset: 0;
+}
+
 @media (min-width: 1024px) {
   .ps-hero-desktop-label {
     font-size: 0.75rem !important;
@@ -259,6 +265,47 @@
         inset 0 0 82px 17px rgba(0, 194, 255, 0.384),
         inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
     }
+  }
+  .ps-hero-3d-stage {
+    position: absolute !important;
+    inset: 0 !important;
+    perspective: 1200px !important;
+    perspective-origin: 72% 50% !important;
+  }
+  .ps-hero-3d-layer {
+    position: absolute !important;
+    top: 10% !important;
+    bottom: 10% !important;
+    right: 0 !important;
+    width: 58% !important;
+    border-radius: 16px !important;
+    transform-style: preserve-3d !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+  .ps-hero-3d-layer--1 {
+    background: rgba(18, 26, 40, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transform: rotateY(-4deg) translate3d(8px, 8px, -20px) !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35) !important;
+  }
+  .ps-hero-3d-layer--2 {
+    background: rgba(18, 26, 40, 0.55) !important;
+    border: 1px solid rgba(0, 230, 168, 0.15) !important;
+    transform: rotateY(-4deg) translate3d(16px, 16px, -40px) !important;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25) !important;
+  }
+  .ps-hero-3d-float {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    transform-style: preserve-3d !important;
+    transform: rotateY(calc(-4deg + var(--hero-tilt-x, 0deg)))
+      rotateX(var(--hero-tilt-y, 0deg)) !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    filter:
+      drop-shadow(0 32px 64px rgba(0, 0, 0, 0.45))
+      drop-shadow(0 0 48px rgba(0, 230, 168, 0.1)) !important;
   }
   .ps-hero-slide {
     position: absolute !important;

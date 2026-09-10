@@ -508,6 +508,7 @@ export function HeroSection() {
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
+  const heroImagesRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(index);
 
   useEffect(() => {
@@ -612,6 +613,25 @@ export function HeroSection() {
     }
   };
 
+  const resetHeroTilt = useCallback(() => {
+    heroImagesRef.current?.style.setProperty("--hero-tilt-x", "0deg");
+    heroImagesRef.current?.style.setProperty("--hero-tilt-y", "0deg");
+  }, []);
+
+  const handleHeroTiltMove = useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (!isDesktop) return;
+
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -3;
+
+      heroImagesRef.current?.style.setProperty("--hero-tilt-x", `${x}deg`);
+      heroImagesRef.current?.style.setProperty("--hero-tilt-y", `${y}deg`);
+    },
+    [isDesktop]
+  );
+
   return (
     <section
       className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
@@ -628,37 +648,50 @@ export function HeroSection() {
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
       <div
+        ref={heroImagesRef}
         className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]"
         style={desktopImageContainerStyle}
       >
-        {HERO_SLIDES.map((slide, i) => {
-          if (!visibleHeroIndices.has(i)) return null;
+        <div className="ps-hero-3d-stage">
+          <div
+            className="ps-hero-3d-layer ps-hero-3d-layer--2 hidden lg:block"
+            aria-hidden="true"
+          />
+          <div
+            className="ps-hero-3d-layer ps-hero-3d-layer--1 hidden lg:block"
+            aria-hidden="true"
+          />
+          <div className="ps-hero-3d-float">
+            {HERO_SLIDES.map((slide, i) => {
+              if (!visibleHeroIndices.has(i)) return null;
 
-          return (
-          <motion.div
-            key={slide.src}
-            className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
-            initial={false}
-            animate={{ opacity: i === index ? 1 : 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            style={{ zIndex: i === index ? 2 : 1 }}
-          >
-            <Image
-              src={slide.src}
-              alt=""
-              width={1536}
-              height={1024}
-              priority={i === 0}
-              loading={i === 0 ? undefined : "lazy"}
-              sizes="100vw"
-              className={`ps-hero-slide-image h-full w-full object-cover object-center${
-                i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
-              }`}
-              aria-hidden
-            />
-          </motion.div>
-          );
-        })}
+              return (
+                <motion.div
+                  key={slide.src}
+                  className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
+                  initial={false}
+                  animate={{ opacity: i === index ? 1 : 0 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  style={{ zIndex: i === index ? 2 : 1 }}
+                >
+                  <Image
+                    src={slide.src}
+                    alt=""
+                    width={1536}
+                    height={1024}
+                    priority={i === 0}
+                    loading={i === 0 ? undefined : "lazy"}
+                    sizes="100vw"
+                    className={`ps-hero-slide-image h-full w-full object-cover object-center${
+                      i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
+                    }`}
+                    aria-hidden
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* z-2: gradient overlay */}
@@ -678,10 +711,12 @@ export function HeroSection() {
         className="absolute inset-y-0 right-0 z-20 hidden w-[58%] cursor-grab active:cursor-grabbing lg:block"
         onMouseDown={(e) => handleImageMouseDown(e.clientX)}
         onMouseUp={(e) => handleImageMouseUp(e.clientX)}
+        onMouseEnter={() => pauseAutoPlay()}
+        onMouseMove={handleHeroTiltMove}
         onMouseLeave={(e) => {
           if (dragStartX.current !== null) handleImageMouseUp(e.clientX);
+          resetHeroTilt();
         }}
-        onMouseEnter={() => pauseAutoPlay()}
       >
         <button
           type="button"
