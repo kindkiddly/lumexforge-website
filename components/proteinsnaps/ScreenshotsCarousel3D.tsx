@@ -13,7 +13,7 @@ const ANIM_LOCK_MS = 700;
 const ZOOM_STEP = { pw: 196, g1: 217, g2: 387, gh: 546, sh: 504 } as const;
 const CENTER_PHONE_HALF_W = ZOOM_STEP.pw / 2;
 const CENTER_PHONE_TEXT_GAP = 8;
-const TEXT_BELOW_STAGE_GAP = 24;
+const TEXT_BELOW_STAGE_GAP = 2;
 const TEXT_BLOCK_TOP = ZOOM_STEP.sh + TEXT_BELOW_STAGE_GAP;
 
 type CarouselPosition =
