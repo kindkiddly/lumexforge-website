@@ -644,11 +644,6 @@ export function HeroSection() {
       >
         <DesktopAmbientGlow isTabVisible={isTabVisible} />
         <DesktopImageBleedGlow isTabVisible={isTabVisible} />
-        <div className="ps-hero-depth-ambient hidden lg:block" aria-hidden="true">
-          <div className="ps-hero-depth-seam" />
-          <div className="ps-hero-depth-fog" />
-          <div className="ps-hero-depth-rays" />
-        </div>
       </div>
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
@@ -658,8 +653,14 @@ export function HeroSection() {
         style={desktopImageContainerStyle}
       >
         <div className="ps-hero-3d-stage">
-          <div className="ps-hero-3d-cast hidden lg:block" aria-hidden="true" />
           <div className="ps-hero-3d-stack">
+            <div className="ps-hero-3d-plates hidden lg:block" aria-hidden="true">
+              <div className="ps-hero-3d-plate ps-hero-3d-plate--3" />
+              <div className="ps-hero-3d-plate ps-hero-3d-plate--2" />
+              <div className="ps-hero-3d-plate ps-hero-3d-plate--1" />
+            </div>
+            <div className="ps-hero-3d-edge-shadow hidden lg:block" aria-hidden="true" />
+            <div className="ps-hero-3d-cast hidden lg:block" aria-hidden="true" />
             <div className="ps-hero-3d-float">
               {HERO_SLIDES.map((slide, i) => {
                 if (!visibleHeroIndices.has(i)) return null;
