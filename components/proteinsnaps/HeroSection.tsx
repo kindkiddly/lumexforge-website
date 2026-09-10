@@ -14,6 +14,8 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import QRCode from "react-qr-code";
+import { StoreButtons } from "./StoreButtons";
 
 type HeroImageBounds = {
   top: number;
@@ -50,8 +52,6 @@ function measureObjectContainBounds(
     height: renderedH,
   };
 }
-import QRCode from "react-qr-code";
-import { StoreButtons } from "./StoreButtons";
 
 const NAVBAR_HEIGHT = "4rem";
 /** Navbar inner row is h-16 (64px); header also has border-b (+1px). */
@@ -551,6 +551,7 @@ export function HeroSection() {
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const heroImagesRef = useRef<HTMLDivElement>(null);
+  const heroImagesWrapRef = useRef<HTMLDivElement>(null);
   const activeImageRef = useRef<HTMLImageElement | null>(null);
   const [imageBounds, setImageBounds] = useState<HeroImageBounds | null>(null);
   const indexRef = useRef(index);
@@ -658,7 +659,8 @@ export function HeroSection() {
   };
 
   const measureImageBounds = useCallback(() => {
-    if (!isDesktop || !heroImagesRef.current || !activeImageRef.current) {
+    const measureContainer = heroImagesWrapRef.current ?? heroImagesRef.current;
+    if (!isDesktop || !measureContainer || !activeImageRef.current) {
       setImageBounds(null);
       return;
     }
@@ -667,7 +669,7 @@ export function HeroSection() {
       index === PSL_9_INDEX ? ("30%" as const) : ("center" as const);
     const bounds = measureObjectContainBounds(
       activeImageRef.current,
-      heroImagesRef.current,
+      measureContainer,
       verticalPosition
     );
     setImageBounds(bounds);
@@ -680,9 +682,9 @@ export function HeroSection() {
   }, [measureImageBounds]);
 
   useEffect(() => {
-    if (!isDesktop || !heroImagesRef.current) return;
+    const container = heroImagesWrapRef.current ?? heroImagesRef.current;
+    if (!isDesktop || !container) return;
 
-    const container = heroImagesRef.current;
     const observer = new ResizeObserver(() => {
       measureImageBounds();
     });
@@ -737,9 +739,8 @@ export function HeroSection() {
 
       {/* z-1: background images — stacked opacity crossfade, no gaps */}
       <div
-        ref={heroImagesRef}
-        className="ps-hero-images absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#050811]"
-        style={desktopImageContainerStyle}
+        ref={heroImagesWrapRef}
+        className="ps-hero-images-wrap absolute inset-0 z-[1] h-full w-full"
       >
         {isDesktop && imageBounds && depthStyle && (
           <div className="ps-hero-3d-depth hidden lg:block" aria-hidden="true">
@@ -754,6 +755,11 @@ export function HeroSection() {
             )}
           </div>
         )}
+        <div
+          ref={heroImagesRef}
+          className="ps-hero-images absolute inset-0 h-full w-full overflow-hidden bg-[#050811]"
+          style={desktopImageContainerStyle}
+        >
         {HERO_SLIDES.map((slide, i) => {
           if (!visibleHeroIndices.has(i)) return null;
 
@@ -784,6 +790,7 @@ export function HeroSection() {
             </motion.div>
           );
         })}
+        </div>
       </div>
 
       {/* z-2: gradient overlay */}

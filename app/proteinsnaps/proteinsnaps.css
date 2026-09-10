@@ -261,10 +261,15 @@
         inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
     }
   }
+  .ps-hero-images-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: visible !important;
+  }
   .ps-hero-3d-depth {
     position: absolute !important;
     inset: 0 !important;
-    z-index: 1 !important;
+    z-index: 2 !important;
     pointer-events: none !important;
     overflow: visible !important;
   }
@@ -277,29 +282,29 @@
   .ps-hero-3d-plate {
     position: absolute !important;
     inset: 0 !important;
-    border-radius: 3px 0 0 3px !important;
+    border-radius: 4px 0 0 4px !important;
     background: linear-gradient(
       90deg,
-      rgba(24, 34, 52, 0.98) 0%,
-      rgba(18, 26, 40, 0.9) 14%,
-      rgba(18, 26, 40, 0.45) 30%,
-      transparent 46%
+      rgba(30, 42, 64, 1) 0%,
+      rgba(22, 32, 50, 0.95) 18%,
+      rgba(18, 26, 40, 0.65) 34%,
+      transparent 58%
     ) !important;
-    box-shadow: -24px 0 48px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: -32px 0 64px rgba(0, 0, 0, 0.62) !important;
   }
   .ps-hero-3d-plate--1 {
-    border-left: 2px solid rgba(255, 255, 255, 0.18) !important;
-    transform: translate(-10px, 4px) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.28) !important;
+    transform: translate(-14px, 5px) !important;
   }
   .ps-hero-3d-plate--2 {
-    border-left: 2px solid rgba(0, 230, 168, 0.28) !important;
-    transform: translate(-24px, 10px) !important;
-    opacity: 0.9 !important;
+    border-left: 3px solid rgba(0, 230, 168, 0.45) !important;
+    transform: translate(-32px, 12px) !important;
+    opacity: 0.94 !important;
   }
   .ps-hero-3d-plate--3 {
-    border-left: 2px solid rgba(0, 194, 255, 0.22) !important;
-    transform: translate(-40px, 16px) !important;
-    opacity: 0.78 !important;
+    border-left: 3px solid rgba(0, 194, 255, 0.38) !important;
+    transform: translate(-52px, 20px) !important;
+    opacity: 0.86 !important;
   }
   .ps-hero-3d-edge-shadow {
     position: absolute !important;
@@ -328,6 +333,9 @@
       transparent 74%
     ) !important;
     filter: blur(18px) !important;
+  }
+  .ps-hero-images {
+    z-index: 3 !important;
   }
   .ps-hero-slide {
     position: absolute !important;
