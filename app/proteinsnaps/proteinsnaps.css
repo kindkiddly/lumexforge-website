@@ -296,10 +296,10 @@
 
 .ps-parallax-inner {
   position: absolute;
-  inset: -10%;
+  inset: -30%;
   will-change: transform;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 

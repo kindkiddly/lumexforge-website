@@ -52,7 +52,7 @@ export default function FeaturesPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
@@ -75,7 +75,7 @@ export default function FeaturesPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-7.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -100,7 +100,7 @@ export default function FeaturesPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-13.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">

@@ -10,7 +10,7 @@ interface ParallaxImageProps {
 
 const DESKTOP_MIN_WIDTH = 1024;
 
-export function ParallaxImage({ src, speed = 0.2, minHeight }: ParallaxImageProps) {
+export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -42,10 +42,11 @@ export function ParallaxImage({ src, speed = 0.2, minHeight }: ParallaxImageProp
         return;
       }
 
-      const sectionCenterY = rect.top + rect.height / 2;
-      const viewportCenterY = windowHeight / 2;
-      const offset = sectionCenterY - viewportCenterY;
-      const translateY = offset * speed;
+      const scrollRange = windowHeight + rect.height;
+      const progress = (windowHeight - rect.top) / scrollRange;
+      const clamped = Math.max(0, Math.min(1, progress));
+      const maxShift = rect.height * speed;
+      const translateY = (0.5 - clamped) * maxShift * 2;
 
       inner.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
       ticking = false;
