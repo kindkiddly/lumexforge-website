@@ -468,12 +468,18 @@ function HeroChevron({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-function DesktopHeroTextBlock({ slideIndex }: { slideIndex: number }) {
+function DesktopHeroTextBlock({
+  slideIndex,
+  skipEntrance,
+}: {
+  slideIndex: number;
+  skipEntrance: boolean;
+}) {
   const slide = DESKTOP_SLIDES[slideIndex];
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={skipEntrance ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
@@ -515,6 +521,12 @@ export function HeroSection() {
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const indexRef = useRef(index);
+  const isFirstRenderRef = useRef(true);
+  const skipEntrance = isFirstRenderRef.current;
+
+  useEffect(() => {
+    isFirstRenderRef.current = false;
+  }, []);
 
   useEffect(() => {
     indexRef.current = index;
@@ -721,7 +733,7 @@ export function HeroSection() {
           {/* Mobile/tablet — unchanged */}
           <div className="max-w-lg lg:hidden">
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={skipEntrance ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-xs font-bold uppercase tracking-[0.25em] text-[#00E6A8]"
@@ -730,7 +742,7 @@ export function HeroSection() {
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
+              initial={skipEntrance ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="mt-2 text-left font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl"
@@ -742,7 +754,7 @@ export function HeroSection() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={skipEntrance ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="mt-4 max-w-md text-left text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7]"
@@ -751,7 +763,7 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={skipEntrance ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 text-left sm:mt-7"
@@ -764,7 +776,11 @@ export function HeroSection() {
           <div className="ps-hero-desktop-left hidden lg:block">
             <div className="ps-hero-desktop-text">
               <AnimatePresence mode="wait">
-                <DesktopHeroTextBlock key={index} slideIndex={index} />
+                <DesktopHeroTextBlock
+                  key={index}
+                  slideIndex={index}
+                  skipEntrance={skipEntrance}
+                />
               </AnimatePresence>
             </div>
 
