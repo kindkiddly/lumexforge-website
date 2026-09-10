@@ -63,7 +63,7 @@ export default function MealScannerPage() {
         title="Snap Any Meal. Know Your Macros."
         description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds — no manual searching required."
       />
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
             {MEAL_SCANNER_SCREENSHOTS.map((slide, i) => (
