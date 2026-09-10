@@ -1,6 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
-import { LandscapeBanner } from "@/components/proteinsnaps/LandscapeBanner";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
 
@@ -55,14 +55,22 @@ export default function BlogPage() {
         title="Nutrition. Training. Results."
         description="Tips, science and strategies from the ProteinSnaps team — launching soon."
       />
-      <section className="pb-12 sm:pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp className="mb-12">
-            <LandscapeBanner
-              eyebrow="ProteinSnaps Blog"
-              title="Expert Guides for Smarter Nutrition"
-              subtitle="Deep dives on protein science, training fuel, habit building and AI-powered tracking — written for lifters and everyday athletes."
-            />
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-8.webp"
+        minHeight="50vh"
+      >
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <FadeInUp className="mb-12 flex min-h-[30vh] flex-col items-center justify-center px-8 text-center sm:px-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
+              ProteinSnaps Blog
+            </p>
+            <h3 className="mt-3 font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+              Expert Guides for Smarter Nutrition
+            </h3>
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-foreground-secondary">
+              Deep dives on protein science, training fuel, habit building and
+              AI-powered tracking — written for lifters and everyday athletes.
+            </p>
           </FadeInUp>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -112,7 +120,7 @@ export default function BlogPage() {
             </div>
           </FadeInUp>
         </div>
-      </section>
+      </ParallaxBand>
       <DownloadCTA />
     </>
   );

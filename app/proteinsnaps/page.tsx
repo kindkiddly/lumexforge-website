@@ -3,6 +3,7 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeaturesGrid } from "@/components/proteinsnaps/FeaturesGrid";
 import { HeroSection } from "@/components/proteinsnaps/HeroSection";
 import { HowItWorksSection } from "@/components/proteinsnaps/HowItWorksSection";
+import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { ScreenshotsCarousel3D } from "@/components/proteinsnaps/ScreenshotsCarousel3D";
 import type { Metadata } from "next";
 
@@ -42,10 +43,25 @@ export default function ProteinSnapsHomePage() {
     <>
       <HeroSection />
       <ScreenshotsCarousel3D />
-      <FeaturesGrid />
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-5.webp"
+        minHeight="60vh"
+      >
+        <FeaturesGrid />
+      </ParallaxBand>
       <HowItWorksSection />
-      <AIFeaturesSection />
-      <DownloadCTA />
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-3.webp"
+        minHeight="60vh"
+      >
+        <AIFeaturesSection />
+      </ParallaxBand>
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-10.webp"
+        minHeight="40vh"
+      >
+        <DownloadCTA />
+      </ParallaxBand>
     </>
   );
 }

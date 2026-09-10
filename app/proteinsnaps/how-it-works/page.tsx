@@ -1,6 +1,7 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
-import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
+import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -103,6 +104,10 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </section>
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-4.webp"
+        minHeight="40vh"
+      />
       <ScreenshotsSection />
       <DownloadCTA />
     </>

@@ -1,5 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
+import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -96,22 +97,12 @@ export default function MealScannerPage() {
           </div>
         </div>
       </section>
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
-              <Image
-                src="/images/proteinsnaps/PSL-2.webp"
-                alt="ProteinSnaps AI meal scanner in action"
-                width={1536}
-                height={1024}
-                loading="lazy"
-                sizes="100vw"
-                className="h-full w-full object-contain"
-              />
-            </div>
-          </FadeInUp>
-          <FadeInUp delay={0.1} className="mt-12">
+      <ParallaxBand
+        imageSrc="/images/proteinsnaps/PSL-6.webp"
+        minHeight="50vh"
+      >
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <FadeInUp delay={0.1}>
             <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
               How the AI Food Scanner Works
             </h2>
@@ -132,7 +123,7 @@ export default function MealScannerPage() {
             </div>
           </FadeInUp>
         </div>
-      </section>
+      </ParallaxBand>
       <DownloadCTA />
     </>
   );
