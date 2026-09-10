@@ -267,11 +267,106 @@
         inset 0 0 158px 31px rgba(123, 47, 255, 0.24);
     }
   }
+  .ps-hero-depth-ambient {
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 44%,
+      transparent 48%
+    ) !important;
+    mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 44%,
+      transparent 48%
+    ) !important;
+  }
+  .ps-hero-depth-seam {
+    position: absolute !important;
+    top: 10% !important;
+    bottom: 10% !important;
+    left: 42% !important;
+    width: 2px !important;
+    transform: translateX(-50%) !important;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 194, 255, 0.18) 18%,
+      rgba(0, 230, 168, 0.28) 50%,
+      rgba(0, 194, 255, 0.16) 82%,
+      transparent 100%
+    ) !important;
+    box-shadow:
+      0 0 24px rgba(0, 194, 255, 0.12),
+      0 0 48px rgba(0, 230, 168, 0.08) !important;
+  }
+  .ps-hero-depth-fog {
+    position: absolute !important;
+    left: 28% !important;
+    top: 18% !important;
+    width: 220px !important;
+    height: 320px !important;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 230, 168, 0.07) 0%,
+      rgba(0, 194, 255, 0.04) 42%,
+      transparent 72%
+    ) !important;
+    filter: blur(18px) !important;
+  }
+  .ps-hero-depth-rays {
+    position: absolute !important;
+    left: 8% !important;
+    top: 0 !important;
+    width: 36% !important;
+    height: 100% !important;
+    background: linear-gradient(
+      118deg,
+      rgba(0, 230, 168, 0.05) 0%,
+      transparent 28%,
+      transparent 72%,
+      rgba(0, 194, 255, 0.04) 100%
+    ) !important;
+    opacity: 0.85 !important;
+  }
   .ps-hero-3d-stage {
     position: absolute !important;
     inset: 0 !important;
-    perspective: 900px !important;
-    perspective-origin: 68% 50% !important;
+    perspective: 1000px !important;
+    perspective-origin: 72% 50% !important;
+  }
+  .ps-hero-3d-cast {
+    position: absolute !important;
+    right: 4% !important;
+    bottom: 2% !important;
+    width: 46% !important;
+    height: 72px !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.22) 38%,
+      transparent 72%
+    ) !important;
+    filter: blur(18px) !important;
+    transform: rotateY(-5deg) translate3d(12px, 18px, -48px) !important;
+    -webkit-mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      #000 55%,
+      transparent 100%
+    ) !important;
+    mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      #000 55%,
+      transparent 100%
+    ) !important;
   }
   .ps-hero-3d-stack {
     position: absolute !important;
@@ -287,7 +382,9 @@
     inset: 0 !important;
     z-index: 1 !important;
     transform-style: preserve-3d !important;
-    filter: drop-shadow(0 36px 64px rgba(0, 0, 0, 0.5)) !important;
+    filter:
+      drop-shadow(-16px 24px 40px rgba(0, 0, 0, 0.35))
+      drop-shadow(0 40px 72px rgba(0, 0, 0, 0.45)) !important;
   }
   .ps-hero-slide {
     position: absolute !important;
