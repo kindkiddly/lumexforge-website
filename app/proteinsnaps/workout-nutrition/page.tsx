@@ -1,6 +1,5 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
-import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { StaggerWords } from "@/components/proteinsnaps/animations/StaggerWords";
 import type { Metadata } from "next";
@@ -63,10 +62,23 @@ export default function WorkoutNutritionPage() {
         title="Fuel Your Training with Precision"
         description="Connect workout tracking with intelligent nutrition in ProteinSnaps — built for gym-goers and strength athletes."
       />
-      <ParallaxBand
-        imageSrc="/images/proteinsnaps/PSL-2.webp"
-        minHeight="50vh"
-      />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-5.webp"
+                alt="ProteinSnaps gym and strength training"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">

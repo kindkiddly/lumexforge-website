@@ -1,7 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
-import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { FEATURE_CARDS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -47,10 +46,23 @@ export default function FeaturesPage() {
         title="Built for Serious Nutrition Tracking"
         description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
       />
-      <ParallaxBand
-        imageSrc="/images/proteinsnaps/PSL-1.webp"
-        minHeight="50vh"
-      />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-1.webp"
+                alt="ProteinSnaps complete fitness dashboard"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

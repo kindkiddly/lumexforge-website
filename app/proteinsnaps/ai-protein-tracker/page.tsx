@@ -1,6 +1,5 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
-import { ParallaxBand } from "@/components/proteinsnaps/ParallaxBand";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -79,10 +78,23 @@ export default function AIProteinTrackerPage() {
         title="Track Protein Smarter with AI"
         description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking — so hitting your protein goals feels effortless."
       />
-      <ParallaxBand
-        imageSrc="/images/proteinsnaps/PSL-7.webp"
-        minHeight="50vh"
-      />
+      <section className="py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+              <Image
+                src="/images/proteinsnaps/PSL-7.webp"
+                alt="ProteinSnaps daily macro and recovery summary"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-12 lg:grid-cols-2">
