@@ -69,7 +69,7 @@ export default function MealScannerPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+          <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
