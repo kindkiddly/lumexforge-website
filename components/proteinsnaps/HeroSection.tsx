@@ -623,8 +623,8 @@ export function HeroSection() {
       if (!isDesktop) return;
 
       const rect = event.currentTarget.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -3;
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -6;
 
       heroImagesRef.current?.style.setProperty("--hero-tilt-x", `${x}deg`);
       heroImagesRef.current?.style.setProperty("--hero-tilt-y", `${y}deg`);
@@ -654,6 +654,10 @@ export function HeroSection() {
       >
         <div className="ps-hero-3d-stage">
           <div
+            className="ps-hero-3d-layer ps-hero-3d-layer--3 hidden lg:block"
+            aria-hidden="true"
+          />
+          <div
             className="ps-hero-3d-layer ps-hero-3d-layer--2 hidden lg:block"
             aria-hidden="true"
           />
@@ -661,35 +665,44 @@ export function HeroSection() {
             className="ps-hero-3d-layer ps-hero-3d-layer--1 hidden lg:block"
             aria-hidden="true"
           />
-          <div className="ps-hero-3d-float">
-            {HERO_SLIDES.map((slide, i) => {
-              if (!visibleHeroIndices.has(i)) return null;
+          <div className="ps-hero-3d-stack">
+            <div className="ps-hero-3d-float">
+              {HERO_SLIDES.map((slide, i) => {
+                if (!visibleHeroIndices.has(i)) return null;
 
-              return (
-                <motion.div
-                  key={slide.src}
-                  className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
-                  initial={false}
-                  animate={{ opacity: i === index ? 1 : 0 }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  style={{ zIndex: i === index ? 2 : 1 }}
-                >
-                  <Image
-                    src={slide.src}
-                    alt=""
-                    width={1536}
-                    height={1024}
-                    priority={i === 0}
-                    loading={i === 0 ? undefined : "lazy"}
-                    sizes="100vw"
-                    className={`ps-hero-slide-image h-full w-full object-cover object-center${
-                      i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
-                    }`}
-                    aria-hidden
-                  />
-                </motion.div>
-              );
-            })}
+                return (
+                  <motion.div
+                    key={slide.src}
+                    className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
+                    initial={false}
+                    animate={{ opacity: i === index ? 1 : 0 }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    style={{ zIndex: i === index ? 2 : 1 }}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt=""
+                      width={1536}
+                      height={1024}
+                      priority={i === 0}
+                      loading={i === 0 ? undefined : "lazy"}
+                      sizes="100vw"
+                      className={`ps-hero-slide-image h-full w-full object-cover object-center${
+                        i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
+                      }`}
+                      aria-hidden
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+            <div className="ps-hero-3d-frame hidden lg:block" aria-hidden="true">
+              <span className="ps-hero-3d-corner ps-hero-3d-corner--tl" />
+              <span className="ps-hero-3d-corner ps-hero-3d-corner--tr" />
+              <span className="ps-hero-3d-corner ps-hero-3d-corner--bl" />
+              <span className="ps-hero-3d-corner ps-hero-3d-corner--br" />
+            </div>
+            <div className="ps-hero-3d-floor hidden lg:block" aria-hidden="true" />
           </div>
         </div>
       </div>
