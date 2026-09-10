@@ -70,8 +70,14 @@ export default function FeaturesPage() {
           </FadeInUp>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative pb-12 sm:pb-16">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-7.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURE_CARDS.map((feature, i) => (
               <FadeInUp key={feature.title} delay={i * 0.04}>
@@ -89,8 +95,14 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative pb-12 sm:pb-16">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
             {FEATURE_SCREENSHOTS.map((slide, i) => (
               <FadeInUp key={slide.src} delay={i * 0.1} className="text-center">
@@ -122,7 +134,17 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
-      <DownloadCTA />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-11.webp" />
+        </div>
+        <div className="relative z-10">
+          <DownloadCTA />
+        </div>
+      </div>
     </>
   );
 }

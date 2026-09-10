@@ -47,8 +47,14 @@ export default function HowItWorksPage() {
         title="Nutrition Tracking Made Simple"
         description="ProteinSnaps turns meal tracking from a chore into a three-step habit — snap, track, and achieve."
       />
-      <section className="pb-12 sm:pb-16 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative pb-12 sm:pb-16 lg:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative mt-8 grid gap-12 lg:grid-cols-3">
             <div
               className="pointer-events-none absolute left-[16.67%] right-[16.67%] z-0 hidden h-px lg:top-[calc(33.5rem+2rem+2.5rem)] lg:block"
@@ -106,8 +112,28 @@ export default function HowItWorksPage() {
           />
         </div>
       </div>
-      <ScreenshotsSection />
-      <DownloadCTA />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-8.webp" />
+        </div>
+        <div className="relative z-10">
+          <ScreenshotsSection />
+        </div>
+      </div>
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-11.webp" />
+        </div>
+        <div className="relative z-10">
+          <DownloadCTA />
+        </div>
+      </div>
     </>
   );
 }

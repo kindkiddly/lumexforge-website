@@ -86,8 +86,14 @@ export default function WorkoutNutritionPage() {
           </FadeInUp>
         </div>
       </section>
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-12 sm:py-16">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-7.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">
             <h2 className="font-serif text-3xl font-semibold text-foreground">
               <StaggerWords text="Train Hard. Eat Smart." />
@@ -122,7 +128,17 @@ export default function WorkoutNutritionPage() {
           </div>
         </div>
       </section>
-      <DownloadCTA />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-11.webp" />
+        </div>
+        <div className="relative z-10">
+          <DownloadCTA />
+        </div>
+      </div>
     </>
   );
 }

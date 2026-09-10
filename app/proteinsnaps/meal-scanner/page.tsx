@@ -64,8 +64,14 @@ export default function MealScannerPage() {
         title="Snap Any Meal. Know Your Macros."
         description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds — no manual searching required."
       />
-      <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
             {MEAL_SCANNER_SCREENSHOTS.map((slide, i) => (
               <FadeInUp key={slide.src} delay={i * 0.1} className="text-center">
@@ -120,29 +126,47 @@ export default function MealScannerPage() {
               </div>
             </FadeInUp>
           </div>
-          <FadeInUp delay={0.1} className="mt-12">
-            <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
-              How the AI Food Scanner Works
-            </h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              {SCANNER_STEPS.map((step, i) => (
-                <FadeInUp key={step.title} delay={0.15 + i * 0.06}>
-                  <article className="ps-glow-card h-full rounded-2xl p-6">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
-                      {i + 1}
-                    </span>
-                    <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
-                      {step.description}
-                    </p>
-                  </article>
-                </FadeInUp>
-              ))}
+          <div className="relative mt-12">
+            <div
+              className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+              aria-hidden="true"
+            >
+              <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
             </div>
-          </FadeInUp>
+            <FadeInUp delay={0.1} className="relative z-10">
+              <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+                How the AI Food Scanner Works
+              </h2>
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                {SCANNER_STEPS.map((step, i) => (
+                  <FadeInUp key={step.title} delay={0.15 + i * 0.06}>
+                    <article className="ps-glow-card h-full rounded-2xl p-6">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
+                        {i + 1}
+                      </span>
+                      <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                        {step.description}
+                      </p>
+                    </article>
+                  </FadeInUp>
+                ))}
+              </div>
+            </FadeInUp>
+          </div>
         </div>
       </section>
-      <DownloadCTA />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-11.webp" />
+        </div>
+        <div className="relative z-10">
+          <DownloadCTA />
+        </div>
+      </div>
     </>
   );
 }
