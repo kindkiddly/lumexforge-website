@@ -34,8 +34,8 @@ function getAdjacentSlideIndices(current: number, length: number) {
 const DESKTOP_IMAGE_GLOW =
   "inset 0 0 72px 14px rgba(0, 194, 255, 0.30), inset 0 0 144px 29px rgba(123, 47, 255, 0.18)";
 const LABEL_DELAY = 0;
-const HEADLINE_DELAY = 0.1;
-const DESCRIPTION_DELAY = 0.3;
+const HEADLINE_DELAY = 0;
+const DESCRIPTION_DELAY = 0.1;
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share";
 const IOS_PLACEHOLDER_URL = "https://apps.apple.com/proteinsnaps";
@@ -218,7 +218,11 @@ function AnimatedHeadline({
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, delay, ease }}
+          transition={{
+            duration: slideIndex === 0 ? 0.5 : slide.duration,
+            delay,
+            ease,
+          }}
           className={`${className} ${slide.headlineClass}`}
         >
           <HighlightedHeadline slide={slide} />

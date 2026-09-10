@@ -64,8 +64,8 @@ export default function HowItWorksPage() {
             >
               <div className="h-full bg-gradient-to-r from-[#00e6a8]/50 via-[#00c2ff]/50 to-[#00e6a8]/50" />
             </div>
-            {VISUAL_STEPS.map((step, i) => (
-              <FadeInUp key={step.step} delay={i * 0.1} className="text-center">
+            {VISUAL_STEPS.map((step) => (
+              <div key={step.step} className="text-center">
                 <div className="relative mx-auto w-[280px] shrink-0">
                   <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
                   <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
@@ -98,7 +98,7 @@ export default function HowItWorksPage() {
                 <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
                   {step.slide.description}
                 </p>
-              </FadeInUp>
+              </div>
             ))}
           </div>
         </div>
