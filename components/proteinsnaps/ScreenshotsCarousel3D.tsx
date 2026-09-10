@@ -12,17 +12,9 @@ const AUTOPLAY_MS = 5000;
 const ANIM_LOCK_MS = 700;
 const ZOOM_STEP = { pw: 196, g1: 217, g2: 387, gh: 546, sh: 504 } as const;
 const CENTER_PHONE_HALF_W = ZOOM_STEP.pw / 2;
-const CENTER_PHONE_SHELL_PAD = 5.6;
-const CENTER_PHONE_SHELL_BORDER = 2.1;
-const CENTER_PHONE_NOTCH_MT = 11.2;
-const CENTER_PHONE_INNER_W =
-  ZOOM_STEP.pw - 2 * (CENTER_PHONE_SHELL_PAD + CENTER_PHONE_SHELL_BORDER);
-const CENTER_PHONE_H =
-  2 * (CENTER_PHONE_SHELL_PAD + CENTER_PHONE_SHELL_BORDER) +
-  CENTER_PHONE_NOTCH_MT +
-  (CENTER_PHONE_INNER_W * 16) / 9;
-const CENTER_PHONE_BOTTOM = (ZOOM_STEP.sh - CENTER_PHONE_H) / 2;
 const CENTER_PHONE_TEXT_GAP = 8;
+const TEXT_BELOW_STAGE_GAP = 24;
+const TEXT_BLOCK_TOP = ZOOM_STEP.sh + TEXT_BELOW_STAGE_GAP;
 
 type CarouselPosition =
   | "center"
@@ -40,8 +32,8 @@ const POS_CONFIG: Record<CarouselPosition, [number, number, number, number]> = {
   right1: [1, -36, 0.76, 0.75],
   left2: [-1, 55, 0.56, 0.55],
   right2: [1, -55, 0.56, 0.55],
-  "hidden-left": [-1, 72, 0.4, 0.35],
-  "hidden-right": [1, -72, 0.4, 0.35],
+  "hidden-left": [-1, 72, 0.4, 0.5],
+  "hidden-right": [1, -72, 0.4, 0.5],
 };
 
 const POS_GAP: Record<
@@ -114,9 +106,9 @@ function getCardStyles(position: CarouselPosition) {
 export function ScreenshotsCarousel3D() {
   const totalCards = SCREENSHOT_SLIDES.length;
   const [currentCenter, setCurrentCenter] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const isAnimatingRef = useRef(false);
+  const isPausedRef = useRef(false);
   const slide = SCREENSHOT_SLIDES[currentCenter];
 
   useEffect(() => {
@@ -158,10 +150,25 @@ export function ScreenshotsCarousel3D() {
   }, [totalCards]);
 
   useEffect(() => {
-    if (!isDesktop || isHovered) return;
-    const timer = window.setInterval(advanceSlide, AUTOPLAY_MS);
+    if (!isDesktop) return;
+
+    const timer = window.setInterval(() => {
+      if (!isPausedRef.current) advanceSlide();
+    }, AUTOPLAY_MS);
+
     return () => window.clearInterval(timer);
-  }, [isDesktop, isHovered, advanceSlide]);
+  }, [isDesktop, advanceSlide]);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const clearPauseOnScroll = () => {
+      isPausedRef.current = false;
+    };
+
+    window.addEventListener("scroll", clearPauseOnScroll, { passive: true });
+    return () => window.removeEventListener("scroll", clearPauseOnScroll);
+  }, [isDesktop]);
 
   const visibleSlides = useMemo(() => {
     return SCREENSHOT_SLIDES.flatMap((screenshot, i) => {
@@ -220,13 +227,15 @@ export function ScreenshotsCarousel3D() {
           <div className="flex w-full shrink-0 flex-col items-center">
             <div
               className="relative w-full"
+              style={{ paddingBottom: 72 }}
+            >
+            <div
+              className="relative w-full"
               style={{
                 height: ZOOM_STEP.sh,
                 perspective: "clamp(900px, 120vw, 1800px)",
                 perspectiveOrigin: "center center",
               }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
             >
               <button
                 type="button"
@@ -254,6 +263,12 @@ export function ScreenshotsCarousel3D() {
               <div
                 className="relative flex h-full w-full items-center justify-center"
                 style={{ transformStyle: "preserve-3d" }}
+                onMouseEnter={() => {
+                  isPausedRef.current = true;
+                }}
+                onMouseLeave={() => {
+                  isPausedRef.current = false;
+                }}
               >
                 {visibleSlides.map(({ screenshot, i, offset, position, styles, isCenter }) => (
                     <div
@@ -291,8 +306,10 @@ export function ScreenshotsCarousel3D() {
                       }}
                     >
                       <div
-                        className={`relative rounded-[1.4rem] border-[2.1px] border-white/10 bg-[#0a0f18] p-[5.6px] shadow-2xl ${
-                          isCenter ? "ps-glow-frame" : ""
+                        className={`relative rounded-[1.4rem] border-[2.1px] p-[5.6px] shadow-2xl ${
+                          isCenter
+                            ? "border-white/10 bg-[#0a0f18] ps-glow-frame"
+                            : "border-white/20 bg-[#121a28]"
                         }`}
                         style={{
                           width: ZOOM_STEP.pw,
@@ -301,7 +318,7 @@ export function ScreenshotsCarousel3D() {
                       >
                         <div className="absolute left-1/2 top-[5.6px] z-10 h-[2.8px] w-[44.8px] -translate-x-1/2 rounded-full bg-white/20" />
                         <div className="relative mt-[11.2px] aspect-[9/16] overflow-hidden rounded-[1.05rem] bg-black">
-                          {Math.abs(offset) <= 2 && (
+                          {Math.abs(offset) <= 3 && (
                             <Image
                               src={screenshot.src}
                               alt={screenshot.feature}
@@ -340,6 +357,7 @@ export function ScreenshotsCarousel3D() {
                   />
                 </svg>
               </button>
+            </div>
 
               <AnimatePresence mode="wait">
                 <motion.h3
@@ -351,7 +369,7 @@ export function ScreenshotsCarousel3D() {
                   className="absolute z-20 max-w-[180px] text-right font-serif text-xl text-white"
                   style={{
                     right: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
-                    bottom: CENTER_PHONE_BOTTOM,
+                    top: TEXT_BLOCK_TOP,
                   }}
                 >
                   {slide.feature}
@@ -368,7 +386,7 @@ export function ScreenshotsCarousel3D() {
                   className="absolute z-20 max-w-[180px] line-clamp-2 text-left text-sm text-foreground-secondary"
                   style={{
                     left: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
-                    bottom: CENTER_PHONE_BOTTOM,
+                    top: TEXT_BLOCK_TOP,
                   }}
                 >
                   {slide.description}
