@@ -266,76 +266,94 @@
     inset: 0 !important;
     overflow: visible !important;
   }
+  .ps-hero-3d-tilt-group {
+    perspective: 920px !important;
+    perspective-origin: var(--hero-pivot-x, 72%) 50% !important;
+    overflow: visible !important;
+  }
+  .ps-hero-3d-tilt-inner {
+    transform-style: preserve-3d !important;
+    transform: rotateY(calc(-10deg + var(--hero-tilt-x, 0deg)))
+      rotateX(var(--hero-tilt-y, 0deg)) !important;
+    transform-origin: var(--hero-pivot-x, 72%) 50% !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    overflow: visible !important;
+  }
   .ps-hero-3d-depth {
     position: absolute !important;
     inset: 0 !important;
     z-index: 2 !important;
     pointer-events: none !important;
     overflow: visible !important;
+    transform-style: preserve-3d !important;
   }
   .ps-hero-3d-plates {
     position: absolute !important;
     pointer-events: none !important;
     z-index: 0 !important;
     overflow: visible !important;
+    transform-style: preserve-3d !important;
   }
   .ps-hero-3d-plate {
     position: absolute !important;
     inset: 0 !important;
-    border-radius: 4px 0 0 4px !important;
+    border-radius: 6px 0 0 6px !important;
     background: linear-gradient(
       90deg,
-      rgba(30, 42, 64, 1) 0%,
-      rgba(22, 32, 50, 0.95) 18%,
-      rgba(18, 26, 40, 0.65) 34%,
-      transparent 58%
+      rgba(34, 48, 72, 1) 0%,
+      rgba(24, 34, 54, 0.96) 22%,
+      rgba(18, 26, 40, 0.72) 38%,
+      transparent 62%
     ) !important;
-    box-shadow: -32px 0 64px rgba(0, 0, 0, 0.62) !important;
+    box-shadow: -36px 0 72px rgba(0, 0, 0, 0.68) !important;
   }
   .ps-hero-3d-plate--1 {
-    border-left: 3px solid rgba(255, 255, 255, 0.28) !important;
-    transform: translate(-14px, 5px) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.34) !important;
+    transform: translate3d(-18px, 6px, -24px) !important;
   }
   .ps-hero-3d-plate--2 {
-    border-left: 3px solid rgba(0, 230, 168, 0.45) !important;
-    transform: translate(-32px, 12px) !important;
-    opacity: 0.94 !important;
+    border-left: 3px solid rgba(0, 230, 168, 0.55) !important;
+    transform: translate3d(-38px, 14px, -48px) !important;
+    opacity: 0.96 !important;
   }
   .ps-hero-3d-plate--3 {
-    border-left: 3px solid rgba(0, 194, 255, 0.38) !important;
-    transform: translate(-52px, 20px) !important;
-    opacity: 0.86 !important;
+    border-left: 3px solid rgba(0, 194, 255, 0.48) !important;
+    transform: translate3d(-62px, 22px, -76px) !important;
+    opacity: 0.9 !important;
   }
   .ps-hero-3d-edge-shadow {
     position: absolute !important;
-    width: 80px !important;
+    width: 112px !important;
     z-index: 1 !important;
     pointer-events: none !important;
-    transform: translateX(-100%) !important;
+    transform: translate3d(-100%, 0, -12px) !important;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.5) 42%,
-      rgba(0, 0, 0, 0.22) 72%,
+      rgba(0, 0, 0, 0.62) 36%,
+      rgba(0, 0, 0, 0.28) 68%,
       transparent 100%
     ) !important;
-    filter: blur(8px) !important;
+    filter: blur(10px) !important;
   }
   .ps-hero-3d-cast {
     position: absolute !important;
-    height: 64px !important;
+    height: 88px !important;
     z-index: 0 !important;
     pointer-events: none !important;
     background: radial-gradient(
       ellipse at center,
-      rgba(0, 0, 0, 0.58) 0%,
-      rgba(0, 0, 0, 0.24) 44%,
-      transparent 74%
+      rgba(0, 0, 0, 0.68) 0%,
+      rgba(0, 0, 0, 0.32) 42%,
+      transparent 76%
     ) !important;
-    filter: blur(18px) !important;
+    filter: blur(22px) !important;
+    transform: translate3d(0, 12px, -64px) !important;
   }
   .ps-hero-images {
     z-index: 3 !important;
+    overflow: visible !important;
+    transform: translateZ(18px) !important;
   }
   .ps-hero-slide {
     position: absolute !important;
@@ -356,8 +374,9 @@
     object-fit: contain !important;
     object-position: right center !important;
     filter:
-      drop-shadow(-22px 14px 36px rgba(0, 0, 0, 0.48))
-      drop-shadow(0 28px 56px rgba(0, 0, 0, 0.38)) !important;
+      drop-shadow(-36px 20px 48px rgba(0, 0, 0, 0.58))
+      drop-shadow(-16px 8px 28px rgba(0, 0, 0, 0.42))
+      drop-shadow(0 36px 64px rgba(0, 0, 0, 0.45)) !important;
   }
   .ps-hero-slide-image.ps-hero-slide-psl9 {
     object-position: right 30% !important;
