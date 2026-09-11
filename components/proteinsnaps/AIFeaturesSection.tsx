@@ -1,6 +1,9 @@
 import { AI_FEATURES } from "@/lib/proteinsnaps/constants";
+import { FeatureIcon } from "./FeatureIcon";
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
+
+const AI_FEATURE_ICONS = ["coach", "camera", "insights"] as const;
 
 export function AIFeaturesSection() {
   return (
@@ -21,8 +24,11 @@ export function AIFeaturesSection() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {AI_FEATURES.map((feature, i) => (
                 <FadeInUp key={feature.title} delay={i * 0.1}>
-                  <div className="rounded-2xl border border-[#00c2ff]/15 p-6 transition-colors hover:border-[#00c2ff]/35">
-                    <h3 className="text-lg font-semibold text-[#00c2ff]">
+                  <div className="ps-slab rounded-2xl border border-[#00c2ff]/15 p-6 transition-colors hover:border-[#00c2ff]/35">
+                    <div className="ps-tile ps-tile--cyan">
+                      <FeatureIcon name={AI_FEATURE_ICONS[i]} className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-[#00c2ff]">
                       {feature.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">

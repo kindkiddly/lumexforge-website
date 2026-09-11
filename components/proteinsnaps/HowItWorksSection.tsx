@@ -25,15 +25,17 @@ export function HowItWorksSection() {
 
           {HOW_IT_WORKS_STEPS.map((step, i) => (
             <ZoomRevealText key={step.step} delay={i * 0.15} className="relative text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[#00e6a8]/30 bg-[#00e6a8]/10 font-serif text-2xl font-bold text-[#00e6a8] ps-glow-frame">
-                {step.step}
+              <div className="ps-slab">
+                <span className="ps-pill mx-auto inline-flex">
+                  <b>{step.step}</b>
+                </span>
+                <h3 className="mt-6 font-serif text-xl font-semibold text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground-secondary sm:text-base">
+                  {step.description}
+                </p>
               </div>
-              <h3 className="mt-6 font-serif text-xl font-semibold text-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground-secondary sm:text-base">
-                {step.description}
-              </p>
             </ZoomRevealText>
           ))}
         </div>
