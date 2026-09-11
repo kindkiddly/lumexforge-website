@@ -468,3 +468,14 @@
   box-shadow: 0 8px 18px -10px rgba(0,230,168,0.65), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.35);
 }
 .ps-btn:focus-visible { outline: 3px solid rgba(0,230,168,0.55); outline-offset: 3px; }
+
+.ps-3d-card {
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 230, 168, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ps-3d-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 230, 168, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.40);
+}
