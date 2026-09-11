@@ -11,7 +11,7 @@ export function FeaturesGrid() {
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp className="text-center">
-          <div className="ps-glass-text rounded-2xl mx-auto max-w-2xl">
+          <div className="ps-glass-text ps-3d-card rounded-2xl mx-auto max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
               Features
             </p>
