@@ -8,7 +8,14 @@ export function AIFeaturesSection() {
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp>
-          <div className="ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-background-secondary to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame">
+          <div
+            className="ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-background-secondary to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame"
+            style={{
+              background: "rgba(5, 8, 17, 0.48)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+            }}
+          >
             <div className="text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
                 Powered by AI
