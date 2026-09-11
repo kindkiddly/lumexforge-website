@@ -307,6 +307,10 @@
   background-position: right center;
 }
 
+.ps-parallax-bg-right-ai .ps-parallax-inner {
+  background-position: right center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ps-parallax-inner {
     transform: none !important;
