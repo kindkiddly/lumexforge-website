@@ -137,7 +137,7 @@ export default function AIProteinTrackerPage() {
             <div className="grid gap-6 sm:grid-cols-2">
               {TRACKER_FEATURES.map((item, i) => (
                 <FadeInUp key={item.title} delay={0.1 + i * 0.04}>
-                  <article className="ps-glow-card h-full rounded-2xl p-6">
+                  <article className="ps-glow-card ps-glass-panel h-full rounded-2xl p-6">
                     <h2 className="text-lg font-semibold text-[#00e6a8]">{item.title}</h2>
                     <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
                       {item.description}

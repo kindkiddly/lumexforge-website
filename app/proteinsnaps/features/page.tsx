@@ -81,7 +81,7 @@ export default function FeaturesPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURE_CARDS.map((feature, i) => (
               <FadeInUp key={feature.title} delay={i * 0.04}>
-                <article className="ps-glow-card h-full rounded-2xl p-7">
+                <article className="ps-glow-card ps-glass-panel h-full rounded-2xl p-7">
                   <FeatureIcon name={feature.icon} className="h-7 w-7" />
                   <h2 className="mt-5 text-lg font-semibold text-foreground">
                     {feature.title}
@@ -123,12 +123,14 @@ export default function FeaturesPage() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
-                  {slide.feature}
-                </p>
-                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
-                  {slide.description}
-                </p>
+                <div className="ps-glass-text mt-5 mx-auto max-w-xs">
+                  <p className="font-serif text-lg font-semibold text-foreground">
+                    {slide.feature}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                    {slide.description}
+                  </p>
+                </div>
               </FadeInUp>
             ))}
           </div>

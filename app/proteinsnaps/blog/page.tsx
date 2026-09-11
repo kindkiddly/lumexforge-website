@@ -85,7 +85,7 @@ export default function BlogPage() {
             <div className="relative z-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {PREVIEW_ARTICLES.map((article, i) => (
                 <FadeInUp key={article.title} delay={i * 0.08}>
-                  <article className="ps-glow-card flex h-full flex-col rounded-2xl p-7">
+                  <article className="ps-glow-card ps-glass-panel flex h-full flex-col rounded-2xl p-7">
                     <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
                       {article.category}
                     </p>
@@ -112,9 +112,11 @@ export default function BlogPage() {
               <ParallaxImage src="/images/proteinsnaps/BG-8.webp" />
             </div>
             <FadeInUp delay={0.28} className="relative z-10 text-center">
-              <p className="text-base text-foreground-secondary">
-                New articles dropping soon. Follow us to stay updated.
-              </p>
+              <div className="ps-glass-text">
+                <p className="text-base text-foreground-secondary">
+                  New articles dropping soon. Follow us to stay updated.
+                </p>
+              </div>
               <div className="mt-6 flex items-center justify-center gap-4">
                 <a
                   href="#"

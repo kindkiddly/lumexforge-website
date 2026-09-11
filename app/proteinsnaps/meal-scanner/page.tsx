@@ -92,12 +92,14 @@ export default function MealScannerPage() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
-                  {slide.feature}
-                </p>
-                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
-                  {slide.description}
-                </p>
+                <div className="ps-glass-text mt-5 mx-auto max-w-xs">
+                  <p className="font-serif text-lg font-semibold text-foreground">
+                    {slide.feature}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                    {slide.description}
+                  </p>
+                </div>
               </FadeInUp>
             ))}
           </div>
@@ -134,13 +136,15 @@ export default function MealScannerPage() {
               <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
             </div>
             <FadeInUp delay={0.1} className="relative z-10">
-              <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
-                How the AI Food Scanner Works
-              </h2>
+              <div className="ps-glass-text">
+                <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+                  How the AI Food Scanner Works
+                </h2>
+              </div>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {SCANNER_STEPS.map((step, i) => (
                   <FadeInUp key={step.title} delay={0.15 + i * 0.06}>
-                    <article className="ps-glow-card h-full rounded-2xl p-6">
+                    <article className="ps-glow-card ps-glass-panel h-full rounded-2xl p-6">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
                         {i + 1}
                       </span>

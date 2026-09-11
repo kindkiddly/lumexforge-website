@@ -95,9 +95,11 @@ export default function WorkoutNutritionPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">
-            <h2 className="font-serif text-3xl font-semibold text-foreground">
-              <StaggerWords text="Train Hard. Eat Smart." />
-            </h2>
+            <div className="ps-glass-text">
+              <h2 className="font-serif text-3xl font-semibold text-foreground">
+                <StaggerWords text="Train Hard. Eat Smart." />
+              </h2>
+            </div>
           </FadeInUp>
           <div className="mt-12 grid items-start gap-12 lg:grid-cols-2">
             <FadeInUp>
@@ -116,7 +118,7 @@ export default function WorkoutNutritionPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {WORKOUT_FEATURES.map((item, i) => (
                 <FadeInUp key={item.title} delay={i * 0.06}>
-                  <article className="ps-glow-card h-full rounded-2xl p-5">
+                  <article className="ps-glow-card ps-glass-panel h-full rounded-2xl p-5">
                     <h3 className="font-semibold text-[#00c2ff]">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
                       {item.description}
