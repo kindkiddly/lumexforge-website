@@ -49,15 +49,17 @@ export function ScreenshotsSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-right"
             >
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
-                Feature {index + 1} of {SCREENSHOT_SLIDES.length}
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
-                {slide.feature}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
-                {slide.description}
-              </p>
+              <div className="ps-glass-text rounded-2xl">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
+                  Feature {index + 1} of {SCREENSHOT_SLIDES.length}
+                </p>
+                <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
+                  {slide.feature}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+                  {slide.description}
+                </p>
+              </div>
             </motion.div>
           </AnimatePresence>
 
@@ -95,27 +97,30 @@ export function ScreenshotsSection() {
           </div>
 
           <AnimatePresence mode="wait">
-            <motion.ul
+            <motion.div
               key={`right-${index}`}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-3"
             >
-              {slide.highlights.map((item, i) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-3 text-foreground-secondary"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
+              <div className="ps-glass-text rounded-2xl">
+                <ul className="space-y-3">
+                  {slide.highlights.map((item, i) => (
+                    <motion.li
+                      key={item}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-start gap-3 text-foreground-secondary"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           </AnimatePresence>
         </div>
 
