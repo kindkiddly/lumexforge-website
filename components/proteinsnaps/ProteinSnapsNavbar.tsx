@@ -30,6 +30,17 @@ export function ProteinSnapsNavbar() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+          <Link
+            href={psHref("/")}
+            className={cn(
+              "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              activePath === "/"
+                ? "text-[#00E6A8]"
+                : "text-white/70 hover:text-white"
+            )}
+          >
+            Home
+          </Link>
           {PROTEINSNAPS_NAV.map((link) => {
             const active = activePath === link.href;
             return (
@@ -85,6 +96,18 @@ export function ProteinSnapsNavbar() {
             className="overflow-hidden border-t border-white/[0.06] lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
+              <Link
+                href={psHref("/")}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "rounded-lg px-3 py-3 text-base font-medium transition-colors",
+                  activePath === "/"
+                    ? "text-[#00E6A8]"
+                    : "text-white/70 hover:bg-white/[0.04] hover:text-white"
+                )}
+              >
+                Home
+              </Link>
               {PROTEINSNAPS_NAV.map((link) => (
                 <Link
                   key={link.href}
