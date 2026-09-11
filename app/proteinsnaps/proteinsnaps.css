@@ -296,7 +296,7 @@
 
 .ps-parallax-inner {
   position: absolute;
-  inset: 0;
+  inset: -5%;
   will-change: transform;
   background-size: cover;
   background-position: center top;
