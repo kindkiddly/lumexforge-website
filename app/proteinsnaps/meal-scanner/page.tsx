@@ -115,7 +115,7 @@ export default function MealScannerPage() {
               <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
             </div>
             <FadeInUp className="relative z-10">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
+              <div className="ps-3d-card relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
                 <Image
                   src="/images/proteinsnaps/PSL-5.webp"
                   alt="ProteinSnaps AI meal scanner in action"

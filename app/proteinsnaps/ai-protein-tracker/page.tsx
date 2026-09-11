@@ -88,7 +88,7 @@ export default function AIProteinTrackerPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+            <div className="ps-3d-card relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
               <Image
                 src="/images/proteinsnaps/PSL-7.webp"
                 alt="ProteinSnaps daily macro and recovery summary"
