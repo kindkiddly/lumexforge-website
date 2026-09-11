@@ -105,15 +105,15 @@ export default function MealScannerPage() {
           </div>
         </div>
       </section>
-      <section className="py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16">
+        <div
+          className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
+        </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
-            <div
-              className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
-              aria-hidden="true"
-            >
-              <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
-            </div>
             <FadeInUp className="relative z-10">
               <div className="ps-3d-card relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
                 <Image
