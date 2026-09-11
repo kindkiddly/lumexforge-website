@@ -311,6 +311,11 @@
   background-position: right center;
 }
 
+.ps-parallax-bg-cover .ps-parallax-inner {
+  background-size: cover;
+  background-position: center center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ps-parallax-inner {
     transform: none !important;

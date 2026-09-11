@@ -109,7 +109,7 @@ export default function MealScannerPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div
-              className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+              className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
               aria-hidden="true"
             >
               <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
@@ -123,7 +123,7 @@ export default function MealScannerPage() {
                   height={1024}
                   loading="lazy"
                   sizes="100vw"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </FadeInUp>
