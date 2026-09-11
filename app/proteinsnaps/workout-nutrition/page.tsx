@@ -109,7 +109,7 @@ export default function WorkoutNutritionPage() {
                   height={497}
                   loading="lazy"
                   sizes="400px"
-                  className="h-full w-full object-cover object-top"
+                  className="h-full w-full object-contain object-center"
                 />
               </div>
             </FadeInUp>
