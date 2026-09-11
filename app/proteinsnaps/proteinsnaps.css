@@ -298,8 +298,8 @@
   position: absolute;
   inset: -5%;
   will-change: transform;
-  background-size: cover;
-  background-position: center top;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
