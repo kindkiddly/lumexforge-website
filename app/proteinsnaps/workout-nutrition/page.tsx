@@ -74,7 +74,7 @@ export default function WorkoutNutritionPage() {
           <FadeInUp>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
               <Image
-                src="/images/proteinsnaps/PSL-5.webp"
+                src="/images/proteinsnaps/PSL-2.webp"
                 alt="ProteinSnaps gym and strength training"
                 width={1536}
                 height={1024}
