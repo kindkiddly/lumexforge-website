@@ -47,6 +47,11 @@ export default function FeaturesPage() {
         title="Built for Serious Nutrition Tracking"
         description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
       />
+      <div className="relative z-10 -mt-8 mb-8 flex justify-center">
+        <div className="ps-title-strip">
+          <span className="font-serif text-2xl text-foreground">Everything You Need</span>
+        </div>
+      </div>
       <section className="relative py-8 sm:py-10">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
