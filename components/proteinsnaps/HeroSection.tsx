@@ -25,6 +25,14 @@ const RESUME_AFTER_MS = 5000;
 const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
 
+const MOBILE_HERO_SLIDES = [
+  { src: "/images/proteinsnaps/PS-1.webp", alt: "ProteinSnaps app screen 1" },
+  { src: "/images/proteinsnaps/PS-6.webp", alt: "ProteinSnaps app screen 6" },
+  { src: "/images/proteinsnaps/PS-8.webp", alt: "ProteinSnaps app screen 8" },
+  { src: "/images/proteinsnaps/PS-3.webp", alt: "ProteinSnaps app screen 3" },
+  { src: "/images/proteinsnaps/PS-5.webp", alt: "ProteinSnaps app screen 5" },
+] as const;
+
 function getAdjacentSlideIndices(current: number, length: number) {
   const prev = (current - 1 + length) % length;
   const next = (current + 1) % length;
@@ -555,7 +563,10 @@ export function HeroSection() {
 
     const scheduleNext = () => {
       autoPlayRef.current = setTimeout(() => {
-        const next = (indexRef.current + 1) % HERO_SLIDES.length;
+        const slideCount = isDesktop
+          ? HERO_SLIDES.length
+          : MOBILE_HERO_SLIDES.length;
+        const next = (indexRef.current + 1) % slideCount;
         indexRef.current = next;
         setIndex(next);
         scheduleNext();
@@ -563,7 +574,7 @@ export function HeroSection() {
     };
 
     scheduleNext();
-  }, [clearAutoPlay]);
+  }, [clearAutoPlay, isDesktop]);
 
   const pauseAutoPlay = useCallback(() => {
     clearAutoPlay();
@@ -590,6 +601,17 @@ export function HeroSection() {
   }, []);
 
   useEffect(() => {
+    const slideCount = isDesktop
+      ? HERO_SLIDES.length
+      : MOBILE_HERO_SLIDES.length;
+    setIndex((i) => {
+      const next = i % slideCount;
+      indexRef.current = next;
+      return next;
+    });
+  }, [isDesktop]);
+
+  useEffect(() => {
     const onVisibilityChange = () => {
       setIsTabVisible(document.visibilityState === "visible");
     };
@@ -603,20 +625,32 @@ export function HeroSection() {
     ? { boxShadow: DESKTOP_IMAGE_GLOW }
     : undefined;
 
-  const visibleHeroIndices = getAdjacentSlideIndices(index, HERO_SLIDES.length);
+  const heroSlideCount = isDesktop
+    ? HERO_SLIDES.length
+    : MOBILE_HERO_SLIDES.length;
+  const visibleHeroIndices = getAdjacentSlideIndices(index, heroSlideCount);
 
   const goToSlide = (i: number) => {
     setIndex(i);
+    indexRef.current = i;
     pauseAutoPlay();
   };
 
   const nextSlide = () => {
-    setIndex((i) => (i + 1) % HERO_SLIDES.length);
+    setIndex((i) => {
+      const next = (i + 1) % heroSlideCount;
+      indexRef.current = next;
+      return next;
+    });
     pauseAutoPlay();
   };
 
   const prevSlide = () => {
-    setIndex((i) => (i - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    setIndex((i) => {
+      const next = (i - 1 + heroSlideCount) % heroSlideCount;
+      indexRef.current = next;
+      return next;
+    });
     pauseAutoPlay();
   };
 
@@ -658,34 +692,65 @@ export function HeroSection() {
           className="ps-hero-images absolute inset-0 h-full w-full overflow-hidden bg-[#050811]"
           style={desktopImageContainerStyle}
         >
-          {HERO_SLIDES.map((slide, i) => {
-            if (!visibleHeroIndices.has(i)) return null;
+          <div className="absolute inset-0 h-full w-full lg:hidden">
+            {MOBILE_HERO_SLIDES.map((slide, i) => {
+              if (!visibleHeroIndices.has(i)) return null;
 
-            return (
-              <motion.div
-                key={slide.src}
-                className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
-                initial={false}
-                animate={{ opacity: i === index ? 1 : 0 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-                style={{ zIndex: i === index ? 2 : 1 }}
-              >
-                <Image
-                  src={slide.src}
-                  alt=""
-                  width={1536}
-                  height={1024}
-                  priority={i === 0}
-                  loading={i === 0 ? undefined : "lazy"}
-                  sizes="100vw"
-                  className={`ps-hero-slide-image h-full w-full object-cover object-center max-lg:object-top${
-                    i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
-                  }`}
-                  aria-hidden
-                />
-              </motion.div>
-            );
-          })}
+              return (
+                <motion.div
+                  key={slide.src}
+                  className="absolute inset-0 h-full w-full overflow-hidden"
+                  initial={false}
+                  animate={{ opacity: i === index ? 1 : 0 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  style={{ zIndex: i === index ? 2 : 1 }}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    width={1080}
+                    height={1920}
+                    priority={i === 0}
+                    loading={i === 0 ? undefined : "lazy"}
+                    sizes="100vw"
+                    className="h-full w-full object-cover object-center"
+                    aria-hidden
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="absolute inset-0 hidden h-full w-full lg:block">
+            {HERO_SLIDES.map((slide, i) => {
+              if (!visibleHeroIndices.has(i)) return null;
+
+              return (
+                <motion.div
+                  key={slide.src}
+                  className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
+                  initial={false}
+                  animate={{ opacity: i === index ? 1 : 0 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  style={{ zIndex: i === index ? 2 : 1 }}
+                >
+                  <Image
+                    src={slide.src}
+                    alt=""
+                    width={1536}
+                    height={1024}
+                    priority={i === 0}
+                    loading={i === 0 ? undefined : "lazy"}
+                    sizes="100vw"
+                    className={`ps-hero-slide-image h-full w-full object-cover object-center max-lg:object-top${
+                      i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
+                    }`}
+                    aria-hidden
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -811,20 +876,38 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-6">
-        {HERO_SLIDES.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            aria-current={i === index ? "true" : undefined}
-            onClick={() => goToSlide(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === index
-                ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
-                : "w-1.5 bg-white/35 hover:bg-white/55"
-            }`}
-          />
-        ))}
+        <div className="flex gap-2 lg:hidden">
+          {MOBILE_HERO_SLIDES.map((slide, i) => (
+            <button
+              key={slide.src}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={i === index ? "true" : undefined}
+              onClick={() => goToSlide(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === index
+                  ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
+                  : "w-1.5 bg-white/35 hover:bg-white/55"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="hidden gap-2 lg:flex">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={i === index ? "true" : undefined}
+              onClick={() => goToSlide(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === index
+                  ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
+                  : "w-1.5 bg-white/35 hover:bg-white/55"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
