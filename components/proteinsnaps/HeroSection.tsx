@@ -3,7 +3,6 @@
 import {
   DESKTOP_SLIDES,
   HERO_SLIDES,
-  PROTEINSNAPS,
 } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -808,53 +807,46 @@ export function HeroSection() {
       </div>
 
       {/* z-10: text content */}
-      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 max-lg:items-end max-lg:justify-center max-lg:pb-20 lg:items-stretch lg:px-0 lg:py-0">
-        <div className="relative mx-auto h-full w-full max-w-7xl max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-end lg:mx-0 lg:max-w-none">
+      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 max-lg:items-center max-lg:justify-center lg:items-stretch lg:px-0 lg:py-0">
+        <div className="relative mx-auto h-full w-full max-w-7xl max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet */}
           <div className="w-full max-w-md text-center lg:hidden">
-            <motion.p
-              initial={skipEntrance ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-xs font-bold uppercase tracking-[0.25em] text-[#00E6A8]"
-            >
-              {PROTEINSNAPS.name}
-            </motion.p>
+            <p className="text-sm font-semibold">
+              <span className="text-white">Protein</span>
+              <span className="text-[#00E6A8]">Snaps</span>
+            </p>
 
-            <motion.h1
-              initial={skipEntrance ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-2 font-sans text-2xl font-extrabold leading-snug tracking-tight text-white"
-            >
-              Track{" "}
-              <span className="text-[#00E6A8]">Protein.</span> Snap{" "}
-              <span className="text-[#00E6A8]">Meals.</span>{" "}
-              <span className="text-[#00E6A8]">Win.</span>
-            </motion.h1>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="mt-3 text-center font-serif text-2xl font-bold text-white">
+                  <HighlightedHeadline
+                    slide={{
+                      headline: DESKTOP_SLIDES[index].headline,
+                      accentWords: DESKTOP_SLIDES[index].accentWords,
+                      accentClass: DESKTOP_SLIDES[index].accentClass,
+                    }}
+                  />
+                </h2>
+                <p className="mx-auto mt-2 max-w-xs text-center text-sm text-white/80">
+                  {DESKTOP_SLIDES[index].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-            <motion.p
-              initial={skipEntrance ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-white"
-            >
-              {PROTEINSNAPS.description}
-            </motion.p>
-
-            <motion.div
-              initial={skipEntrance ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-5 w-full max-w-sm"
-            >
+            <div className="mx-auto mt-5 w-full max-w-sm">
               <StoreButtons
-                size="lg"
+                size="md"
                 variant="hero"
                 showQr={false}
-                className="[&>div]:flex-col [&>div]:items-stretch [&>div]:sm:flex-col [&_a]:w-full [&_span]:w-full"
+                className="[&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Desktop only — fixed store panel + animated text above */}
