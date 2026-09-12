@@ -33,9 +33,9 @@ export function ProteinSnapsNavbar() {
           <Link
             href={psHref("/")}
             className={cn(
-              "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              "ps-nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors",
               activePath === "/"
-                ? "text-[#00E6A8]"
+                ? "active text-[#00E6A8]"
                 : "text-white/70 hover:text-white"
             )}
           >
@@ -48,9 +48,9 @@ export function ProteinSnapsNavbar() {
                 key={link.href}
                 href={psHref(link.href)}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  "ps-nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   active
-                    ? "text-[#00E6A8]"
+                    ? "active text-[#00E6A8]"
                     : "text-white/70 hover:text-white"
                 )}
               >
@@ -65,7 +65,7 @@ export function ProteinSnapsNavbar() {
             href={PROTEINSNAPS.playStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold"
+            className="ps-btn solid"
           >
             Download
           </a>
@@ -100,24 +100,32 @@ export function ProteinSnapsNavbar() {
                 href={psHref("/")}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "rounded-lg px-3 py-3 text-base font-medium transition-colors",
+                  "ps-nav-link rounded-lg px-3 py-3 text-base font-medium transition-colors",
                   activePath === "/"
-                    ? "text-[#00E6A8]"
+                    ? "active text-[#00E6A8]"
                     : "text-white/70 hover:bg-white/[0.04] hover:text-white"
                 )}
               >
                 Home
               </Link>
-              {PROTEINSNAPS_NAV.map((link) => (
-                <Link
-                  key={link.href}
-                  href={psHref(link.href)}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-white/70 hover:bg-white/[0.04] hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {PROTEINSNAPS_NAV.map((link) => {
+                const active = activePath === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={psHref(link.href)}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "ps-nav-link rounded-lg px-3 py-3 text-base font-medium transition-colors",
+                      active
+                        ? "active text-[#00E6A8]"
+                        : "text-white/70 hover:bg-white/[0.04] hover:text-white"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <a
                 href={PROTEINSNAPS.playStoreUrl}
                 target="_blank"

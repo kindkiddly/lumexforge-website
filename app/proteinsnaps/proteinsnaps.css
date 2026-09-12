@@ -561,3 +561,27 @@
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
+
+.ps-nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.ps-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00e6a8, #00c2ff);
+  box-shadow: 0 0 8px rgba(0, 230, 168, 0.6);
+  transition: width 0.3s cubic-bezier(0.19, 0.86, 0.22, 1);
+}
+
+.ps-nav-link:hover::after,
+.ps-nav-link.active::after {
+  width: 100%;
+}
