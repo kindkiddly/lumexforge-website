@@ -549,7 +549,7 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 3rem;
-  background: rgba(5, 8, 17, 0.55);
+  background: linear-gradient(160deg, #0d2233, #0a1a2e 48%, #0c1f2e);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
