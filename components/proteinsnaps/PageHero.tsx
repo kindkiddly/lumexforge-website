@@ -16,9 +16,11 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
             {eyebrow}
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            <BlurRevealText text={title} />
-          </h1>
+          <div className="ps-title-strip mx-auto text-center">
+            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              <BlurRevealText text={title} />
+            </h1>
+          </div>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-secondary">
             {description}
           </p>
