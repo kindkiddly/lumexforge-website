@@ -43,20 +43,33 @@ export function ScreenshotsSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`left-${index}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-right"
             >
-              <div className="rounded-2xl px-5 py-3">
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
+              <div
+                className="rounded-2xl px-5 py-3"
+                style={{
+                  background: "rgba(255,255,255,0.40)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                }}
+              >
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#0F766E]">
                   Feature {index + 1} of {SCREENSHOT_SLIDES.length}
                 </p>
-                <h3 className="mt-2 font-serif text-2xl font-semibold text-[#0F172A]">
+                <h3
+                  className="mt-2 font-serif text-2xl font-semibold text-[#0B1220]"
+                  style={{
+                    textShadow:
+                      "0 1px 0 rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.7)",
+                  }}
+                >
                   {slide.feature}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-[#475569]">
+                <p className="mt-3 text-base leading-relaxed text-[#334155]">
                   {slide.description}
                 </p>
               </div>
@@ -99,22 +112,29 @@ export function ScreenshotsSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`right-${index}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="rounded-2xl px-5 py-3">
+              <div
+                className="rounded-2xl px-5 py-3"
+                style={{
+                  background: "rgba(255,255,255,0.40)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                }}
+              >
                 <ul className="space-y-3">
                   {slide.highlights.map((item, i) => (
                     <motion.li
                       key={item}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3 text-[#475569]"
+                      className="flex items-start gap-3 text-[#334155]"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
                       {item}
                     </motion.li>
                   ))}
