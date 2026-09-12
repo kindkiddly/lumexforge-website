@@ -754,12 +754,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* z-2: mobile dark overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-[rgba(5,8,17,0.65)] lg:hidden"
-        aria-hidden="true"
-      />
-
       {/* z-2: gradient overlay — desktop only */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] hidden bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:block lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
@@ -807,44 +801,47 @@ export function HeroSection() {
       </div>
 
       {/* z-10: text content */}
-      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 max-lg:items-center max-lg:justify-center lg:items-stretch lg:px-0 lg:py-0">
-        <div className="relative mx-auto h-full w-full max-w-7xl max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center lg:mx-0 lg:max-w-none">
+      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden lg:items-stretch lg:px-0 lg:py-0">
+        <div className="relative mx-auto h-full w-full max-w-7xl lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet */}
-          <div className="w-full max-w-md text-center lg:hidden">
-            <p className="text-sm font-semibold">
+          <div className="relative h-full w-full lg:hidden">
+            <p className="absolute left-0 right-0 top-8 z-10 text-center text-sm font-semibold">
               <span className="text-white">Protein</span>
               <span className="text-[#00E6A8]">Snaps</span>
             </p>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="mt-3 text-center font-serif text-2xl font-bold text-white">
-                  <HighlightedHeadline
-                    slide={{
-                      headline: DESKTOP_SLIDES[index].headline,
-                      accentWords: DESKTOP_SLIDES[index].accentWords,
-                      accentClass: DESKTOP_SLIDES[index].accentClass,
-                    }}
-                  />
-                </h2>
-                <p className="mx-auto mt-2 max-w-xs text-center text-sm text-white/80">
-                  {DESKTOP_SLIDES[index].description}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+            <div className="absolute left-0 right-0 top-1/2 z-10 -translate-y-1/2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="ps-glass-panel mx-4 rounded-2xl px-6 py-4"
+                >
+                  <h2 className="text-center font-serif text-2xl font-bold text-white">
+                    <HighlightedHeadline
+                      slide={{
+                        headline: DESKTOP_SLIDES[index].headline,
+                        accentWords: DESKTOP_SLIDES[index].accentWords,
+                        accentClass: DESKTOP_SLIDES[index].accentClass,
+                      }}
+                    />
+                  </h2>
+                  <p className="mx-auto mt-2 max-w-xs text-center text-sm text-white/80">
+                    {DESKTOP_SLIDES[index].description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-            <div className="mx-auto mt-5 w-full max-w-sm">
+            <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center px-4">
               <StoreButtons
                 size="md"
                 variant="hero"
                 showQr={false}
-                className="[&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
+                className="w-full max-w-sm [&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
               />
             </div>
           </div>
