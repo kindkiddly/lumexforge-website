@@ -26,11 +26,12 @@ const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
 
 const MOBILE_HERO_SLIDES = [
-  { src: "/images/proteinsnaps/PS-1.webp", alt: "ProteinSnaps app screen 1" },
-  { src: "/images/proteinsnaps/PS-6.webp", alt: "ProteinSnaps app screen 6" },
-  { src: "/images/proteinsnaps/PS-8.webp", alt: "ProteinSnaps app screen 8" },
-  { src: "/images/proteinsnaps/PS-3.webp", alt: "ProteinSnaps app screen 3" },
-  { src: "/images/proteinsnaps/PS-5.webp", alt: "ProteinSnaps app screen 5" },
+  { src: "/images/proteinsnaps/PSL-M1.webp", alt: "ProteinSnaps fitness partner" },
+  { src: "/images/proteinsnaps/PSL-M2.webp", alt: "ProteinSnaps AI coach" },
+  { src: "/images/proteinsnaps/PSL-M3.webp", alt: "ProteinSnaps every mile" },
+  { src: "/images/proteinsnaps/PSL-M4.webp", alt: "ProteinSnaps snap it track it" },
+  { src: "/images/proteinsnaps/PSL-M5.webp", alt: "ProteinSnaps finish strong" },
+  { src: "/images/proteinsnaps/PSL-M6.webp", alt: "ProteinSnaps real progress" },
 ] as const;
 
 function getAdjacentSlideIndices(current: number, length: number) {
@@ -708,8 +709,8 @@ export function HeroSection() {
                   <Image
                     src={slide.src}
                     alt={slide.alt}
-                    width={1080}
-                    height={1920}
+                    width={390}
+                    height={844}
                     priority={i === 0}
                     loading={i === 0 ? undefined : "lazy"}
                     sizes="100vw"
