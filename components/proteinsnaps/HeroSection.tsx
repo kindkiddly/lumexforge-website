@@ -677,6 +677,11 @@ export function HeroSection() {
                   className={`ps-hero-slide-image h-full w-full object-cover object-center${
                     i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
                   }`}
+                  style={{
+                    boxShadow:
+                      "0 10px 24px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 230, 168, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 0 rgba(0, 0, 0, 0.35)",
+                    filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6))",
+                  }}
                   aria-hidden
                 />
               </motion.div>
