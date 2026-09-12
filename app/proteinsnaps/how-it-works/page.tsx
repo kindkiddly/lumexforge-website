@@ -2,6 +2,7 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
+import { SunburstAnimation } from "@/components/proteinsnaps/SunburstAnimation";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -86,15 +87,17 @@ export default function HowItWorksPage() {
                     {step.description}
                   </p>
                 </div>
-                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
-                  {step.slide.feature}
-                </p>
-                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
-                  {step.slide.description}
-                </p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="relative w-full overflow-hidden px-6 py-4">
+        <div
+          className="ps-glass-panel ps-3d-card w-full overflow-hidden"
+          style={{ height: "180px", borderRadius: "1.5rem" }}
+        >
+          <SunburstAnimation />
         </div>
       </section>
       <div className="relative ps-parallax-bg-right">
