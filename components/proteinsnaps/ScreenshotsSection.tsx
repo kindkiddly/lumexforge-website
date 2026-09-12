@@ -49,14 +49,14 @@ export function ScreenshotsSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-right"
             >
-              <div className="ps-glass-text ps-3d-card rounded-2xl">
+              <div className="rounded-2xl px-5 py-3">
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
                   Feature {index + 1} of {SCREENSHOT_SLIDES.length}
                 </p>
-                <h3 className="mt-2 font-serif text-2xl font-semibold text-foreground">
+                <h3 className="mt-2 font-serif text-2xl font-semibold text-[#0F172A]">
                   {slide.feature}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+                <p className="mt-3 text-base leading-relaxed text-[#475569]">
                   {slide.description}
                 </p>
               </div>
@@ -104,7 +104,7 @@ export function ScreenshotsSection() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="ps-glass-text ps-3d-card rounded-2xl">
+              <div className="rounded-2xl px-5 py-3">
                 <ul className="space-y-3">
                   {slide.highlights.map((item, i) => (
                     <motion.li
@@ -112,7 +112,7 @@ export function ScreenshotsSection() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3 text-foreground-secondary"
+                      className="flex items-start gap-3 text-[#475569]"
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00e6a8]" />
                       {item}
