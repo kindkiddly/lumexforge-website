@@ -1,7 +1,6 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
-import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -47,15 +46,23 @@ export default function HowItWorksPage() {
         title="Nutrition Tracking Made Simple"
         description="ProteinSnaps turns meal tracking from a chore into a three-step habit — snap, track, and achieve."
       />
-      <section className="pb-12 sm:pb-16 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative mt-8 grid gap-12 lg:grid-cols-3">
-            <div
-              className="pointer-events-none absolute left-[16.67%] right-[16.67%] z-0 hidden h-px lg:top-[calc(33.5rem+2rem+2.5rem)] lg:block"
-              aria-hidden="true"
-            >
-              <div className="h-full bg-gradient-to-r from-[#00e6a8]/50 via-[#00c2ff]/50 to-[#00e6a8]/50" />
-            </div>
+      <section className="relative pb-12 sm:pb-16 lg:pb-20">
+        <div
+          className="ps-parallax-bg-cover ps-parallax-bg-right pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
+              HOW IT WORKS
+            </p>
+            <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+              Three Steps to Better Nutrition
+            </h2>
+          </div>
+          <div className="grid gap-12 lg:grid-cols-3">
             {VISUAL_STEPS.map((step) => (
               <div key={step.step} className="text-center">
                 <div className="relative mx-auto w-[280px] shrink-0">
@@ -84,28 +91,11 @@ export default function HowItWorksPage() {
                 <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
                   {step.description}
                 </p>
-                <p className="mt-5 font-serif text-lg font-semibold text-foreground">
-                  {step.slide.feature}
-                </p>
-                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-foreground-secondary">
-                  {step.slide.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <div className="relative ps-parallax-bg-right">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
-        </div>
-        <div className="relative z-10">
-          <ScreenshotsSection />
-        </div>
-      </div>
       <div className="relative">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
