@@ -636,8 +636,12 @@ export function HeroSection() {
 
   return (
     <section
-      className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
-      style={{ height: `calc(100vh - ${NAVBAR_HEIGHT})` }}
+      className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811] max-lg:min-h-[85vh]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
+      style={
+        isDesktop
+          ? { height: `calc(100vh - ${NAVBAR_HEIGHT})` }
+          : { minHeight: "85vh" }
+      }
     >
       {/* z-0: glow effects */}
       <div
@@ -674,7 +678,7 @@ export function HeroSection() {
                   priority={i === 0}
                   loading={i === 0 ? undefined : "lazy"}
                   sizes="100vw"
-                  className={`ps-hero-slide-image h-full w-full object-cover object-center${
+                  className={`ps-hero-slide-image h-full w-full object-cover object-center max-lg:object-top${
                     i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
                   }`}
                   aria-hidden
@@ -685,9 +689,15 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* z-2: gradient overlay */}
+      {/* z-2: mobile dark overlay */}
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
+        className="pointer-events-none absolute inset-0 z-[2] bg-[rgba(5,8,17,0.65)] lg:hidden"
+        aria-hidden="true"
+      />
+
+      {/* z-2: gradient overlay — desktop only */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] hidden bg-gradient-to-r from-[#050811]/80 via-[#050811]/35 via-[28%] to-transparent to-[52%] lg:block lg:from-[#050811]/70 lg:via-[#050811]/25 lg:via-[22%] lg:to-transparent lg:to-[45%]"
         aria-hidden="true"
       />
 
@@ -732,10 +742,10 @@ export function HeroSection() {
       </div>
 
       {/* z-10: text content */}
-      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 lg:items-stretch lg:px-0 lg:py-0">
-        <div className="relative mx-auto h-full w-full max-w-7xl lg:mx-0 lg:max-w-none">
-          {/* Mobile/tablet — unchanged */}
-          <div className="max-w-lg lg:hidden">
+      <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden px-4 py-6 sm:px-6 max-lg:items-end max-lg:justify-center max-lg:pb-20 lg:items-stretch lg:px-0 lg:py-0">
+        <div className="relative mx-auto h-full w-full max-w-7xl max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-end lg:mx-0 lg:max-w-none">
+          {/* Mobile/tablet */}
+          <div className="w-full max-w-md text-center lg:hidden">
             <motion.p
               initial={skipEntrance ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -749,7 +759,7 @@ export function HeroSection() {
               initial={skipEntrance ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-2 text-left font-sans text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl md:text-5xl"
+              className="mt-2 font-sans text-2xl font-extrabold leading-snug tracking-tight text-white"
             >
               Track{" "}
               <span className="text-[#00E6A8]">Protein.</span> Snap{" "}
@@ -761,7 +771,7 @@ export function HeroSection() {
               initial={skipEntrance ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 max-w-md text-left text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base sm:leading-[1.7]"
+              className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-white"
             >
               {PROTEINSNAPS.description}
             </motion.p>
@@ -770,9 +780,14 @@ export function HeroSection() {
               initial={skipEntrance ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 text-left sm:mt-7"
+              className="mx-auto mt-5 w-full max-w-sm"
             >
-              <StoreButtons size="lg" variant="hero" />
+              <StoreButtons
+                size="lg"
+                variant="hero"
+                showQr={false}
+                className="[&>div]:flex-col [&>div]:items-stretch [&>div]:sm:flex-col [&_a]:w-full [&_span]:w-full"
+              />
             </motion.div>
           </div>
 
