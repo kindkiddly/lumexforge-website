@@ -39,6 +39,48 @@ function getAdjacentSlideIndices(current: number, length: number) {
   return new Set([prev, current, next]);
 }
 
+const MOBILE_BRAND_TRANSITION = { duration: 0.5 };
+
+function getMobileBrandMotion(slideIndex: number) {
+  switch (slideIndex % 6) {
+    case 0:
+      return {
+        initial: { y: 10, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+      };
+    case 1:
+      return {
+        initial: { y: -10, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+      };
+    case 2:
+      return {
+        initial: { scale: 0.8, opacity: 0 },
+        animate: { scale: 1, opacity: 1 },
+      };
+    case 3:
+      return {
+        initial: { x: -10, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+      };
+    case 4:
+      return {
+        initial: { x: 10, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+      };
+    case 5:
+      return {
+        initial: { filter: "blur(8px)", opacity: 0 },
+        animate: { filter: "blur(0px)", opacity: 1 },
+      };
+    default:
+      return {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+      };
+  }
+}
+
 const DESKTOP_IMAGE_GLOW =
   "inset 0 0 72px 14px rgba(0, 194, 255, 0.30), inset 0 0 144px 29px rgba(123, 47, 255, 0.18)";
 const LABEL_DELAY = 0;
@@ -868,10 +910,18 @@ export function HeroSection() {
       </div>
 
       <div className="absolute top-8 left-0 right-0 z-20 flex justify-center lg:hidden">
-        <p className="text-lg font-bold">
-          <span className="text-white">Protein</span>
-          <span className="text-[#00e6a8]">Snaps</span>
-        </p>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={currentMobileSlide}
+            {...getMobileBrandMotion(currentMobileSlide)}
+            exit={{ opacity: 0 }}
+            transition={MOBILE_BRAND_TRANSITION}
+            className="text-2xl font-bold"
+          >
+            <span className="text-white">Protein</span>
+            <span className="text-[#00e6a8]">Snaps</span>
+          </motion.p>
+        </AnimatePresence>
       </div>
 
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
@@ -882,33 +932,34 @@ export function HeroSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="ps-glass-panel w-full max-w-xs rounded-2xl px-6 py-4 text-center"
+            className="ps-glass-panel w-full rounded-none px-2 py-4 text-center"
+            style={{
+              background: "rgba(5, 8, 17, 0.38)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            }}
           >
-            <h2 className="font-serif text-xl text-white">
+            <h2 className="text-center font-serif text-2xl font-bold text-white">
               {DESKTOP_SLIDES[currentMobileSlide].headline}
             </h2>
-            <p className="mt-2 text-sm text-white/80">
+            <p className="mx-auto mt-3 max-w-sm text-center text-base text-white/80">
               {DESKTOP_SLIDES[currentMobileSlide].description}
             </p>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3 px-4 lg:hidden">
-        <a
-          href={PLAY_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 max-w-[160px] rounded-full bg-[#00e6a8] px-3 py-2 text-center text-xs font-semibold text-[#050811]"
-        >
-          Google Play
-        </a>
-        <span
-          aria-disabled="true"
-          className="flex-1 max-w-[160px] rounded-full border border-white px-3 py-2 text-center text-xs font-semibold text-white"
-        >
-          App Store
-        </span>
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
+        <StoreButtons
+          size="md"
+          variant="hero"
+          showQr={false}
+          className="w-full max-w-sm [&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
+        />
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-6">
