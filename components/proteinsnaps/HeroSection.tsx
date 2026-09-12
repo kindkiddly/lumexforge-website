@@ -40,6 +40,57 @@ function getAdjacentSlideIndices(current: number, length: number) {
 }
 
 const MOBILE_BRAND_TRANSITION = { duration: 0.5 };
+const MOBILE_TEXT_TRANSITION = { duration: 0.5 };
+
+const MOBILE_GLASS_STYLE = {
+  background: "rgba(5, 8, 17, 0.38)",
+  backdropFilter: "blur(10px)",
+  WebkitBackdropFilter: "blur(10px)",
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+  maskImage:
+    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+} as const;
+
+function getMobileTextMotion(slideIndex: number) {
+  switch (slideIndex % 6) {
+    case 0:
+      return {
+        initial: { y: 20, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+      };
+    case 1:
+      return {
+        initial: { y: -20, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+      };
+    case 2:
+      return {
+        initial: { scale: 0.85, opacity: 0 },
+        animate: { scale: 1, opacity: 1 },
+      };
+    case 3:
+      return {
+        initial: { x: -30, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+      };
+    case 4:
+      return {
+        initial: { x: 30, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+      };
+    case 5:
+      return {
+        initial: { filter: "blur(10px)", opacity: 0 },
+        animate: { filter: "blur(0px)", opacity: 1 },
+      };
+    default:
+      return {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+      };
+  }
+}
 
 function getMobileBrandMotion(slideIndex: number) {
   switch (slideIndex % 6) {
@@ -909,18 +960,27 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute top-8 left-0 right-0 z-20 flex justify-center lg:hidden">
+      <div className="absolute top-8 left-4 z-20 lg:hidden">
+        <div className="ps-pill text-xs">
+          <b>New</b> iOS & Android
+        </div>
+      </div>
+
+      <div className="absolute left-0 right-0 top-16 z-20 flex justify-center lg:hidden">
         <AnimatePresence mode="wait">
-          <motion.p
+          <motion.div
             key={currentMobileSlide}
             {...getMobileBrandMotion(currentMobileSlide)}
             exit={{ opacity: 0 }}
             transition={MOBILE_BRAND_TRANSITION}
-            className="text-2xl font-bold"
+            className="px-8 py-2"
+            style={MOBILE_GLASS_STYLE}
           >
-            <span className="text-white">Protein</span>
-            <span className="text-[#00e6a8]">Snaps</span>
-          </motion.p>
+            <p className="text-2xl font-bold">
+              <span className="text-white">Protein</span>
+              <span className="text-[#00e6a8]">Snaps</span>
+            </p>
+          </motion.div>
         </AnimatePresence>
       </div>
 
@@ -928,25 +988,16 @@ export function HeroSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentMobileSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            {...getMobileTextMotion(currentMobileSlide)}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={MOBILE_TEXT_TRANSITION}
             className="ps-glass-panel w-full rounded-none px-2 py-4 text-center"
-            style={{
-              background: "rgba(5, 8, 17, 0.38)",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-              maskImage:
-                "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-            }}
+            style={MOBILE_GLASS_STYLE}
           >
             <h2 className="text-center font-serif text-2xl font-bold text-white">
               {DESKTOP_SLIDES[currentMobileSlide].headline}
             </h2>
-            <p className="mx-auto mt-3 max-w-sm text-center text-base text-white/80">
+            <p className="mx-auto mt-3 max-w-sm text-center text-lg text-white/80">
               {DESKTOP_SLIDES[currentMobileSlide].description}
             </p>
           </motion.div>
@@ -954,12 +1005,21 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
-        <StoreButtons
-          size="md"
-          variant="hero"
-          showQr={false}
-          className="w-full max-w-sm [&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
-        />
+        <div
+          style={{
+            background: "rgba(5,8,17,0.5)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "999px",
+            padding: "8px 16px",
+          }}
+        >
+          <StoreButtons
+            size="md"
+            variant="hero"
+            showQr={false}
+            className="w-full max-w-sm [&>div]:flex-row [&>div]:flex-nowrap [&>div]:items-center [&>div]:justify-center [&>div]:gap-2 [&>div]:sm:flex-row [&_a]:!h-9 [&_a]:!min-h-[36px] [&_a]:!max-h-9 [&_a]:!px-3 [&_a]:!py-2 [&_a]:!text-xs [&_a]:flex-1 [&_a]:min-w-0 [&_span]:!h-9 [&_span]:!min-h-[36px] [&_span]:!max-h-9 [&_span]:!px-3 [&_span]:!py-2 [&_span]:!text-xs [&_span]:flex-1 [&_span]:min-w-0"
+          />
+        </div>
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-6">

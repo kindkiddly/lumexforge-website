@@ -42,12 +42,12 @@ export default function ProteinSnapsHomePage() {
   return (
     <>
       <HeroSection />
-      <div className="flex justify-center bg-[#050811] py-3">
+      <div className="hidden justify-center bg-[#050811] py-3 lg:flex">
         <div className="ps-pill">
           <b>New</b> Now available on iOS & Android
         </div>
       </div>
-      <div className="ps-ticker-wrap">
+      <div className="hidden ps-ticker-wrap lg:block">
         <div className="ps-ticker-track">
           <div className="ps-ticker-item">
             🔥 <span>50,000+</span> Meals Tracked
