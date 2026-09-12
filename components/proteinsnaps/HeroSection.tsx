@@ -25,12 +25,36 @@ const DRAG_THRESHOLD_PX = 50;
 const PSL_9_INDEX = 8;
 
 const MOBILE_HERO_SLIDES = [
-  { src: "/images/proteinsnaps/PSL-M1.webp", alt: "ProteinSnaps fitness partner" },
-  { src: "/images/proteinsnaps/PSL-M2.webp", alt: "ProteinSnaps AI coach" },
-  { src: "/images/proteinsnaps/PSL-M3.webp", alt: "ProteinSnaps every mile" },
-  { src: "/images/proteinsnaps/PSL-M4.webp", alt: "ProteinSnaps snap it track it" },
-  { src: "/images/proteinsnaps/PSL-M5.webp", alt: "ProteinSnaps finish strong" },
-  { src: "/images/proteinsnaps/PSL-M6.webp", alt: "ProteinSnaps real progress" },
+  {
+    src: "/images/proteinsnaps/PSL-M1.webp",
+    alt: "Your All-in-One Fitness Partner",
+    slideIndex: 0,
+  },
+  {
+    src: "/images/proteinsnaps/PSL-M4.webp",
+    alt: "Stronger Every Day",
+    slideIndex: 1,
+  },
+  {
+    src: "/images/proteinsnaps/PSL-M3.webp",
+    alt: "Train Hard Fuel Right",
+    slideIndex: 3,
+  },
+  {
+    src: "/images/proteinsnaps/PSL-M2.webp",
+    alt: "Snap It Track It",
+    slideIndex: 4,
+  },
+  {
+    src: "/images/proteinsnaps/PSL-M5.webp",
+    alt: "Track Your Meals",
+    slideIndex: 5,
+  },
+  {
+    src: "/images/proteinsnaps/PSL-M6.webp",
+    alt: "Real Progress Real You",
+    slideIndex: 8,
+  },
 ] as const;
 
 function getAdjacentSlideIndices(current: number, length: number) {
@@ -762,6 +786,8 @@ export function HeroSection() {
   };
 
   const currentMobileSlide = index;
+  const currentMobileSlideContent =
+    DESKTOP_SLIDES[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
 
   return (
     <section
@@ -983,7 +1009,7 @@ export function HeroSection() {
             className="px-8 py-2"
             style={MOBILE_GLASS_STYLE}
           >
-            <p className="text-2xl font-bold">
+            <p className="text-3xl font-bold">
               <span className="text-white">Protein</span>
               <span className="text-[#00e6a8]">Snaps</span>
             </p>
@@ -992,23 +1018,52 @@ export function HeroSection() {
       </div>
 
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentMobileSlide}
-            {...getMobileTextMotion(currentMobileSlide)}
-            exit={{ opacity: 0 }}
-            transition={MOBILE_TEXT_TRANSITION}
-            className="ps-glass-panel w-full rounded-none px-2 py-4 text-center"
-            style={MOBILE_GLASS_STYLE}
-          >
-            <h2 className="text-center font-serif text-2xl font-bold text-white">
-              {DESKTOP_SLIDES[currentMobileSlide].headline}
-            </h2>
-            <p className="mx-auto mt-3 max-w-sm text-center text-lg text-white/80">
-              {DESKTOP_SLIDES[currentMobileSlide].description}
-            </p>
-          </motion.div>
-        </AnimatePresence>
+        <div
+          className="w-full"
+          style={{ filter: "drop-shadow(0 0 20px rgba(0,230,168,0.15))" }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentMobileSlide}
+              {...getMobileTextMotion(currentMobileSlide)}
+              exit={{ opacity: 0 }}
+              transition={MOBILE_TEXT_TRANSITION}
+              className="ps-glass-panel w-full rounded-none px-2 py-4 text-center"
+              style={MOBILE_GLASS_STYLE}
+            >
+              <h2 className="text-center font-serif text-2xl font-bold text-white">
+                {currentMobileSlideContent.headline}
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-center text-lg text-white/80">
+                {currentMobileSlideContent.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      <div className="absolute bottom-24 right-4 z-20 lg:hidden">
+        <div
+          style={{
+            background: "rgba(5,8,17,0.5)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "12px",
+            padding: "6px 10px",
+          }}
+          className="flex items-center gap-1"
+        >
+          <span className="text-xs text-yellow-400">★★★★★</span>
+          <span className="text-xs font-semibold text-white">4.8</span>
+        </div>
+      </div>
+
+      <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center lg:hidden">
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <span className="text-lg text-white/50">↓</span>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
