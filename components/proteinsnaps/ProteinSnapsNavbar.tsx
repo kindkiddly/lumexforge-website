@@ -65,7 +65,7 @@ export function ProteinSnapsNavbar() {
             href={PROTEINSNAPS.playStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ps-btn solid"
+            className="ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold"
           >
             Download
           </a>
