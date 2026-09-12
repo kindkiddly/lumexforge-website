@@ -8,8 +8,6 @@ interface ParallaxImageProps {
   minHeight?: string;
 }
 
-const DESKTOP_MIN_WIDTH = 1024;
-
 export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -20,6 +18,7 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
     if (!inner || !container) return;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const widthQuery = window.matchMedia("(min-width: 768px)");
     if (motionQuery.matches) {
       inner.style.transform = "none";
       return;
@@ -28,7 +27,10 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
     let ticking = false;
 
     const updateParallax = () => {
-      if (window.innerWidth < DESKTOP_MIN_WIDTH) {
+      const width = window.innerWidth;
+      const effectiveSpeed = width < 768 ? 0 : width < 1024 ? 0.15 : speed;
+
+      if (effectiveSpeed === 0) {
         inner.style.transform = "none";
         ticking = false;
         return;
@@ -45,7 +47,7 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       const scrollRange = windowHeight + rect.height;
       const progress = (windowHeight - rect.top) / scrollRange;
       const clamped = Math.max(0, Math.min(1, progress));
-      const maxShift = rect.height * speed;
+      const maxShift = rect.height * effectiveSpeed;
       const translateY = (0.5 - clamped) * maxShift * 2;
 
       inner.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
@@ -71,15 +73,21 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       }
     };
 
+    const onWidthChange = () => {
+      updateParallax();
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
     motionQuery.addEventListener("change", onMotionChange);
+    widthQuery.addEventListener("change", onWidthChange);
     updateParallax();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       motionQuery.removeEventListener("change", onMotionChange);
+      widthQuery.removeEventListener("change", onWidthChange);
     };
   }, [speed]);
 
