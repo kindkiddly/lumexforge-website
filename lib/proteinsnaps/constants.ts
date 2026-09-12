@@ -58,10 +58,10 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Every Mile Builds a Stronger You.",
+    headline: "Train Hard. Fuel Right.",
     description:
-      "Track your runs, monitor distance, pace and calories — and let AI coach you to your next personal best.",
-    accentWords: ["Mile", "Stronger", "You."],
+      "Log every workout, track your nutrition and let AI coach you to your strongest self.",
+    accentWords: ["Hard.", "Fuel", "Right."],
     name: "zoomIn",
     duration: 0.9,
     headlineClass: "font-sans font-black tracking-tighter",
