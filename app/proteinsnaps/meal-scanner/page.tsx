@@ -112,6 +112,12 @@ export default function MealScannerPage() {
         >
           <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
         </div>
+        <div
+          className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
+        </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <FadeInUp className="relative z-10">
@@ -129,12 +135,6 @@ export default function MealScannerPage() {
             </FadeInUp>
           </div>
           <div className="relative mt-12">
-            <div
-              className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-              aria-hidden="true"
-            >
-              <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
-            </div>
             <FadeInUp delay={0.1} className="relative z-10">
               <div className="ps-glass-text">
                 <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
