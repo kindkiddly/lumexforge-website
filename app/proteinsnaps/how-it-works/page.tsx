@@ -78,12 +78,14 @@ export default function HowItWorksPage() {
                 <span className="relative z-10 mt-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-lg font-bold text-[#00e6a8]">
                   {step.step}
                 </span>
-                <h2 className="mt-5 font-serif text-xl font-semibold text-foreground">
-                  {step.title}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
-                  {step.description}
-                </p>
+                <div className="ps-glass-panel ps-3d-card mt-4 rounded-2xl px-5 py-4">
+                  <h2 className="mt-5 font-serif text-xl font-semibold text-foreground">
+                    {step.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                    {step.description}
+                  </p>
+                </div>
                 <p className="mt-5 font-serif text-lg font-semibold text-foreground">
                   {step.slide.feature}
                 </p>
