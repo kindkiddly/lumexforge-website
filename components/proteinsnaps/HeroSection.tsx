@@ -668,6 +668,8 @@ export function HeroSection() {
     }
   };
 
+  const currentMobileSlide = index;
+
   return (
     <section
       className={`ps-hero-section relative mt-16 w-full overflow-hidden bg-[#050811] max-lg:min-h-[85vh]${isTabVisible ? "" : " ps-hero-tab-hidden"}`}
@@ -804,7 +806,7 @@ export function HeroSection() {
       <div className="ps-hero-text-layer relative z-10 flex h-full w-full items-center overflow-hidden lg:items-stretch lg:px-0 lg:py-0">
         <div className="relative mx-auto h-full w-full max-w-7xl lg:mx-0 lg:max-w-none">
           {/* Mobile/tablet */}
-          <div className="relative h-full w-full lg:hidden">
+          <div className="relative hidden h-full w-full lg:hidden">
             <p className="absolute left-0 right-0 top-8 z-10 text-center text-sm font-semibold">
               <span className="text-white">Protein</span>
               <span className="text-[#00E6A8]">Snaps</span>
@@ -863,6 +865,50 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="absolute top-8 left-0 right-0 z-20 flex justify-center lg:hidden">
+        <p className="text-lg font-bold">
+          <span className="text-white">Protein</span>
+          <span className="text-[#00e6a8]">Snaps</span>
+        </p>
+      </div>
+
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentMobileSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="ps-glass-panel w-full max-w-xs rounded-2xl px-6 py-4 text-center"
+          >
+            <h2 className="font-serif text-xl text-white">
+              {DESKTOP_SLIDES[currentMobileSlide].headline}
+            </h2>
+            <p className="mt-2 text-sm text-white/80">
+              {DESKTOP_SLIDES[currentMobileSlide].description}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3 px-4 lg:hidden">
+        <a
+          href={PLAY_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 max-w-[160px] rounded-full bg-[#00e6a8] px-3 py-2 text-center text-xs font-semibold text-[#050811]"
+        >
+          Google Play
+        </a>
+        <span
+          aria-disabled="true"
+          className="flex-1 max-w-[160px] rounded-full border border-white px-3 py-2 text-center text-xs font-semibold text-white"
+        >
+          App Store
+        </span>
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-6">
