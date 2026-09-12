@@ -92,7 +92,7 @@ export default function MealScannerPage() {
                     </div>
                   </div>
                 </div>
-                <div className="ps-glass-text mt-5 mx-auto max-w-xs">
+                <div className="ps-glass-text ps-3d-card mt-5 mx-auto max-w-xs">
                   <p className="font-serif text-lg font-semibold text-foreground">
                     {slide.feature}
                   </p>
@@ -107,7 +107,7 @@ export default function MealScannerPage() {
       </section>
       <section className="relative py-12 sm:py-16">
         <div
-          className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
@@ -144,7 +144,7 @@ export default function MealScannerPage() {
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {SCANNER_STEPS.map((step, i) => (
                   <FadeInUp key={step.title} delay={0.15 + i * 0.06}>
-                    <article className="ps-glow-card ps-glass-panel h-full rounded-2xl p-6">
+                    <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-6">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
                         {i + 1}
                       </span>
