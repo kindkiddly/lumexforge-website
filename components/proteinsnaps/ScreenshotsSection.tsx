@@ -49,7 +49,7 @@ export function ScreenshotsSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-right"
             >
-              <div className="ps-glass-text rounded-2xl">
+              <div className="ps-glass-text ps-3d-card rounded-2xl">
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
                   Feature {index + 1} of {SCREENSHOT_SLIDES.length}
                 </p>
@@ -104,7 +104,7 @@ export function ScreenshotsSection() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="ps-glass-text rounded-2xl">
+              <div className="ps-glass-text ps-3d-card rounded-2xl">
                 <ul className="space-y-3">
                   {slide.highlights.map((item, i) => (
                     <motion.li
