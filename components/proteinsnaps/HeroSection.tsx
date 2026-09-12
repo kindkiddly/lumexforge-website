@@ -960,13 +960,20 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute top-8 left-4 z-20 lg:hidden">
+      <div className="absolute top-4 left-3 z-20 lg:hidden">
         <div className="ps-pill text-xs">
           <b>New</b> iOS & Android
         </div>
       </div>
 
-      <div className="absolute left-0 right-0 top-16 z-20 flex justify-center lg:hidden">
+      <div
+        className={`absolute left-0 right-0 z-20 flex justify-center lg:hidden${currentMobileSlide === 2 ? "" : " top-16"}`}
+        style={
+          currentMobileSlide === 2
+            ? { top: "calc(50% - 140px)" }
+            : undefined
+        }
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={currentMobileSlide}
@@ -1007,10 +1014,11 @@ export function HeroSection() {
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-4 lg:hidden">
         <div
           style={{
-            background: "rgba(5,8,17,0.5)",
+            background: "rgba(255,255,255,0.15)",
             backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
             borderRadius: "999px",
-            padding: "8px 16px",
+            padding: "6px 12px",
           }}
         >
           <StoreButtons
