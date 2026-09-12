@@ -57,9 +57,6 @@ export function ScreenshotsSection() {
                   WebkitBackdropFilter: "blur(6px)",
                 }}
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#0F766E]">
-                  Feature {index + 1} of {SCREENSHOT_SLIDES.length}
-                </p>
                 <h3
                   className="mt-2 font-serif text-2xl font-semibold text-[#0B1220]"
                   style={{
