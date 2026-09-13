@@ -102,9 +102,16 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
+      <div className="relative">
+        <div
+          className="ps-parallax-mobile-portrait pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden"
+          aria-hidden="true"
+        >
+          <ParallaxImage src="/images/proteinsnaps/BG-M13.webp" />
+        </div>
       <section className="relative pb-12 sm:pb-16">
         <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden lg:block"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-13.webp" />
@@ -145,7 +152,7 @@ export default function FeaturesPage() {
       </section>
       <div className="relative">
         <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden lg:block"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-11.webp" />
@@ -153,6 +160,7 @@ export default function FeaturesPage() {
         <div className="relative z-10">
           <DownloadCTA />
         </div>
+      </div>
       </div>
     </>
   );
