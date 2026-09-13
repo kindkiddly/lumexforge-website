@@ -10,7 +10,7 @@ export function DownloadCTA() {
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp>
-          <div className="ps-3d-card relative overflow-hidden rounded-3xl border border-[#00e6a8]/20 bg-gradient-to-br from-[#00e6a8]/10 via-background-secondary to-[#00c2ff]/5 px-6 py-14 text-center sm:px-12 sm:py-16 ps-glow-frame">
+          <div className="ps-download-cta-card ps-3d-card relative overflow-hidden rounded-3xl border border-[#00e6a8]/20 bg-gradient-to-br from-[#00e6a8]/10 via-background-secondary to-[#00c2ff]/5 px-6 py-14 text-center sm:px-12 sm:py-16 ps-glow-frame">
             <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#00e6a8]/10 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#00c2ff]/10 blur-3xl" />
 
