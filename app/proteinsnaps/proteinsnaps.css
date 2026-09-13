@@ -579,3 +579,53 @@
 .ps-nav-link.active::after {
   width: 100%;
 }
+
+@media (max-width: 1023px) {
+  .ps-hero-mobile-progress {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem 0;
+  }
+
+  .ps-hero-mobile-progress-segment {
+    position: relative;
+    height: 2px;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .ps-hero-mobile-progress-segment.is-complete {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .ps-hero-mobile-progress-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 9999px;
+    background: #00e6a8;
+  }
+
+  .ps-hero-mobile-feature-tag {
+    background: rgba(5, 8, 17, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #00e6a8;
+  }
+
+  .ps-hero-mobile-headline-accent {
+    height: 2px;
+    margin: 0.5rem auto;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #00e6a8, #00c2ff);
+  }
+}

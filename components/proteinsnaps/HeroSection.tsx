@@ -57,6 +57,15 @@ const MOBILE_HERO_SLIDES = [
   },
 ] as const;
 
+const MOBILE_FEATURE_TAGS: Record<number, string> = {
+  0: "SMART NUTRITION",
+  1: "STRENGTH TRAINING",
+  3: "WORKOUT FUEL",
+  4: "AI MEAL SCAN",
+  5: "MEAL LOGGING",
+  8: "BODY TRANSFORMATION",
+};
+
 function getAdjacentSlideIndices(current: number, length: number) {
   const prev = (current - 1 + length) % length;
   const next = (current + 1) % length;
@@ -788,6 +797,9 @@ export function HeroSection() {
   const currentMobileSlide = index;
   const currentMobileSlideContent =
     DESKTOP_SLIDES[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
+  const currentMobileFeatureTag =
+    MOBILE_FEATURE_TAGS[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
+  const currentMobileSlideDurationMs = getSlideDelay(currentMobileSlide);
 
   return (
     <section
@@ -798,6 +810,33 @@ export function HeroSection() {
           : { minHeight: "85vh" }
       }
     >
+      <div className="ps-hero-mobile-progress absolute top-0 left-0 right-0 z-30 lg:hidden">
+        {MOBILE_HERO_SLIDES.map((slide, i) => {
+          const isActive = i === currentMobileSlide;
+          const isCompleted = i < currentMobileSlide;
+
+          return (
+            <div
+              key={slide.src}
+              className={`ps-hero-mobile-progress-segment${isCompleted ? " is-complete" : ""}`}
+            >
+              {isActive && (
+                <motion.div
+                  key={`mobile-progress-${currentMobileSlide}`}
+                  className="ps-hero-mobile-progress-fill"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{
+                    duration: currentMobileSlideDurationMs / 1000,
+                    ease: "linear",
+                  }}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
       {/* z-0: glow effects */}
       <div
         className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
@@ -1034,6 +1073,13 @@ export function HeroSection() {
               <h2 className="text-center font-serif text-2xl font-bold text-white">
                 {currentMobileSlideContent.headline}
               </h2>
+              <motion.div
+                key={currentMobileSlide}
+                initial={{ width: 0 }}
+                animate={{ width: "40%" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="ps-hero-mobile-headline-accent"
+              />
               <p className="mx-auto mt-3 max-w-sm text-center text-lg text-white/80">
                 {currentMobileSlideContent.description}
               </p>
@@ -1042,19 +1088,19 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-24 right-4 z-20 lg:hidden">
-        <div
-          style={{
-            background: "rgba(5,8,17,0.5)",
-            backdropFilter: "blur(8px)",
-            borderRadius: "12px",
-            padding: "6px 10px",
-          }}
-          className="flex items-center gap-1"
-        >
-          <span className="text-xs text-yellow-400">★★★★★</span>
-          <span className="text-xs font-semibold text-white">4.8</span>
-        </div>
+      <div className="absolute bottom-28 left-4 z-20 lg:hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentMobileSlide}
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -20, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="ps-hero-mobile-feature-tag"
+          >
+            {currentMobileFeatureTag}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center lg:hidden">
