@@ -321,8 +321,7 @@
     inset: 0;
     background-position: center center;
     background-size: cover;
-    transform: none !important;
-    will-change: auto;
+    will-change: transform;
   }
 
   .ps-parallax-bg-right .ps-parallax-inner {
@@ -379,6 +378,20 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1023px) {
+  .ps-glass-panel {
+    background: rgba(5, 8, 17, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .ps-glass-text {
+    background: rgba(5, 8, 17, 0.28);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
 }
 
 /* PILL */

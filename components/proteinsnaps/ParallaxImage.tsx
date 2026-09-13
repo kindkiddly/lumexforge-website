@@ -18,18 +18,9 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
     if (!inner || !container) return;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktopParallaxQuery = window.matchMedia("(min-width: 768px)");
-
     let ticking = false;
-    let scrollAttached = false;
 
     const updateParallax = () => {
-      if (!desktopParallaxQuery.matches) {
-        inner.style.transform = "none";
-        ticking = false;
-        return;
-      }
-
       if (motionQuery.matches) {
         inner.style.transform = "none";
         ticking = false;
@@ -37,7 +28,8 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       }
 
       const width = window.innerWidth;
-      const effectiveSpeed = width < 1024 ? 0.15 : speed;
+      const effectiveSpeed =
+        width < 480 ? 0.1 : width < 768 ? 0.15 : width < 1024 ? 0.3 : speed;
 
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -64,55 +56,27 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       }
     };
 
-    const attachScroll = () => {
-      if (!scrollAttached) {
-        window.addEventListener("scroll", onScroll, { passive: true });
-        scrollAttached = true;
-      }
-    };
-
-    const detachScroll = () => {
-      if (scrollAttached) {
-        window.removeEventListener("scroll", onScroll);
-        scrollAttached = false;
-      }
-    };
-
-    const syncMode = () => {
-      if (!desktopParallaxQuery.matches) {
-        detachScroll();
-        inner.style.transform = "none";
-        return;
-      }
-
-      attachScroll();
-      updateParallax();
-    };
-
     const onResize = () => {
-      if (desktopParallaxQuery.matches) {
-        onScroll();
-      }
+      onScroll();
     };
 
     const onMotionChange = () => {
-      syncMode();
+      if (motionQuery.matches) {
+        inner.style.transform = "none";
+      } else {
+        updateParallax();
+      }
     };
 
-    const onWidthChange = () => {
-      syncMode();
-    };
-
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
     motionQuery.addEventListener("change", onMotionChange);
-    desktopParallaxQuery.addEventListener("change", onWidthChange);
-    syncMode();
+    updateParallax();
 
     return () => {
-      detachScroll();
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       motionQuery.removeEventListener("change", onMotionChange);
-      desktopParallaxQuery.removeEventListener("change", onWidthChange);
     };
   }, [speed]);
 
