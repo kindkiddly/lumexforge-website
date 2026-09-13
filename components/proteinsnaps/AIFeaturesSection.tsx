@@ -9,7 +9,7 @@ export function AIFeaturesSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp>
           <div
-            className="ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-background-secondary to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame"
+            className="ps-ai-section-outer ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-background-secondary to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame max-lg:border-0 max-lg:bg-transparent max-lg:from-transparent max-lg:via-transparent max-lg:to-transparent max-lg:shadow-none max-lg:backdrop-blur-none"
             style={{
               background: "rgba(5, 8, 17, 0.30)",
               backdropFilter: "blur(8px)",
@@ -28,7 +28,7 @@ export function AIFeaturesSection() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {AI_FEATURES.map((feature, i) => (
                 <FadeInUp key={feature.title} delay={i * 0.1}>
-                  <div className="ps-3d-card rounded-2xl border border-[#00c2ff]/15 p-6 transition-colors hover:border-[#00c2ff]/35">
+                  <div className="ps-ai-card-inner ps-3d-card rounded-2xl border border-[#00c2ff]/15 p-6 transition-colors hover:border-[#00c2ff]/35">
                     <h3 className="text-lg font-semibold text-[#00c2ff]">
                       {feature.title}
                     </h3>
