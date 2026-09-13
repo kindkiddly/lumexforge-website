@@ -410,6 +410,23 @@
     inset: 0;
   }
 
+  .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card {
+    background: rgba(5, 8, 17, 0.52) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card h2 {
+    color: #33f0c0;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65), 0 0 18px rgba(5, 8, 17, 0.5);
+  }
+
+  .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card p {
+    color: #e2e8f0;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55), 0 0 14px rgba(5, 8, 17, 0.45);
+  }
+
   .ps-how-it-works-screenshots .ps-glass-panel.ps-3d-card {
     transform: none;
   }
