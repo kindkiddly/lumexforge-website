@@ -100,7 +100,7 @@ export default function HowItWorksPage() {
           <SunburstAnimation />
         </div>
       </section>
-      <div className="relative ps-parallax-bg-right">
+      <div className="relative ps-parallax-bg-right ps-parallax-bg-right-mobile ps-how-it-works-screenshots">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"

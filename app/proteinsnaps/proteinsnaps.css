@@ -381,16 +381,35 @@
 }
 
 @media (max-width: 1023px) {
+  .ps-parallax-bg-cover .ps-parallax-inner {
+    background-size: cover;
+    background-position: center center;
+    inset: -5%;
+  }
+
+  .ps-parallax-bg-right-mobile .ps-parallax-inner {
+    background-position: 65% center;
+    background-size: cover;
+  }
+
   .ps-glass-panel {
-    background: rgba(5, 8, 17, 0.25);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(5, 8, 17, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   .ps-glass-text {
     background: rgba(5, 8, 17, 0.28);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+  }
+
+  .ps-how-it-works-screenshots .mt-12.lg\:hidden .mt-10.text-center {
+    background: rgba(5, 8, 17, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
   }
 }
 

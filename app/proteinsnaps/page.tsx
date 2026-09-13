@@ -110,7 +110,7 @@ export default function ProteinSnapsHomePage() {
       <ScreenshotsCarousel3D />
       <div className="relative">
         <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-1.webp" />
