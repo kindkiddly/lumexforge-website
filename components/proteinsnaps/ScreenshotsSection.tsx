@@ -40,38 +40,40 @@ export function ScreenshotsSection() {
 
         {/* Desktop: 3-column layout */}
         <div className="mt-16 hidden items-center gap-8 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`left-${index}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-right"
-            >
-              <div
-                className="rounded-2xl px-5 py-3"
-                style={{
-                  background: "rgba(255,255,255,0.40)",
-                  backdropFilter: "blur(6px)",
-                  WebkitBackdropFilter: "blur(6px)",
-                }}
+          <div className="relative min-h-[220px] text-right">
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={`left-${index}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease: "easeInOut" }}
+                className="absolute inset-0"
               >
-                <h3
-                  className="mt-2 font-serif text-2xl font-semibold text-[#0B1220]"
+                <div
+                  className="rounded-2xl px-5 py-3"
                   style={{
-                    textShadow:
-                      "0 1px 0 rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.7)",
+                    background: "rgba(255,255,255,0.40)",
+                    backdropFilter: "blur(6px)",
+                    WebkitBackdropFilter: "blur(6px)",
                   }}
                 >
-                  {slide.feature}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-[#334155]">
-                  {slide.description}
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                  <h3
+                    className="mt-2 font-serif text-2xl font-semibold text-[#0B1220]"
+                    style={{
+                      textShadow:
+                        "0 1px 0 rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    {slide.feature}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#334155]">
+                    {slide.description}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <div className="relative mx-auto w-[280px] shrink-0">
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
@@ -106,39 +108,39 @@ export function ScreenshotsSection() {
             </div>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`right-${index}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div
-                className="rounded-2xl px-5 py-3"
-                style={{
-                  background: "rgba(255,255,255,0.40)",
-                  backdropFilter: "blur(6px)",
-                  WebkitBackdropFilter: "blur(6px)",
-                }}
+          <div className="relative min-h-[220px]">
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={`right-${index}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease: "easeInOut" }}
+                className="absolute inset-0"
               >
-                <ul className="space-y-3">
-                  {slide.highlights.map((item, i) => (
-                    <motion.li
-                      key={item}
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3 text-[#334155]"
-                    >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                <div
+                  className="rounded-2xl px-5 py-3"
+                  style={{
+                    background: "rgba(255,255,255,0.40)",
+                    backdropFilter: "blur(6px)",
+                    WebkitBackdropFilter: "blur(6px)",
+                  }}
+                >
+                  <ul className="space-y-3">
+                    {slide.highlights.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 text-[#334155]"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Mobile: stacked */}
@@ -155,7 +157,7 @@ export function ScreenshotsSection() {
                     key={screenshot.src}
                     initial={false}
                     animate={{ opacity: i === index ? 1 : 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.45, ease: "easeInOut" }}
                     className="absolute inset-0 bg-black"
                     aria-hidden={i !== index}
                   >
@@ -176,30 +178,37 @@ export function ScreenshotsSection() {
           </div>
 
           <div className="ps-screenshots-mobile-card ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`mobile-${index}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-              >
-                <h3 className="font-serif text-2xl font-semibold text-[#0B1220]">
-                  <StaggerWords text={slide.feature} />
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-[#1E293B]">
-                  {slide.description}
-                </p>
-                <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
-                  {slide.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
+            <div className="relative min-h-[300px]">
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={`mobile-${index}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.45, ease: "easeInOut" }}
+                  className="absolute inset-x-0 top-0"
+                >
+                  <h3 className="font-serif text-2xl font-semibold text-[#0B1220]">
+                    <StaggerWords
+                      text={slide.feature}
+                      animateOnMount
+                      fadeOnly
+                    />
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#1E293B]">
+                    {slide.description}
+                  </p>
+                  <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
+                    {slide.highlights.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
