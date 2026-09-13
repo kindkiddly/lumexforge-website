@@ -4,13 +4,95 @@ import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { BlurRevealText } from "./animations/BlurRevealText";
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
+import { TypewriterText } from "./animations/TypewriterText";
 
 function getAdjacentSlideIndices(current: number, length: number) {
   const prev = (current - 1 + length) % length;
   const next = (current + 1) % length;
   return new Set([prev, current, next]);
+}
+
+function MobileSlideTitle({ text, slideIndex }: { text: string; slideIndex: number }) {
+  switch (slideIndex % 4) {
+    case 0:
+      return <StaggerWords text={text} animateOnMount fadeOnly />;
+    case 1:
+      return <BlurRevealText text={text} fadeOnly />;
+    case 2:
+      return (
+        <motion.span
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block"
+        >
+          {text}
+        </motion.span>
+      );
+    case 3:
+      return <TypewriterText text={text} />;
+    default:
+      return <>{text}</>;
+  }
+}
+
+function MobileSlideDescription({
+  text,
+  slideIndex,
+}: {
+  text: string;
+  slideIndex: number;
+}) {
+  switch (slideIndex % 4) {
+    case 0:
+      return (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+        >
+          {text}
+        </motion.p>
+      );
+    case 1:
+      return (
+        <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+          <BlurRevealText text={text} fadeOnly delay={0.2} />
+        </p>
+      );
+    case 2:
+      return (
+        <motion.p
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.55, delay: 0.15 }}
+          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+        >
+          {text}
+        </motion.p>
+      );
+    case 3:
+      return (
+        <motion.p
+          initial={{ opacity: 0, filter: "blur(6px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+        >
+          {text}
+        </motion.p>
+      );
+    default:
+      return (
+        <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+          {text}
+        </p>
+      );
+  }
 }
 
 export function ScreenshotsSection() {
@@ -177,7 +259,7 @@ export function ScreenshotsSection() {
             </div>
           </div>
 
-          <div className="ps-screenshots-mobile-card ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
+          <div className="ps-glow-card ps-glass-panel ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
             <div className="relative min-h-[300px]">
               <AnimatePresence initial={false}>
                 <motion.div
@@ -188,22 +270,25 @@ export function ScreenshotsSection() {
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                   className="absolute inset-x-0 top-0"
                 >
-                  <h3 className="font-serif text-2xl font-semibold text-[#0B1220]">
-                    <StaggerWords
-                      text={slide.feature}
-                      animateOnMount
-                      fadeOnly
-                    />
+                  <h3 className="font-serif text-2xl font-semibold text-foreground">
+                    <MobileSlideTitle text={slide.feature} slideIndex={index} />
                   </h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#1E293B]">
-                    {slide.description}
-                  </p>
-                  <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
-                    {slide.highlights.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
+                  <MobileSlideDescription
+                    text={slide.description}
+                    slideIndex={index}
+                  />
+                  <ul className="mt-6 space-y-2 text-left text-sm text-foreground-secondary">
+                    {slide.highlights.map((item, i) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
+                        className="flex items-start gap-2"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00c2ff]" />
                         {item}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>
