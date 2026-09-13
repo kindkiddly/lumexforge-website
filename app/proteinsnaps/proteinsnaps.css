@@ -415,14 +415,6 @@
     -webkit-backdrop-filter: blur(6px);
   }
 
-  .ps-how-it-works-screenshots .mt-12.lg\:hidden .mt-10.text-center {
-    background: rgba(5, 8, 17, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-  }
-
   .ps-ai-section-outer {
     background: transparent !important;
     backdrop-filter: none !important;
