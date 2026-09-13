@@ -113,7 +113,7 @@ export default function MealScannerPage() {
           <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
         </div>
         <div
-          className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="ps-meal-scanner-steps-bg ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />

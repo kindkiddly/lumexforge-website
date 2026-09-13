@@ -310,6 +310,11 @@
   background-position: center center;
 }
 
+.ps-meal-scanner-steps .ps-meal-scanner-steps-bg .ps-parallax-inner {
+  background-size: cover;
+  background-position: 26% 42%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ps-parallax-inner {
     transform: none !important;
@@ -440,6 +445,12 @@
     border-color: rgba(255, 255, 255, 0.07) !important;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+  }
+
+  .ps-meal-scanner-steps .ps-meal-scanner-steps-bg .ps-parallax-inner {
+    background-size: cover;
+    background-position: 26% 42%;
+    inset: -5%;
   }
 
   .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card p:first-of-type,
