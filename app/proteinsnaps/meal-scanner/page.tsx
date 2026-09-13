@@ -64,7 +64,7 @@ export default function MealScannerPage() {
         title="Snap Any Meal. Know Your Macros."
         description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds — no manual searching required."
       />
-      <section className="relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
+      <section className="ps-meal-scanner-mockups relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
@@ -105,7 +105,7 @@ export default function MealScannerPage() {
           </div>
         </div>
       </section>
-      <section className="relative py-12 sm:py-16">
+      <section className="ps-meal-scanner-steps relative py-12 sm:py-16">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
@@ -118,7 +118,7 @@ export default function MealScannerPage() {
         >
           <ParallaxImage src="/images/proteinsnaps/BG-10.webp" />
         </div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <FadeInUp className="relative z-10">
               <div className="ps-3d-card relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
