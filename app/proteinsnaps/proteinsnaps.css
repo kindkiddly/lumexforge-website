@@ -403,6 +403,26 @@
     background-position: center center;
   }
 
+  .ps-screenshots-mobile-card {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 10px 28px -12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .ps-how-it-works-screenshots .ps-screenshots-mobile-card.ps-3d-card,
+  .ps-how-it-works-screenshots .ps-screenshots-mobile-card.ps-3d-card:hover {
+    transform: none;
+    box-shadow:
+      0 10px 28px -12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
   .ps-glass-panel {
     background: rgba(5, 8, 17, 0.2);
     backdrop-filter: blur(4px);

@@ -175,31 +175,38 @@ export function ScreenshotsSection() {
             </div>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`mobile-${index}`}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.45 }}
-              className="ps-glass-panel ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center"
-            >
-              <h3 className="font-serif text-2xl font-semibold text-foreground">
-                <StaggerWords text={slide.feature} />
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
-                {slide.description}
-              </p>
-              <ul className="mt-6 space-y-2 text-left text-sm text-foreground-secondary">
-                {slide.highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00c2ff]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </AnimatePresence>
+          <div className="ps-screenshots-mobile-card ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`mobile-${index}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+              >
+                <h3
+                  className="font-serif text-2xl font-semibold text-[#0B1220]"
+                  style={{
+                    textShadow:
+                      "0 1px 0 rgba(255,255,255,0.85), 0 2px 8px rgba(255,255,255,0.55)",
+                  }}
+                >
+                  <StaggerWords text={slide.feature} />
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-[#1E293B]">
+                  {slide.description}
+                </p>
+                <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
+                  {slide.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
