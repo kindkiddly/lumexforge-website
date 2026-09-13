@@ -119,8 +119,8 @@ export default function WorkoutNutritionPage() {
               {WORKOUT_FEATURES.map((item, i) => (
                 <FadeInUp key={item.title} delay={i * 0.06}>
                   <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-5">
-                    <h3 className="font-semibold text-[#00c2ff]">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                    <h3 className="font-bold text-[#00c2ff]">{item.title}</h3>
+                    <p className="mt-2 text-sm font-bold leading-relaxed text-foreground-secondary">
                       {item.description}
                     </p>
                   </article>
