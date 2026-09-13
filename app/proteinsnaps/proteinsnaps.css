@@ -316,6 +316,34 @@
   }
 }
 
+@media (max-width: 767px) {
+  .ps-parallax-inner {
+    inset: 0;
+    background-position: center center;
+    background-size: cover;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .ps-parallax-bg-right .ps-parallax-inner {
+    background-position: right center;
+  }
+
+  .ps-parallax-bg-cover .ps-parallax-inner {
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .ps-parallax-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 8, 17, 0.6),
+      rgba(5, 8, 17, 0.4),
+      rgba(5, 8, 17, 0.65)
+    );
+  }
+}
+
 /* Dark clay tokens */
 .proteinsnaps-site {
   --ps-plate: #0b1220;

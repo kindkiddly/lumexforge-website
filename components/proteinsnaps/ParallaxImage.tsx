@@ -18,23 +18,26 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
     if (!inner || !container) return;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const widthQuery = window.matchMedia("(min-width: 768px)");
-    if (motionQuery.matches) {
-      inner.style.transform = "none";
-      return;
-    }
+    const desktopParallaxQuery = window.matchMedia("(min-width: 768px)");
 
     let ticking = false;
+    let scrollAttached = false;
 
     const updateParallax = () => {
-      const width = window.innerWidth;
-      const effectiveSpeed = width < 768 ? 0 : width < 1024 ? 0.15 : speed;
-
-      if (effectiveSpeed === 0) {
+      if (!desktopParallaxQuery.matches) {
         inner.style.transform = "none";
         ticking = false;
         return;
       }
+
+      if (motionQuery.matches) {
+        inner.style.transform = "none";
+        ticking = false;
+        return;
+      }
+
+      const width = window.innerWidth;
+      const effectiveSpeed = width < 1024 ? 0.15 : speed;
 
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -61,33 +64,55 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       }
     };
 
-    const onResize = () => {
-      onScroll();
-    };
-
-    const onMotionChange = () => {
-      if (motionQuery.matches) {
-        inner.style.transform = "none";
-      } else {
-        updateParallax();
+    const attachScroll = () => {
+      if (!scrollAttached) {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        scrollAttached = true;
       }
     };
 
-    const onWidthChange = () => {
+    const detachScroll = () => {
+      if (scrollAttached) {
+        window.removeEventListener("scroll", onScroll);
+        scrollAttached = false;
+      }
+    };
+
+    const syncMode = () => {
+      if (!desktopParallaxQuery.matches) {
+        detachScroll();
+        inner.style.transform = "none";
+        return;
+      }
+
+      attachScroll();
       updateParallax();
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const onResize = () => {
+      if (desktopParallaxQuery.matches) {
+        onScroll();
+      }
+    };
+
+    const onMotionChange = () => {
+      syncMode();
+    };
+
+    const onWidthChange = () => {
+      syncMode();
+    };
+
     window.addEventListener("resize", onResize, { passive: true });
     motionQuery.addEventListener("change", onMotionChange);
-    widthQuery.addEventListener("change", onWidthChange);
-    updateParallax();
+    desktopParallaxQuery.addEventListener("change", onWidthChange);
+    syncMode();
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      detachScroll();
       window.removeEventListener("resize", onResize);
       motionQuery.removeEventListener("change", onMotionChange);
-      widthQuery.removeEventListener("change", onWidthChange);
+      desktopParallaxQuery.removeEventListener("change", onWidthChange);
     };
   }, [speed]);
 
