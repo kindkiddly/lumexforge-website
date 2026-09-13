@@ -15,27 +15,38 @@ function getAdjacentSlideIndices(current: number, length: number) {
   return new Set([prev, current, next]);
 }
 
+const MOBILE_TITLE_CLASS =
+  "text-[#0B1220] [text-shadow:0_1px_0_rgba(255,255,255,0.9),0_2px_10px_rgba(255,255,255,0.7)]";
+
 function MobileSlideTitle({ text, slideIndex }: { text: string; slideIndex: number }) {
   switch (slideIndex % 4) {
     case 0:
-      return <StaggerWords text={text} animateOnMount fadeOnly />;
+      return (
+        <StaggerWords
+          text={text}
+          animateOnMount
+          fadeOnly
+          className={MOBILE_TITLE_CLASS}
+          wordClassName={MOBILE_TITLE_CLASS}
+        />
+      );
     case 1:
-      return <BlurRevealText text={text} fadeOnly />;
+      return <BlurRevealText text={text} fadeOnly className={MOBILE_TITLE_CLASS} />;
     case 2:
       return (
         <motion.span
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-block"
+          className={`inline-block ${MOBILE_TITLE_CLASS}`}
         >
           {text}
         </motion.span>
       );
     case 3:
-      return <TypewriterText text={text} />;
+      return <TypewriterText text={text} className={MOBILE_TITLE_CLASS} />;
     default:
-      return <>{text}</>;
+      return <span className={MOBILE_TITLE_CLASS}>{text}</span>;
   }
 }
 
@@ -60,8 +71,13 @@ function MobileSlideDescription({
       );
     case 1:
       return (
-        <p className="mt-3 text-base leading-relaxed text-[#334155]">
-          <BlurRevealText text={text} fadeOnly delay={0.2} />
+        <p className="mt-3 text-base leading-relaxed">
+          <BlurRevealText
+            text={text}
+            fadeOnly
+            delay={0.2}
+            className="text-[#334155]"
+          />
         </p>
       );
     case 2:
@@ -261,44 +277,29 @@ export function ScreenshotsSection() {
 
           <div className="ps-screenshots-mobile-text ps-glow-card ps-glass-panel ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
             <div className="relative min-h-[300px]">
-              <AnimatePresence initial={false}>
-                <motion.div
-                  key={`mobile-${index}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.45, ease: "easeInOut" }}
-                  className="absolute inset-x-0 top-0"
-                >
-                  <h3
-                    className="font-serif text-2xl font-semibold text-[#0B1220]"
-                    style={{
-                      textShadow:
-                        "0 1px 0 rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.7)",
-                    }}
-                  >
-                    <MobileSlideTitle text={slide.feature} slideIndex={index} />
-                  </h3>
-                  <MobileSlideDescription
-                    text={slide.description}
-                    slideIndex={index}
-                  />
-                  <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
-                    {slide.highlights.map((item, i) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00c2ff]" />
-                        {item}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </AnimatePresence>
+              <div key={`mobile-${index}`} className="absolute inset-x-0 top-0">
+                <h3 className="font-serif text-2xl font-semibold">
+                  <MobileSlideTitle text={slide.feature} slideIndex={index} />
+                </h3>
+                <MobileSlideDescription
+                  text={slide.description}
+                  slideIndex={index}
+                />
+                <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
+                  {slide.highlights.map((item, i) => (
+                    <motion.li
+                      key={item}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
+                      className="flex items-start gap-2"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#059669]" />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
