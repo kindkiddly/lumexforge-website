@@ -312,7 +312,9 @@
 
 .ps-meal-scanner-steps .ps-meal-scanner-steps-bg .ps-parallax-inner {
   background-size: cover;
-  background-position: 26% 42%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  inset: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -449,8 +451,9 @@
 
   .ps-meal-scanner-steps .ps-meal-scanner-steps-bg .ps-parallax-inner {
     background-size: cover;
-    background-position: 26% 42%;
-    inset: -5%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    inset: 0;
   }
 
   .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card p:first-of-type,
