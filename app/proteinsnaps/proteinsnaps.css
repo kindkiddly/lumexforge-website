@@ -411,6 +411,16 @@
     transform: none;
   }
 
+  .ps-screenshots-mobile-text h3,
+  .ps-screenshots-mobile-text h3 span {
+    color: #0b1220;
+  }
+
+  .ps-screenshots-mobile-text p,
+  .ps-screenshots-mobile-text li {
+    color: #334155;
+  }
+
   .ps-download-cta-card {
     background: linear-gradient(
       135deg,

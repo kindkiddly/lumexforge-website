@@ -53,14 +53,14 @@ function MobileSlideDescription({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+          className="mt-3 text-base leading-relaxed text-[#334155]"
         >
           {text}
         </motion.p>
       );
     case 1:
       return (
-        <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+        <p className="mt-3 text-base leading-relaxed text-[#334155]">
           <BlurRevealText text={text} fadeOnly delay={0.2} />
         </p>
       );
@@ -70,7 +70,7 @@ function MobileSlideDescription({
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.15 }}
-          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+          className="mt-3 text-base leading-relaxed text-[#334155]"
         >
           {text}
         </motion.p>
@@ -81,14 +81,14 @@ function MobileSlideDescription({
           initial={{ opacity: 0, filter: "blur(6px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-3 text-base leading-relaxed text-foreground-secondary"
+          className="mt-3 text-base leading-relaxed text-[#334155]"
         >
           {text}
         </motion.p>
       );
     default:
       return (
-        <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+        <p className="mt-3 text-base leading-relaxed text-[#334155]">
           {text}
         </p>
       );
@@ -259,7 +259,7 @@ export function ScreenshotsSection() {
             </div>
           </div>
 
-          <div className="ps-glow-card ps-glass-panel ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
+          <div className="ps-screenshots-mobile-text ps-glow-card ps-glass-panel ps-3d-card mx-auto mt-10 max-w-md rounded-2xl px-5 py-4 text-center">
             <div className="relative min-h-[300px]">
               <AnimatePresence initial={false}>
                 <motion.div
@@ -270,14 +270,20 @@ export function ScreenshotsSection() {
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                   className="absolute inset-x-0 top-0"
                 >
-                  <h3 className="font-serif text-2xl font-semibold text-foreground">
+                  <h3
+                    className="font-serif text-2xl font-semibold text-[#0B1220]"
+                    style={{
+                      textShadow:
+                        "0 1px 0 rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.7)",
+                    }}
+                  >
                     <MobileSlideTitle text={slide.feature} slideIndex={index} />
                   </h3>
                   <MobileSlideDescription
                     text={slide.description}
                     slideIndex={index}
                   />
-                  <ul className="mt-6 space-y-2 text-left text-sm text-foreground-secondary">
+                  <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
                     {slide.highlights.map((item, i) => (
                       <motion.li
                         key={item}
