@@ -183,14 +183,19 @@ export function ScreenshotsSection() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.45 }}
               className="mt-10 text-center"
+              style={{
+                background: "transparent",
+                backdropFilter: "none",
+                WebkitBackdropFilter: "none",
+              }}
             >
-              <h3 className="font-serif text-2xl font-semibold text-foreground">
+              <h3 className="font-serif text-2xl font-semibold text-[#0B1220]">
                 <StaggerWords text={slide.feature} />
               </h3>
-              <p className="mt-3 text-base leading-relaxed text-foreground-secondary">
+              <p className="mt-3 text-base leading-relaxed text-[#334155]">
                 {slide.description}
               </p>
-              <ul className="mt-6 space-y-2 text-left text-sm text-foreground-secondary">
+              <ul className="mt-6 space-y-2 text-left text-sm text-[#334155]">
                 {slide.highlights.map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00c2ff]" />

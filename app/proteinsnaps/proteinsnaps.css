@@ -393,8 +393,9 @@
   }
 
   .ps-parallax-mobile-portrait .ps-parallax-inner {
-    background-size: cover;
+    background-size: contain;
     background-position: center top;
+    background-repeat: no-repeat;
     inset: 0;
   }
 
