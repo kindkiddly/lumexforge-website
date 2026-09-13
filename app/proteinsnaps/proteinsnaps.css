@@ -392,6 +392,16 @@
     background-size: cover;
   }
 
+  .ps-parallax-mobile-portrait .ps-parallax-inner {
+    background-size: cover;
+    background-position: center top;
+    inset: 0;
+  }
+
+  .ps-how-it-works-screenshots .ps-parallax-mobile-portrait .ps-parallax-inner {
+    background-position: center center;
+  }
+
   .ps-glass-panel {
     background: rgba(5, 8, 17, 0.2);
     backdrop-filter: blur(4px);

@@ -105,7 +105,14 @@ export default function HowItWorksPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+          <>
+            <div className="hidden h-full w-full lg:block">
+              <ParallaxImage src="/images/proteinsnaps/BG-6.webp" />
+            </div>
+            <div className="ps-parallax-mobile-portrait block h-full w-full lg:hidden">
+              <ParallaxImage src="/images/proteinsnaps/BG-M6.webp" />
+            </div>
+          </>
         </div>
         <div className="relative z-10">
           <ScreenshotsSection />

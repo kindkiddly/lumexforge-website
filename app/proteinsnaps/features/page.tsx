@@ -75,7 +75,14 @@ export default function FeaturesPage() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
-          <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
+          <>
+            <div className="hidden h-full w-full lg:block">
+              <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
+            </div>
+            <div className="ps-parallax-mobile-portrait block h-full w-full lg:hidden">
+              <ParallaxImage src="/images/proteinsnaps/BG-M12.webp" />
+            </div>
+          </>
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
