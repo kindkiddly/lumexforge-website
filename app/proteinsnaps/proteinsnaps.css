@@ -403,6 +403,12 @@
     background-position: center center;
   }
 
+  .ps-parallax-bg-right-ai .ps-parallax-bg-cover .ps-parallax-inner {
+    background-size: cover;
+    background-position: center top;
+    inset: -8%;
+  }
+
   .ps-how-it-works-screenshots .ps-glass-panel.ps-3d-card {
     transform: none;
   }
