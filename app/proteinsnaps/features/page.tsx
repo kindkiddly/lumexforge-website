@@ -42,11 +42,23 @@ const FEATURE_SCREENSHOTS = FEATURE_SCREENSHOT_SRC.map(
 export default function FeaturesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Features"
-        title="Built for Serious Nutrition Tracking"
-        description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
-      />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <div className="block h-full w-full lg:hidden">
+            <ParallaxImage src="/images/proteinsnaps/BG-M15.webp" speed={0.1} />
+          </div>
+        </div>
+        <div className="relative z-10">
+          <PageHero
+            eyebrow="Features"
+            title="Built for Serious Nutrition Tracking"
+            description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
+          />
+        </div>
+      </div>
       <section className="relative py-8 sm:py-10">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
