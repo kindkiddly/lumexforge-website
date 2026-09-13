@@ -430,20 +430,21 @@
   }
 
   .ps-download-cta-card {
-    background: rgba(255, 255, 255, 0.36) !important;
-    border-color: rgba(255, 255, 255, 0.24) !important;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 230, 168, 0.1) 0%,
+      rgba(5, 8, 17, 0.38) 48%,
+      rgba(0, 194, 255, 0.08) 100%
+    ) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow:
-      0 8px 24px -12px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.12);
   }
 
   .ps-download-cta-card.ps-glow-frame {
     box-shadow:
-      0 8px 24px -12px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.12),
-      0 0 32px -12px rgba(0, 230, 168, 0.18);
+      0 0 40px -10px rgba(0, 230, 168, 0.22),
+      0 0 60px -15px rgba(0, 194, 255, 0.12),
+      inset 0 0 40px -20px rgba(0, 194, 255, 0.06);
   }
 
   .ps-download-cta-card.ps-3d-card,
@@ -451,22 +452,9 @@
     transform: none;
   }
 
-  .ps-download-cta-card > .pointer-events-none.absolute.rounded-full {
-    opacity: 0.25;
-  }
-
-  .ps-download-cta-card h2 {
-    color: #0b1220;
-    text-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.95),
-      0 2px 10px rgba(255, 255, 255, 0.75);
-  }
-
+  .ps-download-cta-card h2,
   .ps-download-cta-card p {
-    color: #334155;
-    text-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.9),
-      0 1px 8px rgba(255, 255, 255, 0.65);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55), 0 0 24px rgba(5, 8, 17, 0.45);
   }
 
   .ps-glass-panel {
