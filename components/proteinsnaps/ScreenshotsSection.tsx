@@ -184,13 +184,7 @@ export function ScreenshotsSection() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
               >
-                <h3
-                  className="font-serif text-2xl font-semibold text-[#0B1220]"
-                  style={{
-                    textShadow:
-                      "0 1px 0 rgba(255,255,255,0.85), 0 2px 8px rgba(255,255,255,0.55)",
-                  }}
-                >
+                <h3 className="font-serif text-2xl font-semibold text-[#0B1220]">
                   <StaggerWords text={slide.feature} />
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-[#1E293B]">
