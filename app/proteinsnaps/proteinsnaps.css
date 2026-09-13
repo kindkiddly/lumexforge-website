@@ -427,13 +427,19 @@
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55), 0 0 14px rgba(5, 8, 17, 0.45);
   }
 
-  .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card,
-  .ps-meal-scanner-steps .ps-glass-text,
-  .ps-meal-scanner-steps .ps-glow-card.ps-glass-panel.ps-3d-card {
+  .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card {
     background: rgba(5, 8, 17, 0.38) !important;
     border-color: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+  }
+
+  .ps-meal-scanner-steps .ps-glass-text,
+  .ps-meal-scanner-steps .ps-glow-card.ps-glass-panel.ps-3d-card {
+    background: rgba(5, 8, 17, 0.28) !important;
+    border-color: rgba(255, 255, 255, 0.07) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card p:first-of-type,
