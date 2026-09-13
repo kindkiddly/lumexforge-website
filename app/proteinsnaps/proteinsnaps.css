@@ -445,8 +445,8 @@
   .ps-meal-scanner-steps .ps-glow-card.ps-glass-panel.ps-3d-card {
     background: rgba(5, 8, 17, 0.18) !important;
     border-color: rgba(255, 255, 255, 0.06) !important;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .ps-meal-scanner-steps .ps-meal-scanner-steps-bg .ps-parallax-inner {
