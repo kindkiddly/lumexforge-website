@@ -112,7 +112,7 @@ export default function AIProteinTrackerPage() {
               <ParallaxImage src="/images/proteinsnaps/BG-8.webp" />
             </div>
             <div className="ps-parallax-bg-cover block h-full w-full lg:hidden">
-              <ParallaxImage src="/images/proteinsnaps/BG-M15.webp" />
+              <ParallaxImage src="/images/proteinsnaps/BG-M14.webp" />
             </div>
           </>
         </div>
