@@ -1,23 +1,16 @@
 /* LumexForge desktop home — scoped to .lf-desktop-home */
 
 .lf-desktop-home {
-  --lf-bg: #0f0f1a;
-  --lf-card: #141428;
-  --lf-violet: #7c3aed;
-  --lf-cyan: #06b6d4;
-  --lf-text: #f8fafc;
-  --lf-text-secondary: #94a3b8;
-  background-color: var(--lf-bg);
-  color: var(--lf-text);
+  background-color: #0f0f1a;
 }
 
-/* 3D card — inspired by ps-3d-card, violet/cyan glow */
+/* 3D card — inspired by ps-3d-card, theme accent glow */
 .lf-3d-card {
   box-shadow:
     0 2px 0 rgba(255, 255, 255, 0.08),
     0 -2px 0 rgba(0, 0, 0, 0.5),
     0 15px 35px -10px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(124, 58, 237, 0.18),
+    0 0 0 1px rgba(79, 70, 229, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 -2px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(0) perspective(600px) rotateX(1deg);
@@ -30,8 +23,8 @@
     0 2px 0 rgba(255, 255, 255, 0.1),
     0 -2px 0 rgba(0, 0, 0, 0.5),
     0 30px 60px -15px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(124, 58, 237, 0.35),
-    0 0 40px -8px rgba(6, 182, 212, 0.2),
+    0 0 0 1px rgba(79, 70, 229, 0.35),
+    0 0 40px -8px rgba(0, 194, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     inset 0 -2px 0 rgba(0, 0, 0, 0.5);
 }
@@ -42,7 +35,7 @@
   box-shadow:
     0 2px 0 rgba(255, 255, 255, 0.06),
     0 12px 32px -12px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(124, 58, 237, 0.12),
+    0 0 0 1px rgba(79, 70, 229, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -60,11 +53,11 @@
 }
 
 .lf-particle--violet {
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.9) 0%, rgba(124, 58, 237, 0) 70%);
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.9) 0%, rgba(79, 70, 229, 0) 70%);
 }
 
 .lf-particle--cyan {
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.85) 0%, rgba(6, 182, 212, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.85) 0%, rgba(0, 194, 255, 0) 70%);
 }
 
 @keyframes lf-float-particle {
@@ -172,25 +165,255 @@
 
 /* Placeholder image gradients */
 .lf-placeholder-hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 40%, #0e7490 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #312e81 40%, #0e7490 100%);
 }
 
 .lf-placeholder-ps {
   background: linear-gradient(135deg, #064e3b 0%, #0e7490 50%, #1e1b4b 100%);
 }
 
+.lf-placeholder-ps-ios {
+  background: linear-gradient(135deg, #1e3a5f 0%, #4f46e5 50%, #0e7490 100%);
+}
+
 .lf-placeholder-ph {
-  background: linear-gradient(135deg, #7c2d12 0%, #7c3aed 55%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #7c2d12 0%, #4f46e5 55%, #1e1b4b 100%);
 }
 
 .lf-placeholder-am {
-  background: linear-gradient(135deg, #831843 0%, #6d28d9 50%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #831843 0%, #4f46e5 50%, #1e1b4b 100%);
 }
 
 .lf-placeholder-mb {
   background: linear-gradient(135deg, #78350f 0%, #0891b2 45%, #312e81 100%);
 }
 
+.lf-placeholder-studio {
+  background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 45%, #00c2ff 100%);
+}
+
+.lf-placeholder-stealth {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #1e1b4b 100%);
+}
+
 .lf-about-parallax-bg {
   will-change: transform;
+}
+
+/* ── 3D Coverflow carousel (TemplateMo 595 logic) ── */
+
+.lf-coverflow-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-coverflow-container {
+  width: 100%;
+  height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  position: relative;
+  outline: none;
+}
+
+.lf-coverflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 480px;
+}
+
+.lf-coverflow-item {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+  user-select: none;
+  transform-style: preserve-3d;
+}
+
+.lf-coverflow-cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  background: #141428;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.lf-coverflow-item.active .lf-coverflow-cover {
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(124, 58, 237, 0.35);
+  border: 2px solid rgba(124, 58, 237, 0.65);
+}
+
+.lf-coverflow-reflection {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  transform: scaleY(-1);
+  opacity: 0.2;
+  filter: blur(2px);
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+}
+
+.lf-coverflow-reflection-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.lf-coverflow-reflection-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(15, 15, 26, 0.8) 50%,
+    rgba(15, 15, 26, 1) 100%
+  );
+}
+
+.lf-coverflow-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.lf-coverflow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 200;
+}
+
+.lf-coverflow-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lf-coverflow-nav.prev {
+  left: 50px;
+}
+
+.lf-coverflow-nav.next {
+  right: 50px;
+}
+
+.lf-coverflow-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 200;
+}
+
+.lf-coverflow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.lf-coverflow-dot.active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.3);
+}
+
+.lf-coverflow-play-pause {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 200;
+}
+
+.lf-coverflow-play-pause:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%) scale(1.1);
+}
+
+.lf-coverflow-play-pause .lf-pause-icon {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+@keyframes lf-coverflow-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lf-coverflow-info-animate {
+  animation: lf-coverflow-fade-in 0.6s forwards;
 }
