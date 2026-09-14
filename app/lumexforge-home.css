@@ -1,0 +1,196 @@
+/* LumexForge desktop home — scoped to .lf-desktop-home */
+
+.lf-desktop-home {
+  --lf-bg: #0f0f1a;
+  --lf-card: #141428;
+  --lf-violet: #7c3aed;
+  --lf-cyan: #06b6d4;
+  --lf-text: #f8fafc;
+  --lf-text-secondary: #94a3b8;
+  background-color: var(--lf-bg);
+  color: var(--lf-text);
+}
+
+/* 3D card — inspired by ps-3d-card, violet/cyan glow */
+.lf-3d-card {
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.08),
+    0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 15px 35px -10px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(124, 58, 237, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(0) perspective(600px) rotateX(1deg);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.lf-3d-card:hover {
+  transform: translateY(-8px) perspective(600px) rotateX(0deg);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.1),
+    0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 30px 60px -15px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(124, 58, 237, 0.35),
+    0 0 40px -8px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Clay value cards */
+.lf-clay-card {
+  background: linear-gradient(145deg, #181830 0%, #121225 48%, #0f0f1a 100%);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.06),
+    0 12px 32px -12px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(124, 58, 237, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Hero particles */
+.lf-particles {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.lf-particle {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.22;
+  animation: lf-float-particle linear infinite;
+}
+
+.lf-particle--violet {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.9) 0%, rgba(124, 58, 237, 0) 70%);
+}
+
+.lf-particle--cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.85) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+@keyframes lf-float-particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-120px) translateX(20px);
+    opacity: 0.15;
+  }
+}
+
+.lf-particle:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  left: 8%;
+  top: 72%;
+  animation-duration: 14s;
+}
+
+.lf-particle:nth-child(2) {
+  width: 4px;
+  height: 4px;
+  left: 18%;
+  top: 58%;
+  animation-duration: 18s;
+  animation-delay: -4s;
+}
+
+.lf-particle:nth-child(3) {
+  width: 8px;
+  height: 8px;
+  left: 32%;
+  top: 80%;
+  animation-duration: 22s;
+  animation-delay: -8s;
+}
+
+.lf-particle:nth-child(4) {
+  width: 5px;
+  height: 5px;
+  left: 55%;
+  top: 65%;
+  animation-duration: 16s;
+  animation-delay: -2s;
+}
+
+.lf-particle:nth-child(5) {
+  width: 7px;
+  height: 7px;
+  left: 68%;
+  top: 78%;
+  animation-duration: 20s;
+  animation-delay: -6s;
+}
+
+.lf-particle:nth-child(6) {
+  width: 4px;
+  height: 4px;
+  left: 82%;
+  top: 52%;
+  animation-duration: 17s;
+  animation-delay: -10s;
+}
+
+.lf-particle:nth-child(7) {
+  width: 6px;
+  height: 6px;
+  left: 90%;
+  top: 70%;
+  animation-duration: 19s;
+  animation-delay: -3s;
+}
+
+.lf-particle:nth-child(8) {
+  width: 3px;
+  height: 3px;
+  left: 42%;
+  top: 45%;
+  animation-duration: 15s;
+  animation-delay: -12s;
+}
+
+.lf-particle:nth-child(9) {
+  width: 5px;
+  height: 5px;
+  left: 75%;
+  top: 38%;
+  animation-duration: 21s;
+  animation-delay: -5s;
+}
+
+.lf-particle:nth-child(10) {
+  width: 4px;
+  height: 4px;
+  left: 12%;
+  top: 35%;
+  animation-duration: 23s;
+  animation-delay: -7s;
+}
+
+/* Placeholder image gradients */
+.lf-placeholder-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 40%, #0e7490 100%);
+}
+
+.lf-placeholder-ps {
+  background: linear-gradient(135deg, #064e3b 0%, #0e7490 50%, #1e1b4b 100%);
+}
+
+.lf-placeholder-ph {
+  background: linear-gradient(135deg, #7c2d12 0%, #7c3aed 55%, #1e1b4b 100%);
+}
+
+.lf-placeholder-am {
+  background: linear-gradient(135deg, #831843 0%, #6d28d9 50%, #1e1b4b 100%);
+}
+
+.lf-placeholder-mb {
+  background: linear-gradient(135deg, #78350f 0%, #0891b2 45%, #312e81 100%);
+}
+
+.lf-about-parallax-bg {
+  will-change: transform;
+}
