@@ -1045,13 +1045,14 @@ export function HeroSection() {
             {...getMobileBrandMotion(currentMobileSlide)}
             exit={{ opacity: 0 }}
             transition={MOBILE_BRAND_TRANSITION}
-            className="px-8 py-2"
+            className="px-8 py-2.5 text-center"
             style={MOBILE_GLASS_STYLE}
           >
-            <p className="text-3xl font-bold">
+            <p className="text-3xl font-bold leading-none">
               <span className="text-white">Protein</span>
               <span className="text-[#00e6a8]">Snaps</span>
             </p>
+            <p className="ps-hero-mobile-brand-subtitle">Smarter Nutrition</p>
           </motion.div>
         </AnimatePresence>
       </div>
