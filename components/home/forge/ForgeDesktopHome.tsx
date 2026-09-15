@@ -111,8 +111,9 @@ const APPS = [
     tagline: "AI-powered nutrition and fitness tracking",
     status: "Live on iOS & Android",
     statusClass: "bg-success/10 text-success ring-success/30",
-    iconClass: "lf-placeholder-ps",
+    placeholderClass: "lf-placeholder-ps",
     iconLabel: "PS",
+    imageSrc: "/images/proteinsnaps/PSL-1.webp",
     cta: "Visit App →",
     href: "https://proteinsnaps.lumexforge.com",
     external: true,
@@ -123,7 +124,7 @@ const APPS = [
     tagline: "AI social media content creation agent",
     status: "In Development",
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
-    iconClass: "lf-placeholder-ph",
+    placeholderClass: "lf-placeholder-ph",
     iconLabel: "PH",
     cta: "Learn More →",
     href: "/contact",
@@ -135,7 +136,7 @@ const APPS = [
     tagline: "AI grief companion and portrait app",
     status: "In Development",
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
-    iconClass: "lf-placeholder-am",
+    placeholderClass: "lf-placeholder-am",
     iconLabel: "AM",
     cta: "Learn More →",
     href: "/contact",
@@ -147,7 +148,7 @@ const APPS = [
     tagline: "Crypto charity money destruction leaderboard",
     status: "Coming Soon",
     statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
-    iconClass: "lf-placeholder-mb",
+    placeholderClass: "lf-placeholder-mb",
     iconLabel: "MB",
     cta: "Learn More →",
     href: "/contact",
@@ -157,15 +158,15 @@ const APPS = [
 
 function ProteinSnapsStoreSection() {
   return (
-    <div className="mt-4 border-t border-white/[0.06] pt-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="lf-app-store-section">
+      <div className="lf-app-store-buttons">
         <a
           href={PROTEINSNAPS_PLAY_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="lf-store-compact-btn lf-store-compact-btn--play"
         >
-          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
           </svg>
           Google Play
@@ -176,19 +177,19 @@ function ProteinSnapsStoreSection() {
           rel="noopener noreferrer"
           className="lf-store-compact-btn lf-store-compact-btn--apple"
         >
-          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
           </svg>
           App Store
         </a>
       </div>
 
-      <div className="lf-store-qr-pair mt-3">
+      <div className="lf-store-qr-pair">
         <div className="lf-store-qr-item">
           <div className="lf-store-qr-box">
             <QRCode
               value={PROTEINSNAPS_PLAY_STORE_URL}
-              size={70}
+              size={60}
               bgColor="#ffffff"
               fgColor="#050811"
               level="M"
@@ -200,7 +201,7 @@ function ProteinSnapsStoreSection() {
           <div className="lf-store-qr-box">
             <QRCode
               value={PROTEINSNAPS_APP_STORE_URL}
-              size={70}
+              size={60}
               bgColor="#ffffff"
               fgColor="#050811"
               level="M"
@@ -770,50 +771,67 @@ export function ForgeDesktopHome() {
           <div className="lf-apps-grid">
             {APPS.map((app, index) => (
               <FadeInUp key={app.id} delay={index * 0.08}>
-                <article className="lf-app-card-compact lf-3d-card group">
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`lf-app-icon shrink-0 ${app.iconClass}`}
-                      aria-hidden="true"
-                    >
-                      {app.iconLabel}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-2">
-                        <h3 className="truncate text-lg font-bold tracking-tight text-foreground">
-                          {app.name}
-                        </h3>
-                        <span
-                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ring-1 ${app.statusClass}`}
-                        >
-                          {app.status}
-                        </span>
+                <article className="lf-app-card lf-3d-card group">
+                  <div className="lf-app-card-media">
+                    {"imageSrc" in app && app.imageSrc ? (
+                      <Image
+                        src={app.imageSrc}
+                        alt={app.name}
+                        fill
+                        sizes="(max-width: 896px) 50vw, 448px"
+                        className="object-cover object-center"
+                      />
+                    ) : (
+                      <div
+                        className={`lf-app-card-placeholder ${app.placeholderClass}`}
+                        aria-hidden="true"
+                      >
+                        <span className="lf-app-card-initial">{app.iconLabel}</span>
                       </div>
-                      <p className="mt-1 line-clamp-2 text-sm text-foreground-secondary">
-                        {app.tagline}
-                      </p>
-                    </div>
+                    )}
                   </div>
 
-                  {app.external ? (
-                    <a
-                      href={app.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
-                    >
-                      {app.cta}
-                    </a>
-                  ) : (
-                    <Link
-                      href={app.href}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
-                    >
-                      {app.cta}
-                    </Link>
-                  )}
+                  <div className="px-5 pt-4 pb-3">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <h3 className="text-xl font-bold tracking-tight text-foreground">
+                        {app.name}
+                      </h3>
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ${app.statusClass}`}
+                      >
+                        {app.status}
+                      </span>
+                    </div>
+                    <p className="mt-1.5 line-clamp-1 text-sm text-foreground-muted">
+                      {app.tagline}
+                    </p>
+                  </div>
 
-                  {app.id === "proteinsnaps" && <ProteinSnapsStoreSection />}
+                  <div className="px-5 pb-3">
+                    {app.external ? (
+                      <a
+                        href={app.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
+                      >
+                        {app.cta}
+                      </a>
+                    ) : (
+                      <Link
+                        href={app.href}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
+                      >
+                        {app.cta}
+                      </Link>
+                    )}
+                  </div>
+
+                  {app.id === "proteinsnaps" && (
+                    <div className="px-5 pb-4">
+                      <ProteinSnapsStoreSection />
+                    </div>
+                  )}
                 </article>
               </FadeInUp>
             ))}
