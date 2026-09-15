@@ -251,158 +251,30 @@ function CoverflowCardFace({ card }: { card: CoverflowCard }) {
   );
 }
 
-const FEATURE_BADGES = [
-  {
-    title: "Mobile Apps",
-    description: "Beautiful. Fast. Purpose-built.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-      </svg>
-    ),
-  },
-  {
-    title: "AI Products",
-    description: "Smarter systems. Real intelligence.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-      </svg>
-    ),
-  },
-  {
-    title: "SaaS Platforms",
-    description: "Scalable. Secure. Built to grow.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A3.375 3.375 0 016.375 3.75h11.25A3.375 3.375 0 0121 7.125v9.75A3.375 3.375 0 0117.625 20.25H6.375A3.375 3.375 0 013 16.875v-9.75zM8.25 9.75h7.5M8.25 12.75h4.5" />
-      </svg>
-    ),
-  },
-  {
-    title: "Business Solutions",
-    description: "Streamlined ops. Stronger results.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15l-.75 18H5.25L4.5 3zm3 3v12m4.5-12v12m4.5-12v12" />
-      </svg>
-    ),
-  },
+const SERVICES_LEFT = [
+  { title: "Mobile Apps", description: "iOS & Android native" },
+  { title: "AI Products", description: "Intelligent automation built-in" },
+  { title: "SaaS Platforms", description: "Scalable web software" },
+  { title: "UI/UX Design", description: "Pixel-perfect interfaces" },
 ] as const;
 
-const VALUES = [
-  {
-    title: "Intelligent Design",
-    description: "We build AI-first products that solve real problems with thoughtful, human-centered interfaces.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Mobile Native",
-    description: "iOS and Android from day one — crafted for performance, polish, and the platforms people use daily.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-      </svg>
-    ),
-  },
-  {
-    title: "Quality Obsessed",
-    description: "Every pixel, every interaction matters — we ship with the care of a boutique studio, not a factory.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-      </svg>
-    ),
-  },
+const SERVICES_RIGHT = [
+  { title: "Business Software", description: "Custom tools that work" },
+  { title: "Book Publishing", description: "Writing, design, distribution" },
+  { title: "Digital Consulting", description: "Strategy meets execution" },
 ] as const;
 
-const SERVICES = {
-  row1: [
-    {
-      title: "Mobile Apps",
-      description: "Native iOS and Android experiences built for performance, polish, and daily use.",
-      variant: "wide portrait" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-        </svg>
-      ),
-    },
-    {
-      title: "AI Products",
-      description: "Intelligent features and agents that turn complex workflows into simple outcomes.",
-      variant: "wide portrait" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-        </svg>
-      ),
-    },
-    {
-      title: "SaaS Platforms",
-      description: "Scalable cloud software with secure foundations and room to grow with your users.",
-      variant: "wide portrait" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A3.375 3.375 0 016.375 3.75h11.25A3.375 3.375 0 0121 7.125v9.75A3.375 3.375 0 0117.625 20.25H6.375A3.375 3.375 0 013 16.875v-9.75zM8.25 9.75h7.5M8.25 12.75h4.5" />
-        </svg>
-      ),
-    },
-  ],
-  row2: [
-    {
-      title: "UI/UX Design",
-      description: "Human-centered interfaces and product flows that feel intuitive from the first tap.",
-      variant: "medium" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-1.242-.39-2.4-1.062-3.346M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Business Software",
-      description: "Custom tools that streamline operations, reporting, and team productivity.",
-      variant: "medium" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15l-.75 18H5.25L4.5 3zm3 3v12m4.5-12v12m4.5-12v12" />
-        </svg>
-      ),
-    },
-  ],
-  row3: [
-    {
-      title: "Book Writing & Publishing",
-      description: "End-to-end support for authors — from manuscript development to digital publishing.",
-      variant: "landscape" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-        </svg>
-      ),
-    },
-    {
-      title: "Digital Consulting",
-      description: "Strategic guidance on product direction, technology choices, and go-to-market planning.",
-      variant: "landscape" as const,
-      icon: (
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.697c0-1.355-.852-2.487-2.094-2.777M15.75 8.25V6.75m0 1.5v1.5m0-1.5h-3m3 0h3" />
-        </svg>
-      ),
-    },
-  ],
-} as const;
-
-function serviceCardClass(variant: "wide portrait" | "medium" | "landscape") {
-  if (variant === "wide portrait") return "lf-service-card lf-service-card--wide lf-service-card--portrait";
-  if (variant === "medium") return "lf-service-card lf-service-card--medium";
-  return "lf-service-card lf-service-card--landscape";
+function ServiceListItem({ title, description }: { title: string; description: string }) {
+  return (
+    <p className="lf-service-list-item">
+      <span className="text-sm font-medium text-foreground">{title}</span>
+      <span className="text-foreground-muted" aria-hidden="true">
+        {" "}
+        ·{" "}
+      </span>
+      <span className="text-xs text-foreground-muted">{description}</span>
+    </p>
+  );
 }
 
 function getCoverflowTransform(index: number, currentIndex: number, total: number) {
@@ -645,61 +517,11 @@ function CoverflowCarousel() {
   );
 }
 
-function AboutFounderSection() {
-  return (
-    <section id="about" className="lf-about-section py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <FadeInUp className="mb-12 text-center">
-          <p className="lf-eyebrow-cyan mb-4">About LumexForge</p>
-          <h2 className="heading-section">Built With Purpose</h2>
-        </FadeInUp>
-
-        <FadeInUp delay={0.1}>
-          <div className="lf-founder-panel mx-auto flex max-w-6xl flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,16rem)_auto_1fr] lg:items-start lg:gap-10">
-            <div className="flex flex-col items-center text-center lg:items-center">
-              <div className="lf-founder-avatar" aria-hidden="true">
-                ARM
-              </div>
-              <h2 className="mt-6 text-2xl font-bold tracking-tight text-foreground">A.R. Mirani</h2>
-              <h4 className="mt-2 text-base font-medium text-[#06B6D4]">Founder &amp; CEO</h4>
-              <p className="mt-4 text-sm text-foreground-secondary">Houston, USA</p>
-              <p className="mt-1 text-sm text-foreground-muted">Founded: 2026</p>
-            </div>
-
-            <div className="hidden lg:block lg:self-stretch">
-              <div className="h-full min-h-[12rem] w-0.5 bg-gradient-to-b from-[#06B6D4] to-[#3B82F6]" />
-            </div>
-            <div className="lg:hidden">
-              <div className="lf-about-accent-line" />
-            </div>
-
-            <div className="space-y-5 text-base leading-relaxed text-foreground-secondary">
-              <p>
-                LumexForge was founded on a clear vision: building intelligent digital products
-                that solve real problems for people and businesses around the world.
-              </p>
-              <p>
-                We design and ship mobile apps, AI-powered products, SaaS platforms, UI/UX
-                experiences, business software, and publishing projects — each crafted with
-                attention to detail and long-term value.
-              </p>
-              <p>
-                Our mission is to craft purpose-built software for global markets — products
-                that are fast, thoughtful, and built to earn trust from day one.
-              </p>
-            </div>
-          </div>
-        </FadeInUp>
-      </div>
-    </section>
-  );
-}
-
 export function ForgeDesktopHome() {
   return (
     <div className="lf-desktop-home">
       {/* SECTION 1 — HERO + COVERFLOW */}
-      <section className="relative flex min-h-screen flex-col overflow-hidden pt-[4.5rem]">
+      <section className="relative overflow-hidden pt-[4.5rem] py-10">
         <div className="absolute inset-0 -z-20 bg-[#000814]" aria-hidden="true" />
         <div
           className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_30%,rgba(6,182,212,0.12),transparent_65%)]"
@@ -723,52 +545,37 @@ export function ForgeDesktopHome() {
           <span className="lf-particle lf-particle--blue" />
         </div>
 
-        <div className="mx-auto w-full max-w-7xl flex-1 px-6 py-16">
+        <div className="mx-auto w-full max-w-7xl px-6">
           <FadeInUp className="text-center">
-            <h1 className="text-6xl font-bold leading-[1.05] tracking-tight">
-              <span className="text-foreground">We Build Apps</span>
+            <span className="lf-hero-badge">Software Studio · Houston, USA</span>
+            <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight">
+              <span className="text-foreground">We Forge</span>
               <br />
-              <span className="lf-text-cyan-gradient">That Matter.</span>
+              <span className="lf-text-cyan-gradient">Digital Products.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-foreground-secondary">
-              A boutique mobile studio crafting intelligent apps for iOS and Android
+            <p className="mt-3 text-sm text-foreground-muted">
+              Apps. Platforms. AI. Built to last.
             </p>
           </FadeInUp>
 
-          <FadeInUp delay={0.15} className="mt-12">
+          <FadeInUp delay={0.1} className="mt-3">
             <CoverflowCarousel />
           </FadeInUp>
+
+          <p className="lf-feature-strip mt-3">
+            Mobile Apps · AI Products · SaaS Platforms · Digital Publishing
+          </p>
         </div>
       </section>
 
-      {/* FEATURE BADGES */}
-      <section id="features" className="py-20">
+      {/* APPS SHOWCASE */}
+      <section id="products" className="py-10">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-4 gap-6">
-            {FEATURE_BADGES.map((feature, index) => (
-              <FadeInUp key={feature.title} delay={index * 0.08}>
-                <article className="lf-feature-glass rounded-2xl p-6">
-                  <div className="lf-feature-icon">{feature.icon}</div>
-                  <h3 className="mt-5 text-lg font-bold text-foreground">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
-                    {feature.description}
-                  </p>
-                </article>
-              </FadeInUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2 — APPS SHOWCASE */}
-      <section id="products" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeInUp className="mb-16 text-center">
-            <p className="lf-eyebrow-cyan mb-4">What We Build</p>
-            <h2 className="heading-section">Our Products</h2>
+          <FadeInUp className="text-center">
+            <p className="lf-section-label">OUR PRODUCTS</p>
           </FadeInUp>
 
-          <div className="lf-apps-grid">
+          <div className="lf-apps-grid mt-3">
             {APPS.map((app, index) => (
               <FadeInUp key={app.id} delay={index * 0.08}>
                 <article className="lf-app-card lf-3d-card group">
@@ -793,7 +600,7 @@ export function ForgeDesktopHome() {
 
                   <div className="px-5 pt-4 pb-3">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <h3 className="text-xl font-bold tracking-tight text-foreground">
+                      <h3 className="text-base font-bold tracking-tight text-foreground">
                         {app.name}
                       </h3>
                       <span
@@ -840,109 +647,67 @@ export function ForgeDesktopHome() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeInUp className="mb-16 text-center">
-            <p className="lf-eyebrow-cyan mb-4">What We Offer</p>
-            <h2 className="heading-section">Our Services</h2>
-          </FadeInUp>
-
-          <div className="lf-services-section">
-            <div className="lf-services-row-3">
-              {SERVICES.row1.map((service, index) => (
-                <FadeInUp key={service.title} delay={index * 0.06}>
-                  <article className={serviceCardClass(service.variant)}>
-                    <div className="lf-service-icon">{service.icon}</div>
-                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
-                    <p className="lf-service-desc">{service.description}</p>
-                  </article>
-                </FadeInUp>
-              ))}
-            </div>
-
-            <div className="lf-services-row-2">
-              {SERVICES.row2.map((service, index) => (
-                <FadeInUp key={service.title} delay={0.15 + index * 0.06}>
-                  <article className={serviceCardClass(service.variant)}>
-                    <div className="lf-service-icon">{service.icon}</div>
-                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
-                    <p className="lf-service-desc">{service.description}</p>
-                  </article>
-                </FadeInUp>
-              ))}
-            </div>
-
-            <div className="lf-services-row-2">
-              {SERVICES.row3.map((service, index) => (
-                <FadeInUp key={service.title} delay={0.25 + index * 0.06}>
-                  <article className={serviceCardClass(service.variant)}>
-                    <div className="lf-service-icon">{service.icon}</div>
-                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
-                    <p className="lf-service-desc">{service.description}</p>
-                  </article>
-                </FadeInUp>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3 — STUDIO VALUES */}
-      <section id="values" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <FadeInUp className="mb-16 text-center">
-            <h2 className="heading-section">Studio Values</h2>
-          </FadeInUp>
-
-          <div className="grid grid-cols-3 gap-8">
-            {VALUES.map((value, index) => (
-              <FadeInUp key={value.title} delay={index * 0.1}>
-                <article className="lf-clay-card lf-3d-card h-full rounded-2xl border border-[#06B6D4]/20 p-8">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#06B6D4]/20 to-[#3B82F6]/10 text-[#06B6D4] ring-1 ring-[#06B6D4]/25">
-                    {value.icon}
-                  </div>
-                  <h3 className="mt-6 text-xl font-semibold text-foreground">{value.title}</h3>
-                  <p className="mt-3 leading-relaxed text-foreground-secondary">
-                    {value.description}
-                  </p>
-                </article>
-              </FadeInUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4 — ABOUT */}
-      <AboutFounderSection />
-
-      {/* SECTION 5 — CTA */}
-      <section id="cta" className="py-28">
-        <FadeInUp>
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="relative overflow-hidden rounded-3xl border border-[#06B6D4]/20 bg-gradient-to-br from-[#06B6D4]/25 via-[#0a1628] to-[#3B82F6]/20 px-16 py-20 text-center shadow-[0_30px_80px_-30px_rgba(6,182,212,0.35)]">
-              <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.08),transparent_60%)]"
-                aria-hidden="true"
-              />
-
-              <h2 className="relative heading-section text-balance">
-                Ready to build something great?
-              </h2>
-              <p className="relative mx-auto mt-5 max-w-2xl text-lg text-foreground-secondary">
-                Explore our apps or get in touch with the team
-              </p>
-
-              <div className="relative mt-10 flex items-center justify-center gap-4">
-                <Link href="/products" className="lf-btn-clay px-7 py-3.5 text-base">
-                  View All Apps
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#06B6D4]/30 bg-white/[0.04] px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:border-[#06B6D4]/50 hover:text-[#06B6D4]"
-                >
-                  Contact Us
-                </Link>
+      <section id="services" className="py-10">
+        <div className="mx-auto max-w-3xl px-6">
+          <FadeInUp>
+            <div className="lf-services-list">
+              <div className="lf-services-col lf-services-col--left">
+                <p className="lf-section-label mb-3">WHAT WE BUILD</p>
+                <div className="space-y-2.5">
+                  {SERVICES_LEFT.map((service) => (
+                    <ServiceListItem
+                      key={service.title}
+                      title={service.title}
+                      description={service.description}
+                    />
+                  ))}
+                </div>
               </div>
+              <div className="lf-services-col">
+                <div className="space-y-2.5 pt-6 sm:pt-[1.375rem]">
+                  {SERVICES_RIGHT.map((service) => (
+                    <ServiceListItem
+                      key={service.title}
+                      title={service.title}
+                      description={service.description}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-10">
+        <FadeInUp>
+          <div className="mx-auto max-w-2xl px-6 text-center">
+            <p className="text-sm italic text-foreground-muted">
+              An independent studio building intelligent digital products for global markets.
+            </p>
+            <Link href="/about" className="mt-3 inline-block text-xs text-[#06B6D4] hover:underline">
+              Our Story →
+            </Link>
+          </div>
+        </FadeInUp>
+      </section>
+
+      {/* CTA */}
+      <section id="cta" className="lf-cta-section py-10">
+        <FadeInUp>
+          <div className="mx-auto max-w-xl px-6 text-center">
+            <h2 className="text-xl font-semibold text-foreground">Let&apos;s build something great.</h2>
+            <p className="mt-3 text-sm text-foreground-muted">
+              Explore our work or reach out directly.
+            </p>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/products" className="lf-btn-sm">
+                View Our Work
+              </Link>
+              <Link href="/contact" className="lf-btn-sm-outline">
+                Get In Touch
+              </Link>
             </div>
           </div>
         </FadeInUp>
