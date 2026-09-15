@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 
 const PROTEINSNAPS_PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share";
+const PROTEINSNAPS_APP_STORE_URL =
+  "https://apps.apple.com/us/app/proteinsnaps/id6801353318";
 
 function FadeInUp({
   children,
@@ -30,14 +33,25 @@ function FadeInUp({
   );
 }
 
-const COVERFLOW_CARDS = [
+type CoverflowCard = {
+  id: string;
+  name: string;
+  tagline: string;
+  status: string;
+  initial: string;
+  placeholderClass: string;
+  imageSrc?: string;
+};
+
+const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "proteinsnaps",
     name: "ProteinSnaps",
     tagline: "AI Nutrition & Fitness Tracker",
-    status: "Live on Android",
+    status: "Live on iOS & Android",
     initial: "PS",
     placeholderClass: "lf-placeholder-ps",
+    imageSrc: "/images/proteinsnaps/PSL-1.webp",
   },
   {
     id: "proteinsnaps-ios",
@@ -78,6 +92,7 @@ const COVERFLOW_CARDS = [
     status: "Est. 2024",
     initial: "LF",
     placeholderClass: "lf-placeholder-studio",
+    imageSrc: "/images/lumexforge-hero.jpg",
   },
   {
     id: "stealth",
@@ -87,17 +102,17 @@ const COVERFLOW_CARDS = [
     initial: "?",
     placeholderClass: "lf-placeholder-stealth",
   },
-] as const;
+] ;
 
 const APPS = [
   {
     id: "proteinsnaps",
     name: "ProteinSnaps",
     tagline: "AI-powered nutrition and fitness tracking",
-    status: "Live on Android",
+    status: "Live on iOS & Android",
     statusClass: "bg-success/10 text-success ring-success/30",
-    placeholderClass: "lf-placeholder-ps",
-    imageLabel: "LF-App-PS.webp",
+    iconClass: "lf-placeholder-ps",
+    iconLabel: "PS",
     cta: "Visit App →",
     href: "https://proteinsnaps.lumexforge.com",
     external: true,
@@ -108,8 +123,8 @@ const APPS = [
     tagline: "AI social media content creation agent",
     status: "In Development",
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
-    placeholderClass: "lf-placeholder-ph",
-    imageLabel: "LF-App-PH.webp",
+    iconClass: "lf-placeholder-ph",
+    iconLabel: "PH",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -120,8 +135,8 @@ const APPS = [
     tagline: "AI grief companion and portrait app",
     status: "In Development",
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
-    placeholderClass: "lf-placeholder-am",
-    imageLabel: "LF-App-AM.webp",
+    iconClass: "lf-placeholder-am",
+    iconLabel: "AM",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -132,8 +147,8 @@ const APPS = [
     tagline: "Crypto charity money destruction leaderboard",
     status: "Coming Soon",
     statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
-    placeholderClass: "lf-placeholder-mb",
-    imageLabel: "LF-App-MB.webp",
+    iconClass: "lf-placeholder-mb",
+    iconLabel: "MB",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -142,40 +157,94 @@ const APPS = [
 
 function ProteinSnapsStoreSection() {
   return (
-    <div className="mt-6 border-t border-white/[0.06] pt-6">
-      <a
-        href={PROTEINSNAPS_PLAY_STORE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-full border border-[#00e6a8]/40 bg-[#00e6a8]/10 px-6 py-3 text-sm font-medium text-[#00e6a8] transition-all min-h-[48px] hover:bg-[#00e6a8]/20"
-      >
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
-        </svg>
-        Get it on Google Play
-      </a>
-
-      <div className="mt-4">
-        <div className="inline-block rounded-lg border border-[#00e6a8]/25 bg-white p-1.5 shadow-[0_0_16px_-4px_rgba(0,230,168,0.35)]">
-          <QRCode
-            value={PROTEINSNAPS_PLAY_STORE_URL}
-            size={80}
-            bgColor="#ffffff"
-            fgColor="#050811"
-            level="M"
-          />
-        </div>
-        <p className="mt-2 text-xs text-foreground-muted">Scan to download Android</p>
+    <div className="mt-4 border-t border-white/[0.06] pt-4">
+      <div className="flex flex-wrap gap-2">
+        <a
+          href={PROTEINSNAPS_PLAY_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="lf-store-compact-btn lf-store-compact-btn--play"
+        >
+          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
+          </svg>
+          Google Play
+        </a>
+        <a
+          href={PROTEINSNAPS_APP_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="lf-store-compact-btn lf-store-compact-btn--apple"
+        >
+          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+          </svg>
+          App Store
+        </a>
       </div>
 
-      <span
-        className="mt-4 inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-6 py-3 text-sm font-medium text-foreground-muted min-h-[48px]"
-        aria-disabled="true"
-      >
-        <svg className="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-        </svg>
-        App Store — Coming Soon
+      <div className="lf-store-qr-pair mt-3">
+        <div className="lf-store-qr-item">
+          <div className="lf-store-qr-box">
+            <QRCode
+              value={PROTEINSNAPS_PLAY_STORE_URL}
+              size={70}
+              bgColor="#ffffff"
+              fgColor="#050811"
+              level="M"
+            />
+          </div>
+          <span className="lf-store-qr-label">Android</span>
+        </div>
+        <div className="lf-store-qr-item">
+          <div className="lf-store-qr-box">
+            <QRCode
+              value={PROTEINSNAPS_APP_STORE_URL}
+              size={70}
+              bgColor="#ffffff"
+              fgColor="#050811"
+              level="M"
+            />
+          </div>
+          <span className="lf-store-qr-label">iOS</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CoverflowCardFace({ card }: { card: CoverflowCard }) {
+  if (card.imageSrc) {
+    return (
+      <div className="lf-coverflow-cover lf-coverflow-cover--image">
+        <div className="lf-coverflow-image-slot">
+          <Image
+            src={card.imageSrc}
+            alt={card.name}
+            fill
+            sizes="480px"
+            className="object-cover object-center"
+          />
+          <div className="lf-coverflow-image-overlay" aria-hidden="true" />
+        </div>
+        <div className="lf-coverflow-card-meta">
+          <h3 className="text-xl font-bold tracking-tight text-foreground">{card.name}</h3>
+          <p className="mt-1.5 text-sm text-foreground-secondary">{card.tagline}</p>
+          <span className="mt-3 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-xs font-medium text-foreground-secondary">
+            {card.status}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`lf-coverflow-cover ${card.placeholderClass}`}>
+      <div className="lf-coverflow-logo">{card.initial}</div>
+      <h3 className="text-2xl font-bold tracking-tight text-foreground">{card.name}</h3>
+      <p className="mt-3 text-base text-foreground-secondary">{card.tagline}</p>
+      <span className="mt-4 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-xs font-medium text-foreground-secondary">
+        {card.status}
       </span>
     </div>
   );
@@ -250,11 +319,90 @@ const VALUES = [
   },
 ] as const;
 
-const STATS = [
-  { value: "4 Apps Built", label: "Product ecosystem" },
-  { value: "2 Platforms", label: "iOS & Android" },
-  { value: "1 Vision", label: "Craft with purpose" },
-] as const;
+const SERVICES = {
+  row1: [
+    {
+      title: "Mobile Apps",
+      description: "Native iOS and Android experiences built for performance, polish, and daily use.",
+      variant: "wide portrait" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+        </svg>
+      ),
+    },
+    {
+      title: "AI Products",
+      description: "Intelligent features and agents that turn complex workflows into simple outcomes.",
+      variant: "wide portrait" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+        </svg>
+      ),
+    },
+    {
+      title: "SaaS Platforms",
+      description: "Scalable cloud software with secure foundations and room to grow with your users.",
+      variant: "wide portrait" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A3.375 3.375 0 016.375 3.75h11.25A3.375 3.375 0 0121 7.125v9.75A3.375 3.375 0 0117.625 20.25H6.375A3.375 3.375 0 013 16.875v-9.75zM8.25 9.75h7.5M8.25 12.75h4.5" />
+        </svg>
+      ),
+    },
+  ],
+  row2: [
+    {
+      title: "UI/UX Design",
+      description: "Human-centered interfaces and product flows that feel intuitive from the first tap.",
+      variant: "medium" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-1.242-.39-2.4-1.062-3.346M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Business Software",
+      description: "Custom tools that streamline operations, reporting, and team productivity.",
+      variant: "medium" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15l-.75 18H5.25L4.5 3zm3 3v12m4.5-12v12m4.5-12v12" />
+        </svg>
+      ),
+    },
+  ],
+  row3: [
+    {
+      title: "Book Writing & Publishing",
+      description: "End-to-end support for authors — from manuscript development to digital publishing.",
+      variant: "landscape" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+        </svg>
+      ),
+    },
+    {
+      title: "Digital Consulting",
+      description: "Strategic guidance on product direction, technology choices, and go-to-market planning.",
+      variant: "landscape" as const,
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.697c0-1.355-.852-2.487-2.094-2.777M15.75 8.25V6.75m0 1.5v1.5m0-1.5h-3m3 0h3" />
+        </svg>
+      ),
+    },
+  ],
+} as const;
+
+function serviceCardClass(variant: "wide portrait" | "medium" | "landscape") {
+  if (variant === "wide portrait") return "lf-service-card lf-service-card--wide lf-service-card--portrait";
+  if (variant === "medium") return "lf-service-card lf-service-card--medium";
+  return "lf-service-card lf-service-card--landscape";
+}
 
 function getCoverflowTransform(index: number, currentIndex: number, total: number) {
   let offset = index - currentIndex;
@@ -408,18 +556,21 @@ function CoverflowCarousel() {
                 aria-hidden={!isActive}
                 aria-label={`${card.name}: ${card.tagline}`}
               >
-                <div className={`lf-coverflow-cover ${card.placeholderClass}`}>
-                  <div className="lf-coverflow-logo">{card.initial}</div>
-                  <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                    {card.name}
-                  </h3>
-                  <p className="mt-3 text-base text-foreground-secondary">{card.tagline}</p>
-                  <span className="mt-4 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-xs font-medium text-foreground-secondary">
-                    {card.status}
-                  </span>
-                </div>
+                <CoverflowCardFace card={card} />
                 <div className="lf-coverflow-reflection" aria-hidden="true">
-                  <div className={`lf-coverflow-reflection-inner ${card.placeholderClass}`} />
+                  {card.imageSrc ? (
+                    <div className="lf-coverflow-reflection-inner relative overflow-hidden">
+                      <Image
+                        src={card.imageSrc}
+                        alt=""
+                        fill
+                        sizes="480px"
+                        className="lf-coverflow-reflection-image"
+                      />
+                    </div>
+                  ) : (
+                    <div className={`lf-coverflow-reflection-inner ${card.placeholderClass}`} />
+                  )}
                   <div className="lf-coverflow-reflection-fade" />
                 </div>
               </div>
@@ -493,85 +644,49 @@ function CoverflowCarousel() {
   );
 }
 
-function AboutParallaxSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const bg = bgRef.current;
-    if (!section || !bg) return;
-
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let ticking = false;
-
-    const update = () => {
-      if (motionQuery.matches) {
-        bg.style.transform = "none";
-        ticking = false;
-        return;
-      }
-
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      if (rect.bottom < 0 || rect.top > windowHeight) {
-        ticking = false;
-        return;
-      }
-
-      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-      const offset = (progress - 0.5) * rect.height * 0.2;
-      bg.style.transform = `translate3d(0, ${offset}px, 0)`;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
+function AboutFounderSection() {
   return (
-    <section ref={sectionRef} id="about" className="relative overflow-hidden py-28">
-      <div ref={bgRef} className="lf-about-parallax-bg absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#071020] to-[#000814]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_50%,rgba(6,182,212,0.15),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_85%_40%,rgba(59,130,246,0.12),transparent_55%)]" />
-      </div>
-
-      <div className="mx-auto grid max-w-7xl grid-cols-2 items-center gap-16 px-6">
-        <FadeInUp>
-          <h2 className="heading-section">About LumexForge</h2>
-          <p className="mt-6 text-lg leading-relaxed text-foreground-secondary">
-            LumexForge is an independent mobile studio crafting intelligent apps
-            for iOS and Android. We combine AI, thoughtful design, and native
-            performance to build products that earn their place on your home screen.
-          </p>
+    <section id="about" className="lf-about-section py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <FadeInUp className="mb-12 text-center">
+          <p className="lf-eyebrow-cyan mb-4">About LumexForge</p>
+          <h2 className="heading-section">Built With Purpose</h2>
         </FadeInUp>
 
-        <FadeInUp delay={0.12}>
-          <div className="grid grid-cols-3 gap-6">
-            {STATS.map((stat) => (
-              <div
-                key={stat.value}
-                className="rounded-2xl border border-[#06B6D4]/15 bg-[#0a1628]/80 p-6 text-center backdrop-blur-sm"
-              >
-                <p className="text-xl font-bold tracking-tight text-foreground">{stat.value}</p>
-                <p className="mt-2 text-xs text-foreground-muted">{stat.label}</p>
+        <FadeInUp delay={0.1}>
+          <div className="lf-founder-panel mx-auto flex max-w-6xl flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,16rem)_auto_1fr] lg:items-start lg:gap-10">
+            <div className="flex flex-col items-center text-center lg:items-center">
+              <div className="lf-founder-avatar" aria-hidden="true">
+                ARM
               </div>
-            ))}
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-foreground">A.R. Mirani</h2>
+              <h4 className="mt-2 text-base font-medium text-[#06B6D4]">Founder &amp; CEO</h4>
+              <p className="mt-4 text-sm text-foreground-secondary">Houston, USA</p>
+              <p className="mt-1 text-sm text-foreground-muted">Founded: 2026</p>
+            </div>
+
+            <div className="hidden lg:block lg:self-stretch">
+              <div className="h-full min-h-[12rem] w-0.5 bg-gradient-to-b from-[#06B6D4] to-[#3B82F6]" />
+            </div>
+            <div className="lg:hidden">
+              <div className="lf-about-accent-line" />
+            </div>
+
+            <div className="space-y-5 text-base leading-relaxed text-foreground-secondary">
+              <p>
+                LumexForge was founded on a clear vision: building intelligent digital products
+                that solve real problems for people and businesses around the world.
+              </p>
+              <p>
+                We design and ship mobile apps, AI-powered products, SaaS platforms, UI/UX
+                experiences, business software, and publishing projects — each crafted with
+                attention to detail and long-term value.
+              </p>
+              <p>
+                Our mission is to craft purpose-built software for global markets — products
+                that are fast, thoughtful, and built to earn trust from day one.
+              </p>
+            </div>
           </div>
         </FadeInUp>
       </div>
@@ -652,58 +767,104 @@ export function ForgeDesktopHome() {
             <h2 className="heading-section">Our Products</h2>
           </FadeInUp>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="lf-apps-grid">
             {APPS.map((app, index) => (
               <FadeInUp key={app.id} delay={index * 0.08}>
-                <article className="lf-3d-card group overflow-hidden rounded-2xl border border-[#06B6D4]/10 bg-[#0a1628]/80 backdrop-blur-sm">
-                  <div
-                    className={`relative aspect-video ${app.placeholderClass}`}
-                    aria-label={`${app.name} preview placeholder`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-transparent opacity-80" />
-                    <span className="absolute bottom-4 right-4 rounded-md bg-black/40 px-2 py-1 font-mono text-[10px] text-foreground-muted backdrop-blur-sm">
-                      {app.imageLabel}
-                    </span>
-                  </div>
-
-                  <div className="p-7">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+                <article className="lf-app-card-compact lf-3d-card group">
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`lf-app-icon shrink-0 ${app.iconClass}`}
+                      aria-hidden="true"
+                    >
+                      {app.iconLabel}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <h3 className="truncate text-lg font-bold tracking-tight text-foreground">
                           {app.name}
                         </h3>
-                        <p className="mt-2 text-foreground-secondary">{app.tagline}</p>
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ring-1 ${app.statusClass}`}
+                        >
+                          {app.status}
+                        </span>
                       </div>
-                      <span
-                        className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium ring-1 ${app.statusClass}`}
-                      >
-                        {app.status}
-                      </span>
+                      <p className="mt-1 line-clamp-2 text-sm text-foreground-secondary">
+                        {app.tagline}
+                      </p>
                     </div>
-
-                    {app.external ? (
-                      <a
-                        href={app.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-[#06B6D4]"
-                      >
-                        {app.cta}
-                      </a>
-                    ) : (
-                      <Link
-                        href={app.href}
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-[#06B6D4]"
-                      >
-                        {app.cta}
-                      </Link>
-                    )}
-
-                    {app.id === "proteinsnaps" && <ProteinSnapsStoreSection />}
                   </div>
+
+                  {app.external ? (
+                    <a
+                      href={app.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
+                    >
+                      {app.cta}
+                    </a>
+                  ) : (
+                    <Link
+                      href={app.href}
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground-secondary transition-colors hover:text-[#06B6D4]"
+                    >
+                      {app.cta}
+                    </Link>
+                  )}
+
+                  {app.id === "proteinsnaps" && <ProteinSnapsStoreSection />}
                 </article>
               </FadeInUp>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeInUp className="mb-16 text-center">
+            <p className="lf-eyebrow-cyan mb-4">What We Offer</p>
+            <h2 className="heading-section">Our Services</h2>
+          </FadeInUp>
+
+          <div className="lf-services-section">
+            <div className="lf-services-row-3">
+              {SERVICES.row1.map((service, index) => (
+                <FadeInUp key={service.title} delay={index * 0.06}>
+                  <article className={serviceCardClass(service.variant)}>
+                    <div className="lf-service-icon">{service.icon}</div>
+                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
+                    <p className="lf-service-desc">{service.description}</p>
+                  </article>
+                </FadeInUp>
+              ))}
+            </div>
+
+            <div className="lf-services-row-2">
+              {SERVICES.row2.map((service, index) => (
+                <FadeInUp key={service.title} delay={0.15 + index * 0.06}>
+                  <article className={serviceCardClass(service.variant)}>
+                    <div className="lf-service-icon">{service.icon}</div>
+                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
+                    <p className="lf-service-desc">{service.description}</p>
+                  </article>
+                </FadeInUp>
+              ))}
+            </div>
+
+            <div className="lf-services-row-2">
+              {SERVICES.row3.map((service, index) => (
+                <FadeInUp key={service.title} delay={0.25 + index * 0.06}>
+                  <article className={serviceCardClass(service.variant)}>
+                    <div className="lf-service-icon">{service.icon}</div>
+                    <h3 className="lf-service-title text-foreground">{service.title}</h3>
+                    <p className="lf-service-desc">{service.description}</p>
+                  </article>
+                </FadeInUp>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -733,8 +894,8 @@ export function ForgeDesktopHome() {
         </div>
       </section>
 
-      {/* SECTION 4 — ABOUT STRIP */}
-      <AboutParallaxSection />
+      {/* SECTION 4 — ABOUT */}
+      <AboutFounderSection />
 
       {/* SECTION 5 — CTA */}
       <section id="cta" className="py-28">
