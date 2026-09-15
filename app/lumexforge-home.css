@@ -1,16 +1,73 @@
-/* LumexForge desktop home — scoped to .lf-desktop-home */
+/* LumexForge — home + navbar theme (cyan/blue, no violet) */
 
-.lf-desktop-home {
-  background-color: #0f0f1a;
+/* ── Navbar logo + clay button ── */
+
+.lf-logo-forge-gradient {
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* 3D card — inspired by ps-3d-card, theme accent glow */
+.lf-btn-clay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  min-height: 2.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000814;
+  background: linear-gradient(180deg, #22d3ee 0%, #06b6d4 46%, #0891b2 46.01%, #0e7490 100%);
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.25),
+    0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 8px 24px -4px rgba(6, 182, 212, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lf-btn-clay:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.3),
+    0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 14px 32px -4px rgba(6, 182, 212, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ── Desktop home scope ── */
+
+.lf-desktop-home {
+  background-color: #000814;
+  color: #f8fafc;
+}
+
+.lf-text-cyan-gradient {
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 45%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lf-eyebrow-cyan {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #06b6d4;
+}
+
+/* 3D card — cyan/blue glass glow */
 .lf-3d-card {
   box-shadow:
     0 2px 0 rgba(255, 255, 255, 0.08),
     0 -2px 0 rgba(0, 0, 0, 0.5),
     0 15px 35px -10px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(79, 70, 229, 0.18),
+    0 0 0 1px rgba(6, 182, 212, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 -2px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(0) perspective(600px) rotateX(1deg);
@@ -23,23 +80,57 @@
     0 2px 0 rgba(255, 255, 255, 0.1),
     0 -2px 0 rgba(0, 0, 0, 0.5),
     0 30px 60px -15px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(79, 70, 229, 0.35),
-    0 0 40px -8px rgba(0, 194, 255, 0.2),
+    0 0 0 1px rgba(6, 182, 212, 0.4),
+    0 0 40px -8px rgba(59, 130, 246, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     inset 0 -2px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Clay value cards */
 .lf-clay-card {
-  background: linear-gradient(145deg, #181830 0%, #121225 48%, #0f0f1a 100%);
+  background: linear-gradient(145deg, #0a1628 0%, #071020 48%, #000814 100%);
   box-shadow:
     0 2px 0 rgba(255, 255, 255, 0.06),
     0 12px 32px -12px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(79, 70, 229, 0.12),
+    0 0 0 1px rgba(6, 182, 212, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* Hero particles */
+/* Feature badge glass cards */
+.lf-feature-glass {
+  background: rgba(10, 22, 40, 0.55);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 32px -8px rgba(0, 0, 0, 0.5),
+    0 0 24px -8px rgba(6, 182, 212, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lf-feature-glass:hover {
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow:
+    0 12px 40px -8px rgba(0, 0, 0, 0.55),
+    0 0 32px -8px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.lf-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.08);
+  box-shadow: 0 0 20px -6px rgba(6, 182, 212, 0.35);
+}
+
+/* Hero particles — blue/cyan tech glow */
 .lf-particles {
   pointer-events: none;
   overflow: hidden;
@@ -48,29 +139,30 @@
 .lf-particle {
   position: absolute;
   border-radius: 999px;
-  opacity: 0.22;
   animation: lf-float-particle linear infinite;
 }
 
-.lf-particle--violet {
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.9) 0%, rgba(79, 70, 229, 0) 70%);
+.lf-particle--cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0) 70%);
+  opacity: 0.25;
 }
 
-.lf-particle--cyan {
-  background: radial-gradient(circle, rgba(0, 194, 255, 0.85) 0%, rgba(0, 194, 255, 0) 70%);
+.lf-particle--blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%);
+  opacity: 0.22;
 }
 
 @keyframes lf-float-particle {
   0% {
     transform: translateY(0) translateX(0);
-    opacity: 0.15;
+    opacity: 0.12;
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.28;
   }
   100% {
     transform: translateY(-120px) translateX(20px);
-    opacity: 0.15;
+    opacity: 0.12;
   }
 }
 
@@ -163,44 +255,44 @@
   animation-delay: -7s;
 }
 
-/* Placeholder image gradients */
+/* Placeholder image gradients — cyan/blue tones */
 .lf-placeholder-hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #312e81 40%, #0e7490 100%);
+  background: linear-gradient(135deg, #000814 0%, #0e7490 40%, #1e3a8a 100%);
 }
 
 .lf-placeholder-ps {
-  background: linear-gradient(135deg, #064e3b 0%, #0e7490 50%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #064e3b 0%, #0e7490 50%, #1e3a8a 100%);
 }
 
 .lf-placeholder-ps-ios {
-  background: linear-gradient(135deg, #1e3a5f 0%, #4f46e5 50%, #0e7490 100%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 50%, #06b6d4 100%);
 }
 
 .lf-placeholder-ph {
-  background: linear-gradient(135deg, #7c2d12 0%, #4f46e5 55%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #7c2d12 0%, #3b82f6 55%, #0c4a6e 100%);
 }
 
 .lf-placeholder-am {
-  background: linear-gradient(135deg, #831843 0%, #4f46e5 50%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #831843 0%, #3b82f6 50%, #0c4a6e 100%);
 }
 
 .lf-placeholder-mb {
-  background: linear-gradient(135deg, #78350f 0%, #0891b2 45%, #312e81 100%);
+  background: linear-gradient(135deg, #78350f 0%, #0891b2 45%, #1e40af 100%);
 }
 
 .lf-placeholder-studio {
-  background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 45%, #00c2ff 100%);
+  background: linear-gradient(135deg, #0c4a6e 0%, #3b82f6 45%, #06b6d4 100%);
 }
 
 .lf-placeholder-stealth {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #1e1b4b 100%);
+  background: linear-gradient(135deg, #000814 0%, #1e293b 50%, #0c4a6e 100%);
 }
 
 .lf-about-parallax-bg {
   will-change: transform;
 }
 
-/* ── 3D Coverflow carousel (TemplateMo 595 logic) ── */
+/* ── 3D Coverflow carousel ── */
 
 .lf-coverflow-wrapper {
   width: 100%;
@@ -249,7 +341,7 @@
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
-  background: #141428;
+  background: #0a1628;
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
@@ -262,8 +354,8 @@
 .lf-coverflow-item.active .lf-coverflow-cover {
   box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(124, 58, 237, 0.35);
-  border: 2px solid rgba(124, 58, 237, 0.65);
+    0 0 40px rgba(6, 182, 212, 0.35);
+  border: 2px solid rgba(6, 182, 212, 0.65);
 }
 
 .lf-coverflow-reflection {
@@ -294,8 +386,8 @@
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(15, 15, 26, 0.8) 50%,
-    rgba(15, 15, 26, 1) 100%
+    rgba(0, 8, 20, 0.8) 50%,
+    rgba(0, 8, 20, 1) 100%
   );
 }
 
@@ -309,8 +401,8 @@
   font-size: 2rem;
   font-weight: 700;
   color: #f8fafc;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
   margin-bottom: 1.5rem;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
@@ -320,7 +412,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(6, 182, 212, 0.25);
   color: white;
   width: 60px;
   height: 60px;
@@ -336,7 +428,8 @@
 }
 
 .lf-coverflow-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.45);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -370,7 +463,8 @@
 }
 
 .lf-coverflow-dot.active {
-  background: rgba(255, 255, 255, 0.8);
+  background: #06b6d4;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
   transform: scale(1.3);
 }
 
@@ -380,7 +474,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(6, 182, 212, 0.25);
   color: white;
   width: 50px;
   height: 50px;
@@ -396,7 +490,8 @@
 }
 
 .lf-coverflow-play-pause:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.45);
   transform: translateX(-50%) scale(1.1);
 }
 

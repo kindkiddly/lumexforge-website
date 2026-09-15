@@ -107,7 +107,7 @@ const APPS = [
     name: "PostHunt",
     tagline: "AI social media content creation agent",
     status: "In Development",
-    statusClass: "bg-amber-500/15 text-amber-400 ring-amber-500/30",
+    statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
     placeholderClass: "lf-placeholder-ph",
     imageLabel: "LF-App-PH.webp",
     cta: "Learn More →",
@@ -119,7 +119,7 @@ const APPS = [
     name: "AMORA",
     tagline: "AI grief companion and portrait app",
     status: "In Development",
-    statusClass: "bg-amber-500/15 text-amber-400 ring-amber-500/30",
+    statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
     placeholderClass: "lf-placeholder-am",
     imageLabel: "LF-App-AM.webp",
     cta: "Learn More →",
@@ -131,7 +131,7 @@ const APPS = [
     name: "Money Burn Board",
     tagline: "Crypto charity money destruction leaderboard",
     status: "Coming Soon",
-    statusClass: "bg-accent-secondary/15 text-accent-secondary ring-accent-secondary/30",
+    statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
     placeholderClass: "lf-placeholder-mb",
     imageLabel: "LF-App-MB.webp",
     cta: "Learn More →",
@@ -180,6 +180,45 @@ function ProteinSnapsStoreSection() {
     </div>
   );
 }
+
+const FEATURE_BADGES = [
+  {
+    title: "Mobile Apps",
+    description: "Beautiful. Fast. Purpose-built.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+      </svg>
+    ),
+  },
+  {
+    title: "AI Products",
+    description: "Smarter systems. Real intelligence.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+      </svg>
+    ),
+  },
+  {
+    title: "SaaS Platforms",
+    description: "Scalable. Secure. Built to grow.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A3.375 3.375 0 016.375 3.75h11.25A3.375 3.375 0 0121 7.125v9.75A3.375 3.375 0 0117.625 20.25H6.375A3.375 3.375 0 013 16.875v-9.75zM8.25 9.75h7.5M8.25 12.75h4.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Business Solutions",
+    description: "Streamlined ops. Stronger results.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15l-.75 18H5.25L4.5 3zm3 3v12m4.5-12v12m4.5-12v12" />
+      </svg>
+    ),
+  },
+] as const;
 
 const VALUES = [
   {
@@ -507,9 +546,9 @@ function AboutParallaxSection() {
   return (
     <section ref={sectionRef} id="about" className="relative overflow-hidden py-28">
       <div ref={bgRef} className="lf-about-parallax-bg absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-br from-background-secondary via-[#1a1a2e] to-[#0f0f1a]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_50%,rgba(79,70,229,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_85%_40%,rgba(0,194,255,0.12),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#071020] to-[#000814]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_50%,rgba(6,182,212,0.15),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_85%_40%,rgba(59,130,246,0.12),transparent_55%)]" />
       </div>
 
       <div className="mx-auto grid max-w-7xl grid-cols-2 items-center gap-16 px-6">
@@ -527,7 +566,7 @@ function AboutParallaxSection() {
             {STATS.map((stat) => (
               <div
                 key={stat.value}
-                className="rounded-2xl border border-white/[0.08] bg-[#141428]/80 p-6 text-center backdrop-blur-sm"
+                className="rounded-2xl border border-[#06B6D4]/15 bg-[#0a1628]/80 p-6 text-center backdrop-blur-sm"
               >
                 <p className="text-xl font-bold tracking-tight text-foreground">{stat.value}</p>
                 <p className="mt-2 text-xs text-foreground-muted">{stat.label}</p>
@@ -545,35 +584,35 @@ export function ForgeDesktopHome() {
     <div className="lf-desktop-home">
       {/* SECTION 1 — HERO + COVERFLOW */}
       <section className="relative flex min-h-screen flex-col overflow-hidden pt-[4.5rem]">
-        <div className="absolute inset-0 -z-20 bg-[#0F0F1A]" aria-hidden="true" />
+        <div className="absolute inset-0 -z-20 bg-[#000814]" aria-hidden="true" />
         <div
-          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_30%,rgba(79,70,229,0.18),transparent_65%)]"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_30%,rgba(6,182,212,0.12),transparent_65%)]"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_40%_at_80%_70%,rgba(0,194,255,0.08),transparent_60%)]"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_40%_at_80%_70%,rgba(59,130,246,0.1),transparent_60%)]"
           aria-hidden="true"
         />
 
         <div className="lf-particles absolute inset-0 -z-10" aria-hidden="true">
-          <span className="lf-particle lf-particle--violet" />
           <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--violet" />
+          <span className="lf-particle lf-particle--blue" />
           <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--violet" />
+          <span className="lf-particle lf-particle--blue" />
           <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--violet" />
+          <span className="lf-particle lf-particle--blue" />
           <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--violet" />
+          <span className="lf-particle lf-particle--blue" />
           <span className="lf-particle lf-particle--cyan" />
+          <span className="lf-particle lf-particle--blue" />
         </div>
 
         <div className="mx-auto w-full max-w-7xl flex-1 px-6 py-16">
           <FadeInUp className="text-center">
             <h1 className="text-6xl font-bold leading-[1.05] tracking-tight">
-              <span className="text-gradient">We Build Apps</span>
+              <span className="text-foreground">We Build Apps</span>
               <br />
-              <span className="text-gradient-accent">That Matter.</span>
+              <span className="lf-text-cyan-gradient">That Matter.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-foreground-secondary">
               A boutique mobile studio crafting intelligent apps for iOS and Android
@@ -586,23 +625,42 @@ export function ForgeDesktopHome() {
         </div>
       </section>
 
+      {/* FEATURE BADGES */}
+      <section id="features" className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-4 gap-6">
+            {FEATURE_BADGES.map((feature, index) => (
+              <FadeInUp key={feature.title} delay={index * 0.08}>
+                <article className="lf-feature-glass rounded-2xl p-6">
+                  <div className="lf-feature-icon">{feature.icon}</div>
+                  <h3 className="mt-5 text-lg font-bold text-foreground">{feature.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                    {feature.description}
+                  </p>
+                </article>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 2 — APPS SHOWCASE */}
       <section id="products" className="py-28">
         <div className="mx-auto max-w-7xl px-6">
           <FadeInUp className="mb-16 text-center">
-            <p className="eyebrow mb-4">What We Build</p>
+            <p className="lf-eyebrow-cyan mb-4">What We Build</p>
             <h2 className="heading-section">Our Products</h2>
           </FadeInUp>
 
           <div className="grid grid-cols-2 gap-8">
             {APPS.map((app, index) => (
               <FadeInUp key={app.id} delay={index * 0.08}>
-                <article className="lf-3d-card group overflow-hidden rounded-2xl border border-white/[0.08] bg-[#141428]">
+                <article className="lf-3d-card group overflow-hidden rounded-2xl border border-[#06B6D4]/10 bg-[#0a1628]/80 backdrop-blur-sm">
                   <div
                     className={`relative aspect-video ${app.placeholderClass}`}
                     aria-label={`${app.name} preview placeholder`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#141428] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-transparent opacity-80" />
                     <span className="absolute bottom-4 right-4 rounded-md bg-black/40 px-2 py-1 font-mono text-[10px] text-foreground-muted backdrop-blur-sm">
                       {app.imageLabel}
                     </span>
@@ -628,14 +686,14 @@ export function ForgeDesktopHome() {
                         href={app.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-accent-secondary"
+                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-[#06B6D4]"
                       >
                         {app.cta}
                       </a>
                     ) : (
                       <Link
                         href={app.href}
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-accent-secondary"
+                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground-secondary transition-all duration-300 hover:text-[#06B6D4]"
                       >
                         {app.cta}
                       </Link>
@@ -660,8 +718,8 @@ export function ForgeDesktopHome() {
           <div className="grid grid-cols-3 gap-8">
             {VALUES.map((value, index) => (
               <FadeInUp key={value.title} delay={index * 0.1}>
-                <article className="lf-clay-card lf-3d-card h-full rounded-2xl border border-accent-primary/20 p-8">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-primary/20 to-accent-primary/5 text-accent-primary ring-1 ring-accent-primary/20">
+                <article className="lf-clay-card lf-3d-card h-full rounded-2xl border border-[#06B6D4]/20 p-8">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#06B6D4]/20 to-[#3B82F6]/10 text-[#06B6D4] ring-1 ring-[#06B6D4]/25">
                     {value.icon}
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-foreground">{value.title}</h3>
@@ -682,7 +740,7 @@ export function ForgeDesktopHome() {
       <section id="cta" className="py-28">
         <FadeInUp>
           <div className="mx-auto max-w-7xl px-6">
-            <div className="relative overflow-hidden rounded-3xl border border-white/[0.1] bg-gradient-to-br from-accent-primary/30 via-[#141428] to-accent-secondary/25 px-16 py-20 text-center shadow-[0_30px_80px_-30px_rgba(79,70,229,0.45)]">
+            <div className="relative overflow-hidden rounded-3xl border border-[#06B6D4]/20 bg-gradient-to-br from-[#06B6D4]/25 via-[#0a1628] to-[#3B82F6]/20 px-16 py-20 text-center shadow-[0_30px_80px_-30px_rgba(6,182,212,0.35)]">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.08),transparent_60%)]"
                 aria-hidden="true"
@@ -696,15 +754,12 @@ export function ForgeDesktopHome() {
               </p>
 
               <div className="relative mt-10 flex items-center justify-center gap-4">
-                <Link
-                  href="/products"
-                  className="inline-flex items-center justify-center rounded-xl bg-accent-primary px-7 py-3.5 text-base font-semibold text-white shadow-[0_0_30px_-6px_rgba(79,70,229,0.55)] transition-all hover:opacity-90"
-                >
+                <Link href="/products" className="lf-btn-clay px-7 py-3.5 text-base">
                   View All Apps
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:border-accent-secondary/40 hover:text-accent-secondary"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#06B6D4]/30 bg-white/[0.04] px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:border-[#06B6D4]/50 hover:text-[#06B6D4]"
                 >
                   Contact Us
                 </Link>

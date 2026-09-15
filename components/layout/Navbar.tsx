@@ -1,14 +1,15 @@
 "use client";
 
-import { Logo } from "@/components/shared/Logo";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { NAV_LINKS } from "@/lib/constants";
+import { IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import "@/app/lumexforge-home.css";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -37,7 +38,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-white/[0.06] bg-background/85 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+          ? "border-b border-white/[0.06] bg-[#000814]/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       )}
     >
@@ -46,7 +47,23 @@ export function Navbar() {
           className="flex h-16 items-center justify-between lg:h-[4.5rem]"
           aria-label="Main navigation"
         >
-          <Logo size="md" />
+          <Link
+            href="/"
+            className="group flex items-center gap-2.5 transition-opacity hover:opacity-90"
+          >
+            <Image
+              src={IMAGES.logo}
+              alt="LumexForge logo"
+              width={44}
+              height={44}
+              className="h-10 w-10 object-contain sm:h-11 sm:w-11"
+              priority
+            />
+            <span className="text-base font-bold tracking-tight">
+              <span className="text-white">Lumex</span>
+              <span className="lf-logo-forge-gradient">Forge</span>
+            </span>
+          </Link>
 
           <div className="hidden items-center gap-1 md:flex">
             <div className="flex items-center rounded-full border border-white/[0.06] bg-white/[0.03] p-1 backdrop-blur-sm">
@@ -60,13 +77,13 @@ export function Navbar() {
                       "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300",
                       isActive
                         ? "text-foreground"
-                        : "text-foreground-secondary hover:text-foreground"
+                        : "text-foreground-secondary hover:text-[#06B6D4]"
                     )}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute inset-0 rounded-full bg-white/[0.08]"
+                        className="absolute inset-0 rounded-full bg-[#06B6D4]/10"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                       />
                     )}
@@ -75,9 +92,9 @@ export function Navbar() {
                 );
               })}
             </div>
-            <Button href="/contact" size="sm" className="ml-4">
+            <Link href="/contact" className="lf-btn-clay ml-4">
               Get In Touch
-            </Button>
+            </Link>
           </div>
 
           <button
@@ -114,7 +131,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-0 right-0 top-full border-b border-white/[0.06] bg-background/95 backdrop-blur-2xl md:hidden"
+              className="absolute left-0 right-0 top-full border-b border-white/[0.06] bg-[#000814]/95 backdrop-blur-2xl md:hidden"
             >
               <Container className="py-6">
                 <div className="flex flex-col gap-1">
@@ -125,7 +142,7 @@ export function Navbar() {
                       className={cn(
                         "rounded-xl px-4 py-3 text-base font-medium transition-colors",
                         pathname === link.href
-                          ? "bg-white/[0.06] text-foreground"
+                          ? "bg-[#06B6D4]/10 text-foreground"
                           : "text-foreground-secondary hover:bg-white/[0.04] hover:text-foreground"
                       )}
                     >
@@ -133,9 +150,9 @@ export function Navbar() {
                     </Link>
                   ))}
                 </div>
-                <Button href="/contact" className="mt-6 w-full">
+                <Link href="/contact" className="lf-btn-clay mt-6 w-full">
                   Get In Touch
-                </Button>
+                </Link>
               </Container>
             </motion.div>
           </>
