@@ -35,12 +35,7 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "border-b border-white/[0.06] bg-[#000814]/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
-          : "bg-transparent"
-      )}
+      className={cn("lf-navbar", scrolled && "lf-navbar--scrolled")}
     >
       <Container>
         <nav
