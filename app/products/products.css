@@ -263,6 +263,10 @@
   box-shadow: 0 18px 50px -28px rgba(0, 0, 0, 0.8);
 }
 
+.lf-prod-banner--640 {
+  aspect-ratio: 1760 / 640;
+}
+
 .lf-prod-banner-glow {
   pointer-events: none;
   position: absolute;

@@ -19,6 +19,8 @@ type ShowcaseProduct = {
   platforms: string;
   features: { title: string; detail: string }[];
   banner?: string;
+  /** Banner aspect: default 1760×720; use "640" for 1760×640 assets */
+  bannerAspect?: "720" | "640";
   /** Full-width secondary image under the main banner (fills remaining column height) */
   secondaryBanner?: string;
   /** Portrait phone UI shots — rendered in device frames under the banner */
@@ -106,8 +108,8 @@ const PRODUCTS: ShowcaseProduct[] = [
         detail: "Plan for peak times, track reach and engagement, and grow with clearer insight.",
       },
     ],
-    banner: "/images/lumexforge/LF-products/Products-PH.webp",
-    secondaryBanner: "/images/lumexforge/LF-products/Products-PH1.webp",
+    banner: "/images/lumexforge/LF-products/Products-PH1.webp",
+    bannerAspect: "640",
     reverse: true,
     primaryCta: { label: "Request Early Access", href: "/contact" },
     secondaryCta: { label: "Discuss Your Brand", href: "/contact" },
@@ -289,7 +291,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
         <div className="lf-prod-media">
           {product.banner ? (
             <motion.div
-              className="lf-prod-banner"
+              className={`lf-prod-banner${product.bannerAspect === "640" ? " lf-prod-banner--640" : ""}`}
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.45, ease }}
             >
@@ -298,7 +300,11 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 alt={`${product.name} — ${product.category}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
-                className="object-cover object-center"
+                className={
+                  product.bannerAspect === "640"
+                    ? "object-contain object-center"
+                    : "object-cover object-center"
+                }
                 priority={index === 0}
               />
               <div className="lf-prod-banner-glow" aria-hidden="true" />
