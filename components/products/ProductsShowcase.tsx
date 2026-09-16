@@ -19,6 +19,8 @@ type ShowcaseProduct = {
   platforms: string;
   features: { title: string; detail: string }[];
   banner?: string;
+  /** Full-width secondary landscape under the main banner (1760×640) */
+  secondaryBanner?: string;
   /** Portrait phone UI shots — rendered in device frames under the banner */
   phones?: string[];
   /** Optional landscape thumbs under banner (non-phone apps) */
@@ -85,32 +87,33 @@ const PRODUCTS: ShowcaseProduct[] = [
     id: "posthunt",
     indexLabel: "02",
     name: "PostHunt",
-    category: "AI Social Agent",
-    tagline: "From blank page to published post — on brand, on schedule.",
+    category: "AI Social Media Suite",
+    tagline: "Create. Schedule. Grow. — your all-in-one AI marketing hub.",
     description:
-      "PostHunt is an AI social media agent for creators and teams who need consistency without burning hours on drafts. It helps shape hooks, captions, and publishing flows so your voice stays sharp across every feed.",
+      "PostHunt is an all-in-one AI social media marketing suite. From AI-powered content creation to automated posting and performance tracking, it helps brands and creators move from idea to published post — across every major platform — without losing brand control.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Web first · Mobile planned",
     features: [
       {
-        title: "Content Generation",
-        detail: "Draft captions, variations, and campaign angles in your brand voice.",
+        title: "AI Agent",
+        detail: "Posts, engages, and analyzes on autopilot — with review before publish.",
       },
       {
-        title: "Smart Scheduling",
-        detail: "Plan and publish with workflows built for modern social cadence.",
+        title: "AI Studio",
+        detail: "Images, videos, ads, brand assets, templates, and voice generation in one place.",
       },
       {
-        title: "Voice Memory",
-        detail: "Keep tone consistent so every post feels like you — not a template.",
+        title: "Multi-Platform Publishing",
+        detail: "Reach Instagram, TikTok, Facebook, YouTube, X, LinkedIn, and more from one hub.",
       },
       {
-        title: "Performance Mindset",
-        detail: "Structure content for attention, clarity, and platform-native rhythm.",
+        title: "Smart Scheduling & Analytics",
+        detail: "Plan for peak times, track reach and engagement, and grow with clearer insight.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-PH.webp",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-PH1.webp",
     reverse: true,
     primaryCta: { label: "Request Early Access", href: "/contact" },
     secondaryCta: { label: "Discuss Your Brand", href: "/contact" },
@@ -119,32 +122,33 @@ const PRODUCTS: ShowcaseProduct[] = [
     id: "ammora",
     indexLabel: "03",
     name: "AMMORA",
-    category: "Emotional AI",
-    tagline: "A quiet place for memory, presence, and gentle remembrance.",
+    category: "Emotional AI Companion",
+    tagline: "Love connects. Distance never breaks us.",
     description:
-      "AMMORA is an AI companion for preserving meaningful connections with dignity. Through portraits, voice, and guided conversation, it supports reflection and remembrance — designed with care, privacy, and emotional responsibility at the center.",
+      "AMMORA brings voices, memories, and moments back to life. It is an AI companion for families who want presence across distance — through voice, photos, and natural conversation — built with privacy, dignity, and emotional care at the center. Real voices. Real memories. Real connection.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Mobile experience",
     features: [
       {
-        title: "Memory Profiles",
-        detail: "Portraits and stories organized with sensitivity, not spectacle.",
+        title: "AI Voice Cloning",
+        detail: "Preserve familiar voices so conversations feel personal and present.",
       },
       {
-        title: "Guided Conversation",
-        detail: "Speak with context grounded in shared memories and personal history.",
+        title: "Photo Integration",
+        detail: "Bring portraits and shared moments into a living memory experience.",
       },
       {
-        title: "Privacy by Design",
-        detail: "Personal media and conversations treated as sacred, not as training fuel.",
+        title: "Natural Conversations",
+        detail: "Talk in a way that feels human — guided by story, not spectacle.",
       },
       {
-        title: "Human-Centered UX",
-        detail: "Calm interfaces for reflection — never a replacement for professional care.",
+        title: "Private & Secure",
+        detail: "Emotional bonding with privacy-first handling of personal media and voice.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-AM.webp",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-AM1.webp",
     primaryCta: { label: "Learn About AMMORA", href: "/contact" },
     secondaryCta: { label: "Read Privacy Approach", href: "/privacy" },
   },
@@ -153,31 +157,32 @@ const PRODUCTS: ShowcaseProduct[] = [
     indexLabel: "04",
     name: "MiPaw",
     category: "Pet Wellness",
-    tagline: "Nutrition, activity, and health — for the dog who depends on you.",
+    tagline: "Smarter care for a happier, healthier dog.",
     description:
-      "MiPaw helps pet parents turn daily care into a clear wellness picture. Track meals, movement, and health signals so you can notice changes early and give your dog the consistency they deserve.",
+      "MiPaw brings track, feed, walk, and play into one app for pet parents. Scan meals for nutrition, log activity, monitor health signals, save photo memories, and follow daily progress — so better nutrition and more activity support longer, healthier lives.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Mobile experience",
     features: [
       {
-        title: "Canine Nutrition Logs",
-        detail: "Meal tracking shaped around dog dietary needs, not human calorie apps.",
+        title: "Food Tracking & Scan",
+        detail: "Know what they eat — protein, calories, and macros for every meal.",
       },
       {
-        title: "Activity Patterns",
-        detail: "See walks, play, and energy trends without complicated dashboards.",
+        title: "Walks & Activity",
+        detail: "More steps, better health — with clear daily movement patterns.",
       },
       {
-        title: "Health Timeline",
-        detail: "A living record that helps you spot shifts before they become surprises.",
+        title: "Health Monitoring",
+        detail: "Stay ahead with wellness signals and a timeline you can trust.",
       },
       {
-        title: "Owner-Friendly Design",
-        detail: "Fast logging for busy people who still want excellent care habits.",
+        title: "Memories & Behavior",
+        detail: "Capture moments, understand habits, and improve care over time.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-MP.webp",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-MP1.webp",
     reverse: true,
     primaryCta: { label: "Join the Waitlist", href: "/contact" },
     secondaryCta: { label: "Talk to the Studio", href: "/contact" },
@@ -186,32 +191,33 @@ const PRODUCTS: ShowcaseProduct[] = [
     id: "bookora",
     indexLabel: "05",
     name: "Bookora",
-    category: "Business Finance",
-    tagline: "Income, invoices, and reports — without the accounting fog.",
+    category: "Business ERP",
+    tagline: "Run your entire business. All in one system.",
     description:
-      "Bookora is finance clarity for freelancers and small businesses. Capture income, send polished invoices, and read reports that explain where you stand — so decisions come from numbers you trust, not guesswork.",
+      "Bookora ERP brings sales, finance, inventory, and HR together for smarter, faster operations. From CRM and purchasing to accounting, projects, and payroll — one secure system for real-time insight, automation, multi-branch control, and scalable growth.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Web first · Mobile planned",
     features: [
       {
-        title: "Income Clarity",
-        detail: "Track money in with clean categories that stay easy to maintain.",
+        title: "CRM & Sales",
+        detail: "Manage customers, leads, and sales pipelines in one workspace.",
       },
       {
-        title: "Professional Invoicing",
-        detail: "Create and send invoices that look sharp and get paid faster.",
+        title: "Inventory & Purchasing",
+        detail: "Track stock, warehouses, vendors, and procurement without guesswork.",
       },
       {
-        title: "Actionable Reports",
-        detail: "Cash-flow insight without enterprise complexity or spreadsheet chaos.",
+        title: "Accounting & Reports",
+        detail: "Invoicing, expenses, and live financial views for clearer decisions.",
       },
       {
-        title: "Operator-First UX",
-        detail: "Built for people who run businesses — not only for accountants.",
+        title: "HR, Payroll & Projects",
+        detail: "Team attendance, salaries, tasks, and timelines — built to scale.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-BK.webp",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-BK1.webp",
     primaryCta: { label: "Request a Demo", href: "/contact" },
     secondaryCta: { label: "Contact LumexForge", href: "/contact" },
   },
@@ -326,6 +332,23 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
               </div>
             </div>
           ) : null}
+
+          {product.secondaryBanner && (
+            <motion.div
+              className="lf-prod-secondary-banner"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.55, delay: 0.12, ease }}
+            >
+              <Image
+                src={product.secondaryBanner}
+                alt={`${product.name} feature showcase`}
+                fill
+                sizes="(max-width: 900px) 100vw, 760px"
+                className="object-cover object-center"
+              />
+            </motion.div>
+          )}
 
           {product.phones && product.phones.length > 0 && (
             <div className="lf-prod-phones" aria-label={`${product.name} app screens`}>

@@ -74,7 +74,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "posthunt",
     name: "PostHunt",
-    tagline: "AI Social Media Agent · Content Creation & Auto-Posting",
+    tagline: "Create. Schedule. Automate. · AI Social Media Marketing Hub",
     status: "In Development",
     initial: "PH",
     placeholderClass: "lf-placeholder-ph",
