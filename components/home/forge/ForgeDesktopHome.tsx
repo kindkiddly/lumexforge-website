@@ -109,7 +109,21 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
   },
 ] ;
 
-const APPS = [
+type AppCard = {
+  id: string;
+  name: string;
+  tagline: string;
+  status: string;
+  statusClass: string;
+  placeholderClass: string;
+  iconLabel: string;
+  imageSrc?: string;
+  cta: string;
+  href: string;
+  external: boolean;
+};
+
+const APPS: AppCard[] = [
   {
     id: "proteinsnaps",
     name: "ProteinSnaps",
@@ -162,7 +176,7 @@ const APPS = [
     href: "/contact",
     external: false,
   },
-] as const;
+];
 
 function ProteinSnapsStoreFooter() {
   return (
@@ -555,7 +569,7 @@ export function ForgeDesktopHome() {
               <FadeInUp key={app.id} delay={index * 0.08}>
                 <article className="lf-app-card lf-3d-card group">
                   <div className="lf-app-card-media">
-                    {"imageSrc" in app && app.imageSrc ? (
+                    {app.imageSrc ? (
                       <Image
                         src={app.imageSrc}
                         alt={app.name}
