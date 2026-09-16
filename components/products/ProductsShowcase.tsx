@@ -19,6 +19,9 @@ type ShowcaseProduct = {
   platforms: string;
   features: { title: string; detail: string }[];
   banner?: string;
+  /** Portrait phone UI shots — rendered in device frames under the banner */
+  phones?: string[];
+  /** Optional landscape thumbs under banner (non-phone apps) */
   gallery?: string[];
   atmosphere?: string;
   atmosphereLabel?: string;
@@ -59,10 +62,16 @@ const PRODUCTS: ShowcaseProduct[] = [
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-PS.webp",
+    phones: [
+      "/images/proteinsnaps/PS-1.webp",
+      "/images/proteinsnaps/PS-4.webp",
+      "/images/proteinsnaps/PS-6.webp",
+      "/images/proteinsnaps/PSL-M2.webp",
+    ],
     gallery: [
       "/images/proteinsnaps/PSL-2.webp",
-      "/images/proteinsnaps/PSL-3.webp",
-      "/images/proteinsnaps/PSL-4.webp",
+      "/images/proteinsnaps/PSL-5.webp",
+      "/images/proteinsnaps/PSL-8.webp",
     ],
     featured: true,
     primaryCta: {
@@ -318,6 +327,29 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
             </div>
           ) : null}
 
+          {product.phones && product.phones.length > 0 && (
+            <div className="lf-prod-phones" aria-label={`${product.name} app screens`}>
+              {product.phones.map((src, i) => (
+                <motion.div
+                  key={src}
+                  className={`lf-prod-phone${i % 2 === 1 ? " lf-prod-phone--lift" : ""}`}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={inView ? { opacity: 1, y: 0 } : undefined}
+                  transition={{ duration: 0.55, delay: 0.16 + i * 0.08, ease }}
+                  whileHover={{ y: -6 }}
+                >
+                  <Image
+                    src={src}
+                    alt={`${product.name} screen ${i + 1}`}
+                    fill
+                    sizes="140px"
+                    className="object-cover object-top"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
+
           {product.gallery && product.gallery.length > 0 && (
             <div className="lf-prod-gallery">
               {product.gallery.map((src, i) => (
@@ -326,12 +358,12 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                   className="lf-prod-gallery-item"
                   initial={{ opacity: 0, y: 18 }}
                   animate={inView ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.55, delay: 0.18 + i * 0.09, ease }}
-                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.55, delay: 0.28 + i * 0.08, ease }}
+                  whileHover={{ y: -3 }}
                 >
                   <Image
                     src={src}
-                    alt={`${product.name} interface preview ${i + 1}`}
+                    alt={`${product.name} lifestyle ${i + 1}`}
                     fill
                     sizes="220px"
                     className="object-cover object-center"
@@ -351,6 +383,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           <p className="lf-prod-tagline">{product.tagline}</p>
           <p className="lf-prod-desc">{product.description}</p>
 
+          <p className="lf-prod-features-label">What you get</p>
           <div className="lf-prod-feature-grid">
             {product.features.map((feature, i) => (
               <motion.div
@@ -360,7 +393,10 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 animate={inView ? { opacity: 1, y: 0 } : undefined}
                 transition={{ duration: 0.5, delay: 0.12 + i * 0.06, ease }}
               >
-                <h3>{feature.title}</h3>
+                <h3>
+                  <span className="lf-prod-feature-num">0{i + 1}</span>
+                  {feature.title}
+                </h3>
                 <p>{feature.detail}</p>
               </motion.div>
             ))}
