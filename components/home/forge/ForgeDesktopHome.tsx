@@ -204,7 +204,7 @@ function CoverflowCardFace({ card }: { card: CoverflowCard }) {
             src={card.imageSrc}
             alt={card.name}
             fill
-            sizes="480px"
+            sizes="380px"
             quality={100}
             unoptimized
             className="object-cover object-center"
@@ -397,7 +397,7 @@ function CoverflowCarousel() {
                         src={card.imageSrc}
                         alt=""
                         fill
-                        sizes="480px"
+                        sizes="380px"
                         quality={100}
                         unoptimized
                         className="lf-coverflow-reflection-image"
