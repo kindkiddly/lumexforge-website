@@ -46,8 +46,8 @@ type CoverflowCard = {
 const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "studio",
-    name: "LumexForge Studio",
-    tagline: "Building Tomorrow's Apps",
+    name: "LumexForge",
+    tagline: "Software Studio · Building Tomorrow's Digital Products",
     status: "Est. 2024",
     initial: "LF",
     placeholderClass: "lf-placeholder-studio",
@@ -56,7 +56,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "proteinsnaps",
     name: "ProteinSnaps",
-    tagline: "AI Nutrition & Fitness Tracker",
+    tagline: "AI Nutrition & Fitness Tracker · Available on iOS & Android",
     status: "Live on iOS & Android",
     initial: "PS",
     placeholderClass: "lf-placeholder-ps",
@@ -65,7 +65,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "ammora",
     name: "AMMORA",
-    tagline: "AI Grief Companion",
+    tagline: "AI Grief Companion & Portrait App · In Development",
     status: "In Development",
     initial: "AM",
     placeholderClass: "lf-placeholder-am",
@@ -74,34 +74,34 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
   {
     id: "posthunt",
     name: "PostHunt",
-    tagline: "AI Social Media Agent",
+    tagline: "AI Social Media Agent · Content Creation & Auto-Posting",
     status: "In Development",
     initial: "PH",
     placeholderClass: "lf-placeholder-ph",
     imageSrc: "/images/lumexforge/LF-carousel/LF-4.webp",
   },
   {
-    id: "money-burn-board",
-    name: "Money Burn Board",
-    tagline: "Crypto Charity Leaderboard",
-    status: "Coming Soon",
-    initial: "MB",
+    id: "mipaw",
+    name: "MiPaw",
+    tagline: "Dog Nutrition, Fitness & Health Tracker · In Development",
+    status: "In Development",
+    initial: "MP",
     placeholderClass: "lf-placeholder-mb",
     imageSrc: "/images/lumexforge/LF-carousel/LF-5.webp",
   },
   {
-    id: "proteinsnaps-ios",
-    name: "ProteinSnaps iOS",
-    tagline: "Coming Soon to App Store",
-    status: "Coming Soon",
-    initial: "iOS",
+    id: "bookora",
+    name: "Bookora",
+    tagline: "Business Finances Simplified · Income, Invoicing & Reports",
+    status: "In Development",
+    initial: "BK",
     placeholderClass: "lf-placeholder-ps-ios",
     imageSrc: "/images/lumexforge/LF-carousel/LF-6.webp",
   },
   {
     id: "stealth",
     name: "Coming Next",
-    tagline: "New App in Stealth Mode",
+    tagline: "New App in Stealth Mode · Stay Tuned",
     status: "Stay Tuned",
     initial: "?",
     placeholderClass: "lf-placeholder-stealth",
@@ -478,29 +478,16 @@ function CoverflowCarousel() {
           ›
         </button>
 
-        <div className="lf-coverflow-dots" role="tablist" aria-label="Carousel slides">
-          {COVERFLOW_CARDS.map((card, index) => (
-            <button
-              key={card.id}
-              type="button"
-              role="tab"
-              aria-selected={index === currentIndex}
-              aria-label={`Go to ${card.name}`}
-              className={`lf-coverflow-dot${index === currentIndex ? " active" : ""}`}
-              onClick={() => {
-                handleUserInteraction();
-                goToIndex(index);
-              }}
-            />
-          ))}
-        </div>
       </div>
 
-      <div className="mt-6 text-center" aria-live="polite">
+      <div className="lf-coverflow-info mt-2 text-center" aria-live="polite">
         <p key={activeCard.id} className="lf-coverflow-info-animate text-lg font-semibold text-foreground">
           {activeCard.name}
         </p>
-        <p key={`${activeCard.id}-desc`} className="lf-coverflow-info-animate mt-1 text-sm text-foreground-secondary">
+        <p
+          key={`${activeCard.id}-desc`}
+          className="lf-coverflow-info-animate mt-1 text-sm text-foreground-secondary"
+        >
           {activeCard.tagline}
         </p>
       </div>
@@ -512,7 +499,7 @@ export function ForgeDesktopHome() {
   return (
     <div className="lf-desktop-home">
       {/* SECTION 1 — HERO + COVERFLOW */}
-      <section className="relative overflow-hidden pt-[4.5rem] py-10">
+      <section className="relative overflow-hidden pt-[4.5rem] py-8">
         <div className="absolute inset-0 -z-20 bg-[#000814]" aria-hidden="true" />
         <div
           className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_30%,rgba(6,182,212,0.12),transparent_65%)]"

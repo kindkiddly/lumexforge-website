@@ -107,7 +107,13 @@
 .lf-hero-carousel .lf-coverflow-container {
   align-items: flex-start;
   height: auto;
-  min-height: 580px;
+  min-height: 480px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.lf-coverflow-info {
+  margin-top: 0.5rem;
   padding-top: 0;
 }
 
@@ -566,33 +572,6 @@
 
 .lf-coverflow-nav.next {
   right: 50px;
-}
-
-.lf-coverflow-dots {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 200;
-}
-
-.lf-coverflow-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  padding: 0;
-}
-
-.lf-coverflow-dot.active {
-  background: #06b6d4;
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
-  transform: scale(1.3);
 }
 
 @keyframes lf-coverflow-fade-in {
