@@ -714,35 +714,60 @@
   min-width: 0;
 }
 
-.lf-store-compact-btn {
+.lf-store-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.3125rem;
   height: 1.75rem;
   padding: 0 0.375rem;
-  font-size: 0.625rem;
-  font-weight: 600;
-  line-height: 1;
   border-radius: 0.375rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
   color: #f8fafc;
-  white-space: nowrap;
+  flex-shrink: 0;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.lf-store-compact-btn:hover {
+.lf-store-badge:hover {
   border-color: rgba(6, 182, 212, 0.45);
   box-shadow: 0 0 12px -4px rgba(6, 182, 212, 0.35);
 }
 
-.lf-store-compact-btn--play {
+.lf-store-badge--google {
   border-color: rgba(0, 230, 168, 0.25);
 }
 
-.lf-store-compact-btn--play:hover {
+.lf-store-badge--google:hover {
   border-color: rgba(0, 230, 168, 0.5);
   box-shadow: 0 0 12px -4px rgba(0, 230, 168, 0.35);
+}
+
+.lf-store-badge-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+.lf-store-badge-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.05;
+}
+
+.lf-store-badge-label {
+  font-size: 0.375rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+
+.lf-store-badge-name {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  color: #f8fafc;
+  white-space: nowrap;
 }
 
 .lf-store-qr-box {
@@ -759,11 +784,12 @@
 }
 
 .lf-store-qr-label {
-  font-size: 0.5625rem;
+  font-size: 0.625rem;
   font-weight: 500;
-  color: #64748b;
+  color: #94a3b8;
   line-height: 1;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Services mixed layout */
