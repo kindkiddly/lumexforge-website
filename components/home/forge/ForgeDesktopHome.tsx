@@ -158,39 +158,35 @@ const APPS = [
   },
 ] as const;
 
-function ProteinSnapsStoreOverlay() {
+function ProteinSnapsStoreFooter() {
   return (
-    <div className="lf-ps-media-store">
-      <div className="lf-ps-store-btn-row">
-        <a
-          href={PROTEINSNAPS_PLAY_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lf-store-compact-btn lf-store-compact-btn--play"
-        >
-          Google Play
-        </a>
-        <a
-          href={PROTEINSNAPS_APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lf-store-compact-btn lf-store-compact-btn--apple"
-        >
-          App Store
-        </a>
+    <div className="lf-ps-store-inline">
+      <a
+        href={PROTEINSNAPS_PLAY_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="lf-store-compact-btn lf-store-compact-btn--play"
+      >
+        Google Play
+      </a>
+      <a
+        href={PROTEINSNAPS_APP_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="lf-store-compact-btn lf-store-compact-btn--apple"
+      >
+        App Store
+      </a>
+      <div className="lf-store-qr-box">
+        <QRCode
+          value={PROTEINSNAPS_PLAY_STORE_URL}
+          size={24}
+          bgColor="#ffffff"
+          fgColor="#050811"
+          level="M"
+        />
       </div>
-      <div className="lf-ps-store-qr-row">
-        <div className="lf-store-qr-box">
-          <QRCode
-            value={PROTEINSNAPS_PLAY_STORE_URL}
-            size={50}
-            bgColor="#ffffff"
-            fgColor="#050811"
-            level="M"
-          />
-        </div>
-        <span className="lf-store-qr-label">Scan to download</span>
-      </div>
+      <span className="lf-store-qr-label">Scan to download</span>
     </div>
   );
 }
@@ -529,16 +525,13 @@ export function ForgeDesktopHome() {
                 <article className="lf-app-card lf-3d-card group">
                   <div className="lf-app-card-media">
                     {"imageSrc" in app && app.imageSrc ? (
-                      <>
-                        <Image
-                          src={app.imageSrc}
-                          alt={app.name}
-                          fill
-                          sizes="(max-width: 896px) 50vw, 448px"
-                          className="object-cover object-center"
-                        />
-                        {app.id === "proteinsnaps" && <ProteinSnapsStoreOverlay />}
-                      </>
+                      <Image
+                        src={app.imageSrc}
+                        alt={app.name}
+                        fill
+                        sizes="(max-width: 896px) 50vw, 448px"
+                        className="object-cover object-center"
+                      />
                     ) : (
                       <div
                         className={`lf-app-card-placeholder ${app.placeholderClass}`}
@@ -565,7 +558,9 @@ export function ForgeDesktopHome() {
                     </p>
                   </div>
 
-                  <div className="lf-app-card-footer">
+                  <div
+                    className={`lf-app-card-footer${app.id === "proteinsnaps" ? " lf-app-card-footer--proteinsnaps" : ""}`}
+                  >
                     {app.external ? (
                       <a
                         href={app.href}
@@ -580,6 +575,8 @@ export function ForgeDesktopHome() {
                         {app.cta}
                       </Link>
                     )}
+
+                    {app.id === "proteinsnaps" && <ProteinSnapsStoreFooter />}
                   </div>
                 </article>
               </FadeInUp>
