@@ -19,7 +19,7 @@ type ShowcaseProduct = {
   platforms: string;
   features: { title: string; detail: string }[];
   banner?: string;
-  /** Full-width secondary landscape under the main banner (1760×640) */
+  /** Full-width secondary image under the main banner (fills remaining column height) */
   secondaryBanner?: string;
   /** Portrait phone UI shots — rendered in device frames under the banner */
   phones?: string[];
@@ -68,12 +68,6 @@ const PRODUCTS: ShowcaseProduct[] = [
       "/images/proteinsnaps/PS-1.webp",
       "/images/proteinsnaps/PS-4.webp",
       "/images/proteinsnaps/PS-6.webp",
-      "/images/proteinsnaps/PSL-M2.webp",
-    ],
-    gallery: [
-      "/images/proteinsnaps/PSL-2.webp",
-      "/images/proteinsnaps/PSL-5.webp",
-      "/images/proteinsnaps/PSL-8.webp",
     ],
     featured: true,
     primaryCta: {
