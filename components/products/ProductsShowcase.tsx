@@ -108,7 +108,7 @@ const PRODUCTS: ShowcaseProduct[] = [
         detail: "Plan for peak times, track reach and engagement, and grow with clearer insight.",
       },
     ],
-    banner: "/images/lumexforge/LF-products/Products-PH1.webp",
+    banner: "/images/lumexforge/LF-products/Products-PH.webp",
     bannerAspect: "640",
     reverse: true,
     primaryCta: { label: "Request Early Access", href: "/contact" },
