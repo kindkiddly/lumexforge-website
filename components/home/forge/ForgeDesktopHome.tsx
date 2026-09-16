@@ -45,21 +45,31 @@ type CoverflowCard = {
 
 const COVERFLOW_CARDS: CoverflowCard[] = [
   {
+    id: "studio",
+    name: "LumexForge Studio",
+    tagline: "Building Tomorrow's Apps",
+    status: "Est. 2024",
+    initial: "LF",
+    placeholderClass: "lf-placeholder-studio",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-1.webp",
+  },
+  {
     id: "proteinsnaps",
     name: "ProteinSnaps",
     tagline: "AI Nutrition & Fitness Tracker",
     status: "Live on iOS & Android",
     initial: "PS",
     placeholderClass: "lf-placeholder-ps",
-    imageSrc: "/images/proteinsnaps/PSL-1.webp",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-2.webp",
   },
   {
-    id: "proteinsnaps-ios",
-    name: "ProteinSnaps iOS",
-    tagline: "Coming Soon to App Store",
-    status: "Coming Soon",
-    initial: "iOS",
-    placeholderClass: "lf-placeholder-ps-ios",
+    id: "ammora",
+    name: "AMMORA",
+    tagline: "AI Grief Companion",
+    status: "In Development",
+    initial: "AM",
+    placeholderClass: "lf-placeholder-am",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-3.webp",
   },
   {
     id: "posthunt",
@@ -68,14 +78,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     status: "In Development",
     initial: "PH",
     placeholderClass: "lf-placeholder-ph",
-  },
-  {
-    id: "amora",
-    name: "AMORA",
-    tagline: "AI Grief Companion",
-    status: "In Development",
-    initial: "AM",
-    placeholderClass: "lf-placeholder-am",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-4.webp",
   },
   {
     id: "money-burn-board",
@@ -86,13 +89,12 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     placeholderClass: "lf-placeholder-mb",
   },
   {
-    id: "studio",
-    name: "LumexForge Studio",
-    tagline: "Building Tomorrow's Apps",
-    status: "Est. 2024",
-    initial: "LF",
-    placeholderClass: "lf-placeholder-studio",
-    imageSrc: "/images/lumexforge-hero.jpg",
+    id: "proteinsnaps-ios",
+    name: "ProteinSnaps iOS",
+    tagline: "Coming Soon to App Store",
+    status: "Coming Soon",
+    initial: "iOS",
+    placeholderClass: "lf-placeholder-ps-ios",
   },
   {
     id: "stealth",
@@ -131,8 +133,8 @@ const APPS = [
     external: false,
   },
   {
-    id: "amora",
-    name: "AMORA",
+    id: "ammora",
+    name: "AMMORA",
     tagline: "AI grief companion and portrait app",
     status: "In Development",
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
@@ -158,68 +160,36 @@ const APPS = [
 
 function ProteinSnapsStoreBlock() {
   return (
-    <div className="lf-ps-store-block">
-      <div className="lf-ps-store-badges">
+    <div className="lf-ps-store-compact">
+      <div className="lf-ps-store-btn-row">
         <a
           href={PROTEINSNAPS_PLAY_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="lf-store-badge lf-store-badge--google"
-          aria-label="Get ProteinSnaps on Google Play"
+          className="lf-store-compact-btn lf-store-compact-btn--play"
         >
-          <svg className="lf-store-badge-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="#00E6A8"
-              d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"
-            />
-          </svg>
-          <span className="lf-store-badge-copy">
-            <span className="lf-store-badge-label">GET IT ON</span>
-            <span className="lf-store-badge-name">Google Play</span>
-          </span>
+          Google Play
         </a>
         <a
           href={PROTEINSNAPS_APP_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="lf-store-badge lf-store-badge--apple"
-          aria-label="Download ProteinSnaps on the App Store"
+          className="lf-store-compact-btn lf-store-compact-btn--apple"
         >
-          <svg className="lf-store-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-          </svg>
-          <span className="lf-store-badge-copy">
-            <span className="lf-store-badge-label">Download on the</span>
-            <span className="lf-store-badge-name">App Store</span>
-          </span>
+          App Store
         </a>
       </div>
-
-      <div className="lf-ps-store-qr-group">
-        <div className="lf-store-qr-item">
-          <div className="lf-store-qr-box">
-            <QRCode
-              value={PROTEINSNAPS_PLAY_STORE_URL}
-              size={44}
-              bgColor="#ffffff"
-              fgColor="#050811"
-              level="M"
-            />
-          </div>
-          <span className="lf-store-qr-label">Android</span>
+      <div className="lf-ps-store-qr-row">
+        <div className="lf-store-qr-box">
+          <QRCode
+            value={PROTEINSNAPS_PLAY_STORE_URL}
+            size={50}
+            bgColor="#ffffff"
+            fgColor="#050811"
+            level="M"
+          />
         </div>
-        <div className="lf-store-qr-item">
-          <div className="lf-store-qr-box">
-            <QRCode
-              value={PROTEINSNAPS_APP_STORE_URL}
-              size={44}
-              bgColor="#ffffff"
-              fgColor="#050811"
-              level="M"
-            />
-          </div>
-          <span className="lf-store-qr-label">iOS</span>
-        </div>
+        <span className="lf-store-qr-label">Scan to download</span>
       </div>
     </div>
   );
@@ -568,7 +538,7 @@ export function ForgeDesktopHome() {
             </p>
           </FadeInUp>
 
-          <FadeInUp delay={0.1} className="mt-1">
+          <FadeInUp delay={0.1} className="mt-4">
             <CoverflowCarousel />
           </FadeInUp>
 
@@ -587,8 +557,8 @@ export function ForgeDesktopHome() {
 
           <div className="lf-apps-grid mt-3">
             {APPS.map((app, index) => (
-              <FadeInUp key={app.id} delay={index * 0.08}>
-                <article className="lf-app-card lf-3d-card group">
+              <FadeInUp key={app.id} delay={index * 0.08} className="h-full">
+                <article className="lf-app-card lf-3d-card group h-full">
                   <div className="lf-app-card-media">
                     {"imageSrc" in app && app.imageSrc ? (
                       <Image

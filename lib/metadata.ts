@@ -15,7 +15,7 @@ const defaultKeywords = [
   "automation",
   "digital products",
   "ProteinSnap",
-  "AMORA",
+  "AMMORA",
   "KePaso",
 ];
 
@@ -149,14 +149,14 @@ export const contactMetadata = createMetadata({
 export const privacyMetadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "AMORA privacy policy — how LumexForge collects, uses, and protects your memories, conversations, and voice data.",
+    "AMMORA privacy policy — how LumexForge collects, uses, and protects your memories, conversations, and voice data.",
   path: "/privacy",
 });
 
 export const termsMetadata = createMetadata({
   title: "Terms of Service",
   description:
-    "AMORA terms of service — eligibility, acceptable use, voice cloning, subscriptions, and disclaimers.",
+    "AMMORA terms of service — eligibility, acceptable use, voice cloning, subscriptions, and disclaimers.",
   path: "/terms",
 });
 

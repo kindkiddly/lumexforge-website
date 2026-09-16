@@ -666,6 +666,7 @@
 .lf-apps-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 1rem;
   max-width: 56rem;
   margin-left: auto;
@@ -675,6 +676,7 @@
 .lf-app-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   border-radius: 1rem;
@@ -718,7 +720,8 @@
 .lf-app-card-footer--proteinsnaps {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 0.375rem;
+  margin-top: auto;
 }
 
 .lf-app-card-cta {
@@ -736,95 +739,61 @@
   color: #06b6d4;
 }
 
-.lf-ps-store-block {
+.lf-ps-store-compact {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-}
-
-.lf-ps-store-badges {
-  display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 0.375rem;
-  min-width: 0;
+  width: 100%;
 }
 
-.lf-store-badge {
+.lf-ps-store-btn-row {
   display: flex;
-  align-items: center;
-  gap: 0.4375rem;
+  gap: 0.375rem;
   width: 100%;
-  max-width: 9.5rem;
-  height: 2rem;
+}
+
+.lf-store-compact-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
   padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
   border-radius: 0.375rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
   color: #f8fafc;
+  white-space: nowrap;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.lf-store-badge:hover {
+.lf-store-compact-btn:hover {
   border-color: rgba(6, 182, 212, 0.45);
   box-shadow: 0 0 12px -4px rgba(6, 182, 212, 0.35);
 }
 
-.lf-store-badge--google {
+.lf-store-compact-btn--play {
   border-color: rgba(0, 230, 168, 0.25);
 }
 
-.lf-store-badge--google:hover {
+.lf-store-compact-btn--play:hover {
   border-color: rgba(0, 230, 168, 0.5);
   box-shadow: 0 0 12px -4px rgba(0, 230, 168, 0.35);
 }
 
-.lf-store-badge-icon {
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
-}
-
-.lf-store-badge-copy {
+.lf-ps-store-qr-row {
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  line-height: 1.1;
-}
-
-.lf-store-badge-label {
-  font-size: 0.4375rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #cbd5e1;
-}
-
-.lf-store-badge-name {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #f8fafc;
-  white-space: nowrap;
-}
-
-.lf-ps-store-qr-group {
-  display: flex;
-  flex-shrink: 0;
-  gap: 0.5rem;
-}
-
-.lf-store-qr-item {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.1875rem;
+  gap: 0.375rem;
 }
 
 .lf-store-qr-box {
-  width: 2.875rem;
-  height: 2.875rem;
+  width: 3.125rem;
+  height: 3.125rem;
+  flex-shrink: 0;
   border-radius: 0.3125rem;
   border: 1px solid rgba(6, 182, 212, 0.25);
   background: #fff;
@@ -835,12 +804,10 @@
 }
 
 .lf-store-qr-label {
-  font-size: 0.5625rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   color: #64748b;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  line-height: 1.2;
 }
 
 /* Services mixed layout */

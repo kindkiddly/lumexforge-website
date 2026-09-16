@@ -23,8 +23,8 @@ export const PRODUCTS: Product[] = [
     href: "/proteinsnaps",
   },
   {
-    id: "amora",
-    name: "AMORA",
+    id: "ammora",
+    name: "AMMORA",
     description: "Next-generation digital experience currently under development.",
     status: "Coming Soon",
     variant: "amora",
@@ -126,14 +126,14 @@ export const VALUES = [
 export const ROADMAP: RoadmapItem[] = [
   {
     year: "2026",
-    items: ["ProteinSnap", "AMORA", "KePaso", "Future Products"],
+    items: ["ProteinSnap", "AMMORA", "KePaso", "Future Products"],
   },
 ];
 
 export const FOOTER_LINKS = {
   products: [
     { label: "ProteinSnap", href: "/products#proteinsnap" },
-    { label: "AMORA", href: "/products#amora" },
+    { label: "AMMORA", href: "/products#ammora" },
     { label: "KePaso", href: "/products#kepaso" },
   ],
   company: [

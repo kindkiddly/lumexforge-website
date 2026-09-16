@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
-          AMORA is an emotional companion app created by LumexForge (Karachi,
+          AMMORA is an emotional companion app created by LumexForge (Karachi,
           Pakistan) to help people stay connected with the memories of loved ones
           they have lost. We understand the deeply personal nature of what you
           share with us, and we take our responsibility to protect it seriously.
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
       <LegalSection title="2. How we use your information">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            To provide the AMORA service (creating profiles, generating
+            To provide the AMMORA service (creating profiles, generating
             conversations, producing voices).
           </li>
           <li>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           We do not use uploaded voices for any purpose other than serving your
-          conversations within AMORA. We never share, sell, or train external
+          conversations within AMMORA. We never share, sell, or train external
           models with your loved ones&apos; voices.
         </p>
       </LegalSection>
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
 
       <LegalSection title="7. Children's policy">
         <p>
-          AMORA is not intended for users under 18 years of age. We do not
+          AMMORA is not intended for users under 18 years of age. We do not
           knowingly collect data from minors. If you believe a minor has used our
           service, please contact us and we will delete their data immediately.
         </p>
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
 
       <LegalSection title="8. International users">
         <p>
-          AMORA is operated from Pakistan. By using the app, you consent to your
+          AMMORA is operated from Pakistan. By using the app, you consent to your
           data being processed in Pakistan and the United States (where our
           servers are located). We comply with applicable data protection
           regulations including GDPR (for European users) and CCPA (for
@@ -171,7 +171,7 @@ export default function PrivacyPage() {
         <p>
           We may update this policy as our service evolves. We will notify you
           of significant changes through the app at least 14 days before they take
-          effect. Continued use of AMORA after changes means you accept them.
+          effect. Continued use of AMMORA after changes means you accept them.
         </p>
       </LegalSection>
 

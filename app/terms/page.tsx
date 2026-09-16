@@ -13,19 +13,19 @@ export default function TermsPage() {
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
-          Welcome to AMORA. These terms govern your use of our app and service.
+          Welcome to AMMORA. These terms govern your use of our app and service.
           Please read them carefully — they include important information about
-          what AMORA is and is not.
+          what AMMORA is and is not.
         </p>
       </div>
 
-      <LegalSection title="1. What AMORA is">
+      <LegalSection title="1. What AMMORA is">
         <p>
-          AMORA is an emotional companion app that helps you preserve and revisit
+          AMMORA is an emotional companion app that helps you preserve and revisit
           memories of loved ones through AI-assisted conversations and voice
           reconstructions.
         </p>
-        <p>AMORA is NOT:</p>
+        <p>AMMORA is NOT:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>A substitute for professional mental health care or therapy</li>
           <li>A crisis intervention service</li>
@@ -44,7 +44,7 @@ export default function TermsPage() {
 
       <LegalSection title="2. Eligibility">
         <p>
-          You must be at least 18 years old to use AMORA. By creating an account,
+          You must be at least 18 years old to use AMMORA. By creating an account,
           you confirm you meet this age requirement.
         </p>
       </LegalSection>
@@ -61,7 +61,7 @@ export default function TermsPage() {
       </LegalSection>
 
       <LegalSection title="4. Acceptable use">
-        <p>You agree NOT to use AMORA to:</p>
+        <p>You agree NOT to use AMMORA to:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             Create profiles of real public figures, celebrities, or political
@@ -92,7 +92,7 @@ export default function TermsPage() {
           </li>
           <li>You retain ownership of the voice and recordings.</li>
           <li>
-            You grant AMORA a limited license to use them solely to generate
+            You grant AMMORA a limited license to use them solely to generate
             conversations for you within the app.
           </li>
           <li>
@@ -126,7 +126,7 @@ export default function TermsPage() {
 
       <LegalSection title="7. Disclaimer">
         <p>
-          AMORA is provided &quot;as is&quot; without warranties of any kind. While
+          AMMORA is provided &quot;as is&quot; without warranties of any kind. While
           we make every effort to provide a meaningful and emotionally sensitive
           experience:
         </p>
@@ -146,7 +146,7 @@ export default function TermsPage() {
           </li>
         </ul>
         <p>
-          <strong className="text-foreground">Important:</strong> Use of AMORA can
+          <strong className="text-foreground">Important:</strong> Use of AMMORA can
           bring up complex emotions. If you find yourself struggling, please reach
           out to a qualified mental health professional.
         </p>
@@ -176,7 +176,7 @@ export default function TermsPage() {
 
       <LegalSection title="9. Termination">
         <p>
-          You can stop using AMORA and delete your account at any time. We may
+          You can stop using AMMORA and delete your account at any time. We may
           suspend or terminate accounts that violate these terms or for legal
           reasons. Upon termination, your data will be deleted per our Privacy
           Policy.

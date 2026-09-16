@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const itemDescriptions: Record<string, string> = {
   ProteinSnap: "AI nutrition & fitness platform",
-  AMORA: "Next-generation digital experience",
+  AMMORA: "Next-generation digital experience",
   KePaso: "Innovative platform in development",
   "Future Products": "Exploring what's next",
 };

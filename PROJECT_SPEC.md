@@ -316,7 +316,7 @@ Launching
 
 Product Card 2
 
-AMORA
+AMMORA
 
 Description:
 
@@ -398,7 +398,7 @@ Timeline:
 
 ProteinSnap
 
-AMORA
+AMMORA
 
 KePaso
 
@@ -456,7 +456,7 @@ Display:
 
 ProteinSnap
 
-AMORA
+AMMORA
 
 KePaso
 
@@ -534,7 +534,7 @@ The page should support:
 
 ProteinSnap
 
-AMORA
+AMMORA
 
 KePaso
 
@@ -654,7 +654,7 @@ Minimal geometric compositions
 
 ProteinSnap may later use real product screenshots.
 
-AMORA and KePaso should use premium abstract placeholder artwork.
+AMMORA and KePaso should use premium abstract placeholder artwork.
 
 ---
 
