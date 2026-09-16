@@ -209,28 +209,16 @@ function CoverflowCardFace({ card }: { card: CoverflowCard }) {
             unoptimized
             className="object-cover object-center"
           />
-          <div className="lf-coverflow-image-overlay" aria-hidden="true" />
-        </div>
-        <div className="lf-coverflow-card-meta">
-          <h3 className="text-xl font-bold tracking-tight text-foreground">{card.name}</h3>
-          <p className="mt-1.5 text-sm text-foreground-secondary">{card.tagline}</p>
-          <span className="mt-3 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-xs font-medium text-foreground-secondary">
-            {card.status}
-          </span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`lf-coverflow-cover ${card.placeholderClass}`}>
-      <div className="lf-coverflow-logo">{card.initial}</div>
-      <h3 className="text-2xl font-bold tracking-tight text-foreground">{card.name}</h3>
-      <p className="mt-3 text-base text-foreground-secondary">{card.tagline}</p>
-      <span className="mt-4 inline-flex rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-xs font-medium text-foreground-secondary">
-        {card.status}
-      </span>
-    </div>
+    <div
+      className={`lf-coverflow-cover ${card.placeholderClass}`}
+      aria-hidden="true"
+    />
   );
 }
 
@@ -295,7 +283,6 @@ function CoverflowCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = COVERFLOW_CARDS.length;
 
@@ -329,7 +316,6 @@ function CoverflowCarousel() {
       clearInterval(autoplayRef.current);
       autoplayRef.current = null;
     }
-    setIsPlaying(false);
   }, []);
 
   const startAutoplay = useCallback(() => {
@@ -342,16 +328,7 @@ function CoverflowCarousel() {
         return next;
       });
     }, 4000);
-    setIsPlaying(true);
   }, [total]);
-
-  const toggleAutoplay = useCallback(() => {
-    if (isPlaying) {
-      stopAutoplay();
-    } else {
-      startAutoplay();
-    }
-  }, [isPlaying, startAutoplay, stopAutoplay]);
 
   const handleUserInteraction = useCallback(() => {
     stopAutoplay();
@@ -475,19 +452,6 @@ function CoverflowCarousel() {
             />
           ))}
         </div>
-
-        <button
-          type="button"
-          className="lf-coverflow-play-pause"
-          aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
-          onClick={toggleAutoplay}
-        >
-          {isPlaying ? (
-            <span className="lf-pause-icon">❚❚</span>
-          ) : (
-            <span className="lf-play-icon">▶</span>
-          )}
-        </button>
       </div>
 
       <div className="mt-6 text-center" aria-live="polite">
@@ -532,7 +496,7 @@ export function ForgeDesktopHome() {
 
         <div className="mx-auto w-full max-w-7xl px-6">
           <FadeInUp className="text-center">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight">
+            <h1 className="text-xl font-bold leading-tight tracking-tight">
               <span className="text-foreground">We Forge</span>
               <br />
               <span className="lf-text-cyan-gradient">Digital Products.</span>
@@ -542,7 +506,7 @@ export function ForgeDesktopHome() {
             </p>
           </FadeInUp>
 
-          <FadeInUp delay={0.1} className="mt-4">
+          <FadeInUp delay={0.1} className="mt-2">
             <CoverflowCarousel />
           </FadeInUp>
 
