@@ -87,6 +87,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     status: "Coming Soon",
     initial: "MB",
     placeholderClass: "lf-placeholder-mb",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-5.webp",
   },
   {
     id: "proteinsnaps-ios",
@@ -95,6 +96,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     status: "Coming Soon",
     initial: "iOS",
     placeholderClass: "lf-placeholder-ps-ios",
+    imageSrc: "/images/lumexforge/LF-carousel/LF-6.webp",
   },
   {
     id: "stealth",
@@ -103,6 +105,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     status: "Stay Tuned",
     initial: "?",
     placeholderClass: "lf-placeholder-stealth",
+    imageSrc: "/images/proteinsnaps/BG-3.webp",
   },
 ] ;
 
@@ -128,6 +131,7 @@ const APPS = [
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
     placeholderClass: "lf-placeholder-ph",
     iconLabel: "PH",
+    imageSrc: "/images/proteinsnaps/BG-4.webp",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -140,6 +144,7 @@ const APPS = [
     statusClass: "bg-[#3B82F6]/15 text-[#3B82F6] ring-[#3B82F6]/30",
     placeholderClass: "lf-placeholder-am",
     iconLabel: "AM",
+    imageSrc: "/images/proteinsnaps/BG-5.webp",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -152,6 +157,7 @@ const APPS = [
     statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
     placeholderClass: "lf-placeholder-mb",
     iconLabel: "MB",
+    imageSrc: "/images/proteinsnaps/BG-6.webp",
     cta: "Learn More →",
     href: "/contact",
     external: false,
