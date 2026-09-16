@@ -274,17 +274,24 @@
   background: linear-gradient(to top, rgba(0, 8, 20, 0.5) 0%, transparent 42%);
 }
 
-/* Fills remaining media-column height below the main banner */
+/* Secondary under banner — natural aspect, no stretch/crop */
 .lf-prod-secondary-banner {
   position: relative;
   width: 100%;
-  flex: 1 1 auto;
-  min-height: clamp(14rem, 38vw, 22rem);
+  flex-shrink: 0;
   overflow: hidden;
   border-radius: 1.1rem;
   border: 1px solid var(--lf-prod-border);
   background: #07101e;
   box-shadow: 0 16px 40px -24px rgba(0, 0, 0, 0.75);
+}
+
+.lf-prod-secondary-banner--980 {
+  aspect-ratio: 1760 / 980;
+}
+
+.lf-prod-secondary-banner--640 {
+  aspect-ratio: 1760 / 640;
 }
 
 .lf-prod-index {

@@ -21,8 +21,10 @@ type ShowcaseProduct = {
   banner?: string;
   /** Banner aspect: default 1760×720; use "640" for 1760×640 assets */
   bannerAspect?: "720" | "640";
-  /** Full-width secondary image under the main banner (fills remaining column height) */
+  /** Full-width secondary image under the main banner (natural aspect, no stretch) */
   secondaryBanner?: string;
+  /** Secondary aspect: "980" = 1760×980, "640" = 1760×640 */
+  secondaryAspect?: "980" | "640";
   /** Portrait phone UI shots — rendered in device frames under the banner */
   phones?: string[];
   /** Optional landscape thumbs under banner (non-phone apps) */
@@ -110,6 +112,8 @@ const PRODUCTS: ShowcaseProduct[] = [
     ],
     banner: "/images/lumexforge/LF-products/Products-PH.webp",
     bannerAspect: "640",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-PH1.webp",
+    secondaryAspect: "980",
     reverse: true,
     primaryCta: { label: "Request Early Access", href: "/contact" },
     secondaryCta: { label: "Discuss Your Brand", href: "/contact" },
@@ -145,6 +149,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     ],
     banner: "/images/lumexforge/LF-products/Products-AM.webp",
     secondaryBanner: "/images/lumexforge/LF-products/Products-AM1.webp",
+    secondaryAspect: "640",
     primaryCta: { label: "Learn About AMMORA", href: "/contact" },
     secondaryCta: { label: "Read Privacy Approach", href: "/privacy" },
   },
@@ -179,6 +184,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     ],
     banner: "/images/lumexforge/LF-products/Products-MP.webp",
     secondaryBanner: "/images/lumexforge/LF-products/Products-MP1.webp",
+    secondaryAspect: "980",
     reverse: true,
     primaryCta: { label: "Join the Waitlist", href: "/contact" },
     secondaryCta: { label: "Talk to the Studio", href: "/contact" },
@@ -214,6 +220,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     ],
     banner: "/images/lumexforge/LF-products/Products-BK.webp",
     secondaryBanner: "/images/lumexforge/LF-products/Products-BK1.webp",
+    secondaryAspect: "980",
     primaryCta: { label: "Request a Demo", href: "/contact" },
     secondaryCta: { label: "Contact LumexForge", href: "/contact" },
   },
@@ -335,7 +342,11 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
 
           {product.secondaryBanner && (
             <motion.div
-              className="lf-prod-secondary-banner"
+              className={`lf-prod-secondary-banner${
+                product.secondaryAspect === "640"
+                  ? " lf-prod-secondary-banner--640"
+                  : " lf-prod-secondary-banner--980"
+              }`}
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.55, delay: 0.12, ease }}
@@ -345,7 +356,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 alt={`${product.name} feature showcase`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </motion.div>
           )}
