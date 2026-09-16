@@ -158,9 +158,9 @@ const APPS = [
   },
 ] as const;
 
-function ProteinSnapsStoreBlock() {
+function ProteinSnapsStoreOverlay() {
   return (
-    <div className="lf-ps-store-compact">
+    <div className="lf-ps-media-store">
       <div className="lf-ps-store-btn-row">
         <a
           href={PROTEINSNAPS_PLAY_STORE_URL}
@@ -205,6 +205,8 @@ function CoverflowCardFace({ card }: { card: CoverflowCard }) {
             alt={card.name}
             fill
             sizes="480px"
+            quality={100}
+            unoptimized
             className="object-cover object-center"
           />
           <div className="lf-coverflow-image-overlay" aria-hidden="true" />
@@ -419,6 +421,8 @@ function CoverflowCarousel() {
                         alt=""
                         fill
                         sizes="480px"
+                        quality={100}
+                        unoptimized
                         className="lf-coverflow-reflection-image"
                       />
                     </div>
@@ -557,17 +561,20 @@ export function ForgeDesktopHome() {
 
           <div className="lf-apps-grid mt-3">
             {APPS.map((app, index) => (
-              <FadeInUp key={app.id} delay={index * 0.08} className="h-full">
-                <article className="lf-app-card lf-3d-card group h-full">
+              <FadeInUp key={app.id} delay={index * 0.08}>
+                <article className="lf-app-card lf-3d-card group">
                   <div className="lf-app-card-media">
                     {"imageSrc" in app && app.imageSrc ? (
-                      <Image
-                        src={app.imageSrc}
-                        alt={app.name}
-                        fill
-                        sizes="(max-width: 896px) 50vw, 448px"
-                        className="object-cover object-center"
-                      />
+                      <>
+                        <Image
+                          src={app.imageSrc}
+                          alt={app.name}
+                          fill
+                          sizes="(max-width: 896px) 50vw, 448px"
+                          className="object-cover object-center"
+                        />
+                        {app.id === "proteinsnaps" && <ProteinSnapsStoreOverlay />}
+                      </>
                     ) : (
                       <div
                         className={`lf-app-card-placeholder ${app.placeholderClass}`}
@@ -594,9 +601,7 @@ export function ForgeDesktopHome() {
                     </p>
                   </div>
 
-                  <div
-                    className={`lf-app-card-footer${app.id === "proteinsnaps" ? " lf-app-card-footer--proteinsnaps" : ""}`}
-                  >
+                  <div className="lf-app-card-footer">
                     {app.external ? (
                       <a
                         href={app.href}
@@ -611,8 +616,6 @@ export function ForgeDesktopHome() {
                         {app.cta}
                       </Link>
                     )}
-
-                    {app.id === "proteinsnaps" && <ProteinSnapsStoreBlock />}
                   </div>
                 </article>
               </FadeInUp>
