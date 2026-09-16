@@ -523,12 +523,12 @@ export function ForgeDesktopHome() {
               <br />
               <span className="lf-text-cyan-gradient">Digital Products.</span>
             </h1>
-            <div className="mt-1">
-              <CoverflowCarousel />
-            </div>
             <p className="lf-hero-subtitle mt-2">
               Mobile apps, AI products, and SaaS platforms — built with purpose, precision, and long-term value.
             </p>
+            <div className="mt-1">
+              <CoverflowCarousel />
+            </div>
           </FadeInUp>
 
           <p className="lf-feature-strip mt-3">
