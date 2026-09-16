@@ -96,6 +96,21 @@
   color: #94a3b8;
 }
 
+.lf-hero-carousel {
+  margin-top: 0;
+}
+
+.lf-hero-carousel .lf-coverflow-wrapper {
+  justify-content: flex-start;
+}
+
+.lf-hero-carousel .lf-coverflow-container {
+  align-items: flex-start;
+  height: auto;
+  min-height: 580px;
+  padding-top: 0;
+}
+
 .lf-feature-strip {
   text-align: center;
   font-size: 0.75rem;

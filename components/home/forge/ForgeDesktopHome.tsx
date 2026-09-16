@@ -526,7 +526,7 @@ export function ForgeDesktopHome() {
             <p className="lf-hero-subtitle mt-2">
               Mobile apps, AI products, and SaaS platforms — built with purpose, precision, and long-term value.
             </p>
-            <div className="mt-1">
+            <div className="lf-hero-carousel">
               <CoverflowCarousel />
             </div>
           </FadeInUp>
