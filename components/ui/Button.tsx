@@ -27,11 +27,11 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent-primary text-white border border-accent-primary/30 shadow-[0_0_24px_-4px_rgba(79,70,229,0.5)] hover:bg-[#5b52f0] hover:shadow-[0_0_32px_-4px_rgba(79,70,229,0.6)]",
+    "bg-gradient-to-br from-[#22d3ee] via-[#06b6d4] to-[#3b82f6] text-[#031018] border border-[#22d3ee]/35 shadow-none hover:opacity-95 hover:shadow-[0_6px_16px_-8px_rgba(6,182,212,0.4)]",
   secondary:
-    "glass glass-hover text-foreground border border-white/[0.08]",
+    "bg-white/[0.04] text-[#e2e8f0] border border-white/[0.14] shadow-none hover:border-[#22d3ee]/40 hover:text-white",
   ghost:
-    "text-foreground-secondary hover:text-foreground hover:bg-white/[0.05]",
+    "text-foreground-secondary hover:text-foreground hover:bg-white/[0.05] shadow-none",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -49,7 +49,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06b6d4]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     variants[variant],
     sizes[size],
     className

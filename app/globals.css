@@ -147,7 +147,7 @@
     transform: translateX(100%);
   }
 
-  /* What We Build — animated card backgrounds */
+  /* What We Build â animated card backgrounds */
   .wwb-anim-paused,
   .wwb-anim-paused * {
     animation-play-state: paused !important;
@@ -344,7 +344,7 @@
   }
 }
 
-/* Site footer � compact, aligned */
+/* Site footer  compact, aligned */
 .lf-site-footer {
   color: #94a3b8;
 }
@@ -439,17 +439,20 @@
   align-items: center;
   gap: 0.25rem;
   height: 1.85rem;
-  padding: 0 0.75rem;
-  border-radius: 0.4rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
   color: #031018;
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
-  transition: opacity 0.2s ease;
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 48%, #3b82f6 100%);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: none;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
 .lf-footer-btn:hover {
-  opacity: 0.92;
+  opacity: 0.95;
+  box-shadow: 0 6px 16px -8px rgba(6, 182, 212, 0.4);
 }
 
 .lf-footer-email {

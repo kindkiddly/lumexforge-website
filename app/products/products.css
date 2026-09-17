@@ -533,11 +533,11 @@
   gap: 0.4rem;
   height: 2.55rem;
   padding: 0 1.15rem;
-  border-radius: 0.7rem;
+  border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
-    border-color 0.2s ease, color 0.2s ease;
+    border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 }
 
 .lf-prod-btn:hover {
@@ -545,14 +545,14 @@
 }
 
 .lf-prod-btn--primary {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 48%, #3b82f6 100%);
   color: #031018;
-  border: none;
-  box-shadow: 0 12px 30px -12px rgba(6, 182, 212, 0.7);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: none;
 }
 
 .lf-prod-btn--primary:hover {
-  box-shadow: 0 16px 36px -10px rgba(6, 182, 212, 0.8);
+  box-shadow: 0 6px 16px -8px rgba(6, 182, 212, 0.4);
 }
 
 .lf-prod-btn--ghost {
