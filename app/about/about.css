@@ -20,7 +20,8 @@
 .lf-about-page {
   position: relative;
   padding: 5.25rem 0 2.75rem;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   min-height: 100vh;
   background: #000814;
 }
@@ -59,16 +60,21 @@
   font-size: clamp(1.9rem, 3.8vw, 2.75rem);
   font-weight: 600;
   letter-spacing: -0.035em;
-  line-height: 1.1;
+  line-height: 1.15;
+  overflow: visible;
 }
 
 .lf-about-title em {
+  display: inline-block;
   font-style: italic;
   font-weight: 500;
+  padding: 0 0.14em 0 0.02em;
   background: linear-gradient(115deg, #a5f3fc, #38bdf8 55%, #60a5fa);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .lf-about-lead {
