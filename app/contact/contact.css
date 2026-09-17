@@ -66,7 +66,7 @@
 }
 
 .lf-contact-hero {
-  max-width: 34rem;
+  max-width: 40rem;
   margin: 0 0 1.5rem;
 }
 
@@ -106,6 +106,7 @@
   font-weight: 400;
   line-height: 1.7;
   color: var(--ct-muted);
+  max-width: 36rem;
 }
 
 .lf-contact-grid {
@@ -123,14 +124,14 @@
 
 .lf-contact-side,
 .lf-contact-form-wrap {
-  padding: 1.05rem 1.1rem;
+  padding: 1.25rem 1.2rem;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
 }
 
 .lf-contact-side-label {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.85rem;
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 500;
@@ -140,54 +141,82 @@
 }
 
 .lf-contact-channels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lf-contact-channels--meta {
+  margin-top: 0.15rem;
+  padding-top: 0.15rem;
   border-top: 1px solid var(--ct-line);
 }
 
 .lf-contact-channel {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.35rem 0.75rem;
-  align-items: baseline;
-  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--ct-line);
-  text-decoration: none;
-  color: inherit;
 }
 
-.lf-contact-channel:hover .lf-contact-channel-email {
-  color: #a5f3fc;
+.lf-contact-channels > .lf-contact-channel:first-child {
+  padding-top: 0;
 }
 
-.lf-contact-channel strong {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 700;
+.lf-contact-channels > .lf-contact-channel:last-child,
+.lf-contact-channels--meta > .lf-contact-channel:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lf-contact-channel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.lf-contact-channel-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
   color: #f1f5f9;
+  letter-spacing: -0.01em;
 }
 
-.lf-contact-channel span {
-  display: block;
-  margin-top: 0.12rem;
-  font-size: 0.72rem;
-  color: var(--ct-dim);
-}
-
-.lf-contact-channel-email {
+.lf-contact-channel-desc {
+  font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #67e8f9;
-  justify-self: end;
-}
-
-.lf-contact-meta {
-  margin: 0.85rem 0 0;
-  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.45;
   color: var(--ct-dim);
 }
 
-.lf-contact-meta strong {
+.lf-contact-channel-value {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #67e8f9;
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 0.15s ease;
+}
+
+a.lf-contact-channel-value:hover {
+  color: #a5f3fc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lf-contact-channel-value--plain {
   color: #cbd5e1;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .lf-contact-form-title {

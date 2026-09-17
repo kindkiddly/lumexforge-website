@@ -1,21 +1,39 @@
 import { ContactFormPanel } from "@/components/contact/ContactFormPanel";
-import { CONTACT_EMAILS } from "@/lib/constants";
+import { CONTACT_EMAILS, SITE_URL } from "@/lib/constants";
 
 const CHANNELS = [
   {
     label: "Business",
     description: "Partnerships & inquiries",
     value: CONTACT_EMAILS.business,
+    href: `mailto:${CONTACT_EMAILS.business}`,
   },
   {
     label: "Support",
     description: "Product help & assistance",
     value: CONTACT_EMAILS.support,
+    href: `mailto:${CONTACT_EMAILS.support}`,
   },
   {
     label: "Privacy",
     description: "Data & privacy matters",
     value: CONTACT_EMAILS.privacy,
+    href: `mailto:${CONTACT_EMAILS.privacy}`,
+  },
+];
+
+const META_ROWS = [
+  {
+    label: "Website",
+    description: "Company site",
+    value: "lumexforge.com",
+    href: SITE_URL as string | null,
+  },
+  {
+    label: "Headquarters",
+    description: "Studio location",
+    value: "Houston, USA",
+    href: null as string | null,
   },
 ];
 
@@ -40,24 +58,45 @@ export function ContactShowcase() {
         <div className="lf-contact-grid">
           <aside className="lf-contact-side">
             <p className="lf-contact-side-label">Direct channels</p>
-            <div className="lf-contact-channels">
+
+            <ul className="lf-contact-channels">
               {CHANNELS.map((channel) => (
-                <a
-                  key={channel.label}
-                  href={`mailto:${channel.value}`}
-                  className="lf-contact-channel"
-                >
-                  <div>
-                    <strong>{channel.label}</strong>
-                    <span>{channel.description}</span>
+                <li key={channel.label} className="lf-contact-channel">
+                  <div className="lf-contact-channel-text">
+                    <span className="lf-contact-channel-label">{channel.label}</span>
+                    <span className="lf-contact-channel-desc">{channel.description}</span>
                   </div>
-                  <span className="lf-contact-channel-email">{channel.value}</span>
-                </a>
+                  <a href={channel.href} className="lf-contact-channel-value">
+                    {channel.value}
+                  </a>
+                </li>
               ))}
-            </div>
-            <p className="lf-contact-meta">
-              <strong>Web</strong> lumexforge.com · <strong>HQ</strong> Houston, USA
-            </p>
+            </ul>
+
+            <ul className="lf-contact-channels lf-contact-channels--meta">
+              {META_ROWS.map((row) => (
+                <li key={row.label} className="lf-contact-channel">
+                  <div className="lf-contact-channel-text">
+                    <span className="lf-contact-channel-label">{row.label}</span>
+                    <span className="lf-contact-channel-desc">{row.description}</span>
+                  </div>
+                  {row.href ? (
+                    <a
+                      href={row.href}
+                      className="lf-contact-channel-value"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {row.value}
+                    </a>
+                  ) : (
+                    <span className="lf-contact-channel-value lf-contact-channel-value--plain">
+                      {row.value}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </aside>
 
           <div className="lf-contact-form-wrap">

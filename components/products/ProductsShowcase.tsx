@@ -282,6 +282,26 @@ function StatusPill({ status, label }: { status: ProductStatus; label: string })
 
 function ProductSection({ product, index }: { product: ShowcaseProduct; index: number }) {
   const hasFeatures = product.features.length > 0;
+  const isGwh = product.id === "ghostwriterhunt";
+
+  const featureBlock = hasFeatures ? (
+    <div className={isGwh ? "lf-prod-gwh-features" : undefined}>
+      <p className="lf-prod-features-label">What you get</p>
+      <div className="lf-prod-feature-grid">
+        {product.features.map((feature, i) => (
+          <div key={feature.title} className="lf-prod-feature-card">
+            <h3>
+              <span className="lf-prod-feature-num">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {feature.title}
+            </h3>
+            <p>{feature.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  ) : null;
 
   return (
     <section id={product.id} className="lf-prod-section">
@@ -290,6 +310,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           "lf-prod-panel",
           product.reverse ? "is-reverse" : "",
           product.featured ? "is-featured" : "",
+          isGwh ? "lf-prod-panel--gwh" : "",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -403,61 +424,90 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
         </div>
 
         <div className="lf-prod-copy">
-          <div className="lf-prod-copy-top">
-            <StatusPill status={product.status} label={product.statusLabel} />
-            <span className="lf-prod-category">{product.category}</span>
-          </div>
-
-          <h2 className="lf-prod-name">{product.name}</h2>
-          <span className="lf-prod-name-rule" aria-hidden="true" />
-
-          <p className="lf-prod-tagline">{product.tagline}</p>
-          <p className="lf-prod-desc">{product.description}</p>
-
-          {hasFeatures && (
+          {isGwh ? (
             <>
-              <p className="lf-prod-features-label">What you get</p>
-              <div className="lf-prod-feature-grid">
-                {product.features.map((feature, i) => (
-                  <div key={feature.title} className="lf-prod-feature-card">
-                    <h3>
-                      <span className="lf-prod-feature-num">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {feature.title}
-                    </h3>
-                    <p>{feature.detail}</p>
-                  </div>
-                ))}
+              <div className="lf-prod-copy-main">
+                <div className="lf-prod-copy-top">
+                  <StatusPill status={product.status} label={product.statusLabel} />
+                  <span className="lf-prod-category">{product.category}</span>
+                </div>
+
+                <h2 className="lf-prod-name">{product.name}</h2>
+                <span className="lf-prod-name-rule" aria-hidden="true" />
+
+                <p className="lf-prod-tagline">{product.tagline}</p>
+                <p className="lf-prod-desc">{product.description}</p>
+
+                <p className="lf-prod-meta">{product.platforms}</p>
+
+                <div className="lf-prod-actions">
+                  {product.primaryCta.external ? (
+                    <a
+                      href={product.primaryCta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="lf-prod-btn lf-prod-btn--primary"
+                    >
+                      {product.primaryCta.label}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  ) : (
+                    <Link href={product.primaryCta.href} className="lf-prod-btn lf-prod-btn--primary">
+                      {product.primaryCta.label}
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  )}
+                  {product.secondaryCta && (
+                    <Link href={product.secondaryCta.href} className="lf-prod-btn lf-prod-btn--ghost">
+                      {product.secondaryCta.label}
+                    </Link>
+                  )}
+                </div>
+              </div>
+              {featureBlock}
+            </>
+          ) : (
+            <>
+              <div className="lf-prod-copy-top">
+                <StatusPill status={product.status} label={product.statusLabel} />
+                <span className="lf-prod-category">{product.category}</span>
+              </div>
+
+              <h2 className="lf-prod-name">{product.name}</h2>
+              <span className="lf-prod-name-rule" aria-hidden="true" />
+
+              <p className="lf-prod-tagline">{product.tagline}</p>
+              <p className="lf-prod-desc">{product.description}</p>
+
+              {featureBlock}
+
+              <p className="lf-prod-meta">{product.platforms}</p>
+
+              <div className="lf-prod-actions">
+                {product.primaryCta.external ? (
+                  <a
+                    href={product.primaryCta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lf-prod-btn lf-prod-btn--primary"
+                  >
+                    {product.primaryCta.label}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <Link href={product.primaryCta.href} className="lf-prod-btn lf-prod-btn--primary">
+                    {product.primaryCta.label}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                )}
+                {product.secondaryCta && (
+                  <Link href={product.secondaryCta.href} className="lf-prod-btn lf-prod-btn--ghost">
+                    {product.secondaryCta.label}
+                  </Link>
+                )}
               </div>
             </>
           )}
-
-          <p className="lf-prod-meta">{product.platforms}</p>
-
-          <div className="lf-prod-actions">
-            {product.primaryCta.external ? (
-              <a
-                href={product.primaryCta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lf-prod-btn lf-prod-btn--primary"
-              >
-                {product.primaryCta.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            ) : (
-              <Link href={product.primaryCta.href} className="lf-prod-btn lf-prod-btn--primary">
-                {product.primaryCta.label}
-                <span aria-hidden="true">→</span>
-              </Link>
-            )}
-            {product.secondaryCta && (
-              <Link href={product.secondaryCta.href} className="lf-prod-btn lf-prod-btn--ghost">
-                {product.secondaryCta.label}
-              </Link>
-            )}
-          </div>
         </div>
       </div>
     </section>

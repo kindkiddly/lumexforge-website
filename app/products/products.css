@@ -238,6 +238,73 @@
   .lf-prod-panel.is-featured {
     grid-template-columns: 1.2fr 0.8fr;
   }
+
+  /*
+   * GhostWriterHunt desktop only — fill the empty band under the banner:
+   * intro + CTAs beside the image; services span full width below.
+   * Mobile keeps the default stacked copy flow (no rules below 960px).
+   */
+  .lf-prod-panel--gwh {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-areas:
+      "copy media"
+      "features features";
+    align-items: start;
+    gap: 1.25rem 1.75rem;
+  }
+
+  .lf-prod-panel--gwh.is-reverse {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .lf-prod-panel--gwh.is-reverse .lf-prod-media,
+  .lf-prod-panel--gwh.is-reverse .lf-prod-copy {
+    order: unset;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-copy {
+    display: contents;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-copy-main {
+    grid-area: copy;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.15rem;
+    min-width: 0;
+    align-self: stretch;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-media {
+    grid-area: media;
+    order: unset;
+    height: auto;
+    align-self: start;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-gwh-features {
+    grid-area: features;
+    min-width: 0;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-features-label {
+    margin-top: 0.15rem;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-feature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-meta {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+
+  .lf-prod-panel--gwh .lf-prod-actions {
+    margin-top: 0.85rem;
+  }
 }
 
 .lf-prod-media {
