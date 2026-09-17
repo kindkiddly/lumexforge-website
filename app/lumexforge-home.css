@@ -97,7 +97,7 @@
 }
 
 .lf-hero-carousel {
-  margin-top: 0;
+  margin-top: 0.5in;
 }
 
 .lf-hero-carousel .lf-coverflow-wrapper {
@@ -115,12 +115,6 @@
 .lf-coverflow-info {
   margin-top: 0.5rem;
   padding-top: 0;
-}
-
-.lf-feature-strip {
-  text-align: center;
-  font-size: 0.75rem;
-  color: #64748b;
 }
 
 .lf-services-list {

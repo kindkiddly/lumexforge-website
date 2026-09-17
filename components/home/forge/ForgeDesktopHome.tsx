@@ -563,10 +563,6 @@ export function ForgeDesktopHome() {
               <CoverflowCarousel />
             </div>
           </FadeInUp>
-
-          <p className="lf-feature-strip mt-3">
-            Mobile Apps · AI Products · SaaS Platforms · Digital Publishing
-          </p>
         </div>
       </section>
 
