@@ -10,9 +10,7 @@
   z-index: 50;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(0, 8, 20, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(0, 8, 20, 0.97);
   transition: box-shadow 0.3s ease;
 }
 
@@ -59,29 +57,7 @@
 }
 
 .lf-fade-up {
-  animation: lf-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--lf-fade-delay, 0s);
-}
-
-@keyframes lf-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lf-fade-up {
-    animation: none;
-  }
-
-  .lf-particle {
-    animation: none !important;
-  }
+  /* one-shot entrance removed for performance — content renders immediately */
 }
 
 .lf-desktop-home h1,
@@ -229,29 +205,22 @@ em.lf-text-cyan-gradient {
   color: #fff;
 }
 
-/* 3D card — cyan/blue glass glow */
+/* App cards — solid surface, light hover lift (no blur / 3D tilt) */
 .lf-3d-card {
   box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.08),
-    0 -2px 0 rgba(0, 0, 0, 0.5),
-    0 15px 35px -10px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(6, 182, 212, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(0) perspective(600px) rotateX(1deg);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    0 2px 0 rgba(255, 255, 255, 0.06),
+    0 12px 28px -14px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(6, 182, 212, 0.16);
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .lf-3d-card:hover {
-  transform: translateY(-8px) perspective(600px) rotateX(0deg);
+  transform: translateY(-4px);
   box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.1),
-    0 -2px 0 rgba(0, 0, 0, 0.5),
-    0 30px 60px -15px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(6, 182, 212, 0.4),
-    0 0 40px -8px rgba(59, 130, 246, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+    0 2px 0 rgba(255, 255, 255, 0.08),
+    0 18px 36px -16px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(6, 182, 212, 0.32);
 }
 
 /* Clay value cards */
@@ -266,10 +235,8 @@ em.lf-text-cyan-gradient {
 
 /* Feature badge glass cards */
 .lf-feature-glass {
-  background: rgba(10, 22, 40, 0.55);
+  background: rgba(10, 22, 40, 0.72);
   border: 1px solid rgba(6, 182, 212, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow:
     0 8px 32px -8px rgba(0, 0, 0, 0.5),
     0 0 24px -8px rgba(6, 182, 212, 0.12),
@@ -549,8 +516,7 @@ em.lf-text-cyan-gradient {
   height: 100%;
   border-radius: 16px;
   transform: scaleY(-1);
-  opacity: 0.2;
-  filter: blur(2px);
+  opacity: 0.18;
   overflow: hidden;
   pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
@@ -606,7 +572,6 @@ em.lf-text-cyan-gradient {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   z-index: 200;
 }
 
@@ -691,9 +656,7 @@ em.lf-text-cyan-gradient {
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(6, 182, 212, 0.12);
-  background: rgba(10, 22, 40, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(10, 22, 40, 0.88);
 }
 
 .lf-app-card-media {
@@ -848,9 +811,7 @@ em.lf-text-cyan-gradient {
 .lf-service-card {
   border-radius: 1rem;
   border: 1px solid rgba(6, 182, 212, 0.15);
-  background: rgba(10, 22, 40, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 22, 40, 0.88);
   padding: 1.25rem 1.5rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -939,9 +900,7 @@ em.lf-text-cyan-gradient {
 .lf-founder-panel {
   border-radius: 1.25rem;
   border: 1px solid rgba(6, 182, 212, 0.15);
-  background: rgba(10, 22, 40, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 22, 40, 0.88);
   padding: 2rem;
 }
 

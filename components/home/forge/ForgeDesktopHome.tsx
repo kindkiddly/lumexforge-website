@@ -356,7 +356,6 @@ function CoverflowCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = COVERFLOW_CARDS.length;
 
   const updateIndex = useCallback(
@@ -384,36 +383,6 @@ function CoverflowCarousel() {
     [currentIndex, updateIndex]
   );
 
-  const stopAutoplay = useCallback(() => {
-    if (autoplayRef.current) {
-      clearInterval(autoplayRef.current);
-      autoplayRef.current = null;
-    }
-  }, []);
-
-  const startAutoplay = useCallback(() => {
-    if (autoplayRef.current) return;
-    autoplayRef.current = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const next = (prev + 1) % total;
-        setIsAnimating(true);
-        window.setTimeout(() => setIsAnimating(false), 600);
-        return next;
-      });
-    }, 4000);
-  }, [total]);
-
-  const handleUserInteraction = useCallback(() => {
-    stopAutoplay();
-  }, [stopAutoplay]);
-
-  useEffect(() => {
-    startAutoplay();
-    return () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
-    };
-  }, [startAutoplay]);
-
   useEffect(() => {
     containerRef.current?.focus();
   }, []);
@@ -431,11 +400,9 @@ function CoverflowCarousel() {
         aria-roledescription="carousel"
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft") {
-            handleUserInteraction();
             navigate(-1);
           }
           if (e.key === "ArrowRight") {
-            handleUserInteraction();
             navigate(1);
           }
         }}
@@ -460,10 +427,7 @@ function CoverflowCarousel() {
                 key={card.id}
                 className={`lf-coverflow-item${isActive ? " active" : ""}`}
                 style={{ transform, opacity, zIndex }}
-                onClick={() => {
-                  handleUserInteraction();
-                  goToIndex(index);
-                }}
+                onClick={() => goToIndex(index)}
                 role="button"
                 tabIndex={-1}
                 aria-hidden={!isActive}
@@ -500,10 +464,7 @@ function CoverflowCarousel() {
           type="button"
           className="lf-coverflow-nav prev"
           aria-label="Previous slide"
-          onClick={() => {
-            handleUserInteraction();
-            navigate(-1);
-          }}
+          onClick={() => navigate(-1)}
         >
           ‹
         </button>
@@ -511,10 +472,7 @@ function CoverflowCarousel() {
           type="button"
           className="lf-coverflow-nav next"
           aria-label="Next slide"
-          onClick={() => {
-            handleUserInteraction();
-            navigate(1);
-          }}
+          onClick={() => navigate(1)}
         >
           ›
         </button>
@@ -550,13 +508,6 @@ export function ForgeDesktopHome() {
           className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_40%_at_80%_70%,rgba(59,130,246,0.1),transparent_60%)]"
           aria-hidden="true"
         />
-
-        <div className="lf-particles absolute inset-0 -z-10" aria-hidden="true">
-          <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--blue" />
-          <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--blue" />
-        </div>
 
         <div className="mx-auto w-full max-w-7xl px-6">
           <FadeInUp className="text-center">

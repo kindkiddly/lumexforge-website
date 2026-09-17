@@ -61,7 +61,7 @@ export function Navbar() {
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">
-            <div className="flex items-center rounded-full border border-white/[0.06] bg-white/[0.03] p-1 backdrop-blur-sm">
+            <div className="flex items-center rounded-full border border-white/[0.06] bg-white/[0.06] p-1">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -117,7 +117,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 top-16 z-40 bg-background/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 top-16 z-40 bg-background/80 md:hidden"
               onClick={() => setMobileOpen(false)}
               aria-hidden="true"
             />
@@ -126,7 +126,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-0 right-0 top-full border-b border-white/[0.06] bg-[#000814]/95 backdrop-blur-2xl md:hidden"
+              className="absolute left-0 right-0 top-full border-b border-white/[0.06] bg-[#000814] md:hidden"
             >
               <Container className="py-6">
                 <div className="flex flex-col gap-1">
