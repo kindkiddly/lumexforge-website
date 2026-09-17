@@ -156,21 +156,23 @@ em.lf-text-cyan-gradient {
 }
 
 @media (max-width: 767px) {
+  /* Keep carousel card frame at the original 380px size — do not shrink */
   .lf-hero-carousel .lf-coverflow-container {
-    height: 300px;
-    min-height: 300px;
-    max-height: 300px;
+    height: 380px;
+    min-height: 380px;
+    max-height: 380px;
   }
 
   .lf-hero-carousel .lf-coverflow {
-    height: 260px;
+    height: 380px;
   }
 
   .lf-hero-carousel .lf-coverflow-item {
-    width: 260px;
-    height: 260px;
+    width: 380px;
+    height: 380px;
   }
 
+  /* Caption stays tight under the cards so both fit the mobile viewport */
   .lf-coverflow-info {
     margin-top: 0.25rem;
   }

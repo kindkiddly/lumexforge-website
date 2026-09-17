@@ -1,9 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  GhostWriterServices,
-  type GwhIconId,
-} from "@/components/products/GhostWriterServices";
 import { ProductsNav } from "@/components/products/ProductsNav";
 
 type ProductStatus = "live" | "dev" | "soon";
@@ -19,8 +15,6 @@ type ShowcaseProduct = {
   statusLabel: string;
   platforms: string;
   features: { title: string; detail: string }[];
-  /** Premium service grid (GhostWriterHunt) */
-  serviceCatalog?: { title: string; detail: string; icon: GwhIconId }[];
   banner?: string;
   /** Banner aspect: default 1760×720; use "640" for 1760×640 assets */
   bannerAspect?: "720" | "640";
@@ -235,55 +229,38 @@ const PRODUCTS: ShowcaseProduct[] = [
     status: "soon",
     statusLabel: "Launching Soon",
     platforms: "Web & Mobile · Digital delivery",
-    features: [],
-    serviceCatalog: [
+    features: [
       {
         title: "Ghostwriting",
-        detail:
-          "Professional ghostwriters craft your complete book in your voice and vision — fiction, non-fiction, biography, memoir, business, and beyond. Any genre, any length, written to perfection.",
-        icon: "quill",
+        detail: "Complete books in your voice — any genre, any length.",
       },
       {
         title: "Book Cover Design",
-        detail:
-          "Custom covers that capture your story and stop readers instantly — designed for Amazon KDP, Kindle, Apple Books, Google Play Books, and more.",
-        icon: "palette",
+        detail: "Custom covers for KDP, Kindle, Apple Books, and more.",
       },
       {
-        title: "Interior Layout & Formatting",
-        detail:
-          "Every page designed with care — chapter headings, typography, spacing, page numbers, and a full interior layout refined for digital reading.",
-        icon: "layout",
+        title: "Interior Layout",
+        detail: "Typography, chapters, and full digital interior formatting.",
       },
       {
-        title: "Illustration & Graphics",
-        detail:
-          "Custom illustrations, chapter artwork, infographics, and visual storytelling — from children's book art to elegant non-fiction diagrams.",
-        icon: "brush",
+        title: "Illustration",
+        detail: "Custom art, chapter visuals, and graphics for your story.",
       },
       {
-        title: "Editing & Proofreading",
-        detail:
-          "Developmental editing, copy editing, and proofreading so your manuscript is polished, error-free, and publication ready.",
-        icon: "edit",
+        title: "Editing",
+        detail: "Developmental edit, copy edit, and final proofreading.",
       },
       {
         title: "eBook Conversion",
-        detail:
-          "Your finished book converted to ePub, MOBI, PDF, and KDP-ready files — compatible with every major digital reading platform.",
-        icon: "ebook",
+        detail: "ePub, MOBI, PDF, and KDP-ready files.",
       },
       {
-        title: "Digital Publishing Support",
-        detail:
-          "End-to-end assistance for Amazon KDP, Apple Books, Google Play Books, Smashwords, and more — including metadata, keywords, and listing optimization.",
-        icon: "globe",
+        title: "Digital Publishing",
+        detail: "Platform listing, metadata, and launch support.",
       },
       {
         title: "Author Branding",
-        detail:
-          "Author bio writing, website copy, social media presence, and brand identity guidance to establish a distinguished voice online.",
-        icon: "brand",
+        detail: "Bio, web copy, and a clear author presence online.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-GR.webp",
@@ -305,7 +282,6 @@ function StatusPill({ status, label }: { status: ProductStatus; label: string })
 
 function ProductSection({ product, index }: { product: ShowcaseProduct; index: number }) {
   const hasFeatures = product.features.length > 0;
-  const hasServices = Boolean(product.serviceCatalog && product.serviceCatalog.length > 0);
 
   return (
     <section id={product.id} className="lf-prod-section">
@@ -445,7 +421,9 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 {product.features.map((feature, i) => (
                   <div key={feature.title} className="lf-prod-feature-card">
                     <h3>
-                      <span className="lf-prod-feature-num">0{i + 1}</span>
+                      <span className="lf-prod-feature-num">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                       {feature.title}
                     </h3>
                     <p>{feature.detail}</p>
@@ -482,10 +460,6 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           </div>
         </div>
       </div>
-
-      {hasServices && product.serviceCatalog && (
-        <GhostWriterServices services={product.serviceCatalog} />
-      )}
     </section>
   );
 }
