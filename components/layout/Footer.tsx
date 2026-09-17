@@ -1,5 +1,4 @@
 import { Logo } from "@/components/shared/Logo";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CONTACT_EMAILS, FOOTER_LINKS, FOUNDER } from "@/lib/constants";
 import Link from "next/link";
@@ -29,9 +28,12 @@ export function Footer() {
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <p className="text-sm text-foreground-secondary">Ready to build something?</p>
-            <Button href="/contact" size="sm">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-[#031018] transition-all duration-300 bg-gradient-to-r from-[#22d3ee] via-[#06b6d4] to-[#3b82f6] shadow-[0_10px_28px_-12px_rgba(6,182,212,0.65)] hover:shadow-[0_14px_32px_-10px_rgba(6,182,212,0.8)] hover:-translate-y-0.5"
+            >
               Get In Touch
-            </Button>
+            </Link>
           </div>
         </div>
 
