@@ -135,7 +135,7 @@ export const productsMetadata = createMetadata({
 export const aboutMetadata = createMetadata({
   title: "About",
   description:
-    "Learn about LumexForge, an independent technology studio building innovative software, AI tools, and digital platforms.",
+    "LumexForge is an independent technology studio in Houston, USA — building mobile apps, AI products, and SaaS platforms with clarity and craft.",
   path: "/about",
 });
 
