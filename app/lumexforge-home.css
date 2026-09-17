@@ -58,6 +58,32 @@
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
+.lf-fade-up {
+  animation: lf-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--lf-fade-delay, 0s);
+}
+
+@keyframes lf-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lf-fade-up {
+    animation: none;
+  }
+
+  .lf-particle {
+    animation: none !important;
+  }
+}
+
 .lf-desktop-home h1,
 .lf-desktop-home h2,
 .lf-desktop-home h3 {

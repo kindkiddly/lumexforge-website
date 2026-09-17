@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { ProductsNav } from "@/components/products/ProductsNav";
 
 type ProductStatus = "live" | "dev" | "soon";
 
@@ -289,6 +287,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 alt={`${product.name} — ${product.category}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
+                quality={80}
                 className={
                   product.bannerAspect === "640"
                     ? "object-contain object-center"
@@ -309,6 +308,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                   alt=""
                   fill
                   sizes="(max-width: 900px) 100vw, 760px"
+                  quality={75}
                   className="object-cover object-center"
                 />
               </div>
@@ -337,6 +337,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 alt={`${product.name} feature showcase`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
+                quality={75}
                 className="object-contain object-center"
               />
             </div>
@@ -354,6 +355,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     alt={`${product.name} screen ${i + 1}`}
                     fill
                     sizes="140px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>
@@ -370,6 +372,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     alt={`${product.name} lifestyle ${i + 1}`}
                     fill
                     sizes="220px"
+                    quality={75}
                     className="object-cover object-center"
                   />
                 </div>
@@ -435,32 +438,9 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
 }
 
 export function ProductsShowcase() {
-  const [activeId, setActiveId] = useState(PRODUCTS[0]?.id ?? "");
-
-  useEffect(() => {
-    const nodes = PRODUCTS.map((p) => document.getElementById(p.id)).filter(
-      Boolean
-    ) as HTMLElement[];
-    if (nodes.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target?.id) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: "-35% 0px -45% 0px", threshold: [0.15, 0.35, 0.55] }
-    );
-
-    nodes.forEach((n) => observer.observe(n));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="lf-products-page">
       <div className="lf-products-glow" aria-hidden="true" />
-      <div className="lf-products-grain" aria-hidden="true" />
 
       <div className="lf-products-inner">
         <header className="lf-prod-hero">
@@ -474,20 +454,13 @@ export function ProductsShowcase() {
           </p>
         </header>
 
-        <nav className="lf-prod-nav-wrap" aria-label="Jump to product">
-          <div className="lf-prod-nav">
-            {PRODUCTS.map((product) => (
-              <a
-                key={product.id}
-                href={`#${product.id}`}
-                className={`lf-prod-nav-chip${activeId === product.id ? " is-active" : ""}`}
-              >
-                <span className="lf-prod-nav-num">{product.indexLabel}</span>
-                {product.name}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <ProductsNav
+          products={PRODUCTS.map((p) => ({
+            id: p.id,
+            indexLabel: p.indexLabel,
+            name: p.name,
+          }))}
+        />
 
         {PRODUCTS.map((product, index) => (
           <ProductSection key={product.id} product={product} index={index} />

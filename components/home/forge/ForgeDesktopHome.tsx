@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
-import QRCode from "react-qr-code";
+
+const QRCode = dynamic(() => import("react-qr-code"), { ssr: false });
 
 const PROTEINSNAPS_PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share";
@@ -21,15 +22,12 @@ function FadeInUp({
   delay?: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+    <div
+      className={`lf-fade-up${className ? ` ${className}` : ""}`}
+      style={delay ? ({ ["--lf-fade-delay" as string]: `${delay}s` } as React.CSSProperties) : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -105,9 +103,8 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     status: "Stay Tuned",
     initial: "?",
     placeholderClass: "lf-placeholder-stealth",
-    imageSrc: "/images/proteinsnaps/BG-3.webp",
   },
-] ;
+];
 
 type AppCard = {
   id: string;
@@ -263,8 +260,16 @@ function ProteinSnapsStoreFooter() {
   );
 }
 
-function CoverflowCardFace({ card }: { card: CoverflowCard }) {
-  if (card.imageSrc) {
+function CoverflowCardFace({
+  card,
+  load,
+  priority,
+}: {
+  card: CoverflowCard;
+  load: boolean;
+  priority?: boolean;
+}) {
+  if (card.imageSrc && load) {
     return (
       <div className="lf-coverflow-cover lf-coverflow-cover--image">
         <div className="lf-coverflow-image-slot">
@@ -273,8 +278,8 @@ function CoverflowCardFace({ card }: { card: CoverflowCard }) {
             alt={card.name}
             fill
             sizes="380px"
-            quality={100}
-            unoptimized
+            quality={80}
+            priority={priority}
             className="object-cover object-center"
           />
         </div>
@@ -443,6 +448,13 @@ function CoverflowCarousel() {
               total
             );
 
+            let offset = index - currentIndex;
+            if (offset > total / 2) offset -= total;
+            else if (offset < -total / 2) offset += total;
+            const absOffset = Math.abs(offset);
+            const shouldLoadImage = absOffset <= 2;
+            const shouldShowReflection = absOffset <= 1;
+
             return (
               <div
                 key={card.id}
@@ -457,17 +469,20 @@ function CoverflowCarousel() {
                 aria-hidden={!isActive}
                 aria-label={`${card.name}: ${card.tagline}`}
               >
-                <CoverflowCardFace card={card} />
+                <CoverflowCardFace
+                  card={card}
+                  load={shouldLoadImage}
+                  priority={isActive}
+                />
                 <div className="lf-coverflow-reflection" aria-hidden="true">
-                  {card.imageSrc ? (
+                  {card.imageSrc && shouldShowReflection ? (
                     <div className="lf-coverflow-reflection-inner relative overflow-hidden">
                       <Image
                         src={card.imageSrc}
                         alt=""
                         fill
                         sizes="380px"
-                        quality={100}
-                        unoptimized
+                        quality={60}
                         className="lf-coverflow-reflection-image"
                       />
                     </div>
@@ -541,12 +556,6 @@ export function ForgeDesktopHome() {
           <span className="lf-particle lf-particle--blue" />
           <span className="lf-particle lf-particle--cyan" />
           <span className="lf-particle lf-particle--blue" />
-          <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--blue" />
-          <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--blue" />
-          <span className="lf-particle lf-particle--cyan" />
-          <span className="lf-particle lf-particle--blue" />
         </div>
 
         <div className="mx-auto w-full max-w-7xl px-6">
@@ -584,6 +593,7 @@ export function ForgeDesktopHome() {
                         alt={app.name}
                         fill
                         sizes="(max-width: 896px) 50vw, 448px"
+                        quality={80}
                         className="object-cover object-center"
                       />
                     ) : (
