@@ -68,11 +68,8 @@ const PRODUCTS: ShowcaseProduct[] = [
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-PS.webp",
-    phones: [
-      "/images/proteinsnaps/PS-1.webp",
-      "/images/proteinsnaps/PS-4.webp",
-      "/images/proteinsnaps/PS-6.webp",
-    ],
+    secondaryBanner: "/images/lumexforge/LF-products/Products-PS1.webp",
+    secondaryAspect: "980",
     featured: true,
     primaryCta: {
       label: "Open ProteinSnaps",
