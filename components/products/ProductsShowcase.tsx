@@ -557,25 +557,6 @@ export function ProductsShowcase() {
             A curated line of mobile apps, AI products, and SaaS platforms — each crafted
             for clarity, usefulness, and long-term value.
           </p>
-          <motion.div
-            className="lf-prod-hero-stats"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2, ease }}
-          >
-            <div>
-              <strong>6</strong>
-              <span>Active products</span>
-            </div>
-            <div>
-              <strong>1</strong>
-              <span>Live on stores</span>
-            </div>
-            <div>
-              <strong>AI</strong>
-              <span>Across the stack</span>
-            </div>
-          </motion.div>
         </motion.header>
 
         <nav className="lf-prod-nav-wrap" aria-label="Jump to product">
