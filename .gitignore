@@ -34,6 +34,10 @@ yarn-error.log*
 LumexForge-images/
 lumexforge-images/
 
+# local leftovers / design reference kits (not part of the live site)
+.psl-thumbs/
+templatemo_*/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

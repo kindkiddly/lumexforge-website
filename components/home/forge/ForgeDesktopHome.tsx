@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const QRCode = dynamic(() => import("react-qr-code"), { ssr: false });
@@ -39,6 +40,8 @@ type CoverflowCard = {
   initial: string;
   placeholderClass: string;
   imageSrc?: string;
+  /** Product page deep link — studio card stays on home */
+  href?: string;
 };
 
 const COVERFLOW_CARDS: CoverflowCard[] = [
@@ -59,6 +62,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "PS",
     placeholderClass: "lf-placeholder-ps",
     imageSrc: "/images/lumexforge/LF-carousel/LF-2.webp",
+    href: "/products#proteinsnaps",
   },
   {
     id: "ammora",
@@ -68,6 +72,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "AM",
     placeholderClass: "lf-placeholder-am",
     imageSrc: "/images/lumexforge/LF-carousel/LF-3.webp",
+    href: "/products#ammora",
   },
   {
     id: "posthunt",
@@ -77,6 +82,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "PH",
     placeholderClass: "lf-placeholder-ph",
     imageSrc: "/images/lumexforge/LF-carousel/LF-4.webp",
+    href: "/products#posthunt",
   },
   {
     id: "mipaw",
@@ -86,6 +92,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "MP",
     placeholderClass: "lf-placeholder-mb",
     imageSrc: "/images/lumexforge/LF-carousel/LF-5.webp",
+    href: "/products#mipaw",
   },
   {
     id: "admina",
@@ -95,6 +102,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "AD",
     placeholderClass: "lf-placeholder-ps-ios",
     imageSrc: "/images/lumexforge/LF-carousel/LF-6.webp",
+    href: "/products#admina",
   },
   {
     id: "ghostwriterhunt",
@@ -104,6 +112,7 @@ const COVERFLOW_CARDS: CoverflowCard[] = [
     initial: "GR",
     placeholderClass: "lf-placeholder-studio",
     imageSrc: "/images/lumexforge/LF-carousel/LF-7.webp",
+    href: "/products#ghostwriterhunt",
   },
 ];
 
@@ -131,9 +140,9 @@ const APPS: AppCard[] = [
     placeholderClass: "lf-placeholder-ps",
     iconLabel: "PS",
     imageSrc: "/images/lumexforge/LF-app/LF-APP-PS.webp",
-    cta: "Visit App →",
-    href: "https://proteinsnaps.lumexforge.com",
-    external: true,
+    cta: "Learn More →",
+    href: "/products#proteinsnaps",
+    external: false,
   },
   {
     id: "posthunt",
@@ -145,7 +154,7 @@ const APPS: AppCard[] = [
     iconLabel: "PH",
     imageSrc: "/images/lumexforge/LF-app/LF-APP-PH.webp",
     cta: "Learn More →",
-    href: "/contact",
+    href: "/products#posthunt",
     external: false,
   },
   {
@@ -158,7 +167,7 @@ const APPS: AppCard[] = [
     iconLabel: "AM",
     imageSrc: "/images/lumexforge/LF-app/LF-APP-AM.webp",
     cta: "Learn More →",
-    href: "/contact",
+    href: "/products#ammora",
     external: false,
   },
   {
@@ -184,7 +193,7 @@ const APPS: AppCard[] = [
     iconLabel: "MP",
     imageSrc: "/images/lumexforge/LF-app/LF-APP-MP.webp",
     cta: "Learn More →",
-    href: "/contact",
+    href: "/products#mipaw",
     external: false,
   },
   {
@@ -197,7 +206,7 @@ const APPS: AppCard[] = [
     iconLabel: "AD",
     imageSrc: "/images/lumexforge/LF-app/LF-APP-AD.webp",
     cta: "Learn More →",
-    href: "/contact",
+    href: "/products#admina",
     external: false,
   },
 ];
@@ -354,6 +363,7 @@ function getCoverflowTransform(index: number, currentIndex: number, total: numbe
 }
 
 function CoverflowCarousel() {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -465,12 +475,20 @@ function CoverflowCarousel() {
                 style={{ transform, opacity, zIndex }}
                 onClick={() => {
                   stopAutoplay();
+                  if (isActive && card.href) {
+                    router.push(card.href);
+                    return;
+                  }
                   goToIndex(index);
                 }}
                 role="button"
                 tabIndex={-1}
                 aria-hidden={!isActive}
-                aria-label={`${card.name}: ${card.tagline}`}
+                aria-label={
+                  card.href
+                    ? `${card.name}: ${card.tagline}. Open product details.`
+                    : `${card.name}: ${card.tagline}`
+                }
               >
                 <CoverflowCardFace
                   card={card}
@@ -526,7 +544,11 @@ function CoverflowCarousel() {
 
       <div className="lf-coverflow-info text-center" aria-live="polite">
         <p key={activeCard.id} className="lf-coverflow-info-animate font-serif text-base font-semibold text-foreground sm:text-lg">
-          {activeCard.name}
+          {activeCard.href ? (
+            <Link href={activeCard.href}>{activeCard.name}</Link>
+          ) : (
+            activeCard.name
+          )}
         </p>
         <p
           key={`${activeCard.id}-desc`}
