@@ -223,12 +223,39 @@
 
 .lf-about-visual-frame {
   position: relative;
-  aspect-ratio: 21 / 9;
-  min-height: 12rem;
+  aspect-ratio: 1760 / 720;
+  width: 100%;
   overflow: hidden;
   border-radius: 1.1rem;
   border: 1px solid var(--ab-border);
   background: #07101e;
+}
+
+.lf-about-visual-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 40%, rgba(6, 182, 212, 0.12), transparent 60%),
+    linear-gradient(135deg, #07101e 0%, #0a1628 50%, #061018 100%);
+}
+
+.lf-about-visual-placeholder span {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.lf-about-visual-placeholder em {
+  font-style: normal;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ab-dim);
 }
 
 .lf-about-visual-overlay {

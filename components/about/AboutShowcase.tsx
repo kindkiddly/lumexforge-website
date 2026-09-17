@@ -2,7 +2,6 @@
 
 import { CONTACT_EMAILS, FOUNDER } from "@/lib/constants";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -19,7 +18,7 @@ const stagger = {
 
 const STATS = [
   { value: "5+", label: "Products in motion" },
-  { value: "2024", label: "Studio founded" },
+  { value: "2026", label: "Studio founded" },
   { value: "Houston", label: "USA headquarters" },
 ];
 
@@ -44,19 +43,19 @@ const FOCUS = [
 
 const JOURNEY = [
   {
-    year: "2024",
+    year: "2026",
     title: "LumexForge begins",
-    text: "An independent studio is founded in Houston, USA with one mandate: turn ambitious ideas into products people trust.",
+    text: "An independent studio is established with one mandate: turn ambitious ideas into products people trust.",
   },
   {
-    year: "2025",
-    title: "ProteinSnaps goes live",
+    year: "Live",
+    title: "ProteinSnaps ships",
     text: "Our first major release reaches iOS and Android — proving that craft, AI, and usefulness can ship together.",
   },
   {
-    year: "Now",
+    year: "Next",
     title: "Building the ecosystem",
-    text: "PostHunt, AMMORA, MiPaw, Bookora, and more advance under the same standard — from Houston to the world.",
+    text: "PostHunt, AMMORA, MiPaw, ADMINA, and more advance under the same standard of craft.",
   },
 ];
 
@@ -88,7 +87,7 @@ const PRODUCTS = [
   { label: "PostHunt", href: "/products#posthunt", note: "In development" },
   { label: "AMMORA", href: "/products#ammora", note: "In development" },
   { label: "MiPaw", href: "/products#mipaw", note: "Coming soon" },
-  { label: "Bookora", href: "/products#bookora", note: "Coming soon" },
+  { label: "ADMINA", href: "/products#admina", note: "Coming soon" },
 ];
 
 export function AboutShowcase() {
@@ -118,9 +117,8 @@ export function AboutShowcase() {
           </motion.p>
 
           <motion.div className="lf-about-meta" variants={fadeUp}>
-            <span className="lf-about-chip lf-about-chip--loc">Houston, USA</span>
             <span className="lf-about-chip">Independent Studio</span>
-            <span className="lf-about-chip">Est. 2024</span>
+            <span className="lf-about-chip">Est. 2026</span>
             <span className="lf-about-chip">Mobile · AI · SaaS</span>
           </motion.div>
 
@@ -143,7 +141,7 @@ export function AboutShowcase() {
           </motion.div>
         </motion.header>
 
-        {/* Visual band */}
+        {/* Visual band — drop About-hero.webp here when ready (1760×720) */}
         <motion.section
           className="lf-about-visual"
           initial="hidden"
@@ -152,18 +150,24 @@ export function AboutShowcase() {
           variants={fadeUp}
         >
           <div className="lf-about-visual-frame">
+            <div className="lf-about-visual-placeholder" aria-hidden="true">
+              <span>About hero image</span>
+              <em>1760 × 720 · WebP</em>
+            </div>
+            {/* Uncomment when asset is ready:
             <Image
-              src="/images/lumexforge/LF-carousel/LF-4.webp"
-              alt="LumexForge studio — Houston, USA"
+              src="/images/lumexforge/LF-about/About-hero.webp"
+              alt="LumexForge studio atmosphere"
               fill
-              sizes="(max-width: 900px) 100vw, 1120px"
+              sizes="(max-width: 900px) 100vw, 1152px"
               className="object-cover object-center"
               priority
             />
+            */}
             <div className="lf-about-visual-overlay" aria-hidden="true" />
             <div className="lf-about-visual-caption">
-              <span>Houston, USA</span>
-              <p>Home base for a studio building for the world</p>
+              <span>Studio atmosphere</span>
+              <p>Building products with clarity and craft</p>
             </div>
           </div>
         </motion.section>
@@ -188,8 +192,8 @@ export function AboutShowcase() {
               <p>
                 LumexForge was founded on a simple conviction: technology should feel
                 inevitable — elegant enough to disappear into daily life, powerful enough
-                to change what is possible. From Houston, USA, we design and ship products
-                that turn complexity into clarity.
+                to change what is possible. We design and ship products that turn
+                complexity into clarity.
               </p>
               <p>
                 We do not chase trends for their own sake. We study real human needs —
@@ -199,7 +203,7 @@ export function AboutShowcase() {
               </p>
               <p>
                 ProteinSnaps is already live on iOS and Android. PostHunt, AMMORA, MiPaw,
-                Bookora, and more are advancing with the same standard of craft. One studio.
+                ADMINA, and more are advancing with the same standard of craft. One studio.
                 One bar for quality. A growing family of products built to last.
               </p>
             </motion.div>
@@ -210,7 +214,7 @@ export function AboutShowcase() {
                 Create technology that empowers, simplifies, and inspires — then ship it
                 with uncompromising care.
               </p>
-              <p className="lf-about-mission-attr">LumexForge · Houston, USA</p>
+              <p className="lf-about-mission-attr">Mission · LumexForge</p>
             </motion.aside>
           </div>
         </motion.section>
@@ -227,8 +231,8 @@ export function AboutShowcase() {
             <p className="lf-about-eyebrow">The journey</p>
             <h2 className="lf-about-h2">Milestones that shaped the studio</h2>
             <p className="lf-about-sub">
-              A focused path from founding in Houston to shipping live products — and
-              building what comes next.
+              A focused path from founding to shipping live products — and building what
+              comes next.
             </p>
           </motion.div>
 
@@ -341,7 +345,6 @@ export function AboutShowcase() {
                 From nutrition and pet wellness to emotional AI, social automation, and
                 business systems, he leads with a long-term lens — creating software that
                 feels personal, performs reliably, and earns trust one release at a time.
-                Houston is home base; the ambition is worldwide.
               </p>
               <p>
                 Every product under LumexForge carries the same promise: clarity over noise,
@@ -375,7 +378,7 @@ export function AboutShowcase() {
           <h2 className="lf-about-h2">Building something that deserves permanence?</h2>
           <p className="lf-about-cta-lead">
             Whether you are launching a product or shaping the next chapter of an idea —
-            LumexForge partners from concept to launch, from Houston, USA to the world.
+            LumexForge partners from concept to launch.
           </p>
           <div className="lf-about-actions lf-about-actions--center">
             <Link href="/contact" className="lf-about-btn lf-about-btn--primary">

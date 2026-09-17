@@ -23,8 +23,8 @@ type ShowcaseProduct = {
   bannerAspect?: "720" | "640";
   /** Full-width secondary image under the main banner (natural aspect, no stretch) */
   secondaryBanner?: string;
-  /** Secondary aspect: "980" = 1760×980, "640" = 1760×640 */
-  secondaryAspect?: "980" | "640";
+  /** Secondary aspect: "980" = 1760×980, "974" = 1760×974, "640" = 1760×640 */
+  secondaryAspect?: "980" | "974" | "640";
   /** Portrait phone UI shots — rendered in device frames under the banner */
   phones?: string[];
   /** Optional landscape thumbs under banner (non-phone apps) */
@@ -187,13 +187,13 @@ const PRODUCTS: ShowcaseProduct[] = [
     secondaryCta: { label: "Talk to the Studio", href: "/contact" },
   },
   {
-    id: "bookora",
+    id: "admina",
     indexLabel: "05",
-    name: "Bookora",
+    name: "ADMINA",
     category: "Business ERP",
     tagline: "Run your entire business. All in one system.",
     description:
-      "Bookora ERP brings sales, finance, inventory, and HR together for smarter, faster operations. From CRM and purchasing to accounting, projects, and payroll — one secure system for real-time insight, automation, multi-branch control, and scalable growth.",
+      "ADMINA ERP brings sales, finance, inventory, and HR together for smarter, faster operations. From CRM and purchasing to accounting, projects, and payroll — one secure system for real-time insight, automation, multi-branch control, and scalable growth.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Web first · Mobile planned",
@@ -215,9 +215,9 @@ const PRODUCTS: ShowcaseProduct[] = [
         detail: "Team attendance, salaries, tasks, and timelines — built to scale.",
       },
     ],
-    banner: "/images/lumexforge/LF-products/Products-BK.webp",
-    secondaryBanner: "/images/lumexforge/LF-products/Products-BK1.webp",
-    secondaryAspect: "980",
+    banner: "/images/lumexforge/LF-products/Products-Admina.webp",
+    secondaryBanner: "/images/lumexforge/LF-products/Products-Admina1.webp",
+    secondaryAspect: "974",
     primaryCta: { label: "Request a Demo", href: "/contact" },
     secondaryCta: { label: "Contact LumexForge", href: "/contact" },
   },
@@ -361,7 +361,9 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
               className={`lf-prod-secondary-banner${
                 product.secondaryAspect === "640"
                   ? " lf-prod-secondary-banner--640"
-                  : " lf-prod-secondary-banner--980"
+                  : product.secondaryAspect === "974"
+                    ? " lf-prod-secondary-banner--974"
+                    : " lf-prod-secondary-banner--980"
               }`}
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : undefined}

@@ -13,7 +13,7 @@ export const IMAGES = {
     future: "/images/proteinsnaps/BG-1.webp",
     posthunt: "/images/lumexforge/LF-products/Products-PH.webp",
     mipaw: "/images/lumexforge/LF-products/Products-MP.webp",
-    bookora: "/images/lumexforge/LF-products/Products-BK.webp",
+    admina: "/images/lumexforge/LF-products/Products-Admina.webp",
   },
   proteinsnapMobile: "/images/proteinsnap-mobile.png",
   proteinsnapScreenshot2: "/images/proteinsnap-screenshot-2.jpg",
@@ -28,7 +28,7 @@ export const PRODUCT_IMAGE_MAP: Record<string, string> = {
   future: IMAGES.products.future,
   posthunt: IMAGES.products.posthunt,
   mipaw: IMAGES.products.mipaw,
-  bookora: IMAGES.products.bookora,
+  admina: IMAGES.products.admina,
 };
 
 export const PRODUCT_FEATURED_IMAGE_MAP: Record<string, string> = {
