@@ -7,20 +7,14 @@ import Link from "next/link";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease } },
 };
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.06 } },
 };
-
-const STATS = [
-  { value: "5+", label: "Products in motion" },
-  { value: "2026", label: "Studio founded" },
-  { value: "Houston", label: "USA headquarters" },
-];
 
 const FOCUS = [
   {
@@ -97,7 +91,6 @@ export function AboutShowcase() {
       <div className="lf-about-grain" aria-hidden="true" />
 
       <div className="lf-about-inner">
-        {/* Hero */}
         <motion.header
           className="lf-about-hero"
           initial="hidden"
@@ -115,33 +108,8 @@ export function AboutShowcase() {
             <strong>Houston, USA</strong> — building mobile apps, AI products, and SaaS
             platforms designed for clarity, usefulness, and long-term value.
           </motion.p>
-
-          <motion.div className="lf-about-meta" variants={fadeUp}>
-            <span className="lf-about-chip">Independent Studio</span>
-            <span className="lf-about-chip">Est. 2026</span>
-            <span className="lf-about-chip">Mobile · AI · SaaS</span>
-          </motion.div>
-
-          <motion.div className="lf-about-actions" variants={fadeUp}>
-            <Link href="/products" className="lf-about-btn lf-about-btn--primary">
-              Explore Products <span aria-hidden="true">→</span>
-            </Link>
-            <Link href="/contact" className="lf-about-btn lf-about-btn--glass">
-              Get In Touch
-            </Link>
-          </motion.div>
-
-          <motion.div className="lf-about-stats" variants={fadeUp}>
-            {STATS.map((s) => (
-              <div key={s.label} className="lf-about-stat">
-                <strong>{s.value}</strong>
-                <span>{s.label}</span>
-              </div>
-            ))}
-          </motion.div>
         </motion.header>
 
-        {/* Visual band — drop About-hero.webp here when ready (1760×720) */}
         <motion.section
           className="lf-about-visual"
           initial="hidden"
@@ -154,16 +122,6 @@ export function AboutShowcase() {
               <span>About hero image</span>
               <em>1760 × 720 · WebP</em>
             </div>
-            {/* Uncomment when asset is ready:
-            <Image
-              src="/images/lumexforge/LF-about/About-hero.webp"
-              alt="LumexForge studio atmosphere"
-              fill
-              sizes="(max-width: 900px) 100vw, 1152px"
-              className="object-cover object-center"
-              priority
-            />
-            */}
             <div className="lf-about-visual-overlay" aria-hidden="true" />
             <div className="lf-about-visual-caption">
               <span>Studio atmosphere</span>
@@ -172,7 +130,6 @@ export function AboutShowcase() {
           </div>
         </motion.section>
 
-        {/* Story */}
         <motion.section
           className="lf-about-block"
           initial="hidden"
@@ -219,7 +176,6 @@ export function AboutShowcase() {
           </div>
         </motion.section>
 
-        {/* Journey */}
         <motion.section
           className="lf-about-block"
           initial="hidden"
@@ -230,24 +186,21 @@ export function AboutShowcase() {
           <motion.div variants={fadeUp}>
             <p className="lf-about-eyebrow">The journey</p>
             <h2 className="lf-about-h2">Milestones that shaped the studio</h2>
-            <p className="lf-about-sub">
-              A focused path from founding to shipping live products — and building what
-              comes next.
-            </p>
           </motion.div>
 
           <div className="lf-about-timeline">
             {JOURNEY.map((item) => (
               <motion.article key={item.year} className="lf-about-timeline-item" variants={fadeUp}>
                 <span className="lf-about-timeline-year">{item.year}</span>
-                <h3 className="lf-about-timeline-title">{item.title}</h3>
-                <p>{item.text}</p>
+                <div>
+                  <h3 className="lf-about-timeline-title">{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
               </motion.article>
             ))}
           </div>
         </motion.section>
 
-        {/* What we build */}
         <motion.section
           className="lf-about-block"
           initial="hidden"
@@ -258,15 +211,11 @@ export function AboutShowcase() {
           <motion.div variants={fadeUp}>
             <p className="lf-about-eyebrow">What we build</p>
             <h2 className="lf-about-h2">Capabilities shaped by real products</h2>
-            <p className="lf-about-sub">
-              Mobile, AI, platforms, and automation — practiced in shipping software, not
-              just slide decks.
-            </p>
           </motion.div>
 
           <div className="lf-about-focus">
             {FOCUS.map((f) => (
-              <motion.div key={f.title} className="lf-about-focus-card" variants={fadeUp}>
+              <motion.div key={f.title} className="lf-about-focus-row" variants={fadeUp}>
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
               </motion.div>
@@ -274,11 +223,11 @@ export function AboutShowcase() {
           </div>
 
           <motion.div className="lf-about-products-row" variants={fadeUp}>
-            <p className="lf-about-eyebrow">In the ecosystem</p>
+            <span className="lf-about-inline-label">Ecosystem</span>
             <div className="lf-about-products">
               {PRODUCTS.map((p) => (
                 <Link key={p.label} href={p.href} className="lf-about-product-link">
-                  <span>{p.label}</span>
+                  {p.label}
                   <em>{p.note}</em>
                 </Link>
               ))}
@@ -286,7 +235,6 @@ export function AboutShowcase() {
           </motion.div>
         </motion.section>
 
-        {/* Values */}
         <motion.section
           className="lf-about-block"
           initial="hidden"
@@ -294,12 +242,9 @@ export function AboutShowcase() {
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
         >
-          <motion.div className="lf-about-center" variants={fadeUp}>
+          <motion.div variants={fadeUp}>
             <p className="lf-about-eyebrow">What drives us</p>
             <h2 className="lf-about-h2">Values we build with</h2>
-            <p className="lf-about-sub">
-              Four principles that guide every decision — from first sketch to final ship.
-            </p>
           </motion.div>
 
           <div className="lf-about-values">
@@ -313,7 +258,6 @@ export function AboutShowcase() {
           </div>
         </motion.section>
 
-        {/* Founder */}
         <motion.section
           className="lf-about-block lf-about-founder"
           initial="hidden"
@@ -324,7 +268,7 @@ export function AboutShowcase() {
           <motion.div className="lf-about-photo" variants={fadeUp}>
             <div className="lf-about-photo-placeholder" aria-label="Founder photo placeholder">
               <strong>AR</strong>
-              <span>Photo coming soon</span>
+              <span>Photo soon</span>
             </div>
           </motion.div>
 
@@ -352,43 +296,56 @@ export function AboutShowcase() {
               </p>
             </div>
 
-            <div className="lf-about-actions">
+            <div className="lf-about-bar">
               <Link href="/contact" className="lf-about-btn lf-about-btn--primary">
-                Connect with the Studio <span aria-hidden="true">→</span>
+                Connect <span aria-hidden="true">→</span>
               </Link>
-              <a
-                href={`mailto:${CONTACT_EMAILS.business}`}
-                className="lf-about-btn lf-about-btn--glass"
-              >
+              <a href={`mailto:${CONTACT_EMAILS.business}`} className="lf-about-btn lf-about-btn--ghost">
                 {CONTACT_EMAILS.business}
               </a>
             </div>
           </motion.div>
         </motion.section>
 
-        {/* CTA */}
+        {/* Bottom studio bar — meta, stats, actions (moved from hero) */}
         <motion.section
-          className="lf-about-cta"
+          className="lf-about-foot"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.35 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
         >
-          <p className="lf-about-eyebrow">Partnership</p>
-          <h2 className="lf-about-h2">Building something that deserves permanence?</h2>
-          <p className="lf-about-cta-lead">
-            Whether you are launching a product or shaping the next chapter of an idea —
-            LumexForge partners from concept to launch.
-          </p>
-          <div className="lf-about-actions lf-about-actions--center">
-            <Link href="/contact" className="lf-about-btn lf-about-btn--primary">
-              Start a Conversation <span aria-hidden="true">→</span>
+          <div className="lf-about-foot-meta">
+            <span>Independent Studio</span>
+            <span aria-hidden="true">·</span>
+            <span>Est. 2026</span>
+            <span aria-hidden="true">·</span>
+            <span>Mobile · AI · SaaS</span>
+          </div>
+
+          <div className="lf-about-foot-stats">
+            <span>
+              <strong>5+</strong> products
+            </span>
+            <span aria-hidden="true">·</span>
+            <span>
+              <strong>2026</strong> founded
+            </span>
+            <span aria-hidden="true">·</span>
+            <span>
+              <strong>Houston</strong> USA
+            </span>
+          </div>
+
+          <div className="lf-about-bar lf-about-bar--center">
+            <Link href="/products" className="lf-about-btn lf-about-btn--primary">
+              Explore Products <span aria-hidden="true">→</span>
             </Link>
-            <Link href="/products" className="lf-about-btn lf-about-btn--glass">
-              View Products
+            <Link href="/contact" className="lf-about-btn lf-about-btn--ghost">
+              Get In Touch
             </Link>
-            <Link href="/" className="lf-about-btn lf-about-btn--glass">
-              Back to Home
+            <Link href="/" className="lf-about-btn lf-about-btn--ghost">
+              Home
             </Link>
           </div>
         </motion.section>
