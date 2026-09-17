@@ -2,6 +2,7 @@
 
 import { CONTACT_EMAILS, FOUNDER } from "@/lib/constants";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -118,10 +119,16 @@ export function AboutShowcase() {
           variants={fadeUp}
         >
           <div className="lf-about-visual-frame">
-            <div className="lf-about-visual-placeholder" aria-hidden="true">
-              <span>About hero image</span>
-              <em>1760 × 720 · WebP</em>
-            </div>
+            <Image
+              src="/images/lumexforge/LF-about/About-hero.webp"
+              alt="LumexForge studio atmosphere"
+              fill
+              sizes="(max-width: 900px) 100vw, 1152px"
+              quality={100}
+              unoptimized
+              priority
+              className="object-cover object-center"
+            />
             <div className="lf-about-visual-overlay" aria-hidden="true" />
             <div className="lf-about-visual-caption">
               <span>Studio atmosphere</span>
