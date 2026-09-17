@@ -99,7 +99,7 @@ export function AboutShowcase() {
           variants={stagger}
         >
           <motion.p className="lf-about-eyebrow" variants={fadeUp}>
-            About LumexForge
+            Studio · About
           </motion.p>
           <motion.h1 className="lf-about-title" variants={fadeUp}>
             We forge digital products with <em>purpose</em>

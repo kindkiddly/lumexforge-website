@@ -212,7 +212,7 @@ export function ContactShowcase() {
           variants={{ show: { transition: { staggerChildren: 0.06 } } }}
         >
           <motion.p className="lf-contact-eyebrow" variants={fadeUp}>
-            Contact
+            Studio · Contact
           </motion.p>
           <motion.h1 className="lf-contact-title" variants={fadeUp}>
             Let&apos;s start a <em>conversation</em>
