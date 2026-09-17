@@ -168,7 +168,7 @@ const APPS: AppCard[] = [
     statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
     placeholderClass: "lf-placeholder-mb",
     iconLabel: "MB",
-    imageSrc: "/images/proteinsnaps/BG-6.webp",
+    imageSrc: "/images/lumexforge/LF-app/LF-APP-MB.webp",
     cta: "Learn More →",
     href: "/contact",
     external: false,
@@ -356,6 +356,7 @@ function CoverflowCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = COVERFLOW_CARDS.length;
 
   const updateIndex = useCallback(
@@ -383,9 +384,41 @@ function CoverflowCarousel() {
     [currentIndex, updateIndex]
   );
 
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     containerRef.current?.focus();
   }, []);
+
+  /* Auto-slide only on mobile viewports */
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+
+    const start = () => {
+      stopAutoplay();
+      if (!mq.matches) return;
+      autoplayRef.current = setInterval(() => {
+        setCurrentIndex((prev) => {
+          setIsAnimating(true);
+          window.setTimeout(() => setIsAnimating(false), 600);
+          return (prev + 1) % total;
+        });
+      }, 4000);
+    };
+
+    start();
+    const onChange = () => start();
+    mq.addEventListener("change", onChange);
+    return () => {
+      stopAutoplay();
+      mq.removeEventListener("change", onChange);
+    };
+  }, [stopAutoplay, total]);
 
   const activeCard = COVERFLOW_CARDS[currentIndex];
 
@@ -400,9 +433,11 @@ function CoverflowCarousel() {
         aria-roledescription="carousel"
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft") {
+            stopAutoplay();
             navigate(-1);
           }
           if (e.key === "ArrowRight") {
+            stopAutoplay();
             navigate(1);
           }
         }}
@@ -427,7 +462,10 @@ function CoverflowCarousel() {
                 key={card.id}
                 className={`lf-coverflow-item${isActive ? " active" : ""}`}
                 style={{ transform, opacity, zIndex }}
-                onClick={() => goToIndex(index)}
+                onClick={() => {
+                  stopAutoplay();
+                  goToIndex(index);
+                }}
                 role="button"
                 tabIndex={-1}
                 aria-hidden={!isActive}
@@ -464,7 +502,10 @@ function CoverflowCarousel() {
           type="button"
           className="lf-coverflow-nav prev"
           aria-label="Previous slide"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            stopAutoplay();
+            navigate(-1);
+          }}
         >
           ‹
         </button>
@@ -472,7 +513,10 @@ function CoverflowCarousel() {
           type="button"
           className="lf-coverflow-nav next"
           aria-label="Next slide"
-          onClick={() => navigate(1)}
+          onClick={() => {
+            stopAutoplay();
+            navigate(1);
+          }}
         >
           ›
         </button>
@@ -534,18 +578,17 @@ export function ForgeDesktopHome() {
           </FadeInUp>
 
           <div className="lf-apps-grid mt-3">
-            {APPS.map((app, index) => (
-              <FadeInUp key={app.id} delay={index * 0.08}>
-                <article className="lf-app-card lf-3d-card group">
+            {APPS.map((app) => (
+              <article key={app.id} className="lf-app-card lf-3d-card group">
                   <div className="lf-app-card-media">
                     {app.imageSrc ? (
                       <Image
                         src={app.imageSrc}
                         alt={app.name}
                         fill
-                        sizes="(max-width: 896px) 50vw, 448px"
+                        sizes="(max-width: 640px) 50vw, (max-width: 896px) 50vw, 448px"
                         quality={80}
-                        className="object-cover object-center"
+                        className="lf-app-card-image"
                       />
                     ) : (
                       <div
@@ -557,7 +600,7 @@ export function ForgeDesktopHome() {
                     )}
                   </div>
 
-                  <div className="px-5 pt-4 pb-3">
+                  <div className="lf-app-card-body">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <h3 className="font-serif text-base font-semibold tracking-tight text-foreground">
                         {app.name}
@@ -568,7 +611,7 @@ export function ForgeDesktopHome() {
                         {app.status}
                       </span>
                     </div>
-                    <p className="mt-1.5 line-clamp-1 text-sm text-foreground-muted">
+                    <p className="mt-1.5 line-clamp-2 text-sm text-foreground-muted sm:line-clamp-1">
                       {app.tagline}
                     </p>
                   </div>
@@ -594,7 +637,6 @@ export function ForgeDesktopHome() {
                     {app.id === "proteinsnaps" && <ProteinSnapsStoreFooter />}
                   </div>
                 </article>
-              </FadeInUp>
             ))}
           </div>
         </div>
