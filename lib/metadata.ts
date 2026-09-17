@@ -142,7 +142,7 @@ export const aboutMetadata = createMetadata({
 export const contactMetadata = createMetadata({
   title: "Contact",
   description:
-    "Get in touch with LumexForge for partnerships, business inquiries, or support.",
+    "Contact LumexForge for partnerships, business inquiries, or support. Independent technology studio based in Houston, USA.",
   path: "/contact",
 });
 
