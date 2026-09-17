@@ -1,9 +1,8 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type ProductStatus = "live" | "dev" | "soon";
 
@@ -258,24 +257,6 @@ const PRODUCTS: ShowcaseProduct[] = [
   },
 ];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const copyContainer = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.075, delayChildren: 0.08 },
-  },
-};
-
-const copyItem = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease },
-  },
-};
-
 function StatusPill({ status, label }: { status: ProductStatus; label: string }) {
   const cls =
     status === "live"
@@ -287,18 +268,8 @@ function StatusPill({ status, label }: { status: ProductStatus; label: string })
 }
 
 function ProductSection({ product, index }: { product: ShowcaseProduct; index: number }) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.22, margin: "0px 0px -8% 0px" });
-
   return (
-    <motion.section
-      ref={ref}
-      id={product.id}
-      className="lf-prod-section"
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.65, ease }}
-    >
+    <section id={product.id} className="lf-prod-section">
       <div
         className={[
           "lf-prod-panel",
@@ -308,12 +279,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           .filter(Boolean)
           .join(" ")}
       >
-        <motion.div
-          className="lf-prod-media"
-          initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 0.6, delay: 0.05, ease }}
-        >
+        <div className="lf-prod-media">
           {product.banner ? (
             <div
               className={`lf-prod-banner${product.bannerAspect === "640" ? " lf-prod-banner--640" : ""}`}
@@ -357,7 +323,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           ) : null}
 
           {product.secondaryBanner && (
-            <motion.div
+            <div
               className={`lf-prod-secondary-banner${
                 product.secondaryAspect === "640"
                   ? " lf-prod-secondary-banner--640"
@@ -365,9 +331,6 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     ? " lf-prod-secondary-banner--974"
                     : " lf-prod-secondary-banner--980"
               }`}
-              initial={{ opacity: 0, y: 14 }}
-              animate={inView ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.55, delay: 0.14, ease }}
             >
               <Image
                 src={product.secondaryBanner}
@@ -376,18 +339,15 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 sizes="(max-width: 900px) 100vw, 760px"
                 className="object-contain object-center"
               />
-            </motion.div>
+            </div>
           )}
 
           {product.phones && product.phones.length > 0 && (
             <div className="lf-prod-phones" aria-label={`${product.name} app screens`}>
               {product.phones.map((src, i) => (
-                <motion.div
+                <div
                   key={src}
                   className={`lf-prod-phone${i % 2 === 1 ? " lf-prod-phone--lift" : ""}`}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={inView ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.5, delay: 0.16 + i * 0.07, ease }}
                 >
                   <Image
                     src={src}
@@ -396,7 +356,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     sizes="140px"
                     className="object-cover object-top"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
@@ -404,13 +364,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           {product.gallery && product.gallery.length > 0 && (
             <div className="lf-prod-gallery">
               {product.gallery.map((src, i) => (
-                <motion.div
-                  key={src}
-                  className="lf-prod-gallery-item"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={inView ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.06, ease }}
-                >
+                <div key={src} className="lf-prod-gallery-item">
                   <Image
                     src={src}
                     alt={`${product.name} lifestyle ${i + 1}`}
@@ -418,74 +372,40 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     sizes="220px"
                     className="object-cover object-center"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="lf-prod-copy"
-          variants={copyContainer}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-        >
-          <motion.div className="lf-prod-copy-top" variants={copyItem}>
+        <div className="lf-prod-copy">
+          <div className="lf-prod-copy-top">
             <StatusPill status={product.status} label={product.statusLabel} />
             <span className="lf-prod-category">{product.category}</span>
-          </motion.div>
+          </div>
 
-          <motion.h2 className="lf-prod-name" variants={copyItem}>
-            {product.name}
-          </motion.h2>
-          <motion.span
-            className="lf-prod-name-rule"
-            aria-hidden="true"
-            variants={{
-              hidden: { scaleX: 0, opacity: 0 },
-              show: {
-                scaleX: 1,
-                opacity: 1,
-                transition: { duration: 0.65, ease },
-              },
-            }}
-            style={{ originX: 0 }}
-          />
+          <h2 className="lf-prod-name">{product.name}</h2>
+          <span className="lf-prod-name-rule" aria-hidden="true" />
 
-          <motion.p className="lf-prod-tagline" variants={copyItem}>
-            {product.tagline}
-          </motion.p>
-
-          <motion.p className="lf-prod-desc" variants={copyItem}>
-            {product.description}
-          </motion.p>
-
-          <motion.p className="lf-prod-features-label" variants={copyItem}>
-            What you get
-          </motion.p>
+          <p className="lf-prod-tagline">{product.tagline}</p>
+          <p className="lf-prod-desc">{product.description}</p>
+          <p className="lf-prod-features-label">What you get</p>
 
           <div className="lf-prod-feature-grid">
             {product.features.map((feature, i) => (
-              <motion.div
-                key={feature.title}
-                className="lf-prod-feature-card"
-                variants={copyItem}
-                custom={i}
-              >
+              <div key={feature.title} className="lf-prod-feature-card">
                 <h3>
                   <span className="lf-prod-feature-num">0{i + 1}</span>
                   {feature.title}
                 </h3>
                 <p>{feature.detail}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          <motion.p className="lf-prod-meta" variants={copyItem}>
-            {product.platforms}
-          </motion.p>
+          <p className="lf-prod-meta">{product.platforms}</p>
 
-          <motion.div className="lf-prod-actions" variants={copyItem}>
+          <div className="lf-prod-actions">
             {product.primaryCta.external ? (
               <a
                 href={product.primaryCta.href}
@@ -507,10 +427,10 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 {product.secondaryCta.label}
               </Link>
             )}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
@@ -543,12 +463,7 @@ export function ProductsShowcase() {
       <div className="lf-products-grain" aria-hidden="true" />
 
       <div className="lf-products-inner">
-        <motion.header
-          className="lf-prod-hero"
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease }}
-        >
+        <header className="lf-prod-hero">
           <p className="lf-prod-eyebrow">LumexForge Product Studio</p>
           <h1 className="lf-prod-title">
             Built with <em>intention</em>
@@ -557,7 +472,7 @@ export function ProductsShowcase() {
             A curated line of mobile apps, AI products, and SaaS platforms — each crafted
             for clarity, usefulness, and long-term value.
           </p>
-        </motion.header>
+        </header>
 
         <nav className="lf-prod-nav-wrap" aria-label="Jump to product">
           <div className="lf-prod-nav">
@@ -578,13 +493,7 @@ export function ProductsShowcase() {
           <ProductSection key={product.id} product={product} index={index} />
         ))}
 
-        <motion.div
-          className="lf-prod-footer-cta"
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease }}
-        >
+        <div className="lf-prod-footer-cta">
           <p className="lf-prod-eyebrow">Partnership</p>
           <h2>Have a product worth forging?</h2>
           <p>
@@ -599,7 +508,7 @@ export function ProductsShowcase() {
               Return Home
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

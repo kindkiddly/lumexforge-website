@@ -44,43 +44,6 @@
   padding: 0 1.35rem;
 }
 
-/* One cheap CSS entrance — no scroll observers */
-.lf-about-fade {
-  animation: lf-about-in 0.5s ease both;
-}
-
-@keyframes lf-about-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lf-about-fade {
-    animation: none;
-  }
-}
-
-/* Modern split hero */
-.lf-about-hero {
-  display: grid;
-  gap: 1.25rem;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 900px) {
-  .lf-about-hero {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 1.75rem;
-  }
-}
-
 .lf-about-eyebrow {
   margin: 0;
   font-size: 0.6875rem;
@@ -109,11 +72,11 @@
 }
 
 .lf-about-lead {
-  margin: 0.7rem 0 0;
+  margin: 0.7rem auto 0;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--ab-muted);
-  max-width: 32rem;
+  max-width: 34rem;
 }
 
 .lf-about-lead strong {
@@ -121,14 +84,61 @@
   font-weight: 600;
 }
 
-.lf-about-hero-media {
+.lf-about-hero {
+  max-width: 40rem;
+  margin: 0 auto 1.35rem;
+  text-align: center;
+}
+
+.lf-about-hero .lf-about-bar {
+  justify-content: center;
+}
+
+.lf-about-visual {
+  margin-bottom: 2rem;
+}
+
+.lf-about-visual-frame {
   position: relative;
-  aspect-ratio: 16 / 10;
-  border-radius: 1rem;
+  aspect-ratio: 1760 / 720;
+  width: 100%;
   overflow: hidden;
+  border-radius: 1rem;
   border: 1px solid rgba(34, 211, 238, 0.2);
   background: #07101e;
-  contain: paint;
+}
+
+.lf-about-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 8, 20, 0.55) 100%);
+  pointer-events: none;
+}
+
+.lf-about-visual-caption {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 1;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 8, 20, 0.55);
+}
+
+.lf-about-visual-caption span {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #67e8f9;
+}
+
+.lf-about-visual-caption p {
+  margin: 0.1rem 0 0;
+  font-size: 0.75rem;
+  color: #e2e8f0;
 }
 
 .lf-about-bar {
@@ -151,11 +161,6 @@
   border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 600;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-}
-
-.lf-about-btn:hover {
-  transform: translateY(-1px);
 }
 
 .lf-about-btn--primary {

@@ -61,38 +61,44 @@ export function AboutShowcase() {
       <div className="lf-about-bg" aria-hidden="true" />
 
       <div className="lf-about-inner">
-        <header className="lf-about-hero lf-about-fade">
-          <div className="lf-about-hero-copy">
-            <p className="lf-about-eyebrow">About</p>
-            <h1 className="lf-about-title">
-              We forge digital products with <em>purpose</em>
-            </h1>
-            <p className="lf-about-lead">
-              Independent technology studio in <strong>Houston, USA</strong> — mobile apps,
-              AI products, and SaaS built for clarity and lasting value.
-            </p>
-            <div className="lf-about-bar">
-              <Link href="/products" className="lf-about-btn lf-about-btn--primary">
-                Products <span aria-hidden="true">→</span>
-              </Link>
-              <Link href="/contact" className="lf-about-btn lf-about-btn--ghost">
-                Contact
-              </Link>
-            </div>
+        <header className="lf-about-hero">
+          <p className="lf-about-eyebrow">About</p>
+          <h1 className="lf-about-title">
+            We forge digital products with <em>purpose</em>
+          </h1>
+          <p className="lf-about-lead">
+            Independent technology studio in <strong>Houston, USA</strong> — mobile apps,
+            AI products, and SaaS built for clarity and lasting value.
+          </p>
+          <div className="lf-about-bar">
+            <Link href="/products" className="lf-about-btn lf-about-btn--primary">
+              Products <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="/contact" className="lf-about-btn lf-about-btn--ghost">
+              Contact
+            </Link>
           </div>
+        </header>
 
-          <div className="lf-about-hero-media">
+        <section className="lf-about-visual">
+          <div className="lf-about-visual-frame">
             <Image
               src="/images/lumexforge/LF-about/About-hero.webp"
-              alt="LumexForge studio"
+              alt="LumexForge studio atmosphere"
               fill
-              sizes="(max-width: 900px) 100vw, 520px"
-              quality={80}
+              sizes="(max-width: 900px) 100vw, 1152px"
+              quality={100}
+              unoptimized
               priority
               className="object-cover object-center"
             />
+            <div className="lf-about-visual-overlay" aria-hidden="true" />
+            <div className="lf-about-visual-caption">
+              <span>Studio atmosphere</span>
+              <p>Building products with clarity and craft</p>
+            </div>
           </div>
-        </header>
+        </section>
 
         <section className="lf-about-block">
           <p className="lf-about-eyebrow">Story</p>
