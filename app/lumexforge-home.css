@@ -34,6 +34,7 @@
   padding: 0.5rem 1.25rem;
   min-height: 2.5rem;
   border-radius: 999px;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: #031018;
@@ -54,6 +55,29 @@
 .lf-desktop-home {
   background-color: #000814;
   color: #f8fafc;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.lf-desktop-home h1,
+.lf-desktop-home h2,
+.lf-desktop-home h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.lf-desktop-home h1 {
+  font-weight: 700;
+}
+
+.lf-desktop-home h2,
+.lf-desktop-home h3 {
+  font-weight: 600;
+}
+
+.lf-desktop-home h1 em,
+.lf-desktop-home h2 em {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
 }
 
 .lf-text-cyan-gradient {
@@ -63,18 +87,24 @@
   color: transparent;
 }
 
+em.lf-text-cyan-gradient {
+  font-style: italic;
+}
+
 .lf-eyebrow-cyan {
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #06b6d4;
 }
 
 .lf-section-label {
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #06b6d4;
 }
@@ -83,8 +113,10 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 36rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.875rem;
-  line-height: 1.55;
+  font-weight: 400;
+  line-height: 1.7;
   color: #94a3b8;
 }
 
@@ -134,6 +166,7 @@
   justify-content: center;
   border-radius: 999px;
   padding: 0.4rem 0.95rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: #031018;
@@ -155,6 +188,7 @@
   justify-content: center;
   border-radius: 999px;
   padding: 0.4rem 0.95rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: #e2e8f0;
@@ -656,6 +690,7 @@
 }
 
 .lf-app-card-initial {
+  font-family: var(--font-playfair), Georgia, serif;
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -678,6 +713,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: #94a3b8;

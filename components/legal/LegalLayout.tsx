@@ -2,6 +2,20 @@ import Link from "next/link";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { Container } from "@/components/ui/Container";
 
+/** Italicize the last word for Playfair emphasis in legal headings */
+function withItalicEmphasis(text: string) {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= 1) {
+    return <em>{text}</em>;
+  }
+  const last = words.pop()!;
+  return (
+    <>
+      {words.join(" ")} <em>{last}</em>
+    </>
+  );
+}
+
 interface LegalLayoutProps {
   title: string;
   breadcrumbLabel: string;
@@ -23,7 +37,7 @@ export function LegalLayout({
         <AnimatedSection>
           <nav
             aria-label="Breadcrumb"
-            className="mb-6 text-sm text-foreground-secondary"
+            className="mb-6 font-sans text-sm font-normal text-foreground-secondary"
           >
             <Link
               href="/"
@@ -37,18 +51,18 @@ export function LegalLayout({
 
           {beforeTitle}
 
-          <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            {title}
+          <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {withItalicEmphasis(title)}
           </h1>
           {lastUpdated && (
-            <p className="mt-3 text-base text-foreground-secondary">
+            <p className="mt-3 font-sans text-base font-normal text-foreground-secondary">
               Last updated: {lastUpdated}
             </p>
           )}
         </AnimatedSection>
 
         <AnimatedSection
-          className="mt-10 space-y-10 text-base leading-[1.75] text-foreground-secondary"
+          className="mt-10 space-y-10 font-sans text-base font-normal leading-[1.7] text-foreground-secondary"
           delay={0.1}
         >
           {children}
@@ -67,9 +81,11 @@ export function LegalSection({ title, children }: LegalSectionProps) {
   return (
     <section>
       <h2 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
-        {title}
+        {withItalicEmphasis(title)}
       </h2>
-      <div className="mt-4 space-y-4 text-base leading-[1.75]">{children}</div>
+      <div className="mt-4 space-y-4 font-sans text-base font-normal leading-[1.7]">
+        {children}
+      </div>
     </section>
   );
 }

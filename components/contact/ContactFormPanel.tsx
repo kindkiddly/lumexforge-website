@@ -59,7 +59,9 @@ export function ContactFormPanel() {
     return (
       <div className="lf-contact-success" role="status" aria-live="polite">
         <div className="lf-contact-success-icon" aria-hidden="true">✓</div>
-        <h3>Message sent</h3>
+        <h3>
+          Message <em>sent</em>
+        </h3>
         <p>Thanks — we typically respond within 1–2 business days.</p>
         <button type="button" className="lf-contact-submit lf-contact-submit--ghost" onClick={() => setSubmitted(false)}>
           Send another
@@ -70,7 +72,9 @@ export function ContactFormPanel() {
 
   return (
     <>
-      <h2 className="lf-contact-form-title">Send a message</h2>
+      <h2 className="lf-contact-form-title">
+        Send a <em>message</em>
+      </h2>
       <p className="lf-contact-form-sub">We typically respond within 1–2 business days.</p>
       <form className="lf-contact-form" onSubmit={handleSubmit} noValidate>
         <div className="lf-contact-form-row">

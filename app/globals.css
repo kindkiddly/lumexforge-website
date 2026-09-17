@@ -23,10 +23,47 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 400;
     background-image:
       radial-gradient(ellipse 120% 80% at 50% -30%, rgba(79, 70, 229, 0.12), transparent 50%),
       radial-gradient(ellipse 60% 50% at 100% 0%, rgba(0, 194, 255, 0.06), transparent 40%);
     background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  h2,
+  h3 {
+    font-weight: 600;
+  }
+
+  h1 em,
+  h2 em {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-style: italic;
+    font-weight: inherit;
+  }
+
+  p {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  button,
+  [type="submit"],
+  [type="button"] {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 600;
   }
 
   ::selection {
@@ -74,18 +111,18 @@
   }
 
   .heading-display {
-    @apply font-bold tracking-tight text-foreground;
+    @apply font-serif font-bold tracking-tight text-foreground;
     letter-spacing: -0.03em;
   }
 
   .heading-section {
-    @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem];
+    @apply font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem];
     letter-spacing: -0.025em;
     line-height: 1.1;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent-secondary;
+    @apply font-sans text-xs font-medium uppercase tracking-[0.15em] text-accent-secondary;
   }
 
   .mesh-grid {
@@ -344,8 +381,9 @@
   }
 }
 
-/* Site footer  compact, aligned */
+/* Site footer — compact, aligned */
 .lf-site-footer {
+  font-family: var(--font-inter), system-ui, sans-serif;
   color: #94a3b8;
 }
 
@@ -387,9 +425,10 @@
 
 .lf-footer-col h3 {
   margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #e2e8f0;
 }
@@ -404,7 +443,9 @@
 }
 
 .lf-footer-col a {
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.8rem;
+  font-weight: 400;
   line-height: 1.35;
   color: #94a3b8;
   transition: color 0.2s ease;
@@ -441,6 +482,7 @@
   height: 1.85rem;
   padding: 0 0.85rem;
   border-radius: 999px;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: #031018;

@@ -495,7 +495,9 @@ export function ProductsShowcase() {
 
         <div className="lf-prod-footer-cta">
           <p className="lf-prod-eyebrow">Partnership</p>
-          <h2>Have a product worth forging?</h2>
+          <h2>
+            Have a product worth <em>forging?</em>
+          </h2>
           <p>
             From concept to launch, LumexForge builds intelligent digital products with
             disciplined craft — for founders, teams, and ideas that deserve permanence.

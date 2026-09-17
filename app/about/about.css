@@ -6,8 +6,8 @@
   --ab-dim: #64748b;
   --ab-accent: #22d3ee;
   --ab-line: rgba(255, 255, 255, 0.08);
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-body: var(--font-outfit), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   font-family: var(--font-body);
   color: var(--ab-ink);
   background: #000814;
@@ -47,9 +47,10 @@
 
 .lf-about-eyebrow {
   margin: 0;
+  font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ab-accent);
 }
@@ -58,7 +59,7 @@
   margin: 0.45rem 0 0;
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3.8vw, 2.75rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.15;
   overflow: visible;
@@ -66,8 +67,9 @@
 
 .lf-about-title em {
   display: inline-block;
+  font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0 0.14em 0 0.02em;
   background: linear-gradient(115deg, #a5f3fc, #38bdf8 55%, #60a5fa);
   -webkit-background-clip: text;
@@ -79,8 +81,10 @@
 
 .lf-about-lead {
   margin: 0.7rem auto 0;
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  line-height: 1.65;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--ab-muted);
   max-width: 34rem;
 }
@@ -165,6 +169,7 @@
   height: 2.1rem;
   padding: 0 0.9rem;
   border-radius: 999px;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
 }
@@ -205,6 +210,12 @@
   font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -0.025em;
+}
+
+.lf-about-h2 em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
 }
 
 .lf-about-story-grid {
@@ -290,8 +301,9 @@
 
 .lf-about-timeline-title {
   margin: 0.35rem 0 0;
+  font-family: var(--font-display);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #f8fafc;
 }
 
@@ -330,14 +342,17 @@
 
 .lf-about-bento-item h3 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .lf-about-bento-item p {
   margin: 0.3rem 0 0;
+  font-family: var(--font-body);
   font-size: 0.78rem;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--ab-muted);
 }
 
@@ -401,14 +416,17 @@
 
 .lf-about-value h3 {
   margin: 0.25rem 0 0;
+  font-family: var(--font-display);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .lf-about-value p {
   margin: 0.25rem 0 0;
+  font-family: var(--font-body);
   font-size: 0.72rem;
-  line-height: 1.45;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--ab-muted);
 }
 
@@ -441,8 +459,13 @@
   margin: 0.3rem 0 0;
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.lf-about-founder-name em {
+  font-style: italic;
+  font-weight: 700;
 }
 
 .lf-about-founder-role {

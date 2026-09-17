@@ -9,6 +9,19 @@ interface PageHeaderProps {
   align?: "left" | "center";
 }
 
+function withItalicEmphasis(text: string) {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= 1) {
+    return <em>{text}</em>;
+  }
+  const last = words.pop()!;
+  return (
+    <>
+      {words.join(" ")} <em>{last}</em>
+    </>
+  );
+}
+
 export function PageHeader({
   eyebrow,
   title,
@@ -24,11 +37,13 @@ export function PageHeader({
       )}
     >
       {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-      <h1 className="heading-section lg:text-5xl">{title}</h1>
+      <h1 className="heading-section font-bold lg:text-5xl">
+        {withItalicEmphasis(title)}
+      </h1>
       {description && (
         <p
           className={cn(
-            "mt-5 max-w-2xl text-lg leading-relaxed text-foreground-secondary",
+            "mt-5 max-w-2xl font-sans text-lg font-normal leading-[1.7] text-foreground-secondary",
             align === "center" && "mx-auto"
           )}
         >

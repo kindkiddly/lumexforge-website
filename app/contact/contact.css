@@ -6,8 +6,8 @@
   --ct-dim: #64748b;
   --ct-accent: #22d3ee;
   --ct-line: rgba(255, 255, 255, 0.08);
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-body: var(--font-outfit), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   font-family: var(--font-body);
   color: var(--ct-ink);
   background: #000814;
@@ -72,9 +72,10 @@
 
 .lf-contact-eyebrow {
   margin: 0;
+  font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ct-accent);
 }
@@ -83,14 +84,15 @@
   margin: 0.45rem 0 0;
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.1;
 }
 
 .lf-contact-title em {
+  font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 700;
   background: linear-gradient(115deg, #a5f3fc, #38bdf8 55%, #60a5fa);
   -webkit-background-clip: text;
   background-clip: text;
@@ -99,8 +101,10 @@
 
 .lf-contact-lead {
   margin: 0.65rem 0 0;
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  line-height: 1.65;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--ct-muted);
 }
 
@@ -127,9 +131,10 @@
 
 .lf-contact-side-label {
   margin: 0 0 0.55rem;
+  font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ct-accent);
 }
@@ -189,8 +194,13 @@
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.lf-contact-form-title em {
+  font-style: italic;
+  font-weight: 700;
 }
 
 .lf-contact-form-sub {
@@ -279,7 +289,7 @@
   margin-top: 0.15rem;
   border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 999px;
-  font-family: inherit;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
   color: #031018;
@@ -329,7 +339,11 @@
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.lf-contact-success h3 em {
+  font-style: italic;
 }
 
 .lf-contact-success p {

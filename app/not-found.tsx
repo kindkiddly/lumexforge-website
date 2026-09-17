@@ -5,11 +5,11 @@ export default function NotFound() {
   return (
     <div className="flex min-h-[70vh] items-center pt-24 pb-16">
       <Container className="text-center">
-        <p className="text-6xl font-bold tracking-tight text-accent-primary/30">404</p>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Page not found
+        <p className="font-serif text-6xl font-bold tracking-tight text-accent-primary/30">404</p>
+        <h1 className="mt-4 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          Page <em>not found</em>
         </h1>
-        <p className="mx-auto mt-4 max-w-md text-foreground-secondary">
+        <p className="mx-auto mt-4 max-w-md font-sans font-normal text-foreground-secondary">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

@@ -306,7 +306,7 @@ const SERVICES_RIGHT = [
 function ServiceListItem({ title, description }: { title: string; description: string }) {
   return (
     <p className="lf-service-list-item">
-      <span className="text-sm font-medium text-foreground">{title}</span>
+      <span className="font-sans text-sm font-medium text-foreground">{title}</span>
       <span className="text-foreground-muted" aria-hidden="true">
         {" "}
         ·{" "}
@@ -507,12 +507,12 @@ function CoverflowCarousel() {
       </div>
 
       <div className="lf-coverflow-info mt-2 text-center" aria-live="polite">
-        <p key={activeCard.id} className="lf-coverflow-info-animate text-lg font-semibold text-foreground">
+        <p key={activeCard.id} className="lf-coverflow-info-animate font-serif text-lg font-semibold text-foreground">
           {activeCard.name}
         </p>
         <p
           key={`${activeCard.id}-desc`}
-          className="lf-coverflow-info-animate mt-1 text-sm text-foreground-secondary"
+          className="lf-coverflow-info-animate mt-1 font-sans text-sm font-normal text-foreground-secondary"
         >
           {activeCard.tagline}
         </p>
@@ -551,10 +551,10 @@ export function ForgeDesktopHome() {
 
         <div className="mx-auto w-full max-w-7xl px-6">
           <FadeInUp className="text-center">
-            <h1 className="text-xl font-bold leading-tight tracking-tight">
+            <h1 className="text-xl font-serif font-bold leading-tight tracking-tight">
               <span className="text-foreground">We Forge</span>
               <br />
-              <span className="lf-text-cyan-gradient">Digital Products.</span>
+              <em className="lf-text-cyan-gradient">Digital Products.</em>
             </h1>
             <p className="lf-hero-subtitle mt-2">
               Mobile apps, AI products, and SaaS platforms — built with purpose, precision, and long-term value.
@@ -598,7 +598,7 @@ export function ForgeDesktopHome() {
 
                   <div className="px-5 pt-4 pb-3">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <h3 className="text-base font-bold tracking-tight text-foreground">
+                      <h3 className="font-serif text-base font-semibold tracking-tight text-foreground">
                         {app.name}
                       </h3>
                       <span
@@ -690,7 +690,9 @@ export function ForgeDesktopHome() {
       <section id="cta" className="lf-cta-section py-10">
         <FadeInUp>
           <div className="mx-auto max-w-xl px-6 text-center">
-            <h2 className="text-xl font-semibold text-foreground">Let&apos;s build something great.</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground">
+              Let&apos;s build <em>something great.</em>
+            </h2>
             <p className="mt-3 text-sm text-foreground-muted">
               Explore our work or reach out directly.
             </p>

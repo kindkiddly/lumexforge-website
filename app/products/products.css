@@ -7,8 +7,8 @@
   --lf-prod-muted: #94a3b8;
   --lf-prod-dim: #64748b;
   --lf-prod-border: rgba(6, 182, 212, 0.16);
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-body: var(--font-outfit), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   font-family: var(--font-body);
   color: var(--lf-prod-ink);
   background: #000814;
@@ -63,9 +63,10 @@
 }
 
 .lf-prod-eyebrow {
+  font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--lf-prod-cyan);
 }
@@ -74,15 +75,16 @@
   margin-top: 0.875rem;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.2vw, 2.85rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.08;
   color: var(--lf-prod-ink);
 }
 
 .lf-prod-title em {
+  font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 700;
   background: linear-gradient(115deg, #a5f3fc 0%, #38bdf8 40%, #818cf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -91,6 +93,7 @@
 
 .lf-prod-lead {
   margin-top: 1.125rem;
+  font-family: var(--font-body);
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.7;
@@ -148,6 +151,7 @@
   border: 1px solid transparent;
   background: transparent;
   color: rgba(148, 163, 184, 0.95);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -407,7 +411,7 @@
   margin-top: 0.85rem;
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.6vw, 1.95rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.12;
   color: var(--lf-prod-ink);
@@ -443,18 +447,20 @@
 
 .lf-prod-desc {
   margin-top: 0.9rem;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.78;
+  line-height: 1.7;
   color: var(--lf-prod-muted);
 }
 
 .lf-prod-features-label {
   margin-top: 1.35rem;
   margin-bottom: 0.55rem;
+  font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--lf-prod-cyan);
 }
@@ -488,8 +494,9 @@
   display: flex;
   align-items: baseline;
   gap: 0.45rem;
+  font-family: var(--font-display);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #f8fafc;
   letter-spacing: -0.015em;
 }
@@ -497,7 +504,7 @@
 .lf-prod-feature-num {
   font-family: var(--font-display);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 700;
   font-style: italic;
   color: #22d3ee;
   letter-spacing: 0.02em;
@@ -505,7 +512,9 @@
 
 .lf-prod-feature-card p {
   margin-top: 0.35rem;
+  font-family: var(--font-body);
   font-size: 0.78rem;
+  font-weight: 400;
   line-height: 1.55;
   color: var(--lf-prod-muted);
 }
@@ -534,6 +543,7 @@
   height: 2.55rem;
   padding: 0 1.15rem;
   border-radius: 999px;
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
@@ -626,18 +636,25 @@
   margin-top: 0.65rem;
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.6vw, 1.85rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.025em;
+}
+
+.lf-prod-footer-cta h2 em {
+  font-style: italic;
+  font-weight: 700;
 }
 
 .lf-prod-footer-cta > p:not(.lf-prod-eyebrow) {
   margin-top: 0.75rem;
   color: var(--lf-prod-muted);
+  font-family: var(--font-body);
   font-size: 0.975rem;
+  font-weight: 400;
   max-width: 32rem;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .lf-prod-footer-cta .lf-prod-actions {

@@ -102,7 +102,9 @@ export function AboutShowcase() {
 
         <section className="lf-about-block">
           <p className="lf-about-eyebrow">Story</p>
-          <h2 className="lf-about-h2">From ambitious ideas to products people rely on</h2>
+          <h2 className="lf-about-h2">
+            From ambitious ideas to products people <em>rely on</em>
+          </h2>
           <div className="lf-about-story-grid">
             <div className="lf-about-prose">
               <p>
@@ -129,7 +131,9 @@ export function AboutShowcase() {
 
         <section className="lf-about-block">
           <p className="lf-about-eyebrow">Journey</p>
-          <h2 className="lf-about-h2">Milestones</h2>
+          <h2 className="lf-about-h2">
+            <em>Milestones</em>
+          </h2>
           <div className="lf-about-timeline">
             {JOURNEY.map((item) => (
               <article key={item.year} className="lf-about-timeline-item">
@@ -145,7 +149,9 @@ export function AboutShowcase() {
 
         <section className="lf-about-block">
           <p className="lf-about-eyebrow">Build</p>
-          <h2 className="lf-about-h2">What we ship</h2>
+          <h2 className="lf-about-h2">
+            What we <em>ship</em>
+          </h2>
           <div className="lf-about-bento">
             {FOCUS.map((f) => (
               <div key={f.title} className="lf-about-bento-item">
@@ -166,7 +172,9 @@ export function AboutShowcase() {
 
         <section className="lf-about-block">
           <p className="lf-about-eyebrow">Values</p>
-          <h2 className="lf-about-h2">How we work</h2>
+          <h2 className="lf-about-h2">
+            How we <em>work</em>
+          </h2>
           <div className="lf-about-values">
             {VALUES.map((v) => (
               <div key={v.title} className="lf-about-value">
@@ -190,7 +198,9 @@ export function AboutShowcase() {
           </div>
           <div>
             <p className="lf-about-eyebrow">Founder</p>
-            <h2 className="lf-about-founder-name">{FOUNDER}</h2>
+            <h2 className="lf-about-founder-name">
+              A.R <em>Mirani</em>
+            </h2>
             <p className="lf-about-founder-role">Founder &amp; Vision</p>
             <p className="lf-about-founder-loc">Houston, USA</p>
             <div className="lf-about-prose lf-about-prose--founder">

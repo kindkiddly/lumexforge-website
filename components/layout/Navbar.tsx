@@ -54,7 +54,7 @@ export function Navbar() {
               className="h-10 w-10 object-contain sm:h-11 sm:w-11"
               priority
             />
-            <span className="text-base font-bold tracking-tight">
+            <span className="font-sans text-base font-semibold tracking-tight">
               <span className="text-white">Lumex</span>
               <span className="lf-logo-forge-gradient">Forge</span>
             </span>
@@ -69,7 +69,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300",
+                      "relative rounded-full px-4 py-1.5 font-sans text-sm font-medium transition-colors duration-300",
                       isActive
                         ? "text-foreground"
                         : "text-foreground-secondary hover:text-[#06B6D4]"
@@ -135,7 +135,7 @@ export function Navbar() {
                       key={link.href}
                       href={link.href}
                       className={cn(
-                        "rounded-xl px-4 py-3 text-base font-medium transition-colors",
+                        "rounded-xl px-4 py-3 font-sans text-base font-medium transition-colors",
                         pathname === link.href
                           ? "bg-[#06B6D4]/10 text-foreground"
                           : "text-foreground-secondary hover:bg-white/[0.04] hover:text-foreground"
