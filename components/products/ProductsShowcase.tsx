@@ -293,7 +293,9 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                     ? "object-contain object-center"
                     : "object-cover object-center"
                 }
-                priority={index === 0}
+                priority={index < 2}
+                loading="eager"
+                fetchPriority={index < 2 ? "high" : "auto"}
               />
               <div className="lf-prod-banner-glow" aria-hidden="true" />
               <span className="lf-prod-index" aria-hidden="true">
@@ -309,6 +311,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                   fill
                   sizes="(max-width: 900px) 100vw, 760px"
                   quality={75}
+                  loading="lazy"
                   className="object-cover object-center"
                 />
               </div>
@@ -338,6 +341,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
                 quality={75}
+                loading="eager"
                 className="object-contain object-center"
               />
             </div>

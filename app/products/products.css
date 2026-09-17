@@ -191,8 +191,14 @@
 .lf-prod-section {
   scroll-margin-top: 7.75rem;
   margin-bottom: 2.75rem;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 720px;
+}
+
+/* Desktop only — keep paint skipping; on mobile it delays image discovery while scrolling */
+@media (min-width: 900px) {
+  .lf-prod-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
 }
 
 .lf-prod-panel {
