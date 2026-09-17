@@ -179,9 +179,14 @@ export function AboutShowcase() {
         </section>
 
         <section className="lf-about-block lf-about-founder">
-          <div className="lf-about-photo" aria-label="Founder photo placeholder">
-            <strong>AR</strong>
-            <span>Photo soon</span>
+          <div className="lf-about-photo">
+            <Image
+              src="/images/proteinsnaps/BG-M15.webp"
+              alt={`${FOUNDER} — temporary portrait`}
+              fill
+              sizes="136px"
+              className="object-cover object-center"
+            />
           </div>
           <div>
             <p className="lf-about-eyebrow">Founder</p>

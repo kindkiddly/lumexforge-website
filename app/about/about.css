@@ -415,32 +415,15 @@
 }
 
 .lf-about-photo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
+  position: relative;
   aspect-ratio: 4 / 5;
   max-width: 8.5rem;
+  width: 100%;
   margin: 0 auto;
+  overflow: hidden;
   border-radius: 0.85rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(160deg, rgba(34, 211, 238, 0.1), #0a1628);
-}
-
-.lf-about-photo strong {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: rgba(248, 250, 252, 0.45);
-}
-
-.lf-about-photo span {
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ab-dim);
+  background: #0a1628;
 }
 
 .lf-about-founder-name {
