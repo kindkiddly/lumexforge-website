@@ -126,7 +126,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-0 right-0 top-full border-b border-white/[0.06] bg-[#000814] md:hidden"
+              className="absolute left-0 right-0 top-full z-50 border-b border-white/[0.06] bg-[#000814] md:hidden"
             >
               <Container className="py-6">
                 <div className="flex flex-col gap-1">
@@ -134,18 +134,23 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
+                      onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "rounded-xl px-4 py-3 font-sans text-base font-medium transition-colors",
+                        "relative z-10 rounded-xl px-4 py-3 font-sans text-base font-semibold transition-colors",
                         pathname === link.href
-                          ? "bg-[#06B6D4]/10 text-foreground"
-                          : "text-foreground-secondary hover:bg-white/[0.04] hover:text-foreground"
+                          ? "bg-[#06B6D4]/10 text-white"
+                          : "text-white hover:bg-white/[0.06]"
                       )}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </div>
-                <Link href="/contact" className="lf-btn-clay mt-6 w-full">
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="lf-btn-clay mt-6 w-full"
+                >
                   Get In Touch
                 </Link>
               </Container>
