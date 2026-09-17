@@ -137,6 +137,7 @@ export const FOOTER_LINKS = {
     { label: "AMMORA", href: "/products#ammora" },
     { label: "MiPaw", href: "/products#mipaw" },
     { label: "ADMINA", href: "/products#admina" },
+    { label: "GhostWriterHunt", href: "/products#ghostwriterhunt" },
   ],
   company: [
     { label: "Home", href: "/" },

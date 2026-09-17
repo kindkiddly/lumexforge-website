@@ -50,6 +50,7 @@ const PRODUCTS = [
   { label: "ProteinSnaps", href: "/products#proteinsnaps", note: "Live" },
   { label: "PostHunt", href: "/products#posthunt", note: "Dev" },
   { label: "AMMORA", href: "/products#ammora", note: "Dev" },
+  { label: "GhostWriterHunt", href: "/products#ghostwriterhunt", note: "Soon" },
   { label: "MiPaw", href: "/products#mipaw", note: "Soon" },
   { label: "ADMINA", href: "/products#admina", note: "Soon" },
 ];

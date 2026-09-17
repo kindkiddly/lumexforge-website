@@ -4,6 +4,16 @@ import { ProductsNav } from "@/components/products/ProductsNav";
 
 type ProductStatus = "live" | "dev" | "soon";
 
+type GwhIconId =
+  | "quill"
+  | "palette"
+  | "layout"
+  | "brush"
+  | "edit"
+  | "ebook"
+  | "globe"
+  | "brand";
+
 type ShowcaseProduct = {
   id: string;
   indexLabel: string;
@@ -15,6 +25,8 @@ type ShowcaseProduct = {
   statusLabel: string;
   platforms: string;
   features: { title: string; detail: string }[];
+  /** Premium service grid (GhostWriterHunt) */
+  serviceCatalog?: { title: string; detail: string; icon: GwhIconId }[];
   banner?: string;
   /** Banner aspect: default 1760×720; use "640" for 1760×640 assets */
   bannerAspect?: "720" | "640";
@@ -219,41 +231,157 @@ const PRODUCTS: ShowcaseProduct[] = [
     secondaryCta: { label: "Contact LumexForge", href: "/contact" },
   },
   {
-    id: "money-burn-board",
+    id: "ghostwriterhunt",
     indexLabel: "06",
-    name: "Money Burn Board",
-    category: "Crypto Impact",
-    tagline: "Transparent giving. Public signal. Charity with a new vocabulary.",
+    name: "GhostWriterHunt",
+    category: "Ghostwriting & Digital Publishing",
+    tagline: "Expert writers, designers, and editors — your vision, brought to life.",
     description:
-      "Money Burn Board is an early LumexForge exploration of visible impact in crypto culture — a leaderboard and storytelling surface for charity-linked actions. Bold by design, and still taking shape.",
+      "GhostWriterHunt is a premium professional ghostwriting platform where expert writers, designers, and editors bring author visions to life. Every book is human-crafted with skill, care, and precision. Pure professional craft. All delivery is digital — ready for every major reading platform.",
     status: "soon",
-    statusLabel: "Coming Soon",
-    platforms: "Web concept",
-    features: [
+    statusLabel: "Launching Soon",
+    platforms: "Web & Mobile · Digital delivery",
+    features: [],
+    serviceCatalog: [
       {
-        title: "Public Leaderboard",
-        detail: "Surface contributions in a way communities can see and discuss.",
+        title: "Ghostwriting",
+        detail:
+          "Professional ghostwriters craft your complete book in your voice and vision — fiction, non-fiction, biography, memoir, business, and beyond. Any genre, any length, written to perfection.",
+        icon: "quill",
       },
       {
-        title: "Impact Narrative",
-        detail: "Connect on-chain action to a human story of giving.",
+        title: "Book Cover Design",
+        detail:
+          "Custom covers that capture your story and stop readers instantly — designed for Amazon KDP, Kindle, Apple Books, Google Play Books, and more.",
+        icon: "palette",
       },
       {
-        title: "Verifiable Signals",
-        detail: "Designed around transparency rather than private claim culture.",
+        title: "Interior Layout & Formatting",
+        detail:
+          "Every page designed with care — chapter headings, typography, spacing, page numbers, and a full interior layout refined for digital reading.",
+        icon: "layout",
       },
       {
-        title: "Conversation Starter",
-        detail: "A product meant to provoke better questions about value and good.",
+        title: "Illustration & Graphics",
+        detail:
+          "Custom illustrations, chapter artwork, infographics, and visual storytelling — from children's book art to elegant non-fiction diagrams.",
+        icon: "brush",
+      },
+      {
+        title: "Editing & Proofreading",
+        detail:
+          "Developmental editing, copy editing, and proofreading so your manuscript is polished, error-free, and publication ready.",
+        icon: "edit",
+      },
+      {
+        title: "eBook Conversion",
+        detail:
+          "Your finished book converted to ePub, MOBI, PDF, and KDP-ready files — compatible with every major digital reading platform.",
+        icon: "ebook",
+      },
+      {
+        title: "Digital Publishing Support",
+        detail:
+          "End-to-end assistance for Amazon KDP, Apple Books, Google Play Books, Smashwords, and more — including metadata, keywords, and listing optimization.",
+        icon: "globe",
+      },
+      {
+        title: "Author Branding",
+        detail:
+          "Author bio writing, website copy, social media presence, and brand identity guidance to establish a distinguished voice online.",
+        icon: "brand",
       },
     ],
-    atmosphere: "/images/proteinsnaps/BG-7.webp",
-    atmosphereLabel: "Impact, made visible.",
+    banner: "/images/lumexforge/LF-products/Products-GR.webp",
     reverse: true,
-    primaryCta: { label: "Get Notified", href: "/contact" },
-    secondaryCta: { label: "Share an Idea", href: "/contact" },
+    primaryCta: { label: "Begin Your Book", href: "/contact" },
+    secondaryCta: { label: "Contact Studio", href: "/contact" },
   },
 ];
+
+function GwhServiceIcon({ icon }: { icon: GwhIconId }) {
+  const common = {
+    width: 28,
+    height: 28,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true as const,
+  };
+
+  switch (icon) {
+    case "quill":
+      return (
+        <svg {...common}>
+          <path d="M4 20c2-1 4.5-1.5 7-4l7-8a2.5 2.5 0 0 0-3.5-3.5l-8 7c-2.5 2.5-3 5-4 8z" />
+          <path d="M13.5 6.5l4 4" />
+        </svg>
+      );
+    case "palette":
+      return (
+        <svg {...common}>
+          <path d="M12 3a9 9 0 1 0 0 18h1.2a2.2 2.2 0 0 0 0-4.4H12" />
+          <circle cx="7.5" cy="10" r="1" fill="currentColor" stroke="none" />
+          <circle cx="10.5" cy="7.5" r="1" fill="currentColor" stroke="none" />
+          <circle cx="14.5" cy="8" r="1" fill="currentColor" stroke="none" />
+          <circle cx="16.5" cy="11.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case "layout":
+      return (
+        <svg {...common}>
+          <path d="M4 5a1 1 0 0 1 1-1h6v16H5a1 1 0 0 1-1-1V5z" />
+          <path d="M13 4h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6V4z" />
+          <path d="M7 8h2M7 12h2" />
+        </svg>
+      );
+    case "brush":
+      return (
+        <svg {...common}>
+          <path d="M14.5 4.5l5 5-8.5 8.5H6v-5l8.5-8.5z" />
+          <path d="M12.5 6.5l5 5" />
+          <path d="M6 19c0-1.5 1-2.5 2.5-2.5" />
+        </svg>
+      );
+    case "edit":
+      return (
+        <svg {...common}>
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          <path d="M9 16l3 3" />
+        </svg>
+      );
+    case "ebook":
+      return (
+        <svg {...common}>
+          <rect x="6" y="3" width="12" height="18" rx="2" />
+          <path d="M9 7h6M9 11h6M9 15h4" />
+        </svg>
+      );
+    case "globe":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
+          <path d="M16 7l2-2M18 12h3" />
+        </svg>
+      );
+    case "brand":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="3.5" />
+          <path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5" />
+          <path d="M17.5 4.5l.6 1.4 1.5.3-1.1 1.1.2 1.5-1.2-.7-1.2.7.2-1.5-1.1-1.1 1.5-.3.6-1.4z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 function StatusPill({ status, label }: { status: ProductStatus; label: string }) {
   const cls =
@@ -266,6 +394,9 @@ function StatusPill({ status, label }: { status: ProductStatus; label: string })
 }
 
 function ProductSection({ product, index }: { product: ShowcaseProduct; index: number }) {
+  const hasFeatures = product.features.length > 0;
+  const hasServices = Boolean(product.serviceCatalog && product.serviceCatalog.length > 0);
+
   return (
     <section id={product.id} className="lf-prod-section">
       <div
@@ -287,7 +418,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
                 alt={`${product.name} — ${product.category}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
-                quality={80}
+                quality={product.id === "ghostwriterhunt" ? 90 : 80}
                 className={
                   product.bannerAspect === "640"
                     ? "object-contain object-center"
@@ -396,19 +527,23 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
 
           <p className="lf-prod-tagline">{product.tagline}</p>
           <p className="lf-prod-desc">{product.description}</p>
-          <p className="lf-prod-features-label">What you get</p>
 
-          <div className="lf-prod-feature-grid">
-            {product.features.map((feature, i) => (
-              <div key={feature.title} className="lf-prod-feature-card">
-                <h3>
-                  <span className="lf-prod-feature-num">0{i + 1}</span>
-                  {feature.title}
-                </h3>
-                <p>{feature.detail}</p>
+          {hasFeatures && (
+            <>
+              <p className="lf-prod-features-label">What you get</p>
+              <div className="lf-prod-feature-grid">
+                {product.features.map((feature, i) => (
+                  <div key={feature.title} className="lf-prod-feature-card">
+                    <h3>
+                      <span className="lf-prod-feature-num">0{i + 1}</span>
+                      {feature.title}
+                    </h3>
+                    <p>{feature.detail}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
 
           <p className="lf-prod-meta">{product.platforms}</p>
 
@@ -437,6 +572,30 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
           </div>
         </div>
       </div>
+
+      {hasServices && product.serviceCatalog && (
+        <div className="lf-gwh-services">
+          <div className="lf-gwh-services-head">
+            <p className="lf-prod-eyebrow">Services</p>
+            <h3 className="lf-gwh-services-title">Crafted for authors who expect excellence</h3>
+            <p className="lf-gwh-services-lead">
+              Eight essential services — from manuscript to digital shelf — delivered by a
+              professional creative team.
+            </p>
+          </div>
+          <div className="lf-gwh-grid">
+            {product.serviceCatalog.map((service) => (
+              <article key={service.title} className="lf-gwh-card">
+                <span className="lf-gwh-icon">
+                  <GwhServiceIcon icon={service.icon} />
+                </span>
+                <h4 className="lf-gwh-card-title">{service.title}</h4>
+                <p className="lf-gwh-card-desc">{service.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
