@@ -132,9 +132,11 @@ export const ROADMAP: RoadmapItem[] = [
 
 export const FOOTER_LINKS = {
   products: [
-    { label: "ProteinSnap", href: "/products#proteinsnap" },
+    { label: "ProteinSnaps", href: "/products#proteinsnaps" },
+    { label: "PostHunt", href: "/products#posthunt" },
     { label: "AMMORA", href: "/products#ammora" },
-    { label: "KePaso", href: "/products#kepaso" },
+    { label: "MiPaw", href: "/products#mipaw" },
+    { label: "ADMINA", href: "/products#admina" },
   ],
   company: [
     { label: "Home", href: "/" },
