@@ -523,13 +523,13 @@ function CoverflowCarousel() {
 
       </div>
 
-      <div className="lf-coverflow-info mt-2 text-center" aria-live="polite">
-        <p key={activeCard.id} className="lf-coverflow-info-animate font-serif text-lg font-semibold text-foreground">
+      <div className="lf-coverflow-info text-center" aria-live="polite">
+        <p key={activeCard.id} className="lf-coverflow-info-animate font-serif text-base font-semibold text-foreground sm:text-lg">
           {activeCard.name}
         </p>
         <p
           key={`${activeCard.id}-desc`}
-          className="lf-coverflow-info-animate mt-1 font-sans text-sm font-normal text-foreground-secondary"
+          className="lf-coverflow-info-animate mt-0.5 font-sans text-xs font-normal text-foreground-secondary sm:text-sm"
         >
           {activeCard.tagline}
         </p>
