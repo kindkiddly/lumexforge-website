@@ -8,23 +8,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "How It Works — ProteinSnaps",
+  title: "ProteinSnaps — AI Fitness & Nutrition App",
   description:
-    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
+    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "How It Works — ProteinSnaps",
+    title: "ProteinSnaps — AI Fitness & Nutrition App",
     description:
-      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
+      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/how-it-works",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1760, height: 983 }],
+    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "How It Works — ProteinSnaps",
+    title: "ProteinSnaps — AI Fitness & Nutrition App",
     description:
-      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
+      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
   },
 };

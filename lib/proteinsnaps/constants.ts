@@ -4,7 +4,7 @@ export const PROTEINSNAPS = {
   description:
     "Snap meals, track protein and macros, get personalized AI coaching, and achieve your fitness goals — all in one intelligent app.",
   metaDescription:
-    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
+    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   domain: "https://proteinsnaps.lumexforge.com",
   playStoreUrl:
     "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share",
