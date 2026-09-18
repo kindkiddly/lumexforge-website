@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ProteinSnaps — AI Nutrition & Fitness Tracker",
   description:
-    "Track meals with AI, log workouts, get personalized coaching and see real progress. ProteinSnaps is your all-in-one fitness companion.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   keywords: [
     "protein tracker",
     "AI meal scanner",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ProteinSnaps — AI Nutrition & Fitness Tracker",
     description:
-      "Track meals with AI, log workouts, get personalized coaching and see real progress. ProteinSnaps is your all-in-one fitness companion.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ProteinSnaps — AI Nutrition & Fitness Tracker",
     description:
-      "Track meals with AI, log workouts, get personalized coaching and see real progress. ProteinSnaps is your all-in-one fitness companion.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-1.webp"],
   },
 };

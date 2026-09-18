@@ -7,11 +7,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog — ProteinSnaps",
   description:
-    "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "Blog — ProteinSnaps",
     description:
-      "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/blog",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog — ProteinSnaps",
     description:
-      "Expert articles on protein, macros, workout nutrition and building habits that actually stick. Coming soon.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-1.webp"],
   },
 };

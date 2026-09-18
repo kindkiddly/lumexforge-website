@@ -9,11 +9,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "AI Meal Scanner — ProteinSnaps",
   description:
-    "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "AI Meal Scanner — ProteinSnaps",
     description:
-      "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/meal-scanner",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-3.webp", width: 1080, height: 1920 }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Meal Scanner — ProteinSnaps",
     description:
-      "Snap any meal and get instant nutrition analysis. Calories, protein, carbs and fat detected automatically with 98% confidence.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-3.webp"],
   },
 };

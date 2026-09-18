@@ -8,11 +8,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "AI Protein Tracker — ProteinSnaps",
   description:
-    "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "AI Protein Tracker — ProteinSnaps",
     description:
-      "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-8.webp", width: 1080, height: 1920 }],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Protein Tracker — ProteinSnaps",
     description:
-      "The smartest way to track protein. AI detects your meal nutrition instantly from a photo — no manual entry, no barcodes needed.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-8.webp"],
   },
 };

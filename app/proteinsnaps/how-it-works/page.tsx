@@ -10,11 +10,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "How It Works — ProteinSnaps",
   description:
-    "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "How It Works — ProteinSnaps",
     description:
-      "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/how-it-works",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-3.webp", width: 1080, height: 1920 }],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How It Works — ProteinSnaps",
     description:
-      "Snap a meal, track your nutrition and let AI coach you to better results. See how ProteinSnaps works in 3 simple steps.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-3.webp"],
   },
 };

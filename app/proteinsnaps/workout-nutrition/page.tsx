@@ -9,11 +9,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Workout Nutrition — ProteinSnaps",
   description:
-    "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "Workout Nutrition — ProteinSnaps",
     description:
-      "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/workout-nutrition",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-2.webp", width: 1080, height: 1920 }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Workout Nutrition — ProteinSnaps",
     description:
-      "Fuel your workouts smarter. Track nutrition, log training and get AI recommendations built around your workout schedule.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-2.webp"],
   },
 };

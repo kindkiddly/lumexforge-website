@@ -49,48 +49,48 @@ function createProteinSnapsMetadata({
 export const homeMetadata = createProteinSnapsMetadata({
   title: "AI Meal Tracker & Protein Tracking App",
   description:
-    "ProteinSnaps is an AI-powered meal tracker and protein tracking app. Snap meals, track macros, get personalized AI coaching, and achieve your fitness goals.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/",
 });
 
 export const featuresMetadata = createProteinSnapsMetadata({
   title: "Features",
   description:
-    "Explore ProteinSnaps features — AI meal recognition, protein tracking, macro tracking, AI coach, workout logging, and smart nutrition insights.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/features",
 });
 
 export const howItWorksMetadata = createProteinSnapsMetadata({
   title: "How It Works",
   description:
-    "Learn how ProteinSnaps works — snap your meal, track your macros, and achieve your fitness goals with AI-powered nutrition tracking.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/how-it-works",
 });
 
 export const aiTrackerMetadata = createProteinSnapsMetadata({
   title: "AI Protein Tracker",
   description:
-    "ProteinSnaps AI protein tracker — intelligent macro tracking, personalized coaching, and smart nutrition insights powered by AI.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/ai-protein-tracker",
 });
 
 export const mealScannerMetadata = createProteinSnapsMetadata({
   title: "AI Meal Scanner",
   description:
-    "Snap any meal and let ProteinSnaps AI food scanner identify foods and estimate protein, carbs, fats, and calories instantly.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/meal-scanner",
 });
 
 export const workoutNutritionMetadata = createProteinSnapsMetadata({
   title: "Workout Nutrition",
   description:
-    "Connect workout tracking with nutrition in ProteinSnaps — fuel strength training, log gym sessions, and optimize recovery.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/workout-nutrition",
 });
 
 export const blogMetadata = createProteinSnapsMetadata({
   title: "Blog",
   description:
-    "ProteinSnaps blog — nutrition tips, fitness insights, and updates from the AI-powered meal tracking app.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   path: "/blog",
 });

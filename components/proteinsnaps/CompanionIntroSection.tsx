@@ -11,14 +11,16 @@ export function CompanionIntroSection() {
               Your Complete AI Fitness &amp; Nutrition Companion
             </h2>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-foreground-secondary sm:text-lg">
-              ProteinSnaps is an AI-powered fitness and nutrition app for iOS and Android
-              designed to help you build healthier habits, increase your protein intake, and
-              achieve your body transformation goals. Whether you are trying to lose weight,
-              build muscle, improve your nutrition, or maintain a healthy lifestyle,
-              ProteinSnaps gives you intelligent tools that make tracking simple and
-              effective. Snap a photo of your meal and AI instantly calculates your calories,
-              protein, carbs and fats. Log workouts, track progress photos, monitor body
-              measurements, and get personalized daily coaching — all in one app.
+              ProteinSnaps is an AI-powered fitness, nutrition and gym companion for iOS and
+              Android designed to help you build healthier habits, increase your protein
+              intake, and achieve your body transformation goals. Whether you are trying to
+              lose weight, build muscle, improve your nutrition, or maintain a healthy
+              lifestyle, ProteinSnaps gives you intelligent tools that make tracking simple
+              and effective. Snap a photo of your meal and AI instantly calculates your
+              calories and macros — protein, carbs and fats. Log your gym workouts, track
+              exercise performance, monitor body measurements, capture progress photos, and
+              get personalized daily AI coaching — everything you need for your fitness
+              journey, all in one app.
             </p>
           </div>
         </FadeInUp>

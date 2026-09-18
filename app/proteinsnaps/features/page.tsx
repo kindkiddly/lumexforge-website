@@ -10,11 +10,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Features — ProteinSnaps",
   description:
-    "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+    "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
   openGraph: {
     title: "Features — ProteinSnaps",
     description:
-      "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/features",
     siteName: "ProteinSnaps",
     images: [{ url: "/images/proteinsnaps/PS-7.webp", width: 1080, height: 1920 }],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Features — ProteinSnaps",
     description:
-      "AI meal recognition, workout tracking, personalized coaching, body measurements and more. Everything you need to reach your fitness goals.",
+      "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     images: ["/images/proteinsnaps/PS-7.webp"],
   },
 };
