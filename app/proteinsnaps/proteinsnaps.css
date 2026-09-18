@@ -89,6 +89,75 @@
     radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0, 194, 255, 0.1), transparent 60%);
 }
 
+/* Hero store panel styles — shared by homepage hero + Download CTA on all breakpoints */
+.ps-hero-desktop-btn {
+  height: 2.25rem !important;
+  min-height: 2.25rem !important;
+  max-height: 2.25rem !important;
+  padding: 0 1rem !important;
+  font-size: 0.8rem !important;
+  line-height: 1 !important;
+}
+
+.ps-hero-desktop-play {
+  border: 1px solid rgba(0, 230, 168, 0.5) !important;
+  background: rgba(0, 230, 168, 0.1) !important;
+  animation: ps-glow-breathe-mint 3.5s ease-in-out infinite !important;
+}
+
+.ps-hero-desktop-appstore {
+  border: 1px solid rgba(0, 194, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
+}
+
+.ps-hero-qr-android {
+  box-shadow:
+    0 0 0 1px rgba(0, 230, 168, 0.28),
+    0 0 12px rgba(0, 230, 168, 0.22),
+    0 0 24px rgba(0, 230, 168, 0.1) !important;
+}
+
+.ps-hero-qr-ios {
+  box-shadow:
+    0 0 0 1px rgba(0, 194, 255, 0.2),
+    0 0 10px rgba(0, 194, 255, 0.14),
+    0 0 20px rgba(0, 194, 255, 0.08) !important;
+}
+
+.ps-hero-desktop-scan {
+  font-size: 0.7rem !important;
+}
+
+@keyframes ps-glow-breathe-mint {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(0, 230, 168, 0.45),
+      0 0 14px rgba(0, 230, 168, 0.35),
+      0 0 28px rgba(0, 230, 168, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(0, 230, 168, 0.65),
+      0 0 20px rgba(0, 230, 168, 0.5),
+      0 0 36px rgba(0, 230, 168, 0.2);
+  }
+}
+
+@keyframes ps-glow-breathe-cyan {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(0, 194, 255, 0.35),
+      0 0 14px rgba(0, 194, 255, 0.28),
+      0 0 28px rgba(0, 194, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(0, 194, 255, 0.55),
+      0 0 20px rgba(0, 194, 255, 0.42),
+      0 0 36px rgba(0, 194, 255, 0.18);
+  }
+}
 
 @media (min-width: 1024px) {
   .ps-hero-desktop-label {
@@ -106,64 +175,6 @@
     font-size: 0.8rem !important;
     line-height: 1.55 !important;
     max-width: 380px !important;
-  }
-  .ps-hero-desktop-btn {
-    height: 2.25rem !important;
-    min-height: 2.25rem !important;
-    max-height: 2.25rem !important;
-    padding: 0 1rem !important;
-    font-size: 0.8rem !important;
-    line-height: 1 !important;
-  }
-  .ps-hero-desktop-play {
-    border: 1px solid rgba(0, 230, 168, 0.5) !important;
-    background: rgba(0, 230, 168, 0.1) !important;
-    animation: ps-glow-breathe-mint 3.5s ease-in-out infinite !important;
-  }
-  .ps-hero-desktop-appstore {
-    border: 1px solid rgba(0, 194, 255, 0.4) !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
-  }
-  .ps-hero-qr-android {
-    box-shadow:
-      0 0 0 1px rgba(0, 230, 168, 0.28),
-      0 0 12px rgba(0, 230, 168, 0.22),
-      0 0 24px rgba(0, 230, 168, 0.1) !important;
-  }
-  .ps-hero-qr-ios {
-    box-shadow:
-      0 0 0 1px rgba(0, 194, 255, 0.2),
-      0 0 10px rgba(0, 194, 255, 0.14),
-      0 0 20px rgba(0, 194, 255, 0.08) !important;
-  }
-  @keyframes ps-glow-breathe-mint {
-    0%, 100% {
-      box-shadow:
-        0 0 0 1px rgba(0, 230, 168, 0.45),
-        0 0 14px rgba(0, 230, 168, 0.35),
-        0 0 28px rgba(0, 230, 168, 0.12);
-    }
-    50% {
-      box-shadow:
-        0 0 0 1px rgba(0, 230, 168, 0.65),
-        0 0 20px rgba(0, 230, 168, 0.5),
-        0 0 36px rgba(0, 230, 168, 0.2);
-    }
-  }
-  @keyframes ps-glow-breathe-cyan {
-    0%, 100% {
-      box-shadow:
-        0 0 0 1px rgba(0, 194, 255, 0.35),
-        0 0 14px rgba(0, 194, 255, 0.28),
-        0 0 28px rgba(0, 194, 255, 0.1);
-    }
-    50% {
-      box-shadow:
-        0 0 0 1px rgba(0, 194, 255, 0.55),
-        0 0 20px rgba(0, 194, 255, 0.42),
-        0 0 36px rgba(0, 194, 255, 0.18);
-    }
   }
   .ps-hero-desktop-left {
     position: absolute !important;
@@ -187,9 +198,6 @@
     left: 60px !important;
     bottom: 60px !important;
     z-index: 10 !important;
-  }
-  .ps-hero-desktop-scan {
-    font-size: 0.7rem !important;
   }
   .ps-headline-gradient {
     background: linear-gradient(135deg, #00e6a8, #00c2ff);

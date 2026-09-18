@@ -2,7 +2,7 @@
 
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
-import { StoreButtons } from "./StoreButtons";
+import { HeroStyleStorePanel } from "./HeroStyleStorePanel";
 
 export function DownloadCTA() {
   return (
@@ -21,8 +21,8 @@ export function DownloadCTA() {
               Download ProteinSnaps and let AI handle the hard part — so you can
               focus on hitting your protein goals.
             </p>
-            <div className="relative mt-10 flex flex-col items-center">
-              <StoreButtons size="lg" />
+            <div className="relative mt-10 flex justify-center">
+              <HeroStyleStorePanel />
             </div>
           </div>
         </FadeInUp>
