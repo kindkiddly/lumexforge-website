@@ -829,9 +829,9 @@
   }
 }
 
-/* ============================================================
-   ProteinSnaps blog article — locked standard template
-   ============================================================ */
+/* PROTEINSNAPS BLOG TEMPLATE STYLES — LOCKED
+   These styles are the standard for all blog articles.
+   Do not modify without updating all blog pages. */
 
 .ps-blog-article {
   font-family: var(--font-inter), system-ui, sans-serif;
