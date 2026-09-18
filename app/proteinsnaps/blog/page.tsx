@@ -1,3 +1,4 @@
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
@@ -28,22 +29,28 @@ export const metadata: Metadata = {
 
 const PREVIEW_ARTICLES = [
   {
-    category: "Nutrition",
-    title: "How Much Protein Do You Actually Need?",
+    category: "Nutrition & Fitness",
+    title:
+      "How Much Protein Do You Need Per Day? A Simple Guide by Weight, Goal & Activity",
     teaser:
       "Cut through the noise with science-backed protein targets for muscle gain, fat loss and everyday health.",
+    readingTime: "8 min read",
+    status: "new" as const,
+    href: "/blog/how-much-protein-do-you-need-per-day",
   },
   {
     category: "Workouts",
     title: "The Science Behind Progressive Overload",
     teaser:
       "Why small, consistent increases in training load are the key to long-term strength and physique progress.",
+    status: "coming-soon" as const,
   },
   {
     category: "AI Coaching",
     title: "How AI is Changing the Way We Track Food",
     teaser:
       "From photo logging to personalized guidance — how intelligent tools make nutrition tracking faster and more accurate.",
+    status: "coming-soon" as const,
   },
 ] as const;
 
@@ -98,24 +105,54 @@ export default function BlogPage() {
             </h2>
           </FadeInUp>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PREVIEW_ARTICLES.map((article, i) => (
-              <FadeInUp key={article.title} delay={i * 0.08}>
-                <article className="ps-glass-panel ps-3d-card flex h-full flex-col rounded-2xl p-7">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
-                    {article.category}
-                  </p>
+            {PREVIEW_ARTICLES.map((article, i) => {
+              const cardInner = (
+                <>
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-[#00e6a8]">
+                      {article.category}
+                    </p>
+                    {article.status === "new" ? (
+                      <span className="rounded-full border border-[#00e6a8]/35 bg-[#00e6a8]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#00e6a8]">
+                        New
+                      </span>
+                    ) : null}
+                  </div>
                   <h2 className="mt-4 font-serif text-xl font-semibold text-foreground">
                     {article.title}
                   </h2>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground-secondary">
                     {article.teaser}
                   </p>
-                  <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-[#00c2ff]">
-                    Coming Soon
-                  </p>
-                </article>
-              </FadeInUp>
-            ))}
+                  {article.status === "new" ? (
+                    <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-[#00c2ff]">
+                      {article.readingTime}
+                    </p>
+                  ) : (
+                    <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-[#00c2ff]">
+                      Coming Soon
+                    </p>
+                  )}
+                </>
+              );
+
+              return (
+                <FadeInUp key={article.title} delay={i * 0.08}>
+                  {article.status === "new" && "href" in article ? (
+                    <BlogArticleLink
+                      href={article.href}
+                      className="ps-glass-panel ps-3d-card flex h-full flex-col rounded-2xl p-7 transition-colors hover:border-[#00e6a8]/30"
+                    >
+                      {cardInner}
+                    </BlogArticleLink>
+                  ) : (
+                    <article className="ps-glass-panel ps-3d-card flex h-full flex-col rounded-2xl p-7">
+                      {cardInner}
+                    </article>
+                  )}
+                </FadeInUp>
+              );
+            })}
           </div>
         </div>
       </section>
