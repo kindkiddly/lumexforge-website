@@ -1,4 +1,5 @@
 import { AIFeaturesSection } from "@/components/proteinsnaps/AIFeaturesSection";
+import { CompanionIntroSection } from "@/components/proteinsnaps/CompanionIntroSection";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeaturesGrid } from "@/components/proteinsnaps/FeaturesGrid";
 import { HeroSection } from "@/components/proteinsnaps/HeroSection";
@@ -117,6 +118,7 @@ export default function ProteinSnapsHomePage() {
         </div>
         <div className="relative z-10">
           <FeaturesGrid />
+          <CompanionIntroSection />
         </div>
       </div>
       <HowItWorksSection />

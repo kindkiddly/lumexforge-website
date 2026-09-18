@@ -6,6 +6,7 @@ export const PROTEINSNAPS = {
   domain: "https://proteinsnaps.lumexforge.com",
   playStoreUrl:
     "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share",
+  appStoreUrl: "https://apps.apple.com/us/app/proteinsnaps/id6801353318",
   lumexforgeUrl: "https://www.lumexforge.com",
   privacyUrl: "https://www.lumexforge.com/proteinsnap-privacy",
   termsUrl: "https://www.lumexforge.com/proteinsnap-terms",
