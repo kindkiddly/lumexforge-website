@@ -48,66 +48,6 @@ export default function ProteinSnapsHomePage() {
           <b>New</b> Now available on iOS & Android
         </div>
       </div>
-      <div className="hidden ps-ticker-wrap lg:block">
-        <div className="ps-ticker-track">
-          <div className="ps-ticker-item">
-            🔥 <span>50,000+</span> Meals Tracked
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🤖 <span>98%</span> AI Accuracy
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            ⭐ <span>4.8</span> Star Rating
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            💪 <span>14-Day</span> Streaks
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            📸 <span>1M+</span> Photos Analyzed
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🏋️ <span>500,000+</span> Workouts Logged
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🎯 <span>85%</span> Goal Achievement Rate
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🔥 <span>50,000+</span> Meals Tracked
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🤖 <span>98%</span> AI Accuracy
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            ⭐ <span>4.8</span> Star Rating
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            💪 <span>14-Day</span> Streaks
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            📸 <span>1M+</span> Photos Analyzed
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🏋️ <span>500,000+</span> Workouts Logged
-          </div>
-          <div className="ps-ticker-dot" />
-          <div className="ps-ticker-item">
-            🎯 <span>85%</span> Goal Achievement Rate
-          </div>
-          <div className="ps-ticker-dot" />
-        </div>
-      </div>
       <ScreenshotsCarousel3D />
       <div className="relative">
         <div

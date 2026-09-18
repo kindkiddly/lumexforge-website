@@ -720,53 +720,6 @@
     inset 0 -2px 0 rgba(0, 0, 0, 0.5);
 }
 
-.ps-ticker-wrap {
-  overflow: hidden;
-  background: rgba(5, 8, 17, 0.8);
-  border-top: 1px solid rgba(0, 230, 168, 0.12);
-  border-bottom: 1px solid rgba(0, 230, 168, 0.12);
-  padding: 0.75rem 0;
-}
-
-.ps-ticker-track {
-  display: flex;
-  gap: 3rem;
-  width: max-content;
-  animation: ps-ticker-scroll 30s linear infinite;
-}
-
-.ps-ticker-track:hover {
-  animation-play-state: paused;
-}
-
-.ps-ticker-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #94a3b8;
-  white-space: nowrap;
-}
-
-.ps-ticker-item span {
-  color: #00e6a8;
-  font-weight: 600;
-}
-
-.ps-ticker-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(0, 230, 168, 0.4);
-  flex-shrink: 0;
-}
-
-@keyframes ps-ticker-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .ps-title-strip {
   position: relative;
   display: inline-block;
