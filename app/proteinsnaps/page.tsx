@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/",
     siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/PS-1.webp", width: 1080, height: 1920 }],
+    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1760, height: 983 }],
     type: "website",
   },
   twitter: {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "ProteinSnaps — AI Nutrition & Fitness Tracker",
     description:
       "ProteinSnaps — AI-powered nutrition and gym companion. Snap meals, track macros, log workouts, monitor progress and get personalized AI coaching — all in one app for iOS and Android.",
-    images: ["/images/proteinsnaps/PS-1.webp"],
+    images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
   },
 };
 
