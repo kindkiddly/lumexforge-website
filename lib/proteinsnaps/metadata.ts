@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PROTEINSNAPS, SEO_KEYWORDS } from "./constants";
 
-const OG_IMAGE = `${PROTEINSNAPS.lumexforgeUrl}/images/proteinsnaps/PSL-1.webp`;
+const OG_IMAGE = `${PROTEINSNAPS.lumexforgeUrl}/images/proteinsnaps/proteinsnaps-og.webp`;
 
 function createProteinSnapsMetadata({
   title,
@@ -30,8 +30,8 @@ function createProteinSnapsMetadata({
       images: [
         {
           url: OG_IMAGE,
-          width: 1200,
-          height: 630,
+          width: 1760,
+          height: 983,
           alt: `${PROTEINSNAPS.name} — AI-Powered Nutrition & Fitness`,
         },
       ],
