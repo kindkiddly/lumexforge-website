@@ -125,7 +125,12 @@ export default function HowMuchProteinArticlePage() {
         "Helms ER, et al. A systematic review of dietary protein during caloric restriction in resistance trained lean athletes. Journal of the International Society of Sports Nutrition. 2014.",
       ]}
     >
-      <BlogImagePlaceholder alt="High-protein meal for a balanced nutrition plan" />
+      <BlogImagePlaceholder
+        src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=1200&q=80"
+        alt="High protein meal for a balanced nutrition plan"
+        width={1200}
+        height={630}
+      />
 
       <BlogSectionHeading label="Overview" accent="blue">
         How Much Protein Do You Actually Need?
@@ -548,7 +553,12 @@ export default function HowMuchProteinArticlePage() {
         milk, cheese, tofu, tempeh, beans, and other legumes.
       </p>
 
-      <BlogImagePlaceholder alt="Common high-protein foods including chicken, eggs and Greek yogurt" />
+      <BlogImagePlaceholder
+        src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80"
+        alt="Common high protein foods including chicken eggs and Greek yogurt"
+        width={1200}
+        height={675}
+      />
 
       <BlogAlsoLike {...ALSO_LIKE} />
 
@@ -674,7 +684,12 @@ export default function HowMuchProteinArticlePage() {
         your habits and progress over time.
       </p>
 
-      <BlogImagePlaceholder alt="ProteinSnaps AI meal and fitness tracking" />
+      <BlogImagePlaceholder
+        src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80"
+        alt="ProteinSnaps AI meal and fitness tracking"
+        width={1200}
+        height={675}
+      />
 
       <section className="ps-blog-ps-card">
         <p className="ps-blog-ps-card-label">ProteinSnaps</p>

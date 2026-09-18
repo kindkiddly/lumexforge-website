@@ -8,6 +8,7 @@ import {
   type BlogTocItem,
 } from "@/components/proteinsnaps/BlogTableOfContents";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export type { BlogTocItem };
@@ -64,10 +65,27 @@ export function BlogSectionHeading({
   );
 }
 
-export function BlogImagePlaceholder({ alt }: { alt: string }) {
+export function BlogImagePlaceholder({
+  src,
+  alt,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}) {
   return (
-    <div className="ps-blog-img-placeholder" role="img" aria-label={alt}>
-      <span>{alt}</span>
+    <div className="ps-blog-article-image">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(max-width: 768px) 100vw, 768px"
+        className="ps-blog-article-image-img"
+      />
     </div>
   );
 }
