@@ -1,3 +1,5 @@
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
+import { BlogTableOfContents } from "@/components/proteinsnaps/BlogTableOfContents";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -39,10 +41,12 @@ function ImagePlaceholder({ alt }: { alt: string }) {
 }
 
 function SectionHeading({
+  id,
   label,
   accent,
   children,
 }: {
+  id?: string;
   label?: string;
   accent: "blue" | "orange" | "green";
   children: ReactNode;
@@ -50,7 +54,9 @@ function SectionHeading({
   return (
     <>
       {label ? <span className="ps-blog-section-label">{label}</span> : null}
-      <h2 className={`ps-h2-${accent}`}>{children}</h2>
+      <h2 id={id} className={`ps-h2-${accent}`}>
+        {children}
+      </h2>
     </>
   );
 }
@@ -74,10 +80,103 @@ export default function HowMuchProteinArticlePage() {
             <p className="ps-blog-hero-subtitle">
               A Simple Guide by Weight, Goal & Activity
             </p>
+            <div className="ps-blog-author">
+              <svg
+                className="ps-blog-author-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+              <span>Written by: ProteinSnaps Nutrition Team</span>
+              <span className="ps-blog-author-sep" aria-hidden="true">
+                ·
+              </span>
+              <span>Reviewed by: ProteinSnaps Health Experts</span>
+              <span className="ps-blog-author-sep" aria-hidden="true">
+                ·
+              </span>
+              <span>Published: September 2026 · 8 min read</span>
+            </div>
           </div>
         </header>
 
         <div className="ps-blog-body">
+          <aside className="ps-blog-takeaways">
+            <p className="ps-blog-takeaways-title">
+              <span className="ps-blog-takeaways-icon" aria-hidden="true">
+                ⚡
+              </span>
+              Key Takeaways
+            </p>
+            <ul className="ps-blog-takeaways-list">
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  Your daily protein needs depend on body weight, activity
+                  level, training, and goals — not one universal number.
+                </span>
+              </li>
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  For people doing regular resistance training, around
+                  1.6 g of protein per kg of body weight per day is a
+                  practical evidence-based starting point.
+                </span>
+              </li>
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  Building muscle requires more than protein alone —
+                  progressive training, recovery, and consistency all matter.
+                </span>
+              </li>
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  Protein during weight loss helps preserve lean muscle and
+                  supports satiety alongside a calorie deficit.
+                </span>
+              </li>
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  Distributing protein across multiple meals throughout the
+                  day is a practical strategy for hitting your daily target.
+                </span>
+              </li>
+              <li>
+                <span className="ps-blog-takeaways-check" aria-hidden="true">
+                  ✓
+                </span>
+                <span>
+                  Tracking both nutrition and fitness together gives a
+                  clearer picture of your overall progress and habits.
+                </span>
+              </li>
+            </ul>
+          </aside>
+
+          <BlogTableOfContents />
+
           <ImagePlaceholder alt="High-protein meal for a balanced nutrition plan" />
 
           <SectionHeading label="Overview" accent="blue">
@@ -125,7 +224,11 @@ export default function HowMuchProteinArticlePage() {
             consistently meet it.
           </p>
 
-          <SectionHeading label="Fundamentals" accent="blue">
+          <SectionHeading
+            id="why-is-protein-so-important"
+            label="Fundamentals"
+            accent="blue"
+          >
             Why Is Protein So Important?
           </SectionHeading>
           <p>
@@ -134,13 +237,27 @@ export default function HowMuchProteinArticlePage() {
           </p>
           <p>Protein helps support:</p>
           <ul>
-            <li>Muscle growth and repair</li>
-            <li>Recovery after exercise</li>
-            <li>Maintenance of lean muscle during weight loss</li>
-            <li>Normal immune function</li>
-            <li>Enzymes and hormones</li>
-            <li>Healthy tissues throughout the body</li>
-            <li>Feelings of fullness after meals</li>
+            <li>
+              <strong>Muscle growth and repair</strong>
+            </li>
+            <li>
+              <strong>Recovery</strong> after exercise
+            </li>
+            <li>
+              <strong>Maintenance of lean muscle</strong> during weight loss
+            </li>
+            <li>
+              <strong>Normal immune function</strong>
+            </li>
+            <li>
+              <strong>Enzymes and hormones</strong>
+            </li>
+            <li>
+              <strong>Healthy tissues</strong> throughout the body
+            </li>
+            <li>
+              <strong>Feelings of fullness</strong> after meals
+            </li>
           </ul>
           <p>
             Protein is not just for bodybuilders. Everyone needs protein
@@ -157,7 +274,11 @@ export default function HowMuchProteinArticlePage() {
             your results.
           </p>
 
-          <SectionHeading label="Calculation" accent="blue">
+          <SectionHeading
+            id="how-much-protein-do-you-need-per-day"
+            label="Calculation"
+            accent="blue"
+          >
             How Much Protein Do You Need Per Day?
           </SectionHeading>
           <p>
@@ -206,7 +327,11 @@ export default function HowMuchProteinArticlePage() {
             intake, goals, and individual circumstances.
           </p>
 
-          <SectionHeading label="Reference" accent="blue">
+          <SectionHeading
+            id="protein-intake-by-body-weight"
+            label="Reference"
+            accent="blue"
+          >
             Protein Intake by Body Weight
           </SectionHeading>
           <p>
@@ -275,7 +400,11 @@ export default function HowMuchProteinArticlePage() {
             that everyone should choose the highest number shown.
           </p>
 
-          <SectionHeading label="Muscle & Performance" accent="orange">
+          <SectionHeading
+            id="how-much-protein-do-you-need-to-build-muscle"
+            label="Muscle & Performance"
+            accent="orange"
+          >
             How Much Protein Do You Need to Build Muscle?
           </SectionHeading>
           <p>
@@ -312,13 +441,28 @@ export default function HowMuchProteinArticlePage() {
           </p>
           <p>You may also want to know:</p>
           <ul>
-            <li>Are you completing your planned workouts?</li>
-            <li>Are your sets and reps progressing?</li>
-            <li>Are you adding weight to your exercises?</li>
-            <li>Are you hitting new personal records?</li>
-            <li>Is your body weight changing?</li>
-            <li>Are your measurements changing over time?</li>
-            <li>Are you consistently reaching your nutrition targets?</li>
+            <li>
+              <strong>Are you completing</strong> your planned workouts?
+            </li>
+            <li>
+              <strong>Are your sets and reps</strong> progressing?
+            </li>
+            <li>
+              <strong>Are you adding weight</strong> to your exercises?
+            </li>
+            <li>
+              <strong>Are you hitting</strong> new personal records?
+            </li>
+            <li>
+              <strong>Is your body weight</strong> changing?
+            </li>
+            <li>
+              <strong>Are your measurements</strong> changing over time?
+            </li>
+            <li>
+              <strong>Are you consistently reaching</strong> your nutrition
+              targets?
+            </li>
           </ul>
           <p>
             Tracking these different pieces can give you a clearer picture
@@ -327,7 +471,11 @@ export default function HowMuchProteinArticlePage() {
             rather than treating them as completely separate activities.
           </p>
 
-          <SectionHeading label="Muscle & Performance" accent="orange">
+          <SectionHeading
+            id="how-much-protein-should-you-eat-for-weight-loss"
+            label="Muscle & Performance"
+            accent="orange"
+          >
             How Much Protein Should You Eat for Weight Loss?
           </SectionHeading>
           <p>
@@ -356,12 +504,24 @@ export default function HowMuchProteinArticlePage() {
           </p>
           <p>Depending on your goals, you may also track:</p>
           <ul>
-            <li>Waist and other body measurements</li>
-            <li>Progress photos</li>
-            <li>Workout performance</li>
-            <li>Strength improvements</li>
-            <li>Nutrition consistency</li>
-            <li>Changes in body weight over time</li>
+            <li>
+              <strong>Waist and other body measurements</strong>
+            </li>
+            <li>
+              <strong>Progress photos</strong>
+            </li>
+            <li>
+              <strong>Workout performance</strong>
+            </li>
+            <li>
+              <strong>Strength improvements</strong>
+            </li>
+            <li>
+              <strong>Nutrition consistency</strong>
+            </li>
+            <li>
+              <strong>Changes in body weight</strong> over time
+            </li>
           </ul>
           <p>
             Progress photos and measurements can provide additional context
@@ -370,7 +530,11 @@ export default function HowMuchProteinArticlePage() {
             may not fully capture.
           </p>
 
-          <SectionHeading label="Nutrition" accent="green">
+          <SectionHeading
+            id="how-much-protein-is-in-common-foods"
+            label="Nutrition"
+            accent="green"
+          >
             How Much Protein Is in Common Foods?
           </SectionHeading>
           <p>
@@ -438,7 +602,27 @@ export default function HowMuchProteinArticlePage() {
 
           <ImagePlaceholder alt="Common high-protein foods including chicken, eggs and Greek yogurt" />
 
-          <SectionHeading label="Nutrition" accent="green">
+          <BlogArticleLink href="/blog" className="ps-blog-also-like">
+            <div>
+              <p className="ps-blog-also-like-label">You might also like</p>
+              <p className="ps-blog-also-like-title">
+                The Science Behind Progressive Overload
+              </p>
+              <div className="ps-blog-also-like-meta">
+                <span className="ps-blog-also-like-badge">Workouts</span>
+                <span>Coming Soon</span>
+              </div>
+            </div>
+            <span className="ps-blog-also-like-arrow" aria-hidden="true">
+              →
+            </span>
+          </BlogArticleLink>
+
+          <SectionHeading
+            id="how-can-you-reach-your-protein-goal-every-day"
+            label="Nutrition"
+            accent="green"
+          >
             How Can You Reach Your Protein Goal Every Day?
           </SectionHeading>
           <p>
@@ -446,49 +630,88 @@ export default function HowMuchProteinArticlePage() {
             be harder. Here are a few practical strategies.
           </p>
 
-          <h3>1. Start With Protein at Breakfast</h3>
-          <p>
-            If breakfast contains very little protein, you may find
-            yourself trying to make up a large amount at dinner. Eggs,
-            Greek yogurt, cottage cheese, milk, or a protein-rich smoothie
-            can help you start the day with a meaningful amount of protein.
-          </p>
+          <div className="ps-blog-steps">
+            <div className="ps-blog-step">
+              <span className="ps-blog-step-num" aria-hidden="true">
+                1
+              </span>
+              <h3 className="ps-blog-step-title">
+                Start With Protein at Breakfast
+              </h3>
+              <p>
+                If breakfast contains very little protein, you may find
+                yourself trying to make up a large amount at dinner. Eggs,
+                Greek yogurt, cottage cheese, milk, or a protein-rich smoothie
+                can help you start the day with a meaningful amount of protein.
+              </p>
+            </div>
 
-          <h3>2. Include Protein at Lunch</h3>
-          <p>
-            Do not leave most of your protein for the evening. Chicken,
-            fish, lean meat, tofu, beans, lentils, dairy products, or
-            other protein-rich foods can make lunch contribute
-            significantly toward your daily target.
-          </p>
+            <div className="ps-blog-step">
+              <span className="ps-blog-step-num" aria-hidden="true">
+                2
+              </span>
+              <h3 className="ps-blog-step-title">Include Protein at Lunch</h3>
+              <p>
+                Do not leave most of your protein for the evening. Chicken,
+                fish, lean meat, tofu, beans, lentils, dairy products, or
+                other protein-rich foods can make lunch contribute
+                significantly toward your daily target.
+              </p>
+            </div>
 
-          <h3>3. Plan Your Meals Around Your Goal</h3>
-          <p>
-            If your target is 150 grams per day, think about how
-            breakfast, lunch, dinner, and snacks can collectively
-            contribute to that number. You do not have to hit exactly
-            the same amount at every meal. The bigger goal is making
-            your daily intake consistent.
-          </p>
+            <div className="ps-blog-step">
+              <span className="ps-blog-step-num" aria-hidden="true">
+                3
+              </span>
+              <h3 className="ps-blog-step-title">
+                Plan Your Meals Around Your Goal
+              </h3>
+              <p>
+                If your target is 150 grams per day, think about how
+                breakfast, lunch, dinner, and snacks can collectively
+                contribute to that number. You do not have to hit exactly
+                the same amount at every meal. The bigger goal is making
+                your daily intake consistent.
+              </p>
+            </div>
 
-          <h3>4. Keep Convenient Protein Sources Available</h3>
-          <p>
-            Having convenient foods available can make it easier to fill
-            gaps when your meals do not provide enough protein. Greek
-            yogurt, eggs, cottage cheese, milk, tuna, and protein shakes
-            are examples of convenient options.
-          </p>
+            <div className="ps-blog-step">
+              <span className="ps-blog-step-num" aria-hidden="true">
+                4
+              </span>
+              <h3 className="ps-blog-step-title">
+                Keep Convenient Protein Sources Available
+              </h3>
+              <p>
+                Having convenient foods available can make it easier to fill
+                gaps when your meals do not provide enough protein. Greek
+                yogurt, eggs, cottage cheese, milk, tuna, and protein shakes
+                are examples of convenient options.
+              </p>
+            </div>
 
-          <h3>5. Track What You Are Actually Eating</h3>
-          <p>
-            This is where many people discover a gap between what they
-            think they are eating and what they are actually eating.
-            Tracking your meals for a period of time can reveal that
-            breakfast or lunch consistently contributes less protein
-            than expected.
-          </p>
+            <div className="ps-blog-step">
+              <span className="ps-blog-step-num" aria-hidden="true">
+                5
+              </span>
+              <h3 className="ps-blog-step-title">
+                Track What You Are Actually Eating
+              </h3>
+              <p>
+                This is where many people discover a gap between what they
+                think they are eating and what they are actually eating.
+                Tracking your meals for a period of time can reveal that
+                breakfast or lunch consistently contributes less protein
+                than expected.
+              </p>
+            </div>
+          </div>
 
-          <SectionHeading label="Timing" accent="blue">
+          <SectionHeading
+            id="does-protein-timing-matter"
+            label="Timing"
+            accent="blue"
+          >
             Does Protein Timing Matter?
           </SectionHeading>
           <p>
@@ -510,7 +733,11 @@ export default function HowMuchProteinArticlePage() {
             The important thing is not perfection. It is consistency.
           </p>
 
-          <SectionHeading label="Tracking" accent="blue">
+          <SectionHeading
+            id="why-track-nutrition-and-fitness-together"
+            label="Tracking"
+            accent="blue"
+          >
             Why Track Nutrition and Fitness Together?
           </SectionHeading>
           <p>
@@ -597,11 +824,21 @@ export default function HowMuchProteinArticlePage() {
             around 1.6 g/kg/day is a practical starting point:
           </p>
           <ul>
-            <li>60 kg → 96 g/day</li>
-            <li>70 kg → 112 g/day</li>
-            <li>80 kg → 128 g/day</li>
-            <li>90 kg → 144 g/day</li>
-            <li>100 kg → 160 g/day</li>
+            <li>
+              <strong>60 kg</strong> → 96 g/day
+            </li>
+            <li>
+              <strong>70 kg</strong> → 112 g/day
+            </li>
+            <li>
+              <strong>80 kg</strong> → 128 g/day
+            </li>
+            <li>
+              <strong>90 kg</strong> → 144 g/day
+            </li>
+            <li>
+              <strong>100 kg</strong> → 160 g/day
+            </li>
           </ul>
           <p>
             The most useful protein target is not necessarily the highest
@@ -609,7 +846,11 @@ export default function HowMuchProteinArticlePage() {
             consistently reach.
           </p>
 
-          <SectionHeading label="FAQ" accent="blue">
+          <SectionHeading
+            id="frequently-asked-questions"
+            label="FAQ"
+            accent="blue"
+          >
             Frequently Asked Questions
           </SectionHeading>
 
@@ -692,7 +933,7 @@ export default function HowMuchProteinArticlePage() {
             </div>
           </div>
 
-          <SectionHeading label="Conclusion" accent="blue">
+          <SectionHeading id="the-bottom-line" label="Conclusion" accent="blue">
             The Bottom Line
           </SectionHeading>
           <p>
@@ -755,6 +996,60 @@ export default function HowMuchProteinArticlePage() {
             medical or dietary advice. Protein needs can vary based on
             individual circumstances.
           </p>
+
+          <section className="ps-blog-related" aria-label="Related articles">
+            <h2 className="ps-blog-related-heading">Related Articles</h2>
+            <div className="ps-blog-related-grid">
+              <BlogArticleLink href="/blog" className="ps-blog-related-card">
+                <span className="ps-blog-related-badge">Workouts</span>
+                <p className="ps-blog-related-title">
+                  The Science Behind Progressive Overload
+                </p>
+                <div className="ps-blog-related-meta">
+                  <span>8 min read</span>
+                  <span className="ps-blog-related-soon">Coming Soon</span>
+                </div>
+              </BlogArticleLink>
+              <BlogArticleLink href="/blog" className="ps-blog-related-card">
+                <span className="ps-blog-related-badge">AI Coaching</span>
+                <p className="ps-blog-related-title">
+                  How AI Is Changing the Way We Track Food
+                </p>
+                <div className="ps-blog-related-meta">
+                  <span>6 min read</span>
+                  <span className="ps-blog-related-soon">Coming Soon</span>
+                </div>
+              </BlogArticleLink>
+            </div>
+          </section>
+
+          <section className="ps-blog-sources" aria-label="References">
+            <p className="ps-blog-sources-heading">References</p>
+            <ol className="ps-blog-sources-list">
+              <li>
+                Morton RW, et al. A systematic review, meta-analysis and
+                meta-regression of the effect of protein supplementation on
+                resistance training-induced gains in muscle mass and
+                strength. British Journal of Sports Medicine. 2018.
+              </li>
+              <li>
+                Stokes T, et al. Recent Perspectives Regarding the Role of
+                Dietary Protein for the Promotion of Muscle Hypertrophy
+                with Resistance Exercise Training. Nutrients. 2018.
+              </li>
+              <li>
+                Phillips SM, Van Loon LJ. Dietary protein for athletes:
+                From requirements to optimum adaptation. Journal of Sports
+                Sciences. 2011.
+              </li>
+              <li>
+                Helms ER, et al. A systematic review of dietary protein
+                during caloric restriction in resistance trained lean
+                athletes. Journal of the International Society of Sports
+                Nutrition. 2014.
+              </li>
+            </ol>
+          </section>
         </div>
       </article>
 
