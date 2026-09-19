@@ -685,7 +685,7 @@ export default function HowMuchProteinArticlePage() {
       </p>
 
       <BlogImagePlaceholder
-        src="/images/proteinsnaps/PSL-5.webp"
+        src="/images/proteinsnaps/blog-ps1.webp"
         alt="ProteinSnaps AI meal and fitness tracking app"
         width={1536}
         height={1024}
