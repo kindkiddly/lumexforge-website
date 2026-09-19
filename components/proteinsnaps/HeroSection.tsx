@@ -72,6 +72,25 @@ function getAdjacentSlideIndices(current: number, length: number) {
   return new Set([prev, current, next]);
 }
 
+/** Desktop: only current + next (forward). Outgoing kept briefly for crossfade. */
+function getDesktopHeroLoadIndices(
+  current: number,
+  length: number,
+  hasNavigated: boolean,
+  outgoing: number | null
+) {
+  const indices = new Set<number>([current]);
+  if (hasNavigated) {
+    indices.add((current + 1) % length);
+  }
+  if (outgoing !== null && outgoing !== current) {
+    indices.add(outgoing);
+  }
+  return indices;
+}
+
+const DESKTOP_CROSSFADE_MS = 1200;
+
 const MOBILE_BRAND_TRANSITION = { duration: 0.5 };
 const MOBILE_TEXT_TRANSITION = { duration: 0.5 };
 
@@ -657,10 +676,15 @@ export function HeroSection() {
   const [index, setIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isTabVisible, setIsTabVisible] = useState(true);
+  const [desktopHasNavigated, setDesktopHasNavigated] = useState(false);
+  const [desktopOutgoingIndex, setDesktopOutgoingIndex] = useState<
+    number | null
+  >(null);
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const indexRef = useRef(index);
+  const desktopPrevIndexRef = useRef(0);
   const isFirstRenderRef = useRef(true);
   const skipEntrance = isFirstRenderRef.current;
 
@@ -759,14 +783,41 @@ export function HeroSection() {
     ? HERO_SLIDES.length
     : MOBILE_HERO_SLIDES.length;
   const visibleHeroIndices = getAdjacentSlideIndices(index, heroSlideCount);
+  const desktopHeroLoadIndices = getDesktopHeroLoadIndices(
+    index,
+    HERO_SLIDES.length,
+    desktopHasNavigated,
+    desktopOutgoingIndex
+  );
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const prev = desktopPrevIndexRef.current;
+    if (prev === index) return;
+
+    desktopPrevIndexRef.current = index;
+    setDesktopOutgoingIndex(prev);
+    const timeout = setTimeout(() => {
+      setDesktopOutgoingIndex(null);
+    }, DESKTOP_CROSSFADE_MS);
+
+    return () => clearTimeout(timeout);
+  }, [index, isDesktop]);
+
+  const markDesktopNavigated = () => {
+    if (isDesktop) setDesktopHasNavigated(true);
+  };
 
   const goToSlide = (i: number) => {
+    markDesktopNavigated();
     setIndex(i);
     indexRef.current = i;
     pauseAutoPlay();
   };
 
   const nextSlide = () => {
+    markDesktopNavigated();
     setIndex((i) => {
       const next = (i + 1) % heroSlideCount;
       indexRef.current = next;
@@ -776,6 +827,7 @@ export function HeroSection() {
   };
 
   const prevSlide = () => {
+    markDesktopNavigated();
     setIndex((i) => {
       const next = (i - 1 + heroSlideCount) % heroSlideCount;
       indexRef.current = next;
@@ -887,24 +939,34 @@ export function HeroSection() {
 
           <div className="absolute inset-0 hidden h-full w-full lg:block">
             {HERO_SLIDES.map((slide, i) => {
-              if (!visibleHeroIndices.has(i)) return null;
+              if (!desktopHeroLoadIndices.has(i)) return null;
+
+              const isCurrent = i === index;
+              const isNextPreload =
+                desktopHasNavigated &&
+                i === (index + 1) % HERO_SLIDES.length &&
+                !isCurrent;
 
               return (
                 <motion.div
                   key={slide.src}
                   className="ps-hero-slide absolute inset-0 h-full w-full overflow-hidden"
                   initial={false}
-                  animate={{ opacity: i === index ? 1 : 0 }}
+                  animate={{ opacity: isCurrent ? 1 : 0 }}
                   transition={{ duration: 1.2, ease: "easeInOut" }}
-                  style={{ zIndex: i === index ? 2 : 1 }}
+                  style={{ zIndex: isCurrent ? 2 : 1 }}
                 >
                   <Image
                     src={slide.src}
                     alt=""
                     width={1536}
                     height={1024}
-                    priority={i === 0}
-                    loading={i === 0 ? undefined : "lazy"}
+                    priority={i === 0 && !desktopHasNavigated}
+                    loading={
+                      isCurrent || isNextPreload || i === 0
+                        ? "eager"
+                        : "lazy"
+                    }
                     sizes="100vw"
                     className={`ps-hero-slide-image h-full w-full object-cover object-center max-lg:object-top${
                       i === PSL_9_INDEX ? " ps-hero-slide-psl9" : ""
