@@ -674,6 +674,7 @@ function DesktopHeroTextBlock({
 
 export function HeroSection() {
   const [index, setIndex] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isTabVisible, setIsTabVisible] = useState(true);
   const [desktopHasNavigated, setDesktopHasNavigated] = useState(false);
@@ -683,7 +684,7 @@ export function HeroSection() {
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
-  const indexRef = useRef(index);
+  const mobileIndexRef = useRef(mobileIndex);
   const desktopPrevIndexRef = useRef(0);
   const isFirstRenderRef = useRef(true);
   const skipEntrance = isFirstRenderRef.current;
@@ -693,8 +694,8 @@ export function HeroSection() {
   }, []);
 
   useEffect(() => {
-    indexRef.current = index;
-  }, [index]);
+    mobileIndexRef.current = mobileIndex;
+  }, [mobileIndex]);
 
   const clearAutoPlay = useCallback(() => {
     if (autoPlayRef.current) {
@@ -718,11 +719,11 @@ export function HeroSection() {
     const scheduleNext = () => {
       autoPlayRef.current = setTimeout(() => {
         const slideCount = MOBILE_HERO_SLIDES.length;
-        const next = (indexRef.current + 1) % slideCount;
-        indexRef.current = next;
-        setIndex(next);
+        const next = (mobileIndexRef.current + 1) % slideCount;
+        mobileIndexRef.current = next;
+        setMobileIndex(next);
         scheduleNext();
-      }, getSlideDelay(indexRef.current));
+      }, getSlideDelay(mobileIndexRef.current));
     };
 
     scheduleNext();
@@ -755,17 +756,6 @@ export function HeroSection() {
   }, []);
 
   useEffect(() => {
-    const slideCount = isDesktop
-      ? HERO_SLIDES.length
-      : MOBILE_HERO_SLIDES.length;
-    setIndex((i) => {
-      const next = i % slideCount;
-      indexRef.current = next;
-      return next;
-    });
-  }, [isDesktop]);
-
-  useEffect(() => {
     const onVisibilityChange = () => {
       setIsTabVisible(document.visibilityState === "visible");
     };
@@ -779,10 +769,10 @@ export function HeroSection() {
     ? { boxShadow: DESKTOP_IMAGE_GLOW }
     : undefined;
 
-  const heroSlideCount = isDesktop
-    ? HERO_SLIDES.length
-    : MOBILE_HERO_SLIDES.length;
-  const visibleHeroIndices = getAdjacentSlideIndices(index, heroSlideCount);
+  const visibleHeroIndices = getAdjacentSlideIndices(
+    mobileIndex,
+    MOBILE_HERO_SLIDES.length
+  );
   const desktopHeroLoadIndices = getDesktopHeroLoadIndices(
     index,
     HERO_SLIDES.length,
@@ -809,30 +799,27 @@ export function HeroSection() {
     if (isDesktop) setDesktopHasNavigated(true);
   };
 
-  const goToSlide = (i: number) => {
+  const goToDesktopSlide = (i: number) => {
     markDesktopNavigated();
     setIndex(i);
-    indexRef.current = i;
+    pauseAutoPlay();
+  };
+
+  const goToMobileSlide = (i: number) => {
+    setMobileIndex(i);
+    mobileIndexRef.current = i;
     pauseAutoPlay();
   };
 
   const nextSlide = () => {
     markDesktopNavigated();
-    setIndex((i) => {
-      const next = (i + 1) % heroSlideCount;
-      indexRef.current = next;
-      return next;
-    });
+    setIndex((i) => (i + 1) % HERO_SLIDES.length);
     pauseAutoPlay();
   };
 
   const prevSlide = () => {
     markDesktopNavigated();
-    setIndex((i) => {
-      const next = (i - 1 + heroSlideCount) % heroSlideCount;
-      indexRef.current = next;
-      return next;
-    });
+    setIndex((i) => (i - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
     pauseAutoPlay();
   };
 
@@ -850,7 +837,7 @@ export function HeroSection() {
     }
   };
 
-  const currentMobileSlide = index;
+  const currentMobileSlide = mobileIndex;
   const currentMobileSlideContent =
     DESKTOP_SLIDES[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
   const currentMobileFeatureTag =
@@ -917,9 +904,9 @@ export function HeroSection() {
                   key={slide.src}
                   className="absolute inset-0 h-full w-full overflow-hidden"
                   initial={false}
-                  animate={{ opacity: i === index ? 1 : 0 }}
+                  animate={{ opacity: i === mobileIndex ? 1 : 0 }}
                   transition={{ duration: 1.2, ease: "easeInOut" }}
-                  style={{ zIndex: i === index ? 2 : 1 }}
+                  style={{ zIndex: i === mobileIndex ? 2 : 1 }}
                 >
                   <Image
                     src={slide.src}
@@ -1039,7 +1026,7 @@ export function HeroSection() {
             <div className="absolute left-0 right-0 top-1/2 z-10 -translate-y-1/2">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={index}
+                  key={mobileIndex}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -1049,14 +1036,14 @@ export function HeroSection() {
                   <h2 className="text-center font-serif text-2xl font-bold text-white">
                     <HighlightedHeadline
                       slide={{
-                        headline: DESKTOP_SLIDES[index].headline,
-                        accentWords: DESKTOP_SLIDES[index].accentWords,
-                        accentClass: DESKTOP_SLIDES[index].accentClass,
+                        headline: currentMobileSlideContent.headline,
+                        accentWords: currentMobileSlideContent.accentWords,
+                        accentClass: currentMobileSlideContent.accentClass,
                       }}
                     />
                   </h2>
                   <p className="mx-auto mt-2 max-w-xs text-center text-sm text-white/80">
-                    {DESKTOP_SLIDES[index].description}
+                    {currentMobileSlideContent.description}
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -1205,10 +1192,10 @@ export function HeroSection() {
               key={slide.src}
               type="button"
               aria-label={`Go to slide ${i + 1}`}
-              aria-current={i === index ? "true" : undefined}
-              onClick={() => goToSlide(i)}
+              aria-current={i === mobileIndex ? "true" : undefined}
+              onClick={() => goToMobileSlide(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index
+                i === mobileIndex
                   ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
                   : "w-1.5 bg-white/35 hover:bg-white/55"
               }`}
@@ -1222,7 +1209,7 @@ export function HeroSection() {
               type="button"
               aria-label={`Go to slide ${i + 1}`}
               aria-current={i === index ? "true" : undefined}
-              onClick={() => goToSlide(i)}
+              onClick={() => goToDesktopSlide(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === index
                   ? "w-7 bg-[#00E6A8] shadow-[0_0_12px_rgba(0,230,168,0.6)]"
