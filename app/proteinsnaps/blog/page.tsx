@@ -43,7 +43,9 @@ const PREVIEW_ARTICLES = [
     title: "The Science Behind Progressive Overload",
     teaser:
       "Why small, consistent increases in training load are the key to long-term strength and physique progress.",
-    status: "coming-soon" as const,
+    readingTime: "8 min read",
+    status: "new" as const,
+    href: "/blog/progressive-overload",
   },
   {
     category: "AI Coaching",

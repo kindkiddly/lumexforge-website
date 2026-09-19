@@ -5,6 +5,7 @@ const routes = [
   "",
   "/blog",
   "/blog/how-much-protein-do-you-need-per-day",
+  "/blog/progressive-overload",
   "/features",
   "/how-it-works",
   "/meal-scanner",
