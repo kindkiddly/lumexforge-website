@@ -24,10 +24,28 @@ export const PROTEINSNAPS_NAV = [
   { label: "Blog", href: "/blog" },
 ] as const;
 
-export const HERO_SLIDES = Array.from({ length: 10 }, (_, i) => ({
-  src: `/images/proteinsnaps/PSL-${i + 1}.webp`,
-  alt: `ProteinSnaps app showcase slide ${i + 1}`,
-}));
+export const HERO_SLIDES = [
+  {
+    src: "/images/proteinsnaps/PSL-1.webp",
+    alt: "ProteinSnaps app showcase slide 1",
+  },
+  {
+    src: "/images/proteinsnaps/PSL-2.webp",
+    alt: "ProteinSnaps app showcase slide 2",
+  },
+  {
+    src: "/images/proteinsnaps/PSL-3.webp",
+    alt: "ProteinSnaps app showcase slide 3",
+  },
+  {
+    src: "/images/proteinsnaps/PSL-5.webp",
+    alt: "ProteinSnaps app showcase slide 5",
+  },
+  {
+    src: "/images/proteinsnaps/PSL-6.webp",
+    alt: "ProteinSnaps app showcase slide 6",
+  },
+];
 
 export const DESKTOP_SLIDES = [
   {
@@ -61,6 +79,49 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-[#00C2FF]",
   },
   {
+    headline: "Snap It. Track It. Achieve It.",
+    description:
+      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
+    accentWords: ["Snap", "Track", "Achieve"],
+    name: "sweepLeft",
+    duration: 1.0,
+    headlineClass: "font-sans font-extrabold uppercase tracking-widest",
+    accentClass: "text-[#00C2FF]",
+  },
+  {
+    headline: "Track Your Meals, Stay on Goal.",
+    description:
+      "Log every meal, see your 30-day nutrition history and stay consistent with your daily targets.",
+    accentWords: ["All-in-One", "Fitness", "Partner."],
+    name: "typewriter",
+    duration: 1.2,
+    headlineClass: "font-mono font-normal not-italic",
+    accentClass: "text-white",
+  },
+] as const;
+
+export const MOBILE_COPY_SLIDES = [
+  {
+    headline: "Your All-in-One Fitness Partner.",
+    description:
+      "Track meals, workouts, protein and progress in one intelligent app built around your goals.",
+    accentWords: ["Meals,", "Stay", "Goal."],
+    name: "fadeUp",
+    duration: 1.0,
+    headlineClass: "font-sans font-extrabold not-italic",
+    accentClass: "text-[#00E6A8]",
+  },
+  {
+    headline: "Stronger Every Day.",
+    description:
+      "Log your workouts, track every set and rep, and build real strength with smart training guidance.",
+    accentWords: ["Stronger", "Every", "Day."],
+    name: "blurReveal",
+    duration: 1.1,
+    headlineClass: "font-sans font-black uppercase",
+    accentClass: "text-white",
+  },
+  {
     headline: "Train Hard. Fuel Right.",
     description:
       "Log every workout, track your nutrition and let AI coach you to your strongest self.",
@@ -91,26 +152,6 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Finish Strong. Recover Smarter.",
-    description:
-      "End every day knowing you hit your goals. Track protein, hydration, workout completion and recovery in one summary.",
-    accentWords: ["Strong.", "Smarter."],
-    name: "dropTop",
-    duration: 1.0,
-    headlineClass: "font-serif font-bold italic",
-    accentClass: "text-[#00E6A8]",
-  },
-  {
-    headline: "Real Food. Real Progress. That's ProteinSnaps.",
-    description:
-      "From your first meal log to your biggest fitness milestone — ProteinSnaps is your personal nutrition coach and fitness buddy.",
-    accentWords: ["Food.", "Progress.", "ProteinSnaps."],
-    name: "glitch",
-    duration: 0.8,
-    headlineClass: "font-sans font-black italic",
-    accentClass: "ps-headline-gradient",
-  },
-  {
     headline: "Real Progress. Real You.",
     description:
       "See your body transform over time. Track weight, body fat and measurements with side-by-side progress comparison.",
@@ -119,16 +160,6 @@ export const DESKTOP_SLIDES = [
     duration: 1.0,
     headlineClass: "font-sans font-semibold not-italic",
     accentClass: "text-[#00C2FF]",
-  },
-  {
-    headline: "Fuel Your Stronger You.",
-    description:
-      "Personalized nutrition, smart workouts and AI insights — all working together to help you become your strongest self.",
-    accentWords: ["Fuel", "Stronger", "You."],
-    name: "shimmer",
-    duration: 1.2,
-    headlineClass: "font-sans font-black italic",
-    accentClass: "text-[#FFD700] ps-headline-shimmer",
   },
 ] as const;
 

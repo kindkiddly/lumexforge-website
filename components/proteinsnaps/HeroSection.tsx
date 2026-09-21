@@ -3,6 +3,7 @@
 import {
   DESKTOP_SLIDES,
   HERO_SLIDES,
+  MOBILE_COPY_SLIDES,
 } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -312,47 +313,6 @@ function StaggerHeadline({
   );
 }
 
-function GlitchHeadline({
-  slide,
-  className,
-  delay,
-}: {
-  slide: DesktopSlide;
-  className: string;
-  delay: number;
-}) {
-  const [settled, setSettled] = useState(false);
-
-  useEffect(() => {
-    setSettled(false);
-    const timer = setTimeout(() => setSettled(true), delay * 1000 + 480);
-    return () => clearTimeout(timer);
-  }, [slide.headline, delay]);
-
-  if (!settled) {
-    return (
-      <motion.span
-        className={`${className} ${slide.headlineClass}`}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          color: ["#00C2FF", "#00E6A8", "#FFFFFF", "#00C2FF", "#00E6A8", "#FFFFFF"],
-          x: [0, -2, 2, -1, 1, 0],
-        }}
-        transition={{ duration: 0.48, delay, ease: "linear" }}
-      >
-        {slide.headline}
-      </motion.span>
-    );
-  }
-
-  return (
-    <span className={`${className} ${slide.headlineClass}`}>
-      <HighlightedHeadline slide={slide} />
-    </span>
-  );
-}
-
 function AnimatedHeadline({
   slideIndex,
   className,
@@ -398,17 +358,6 @@ function AnimatedHeadline({
           <StaggerHeadline slide={slide} className="" delay={delay} />
         </h1>
       );
-    case "zoomIn":
-      return (
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.88 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: slide.duration, delay, ease }}
-          className={`${className} ${slide.headlineClass}`}
-        >
-          <HighlightedHeadline slide={slide} />
-        </motion.h1>
-      );
     case "sweepLeft":
       return (
         <motion.h1
@@ -425,45 +374,6 @@ function AnimatedHeadline({
         <h1 className={className}>
           <TypewriterHeadline slide={slide} className="" delay={delay} />
         </h1>
-      );
-    case "dropTop":
-      return (
-        <motion.h1
-          initial={{ opacity: 0, y: -36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, delay, ease }}
-          className={`${className} ${slide.headlineClass}`}
-        >
-          <HighlightedHeadline slide={slide} />
-        </motion.h1>
-      );
-    case "glitch":
-      return (
-        <h1 className={`${className} ${slide.headlineClass}`}>
-          <GlitchHeadline slide={slide} className="" delay={delay} />
-        </h1>
-      );
-    case "scaleSmall":
-      return (
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.55 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: slide.duration, delay, ease }}
-          className={`${className} ${slide.headlineClass}`}
-        >
-          <HighlightedHeadline slide={slide} />
-        </motion.h1>
-      );
-    case "shimmer":
-      return (
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: slide.duration, delay, ease }}
-          className={`${className} ${slide.headlineClass}`}
-        >
-          <HighlightedHeadline slide={slide} />
-        </motion.h1>
       );
     default:
       return null;
@@ -839,7 +749,7 @@ export function HeroSection() {
 
   const currentMobileSlide = mobileIndex;
   const currentMobileSlideContent =
-    DESKTOP_SLIDES[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
+    MOBILE_COPY_SLIDES[currentMobileSlide];
   const currentMobileFeatureTag =
     MOBILE_FEATURE_TAGS[MOBILE_HERO_SLIDES[currentMobileSlide].slideIndex];
   const currentMobileSlideDurationMs = getSlideDelay(currentMobileSlide);
