@@ -41,3 +41,5 @@ templatemo_*/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+GhostWriterHunt/
+tmp-edge-profile/
