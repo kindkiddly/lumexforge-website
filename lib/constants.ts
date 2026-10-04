@@ -2,7 +2,7 @@ import type { NavLink } from "@/types";
 
 export const SITE_NAME = "LumexForge";
 export const SITE_URL = "https://lumexforge.com";
-export const FOUNDER = "A.R Mirani";
+export const FOUNDER = "A.R";
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
@@ -35,5 +35,4 @@ export const FOOTER_LINKS = {
 export const CONTACT_EMAILS = {
   business: "hello@lumexforge.com",
   support: "support@lumexforge.com",
-  privacy: "privacy@lumexforge.com",
 };

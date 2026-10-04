@@ -50,7 +50,7 @@ const PRODUCTS = [
   { label: "ProteinSnaps", href: "/products#proteinsnaps", note: "Live" },
   { label: "PostHunt", href: "/products#posthunt", note: "Dev" },
   { label: "AMMORA", href: "/products#ammora", note: "Dev" },
-  { label: "GhostWriterHunt", href: "/products#ghostwriterhunt", note: "Soon" },
+  { label: "GhostWriterHunt", href: "/products#ghostwriterhunt", note: "Live" },
   { label: "MiPaw", href: "/products#mipaw", note: "Soon" },
   { label: "ADMINA", href: "/products#admina", note: "Soon" },
 ];
@@ -200,7 +200,7 @@ export function AboutShowcase() {
           <div>
             <p className="lf-about-eyebrow">Founder</p>
             <h2 className="lf-about-founder-name">
-              A.R <em>Mirani</em>
+              A.R
             </h2>
             <p className="lf-about-founder-role">Founder &amp; Vision</p>
             <p className="lf-about-founder-loc">Houston, USA</p>

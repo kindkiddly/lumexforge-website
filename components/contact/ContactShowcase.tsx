@@ -14,12 +14,6 @@ const CHANNELS = [
     value: CONTACT_EMAILS.support,
     href: `mailto:${CONTACT_EMAILS.support}`,
   },
-  {
-    label: "Privacy",
-    description: "Data & privacy matters",
-    value: CONTACT_EMAILS.privacy,
-    href: `mailto:${CONTACT_EMAILS.privacy}`,
-  },
 ];
 
 const META_ROWS = [

@@ -225,10 +225,10 @@ const PRODUCTS: ShowcaseProduct[] = [
     category: "Ghostwriting & Digital Publishing",
     tagline: "Expert writers, designers, and editors — your vision, brought to life.",
     description:
-      "GhostWriterHunt is a premium professional ghostwriting platform where expert writers, designers, and editors bring author visions to life. Every book is human-crafted with skill, care, and precision. Pure professional craft. All delivery is digital — ready for every major reading platform.",
-    status: "soon",
-    statusLabel: "Launching Soon",
-    platforms: "Web & Mobile · Digital delivery",
+      "GhostWriterHunt is LumexForge’s live premium ghostwriting platform where expert writers, designers, and editors bring author visions to life. Every book is human-crafted with skill, care, and precision. Pure professional craft. All delivery is digital — ready for every major reading platform.",
+    status: "live",
+    statusLabel: "Live on Web",
+    platforms: "Available now · Web & Mobile",
     features: [
       {
         title: "Ghostwriting",
@@ -265,7 +265,11 @@ const PRODUCTS: ShowcaseProduct[] = [
     ],
     banner: "/images/lumexforge/LF-products/Products-GR.webp",
     reverse: true,
-    primaryCta: { label: "Begin Your Book", href: "/contact" },
+    primaryCta: {
+      label: "Open GhostWriterHunt",
+      href: "https://ghostwriterhunt.lumexforge.com",
+      external: true,
+    },
     secondaryCta: { label: "Contact Studio", href: "/contact" },
   },
 ];

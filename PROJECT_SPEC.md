@@ -12,7 +12,7 @@ LumexForge.com
 
 ### Founder
 
-A.R Mirani
+A.R
 
 ### Company Type
 
@@ -422,7 +422,7 @@ Founded With Vision
 
 Text:
 
-LumexForge was founded by A.R Mirani with a mission to create innovative digital products that empower people and businesses through technology.
+LumexForge was founded by A.R with a mission to create innovative digital products that empower people and businesses through technology.
 
 ---
 
@@ -480,7 +480,7 @@ Content:
 
 LumexForge is an independent technology studio focused on building innovative software, AI-powered tools, intelligent agents, automation systems, digital platforms, and future technologies.
 
-Founded by A.R Mirani, LumexForge was established to transform ambitious ideas into exceptional digital products.
+Founded by A.R, LumexForge was established to transform ambitious ideas into exceptional digital products.
 
 The company is committed to innovation, quality, usability, and long-term impact.
 
@@ -501,10 +501,6 @@ Business Email:
 Support Email:
 
 [support@lumexforge.com](mailto:support@lumexforge.com)
-
-Privacy Email:
-
-[privacy@lumexforge.com](mailto:privacy@lumexforge.com)
 
 Website:
 
@@ -556,7 +552,7 @@ User Rights
 
 Contact Information
 
-Privacy Email
+hello@lumexforge.com
 
 Professional legal formatting.
 
@@ -618,7 +614,7 @@ Footer Text:
 
 © 2026 LumexForge
 
-Founded by A.R Mirani
+Founded by A.R
 
 Social Icons Placeholder:
 

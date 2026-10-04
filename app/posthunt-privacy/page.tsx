@@ -252,10 +252,10 @@ export default function PostHuntPrivacyPage() {
         <p>
           To exercise privacy rights or submit a request, contact us at{" "}
           <a
-            href={`mailto:${CONTACT_EMAILS.privacy}`}
+            href={`mailto:${CONTACT_EMAILS.business}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {CONTACT_EMAILS.privacy}
+            {CONTACT_EMAILS.business}
           </a>{" "}
           or through our{" "}
           <Link
@@ -321,16 +321,7 @@ export default function PostHuntPrivacyPage() {
           Questions about this Privacy Policy or our privacy practices? Contact us:
         </p>
         <p>
-          Privacy:{" "}
-          <a
-            href={`mailto:${CONTACT_EMAILS.privacy}`}
-            className="text-accent-secondary transition-colors hover:underline"
-          >
-            {CONTACT_EMAILS.privacy}
-          </a>
-        </p>
-        <p>
-          General inquiries:{" "}
+          Email:{" "}
           <a
             href={`mailto:${CONTACT_EMAILS.business}`}
             className="text-accent-secondary transition-colors hover:underline"

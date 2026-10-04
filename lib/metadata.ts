@@ -27,7 +27,7 @@ export const rootMetadata: Metadata = {
   },
   description: defaultDescription,
   keywords: defaultKeywords,
-  authors: [{ name: "A.R Mirani", url: SITE_URL }],
+  authors: [{ name: "A.R", url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
   formatDetection: {

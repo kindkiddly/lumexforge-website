@@ -1,6 +1,7 @@
 "use client";
 
 import type { ContactFormData, FormErrors } from "@/types";
+import { CONTACT_EMAILS } from "@/lib/constants";
 import { useState } from "react";
 
 function validateForm(data: ContactFormData): FormErrors {
@@ -49,7 +50,11 @@ export function ContactFormPanel() {
       return;
     }
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const subject = encodeURIComponent(formData.subject.trim());
+    const body = encodeURIComponent(
+      `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\n${formData.message.trim()}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAILS.business}?subject=${subject}&body=${body}`;
     setIsSubmitting(false);
     setSubmitted(true);
     setFormData({ name: "", email: "", subject: "", message: "" });
