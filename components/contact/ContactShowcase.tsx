@@ -31,6 +31,8 @@ const META_ROWS = [
   },
 ];
 
+const DIRECT_CHANNELS = [...CHANNELS, ...META_ROWS];
+
 /** Server shell — only the form is client for lighter scroll/perf */
 export function ContactShowcase() {
   return (
@@ -54,32 +56,17 @@ export function ContactShowcase() {
             <p className="lf-contact-side-label">Direct channels</p>
 
             <ul className="lf-contact-channels">
-              {CHANNELS.map((channel) => (
-                <li key={channel.label} className="lf-contact-channel">
-                  <div className="lf-contact-channel-text">
-                    <span className="lf-contact-channel-label">{channel.label}</span>
-                    <span className="lf-contact-channel-desc">{channel.description}</span>
-                  </div>
-                  <a href={channel.href} className="lf-contact-channel-value">
-                    {channel.value}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <ul className="lf-contact-channels lf-contact-channels--meta">
-              {META_ROWS.map((row) => (
+              {DIRECT_CHANNELS.map((row) => (
                 <li key={row.label} className="lf-contact-channel">
-                  <div className="lf-contact-channel-text">
-                    <span className="lf-contact-channel-label">{row.label}</span>
-                    <span className="lf-contact-channel-desc">{row.description}</span>
-                  </div>
+                  <span className="lf-contact-channel-label">{row.label}</span>
+                  <span className="lf-contact-channel-desc">{row.description}</span>
                   {row.href ? (
                     <a
                       href={row.href}
                       className="lf-contact-channel-value"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(row.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                     >
                       {row.value}
                     </a>

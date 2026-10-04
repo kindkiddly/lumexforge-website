@@ -1,7 +1,6 @@
 "use client";
 
 import type { ContactFormData, FormErrors } from "@/types";
-import { CONTACT_EMAILS } from "@/lib/constants";
 import { useState } from "react";
 
 function validateForm(data: ContactFormData): FormErrors {
@@ -31,12 +30,14 @@ export function ContactFormPanel() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitError(null);
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -50,14 +51,40 @@ export function ContactFormPanel() {
       return;
     }
     setIsSubmitting(true);
-    const subject = encodeURIComponent(formData.subject.trim());
-    const body = encodeURIComponent(
-      `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\n${formData.message.trim()}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAILS.business}?subject=${subject}&body=${body}`;
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        }),
+      });
+
+      const payload = (await response.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+
+      if (!response.ok) {
+        setSubmitError(
+          payload?.error ??
+            "Unable to send your message. Please try again or email us directly."
+        );
+        return;
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      setSubmitError(
+        "Unable to send your message. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -124,7 +151,7 @@ export function ContactFormPanel() {
           />
           {errors.subject && <p className="lf-contact-error">{errors.subject}</p>}
         </div>
-        <div className="lf-contact-field">
+        <div className="lf-contact-field lf-contact-field--message">
           <label htmlFor="contact-message">Message</label>
           <textarea
             id="contact-message"
@@ -137,6 +164,11 @@ export function ContactFormPanel() {
           />
           {errors.message && <p className="lf-contact-error">{errors.message}</p>}
         </div>
+        {submitError && (
+          <p className="lf-contact-error" role="alert">
+            {submitError}
+          </p>
+        )}
         <button type="submit" className="lf-contact-submit" disabled={isSubmitting}>
           {isSubmitting ? "Sending…" : "Submit message"}
           {!isSubmitting && <span aria-hidden="true">→</span>}

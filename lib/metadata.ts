@@ -149,14 +149,14 @@ export const contactMetadata = createMetadata({
 export const privacyMetadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "AMMORA privacy policy — how LumexForge collects, uses, and protects your memories, conversations, and voice data.",
+    "LumexForge privacy policy for lumexforge.com — how we collect, use, and protect information you share with our studio.",
   path: "/privacy",
 });
 
 export const termsMetadata = createMetadata({
   title: "Terms of Service",
   description:
-    "AMMORA terms of service — eligibility, acceptable use, voice cloning, subscriptions, and disclaimers.",
+    "LumexForge terms of service for lumexforge.com — website use, product portfolio, inquiries, and contact.",
   path: "/terms",
 });
 

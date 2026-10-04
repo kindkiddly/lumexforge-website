@@ -9,196 +9,139 @@ export default function TermsPage() {
     <LegalLayout
       title="Terms of Service"
       breadcrumbLabel="Terms"
-      lastUpdated="June 16, 2026"
+      lastUpdated="October 4, 2026"
     >
-      <div className="space-y-4 text-base leading-[1.75]">
+      <LegalSection title="1. About these terms">
         <p>
-          Welcome to AMMORA. These terms govern your use of our app and service.
-          Please read them carefully — they include important information about
-          what AMMORA is and is not.
+          These Terms govern your use of the LumexForge website at lumexforge.com.
+          By using the website, you agree to these Terms. If you do not agree,
+          please do not use the website.
         </p>
-      </div>
+      </LegalSection>
 
-      <LegalSection title="1. What AMMORA is">
+      <LegalSection title="2. LumexForge and its products">
         <p>
-          AMMORA is an emotional companion app that helps you preserve and revisit
-          memories of loved ones through AI-assisted conversations and voice
-          reconstructions.
+          LumexForge is an independent technology and creative studio, and the parent
+          company of a growing family of digital products and services. We bring
+          together technology, artificial intelligence and creative craft to build
+          products that make everyday life simpler, healthier and more meaningful,
+          from mobile apps and AI-powered tools to SaaS platforms, business software,
+          and professional writing and book publishing services.
         </p>
-        <p>AMMORA is NOT:</p>
+        <p>Our portfolio includes, but is not limited to:</p>
         <ul className="list-disc space-y-2 pl-5">
-          <li>A substitute for professional mental health care or therapy</li>
-          <li>A crisis intervention service</li>
-          <li>A medical or psychological diagnostic tool</li>
-          <li>
-            A means of contacting actual deceased persons (the conversations are
-            AI-generated, based on the information you provide)
-          </li>
+          <li>ProteinSnaps: Live on iOS and Android.</li>
+          <li>GhostWriterHunt: Live.</li>
+          <li>AMMORA: Ready to launch.</li>
+          <li>PostHunt: Ready to launch.</li>
+          <li>MiPaw: In development.</li>
+          <li>ADMINA: In development.</li>
         </ul>
+        <p>Many more products are on the way.</p>
+      </LegalSection>
+
+      <LegalSection title="3. Product terms">
         <p>
-          If you are experiencing a mental health crisis or having thoughts of
-          self-harm, please contact a qualified mental health professional or use
-          the helplines provided in the app (Settings → Get support).
+          Each product has its own Terms of Service and Privacy Policy, available on
+          its own website and within the product. When you use a product, its own
+          terms apply. If there is a conflict, the product&apos;s own terms govern
+          for that product.
         </p>
       </LegalSection>
 
-      <LegalSection title="2. Eligibility">
-        <p>
-          You must be at least 18 years old to use AMMORA. By creating an account,
-          you confirm you meet this age requirement.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="3. Your account">
+      <LegalSection title="4. Use of the website">
+        <p>You agree not to:</p>
         <ul className="list-disc space-y-2 pl-5">
-          <li>You are responsible for keeping your login credentials secure.</li>
-          <li>You must provide accurate information during signup.</li>
-          <li>One account per person — please don&apos;t share accounts.</li>
+          <li>Use the website for any unlawful purpose.</li>
           <li>
-            We may suspend or terminate accounts that violate these terms.
-          </li>
-        </ul>
-      </LegalSection>
-
-      <LegalSection title="4. Acceptable use">
-        <p>You agree NOT to use AMMORA to:</p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            Create profiles of real public figures, celebrities, or political
-            leaders without their consent.
+            Try to gain unauthorized access to the website, its servers, or related
+            systems.
           </li>
           <li>
-            Create profiles intended to harass, defame, or harm others.
+            Interfere with the website&apos;s operation, for example through malware,
+            spam, or automated attacks.
           </li>
           <li>
-            Upload voice samples or photos you do not have the right to use.
+            Copy, scrape, or reuse website content for commercial purposes without
+            permission.
           </li>
-          <li>Use the service for any illegal purpose.</li>
-          <li>
-            Attempt to extract, copy, or reverse-engineer the AI&apos;s behavior.
-          </li>
-          <li>Resell or commercially redistribute access to the app.</li>
-          <li>Bypass security or access restrictions.</li>
+          <li>Impersonate LumexForge or misrepresent your affiliation with us.</li>
         </ul>
       </LegalSection>
 
-      <LegalSection title="5. Voice cloning and intellectual property">
-        <p>When you upload a voice sample for cloning:</p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            You confirm you have the legal right to use that voice (as the person
-            themselves, as next of kin for deceased persons, or with explicit
-            written consent from a living person).
-          </li>
-          <li>You retain ownership of the voice and recordings.</li>
-          <li>
-            You grant AMMORA a limited license to use them solely to generate
-            conversations for you within the app.
-          </li>
-          <li>
-            We do not use your loved ones&apos; voices for any external purpose or
-            training.
-          </li>
-        </ul>
-      </LegalSection>
-
-      <LegalSection title="6. Subscriptions and payments">
+      <LegalSection title="5. Intellectual property">
         <p>
-          Free tier includes basic profile creation and limited conversation
-          minutes per month. Some features (advanced voices, voice cloning) require
-          a paid subscription.
-        </p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            Paid plans auto-renew monthly unless cancelled before the renewal
-            date.
-          </li>
-          <li>
-            You can cancel anytime through your device&apos;s subscription settings
-            (Apple App Store / Google Play Store).
-          </li>
-          <li>
-            Refunds are handled per the policies of Apple and Google.
-          </li>
-          <li>Prices may change with 30 days&apos; notice.</li>
-        </ul>
-      </LegalSection>
-
-      <LegalSection title="7. Disclaimer">
-        <p>
-          AMMORA is provided &quot;as is&quot; without warranties of any kind. While
-          we make every effort to provide a meaningful and emotionally sensitive
-          experience:
-        </p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            AI-generated content may sometimes feel unexpected, inaccurate, or out
-            of character.
-          </li>
-          <li>
-            The likeness of your loved one is an approximation, not a true
-            representation.
-          </li>
-          <li>We cannot guarantee uninterrupted or error-free service.</li>
-          <li>
-            We are not responsible for emotional, psychological, or relational
-            consequences of using the service.
-          </li>
-        </ul>
-        <p>
-          <strong className="text-foreground">Important:</strong> Use of AMMORA can
-          bring up complex emotions. If you find yourself struggling, please reach
-          out to a qualified mental health professional.
+          The LumexForge name, logo, product names, designs, images and content on
+          this website belong to LumexForge. You may not use them without our written
+          permission.
         </p>
       </LegalSection>
 
-      <LegalSection title="8. Limitation of liability">
+      <LegalSection title="6. Product information and availability">
         <p>
-          To the maximum extent permitted by law, LumexForge and its team are not
-          liable for:
-        </p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>Emotional distress arising from app use</li>
-          <li>
-            Loss of memories, profiles, or data (we recommend regular exports)
-          </li>
-          <li>Indirect, consequential, or punitive damages</li>
-          <li>
-            Issues caused by third-party services we depend on (Supabase, AI
-            providers, payment processors)
-          </li>
-        </ul>
-        <p>
-          Our total liability for any claim is limited to the amount you paid us in
-          the 12 months before the claim arose.
+          Product descriptions, features, screenshots and launch statuses on this
+          website are for general information. Products in development may change, be
+          delayed, or not be released. We do not guarantee any launch date or
+          feature.
         </p>
       </LegalSection>
 
-      <LegalSection title="9. Termination">
+      <LegalSection title="7. Purchases">
         <p>
-          You can stop using AMMORA and delete your account at any time. We may
-          suspend or terminate accounts that violate these terms or for legal
-          reasons. Upon termination, your data will be deleted per our Privacy
-          Policy.
+          No purchases are made on this website. Purchases and subscriptions for our
+          products are handled through the Apple App Store, Google Play, or the
+          product&apos;s own website, under their own payment and refund terms.
         </p>
       </LegalSection>
 
-      <LegalSection title="10. Changes to terms">
+      <LegalSection title="8. Inquiries and services">
         <p>
-          We may update these terms as our service evolves. Material changes will
-          be communicated through the app at least 14 days in advance. Continued
-          use after changes means acceptance.
+          Messages sent through our contact form are inquiries only. No agreement,
+          project or service commitment exists until it is confirmed in a separate
+          written agreement.
         </p>
       </LegalSection>
 
-      <LegalSection title="11. Governing law">
+      <LegalSection title="9. Third-party links">
         <p>
-          These terms are governed by the laws of the Islamic Republic of
-          Pakistan. Disputes will be resolved in the courts of Karachi, Pakistan.
+          The website may link to app stores, product websites and other third-party
+          services. We are not responsible for their content or practices.
         </p>
       </LegalSection>
 
-      <LegalSection title="12. Contact">
+      <LegalSection title="10. Disclaimer">
+        <p>
+          The website is provided &quot;as is&quot; and &quot;as available&quot;. We
+          do not guarantee that it will always be available, error-free, or free from
+          harmful components.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="11. Limitation of liability">
+        <p>
+          To the maximum extent permitted by law, LumexForge is not liable for any
+          indirect, incidental, or consequential damages arising from your use of
+          this website.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="12. Changes to these terms">
+        <p>
+          We may update these Terms from time to time. The &quot;Last updated&quot;
+          date at the top shows the latest version. Continued use of the website
+          means you accept the updated Terms.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="13. Governing law">
+        <p>
+          These Terms are governed by the laws of the State of Texas, USA. Disputes
+          will be resolved in the state or federal courts located in Harris County,
+          Texas.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="14. Contact">
         <p>
           Email:{" "}
           <a
@@ -208,8 +151,16 @@ export default function TermsPage() {
             {CONTACT_EMAILS.business}
           </a>
         </p>
-        <p>Address: LumexForge, Karachi, Pakistan</p>
-        <p>We respond to all questions within 7 business days.</p>
+        <p>
+          Support:{" "}
+          <a
+            href={`mailto:${CONTACT_EMAILS.support}`}
+            className="text-accent-secondary transition-colors hover:underline"
+          >
+            {CONTACT_EMAILS.support}
+          </a>
+        </p>
+        <p>LumexForge, Houston, Texas, USA</p>
       </LegalSection>
     </LegalLayout>
   );

@@ -119,6 +119,7 @@
   .lf-contact-grid {
     grid-template-columns: 0.95fr 1.3fr;
     gap: 1.25rem;
+    align-items: stretch;
   }
 }
 
@@ -128,6 +129,26 @@
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
+}
+
+@media (min-width: 880px) {
+  .lf-contact-side,
+  .lf-contact-form-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .lf-contact-form-wrap > .lf-contact-form-title,
+  .lf-contact-form-wrap > .lf-contact-form-sub {
+    flex-shrink: 0;
+  }
+
+  .lf-contact-form-wrap > .lf-contact-form,
+  .lf-contact-form-wrap > .lf-contact-success {
+    flex: 1;
+    min-height: 0;
+  }
 }
 
 .lf-contact-side-label {
@@ -149,12 +170,6 @@
   gap: 0;
 }
 
-.lf-contact-channels--meta {
-  margin-top: 0.15rem;
-  padding-top: 0.15rem;
-  border-top: 1px solid var(--ct-line);
-}
-
 .lf-contact-channel {
   display: flex;
   flex-direction: column;
@@ -168,18 +183,37 @@
   padding-top: 0;
 }
 
-.lf-contact-channels > .lf-contact-channel:last-child,
-.lf-contact-channels--meta > .lf-contact-channel:last-child {
+.lf-contact-channels > .lf-contact-channel:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
 
-.lf-contact-channel-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-  width: 100%;
+@media (min-width: 880px) {
+  .lf-contact-side-label {
+    flex-shrink: 0;
+  }
+
+  .lf-contact-channels {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .lf-contact-channel {
+    flex: 1;
+    justify-content: center;
+    min-height: 0;
+  }
+
+  .lf-contact-channels > .lf-contact-channel:first-child {
+    padding-top: 0.85rem;
+  }
+
+  .lf-contact-channels > .lf-contact-channel:last-child {
+    padding-bottom: 0.85rem;
+  }
 }
 
 .lf-contact-channel-label {
@@ -242,6 +276,36 @@ a.lf-contact-channel-value:hover {
   margin-top: 0.9rem;
   display: grid;
   gap: 0.7rem;
+}
+
+@media (min-width: 880px) {
+  .lf-contact-form {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .lf-contact-form-row,
+  .lf-contact-form > .lf-contact-field:not(.lf-contact-field--message) {
+    flex-shrink: 0;
+  }
+
+  .lf-contact-field--message {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lf-contact-field--message textarea {
+    flex: 1;
+    min-height: 0;
+    resize: none;
+  }
+
+  .lf-contact-form > .lf-contact-submit {
+    flex-shrink: 0;
+  }
 }
 
 .lf-contact-form-row {

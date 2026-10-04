@@ -9,174 +9,195 @@ export default function PrivacyPage() {
     <LegalLayout
       title="Privacy Policy"
       breadcrumbLabel="Privacy"
-      lastUpdated="June 16, 2026"
+      lastUpdated="October 4, 2026"
     >
-      <div className="space-y-4 text-base leading-[1.75]">
+      <LegalSection title="1. Who we are">
         <p>
-          AMMORA is an emotional companion app created by LumexForge (Karachi,
-          Pakistan) to help people stay connected with the memories of loved ones
-          they have lost. We understand the deeply personal nature of what you
-          share with us, and we take our responsibility to protect it seriously.
-        </p>
-        <p>
-          This Privacy Policy explains what information we collect, why, and how
-          we handle it.
-        </p>
-      </div>
-
-      <LegalSection title="1. Information we collect">
-        <p>
-          <strong className="text-foreground">Account information:</strong> Email
-          address (for sign-in and account recovery), display name (optional),
-          country (for crisis-support resources and language), subscription
-          status.
-        </p>
-        <p>
-          <strong className="text-foreground">Memory profile data:</strong> Names,
-          relationships, photos, dates, and personality details of your loved
-          ones. Stories, sayings, pet names, and other personal memories you
-          choose to share. Voice recordings (only if you upload them for
-          voice-cloning features).
-        </p>
-        <p>
-          <strong className="text-foreground">Conversation data:</strong> Messages
-          you send within the app, AI replies generated for you, time of
-          conversation, duration, and detected mood (used to improve emotional
-          sensitivity).
-        </p>
-        <p>
-          <strong className="text-foreground">Usage analytics:</strong> App
-          version, device type, anonymous usage patterns, crash reports (no
-          personal content).
+          LumexForge is an independent technology and creative studio, and the parent
+          company of a growing family of digital products and services. We bring
+          together technology, artificial intelligence and creative craft to build
+          products that make everyday life simpler, healthier and more meaningful,
+          from mobile apps and AI-powered tools to SaaS platforms, business software,
+          and professional writing and book publishing services. Every product we
+          create is built with care, clarity and long-term value in mind, for people
+          and businesses around the world. In this policy, &quot;LumexForge&quot;,
+          &quot;we&quot;, &quot;us&quot; and &quot;our&quot; refer to LumexForge.
         </p>
       </LegalSection>
 
-      <LegalSection title="2. How we use your information">
+      <LegalSection title="2. Scope of this policy">
+        <p>
+          This policy covers the LumexForge company website at lumexforge.com and
+          any information you share with LumexForge directly, for example through
+          our contact form or by email.
+        </p>
+        <p>
+          Each LumexForge product has its own Privacy Policy, published on that
+          product&apos;s own website and inside the product. When you use a product,
+          that product&apos;s Privacy Policy applies to the data collected through
+          it.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="3. Our products">
+        <p>LumexForge&apos;s portfolio includes, but is not limited to:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            To provide the AMMORA service (creating profiles, generating
-            conversations, producing voices).
+            ProteinSnaps: AI nutrition and fitness tracker. Live on iOS and Android.
           </li>
           <li>
-            To remember context across conversations (so your loved one&apos;s
-            profile feels consistent).
+            GhostWriterHunt: Ghostwriting, book design and digital publishing
+            services. Live.
+          </li>
+          <li>AMMORA: AI grief companion and portrait app. Ready to launch.</li>
+          <li>
+            PostHunt: AI social media content creation and scheduling platform.
+            Ready to launch.
+          </li>
+          <li>MiPaw: Dog nutrition, fitness and health tracking. In development.</li>
+          <li>ADMINA: Business finances, invoicing and reports. In development.</li>
+        </ul>
+        <p>
+          Many more products are on the way. Each product&apos;s privacy policy and
+          terms are available on its own website and within the product.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="4. Information we collect on this website">
+        <ul className="list-disc space-y-2 pl-5">
+          <li>
+            Information you give us: your name, email address, and the content of
+            your message when you contact us through the form or by email.
           </li>
           <li>
-            To detect signs of grief or distress and offer professional support
-            resources when appropriate.
+            Information collected automatically: basic technical data such as browser
+            type, device type, approximate location (from IP address), pages visited,
+            and referring website. This is collected through standard server logs
+            and, where used, privacy-friendly analytics.
           </li>
           <li>
-            To process payments through trusted payment partners (we never store
-            your card details).
-          </li>
-          <li>
-            To improve the app (using anonymous, aggregated data only).
+            We do not ask for payment details, passwords, or sensitive personal data
+            on this website.
           </li>
         </ul>
       </LegalSection>
 
-      <LegalSection title="3. Voice cloning consent">
-        <p>For features that recreate a loved one&apos;s voice using AI:</p>
+      <LegalSection title="5. How we use your information">
+        <ul className="list-disc space-y-2 pl-5">
+          <li>To respond to your inquiries and support requests.</li>
+          <li>To discuss projects, partnerships or services you ask about.</li>
+          <li>
+            To keep the website secure, prevent abuse, and fix technical issues.
+          </li>
+          <li>
+            To understand how visitors use the website and improve it, using
+            aggregated data.
+          </li>
+          <li>To comply with legal obligations.</li>
+        </ul>
+      </LegalSection>
+
+      <LegalSection title="6. Legal basis (for visitors in the EU/UK)">
         <p>
-          <strong className="text-foreground">For deceased persons:</strong> by
-          uploading their voice, you confirm you have the legal and ethical right
-          to do so (typically as next of kin or heir).
-        </p>
-        <p>
-          <strong className="text-foreground">For living persons:</strong>{" "}
-          explicit consent from the living person is required. They must record
-          and submit a consent statement before their voice can be cloned. You are
-          responsible for ensuring this consent is genuine.
-        </p>
-        <p>
-          We do not use uploaded voices for any purpose other than serving your
-          conversations within AMMORA. We never share, sell, or train external
-          models with your loved ones&apos; voices.
+          We process your data based on your consent (when you contact us), our
+          legitimate interests (running and securing the website), and legal
+          obligations where applicable.
         </p>
       </LegalSection>
 
-      <LegalSection title="4. How we store your data">
-        <p>
-          All data is stored on secure servers operated by Supabase (Amazon Web
-          Services infrastructure). Data is encrypted at rest and in transit
-          (TLS). Voice recordings are stored separately with restricted access. We
-          use industry-standard security practices to protect against unauthorized
-          access.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="5. Who can access your data">
+      <LegalSection title="7. Sharing your information">
+        <p>We do not sell or rent your personal data. We only share it with:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-foreground">You</strong> — through the app,
-            anytime.
+            Service providers that help us run the website (hosting, email delivery,
+            analytics), only as needed to provide their service.
           </li>
           <li>
-            <strong className="text-foreground">Our authorized staff</strong> —
-            only when investigating bugs or providing customer support, and only
-            with your explicit request.
+            Authorities, if required by law or to protect our rights and the safety
+            of our users.
           </li>
           <li>
-            <strong className="text-foreground">No one else</strong> — we never
-            sell, share, or rent your personal data to third parties for marketing
-            or any other purpose.
+            A successor business, if LumexForge is involved in a merger or
+            acquisition, with this policy continuing to apply.
           </li>
         </ul>
       </LegalSection>
 
-      <LegalSection title="6. Your rights">
-        <p>You have the right to:</p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            Access all your data through the in-app Profile and Settings screens.
-          </li>
-          <li>
-            Export your data in JSON format (via Settings → Export my data).
-          </li>
-          <li>Correct any information by editing your profiles.</li>
-          <li>
-            Delete your account and all associated data permanently (via Settings
-            → Delete my account). This action is irreversible.
-          </li>
-          <li>
-            Opt out of analytics (via Settings → Privacy → Disable usage
-            analytics).
-          </li>
-        </ul>
+      <LegalSection title="8. Cookies">
         <p>
-          Deletion requests are completed within 30 days. We retain only minimal
-          records required by law (e.g., billing) for limited periods.
+          The website uses only essential cookies needed for it to work properly,
+          and may use analytics cookies to understand traffic. You can block or
+          delete cookies in your browser settings.
         </p>
       </LegalSection>
 
-      <LegalSection title="7. Children's policy">
+      <LegalSection title="9. Data retention">
         <p>
-          AMMORA is not intended for users under 18 years of age. We do not
-          knowingly collect data from minors. If you believe a minor has used our
-          service, please contact us and we will delete their data immediately.
+          Contact messages are kept as long as needed to respond and follow up, then
+          deleted or archived. Technical logs are kept for a limited period for
+          security and troubleshooting.
         </p>
       </LegalSection>
 
-      <LegalSection title="8. International users">
+      <LegalSection title="10. Security">
         <p>
-          AMMORA is operated from Pakistan. By using the app, you consent to your
-          data being processed in Pakistan and the United States (where our
-          servers are located). We comply with applicable data protection
-          regulations including GDPR (for European users) and CCPA (for
-          California users).
+          We use HTTPS encryption and industry-standard practices to protect your
+          data. No online system is completely secure, but we work continuously to
+          protect your information.
         </p>
       </LegalSection>
 
-      <LegalSection title="9. Changes to this policy">
+      <LegalSection title="11. International transfers">
         <p>
-          We may update this policy as our service evolves. We will notify you
-          of significant changes through the app at least 14 days before they take
-          effect. Continued use of AMMORA after changes means you accept them.
+          Our service providers may process data in the United States and other
+          countries. We take reasonable steps to ensure your data is protected
+          wherever it is processed.
         </p>
       </LegalSection>
 
-      <LegalSection title="10. Contact us">
-        <p>Questions, concerns, or requests about your privacy?</p>
+      <LegalSection title="12. Your rights">
+        <p>
+          Depending on where you live, you may have the right to access, correct, or
+          delete your personal data, object to or limit its processing, and withdraw
+          your consent. To make a request, email us at{" "}
+          <a
+            href={`mailto:${CONTACT_EMAILS.business}`}
+            className="text-accent-secondary transition-colors hover:underline"
+          >
+            {CONTACT_EMAILS.business}
+          </a>
+          . We respond within 30 days.
+        </p>
+        <p>
+          For data inside a specific product, please use that product&apos;s in-app
+          settings or its own privacy contact.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="13. Children">
+        <p>
+          This website is not directed at children under 16, and we do not knowingly
+          collect their data. If you believe a child has sent us information, contact
+          us and we will delete it.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="14. Third-party links">
+        <p>
+          This website links to app stores and to our product websites. Those sites
+          have their own policies, and we are not responsible for the practices of
+          third-party sites.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="15. Changes to this policy">
+        <p>
+          We may update this policy from time to time. The &quot;Last updated&quot;
+          date at the top shows the latest version.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="16. Contact us">
         <p>
           Email:{" "}
           <a
@@ -186,8 +207,16 @@ export default function PrivacyPage() {
             {CONTACT_EMAILS.business}
           </a>
         </p>
-        <p>Address: LumexForge, Karachi, Pakistan</p>
-        <p>We respond to all privacy inquiries within 7 business days.</p>
+        <p>
+          Support:{" "}
+          <a
+            href={`mailto:${CONTACT_EMAILS.support}`}
+            className="text-accent-secondary transition-colors hover:underline"
+          >
+            {CONTACT_EMAILS.support}
+          </a>
+        </p>
+        <p>LumexForge, Houston, Texas, USA</p>
       </LegalSection>
     </LegalLayout>
   );
