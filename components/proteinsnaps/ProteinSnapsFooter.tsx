@@ -12,16 +12,16 @@ export function ProteinSnapsFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="font-serif text-xl font-semibold text-foreground">
-              {PROTEINSNAPS.name}
+              Protein<span className="text-[#00e6a8]">Snaps</span>
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
-              {PROTEINSNAPS.tagline}. Built by LumexForge.
+            <p className="mt-1.5 text-sm leading-snug text-foreground-secondary">
+              AI nutrition and fitness tracking, made simple.
             </p>
-            <p className="mt-3 text-sm text-foreground-secondary">
-              Contact:{" "}
+            <p className="mt-1.5 text-sm leading-snug text-foreground-secondary">
+              A LumexForge product ·{" "}
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
-                className="transition-colors hover:text-[#00c2ff]"
+                className="whitespace-nowrap text-[#00e6a8] transition-colors hover:text-[#00c2ff]"
               >
                 {PROTEINSNAPS.contactEmail}
               </a>
