@@ -13,7 +13,7 @@ export default function ProteinSnapPrivacyPage() {
     <LegalLayout
       title="Privacy Policy"
       breadcrumbLabel="ProteinSnaps Privacy"
-      lastUpdated="June 21, 2026"
+      lastUpdated="October 5, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
@@ -151,8 +151,8 @@ export default function ProteinSnapPrivacyPage() {
             request account deletion
           </li>
           <li>
-            <strong className="text-foreground">Export your data</strong> — get
-            a copy in a portable format
+            <strong className="text-foreground">Export your data</strong> —
+            request a copy of your data by emailing proteinsnaps@lumexforge.com
           </li>
           <li>
             <strong className="text-foreground">Withdraw consent</strong> —
@@ -216,7 +216,7 @@ export default function ProteinSnapPrivacyPage() {
         <ul className="list-disc space-y-2 pl-5">
           <li>All data encrypted in transit (HTTPS) and at rest</li>
           <li>Strong authentication via Supabase</li>
-          <li>Regular security monitoring via Sentry</li>
+          <li>Error and stability monitoring via Sentry</li>
           <li>We follow industry best practices</li>
         </ul>
         <p>
@@ -252,8 +252,8 @@ export default function ProteinSnapPrivacyPage() {
 
       <LegalSection title="11. Governing Law">
         <p>
-          This policy is governed by the laws of the jurisdiction where{" "}
-          <Brand /> is established. For US residents, your privacy rights under
+          This policy is governed by the laws of the State of Texas, USA. For US
+          residents, your privacy rights under
           CCPA, COPPA, and other applicable US laws still fully apply. For EU
           residents, your GDPR rights still apply.
         </p>
@@ -270,7 +270,7 @@ export default function ProteinSnapPrivacyPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p><Brand /></p>
+        <p>LumexForge, Houston, Texas, USA</p>
       </LegalSection>
     </LegalLayout>
   );

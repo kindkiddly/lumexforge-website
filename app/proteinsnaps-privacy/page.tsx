@@ -17,7 +17,7 @@ export default function ProteinSnapsPrivacyPage() {
     <LegalLayout
       title="ProteinSnaps Privacy Policy"
       breadcrumbLabel="ProteinSnaps Privacy"
-      lastUpdated="August 16, 2026"
+      lastUpdated="October 5, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
@@ -143,7 +143,10 @@ export default function ProteinSnapsPrivacyPage() {
         <ul className="list-disc space-y-2 pl-5">
           <li>Access and review your personal data within the app</li>
           <li>Correct inaccurate information by editing your profile and logs</li>
-          <li>Export your data where export features are available in the app</li>
+          <li>
+            Export your data — request a copy of your data by emailing
+            proteinsnaps@lumexforge.com
+          </li>
           <li>
             Delete your account and associated personal data permanently through
             in-app account deletion or by contacting us
@@ -217,9 +220,7 @@ export default function ProteinSnapsPrivacyPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>
-          <Brand /> — ProteinSnaps iOS App
-        </p>
+        <p>LumexForge, Houston, Texas, USA — ProteinSnaps iOS App</p>
       </LegalSection>
     </LegalLayout>
   );

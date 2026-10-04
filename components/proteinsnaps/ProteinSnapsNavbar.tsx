@@ -18,15 +18,17 @@ export function ProteinSnapsNavbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050811]/75 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={psHref("/")} className="group flex items-center gap-2.5">
-          <Image
-            src="/images/proteinsnaps/ProteinSnaps.webp"
-            alt={PROTEINSNAPS.name}
-            width={140}
-            height={36}
-            className="h-8 w-auto sm:h-9"
-            priority
-          />
+        <Link href={psHref("/")} className="group flex shrink-0 items-center">
+          <span className="inline-flex overflow-hidden rounded-[9px] shadow-[0_4px_12px_rgba(0,0,0,0.35),0_1px_3px_rgba(0,0,0,0.25)]">
+            <Image
+              src="/images/proteinsnaps/ProteinSnaps.webp"
+              alt={PROTEINSNAPS.name}
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
+            />
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">

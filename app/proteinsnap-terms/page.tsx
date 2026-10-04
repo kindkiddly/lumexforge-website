@@ -13,7 +13,7 @@ export default function ProteinSnapTermsPage() {
     <LegalLayout
       title="Terms of Service"
       breadcrumbLabel="ProteinSnaps Terms"
-      lastUpdated="June 21, 2026"
+      lastUpdated="October 5, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
@@ -48,15 +48,15 @@ export default function ProteinSnapTermsPage() {
             others)
           </li>
           <li>
-            Premium subscription (when available) unlocks unlimited use
+            Premium subscription unlocks unlimited use
           </li>
           <li>
             Free-tier limits may change. We&apos;ll notify you of significant
             changes.
           </li>
           <li>
-            Subscriptions auto-renew unless cancelled per Google Play / App Store
-            rules
+            Premium subscriptions are billed through the Apple App Store or Google
+            Play and auto-renew unless cancelled before the renewal date
           </li>
         </ul>
       </LegalSection>
@@ -121,8 +121,8 @@ export default function ProteinSnapTermsPage() {
       <LegalSection title="7. Subscription Cancellation">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            You can cancel a Premium subscription anytime through Google Play
-            (or App Store when available)
+            You can cancel a Premium subscription anytime through your Apple App
+            Store or Google Play subscription settings
           </li>
           <li>
             Cancellations take effect at the end of the current billing period
@@ -190,8 +190,8 @@ export default function ProteinSnapTermsPage() {
 
       <LegalSection title="12. Governing Law and Disputes">
         <p>
-          These terms are governed by the laws of the jurisdiction where{" "}
-          <Brand /> is established. Any disputes will be resolved through
+          These terms are governed by the laws of the State of Texas, USA. Any
+          disputes will be resolved through
           good-faith negotiation first. For US residents, your consumer
           protection rights under federal and state law still apply. For EU
           residents, your applicable consumer protection rights still apply.
@@ -208,7 +208,7 @@ export default function ProteinSnapTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p><Brand /></p>
+        <p>LumexForge, Houston, Texas, USA</p>
       </LegalSection>
     </LegalLayout>
   );

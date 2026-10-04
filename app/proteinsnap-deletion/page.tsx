@@ -10,7 +10,7 @@ export default function ProteinSnapDeletionPage() {
       <LegalLayout
         title="ProteinSnaps Account Deletion Policy"
         breadcrumbLabel="Account Deletion"
-        lastUpdated="June 21, 2026"
+        lastUpdated="October 5, 2026"
       >
         <div className="space-y-4 text-base leading-[1.75]">
           <p>
@@ -37,12 +37,18 @@ export default function ProteinSnapDeletionPage() {
               Confirm your choice when prompted to finalize the permanent deletion.
             </li>
           </ol>
+          <p>
+            Don&apos;t have access to the app? Email proteinsnaps@lumexforge.com from
+            the email address linked to your account with the subject &quot;Delete my
+            account&quot;, and we will delete your account and all associated data
+            within 30 days.
+          </p>
         </LegalSection>
 
         <LegalSection title="What Data is Permanently Removed">
           <p>
-            Once you initiate the deletion process, we immediately remove your
-            personal data from our servers. This includes:
+            Once you initiate the deletion process, your personal data is
+            permanently removed from our servers within 30 days. This includes:
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>Account Credentials (email and auth profile).</li>

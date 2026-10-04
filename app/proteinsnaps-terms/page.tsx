@@ -17,7 +17,7 @@ export default function ProteinSnapsTermsPage() {
     <LegalLayout
       title="ProteinSnaps Terms of Use"
       breadcrumbLabel="ProteinSnaps Terms"
-      lastUpdated="August 16, 2026"
+      lastUpdated="October 5, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
@@ -174,8 +174,8 @@ export default function ProteinSnapsTermsPage() {
 
       <LegalSection title="10. Governing Law">
         <p>
-          These Terms are governed by the laws of the Islamic Republic of Pakistan,
-          without regard to conflict-of-law principles. Any disputes arising from
+          These Terms are governed by the laws of the State of Texas, USA. Any
+          disputes arising from
           these Terms or your use of ProteinSnaps shall be subject to the exclusive
           jurisdiction of the courts of Karachi, Pakistan, unless applicable consumer
           protection law in your jurisdiction requires otherwise.
@@ -204,9 +204,7 @@ export default function ProteinSnapsTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>
-          <Brand /> — ProteinSnaps iOS App
-        </p>
+        <p>LumexForge, Houston, Texas, USA — ProteinSnaps iOS App</p>
       </LegalSection>
     </LegalLayout>
   );

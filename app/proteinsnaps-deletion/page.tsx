@@ -18,7 +18,7 @@ export default function ProteinSnapsDeletionPage() {
     <LegalLayout
       title="ProteinSnaps Account Deletion"
       breadcrumbLabel="ProteinSnaps Account Deletion"
-      lastUpdated="August 17, 2026"
+      lastUpdated="October 5, 2026"
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
@@ -60,6 +60,12 @@ export default function ProteinSnapsDeletionPage() {
           <li>Tap &apos;Delete Account&apos; (shown in red text).</li>
           <li>Confirm your choice when prompted to finalize the deletion request.</li>
         </ol>
+        <p>
+          Don&apos;t have access to the app? Email proteinsnaps@lumexforge.com from
+          the email address linked to your account with the subject &quot;Delete my
+          account&quot;, and we will delete your account and all associated data within
+          30 days.
+        </p>
         <p>
           If you are unable to access the app, you may also request account deletion
           through our{" "}
