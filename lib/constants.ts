@@ -35,4 +35,5 @@ export const FOOTER_LINKS = {
 export const CONTACT_EMAILS = {
   business: "hello@lumexforge.com",
   support: "support@lumexforge.com",
+  proteinsnaps: "proteinsnaps@lumexforge.com",
 };

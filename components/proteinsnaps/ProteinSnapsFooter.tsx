@@ -17,6 +17,15 @@ export function ProteinSnapsFooter() {
             <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
               {PROTEINSNAPS.tagline}. Built by LumexForge.
             </p>
+            <p className="mt-3 text-sm text-foreground-secondary">
+              Contact:{" "}
+              <a
+                href={`mailto:${PROTEINSNAPS.contactEmail}`}
+                className="transition-colors hover:text-[#00c2ff]"
+              >
+                {PROTEINSNAPS.contactEmail}
+              </a>
+            </p>
           </div>
 
           <div>

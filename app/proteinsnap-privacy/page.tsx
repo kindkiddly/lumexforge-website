@@ -190,12 +190,12 @@ export default function ProteinSnapPrivacyPage() {
           </li>
         </ul>
         <p>
-          To exercise any rights, email{" "}
+          To exercise any rights, contact{" "}
           <a
-            href={`mailto:${CONTACT_EMAILS.business}`}
+            href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {CONTACT_EMAILS.business}
+            {CONTACT_EMAILS.proteinsnaps}
           </a>
           .
         </p>
@@ -262,12 +262,12 @@ export default function ProteinSnapPrivacyPage() {
       <LegalSection title="12. Contact Us">
         <p>Questions? Reach us at:</p>
         <p>
-          Email:{" "}
+          Contact:{" "}
           <a
-            href={`mailto:${CONTACT_EMAILS.business}`}
+            href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {CONTACT_EMAILS.business}
+            {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
         <p><Brand /></p>

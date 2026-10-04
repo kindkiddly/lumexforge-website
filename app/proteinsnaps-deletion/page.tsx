@@ -1,4 +1,5 @@
 import { LegalLayout, LegalSection } from "@/components/legal/LegalLayout";
+import { CONTACT_EMAILS } from "@/lib/constants";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -7,8 +8,6 @@ export const metadata: Metadata = {
   description:
     "How to delete your ProteinSnaps iOS account, what data is removed, subscription management, and contact information.",
 };
-
-const SUPPORT_EMAIL = "support@lumexforge.com";
 
 function Brand() {
   return <span className="text-accent-secondary">LumexForge</span>;
@@ -202,12 +201,12 @@ export default function ProteinSnapsDeletionPage() {
           have questions about your data, contact us:
         </p>
         <p>
-          Email:{" "}
+          Support:{" "}
           <a
-            href={`mailto:${SUPPORT_EMAIL}`}
+            href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {SUPPORT_EMAIL}
+            {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
         <p>

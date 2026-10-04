@@ -199,13 +199,13 @@ export default function ProteinSnapTermsPage() {
       </LegalSection>
 
       <LegalSection title="13. Contact Us">
-        <p>Questions? Email:</p>
+        <p>Questions? Contact:</p>
         <p>
           <a
-            href={`mailto:${CONTACT_EMAILS.business}`}
+            href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {CONTACT_EMAILS.business}
+            {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
         <p><Brand /></p>

@@ -75,12 +75,12 @@ export default function ProteinSnapDeletionPage() {
 
         <LegalSection title="Need Assistance?">
           <p>
-            Contact our support team:{" "}
+            Support:{" "}
             <a
-              href={`mailto:${CONTACT_EMAILS.support}`}
+              href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
               className="text-accent-secondary transition-colors hover:underline"
             >
-              {CONTACT_EMAILS.support}
+              {CONTACT_EMAILS.proteinsnaps}
             </a>
           </p>
         </LegalSection>

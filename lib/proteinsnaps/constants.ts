@@ -1,3 +1,5 @@
+import { CONTACT_EMAILS } from "@/lib/constants";
+
 export const PROTEINSNAPS = {
   name: "ProteinSnaps",
   tagline: "AI-Powered Nutrition & Fitness",
@@ -13,6 +15,7 @@ export const PROTEINSNAPS = {
   privacyUrl: "https://www.lumexforge.com/proteinsnap-privacy",
   termsUrl: "https://www.lumexforge.com/proteinsnap-terms",
   deletionUrl: "https://www.lumexforge.com/proteinsnap-deletion",
+  contactEmail: CONTACT_EMAILS.proteinsnaps,
 } as const;
 
 export const PROTEINSNAPS_NAV = [

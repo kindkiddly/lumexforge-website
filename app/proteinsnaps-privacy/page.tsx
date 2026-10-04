@@ -1,4 +1,5 @@
 import { LegalLayout, LegalSection } from "@/components/legal/LegalLayout";
+import { CONTACT_EMAILS } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,8 +7,6 @@ export const metadata: Metadata = {
   description:
     "ProteinSnaps iOS app privacy policy — how LumexForge collects, uses, and protects your nutrition, fitness, and health data.",
 };
-
-const SUPPORT_EMAIL = "support@lumexforge.com";
 
 function Brand() {
   return <span className="text-accent-secondary">LumexForge</span>;
@@ -210,12 +209,12 @@ export default function ProteinSnapsPrivacyPage() {
           Questions, concerns, or requests about your privacy? Contact us at:
         </p>
         <p>
-          Email:{" "}
+          Contact:{" "}
           <a
-            href={`mailto:${SUPPORT_EMAIL}`}
+            href={`mailto:${CONTACT_EMAILS.proteinsnaps}`}
             className="text-accent-secondary transition-colors hover:underline"
           >
-            {SUPPORT_EMAIL}
+            {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
         <p>

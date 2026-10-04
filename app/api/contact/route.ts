@@ -6,7 +6,23 @@ type ContactPayload = {
   email?: string;
   subject?: string;
   message?: string;
+  site?: string;
 };
+
+const CONTACT_SITES = {
+  lumexforge: CONTACT_EMAILS.business,
+  proteinsnaps: CONTACT_EMAILS.proteinsnaps,
+} as const;
+
+function resolveRecipient(site: string | undefined) {
+  if (!site || site === "lumexforge") {
+    return { to: CONTACT_SITES.lumexforge, tag: "LumexForge Contact" };
+  }
+  if (site === "proteinsnaps") {
+    return { to: CONTACT_SITES.proteinsnaps, tag: "ProteinSnaps Contact" };
+  }
+  return null;
+}
 
 const LIMITS = {
   name: 200,
@@ -65,6 +81,11 @@ export async function POST(request: Request) {
   }
 
   const { name, email, subject, message } = validated.data;
+  const recipient = resolveRecipient(body.site?.trim());
+  if (!recipient) {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
@@ -81,9 +102,9 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       from,
-      to: [CONTACT_EMAILS.business],
+      to: [recipient.to],
       reply_to: email,
-      subject: `[LumexForge Contact] ${subject}`,
+      subject: `[${recipient.tag}] ${subject}`,
       text,
     }),
   });
