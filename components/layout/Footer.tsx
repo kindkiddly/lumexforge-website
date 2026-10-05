@@ -16,8 +16,8 @@ export function Footer() {
           <div className="lf-footer-brand">
             <Logo size="sm" />
             <p className="lf-footer-tagline">
-              Independent technology studio — mobile, AI, and SaaS built for clarity and
-              lasting impact.
+              Where technology, intelligence and creativity are forged into products that
+              last.
             </p>
             <p className="lf-footer-founded">Founded by {FOUNDER}</p>
           </div>
