@@ -8,8 +8,8 @@ export function ProteinSnapsFooter() {
   const { href: psHref } = useProteinSnapsPath();
   return (
     <footer className="ps-site-footer">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="ps-site-footer-inner mx-auto max-w-7xl">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
@@ -100,8 +100,8 @@ export function ProteinSnapsFooter() {
           </div>
         </div>
 
-        <div className="ps-divider mt-10" />
-        <p className="ps-site-footer-copyright mt-6 text-center text-xs">
+        <div className="ps-divider" />
+        <p className="ps-site-footer-copyright text-center">
           © {new Date().getFullYear()} LumexForge. All rights reserved.
         </p>
       </div>
