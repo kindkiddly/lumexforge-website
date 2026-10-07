@@ -28,7 +28,7 @@ export function FeaturesGrid() {
         <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
           {HOME_FEATURE_HIGHLIGHTS.map((feature, i) => (
             <FadeInUp key={feature.title} delay={i * 0.05}>
-              <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-5 sm:p-6">
+              <article className="ps-home-feature-card ps-3d-card h-full rounded-2xl p-5 sm:p-6">
                 <FeatureIcon name={feature.icon} />
                 <h3 className="mt-4 text-sm font-semibold text-[#1A1A1A] sm:text-base">
                   {feature.title}

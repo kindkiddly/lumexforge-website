@@ -7,21 +7,21 @@ import Link from "next/link";
 export function ProteinSnapsFooter() {
   const { href: psHref } = useProteinSnapsPath();
   return (
-    <footer className="border-t border-white/[0.08] bg-[#1A1A1A]">
+    <footer className="ps-site-footer">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-[#94A3B8]">
+            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">
               AI nutrition and fitness tracking, made simple.
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-[#94A3B8]">
+            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">
               A LumexForge product ·{" "}
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
-                className="whitespace-nowrap text-[#00e6a8] transition-colors hover:text-[#00c2ff]"
+                className="whitespace-nowrap text-[#00C2FF] transition-colors hover:text-[#00e6a8]"
               >
                 {PROTEINSNAPS.contactEmail}
               </a>
@@ -29,22 +29,22 @@ export function ProteinSnapsFooter() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
               Product
             </p>
             <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
-                <Link href={psHref("/features")} className="transition-colors hover:text-[#00c2ff]">
+                <Link href={psHref("/features")} className="transition-colors hover:text-[#00E6A8]">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href={psHref("/how-it-works")} className="transition-colors hover:text-[#00c2ff]">
+                <Link href={psHref("/how-it-works")} className="transition-colors hover:text-[#00E6A8]">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href={psHref("/blog")} className="transition-colors hover:text-[#00c2ff]">
+                <Link href={psHref("/blog")} className="transition-colors hover:text-[#00E6A8]">
                   Blog
                 </Link>
               </li>
@@ -52,7 +52,7 @@ export function ProteinSnapsFooter() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
               Legal
             </p>
             <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
@@ -61,7 +61,7 @@ export function ProteinSnapsFooter() {
                   href={PROTEINSNAPS.lumexforgeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-[#00c2ff]"
+                  className="transition-colors hover:text-[#00E6A8]"
                 >
                   LumexForge.com
                 </a>
@@ -71,7 +71,7 @@ export function ProteinSnapsFooter() {
                   href={PROTEINSNAPS.privacyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-[#00c2ff]"
+                  className="transition-colors hover:text-[#00E6A8]"
                 >
                   Privacy Policy
                 </a>
@@ -81,7 +81,7 @@ export function ProteinSnapsFooter() {
                   href={PROTEINSNAPS.termsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-[#00c2ff]"
+                  className="transition-colors hover:text-[#00E6A8]"
                 >
                   Terms of Service
                 </a>
@@ -91,7 +91,7 @@ export function ProteinSnapsFooter() {
                   href={PROTEINSNAPS.deletionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-[#00c2ff]"
+                  className="transition-colors hover:text-[#00E6A8]"
                 >
                   Delete Account
                 </a>
@@ -101,7 +101,7 @@ export function ProteinSnapsFooter() {
         </div>
 
         <div className="ps-divider mt-10" />
-        <p className="mt-6 text-center text-xs text-[#94A3B8]">
+        <p className="ps-site-footer-copyright mt-6 text-center text-xs">
           © {new Date().getFullYear()} LumexForge. All rights reserved.
         </p>
       </div>

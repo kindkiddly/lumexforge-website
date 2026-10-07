@@ -1770,6 +1770,38 @@
   }
 }
 
+/* ── Site footer (floating dark on cream page) ── */
+
+.ps-site-footer {
+  margin-top: 2rem;
+  background: #1a1a1a;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.15);
+  color: #f8fafc;
+}
+
+.ps-site-footer-copyright {
+  color: #64748b;
+}
+
+.ps-home-feature-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+}
+
+.ps-home-step-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+}
+
+.ps-download-cta-card .ps-hero-desktop-play {
+  background: #00e6a8 !important;
+  color: #0a0a0a !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
 /* ── ProteinSnaps Hero Coverflow (copied from LumexForge) ── */
 
 .ps-cf-hero {
