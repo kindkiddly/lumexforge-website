@@ -17,11 +17,11 @@ export function ProteinSnapsFooter() {
             <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">
               AI nutrition and fitness tracking, made simple.
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">
-              A LumexForge product ·{" "}
+            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">A LumexForge product</p>
+            <p className="mt-1.5 leading-snug">
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
-                className="whitespace-nowrap text-[#00C2FF] transition-colors hover:text-[#00e6a8]"
+                className="whitespace-nowrap text-[13px] text-[#00E6A8] transition-colors hover:text-[#00e6a8]"
               >
                 {PROTEINSNAPS.contactEmail}
               </a>
