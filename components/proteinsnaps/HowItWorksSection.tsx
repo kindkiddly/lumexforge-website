@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ZoomRevealText } from "./animations/ZoomRevealText";
 
-/** Step card thumbnails — same order as HOW_IT_WORKS_STEPS / app screenshots. */
-const HOW_IT_WORKS_STEP_IMAGES = [
-  { src: "/images/proteinsnaps/PS-3.webp", alt: "Snap a meal with AI recognition" },
-  { src: "/images/proteinsnaps/PS-8.webp", alt: "Track macros and daily nutrition goals" },
-  { src: "/images/proteinsnaps/PS-6.webp", alt: "Body transformation and progress results" },
+/** Step card thumbnails — same order as HOW_IT_WORKS_STEPS. */
+const HOW_IT_WORKS_STEP_IMAGE_SRC = [
+  "/images/proteinsnaps/homepageCards-PS5.webp",
+  "/images/proteinsnaps/homepageCards-PS6.webp",
+  "/images/proteinsnaps/homepageCards-PS7.webp",
 ] as const;
 
 export function HowItWorksSection() {
@@ -43,13 +43,13 @@ export function HowItWorksSection() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-[#555555] sm:text-base">
                   {step.description}
                 </p>
-                <div className="ps-home-feature-card-image">
+                <div className="ps-home-step-card-image">
                   <Image
-                    src={HOW_IT_WORKS_STEP_IMAGES[i].src}
-                    alt={HOW_IT_WORKS_STEP_IMAGES[i].alt}
+                    src={HOW_IT_WORKS_STEP_IMAGE_SRC[i]}
+                    alt={step.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="ps-home-feature-card-image-img"
+                    className="ps-home-step-card-image-img"
                   />
                 </div>
               </div>

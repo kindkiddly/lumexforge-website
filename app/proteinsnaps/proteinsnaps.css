@@ -1844,6 +1844,22 @@
   object-position: center;
 }
 
+.ps-home-step-card-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  height: 130px;
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.ps-home-step-card-image-img {
+  object-fit: contain;
+  object-position: center;
+}
+
 .ps-ai-card-inner {
   overflow: hidden;
   border-radius: 20px;
