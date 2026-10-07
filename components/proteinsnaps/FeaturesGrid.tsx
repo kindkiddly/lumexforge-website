@@ -8,10 +8,10 @@ const HOME_FEATURE_HIGHLIGHTS = FEATURE_CARDS.slice(0, 4);
 
 /** Homepage feature card thumbnails — same order as HOME_FEATURE_HIGHLIGHTS / SCREENSHOT_SLIDES. */
 const HOME_FEATURE_CARD_IMAGES = [
-  { src: "/images/proteinsnaps/PS-3.webp", alt: "AI meal recognition screen" },
-  { src: "/images/proteinsnaps/PS-8.webp", alt: "Daily nutrition and macro tracking dashboard" },
-  { src: "/images/proteinsnaps/PS-4.webp", alt: "Personalized AI coach insights" },
-  { src: "/images/proteinsnaps/PS-2.webp", alt: "Workout logging and strength tracking" },
+  { src: "/images/proteinsnaps/homepageCards-PS1.webp", alt: "AI Meal Recognition" },
+  { src: "/images/proteinsnaps/homepageCards-PS2.webp", alt: "Protein & Nutrition Tracking" },
+  { src: "/images/proteinsnaps/homepageCards-PS3.webp", alt: "Personalized AI Coach" },
+  { src: "/images/proteinsnaps/homepageCards-PS4.webp", alt: "Workout Tracking" },
 ] as const;
 
 export function FeaturesGrid() {
