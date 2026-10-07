@@ -1,6 +1,23 @@
-import { AI_FEATURES } from "@/lib/proteinsnaps/constants";
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
+
+const HOME_AI_FEATURE_CARDS = [
+  {
+    title: "Morning Briefing",
+    description:
+      "Start every day with a personalized AI summary of your nutrition goals, yesterday's progress, and today's targets.",
+  },
+  {
+    title: "Progress Photos",
+    description:
+      "Capture and compare your body transformation visually. Track real change over weeks and months with side-by-side photos.",
+  },
+  {
+    title: "Smart Insights",
+    description:
+      "Get intelligent weekly analysis of your eating patterns with actionable recommendations to keep improving every day.",
+  },
+] as const;
 
 export function AIFeaturesSection() {
   return (
@@ -26,10 +43,10 @@ export function AIFeaturesSection() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {AI_FEATURES.map((feature, i) => (
+              {HOME_AI_FEATURE_CARDS.map((feature, i) => (
                 <FadeInUp key={feature.title} delay={i * 0.1}>
-                  <div className="ps-ai-card-inner ps-3d-card rounded-2xl border border-[#00c2ff]/15 p-6 transition-colors hover:border-[#00c2ff]/35">
-                    <h3 className="text-lg font-semibold text-[#00c2ff]">
+                  <div className="ps-ai-card-inner ps-3d-card p-6">
+                    <h3 className="text-lg font-semibold text-[#1A1A1A]">
                       {feature.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-[#555555]">
