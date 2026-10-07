@@ -1810,11 +1810,17 @@
   text-shadow: none;
 }
 
-.ps-home-feature-card {
+.ps-home-feature-card,
+.ps-home-step-card {
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  background: rgba(255, 252, 248, 0.58);
+  backdrop-filter: blur(18px) saturate(1.12);
+  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 10px 36px rgba(26, 26, 26, 0.07),
+    0 0 0 1px rgba(0, 0, 0, 0.035);
 }
 
 .ps-home-feature-card-title {
@@ -1834,12 +1840,6 @@
 .ps-home-feature-card-image-img {
   object-fit: cover;
   object-position: center;
-}
-
-.ps-home-step-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .ps-download-cta-card .ps-hero-desktop-play {

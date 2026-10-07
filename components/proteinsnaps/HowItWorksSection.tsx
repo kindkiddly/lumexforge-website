@@ -2,7 +2,15 @@
 
 import { HOW_IT_WORKS_STEPS } from "@/lib/proteinsnaps/constants";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ZoomRevealText } from "./animations/ZoomRevealText";
+
+/** Step card thumbnails — same order as HOW_IT_WORKS_STEPS / app screenshots. */
+const HOW_IT_WORKS_STEP_IMAGES = [
+  { src: "/images/proteinsnaps/PS-3.webp", alt: "Snap a meal with AI recognition" },
+  { src: "/images/proteinsnaps/PS-8.webp", alt: "Track macros and daily nutrition goals" },
+  { src: "/images/proteinsnaps/PS-6.webp", alt: "Body transformation and progress results" },
+] as const;
 
 export function HowItWorksSection() {
   return (
@@ -24,17 +32,26 @@ export function HowItWorksSection() {
           </div>
 
           {HOW_IT_WORKS_STEPS.map((step, i) => (
-            <ZoomRevealText key={step.step} delay={i * 0.15} className="relative text-center">
-              <div className="ps-home-step-card rounded-2xl p-6">
+            <ZoomRevealText key={step.step} delay={i * 0.15} className="relative h-full text-center">
+              <div className="ps-home-step-card flex h-full flex-col rounded-2xl p-6">
                 <div className="ps-3d-card mx-auto flex h-10 w-10 items-center justify-center rounded-xl border border-[#00e6a8]/30 bg-[#00e6a8]/10 font-serif text-base font-bold text-[#00E6A8]">
                   {step.step}
                 </div>
                 <h3 className="mt-6 font-serif text-xl font-semibold text-[#1A1A1A]">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#555555] sm:text-base">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-[#555555] sm:text-base">
                   {step.description}
                 </p>
+                <div className="ps-home-feature-card-image">
+                  <Image
+                    src={HOW_IT_WORKS_STEP_IMAGES[i].src}
+                    alt={HOW_IT_WORKS_STEP_IMAGES[i].alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="ps-home-feature-card-image-img"
+                  />
+                </div>
               </div>
             </ZoomRevealText>
           ))}
