@@ -1831,14 +1831,16 @@
   position: relative;
   flex-shrink: 0;
   width: 100%;
-  height: 130px;
+  aspect-ratio: 560 / 260;
+  height: auto;
   margin-top: 16px;
   border-radius: 12px;
   overflow: hidden;
+  background: #f0ebe3;
 }
 
 .ps-home-feature-card-image-img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
