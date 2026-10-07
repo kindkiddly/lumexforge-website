@@ -1,9 +1,18 @@
 "use client";
 
 import { DESKTOP_SLIDES } from "@/lib/proteinsnaps/constants";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const SLIDE_COLORS = ["#0a0f18", "#0b1220", "#0a0f18", "#0b1220", "#0a0f18"] as const;
+
+const CAROUSEL_IMAGE_SRC = [
+  "/images/proteinsnaps/pscarousel-1.webp",
+  "/images/proteinsnaps/pscarousel-2.webp",
+  "/images/proteinsnaps/pscarousel-3.webp",
+  "/images/proteinsnaps/pscarousel-4.webp",
+  "/images/proteinsnaps/pscarousel-5.webp",
+] as const;
 
 function getCoverflowTransform(index: number, currentIndex: number, total: number) {
   let offset = index - currentIndex;
@@ -36,10 +45,17 @@ function getCoverflowTransform(index: number, currentIndex: number, total: numbe
   };
 }
 
-function CoverflowCardFace({ slideIndex, backgroundColor }: { slideIndex: number; backgroundColor: string }) {
+function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headline: string }) {
   return (
-    <div className="ps-cf-cover" style={{ backgroundColor }} aria-hidden="true">
-      <span className="text-5xl font-semibold text-white">{slideIndex + 1}</span>
+    <div className="ps-cf-cover relative !p-0">
+      <Image
+        src={CAROUSEL_IMAGE_SRC[slideIndex]}
+        alt={headline}
+        fill
+        sizes="380px"
+        priority={slideIndex === 0}
+        className="object-contain object-center"
+      />
     </div>
   );
 }
@@ -121,7 +137,7 @@ function ProteinSnapsCoverflow() {
                 aria-hidden={!isActive}
                 aria-label={`${slide.headline} ${slide.description}`}
               >
-                <CoverflowCardFace slideIndex={index} backgroundColor={bg} />
+                <CoverflowCardFace slideIndex={index} headline={slide.headline} />
                 {shouldShowReflection ? (
                   <div className="ps-cf-reflection" aria-hidden="true">
                     <div className="ps-cf-reflection-inner" style={{ backgroundColor: bg }} />
