@@ -15,10 +15,10 @@ export function FeaturesGrid() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
               Features
             </p>
-            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
               Everything You Need to Hit Your Goals
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-foreground-secondary">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-[#555555]">
               From AI meal scanning to workout tracking — ProteinSnaps is your complete
               nutrition and fitness companion.
             </p>
@@ -30,10 +30,10 @@ export function FeaturesGrid() {
             <FadeInUp key={feature.title} delay={i * 0.05}>
               <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-5 sm:p-6">
                 <FeatureIcon name={feature.icon} />
-                <h3 className="mt-4 text-sm font-semibold text-foreground sm:text-base">
+                <h3 className="mt-4 text-sm font-semibold text-[#1A1A1A] sm:text-base">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-foreground-secondary sm:text-sm">
+                <p className="mt-2 text-xs leading-relaxed text-[#555555] sm:text-sm">
                   {feature.description}
                 </p>
               </article>

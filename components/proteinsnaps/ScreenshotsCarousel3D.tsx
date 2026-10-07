@@ -201,7 +201,7 @@ export function ScreenshotsCarousel3D() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
             App Preview
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
             See ProteinSnaps in Action
           </h2>
         </FadeInUp>
@@ -218,7 +218,7 @@ export function ScreenshotsCarousel3D() {
                 className={`h-2 rounded-full transition-all duration-300 ${
                   i === currentCenter
                     ? "w-6 bg-[#00e6a8]"
-                    : "w-2 bg-white/20 hover:bg-[#00e6a8]/50"
+                    : "w-2 bg-black/15 hover:bg-[#00e6a8]/50"
                 }`}
               />
             ))}
@@ -241,7 +241,7 @@ export function ScreenshotsCarousel3D() {
                 type="button"
                 onClick={stepBack}
                 aria-label="Previous screen"
-                className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
+                className="absolute left-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-[#1A1A1A] transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
               >
                 <svg
                   width="16"
@@ -339,7 +339,7 @@ export function ScreenshotsCarousel3D() {
                 type="button"
                 onClick={advanceSlide}
                 aria-label="Next screen"
-                className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-foreground transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
+                className="absolute right-0 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-[#1A1A1A] transition-all duration-300 hover:border-[#00e6a8]/45 hover:bg-[#00e6a8]/15 hover:text-[#00e6a8]"
               >
                 <svg
                   width="16"
@@ -366,7 +366,7 @@ export function ScreenshotsCarousel3D() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute z-20 max-w-[180px] text-right font-serif text-xl text-white"
+                  className="absolute z-20 max-w-[180px] text-right font-serif text-xl text-[#1A1A1A]"
                   style={{
                     right: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
                     top: TEXT_BLOCK_TOP,
@@ -383,7 +383,7 @@ export function ScreenshotsCarousel3D() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute z-20 max-w-[180px] line-clamp-2 text-left text-sm text-foreground-secondary"
+                  className="absolute z-20 max-w-[180px] line-clamp-2 text-left text-sm text-[#555555]"
                   style={{
                     left: `calc(50% + ${CENTER_PHONE_HALF_W + CENTER_PHONE_TEXT_GAP}px)`,
                     top: TEXT_BLOCK_TOP,

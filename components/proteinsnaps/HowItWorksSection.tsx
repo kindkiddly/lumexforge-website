@@ -28,10 +28,10 @@ export function HowItWorksSection() {
               <div className="ps-3d-card mx-auto flex h-10 w-10 items-center justify-center rounded-xl border border-[#00e6a8]/30 bg-[#00e6a8]/10 font-serif text-base font-bold text-[#00e6a8] ps-glow-frame">
                 {step.step}
               </div>
-              <h3 className="mt-6 font-serif text-xl font-semibold text-foreground">
+              <h3 className="mt-6 font-serif text-xl font-semibold text-[#1A1A1A]">
                 {step.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground-secondary sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-[#555555] sm:text-base">
                 {step.description}
               </p>
             </ZoomRevealText>

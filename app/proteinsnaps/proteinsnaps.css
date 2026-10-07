@@ -7,7 +7,7 @@
 
 .ps-glow-card {
   border: 1px solid rgba(0, 230, 168, 0.12);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.04);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -384,19 +384,19 @@
 
 /* Readability helpers */
 .ps-glass-panel {
-  background: rgba(5, 8, 17, 0.40);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #faf7f2;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 230, 168, 0.08);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 230, 168, 0.08);
 }
 
 .ps-glass-text {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border-radius: 1rem;
-  background: rgba(5, 8, 17, 0.44);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -598,9 +598,9 @@
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 500;
-  color: #94a3b8;
-  background: linear-gradient(180deg, #131b2e 0%, #0b1220 46%, #0a101c 46.01%, #080d18 100%);
-  box-shadow: 0 10px 24px -12px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,230,168,0.08), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.35);
+  color: #555555;
+  background: linear-gradient(180deg, #faf7f2 0%, #f0ebe3 46%, #e8e2d9 46.01%, #f0ebe3 100%);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 230, 168, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
 }
 .ps-pill b {
   display: inline-flex;
@@ -1767,4 +1767,205 @@
   .ps-blog-author {
     font-size: 0.72rem;
   }
+}
+
+/* ── ProteinSnaps Hero Coverflow (copied from LumexForge) ── */
+
+.ps-cf-hero {
+  margin-top: 0.5rem;
+}
+
+.ps-cf-hero .ps-cf-wrapper {
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.ps-cf-hero .ps-cf-container {
+  align-items: center;
+  height: 380px;
+  min-height: 380px;
+  max-height: 380px;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: visible;
+}
+
+.ps-cf-info {
+  margin-top: 0.35rem;
+  padding-top: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 5;
+}
+
+.ps-cf-container {
+  width: 100%;
+  height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  position: relative;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.ps-cf-container:focus,
+.ps-cf-container:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-ring-offset-shadow: 0 0 #0000;
+}
+
+.ps-cf-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.ps-cf-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 380px;
+}
+
+.ps-cf-item {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+  user-select: none;
+  transform-style: preserve-3d;
+}
+
+.ps-cf-cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  background: #0a0f18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.ps-cf-item.active .ps-cf-cover {
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(6, 182, 212, 0.35);
+  border: 2px solid rgba(6, 182, 212, 0.65);
+}
+
+.ps-cf-reflection {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 28%;
+  border-radius: 16px;
+  transform: scaleY(-1);
+  opacity: 0.16;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, transparent 85%);
+}
+
+.ps-cf-reflection-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.ps-cf-reflection-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 8, 20, 0.8) 50%,
+    rgba(0, 8, 20, 1) 100%
+  );
+}
+
+.ps-cf-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(6, 182, 212, 0.25);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 200;
+}
+
+.ps-cf-nav:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.45);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.ps-cf-nav.prev {
+  left: 50px;
+}
+
+.ps-cf-nav.next {
+  right: 50px;
+}
+
+@keyframes ps-cf-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ps-cf-info-animate {
+  animation: ps-cf-fade-in 0.6s forwards;
+}
+
+.ps-cf-hero .ps-cf-track {
+  height: 380px;
+}
+
+.ps-cf-hero .ps-cf-item {
+  width: 380px;
+  height: 380px;
 }

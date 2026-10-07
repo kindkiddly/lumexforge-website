@@ -9,9 +9,9 @@ export function AIFeaturesSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp>
           <div
-            className="ps-ai-section-outer ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-background-secondary to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame"
+            className="ps-ai-section-outer ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-[#F0EBE3] to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame"
             style={{
-              background: "rgba(5, 8, 17, 0.30)",
+              background: "rgba(250, 247, 242, 0.92)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
             }}
@@ -20,7 +20,7 @@ export function AIFeaturesSection() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2ff]">
                 Powered by AI
               </p>
-              <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
                 <StaggerWords text="Intelligence Built In" />
               </h2>
             </div>
@@ -32,7 +32,7 @@ export function AIFeaturesSection() {
                     <h3 className="text-lg font-semibold text-[#00c2ff]">
                       {feature.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                    <p className="mt-3 text-sm leading-relaxed text-[#555555]">
                       {feature.description}
                     </p>
                   </div>

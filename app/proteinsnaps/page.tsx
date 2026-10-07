@@ -2,7 +2,7 @@ import { AIFeaturesSection } from "@/components/proteinsnaps/AIFeaturesSection";
 import { CompanionIntroSection } from "@/components/proteinsnaps/CompanionIntroSection";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeaturesGrid } from "@/components/proteinsnaps/FeaturesGrid";
-import { HeroSection } from "@/components/proteinsnaps/HeroSection";
+import { ProteinSnapsHero } from "@/components/proteinsnaps/ProteinSnapsHero";
 import { HowItWorksSection } from "@/components/proteinsnaps/HowItWorksSection";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { ScreenshotsCarousel3D } from "@/components/proteinsnaps/ScreenshotsCarousel3D";
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 
 export default function ProteinSnapsHomePage() {
   return (
-    <>
-      <HeroSection />
-      <div className="hidden justify-center bg-[#050811] py-3 lg:flex">
+    <div className="bg-[#FAF7F2]">
+      <ProteinSnapsHero />
+      <div className="hidden justify-center bg-[#FAF7F2] py-3 text-[#1A1A1A] lg:flex">
         <div className="ps-pill">
           <b>New</b> Now available on iOS & Android
         </div>
@@ -84,6 +84,6 @@ export default function ProteinSnapsHomePage() {
           <DownloadCTA />
         </div>
       </div>
-    </>
+    </div>
   );
 }
