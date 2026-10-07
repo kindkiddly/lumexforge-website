@@ -7,17 +7,17 @@ import Link from "next/link";
 export function ProteinSnapsFooter() {
   const { href: psHref } = useProteinSnapsPath();
   return (
-    <footer className="border-t border-white/[0.06] bg-background-secondary/50">
+    <footer className="border-t border-white/[0.08] bg-[#1A1A1A]">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <p className="font-serif text-xl font-semibold text-foreground">
+            <p className="font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-foreground-secondary">
+            <p className="mt-1.5 text-sm leading-snug text-[#94A3B8]">
               AI nutrition and fitness tracking, made simple.
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-foreground-secondary">
+            <p className="mt-1.5 text-sm leading-snug text-[#94A3B8]">
               A LumexForge product ·{" "}
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
@@ -32,7 +32,7 @@ export function ProteinSnapsFooter() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
               Product
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-foreground-secondary">
+            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
                 <Link href={psHref("/features")} className="transition-colors hover:text-[#00c2ff]">
                   Features
@@ -55,7 +55,7 @@ export function ProteinSnapsFooter() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
               Legal
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-foreground-secondary">
+            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
                 <a
                   href={PROTEINSNAPS.lumexforgeUrl}
@@ -101,7 +101,7 @@ export function ProteinSnapsFooter() {
         </div>
 
         <div className="ps-divider mt-10" />
-        <p className="mt-6 text-center text-xs text-foreground-muted">
+        <p className="mt-6 text-center text-xs text-[#94A3B8]">
           © {new Date().getFullYear()} LumexForge. All rights reserved.
         </p>
       </div>

@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 
 export default function ProteinSnapsHomePage() {
   return (
-    <div className="bg-[#FAF7F2]">
+    <div className="bg-[#F2EDE4]">
       <ProteinSnapsHero />
-      <div className="hidden justify-center bg-[#FAF7F2] py-3 text-[#1A1A1A] lg:flex">
+      <div className="hidden justify-center bg-[#EDE8DF] py-3 text-[#1A1A1A] lg:flex">
         <div className="ps-pill">
           <b>New</b> Now available on iOS & Android
         </div>

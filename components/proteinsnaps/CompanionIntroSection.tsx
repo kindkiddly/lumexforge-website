@@ -7,10 +7,10 @@ export function CompanionIntroSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp className="text-center">
           <div className="ps-glass-text ps-3d-card mx-auto max-w-3xl rounded-2xl">
-            <h2 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
+            <h2 className="font-serif text-3xl font-semibold tracking-tight text-[#F8FAFC] sm:text-4xl">
               Your Complete AI Fitness &amp; Nutrition Companion
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#555555] sm:text-lg">
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#94A3B8] sm:text-lg">
               ProteinSnaps is an AI-powered fitness, nutrition and gym companion for iOS and
               Android designed to help you build healthier habits, increase your protein
               intake, and achieve your body transformation goals. Whether you are trying to

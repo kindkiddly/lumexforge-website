@@ -16,7 +16,7 @@ export function ProteinSnapsNavbar() {
   const activePath = pathname.replace(/^\/proteinsnaps/, "") || "/";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050811]/75 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/[0.08] bg-[#F2EDE4]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={psHref("/")} className="group flex shrink-0 items-center">
           <span className="inline-flex overflow-hidden rounded-[9px] shadow-[0_4px_12px_rgba(0,0,0,0.35),0_1px_3px_rgba(0,0,0,0.25)]">
@@ -37,8 +37,8 @@ export function ProteinSnapsNavbar() {
             className={cn(
               "ps-nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors",
               activePath === "/"
-                ? "active text-[#00E6A8]"
-                : "text-white/70 hover:text-white"
+                ? "active text-[#00B386]"
+                : "text-[#1A1A1A] hover:text-[#00E6A8]"
             )}
           >
             Home
@@ -52,8 +52,8 @@ export function ProteinSnapsNavbar() {
                 className={cn(
                   "ps-nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   active
-                    ? "active text-[#00E6A8]"
-                    : "text-white/70 hover:text-white"
+                    ? "active text-[#00B386]"
+                    : "text-[#1A1A1A] hover:text-[#00E6A8]"
                 )}
               >
                 {link.label}
@@ -67,7 +67,7 @@ export function ProteinSnapsNavbar() {
             href={PROTEINSNAPS.playStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold"
+            className="ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold text-[#0A0A0A]"
           >
             Download
           </a>

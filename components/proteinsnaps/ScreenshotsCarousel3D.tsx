@@ -28,12 +28,12 @@ type CarouselPosition =
 /** [translateX multiplier, rotateY, scale, opacity] */
 const POS_CONFIG: Record<CarouselPosition, [number, number, number, number]> = {
   center: [0, 0, 1, 1],
-  left1: [-1, 36, 0.76, 0.75],
-  right1: [1, -36, 0.76, 0.75],
-  left2: [-1, 55, 0.56, 0.55],
-  right2: [1, -55, 0.56, 0.55],
-  "hidden-left": [-1, 72, 0.4, 0.5],
-  "hidden-right": [1, -72, 0.4, 0.5],
+  left1: [-1, 36, 0.88, 0.6],
+  right1: [1, -36, 0.88, 0.6],
+  left2: [-1, 55, 0.88, 0.6],
+  right2: [1, -55, 0.88, 0.6],
+  "hidden-left": [-1, 72, 0.88, 0.6],
+  "hidden-right": [1, -72, 0.88, 0.6],
 };
 
 const POS_GAP: Record<
@@ -308,8 +308,8 @@ export function ScreenshotsCarousel3D() {
                       <div
                         className={`relative rounded-[1.4rem] border-[2.1px] p-[5.6px] shadow-2xl ${
                           isCenter
-                            ? "border-white/10 bg-[#0a0f18] ps-glow-frame"
-                            : "border-white/20 bg-[#121a28]"
+                            ? "border-[rgba(255,255,255,0.12)] bg-[#0a0f18] ps-glow-frame"
+                            : "border-[rgba(255,255,255,0.08)] bg-[#0a0f18]"
                         }`}
                         style={{
                           width: ZOOM_STEP.pw,

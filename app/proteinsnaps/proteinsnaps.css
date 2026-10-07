@@ -384,7 +384,7 @@
 
 /* Readability helpers */
 .ps-glass-panel {
-  background: #faf7f2;
+  background: #f2ede4;
   border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -598,9 +598,10 @@
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 500;
-  color: #555555;
-  background: linear-gradient(180deg, #faf7f2 0%, #f0ebe3 46%, #e8e2d9 46.01%, #f0ebe3 100%);
-  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 230, 168, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: none;
 }
 .ps-pill b {
   display: inline-flex;
