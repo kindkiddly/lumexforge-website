@@ -37,21 +37,21 @@ export function FeaturesGrid() {
         <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
           {HOME_FEATURE_HIGHLIGHTS.map((feature, i) => (
             <FadeInUp key={feature.title} delay={i * 0.05}>
-              <article className="ps-home-feature-card ps-3d-card h-full rounded-2xl p-5 sm:p-6">
+              <article className="ps-home-feature-card ps-3d-card flex h-full flex-col rounded-2xl p-5 sm:p-6">
                 <FeatureIcon name={feature.icon} />
-                <h3 className="mt-4 text-sm font-semibold text-[#1A1A1A] sm:text-base">
+                <h3 className="ps-home-feature-card-title mt-4 text-sm font-semibold text-[#1A1A1A] sm:text-base">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#555555] sm:text-sm">
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-[#555555] sm:text-sm">
                   {feature.description}
                 </p>
-                <div className="relative mt-4 h-[130px] w-full overflow-hidden rounded-xl">
+                <div className="ps-home-feature-card-image">
                   <Image
                     src={HOME_FEATURE_CARD_IMAGES[i].src}
                     alt={HOME_FEATURE_CARD_IMAGES[i].alt}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
-                    className="object-cover"
+                    className="ps-home-feature-card-image-img"
                   />
                 </div>
               </article>
