@@ -1,9 +1,18 @@
 import { FEATURE_CARDS } from "@/lib/proteinsnaps/constants";
+import Image from "next/image";
 import Link from "next/link";
 import { FeatureIcon } from "./FeatureIcon";
 import { FadeInUp } from "./animations/FadeInUp";
 
 const HOME_FEATURE_HIGHLIGHTS = FEATURE_CARDS.slice(0, 4);
+
+/** Homepage feature card thumbnails — same order as HOME_FEATURE_HIGHLIGHTS / SCREENSHOT_SLIDES. */
+const HOME_FEATURE_CARD_IMAGES = [
+  { src: "/images/proteinsnaps/PS-3.webp", alt: "AI meal recognition screen" },
+  { src: "/images/proteinsnaps/PS-8.webp", alt: "Daily nutrition and macro tracking dashboard" },
+  { src: "/images/proteinsnaps/PS-4.webp", alt: "Personalized AI coach insights" },
+  { src: "/images/proteinsnaps/PS-2.webp", alt: "Workout logging and strength tracking" },
+] as const;
 
 export function FeaturesGrid() {
   return (
@@ -36,6 +45,15 @@ export function FeaturesGrid() {
                 <p className="mt-2 text-xs leading-relaxed text-[#555555] sm:text-sm">
                   {feature.description}
                 </p>
+                <div className="relative mt-4 h-[130px] w-full overflow-hidden rounded-xl">
+                  <Image
+                    src={HOME_FEATURE_CARD_IMAGES[i].src}
+                    alt={HOME_FEATURE_CARD_IMAGES[i].alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+                    className="object-cover"
+                  />
+                </div>
               </article>
             </FadeInUp>
           ))}
