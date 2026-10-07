@@ -3,19 +3,19 @@ import { StaggerWords } from "./animations/StaggerWords";
 
 const HOME_AI_FEATURE_CARDS = [
   {
-    title: "Morning Briefing",
+    title: "Daily Game Plan",
     description:
-      "Start every day with a personalized AI summary of your nutrition goals, yesterday's progress, and today's targets.",
+      "Open the app to a concise AI brief: what you hit yesterday, what's left today, and one priority action before noon.",
   },
   {
-    title: "Progress Photos",
+    title: "Visual Check-Ins",
     description:
-      "Capture and compare your body transformation visually. Track real change over weeks and months with side-by-side photos.",
+      "Date-stamped front and side photos with side-by-side compare — separate from the scale, so you see shape change even when weight stalls.",
   },
   {
-    title: "Smart Insights",
+    title: "Pattern Alerts",
     description:
-      "Get intelligent weekly analysis of your eating patterns with actionable recommendations to keep improving every day.",
+      "Spot weekly gaps — low protein days, weekend calorie spikes, missed logs — with specific fixes, not generic tips.",
   },
 ] as const;
 

@@ -392,19 +392,19 @@ export const HOW_IT_WORKS_STEPS = [
     step: 1,
     title: "Snap Your Meal",
     description:
-      "Take a photo of your food or log manually. AI recognizes items and estimates nutrition instantly.",
+      "Log breakfast, lunch, or dinner in seconds — photo or manual — so your day's nutrition is never a guess.",
   },
   {
     step: 2,
     title: "Track Your Macros",
     description:
-      "Monitor protein, carbs, fats, and calories with real-time dashboards and smart insights.",
+      "See protein, carbs, and fats update live as you log, and know exactly how close you are to today's targets.",
   },
   {
     step: 3,
     title: "Achieve Your Goals",
     description:
-      "Follow personalized AI coaching, track workouts, and watch your progress compound over time.",
+      "Review trends each week, adjust habits, and stay consistent until your goal weight, strength, or body composition shifts.",
   },
 ] as const;
 
