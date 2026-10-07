@@ -4,7 +4,6 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeaturesGrid } from "@/components/proteinsnaps/FeaturesGrid";
 import { ProteinSnapsHero } from "@/components/proteinsnaps/ProteinSnapsHero";
 import { HowItWorksSection } from "@/components/proteinsnaps/HowItWorksSection";
-import { NutritionStatsSection } from "@/components/proteinsnaps/NutritionStatsSection";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { ScreenshotsCarousel3D } from "@/components/proteinsnaps/ScreenshotsCarousel3D";
 import type { Metadata } from "next";
@@ -50,7 +49,6 @@ export default function ProteinSnapsHomePage() {
         </div>
       </div>
       <ScreenshotsCarousel3D />
-      <NutritionStatsSection />
       <div className="relative">
         <div
           className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
