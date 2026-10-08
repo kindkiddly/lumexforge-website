@@ -48,7 +48,9 @@ export default function ProteinSnapsHomePage() {
           <b>New</b> Now available on iOS & Android
         </div>
       </div>
-      <ScreenshotsCarousel3D />
+      <div className="ps-home-after-screenshots">
+        <ScreenshotsCarousel3D />
+      </div>
       <div className="relative">
         <div
           className="ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
@@ -56,7 +58,7 @@ export default function ProteinSnapsHomePage() {
         >
           <ParallaxImage src="/images/proteinsnaps/BG-1.webp" />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 ps-home-features-grid-wrap">
           <FeaturesGrid />
           <CompanionIntroSection />
         </div>

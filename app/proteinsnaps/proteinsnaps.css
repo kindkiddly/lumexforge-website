@@ -1810,6 +1810,35 @@
   text-shadow: none;
 }
 
+/* Tighter gap: screenshots carousel → features grid (homepage desktop) */
+.ps-home-after-screenshots > section {
+  padding-bottom: 1rem;
+}
+
+.ps-home-features-grid-wrap > section {
+  padding-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .ps-home-after-screenshots > section {
+    padding-bottom: 1.25rem;
+  }
+
+  .ps-home-features-grid-wrap > section {
+    padding-top: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ps-home-after-screenshots > section {
+    padding-bottom: 1.5rem;
+  }
+
+  .ps-home-features-grid-wrap > section {
+    padding-top: 1.5rem;
+  }
+}
+
 .ps-home-feature-card,
 .ps-home-step-card {
   overflow: hidden;
