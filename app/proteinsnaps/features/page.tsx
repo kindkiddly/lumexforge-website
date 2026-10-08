@@ -48,20 +48,7 @@ export default function FeaturesPage() {
         description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
       />
       <section className="relative py-8 sm:py-10">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          <>
-            <div className="hidden h-full w-full lg:block">
-              <ParallaxImage src="/images/proteinsnaps/BG-12.webp" />
-            </div>
-            <div className="block h-full w-full lg:hidden">
-              <ParallaxImage src="/images/proteinsnaps/BG-13.webp" />
-            </div>
-          </>
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
               <Image
