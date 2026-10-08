@@ -88,15 +88,15 @@ export default function AIProteinTrackerPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="ps-3d-card relative aspect-[16/10] overflow-hidden rounded-2xl ps-glow-frame">
+            <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
               <Image
-                src="/images/proteinsnaps/PSL-7.webp"
+                src="/images/proteinsnaps/hero-ai-tracker.webp"
                 alt="ProteinSnaps daily macro and recovery summary"
-                width={1536}
-                height={1024}
+                width={1200}
+                height={437}
                 loading="lazy"
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                className="h-full w-full object-cover"
+                sizes="(max-width: 1400px) 100vw, 1400px"
+                className="h-auto w-full object-contain object-center"
               />
             </div>
           </FadeInUp>
