@@ -43,39 +43,17 @@ export default function FeaturesPage() {
   return (
     <>
       <section className="relative w-full overflow-hidden py-[60px]">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          <div className="ps-parallax-bg-cover h-full w-full">
-            <ParallaxImage src="/images/proteinsnaps/bg-vegetables-alpha.webp" />
-          </div>
-        </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <FadeInUp>
-            <div
-              className="mx-auto w-fit text-center"
-              style={{
-                background: "rgba(255, 255, 255, 0.45)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                border: "1px solid rgba(255, 255, 255, 0.7)",
-                boxShadow:
-                  "0 8px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.9) inset",
-                borderRadius: "20px",
-                padding: "24px 40px",
-              }}
-            >
-              <div className="ps-title-strip mx-auto text-center">
-                <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
-                  <BlurRevealText text="Built for Serious Nutrition Tracking" />
-                </h1>
-              </div>
-              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#555555]">
-                Every tool you need to snap meals, track protein, train smarter, and achieve your
-                fitness goals — powered by AI.
-              </p>
+            <div className="ps-title-strip mx-auto text-center">
+              <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
+                <BlurRevealText text="Built for Serious Nutrition Tracking" />
+              </h1>
             </div>
+            <p className="mx-auto mt-4 max-w-2xl font-serif text-xl font-normal italic leading-relaxed tracking-[0.02em] text-[#555555] sm:text-2xl">
+              Every tool you need to snap meals, track protein, train smarter, and achieve your
+              fitness goals — powered by AI.
+            </p>
           </FadeInUp>
         </div>
         <div className="relative z-10 mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
