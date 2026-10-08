@@ -75,7 +75,7 @@ export function ProteinSnapsNavbar() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-white/70 hover:bg-white/[0.05] hover:text-white lg:hidden"
+          className="rounded-lg p-2 text-[#1A1A1A] hover:bg-black/[0.05] hover:text-[#1A1A1A] lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen(!open)}
         >
@@ -95,7 +95,7 @@ export function ProteinSnapsNavbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-white/[0.06] lg:hidden"
+            className="overflow-hidden border-t border-black/[0.08] bg-[#F2EDE4] lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
               <Link
@@ -104,8 +104,8 @@ export function ProteinSnapsNavbar() {
                 className={cn(
                   "ps-nav-link rounded-lg px-3 py-3 text-base font-medium transition-colors",
                   activePath === "/"
-                    ? "active text-[#00E6A8]"
-                    : "text-white/70 hover:bg-white/[0.04] hover:text-white"
+                    ? "active text-[#00B386]"
+                    : "text-[#1A1A1A] hover:text-[#00E6A8]"
                 )}
               >
                 Home
@@ -120,8 +120,8 @@ export function ProteinSnapsNavbar() {
                     className={cn(
                       "ps-nav-link rounded-lg px-3 py-3 text-base font-medium transition-colors",
                       active
-                        ? "active text-[#00E6A8]"
-                        : "text-white/70 hover:bg-white/[0.04] hover:text-white"
+                        ? "active text-[#00B386]"
+                        : "text-[#1A1A1A] hover:text-[#00E6A8]"
                     )}
                   >
                     {link.label}
@@ -132,7 +132,7 @@ export function ProteinSnapsNavbar() {
                 href={PROTEINSNAPS.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ps-play-button mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold"
+                className="ps-play-button mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-[#0A0A0A]"
               >
                 Download on Google Play
               </a>

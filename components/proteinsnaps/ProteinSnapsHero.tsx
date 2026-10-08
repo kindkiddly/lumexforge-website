@@ -16,7 +16,7 @@ const CAROUSEL_IMAGE_SRC = [
 
 const COVERFLOW_LAYOUT = {
   desktop: { spacing: 320, depth: 200, hideX: 800 },
-  mobile: { spacing: 219, depth: 137, hideX: 547 },
+  mobile: { spacing: 253, depth: 158, hideX: 632 },
 } as const;
 
 function getCoverflowTransform(
@@ -63,7 +63,7 @@ function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headl
         src={CAROUSEL_IMAGE_SRC[slideIndex]}
         alt={headline}
         fill
-        sizes="(max-width: 1023px) 260px, 380px"
+        sizes="(max-width: 1023px) 300px, 380px"
         priority={slideIndex === 0}
         className="object-contain object-center"
       />

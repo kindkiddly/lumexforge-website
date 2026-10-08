@@ -46,10 +46,10 @@ export function AIFeaturesSection() {
               {HOME_AI_FEATURE_CARDS.map((feature, i) => (
                 <FadeInUp key={feature.title} delay={i * 0.1}>
                   <div className="ps-ai-card-inner ps-3d-card p-6">
-                    <h3 className="text-lg font-semibold text-[#1A1A1A]">
+                    <h3 className="ps-ai-card-title text-lg font-semibold text-[#1A1A1A]">
                       {feature.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[#555555]">
+                    <p className="ps-ai-card-desc mt-3 text-sm leading-relaxed text-[#555555]">
                       {feature.description}
                     </p>
                   </div>

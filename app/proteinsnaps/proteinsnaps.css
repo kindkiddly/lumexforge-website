@@ -407,6 +407,20 @@
     inset: -5%;
   }
 
+  .relative:has(> .ps-home-features-grid-wrap) > .ps-parallax-bg-cover .ps-parallax-inner {
+    background-size: cover;
+    background-position: center top;
+    inset: 0;
+  }
+
+  section[aria-label="ProteinSnaps hero"] h1 {
+    font-size: 1.5rem;
+  }
+
+  section[aria-label="ProteinSnaps hero"] > div > p:not(.ps-cf-info-animate) {
+    font-size: 0.875rem;
+  }
+
   .ps-parallax-bg-right-mobile .ps-parallax-inner {
     background-position: 65% center;
     background-size: cover;
@@ -585,6 +599,14 @@
   .ps-ai-card-inner.ps-3d-card {
     box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.3) !important;
     transform: none !important;
+  }
+
+  .ps-ai-card-inner .ps-ai-card-title {
+    color: #f8fafc !important;
+  }
+
+  .ps-ai-card-inner .ps-ai-card-desc {
+    color: #cbd5e1 !important;
   }
 }
 
@@ -2105,17 +2127,21 @@
 
 @media (max-width: 1023px) {
   .ps-cf-hero .ps-cf-container {
-    height: 260px;
-    min-height: 260px;
-    max-height: 260px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
   }
 
   .ps-cf-hero .ps-cf-track {
-    height: 260px;
+    height: 300px;
   }
 
   .ps-cf-hero .ps-cf-item {
-    width: 260px;
-    height: 260px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .ps-cf-hero .ps-cf-info {
+    margin-top: 24px;
   }
 }
