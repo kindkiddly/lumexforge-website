@@ -2,22 +2,19 @@ import { BlurRevealText } from "./animations/BlurRevealText";
 import { FadeInUp } from "./animations/FadeInUp";
 
 interface PageHeroProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
 }
 
-export function PageHero({ eyebrow, title, description }: PageHeroProps) {
+export function PageHero({ title, description }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-20 pb-0 sm:pt-24 sm:pb-0">
+    <section className="relative overflow-hidden pt-10 pb-0 sm:pt-12 sm:pb-0">
       <div className="ps-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <FadeInUp>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
-            {eyebrow}
-          </p>
           <div className="ps-title-strip mx-auto text-center">
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
               <BlurRevealText text={title} />
             </h1>
           </div>

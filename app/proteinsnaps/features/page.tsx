@@ -1,7 +1,7 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
-import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
+import { BlurRevealText } from "@/components/proteinsnaps/animations/BlurRevealText";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { FEATURE_CARDS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import type { Metadata } from "next";
@@ -42,23 +42,31 @@ const FEATURE_SCREENSHOTS = FEATURE_SCREENSHOT_SRC.map(
 export default function FeaturesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Features"
-        title="Built for Serious Nutrition Tracking"
-        description="Every tool you need to snap meals, track protein, train smarter, and achieve your fitness goals — powered by AI."
-      />
-      <section className="relative py-8 sm:py-10">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative w-full overflow-hidden py-[60px]">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <div className="ps-parallax-bg-cover h-full w-full">
+            <ParallaxImage src="/images/proteinsnaps/bg-vegetables-alpha.webp" />
+          </div>
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <FadeInUp>
+            <div className="ps-title-strip mx-auto text-center">
+              <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
+                <BlurRevealText text="Built for Serious Nutrition Tracking" />
+              </h1>
+            </div>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#555555]">
+              Every tool you need to snap meals, track protein, train smarter, and achieve your
+              fitness goals — powered by AI.
+            </p>
+          </FadeInUp>
+        </div>
+        <div className="relative z-10 mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
-              <Image
-                src="/images/proteinsnaps/bg-vegetables-alpha.webp"
-                alt=""
-                fill
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                aria-hidden
-                className="pointer-events-none absolute inset-0 z-0 object-contain object-center"
-              />
               <Image
                 src="/images/proteinsnaps/hero-features.webp"
                 alt="ProteinSnaps complete fitness dashboard"
@@ -66,7 +74,7 @@ export default function FeaturesPage() {
                 height={439}
                 loading="lazy"
                 sizes="(max-width: 1400px) 100vw, 1400px"
-                className="relative z-10 h-auto w-full object-contain object-center"
+                className="h-auto w-full object-contain object-center"
               />
             </div>
           </FadeInUp>
