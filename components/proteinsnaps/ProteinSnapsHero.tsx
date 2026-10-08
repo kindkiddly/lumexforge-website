@@ -16,7 +16,7 @@ const CAROUSEL_IMAGE_SRC = [
 
 const COVERFLOW_LAYOUT = {
   desktop: { spacing: 320, depth: 200, hideX: 800 },
-  mobile: { spacing: 253, depth: 158, hideX: 632 },
+  mobile: { spacing: 320, depth: 200, hideX: 800 },
 } as const;
 
 function getCoverflowTransform(
@@ -63,7 +63,7 @@ function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headl
         src={CAROUSEL_IMAGE_SRC[slideIndex]}
         alt={headline}
         fill
-        sizes="(max-width: 1023px) 300px, 380px"
+        sizes="380px"
         priority={slideIndex === 0}
         className="object-contain object-center"
       />
@@ -140,11 +140,9 @@ function ProteinSnapsCoverflow() {
     const el = wrapperRef.current;
     if (!el) return;
 
-    const mq = window.matchMedia("(min-width: 1024px)");
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting && mq.matches) {
+        if (entry?.isIntersecting) {
           startAutoplay();
         } else {
           stopAutoplay();
@@ -155,16 +153,8 @@ function ProteinSnapsCoverflow() {
 
     observer.observe(el);
 
-    const onMqChange = () => {
-      if (!mq.matches) {
-        stopAutoplay();
-      }
-    };
-    mq.addEventListener("change", onMqChange);
-
     return () => {
       observer.disconnect();
-      mq.removeEventListener("change", onMqChange);
       stopAutoplay();
     };
   }, [startAutoplay, stopAutoplay]);
