@@ -622,6 +622,10 @@
     color: #cbd5e1;
   }
 
+  .ps-glass-text p.text-\[\#00e6a8\] {
+    color: #00e6a8 !important;
+  }
+
   .ps-ai-section-outer {
     background: transparent !important;
     backdrop-filter: none !important;
