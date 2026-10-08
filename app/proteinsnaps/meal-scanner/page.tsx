@@ -107,16 +107,24 @@ export default function MealScannerPage() {
       </section>
       <section className="ps-meal-scanner-steps relative py-12 sm:py-16">
         <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-4.webp" />
         </div>
         <div
-          className="ps-meal-scanner-steps-bg ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="ps-meal-scanner-steps-bg ps-parallax-bg-cover pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-M8.webp" />
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block"
+          aria-hidden="true"
+        >
+          <div className="ps-parallax-bg-cover h-full w-full">
+            <ParallaxImage src="/images/proteinsnaps/bg-vegetables-alpha.webp" />
+          </div>
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
