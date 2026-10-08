@@ -28,7 +28,7 @@ export function StoreButtons({
   const appStoreClass =
     variant === "hero"
       ? "ps-appstore-button"
-      : "ps-glow-button border border-white/25 bg-white/[0.06] font-medium text-white hover:bg-white/[0.1]";
+      : "ps-glow-button ps-appstore-button font-medium";
 
   const buttonWidth = "w-full sm:w-[17rem]";
 
