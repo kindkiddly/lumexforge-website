@@ -54,8 +54,8 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Your All-in-One Fitness Partner.",
     description:
-      "Track meals, workouts, protein and progress in one intelligent app built around your goals.",
-    accentWords: ["Meals,", "Stay", "Goal."],
+      "Smart nutrition, workout tracking, AI coaching and body progress — one dashboard for meals, macros and training.",
+    accentWords: ["All-in-One", "Fitness", "Partner."],
     name: "fadeUp",
     duration: 1.0,
     headlineClass: "font-sans font-extrabold not-italic",
@@ -64,7 +64,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Stronger Every Day.",
     description:
-      "Log your workouts, track every set and rep, and build real strength with smart training guidance.",
+      "Personalized nutrition, custom workout plans and streaks on your phone — train hard and see calories, macros and progress in one place.",
     accentWords: ["Stronger", "Every", "Day."],
     name: "blurReveal",
     duration: 1.1,
@@ -72,30 +72,30 @@ export const DESKTOP_SLIDES = [
     accentClass: "text-white",
   },
   {
-    headline: "Your AI Coach. Always By Your Side.",
+    headline: "Snap It. Track It. Achieve It.",
     description:
-      "Get real-time nutrition and fitness guidance from your personal AI coach — smarter plans, better results.",
-    accentWords: ["AI", "Coach.", "Side."],
+      "Photograph your meal and get instant AI nutrition — calories, protein, carbs, fat and ingredients logged in seconds.",
+    accentWords: ["Snap", "Track", "Achieve"],
     name: "stagger",
     duration: 1.2,
     headlineClass: "font-serif font-light italic",
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Snap It. Track It. Achieve It.",
+    headline: "Hydrate Well. Track Your Body.",
     description:
-      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
-    accentWords: ["Snap", "Track", "Achieve"],
+      "Log daily water intake toward your goal and record body measurements — see hydration habits and physical changes over time.",
+    accentWords: ["Hydrate", "Track", "Body."],
     name: "sweepLeft",
     duration: 1.0,
     headlineClass: "font-sans font-extrabold uppercase tracking-widest",
     accentClass: "text-[#00C2FF]",
   },
   {
-    headline: "Track Your Meals, Stay on Goal.",
+    headline: "Train Smarter. Get Stronger.",
     description:
-      "Log every meal, see your 30-day nutrition history and stay consistent with your daily targets.",
-    accentWords: ["All-in-One", "Fitness", "Partner."],
+      "Follow live workout sessions — track sets, reps, weight and rest while you build strength and watch completion climb.",
+    accentWords: ["Smarter.", "Get", "Stronger."],
     name: "typewriter",
     duration: 1.2,
     headlineClass: "font-mono font-normal not-italic",
