@@ -45,18 +45,20 @@ export default function FeaturesPage() {
       <section className="relative w-full overflow-hidden py-[60px]">
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="ps-title-strip mx-auto text-center">
-              <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
-                <BlurRevealText text="Built for Serious Nutrition Tracking" />
-              </h1>
+            <div className="mb-6">
+              <div className="ps-title-strip mx-auto text-center">
+                <h1 className="text-[2rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#1A1A1A] lg:text-[2.5rem]">
+                  <BlurRevealText text="Built for Serious Nutrition Tracking" />
+                </h1>
+              </div>
+              <p className="mx-auto mt-3 max-w-2xl font-serif text-lg font-normal italic tracking-[0.02em] text-[#555555]">
+                Every tool you need to snap meals, track protein, train smarter, and achieve your
+                fitness goals — powered by AI.
+              </p>
             </div>
-            <p className="mx-auto mt-4 max-w-2xl font-serif text-xl font-normal italic leading-relaxed tracking-[0.02em] text-[#555555] sm:text-2xl">
-              Every tool you need to snap meals, track protein, train smarter, and achieve your
-              fitness goals — powered by AI.
-            </p>
           </FadeInUp>
         </div>
-        <div className="relative z-10 mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
               <Image
