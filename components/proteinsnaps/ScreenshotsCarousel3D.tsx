@@ -108,7 +108,7 @@ export function ScreenshotsCarousel3D() {
   const [currentCenter, setCurrentCenter] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const visibilityRef = useRef<HTMLElement>(null);
-  const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoplayTimerRef = useRef<ReturnType<typeof window.setInterval> | null>(null);
   const isAnimatingRef = useRef(false);
   const isPausedRef = useRef(false);
   const slide = SCREENSHOT_SLIDES[currentCenter];
