@@ -31,7 +31,7 @@ export function PageHero({ title, description }: PageHeroProps) {
                 <BlurRevealText text={title} />
               </h1>
             </div>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#555555]">
+            <p className="mx-auto mt-4 max-w-2xl font-serif text-xl font-normal italic leading-relaxed tracking-[0.02em] text-[#555555] sm:text-2xl">
               {description}
             </p>
           </div>
