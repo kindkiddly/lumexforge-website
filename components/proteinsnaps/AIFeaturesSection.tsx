@@ -28,7 +28,7 @@ export function AIFeaturesSection() {
           <div
             className="ps-ai-section-outer ps-glass-panel ps-3d-card overflow-hidden rounded-3xl border border-[#00c2ff]/20 bg-gradient-to-br from-[#00c2ff]/10 via-[#F0EBE3] to-[#00e6a8]/5 p-8 sm:p-12 ps-glow-frame"
             style={{
-              background: "rgba(250, 247, 242, 0.58)",
+              background: "rgba(250, 247, 242, 0.42)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
             }}

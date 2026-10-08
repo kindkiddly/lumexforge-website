@@ -110,8 +110,9 @@
 }
 
 .ps-hero-desktop-appstore {
-  border: 1px solid rgba(0, 194, 255, 0.4) !important;
-  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  background: #1a1a1a !important;
+  color: rgba(255, 255, 255, 0.95) !important;
   animation: ps-glow-breathe-cyan 3.5s ease-in-out infinite !important;
 }
 

@@ -59,7 +59,7 @@ export function StoreButtons({
                   level="M"
                 />
               </div>
-              <p className="mt-2 text-center text-xs text-white/50">Scan for Android</p>
+              <p className="mt-2 text-center text-xs text-[#555555]">Scan for Android</p>
             </div>
           )}
         </div>
@@ -88,7 +88,7 @@ export function StoreButtons({
                   level="M"
                 />
               </div>
-              <p className="mt-2 text-center text-xs text-white/50">Scan for iOS</p>
+              <p className="mt-2 text-center text-xs text-[#555555]">Scan for iOS</p>
             </div>
           )}
         </div>
