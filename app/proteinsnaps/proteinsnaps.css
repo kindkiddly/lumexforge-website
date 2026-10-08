@@ -3,11 +3,23 @@
   --ps-cyan: #00c2ff;
   --ps-glow-mint: rgba(0, 230, 168, 0.35);
   --ps-glow-cyan: rgba(0, 194, 255, 0.25);
+  background-color: #f2ede4;
+}
+
+.ps-glow-card,
+.ps-glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  color: #1a1a1a;
 }
 
 .ps-glow-card {
-  border: 1px solid rgba(0, 230, 168, 0.12);
-  background: rgba(0, 0, 0, 0.04);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -19,11 +31,8 @@
 }
 
 .ps-glow-frame {
-  border: 1px solid rgba(0, 230, 168, 0.2);
-  box-shadow:
-    0 0 40px -10px var(--ps-glow-mint),
-    0 0 60px -15px var(--ps-glow-cyan),
-    inset 0 0 40px -20px rgba(0, 194, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
 }
 
 .ps-glow-button {
@@ -67,13 +76,8 @@
 
 .ps-divider {
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 230, 168, 0.3),
-    rgba(0, 194, 255, 0.3),
-    transparent
-  );
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 .ps-text-gradient {
@@ -383,14 +387,6 @@
 }
 
 /* Readability helpers */
-.ps-glass-panel {
-  background: #f2ede4;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 230, 168, 0.08);
-}
-
 .ps-glass-text {
   display: inline-block;
   padding: 0.75rem 1.25rem;
@@ -399,6 +395,8 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  color: #1a1a1a;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 1023px) {
@@ -733,17 +731,13 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 3rem;
-  background: linear-gradient(160deg, #0d2233, #0a1a2e 48%, #0c1f2e);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow:
-    0 10px 24px -12px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(0, 230, 168, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.40);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
   border-radius: 999px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .ps-nav-link {

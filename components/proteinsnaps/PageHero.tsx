@@ -17,11 +17,11 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
             {eyebrow}
           </p>
           <div className="ps-title-strip mx-auto text-center">
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
               <BlurRevealText text={title} />
             </h1>
           </div>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-secondary">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#555555]">
             {description}
           </p>
         </FadeInUp>

@@ -96,7 +96,7 @@ export default function WorkoutNutritionPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">
             <div className="ps-glass-text ps-3d-card">
-              <h2 className="font-serif text-3xl font-semibold text-foreground">
+              <h2 className="font-serif text-3xl font-semibold text-[#1A1A1A]">
                 <StaggerWords text="Train Hard. Eat Smart." />
               </h2>
             </div>
@@ -120,7 +120,7 @@ export default function WorkoutNutritionPage() {
                 <FadeInUp key={item.title} delay={i * 0.06}>
                   <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-5">
                     <h3 className="font-bold text-[#00c2ff]">{item.title}</h3>
-                    <p className="mt-2 text-sm font-bold leading-relaxed text-foreground-secondary">
+                    <p className="mt-2 text-sm font-bold leading-relaxed text-[#555555]">
                       {item.description}
                     </p>
                   </article>

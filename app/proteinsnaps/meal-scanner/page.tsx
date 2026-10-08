@@ -93,10 +93,10 @@ export default function MealScannerPage() {
                   </div>
                 </div>
                 <div className="ps-glass-text ps-3d-card mt-5 mx-auto max-w-xs">
-                  <p className="font-serif text-lg font-semibold text-foreground">
+                  <p className="font-serif text-lg font-semibold text-[#1A1A1A]">
                     {slide.feature}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                  <p className="mt-2 text-sm leading-relaxed text-[#555555]">
                     {slide.description}
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export default function MealScannerPage() {
           <div className="relative mt-12">
             <FadeInUp delay={0.1} className="relative z-10">
               <div className="ps-glass-text">
-                <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+                <h2 className="font-serif text-2xl font-semibold text-[#1A1A1A] sm:text-3xl">
                   How the AI Food Scanner Works
                 </h2>
               </div>
@@ -148,8 +148,8 @@ export default function MealScannerPage() {
                       <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#00e6a8]/30 bg-[#00e6a8]/10 text-sm font-bold text-[#00e6a8]">
                         {i + 1}
                       </span>
-                      <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                      <h3 className="mt-4 font-semibold text-[#1A1A1A]">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-[#555555]">
                         {step.description}
                       </p>
                     </article>

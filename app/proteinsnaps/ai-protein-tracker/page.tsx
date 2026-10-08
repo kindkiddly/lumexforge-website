@@ -146,7 +146,7 @@ export default function AIProteinTrackerPage() {
                 <FadeInUp key={item.title} delay={0.1 + i * 0.04}>
                   <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-6">
                     <h2 className="text-lg font-semibold text-[#00e6a8]">{item.title}</h2>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                    <p className="mt-3 text-sm leading-relaxed text-[#555555]">
                       {item.description}
                     </p>
                   </article>

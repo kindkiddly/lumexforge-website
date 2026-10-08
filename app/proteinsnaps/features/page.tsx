@@ -97,10 +97,10 @@ export default function FeaturesPage() {
               <FadeInUp key={feature.title} delay={i * 0.04}>
                 <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-7">
                   <FeatureIcon name={feature.icon} className="h-7 w-7" />
-                  <h2 className="mt-5 text-lg font-semibold text-foreground">
+                  <h2 className="mt-5 text-lg font-semibold text-[#1A1A1A]">
                     {feature.title}
                   </h2>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
+                  <p className="mt-3 text-sm leading-relaxed text-[#555555]">
                     {feature.description}
                   </p>
                 </article>
@@ -145,10 +145,10 @@ export default function FeaturesPage() {
                   </div>
                 </div>
                 <div className="ps-glass-text ps-3d-card mt-5 mx-auto max-w-xs">
-                  <p className="font-serif text-lg font-semibold text-foreground">
+                  <p className="font-serif text-lg font-semibold text-[#1A1A1A]">
                     {slide.feature}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
+                  <p className="mt-2 text-sm leading-relaxed text-[#555555]">
                     {slide.description}
                   </p>
                 </div>
