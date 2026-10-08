@@ -407,6 +407,14 @@
 }
 
 @media (max-width: 1023px) {
+  .proteinsnaps-site {
+    background-color: #f5edd8 !important;
+  }
+
+  .proteinsnaps-site .bg-\[\#F2EDE4\] {
+    background-color: #f5edd8 !important;
+  }
+
   .ps-parallax-bg-cover .ps-parallax-inner {
     background-size: cover;
     background-position: center center;
