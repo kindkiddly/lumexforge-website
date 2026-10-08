@@ -121,15 +121,15 @@ export default function MealScannerPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <FadeInUp className="relative z-10">
-              <div className="ps-3d-card relative aspect-[16/10] w-full overflow-hidden rounded-2xl ps-glow-frame">
+              <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
                 <Image
-                  src="/images/proteinsnaps/PSL-5.webp"
+                  src="/images/proteinsnaps/hero-meal-scanner.webp"
                   alt="ProteinSnaps AI meal scanner in action"
-                  width={1536}
-                  height={1024}
+                  width={1200}
+                  height={480}
                   loading="lazy"
-                  sizes="100vw"
-                  className="h-full w-full object-cover"
+                  sizes="(max-width: 1400px) 100vw, 1400px"
+                  className="h-auto w-full object-contain object-center"
                 />
               </div>
             </FadeInUp>
