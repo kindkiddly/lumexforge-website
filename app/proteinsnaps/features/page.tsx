@@ -65,7 +65,7 @@ export default function FeaturesPage() {
                 src="/images/proteinsnaps/hero-features.webp"
                 alt="ProteinSnaps complete fitness dashboard"
                 width={1200}
-                height={439}
+                height={436}
                 loading="lazy"
                 sizes="(max-width: 1400px) 100vw, 1400px"
                 className="h-auto w-full object-contain object-center"
