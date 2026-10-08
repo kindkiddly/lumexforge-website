@@ -1769,7 +1769,7 @@
 .ps-site-footer {
   margin-top: 2rem;
   padding: 32px 48px 16px;
-  background: rgba(15, 15, 20, 0.75);
+  background: #0d1117;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
