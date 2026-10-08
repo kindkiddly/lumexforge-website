@@ -64,6 +64,7 @@ function ProteinSnapsCoverflow() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = DESKTOP_SLIDES.length;
 
   const updateIndex = useCallback(
@@ -91,9 +92,41 @@ function ProteinSnapsCoverflow() {
     [currentIndex, updateIndex]
   );
 
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     containerRef.current?.focus();
   }, []);
+
+  /* Auto-slide when desktop hero is visible (lg+) — same interval as LumexForge coverflow */
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+
+    const start = () => {
+      stopAutoplay();
+      if (!mq.matches) return;
+      autoplayRef.current = setInterval(() => {
+        setCurrentIndex((prev) => {
+          setIsAnimating(true);
+          window.setTimeout(() => setIsAnimating(false), 600);
+          return (prev + 1) % total;
+        });
+      }, 4000);
+    };
+
+    start();
+    const onChange = () => start();
+    mq.addEventListener("change", onChange);
+    return () => {
+      stopAutoplay();
+      mq.removeEventListener("change", onChange);
+    };
+  }, [stopAutoplay, total]);
 
   const activeSlide = DESKTOP_SLIDES[currentIndex];
 
@@ -107,8 +140,14 @@ function ProteinSnapsCoverflow() {
         aria-label="ProteinSnaps feature coverflow carousel"
         aria-roledescription="carousel"
         onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") navigate(-1);
-          if (e.key === "ArrowRight") navigate(1);
+          if (e.key === "ArrowLeft") {
+            stopAutoplay();
+            navigate(-1);
+          }
+          if (e.key === "ArrowRight") {
+            stopAutoplay();
+            navigate(1);
+          }
         }}
       >
         <div className="ps-cf-track">
@@ -131,7 +170,10 @@ function ProteinSnapsCoverflow() {
                 key={slide.headline}
                 className={`ps-cf-item${isActive ? " active" : ""}`}
                 style={{ transform, opacity, zIndex }}
-                onClick={() => goToIndex(index)}
+                onClick={() => {
+                  stopAutoplay();
+                  goToIndex(index);
+                }}
                 role="button"
                 tabIndex={-1}
                 aria-hidden={!isActive}
@@ -153,7 +195,10 @@ function ProteinSnapsCoverflow() {
           type="button"
           className="ps-cf-nav prev"
           aria-label="Previous slide"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            stopAutoplay();
+            navigate(-1);
+          }}
         >
           ‹
         </button>
@@ -161,7 +206,10 @@ function ProteinSnapsCoverflow() {
           type="button"
           className="ps-cf-nav next"
           aria-label="Next slide"
-          onClick={() => navigate(1)}
+          onClick={() => {
+            stopAutoplay();
+            navigate(1);
+          }}
         >
           ›
         </button>
