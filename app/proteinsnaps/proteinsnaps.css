@@ -359,6 +359,12 @@
     background-size: cover;
   }
 
+  .relative:has(.ps-ai-section-outer) > .pointer-events-none.absolute .ps-parallax-inner {
+    background-size: cover;
+    background-position: center center;
+    inset: 0;
+  }
+
   .ps-parallax-overlay {
     background: linear-gradient(
       to bottom,
@@ -408,8 +414,14 @@
   }
 
   .relative:has(> .ps-home-features-grid-wrap) > .ps-parallax-bg-cover .ps-parallax-inner {
+    background-size: contain;
+    background-position: center center;
+    inset: -5%;
+  }
+
+  .relative:has(.ps-ai-section-outer) > .pointer-events-none.absolute .ps-parallax-inner {
     background-size: cover;
-    background-position: center top;
+    background-position: center center;
     inset: 0;
   }
 
@@ -586,12 +598,26 @@
     -webkit-backdrop-filter: blur(6px);
   }
 
+  .ps-glass-text h2,
+  .ps-glass-text h3 {
+    color: #f8fafc;
+  }
+
+  .ps-glass-text p {
+    color: #cbd5e1;
+  }
+
   .ps-ai-section-outer {
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
     border: none !important;
+  }
+
+  .ps-ai-section-outer h2 {
+    color: #f8fafc;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
 
   .ps-ai-card-inner {
