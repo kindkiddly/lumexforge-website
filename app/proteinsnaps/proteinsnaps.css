@@ -588,10 +588,17 @@
 
   .ps-download-cta-card h2,
   .ps-download-cta-card p {
-    text-shadow:
-      0 1px 12px rgba(0, 0, 0, 0.75),
-      0 0 28px rgba(5, 8, 17, 0.65),
-      0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: none;
+    filter: none;
+  }
+
+  .ps-download-cta-card h2 {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .ps-download-cta-card p {
+    color: #555555;
   }
 
   .ps-glass-panel {
@@ -646,6 +653,54 @@
 
   .ps-ai-card-inner .ps-ai-card-desc {
     color: #cbd5e1 !important;
+  }
+
+  .ps-home-feature-card :is(h2, h3, .ps-home-feature-card-title),
+  .ps-home-step-card :is(h2, h3) {
+    color: #1a1a1a !important;
+  }
+
+  .ps-home-feature-card p,
+  .ps-home-step-card p {
+    color: #555555 !important;
+  }
+
+  .ps-glass-panel.ps-3d-card:not(.ps-ai-section-outer) :is(h2, h3, h4),
+  .ps-glow-card.ps-glass-panel.ps-3d-card:not(.ps-ai-section-outer) :is(h2, h3, h4) {
+    color: #1a1a1a !important;
+  }
+
+  .ps-glass-panel.ps-3d-card:not(.ps-ai-section-outer) p,
+  .ps-glow-card.ps-glass-panel.ps-3d-card:not(.ps-ai-section-outer) p {
+    color: #555555 !important;
+  }
+
+  .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card :is(h2, h3) {
+    color: #33f0c0 !important;
+  }
+
+  .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card p {
+    color: #e2e8f0 !important;
+  }
+
+  .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card p:first-of-type,
+  .ps-meal-scanner-steps .ps-glass-text h2,
+  .ps-meal-scanner-steps .ps-glow-card.ps-glass-panel.ps-3d-card :is(h2, h3) {
+    color: #ffffff !important;
+  }
+
+  .ps-meal-scanner-mockups .ps-glass-text.ps-3d-card p:last-of-type,
+  .ps-meal-scanner-steps .ps-glow-card.ps-glass-panel.ps-3d-card p {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .ps-screenshots-mobile-text.ps-glass-panel :is(h3, p, li) {
+    color: #334155 !important;
+  }
+
+  .ps-screenshots-mobile-text.ps-glass-panel h3,
+  .ps-screenshots-mobile-text.ps-glass-panel h3 span {
+    color: #0b1220 !important;
   }
 }
 
