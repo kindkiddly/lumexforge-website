@@ -42,7 +42,7 @@ const FEATURE_SCREENSHOTS = FEATURE_SCREENSHOT_SRC.map(
 export default function FeaturesPage() {
   return (
     <>
-      <section className="relative w-full overflow-hidden py-[60px]">
+      <section className="ps-page-hero relative w-full overflow-hidden py-[60px]">
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <FadeInUp>
             <div className="mb-6">
