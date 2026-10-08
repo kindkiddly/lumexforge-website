@@ -14,7 +14,18 @@ const CAROUSEL_IMAGE_SRC = [
   "/images/proteinsnaps/pscarousel-5.webp",
 ] as const;
 
-function getCoverflowTransform(index: number, currentIndex: number, total: number) {
+const COVERFLOW_LAYOUT = {
+  desktop: { spacing: 320, depth: 200, hideX: 800 },
+  mobile: { spacing: 219, depth: 137, hideX: 547 },
+} as const;
+
+function getCoverflowTransform(
+  index: number,
+  currentIndex: number,
+  total: number,
+  layout: keyof typeof COVERFLOW_LAYOUT
+) {
+  const { spacing, depth, hideX } = COVERFLOW_LAYOUT[layout];
   let offset = index - currentIndex;
 
   if (offset > total / 2) {
@@ -26,15 +37,15 @@ function getCoverflowTransform(index: number, currentIndex: number, total: numbe
   const absOffset = Math.abs(offset);
   const sign = Math.sign(offset) || 1;
 
-  let translateX = offset * 320;
-  const translateZ = -absOffset * 200;
+  let translateX = offset * spacing;
+  const translateZ = -absOffset * depth;
   const rotateY = -sign * Math.min(absOffset * 60, 60);
   let opacity = 1 - absOffset * 0.2;
   const scale = 1 - absOffset * 0.1;
 
   if (absOffset > 3) {
     opacity = 0;
-    translateX = sign * 800;
+    translateX = sign * hideX;
   }
 
   return {
@@ -52,7 +63,7 @@ function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headl
         src={CAROUSEL_IMAGE_SRC[slideIndex]}
         alt={headline}
         fill
-        sizes="380px"
+        sizes="(max-width: 1023px) 260px, 380px"
         priority={slideIndex === 0}
         className="object-contain object-center"
       />
@@ -66,7 +77,17 @@ function ProteinSnapsCoverflow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [coverflowLayout, setCoverflowLayout] =
+    useState<keyof typeof COVERFLOW_LAYOUT>("desktop");
   const total = DESKTOP_SLIDES.length;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setCoverflowLayout(mq.matches ? "desktop" : "mobile");
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   const updateIndex = useCallback(
     (nextIndex: number) => {
@@ -175,7 +196,8 @@ function ProteinSnapsCoverflow() {
             const { transform, opacity, zIndex, isActive } = getCoverflowTransform(
               index,
               currentIndex,
-              total
+              total,
+              coverflowLayout
             );
 
             let offset = index - currentIndex;
@@ -256,7 +278,7 @@ function ProteinSnapsCoverflow() {
 export function ProteinSnapsHero() {
   return (
     <section
-      className="hidden min-h-[100dvh] flex-col justify-center bg-transparent px-6 pb-4 pt-[4.5rem] lg:flex"
+      className="flex min-h-[100dvh] flex-col justify-center bg-transparent px-6 pb-4 pt-[4.5rem]"
       aria-label="ProteinSnaps hero"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center text-center">
