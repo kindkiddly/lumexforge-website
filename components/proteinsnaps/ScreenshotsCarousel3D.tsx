@@ -107,6 +107,8 @@ export function ScreenshotsCarousel3D() {
   const totalCards = SCREENSHOT_SLIDES.length;
   const [currentCenter, setCurrentCenter] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const visibilityRef = useRef<HTMLElement>(null);
+  const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isAnimatingRef = useRef(false);
   const isPausedRef = useRef(false);
   const slide = SCREENSHOT_SLIDES[currentCenter];
@@ -149,15 +151,47 @@ export function ScreenshotsCarousel3D() {
     }, ANIM_LOCK_MS);
   }, [totalCards]);
 
-  useEffect(() => {
-    if (!isDesktop) return;
+  const stopAutoplay = useCallback(() => {
+    if (autoplayTimerRef.current) {
+      window.clearInterval(autoplayTimerRef.current);
+      autoplayTimerRef.current = null;
+    }
+  }, []);
 
-    const timer = window.setInterval(() => {
+  const startAutoplay = useCallback(() => {
+    stopAutoplay();
+    autoplayTimerRef.current = window.setInterval(() => {
       if (!isPausedRef.current) advanceSlide();
     }, AUTOPLAY_MS);
+  }, [advanceSlide, stopAutoplay]);
 
-    return () => window.clearInterval(timer);
-  }, [isDesktop, advanceSlide]);
+  useEffect(() => {
+    if (!isDesktop) {
+      stopAutoplay();
+      return;
+    }
+
+    const el = visibilityRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      stopAutoplay();
+    };
+  }, [isDesktop, startAutoplay, stopAutoplay]);
 
   useEffect(() => {
     if (!isDesktop) return;
@@ -194,7 +228,7 @@ export function ScreenshotsCarousel3D() {
   if (!isDesktop) return null;
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-28">
+    <section ref={visibilityRef} className="relative py-20 sm:py-24 lg:py-28">
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp className="text-center">

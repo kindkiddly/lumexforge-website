@@ -3,7 +3,7 @@
 import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BlurRevealText } from "./animations/BlurRevealText";
 import { FadeInUp } from "./animations/FadeInUp";
 import { StaggerWords } from "./animations/StaggerWords";
@@ -112,19 +112,51 @@ function MobileSlideDescription({
 }
 
 export function ScreenshotsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [index, setIndex] = useState(0);
   const slide = SCREENSHOT_SLIDES[index];
   const visibleIndices = getAdjacentSlideIndices(index, SCREENSHOT_SLIDES.length);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % SCREENSHOT_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
   }, []);
 
+  const startAutoplay = useCallback(() => {
+    stopAutoplay();
+    autoplayRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % SCREENSHOT_SLIDES.length);
+    }, 5000);
+  }, [stopAutoplay]);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      stopAutoplay();
+    };
+  }, [startAutoplay, stopAutoplay]);
+
   return (
-    <section className="relative py-20 sm:py-24 lg:py-28">
+    <section ref={sectionRef} className="relative py-20 sm:py-24 lg:py-28">
       <div className="ps-divider absolute inset-x-0 top-0 mx-auto max-w-4xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInUp className="text-center">

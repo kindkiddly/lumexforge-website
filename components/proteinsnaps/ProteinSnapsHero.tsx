@@ -61,6 +61,7 @@ function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headl
 }
 
 function ProteinSnapsCoverflow() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -99,39 +100,58 @@ function ProteinSnapsCoverflow() {
     }
   }, []);
 
+  const startAutoplay = useCallback(() => {
+    stopAutoplay();
+    autoplayRef.current = setInterval(() => {
+      setCurrentIndex((prev) => {
+        setIsAnimating(true);
+        window.setTimeout(() => setIsAnimating(false), 600);
+        return (prev + 1) % total;
+      });
+    }, 4000);
+  }, [stopAutoplay, total]);
+
   useEffect(() => {
     containerRef.current?.focus();
   }, []);
 
-  /* Auto-slide when desktop hero is visible (lg+) — same interval as LumexForge coverflow */
   useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
     const mq = window.matchMedia("(min-width: 1024px)");
 
-    const start = () => {
-      stopAutoplay();
-      if (!mq.matches) return;
-      autoplayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => {
-          setIsAnimating(true);
-          window.setTimeout(() => setIsAnimating(false), 600);
-          return (prev + 1) % total;
-        });
-      }, 4000);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && mq.matches) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+        }
+      },
+      { threshold: 0.3 }
+    );
 
-    start();
-    const onChange = () => start();
-    mq.addEventListener("change", onChange);
-    return () => {
-      stopAutoplay();
-      mq.removeEventListener("change", onChange);
+    observer.observe(el);
+
+    const onMqChange = () => {
+      if (!mq.matches) {
+        stopAutoplay();
+      }
     };
-  }, [stopAutoplay, total]);
+    mq.addEventListener("change", onMqChange);
+
+    return () => {
+      observer.disconnect();
+      mq.removeEventListener("change", onMqChange);
+      stopAutoplay();
+    };
+  }, [startAutoplay, stopAutoplay]);
 
   const activeSlide = DESKTOP_SLIDES[currentIndex];
 
   return (
-    <div className="ps-cf-wrapper">
+    <div ref={wrapperRef} className="ps-cf-wrapper">
       <div
         ref={containerRef}
         className="ps-cf-container focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
