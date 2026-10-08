@@ -415,7 +415,7 @@
 
   section[aria-label="ProteinSnaps hero"] {
     justify-content: flex-start;
-    padding-top: 3rem;
+    padding-top: 4rem;
   }
 
   section[aria-label="ProteinSnaps hero"] h1 {
@@ -2147,7 +2147,7 @@
   }
 
   .ps-cf-hero .ps-cf-info {
-    margin-top: 32px;
+    margin-top: 48px;
     position: relative;
     z-index: 10;
   }
