@@ -413,6 +413,11 @@
     inset: 0;
   }
 
+  section[aria-label="ProteinSnaps hero"] {
+    justify-content: flex-start;
+    padding-top: 3rem;
+  }
+
   section[aria-label="ProteinSnaps hero"] h1 {
     font-size: 1.5rem;
   }
@@ -2142,7 +2147,19 @@
   }
 
   .ps-cf-hero .ps-cf-info {
-    margin-top: 0.25rem;
+    margin-top: 32px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .ps-cf-hero .ps-cf-info > p:first-child {
+    color: #1a1a1a;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  .ps-cf-hero .ps-cf-info > p:last-child {
+    color: #555555;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   }
 
   .ps-cf-nav.prev {
@@ -2157,5 +2174,15 @@
     width: 44px;
     height: 44px;
     font-size: 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  .ps-cf-hero .ps-cf-info > p:first-child {
+    font-size: 1.125rem;
+  }
+
+  .ps-cf-hero .ps-cf-info > p:last-child {
+    font-size: 0.875rem;
   }
 }
