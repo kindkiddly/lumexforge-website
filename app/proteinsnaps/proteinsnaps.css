@@ -499,19 +499,24 @@
     object-position: center;
   }
 
-  .proteinsnaps-site .ps-workout-features-section .ps-workout-train-row-grid,
   .proteinsnaps-site .ps-workout-features-section .ps-workout-cards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
   }
 
-  .proteinsnaps-site .ps-workout-features-section .ps-workout-train-row-grid > *,
   .proteinsnaps-site .ps-workout-features-section .ps-workout-cards-grid > * {
+    display: block;
     width: 100%;
     min-width: 0;
+    max-width: 100%;
   }
 
   .proteinsnaps-site .ps-workout-features-section .ps-workout-train-slot {
-    grid-column: span 1;
+    grid-column: 1 / -1;
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-cards-grid .ps-workout-train-slot > article {
+    width: 100%;
   }
 
   .proteinsnaps-site .ps-workout-features-section .ps-workout-glass-card {
