@@ -132,7 +132,7 @@ export function ProteinSnapsNavbar() {
                 href={PROTEINSNAPS.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ps-play-button mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-[#0A0A0A]"
+                className="ps-nav-mobile-play-button ps-play-button mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold"
               >
                 Download on Google Play
               </a>
