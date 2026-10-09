@@ -95,6 +95,9 @@ export default function FeaturesPage() {
             <div className="ps-parallax-mobile-portrait block h-full w-full lg:hidden">
               <ParallaxImage src="/images/proteinsnaps/BG-M13.webp" />
             </div>
+            <div className="ps-parallax-mobile-m12 pointer-events-none absolute inset-x-0 bottom-0 top-1/2 z-0 overflow-hidden lg:hidden">
+              <ParallaxImage src="/images/proteinsnaps/BG-M12.webp" />
+            </div>
           </>
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

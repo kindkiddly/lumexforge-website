@@ -468,6 +468,14 @@
     width: 100%;
   }
 
+  .proteinsnaps-site .ps-parallax-mobile-m12 .ps-parallax-inner {
+    background-size: contain !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat;
+    inset: auto 0 0 0 !important;
+    width: 100%;
+  }
+
   .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card {
     background: rgba(5, 8, 17, 0.52) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
