@@ -164,6 +164,18 @@
   }
 }
 
+@keyframes ps-kenburns-features {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.08) translate(-1.5%, -1.5%);
+  }
+  100% {
+    transform: scale(1) translate(0%, 0%);
+  }
+}
+
 @media (min-width: 1024px) {
   .ps-hero-desktop-label {
     font-size: 0.75rem !important;
@@ -458,6 +470,9 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    animation: ps-kenburns-features 6s ease-in-out infinite;
+    transform-origin: center center;
+    will-change: transform;
   }
 
   .proteinsnaps-site .ps-parallax-mobile-portrait .ps-parallax-inner {
@@ -739,7 +754,7 @@
     .relative:has(> .pointer-events-none.absolute .ps-parallax-inner):not(:has(.ps-home-features-grid-wrap))
     .ps-glow-card.ps-glass-panel.ps-3d-card
     p {
-    color: #cbd5e1 !important;
+    color: #f8fafc !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
   }
 
