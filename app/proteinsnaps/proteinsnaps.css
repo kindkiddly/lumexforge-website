@@ -499,9 +499,50 @@
     object-position: center;
   }
 
-  .proteinsnaps-site .ps-workout-train-strip.ps-glass-text {
-    padding-top: calc(0.75rem + 8px + 16px);
-    padding-bottom: calc(0.75rem + 8px + 16px);
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-train-row-grid,
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-train-row-grid > *,
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-cards-grid > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-train-slot {
+    grid-column: span 1;
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-glass-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    background: rgba(5, 8, 17, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    transform: none !important;
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-glass-card:hover {
+    transform: none !important;
+  }
+
+  .proteinsnaps-site .ps-workout-features-section .ps-workout-glass-card :is(h1, h2, h3, h4, p) {
+    color: #f8fafc !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .proteinsnaps-site
+    .ps-workout-features-section
+    .ps-workout-glass-card
+    :is(.text-\[\#00e6a8\], .text-\[\#00c2ff\], .text-\[\#555555\], .text-\[\#1A1A1A\]) {
+    color: #f8fafc !important;
   }
 
   .ps-features-hero-image-wrap.ps-features-hero-kenburns-active .ps-features-hero-image-mobile {

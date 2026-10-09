@@ -95,7 +95,7 @@ export default function WorkoutNutritionPage() {
           </FadeInUp>
         </div>
       </section>
-      <section className="relative py-12 sm:py-16">
+      <section className="ps-workout-features-section relative py-12 sm:py-16">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
@@ -103,14 +103,16 @@ export default function WorkoutNutritionPage() {
           <ParallaxImage src="/images/proteinsnaps/BG-7.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeInUp className="text-center">
-            <div className="ps-workout-train-strip ps-glass-text ps-3d-card">
-              <h2 className="font-serif text-3xl font-semibold text-[#1A1A1A]">
-                <StaggerWords text="Train Hard. Eat Smart." />
-              </h2>
-            </div>
-          </FadeInUp>
-          <div className="mt-12 grid items-start gap-12 lg:grid-cols-2">
+          <div className="ps-workout-train-row-grid mb-4 grid min-w-0 grid-cols-2 gap-4 lg:mb-6">
+            <FadeInUp className="ps-workout-train-slot w-full min-w-0 max-lg:col-span-1 lg:col-span-2">
+              <article className="ps-workout-glass-card ps-glow-card ps-glass-panel ps-3d-card box-border h-full w-full min-w-0 rounded-2xl p-5 text-center">
+                <h2 className="font-serif text-3xl font-semibold text-[#1A1A1A]">
+                  <StaggerWords text="Train Hard. Eat Smart." />
+                </h2>
+              </article>
+            </FadeInUp>
+          </div>
+          <div className="grid items-start gap-12 lg:grid-cols-2">
             <FadeInUp>
               <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-sm overflow-hidden rounded-2xl ps-glow-frame">
                 <Image
@@ -124,10 +126,10 @@ export default function WorkoutNutritionPage() {
                 />
               </div>
             </FadeInUp>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="ps-workout-cards-grid grid min-w-0 grid-cols-2 gap-4">
               {WORKOUT_FEATURES.map((item, i) => (
-                <FadeInUp key={item.title} delay={i * 0.06}>
-                  <article className="ps-glow-card ps-glass-panel ps-3d-card h-full rounded-2xl p-5">
+                <FadeInUp key={item.title} delay={i * 0.06} className="h-full w-full min-w-0">
+                  <article className="ps-workout-glass-card ps-glow-card ps-glass-panel ps-3d-card box-border h-full w-full min-w-0 rounded-2xl p-5">
                     <h3 className="font-bold text-[#00c2ff]">{item.title}</h3>
                     <p className="mt-2 text-sm font-bold leading-relaxed text-[#555555]">
                       {item.description}
