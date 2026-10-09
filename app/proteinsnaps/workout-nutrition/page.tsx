@@ -65,14 +65,23 @@ export default function WorkoutNutritionPage() {
       />
       <section className="relative py-8 sm:py-10">
         <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block"
           aria-hidden="true"
         >
           <ParallaxImage src="/images/proteinsnaps/BG-14.webp" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
+            <div className="ps-workout-hero-image-wrap relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
+              <Image
+                src="/images/proteinsnaps/pscarousel-2.webp"
+                alt="ProteinSnaps gym and strength training"
+                width={380}
+                height={380}
+                loading="lazy"
+                sizes="100vw"
+                className="ps-workout-hero-image-mobile h-full w-full object-contain object-center lg:hidden"
+              />
               <Image
                 src="/images/proteinsnaps/hero-workout.webp"
                 alt="ProteinSnaps gym and strength training"
@@ -80,7 +89,7 @@ export default function WorkoutNutritionPage() {
                 height={437}
                 loading="lazy"
                 sizes="(max-width: 1400px) 100vw, 1400px"
-                className="h-auto w-full object-contain object-center"
+                className="hidden h-auto w-full object-contain object-center lg:block"
               />
             </div>
           </FadeInUp>
@@ -95,7 +104,7 @@ export default function WorkoutNutritionPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center">
-            <div className="ps-glass-text ps-3d-card">
+            <div className="ps-workout-train-strip ps-glass-text ps-3d-card">
               <h2 className="font-serif text-3xl font-semibold text-[#1A1A1A]">
                 <StaggerWords text="Train Hard. Eat Smart." />
               </h2>

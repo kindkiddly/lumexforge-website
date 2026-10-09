@@ -1,4 +1,5 @@
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
+import { FeaturesHeroKenBurnsWrap } from "@/components/proteinsnaps/FeaturesHeroKenBurnsWrap";
 import { FeatureIcon } from "@/components/proteinsnaps/FeatureIcon";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { BlurRevealText } from "@/components/proteinsnaps/animations/BlurRevealText";
@@ -60,7 +61,7 @@ export default function FeaturesPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="ps-features-hero-image-wrap relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
+            <FeaturesHeroKenBurnsWrap className="ps-features-hero-image-wrap relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
               <Image
                 src="/images/proteinsnaps/hero-features-mobile.webp"
                 alt="ProteinSnaps complete fitness dashboard"
@@ -79,7 +80,7 @@ export default function FeaturesPage() {
                 sizes="(max-width: 1400px) 100vw, 1400px"
                 className="hidden h-auto w-full object-contain object-center lg:block"
               />
-            </div>
+            </FeaturesHeroKenBurnsWrap>
           </FadeInUp>
         </div>
       </section>
