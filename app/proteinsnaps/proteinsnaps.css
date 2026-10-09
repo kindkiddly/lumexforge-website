@@ -446,6 +446,28 @@
     background-position: center center !important;
   }
 
+  .ps-features-hero-image-wrap {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .ps-features-hero-image-wrap .ps-features-hero-image-mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .proteinsnaps-site .ps-parallax-mobile-portrait .ps-parallax-inner {
+    background-size: contain !important;
+    background-position: center top !important;
+    background-repeat: no-repeat;
+    inset: 0 !important;
+    width: 100%;
+  }
+
   .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card {
     background: rgba(5, 8, 17, 0.52) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;

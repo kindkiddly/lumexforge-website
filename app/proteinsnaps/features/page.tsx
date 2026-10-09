@@ -60,7 +60,16 @@ export default function FeaturesPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeInUp>
-            <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
+            <div className="ps-features-hero-image-wrap relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
+              <Image
+                src="/images/proteinsnaps/hero-features-mobile.webp"
+                alt="ProteinSnaps complete fitness dashboard"
+                width={780}
+                height={600}
+                loading="lazy"
+                sizes="100vw"
+                className="ps-features-hero-image-mobile h-full w-full object-cover object-center lg:hidden"
+              />
               <Image
                 src="/images/proteinsnaps/hero-features.webp"
                 alt="ProteinSnaps complete fitness dashboard"
@@ -68,7 +77,7 @@ export default function FeaturesPage() {
                 height={436}
                 loading="lazy"
                 sizes="(max-width: 1400px) 100vw, 1400px"
-                className="h-auto w-full object-contain object-center"
+                className="hidden h-auto w-full object-contain object-center lg:block"
               />
             </div>
           </FadeInUp>
