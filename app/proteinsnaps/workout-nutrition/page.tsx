@@ -74,13 +74,13 @@ export default function WorkoutNutritionPage() {
           <FadeInUp>
             <div className="ps-workout-hero-image-wrap relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
               <Image
-                src="/images/proteinsnaps/pscarousel-2.webp"
+                src="/images/proteinsnaps/hero-workout-mobile.webp"
                 alt="ProteinSnaps gym and strength training"
-                width={380}
-                height={380}
+                width={780}
+                height={600}
                 loading="lazy"
                 sizes="100vw"
-                className="ps-workout-hero-image-mobile h-full w-full object-contain object-center lg:hidden"
+                className="ps-workout-hero-image-mobile h-full w-full object-cover object-center lg:hidden"
               />
               <Image
                 src="/images/proteinsnaps/hero-workout.webp"

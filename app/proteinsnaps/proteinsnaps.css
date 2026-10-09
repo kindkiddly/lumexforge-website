@@ -495,13 +495,13 @@
   .ps-workout-hero-image-wrap .ps-workout-hero-image-mobile {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
   }
 
   .proteinsnaps-site .ps-workout-train-strip.ps-glass-text {
-    padding-top: calc(0.75rem + 8px);
-    padding-bottom: calc(0.75rem + 8px);
+    padding-top: calc(0.75rem + 8px + 16px);
+    padding-bottom: calc(0.75rem + 8px + 16px);
   }
 
   .ps-features-hero-image-wrap.ps-features-hero-kenburns-active .ps-features-hero-image-mobile {
