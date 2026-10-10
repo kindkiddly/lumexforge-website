@@ -50,7 +50,8 @@ export function FeaturesGrid() {
                     src={HOME_FEATURE_CARD_IMAGES[i].src}
                     alt={HOME_FEATURE_CARD_IMAGES[i].alt}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1023px) 50vw, 280px"
+                    loading="lazy"
                     className="ps-home-feature-card-image-img"
                   />
                 </div>

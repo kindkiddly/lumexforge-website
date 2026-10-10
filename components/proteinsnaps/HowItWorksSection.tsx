@@ -48,7 +48,8 @@ export function HowItWorksSection() {
                     src={HOW_IT_WORKS_STEP_IMAGE_SRC[i]}
                     alt={step.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 1023px) 100vw, 33vw"
+                    loading="lazy"
                     className="ps-home-step-card-image-img"
                   />
                 </div>

@@ -459,6 +459,31 @@
 }
 
 @media (max-width: 1023px) {
+  .proteinsnaps-site > header.ps-site-navbar {
+    z-index: 100;
+    background-color: #f5edd8 !important;
+    padding-top: env(safe-area-inset-top, 0px);
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.1),
+      0 4px 16px rgba(26, 26, 26, 0.08);
+  }
+
+  .proteinsnaps-site > header.ps-site-navbar > div.overflow-hidden.border-t {
+    background-color: #f5edd8 !important;
+  }
+
+  .ps-home-after-screenshots:not(:has(section)) {
+    display: none;
+  }
+
+  section[aria-label="ProteinSnaps hero"] .ps-cf-container {
+    z-index: 0;
+  }
+
+  .proteinsnaps-site .ps-page-hero:not(.ps-blog-hero) {
+    padding-top: max(4.5rem, calc(env(safe-area-inset-top, 0px) + 4rem)) !important;
+  }
+
   .proteinsnaps-site {
     background-color: #f5edd8 !important;
   }
@@ -2541,18 +2566,22 @@
 
 @media (max-width: 1023px) {
   .ps-cf-hero .ps-cf-container {
-    height: 380px;
-    min-height: 380px;
-    max-height: 380px;
+    height: min(380px, 88vw);
+    min-height: min(380px, 88vw);
+    max-height: min(380px, 88vw);
   }
 
   .ps-cf-hero .ps-cf-track {
-    height: 380px;
+    height: min(380px, 88vw);
   }
 
   .ps-cf-hero .ps-cf-item {
-    width: 380px;
-    height: 380px;
+    width: min(380px, 88vw);
+    height: min(380px, 88vw);
+  }
+
+  .ps-cf-nav {
+    z-index: 40;
   }
 
   .ps-cf-hero .ps-cf-info {

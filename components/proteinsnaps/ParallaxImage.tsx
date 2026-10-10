@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ParallaxImageProps {
   src: string;
@@ -11,11 +11,37 @@ interface ParallaxImageProps {
 export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const desktopMq = window.matchMedia("(min-width: 1024px)");
+    if (desktopMq.matches) {
+      setBgLoaded(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setBgLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "120px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, [src]);
 
   useEffect(() => {
     const inner = innerRef.current;
     const container = containerRef.current;
-    if (!inner || !container) return;
+    if (!inner || !container || !bgLoaded) return;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let ticking = false;
@@ -78,7 +104,7 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       window.removeEventListener("resize", onResize);
       motionQuery.removeEventListener("change", onMotionChange);
     };
-  }, [speed]);
+  }, [speed, bgLoaded]);
 
   return (
     <div
@@ -94,7 +120,7 @@ export function ParallaxImage({ src, speed = 0.5, minHeight }: ParallaxImageProp
       <div
         ref={innerRef}
         className="ps-parallax-inner"
-        style={{ backgroundImage: `url(${src})` }}
+        style={bgLoaded ? { backgroundImage: `url(${src})` } : undefined}
       />
     </div>
   );

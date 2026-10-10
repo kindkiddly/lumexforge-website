@@ -16,7 +16,7 @@ const CAROUSEL_IMAGE_SRC = [
 
 const COVERFLOW_LAYOUT = {
   desktop: { spacing: 320, depth: 200, hideX: 800 },
-  mobile: { spacing: 320, depth: 200, hideX: 800 },
+  mobile: { spacing: 118, depth: 140, hideX: 420 },
 } as const;
 
 function getCoverflowTransform(
@@ -56,17 +56,33 @@ function getCoverflowTransform(
   };
 }
 
-function CoverflowCardFace({ slideIndex, headline }: { slideIndex: number; headline: string }) {
+function CoverflowCardFace({
+  slideIndex,
+  headline,
+  loadImage,
+  isPriority,
+}: {
+  slideIndex: number;
+  headline: string;
+  loadImage: boolean;
+  isPriority: boolean;
+}) {
   return (
     <div className="ps-cf-cover relative !p-0">
-      <Image
-        src={CAROUSEL_IMAGE_SRC[slideIndex]}
-        alt={headline}
-        fill
-        sizes="380px"
-        priority={slideIndex === 0}
-        className="object-contain object-center"
-      />
+      {loadImage ? (
+        <Image
+          src={CAROUSEL_IMAGE_SRC[slideIndex]}
+          alt={headline}
+          fill
+          sizes="(max-width: 1023px) 88vw, 380px"
+          priority={isPriority}
+          loading={isPriority ? undefined : "lazy"}
+          fetchPriority={isPriority ? "high" : "auto"}
+          className="object-contain object-center"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-[#0a0f18]" aria-hidden="true" />
+      )}
     </div>
   );
 }
@@ -211,7 +227,12 @@ function ProteinSnapsCoverflow() {
                 aria-hidden={!isActive}
                 aria-label={`${slide.headline} ${slide.description}`}
               >
-                <CoverflowCardFace slideIndex={index} headline={slide.headline} />
+                <CoverflowCardFace
+                  slideIndex={index}
+                  headline={slide.headline}
+                  loadImage={absOffset <= 2}
+                  isPriority={isActive}
+                />
                 {shouldShowReflection ? (
                   <div className="ps-cf-reflection" aria-hidden="true">
                     <div className="ps-cf-reflection-inner" style={{ backgroundColor: bg }} />
