@@ -37,18 +37,29 @@ export function Footer() {
           <FooterColumn title="Company" links={FOOTER_LINKS.company} />
           <FooterColumn title="Legal" links={FOOTER_LEGAL_LINKS} />
 
-          <div className="lf-footer-cta">
-            <p className="lf-footer-cta-label">Ready to build?</p>
-            <Link href="/contact" className="lf-footer-btn">
-              Get In Touch <span aria-hidden="true">→</span>
-            </Link>
-            <a href={`mailto:${CONTACT_EMAILS.business}`} className="lf-footer-email">
-              {CONTACT_EMAILS.business}
-            </a>
-            <a href={BUSINESS_PHONE_TEL} className="lf-footer-email">
-              Call: {BUSINESS_PHONE_DISPLAY}
-            </a>
-            <span className="lf-footer-email lf-footer-email--plain">{BUSINESS_ADDRESS}</span>
+          <div className="lf-footer-col lf-footer-contact">
+            <h3>Contact</h3>
+            <ul>
+              <li className="lf-footer-contact-cta">
+                <Link href="/contact" className="lf-footer-btn">
+                  Get In Touch <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+              <li>
+                <a href={`mailto:${CONTACT_EMAILS.business}`} className="lf-footer-email">
+                  {CONTACT_EMAILS.business}
+                </a>
+              </li>
+              <li>
+                <a href={BUSINESS_PHONE_TEL}>
+                  Call: {BUSINESS_PHONE_DISPLAY}
+                </a>
+              </li>
+              <li className="lf-footer-address" aria-label={BUSINESS_ADDRESS}>
+                <span>6008 Whitewing Rd</span>
+                <span>Rosenberg, TX 77469, USA</span>
+              </li>
+            </ul>
           </div>
         </div>
 

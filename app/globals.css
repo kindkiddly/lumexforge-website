@@ -399,7 +399,7 @@
   }
 
   .lf-footer-brand,
-  .lf-footer-cta {
+  .lf-footer-contact {
     grid-column: 1 / -1;
   }
 }
@@ -464,24 +464,8 @@
   color: #a5f3fc;
 }
 
-.lf-footer-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.28rem;
-}
-
-@media (min-width: 900px) {
-  .lf-footer-cta {
-    align-items: flex-end;
-    text-align: right;
-  }
-}
-
-.lf-footer-cta-label {
-  margin: 0;
-  font-size: 0.7rem;
-  color: #64748b;
+.lf-footer-contact-cta {
+  line-height: 1;
 }
 
 .lf-footer-btn {
@@ -516,15 +500,13 @@
   color: #a5f3fc;
 }
 
-.lf-footer-email--plain {
-  line-height: 1.4;
-  max-width: 14rem;
-}
-
-@media (min-width: 900px) {
-  .lf-footer-email--plain {
-    max-width: 11.5rem;
-  }
+.lf-footer-address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: #64748b;
 }
 
 .lf-footer-bottom {
