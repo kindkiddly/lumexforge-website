@@ -16,7 +16,7 @@ export function ProteinSnapsNavbar() {
   const activePath = pathname.replace(/^\/proteinsnaps/, "") || "/";
 
   return (
-    <header className="ps-site-navbar fixed inset-x-0 top-0 z-50 border-b border-black/[0.08] bg-[#F2EDE4]">
+    <header className="ps-site-navbar fixed inset-x-0 top-0 border-b border-black/[0.08]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={psHref("/")} className="group flex shrink-0 items-center">
           <span className="inline-flex overflow-hidden rounded-[9px] shadow-[0_4px_12px_rgba(0,0,0,0.35),0_1px_3px_rgba(0,0,0,0.25)]">

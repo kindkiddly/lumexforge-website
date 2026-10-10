@@ -458,11 +458,26 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
+@media (min-width: 1024px) {
+  .proteinsnaps-site > header.ps-site-navbar {
+    z-index: 50;
+    background-color: #f2ede4;
+  }
+}
+
 @media (max-width: 1023px) {
   .proteinsnaps-site > header.ps-site-navbar {
-    z-index: 100;
+    z-index: 9999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     background-color: #f5edd8 !important;
     padding-top: env(safe-area-inset-top, 0px);
+    -webkit-overflow-scrolling: touch;
     box-shadow:
       0 1px 0 rgba(0, 0, 0, 0.1),
       0 4px 16px rgba(26, 26, 26, 0.08);
@@ -486,6 +501,8 @@
 
   .proteinsnaps-site {
     background-color: #f5edd8 !important;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
 
   .proteinsnaps-site .bg-\[\#F2EDE4\] {

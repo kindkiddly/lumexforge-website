@@ -74,10 +74,11 @@ function CoverflowCardFace({
           src={CAROUSEL_IMAGE_SRC[slideIndex]}
           alt={headline}
           fill
-          sizes="(max-width: 1023px) 88vw, 380px"
+          sizes="(max-width: 480px) 100vw, (max-width: 1023px) 88vw, 380px"
           priority={isPriority}
-          loading={isPriority ? undefined : "lazy"}
+          loading={isPriority ? "eager" : "lazy"}
           fetchPriority={isPriority ? "high" : "auto"}
+          decoding={isPriority ? "sync" : "async"}
           className="object-contain object-center"
         />
       ) : (

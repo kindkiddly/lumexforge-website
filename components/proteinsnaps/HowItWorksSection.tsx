@@ -50,6 +50,7 @@ export function HowItWorksSection() {
                     fill
                     sizes="(max-width: 1023px) 100vw, 33vw"
                     loading="lazy"
+                    decoding="async"
                     className="ps-home-step-card-image-img"
                   />
                 </div>
