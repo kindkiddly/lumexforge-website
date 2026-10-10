@@ -12,7 +12,7 @@ export function CompanionIntroSection() {
             </h2>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#94A3B8] sm:text-lg">
               ProteinSnaps is built for people who train hard and take nutrition seriously.
-              Track meals, protein, and workouts in one intelligent app — and use tools like
+              Track meals, protein, and workouts in one intelligent app and use tools like
               Fill the Gap when you&apos;re short on protein, or review your full 30-day meal
               history when you need real accountability. Everything you need, nothing you
               don&apos;t.

@@ -1,5 +1,10 @@
 import { LegalLayout, LegalSection } from "@/components/legal/LegalLayout";
-import { CONTACT_EMAILS } from "@/lib/constants";
+import {
+  BUSINESS_ADDRESS,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  CONTACT_EMAILS,
+} from "@/lib/constants";
 import { termsMetadata } from "@/lib/metadata";
 
 export const metadata = termsMetadata;
@@ -136,7 +141,7 @@ export default function TermsPage() {
       <LegalSection title="13. Governing law">
         <p>
           These Terms are governed by the laws of the State of Texas, USA. Disputes
-          will be resolved in the state or federal courts located in Harris County,
+          will be resolved in the state or federal courts located in Fort Bend County,
           Texas.
         </p>
       </LegalSection>
@@ -160,7 +165,16 @@ export default function TermsPage() {
             {CONTACT_EMAILS.support}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA</p>
+        <p>
+          Call:{" "}
+          <a
+            href={BUSINESS_PHONE_TEL}
+            className="text-accent-secondary transition-colors hover:underline"
+          >
+            {BUSINESS_PHONE_DISPLAY}
+          </a>
+        </p>
+        <p>LumexForge, {BUSINESS_ADDRESS}</p>
       </LegalSection>
     </LegalLayout>
   );

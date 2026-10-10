@@ -53,9 +53,9 @@ export default function HowMuchProteinArticlePage() {
       reviewer="ProteinSnaps Health Experts"
       publishedDate="September 2026"
       keyTakeaways={[
-        "Your daily protein needs depend on body weight, activity level, training, and goals — not one universal number.",
+        "Your daily protein needs depend on body weight, activity level, training, and goals, not one universal number.",
         "For people doing regular resistance training, around 1.6 g of protein per kg of body weight per day is a practical evidence-based starting point.",
-        "Building muscle requires more than protein alone — progressive training, recovery, and consistency all matter.",
+        "Building muscle requires more than protein alone, progressive training, recovery, and consistency all matter.",
         "Protein during weight loss helps preserve lean muscle and supports satiety alongside a calorie deficit.",
         "Distributing protein across multiple meals throughout the day is a practical strategy for hitting your daily target.",
         "Tracking both nutrition and fitness together gives a clearer picture of your overall progress and habits.",
@@ -173,7 +173,7 @@ export default function HowMuchProteinArticlePage() {
 
       <p>
         The goal is not to find the biggest number possible. It is to
-        find a reasonable target for your body and your goal — and
+        find a reasonable target for your body and your goal, and
         consistently meet it.
       </p>
 
@@ -349,7 +349,7 @@ export default function HowMuchProteinArticlePage() {
         </table>
       </div>
       <p>
-        This table is a calculation reference — not a recommendation
+        This table is a calculation reference, not a recommendation
         that everyone should choose the highest number shown.
       </p>
 
@@ -442,7 +442,7 @@ export default function HowMuchProteinArticlePage() {
       </p>
       <p>
         For active people who are dieting, protein targets around
-        1.6–2.0 g/kg per day are commonly used as a practical range,
+        1.6-2.0 g/kg per day are commonly used as a practical range,
         although individual needs vary.
       </p>
       <p>For example, an 80 kg person might calculate:</p>
@@ -453,7 +453,7 @@ export default function HowMuchProteinArticlePage() {
       <h3>Look Beyond the Scale</h3>
       <p>
         Body weight is useful, but it is not the only thing you can
-        monitor during a fitness journey.
+        monitor over time.
       </p>
       <p>Depending on your goals, you may also track:</p>
       <ul>
@@ -538,7 +538,7 @@ export default function HowMuchProteinArticlePage() {
             <tr>
               <td>Whey protein</td>
               <td>1 scoop</td>
-              <td>~20–25 g</td>
+              <td>~20-25 g</td>
             </tr>
           </tbody>
         </table>
@@ -658,7 +658,7 @@ export default function HowMuchProteinArticlePage() {
       </BlogSectionHeading>
       <p>
         Your nutrition and your workouts are not completely separate
-        parts of your fitness journey.
+        parts of your training routine.
       </p>
       <p>
         If your goal is to build muscle, you may care about both how
@@ -801,7 +801,7 @@ export default function HowMuchProteinArticlePage() {
           <p>
             Adequate protein can support satiety and help preserve lean
             mass during weight loss. Active people who are dieting
-            commonly use targets around 1.6–2.0 g/kg/day, although
+            commonly use targets around 1.6-2.0 g/kg/day, although
             individual requirements vary.
           </p>
         </div>
@@ -884,8 +884,8 @@ export default function HowMuchProteinArticlePage() {
       <p>
         ProteinSnaps combines AI meal recognition and nutrition
         tracking with workout tracking, body measurements, progress
-        photos, and other fitness tools — giving you one place to
-        keep an eye on both sides of your fitness journey.
+        photos, and other fitness tools, giving you one place to
+        keep an eye on both nutrition and training together.
       </p>
       <p>
         Know your goal. Track your meals. Track your workouts.

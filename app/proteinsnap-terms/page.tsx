@@ -35,7 +35,7 @@ export default function ProteinSnapTermsPage() {
           <li>You must be at least 13 years old to use ProteinSnaps</li>
           <li>You&apos;re responsible for keeping your password secure</li>
           <li>You&apos;re responsible for all activity under your account</li>
-          <li>One person, one account — no sharing</li>
+          <li>One person, one account. No sharing.</li>
           <li>Contact us if you suspect your account was compromised</li>
         </ul>
       </LegalSection>
@@ -48,7 +48,7 @@ export default function ProteinSnapTermsPage() {
             others)
           </li>
           <li>
-            Premium subscription unlocks unlimited use
+            Premium subscription includes unlimited use
           </li>
           <li>
             Free-tier limits may change. We&apos;ll notify you of significant
@@ -87,18 +87,18 @@ export default function ProteinSnapTermsPage() {
         <ul className="list-disc space-y-2 pl-5">
           <li>
             Nutritional information is an{" "}
-            <strong className="text-foreground">ESTIMATE</strong> — AI vision is
+            <strong className="text-foreground">ESTIMATE</strong>: AI vision is
             not perfect. Always verify critical values.
           </li>
           <li>
             AI Coach guidance is{" "}
-            <strong className="text-foreground">NOT medical advice</strong> —
+            <strong className="text-foreground">NOT medical advice</strong>:
             it&apos;s based on general fitness principles. Consult a doctor,
             nutritionist, or qualified professional before making major health
             decisions.
           </li>
           <li>
-            Briefings and recommendations are educational only — not medical,
+            Briefings and recommendations are educational only, not medical,
             diagnostic, or treatment advice.
           </li>
         </ul>
@@ -137,7 +137,7 @@ export default function ProteinSnapTermsPage() {
       <LegalSection title="8. Disclaimers">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            ProteinSnaps is provided &quot;as is&quot; — we work hard to keep it
+            ProteinSnaps is provided &quot;as is&quot;. We work hard to keep it
             reliable but can&apos;t guarantee zero bugs or downtime
           </li>
           <li>AI analysis may be inaccurate</li>
@@ -161,7 +161,7 @@ export default function ProteinSnapTermsPage() {
             months (or zero if you only used the free tier)
           </li>
           <li>
-            Some jurisdictions don&apos;t allow these limitations — they apply
+            Some jurisdictions don&apos;t allow these limitations. They apply
             only where legal
           </li>
         </ul>
@@ -208,7 +208,7 @@ export default function ProteinSnapTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA</p>
       </LegalSection>
     </LegalLayout>
   );

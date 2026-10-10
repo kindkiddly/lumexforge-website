@@ -298,7 +298,7 @@ export function ProteinSnapsHero() {
           Your AI Fitness & Nutrition Partner
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-[#555555] sm:text-base">
-          Track meals, protein, workouts and progress — powered by AI.
+          Track meals, protein, workouts and progress, powered by AI.
         </p>
         <div className="ps-cf-hero w-full">
           <ProteinSnapsCoverflow />

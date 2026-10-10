@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ProteinSnaps Privacy Policy",
   description:
-    "ProteinSnaps iOS app privacy policy — how LumexForge collects, uses, and protects your nutrition, fitness, and health data.",
+    "ProteinSnaps iOS app privacy policy: how LumexForge collects, uses, and protects your nutrition, fitness, and health data.",
 };
 
 function Brand() {
@@ -23,7 +23,7 @@ export default function ProteinSnapsPrivacyPage() {
         <p>
           ProteinSnaps is a nutrition and fitness tracking app for iOS, made by{" "}
           <Brand />. We built it to help you log meals, track macros, monitor
-          progress, and get AI-powered coaching — and we know that means trusting
+          progress, and get AI-powered coaching, and we know that means trusting
           us with personal health data.
         </p>
         <p>
@@ -87,22 +87,22 @@ export default function ProteinSnapsPrivacyPage() {
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-foreground">Supabase</strong> — authentication,
+            <strong className="text-foreground">Supabase</strong>: authentication,
             database storage, and secure backend infrastructure for your account
             and app data.
           </li>
           <li>
-            <strong className="text-foreground">Gemini AI</strong> — AI-powered
+            <strong className="text-foreground">Gemini AI</strong>: AI-powered
             meal analysis, coaching, and nutrition-related features based on
             information and photos you submit.
           </li>
           <li>
-            <strong className="text-foreground">RevenueCat</strong> — subscription
+            <strong className="text-foreground">RevenueCat</strong>: subscription
             status, entitlement management, and purchase validation for in-app
             subscriptions processed through the Apple App Store.
           </li>
           <li>
-            <strong className="text-foreground">Sentry</strong> — error monitoring
+            <strong className="text-foreground">Sentry</strong>: error monitoring
             and crash reporting to help us diagnose and fix technical issues.
           </li>
         </ul>
@@ -144,7 +144,7 @@ export default function ProteinSnapsPrivacyPage() {
           <li>Access and review your personal data within the app</li>
           <li>Correct inaccurate information by editing your profile and logs</li>
           <li>
-            Export your data — request a copy of your data by emailing
+            Export your data: request a copy of your data by emailing
             proteinsnaps@lumexforge.com
           </li>
           <li>
@@ -220,7 +220,7 @@ export default function ProteinSnapsPrivacyPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA — ProteinSnaps iOS App</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps iOS App)</p>
       </LegalSection>
     </LegalLayout>
   );

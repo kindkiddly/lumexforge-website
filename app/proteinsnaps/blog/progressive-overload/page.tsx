@@ -255,7 +255,7 @@ export default function ProgressiveOverloadArticlePage() {
 
       <h3>Increase Reps</h3>
       <p>You do not always need to increase the weight.</p>
-      <p>Suppose your target is 8–10 repetitions:</p>
+      <p>Suppose your target is 8-10 repetitions:</p>
       <p>
         <strong>
           60 kg × 3 × 8 → 60 kg × 3 × 9 → 60 kg × 3 × 10
@@ -281,7 +281,7 @@ export default function ProgressiveOverloadArticlePage() {
 
       <h3>Decrease Rest Time</h3>
       <p>
-        Reducing rest between sets can increase training density — the
+        Reducing rest between sets can increase training density, the
         amount of work performed in a given period.
       </p>
       <p>
@@ -418,7 +418,7 @@ export default function ProgressiveOverloadArticlePage() {
       </p>
       <p>
         For beginners, progressive overload should mean gradual,
-        repeatable improvement — not trying to set a personal record
+        repeatable improvement, not trying to set a personal record
         every workout.
       </p>
 

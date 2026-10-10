@@ -6,11 +6,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
@@ -36,7 +36,7 @@ const TRACKER_FEATURES = [
   {
     title: "Protein-First Goals",
     description:
-      "Set protein targets that matter for your cut, bulk, or maintenance phase — and track progress visually.",
+      "Set protein targets that matter for your cut, bulk, or maintenance phase and track progress visually.",
   },
   {
     title: "AI-Powered Estimates",
@@ -77,7 +77,7 @@ export default function AIProteinTrackerPage() {
       <PageHero
         eyebrow="AI Protein Tracker"
         title="Track Protein Smarter with AI"
-        description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking — so hitting your protein goals feels effortless."
+        description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking so hitting your protein goals feels easier."
       />
       <section className="relative py-8 sm:py-10">
         <div

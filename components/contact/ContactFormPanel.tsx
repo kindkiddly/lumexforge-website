@@ -94,7 +94,7 @@ export function ContactFormPanel() {
         <h3>
           Message <em>sent</em>
         </h3>
-        <p>Thanks — we typically respond within 1–2 business days.</p>
+        <p>Thanks. We typically respond within 1-2 business days.</p>
         <button type="button" className="lf-contact-submit lf-contact-submit--ghost" onClick={() => setSubmitted(false)}>
           Send another
         </button>
@@ -107,7 +107,7 @@ export function ContactFormPanel() {
       <h2 className="lf-contact-form-title">
         Send a <em>message</em>
       </h2>
-      <p className="lf-contact-form-sub">We typically respond within 1–2 business days.</p>
+      <p className="lf-contact-form-sub">We typically respond within 1-2 business days.</p>
       <form className="lf-contact-form" onSubmit={handleSubmit} noValidate>
         <div className="lf-contact-form-row">
           <div className="lf-contact-field">

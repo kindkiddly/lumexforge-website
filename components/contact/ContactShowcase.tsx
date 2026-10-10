@@ -1,5 +1,12 @@
 import { ContactFormPanel } from "@/components/contact/ContactFormPanel";
-import { CONTACT_EMAILS, SITE_URL } from "@/lib/constants";
+import {
+  BUSINESS_ADDRESS,
+  BUSINESS_LOCATION_SHORT,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  CONTACT_EMAILS,
+  SITE_URL,
+} from "@/lib/constants";
 
 const CHANNELS = [
   {
@@ -14,6 +21,12 @@ const CHANNELS = [
     value: CONTACT_EMAILS.support,
     href: `mailto:${CONTACT_EMAILS.support}`,
   },
+  {
+    label: "Call:",
+    description: "Studio line",
+    value: BUSINESS_PHONE_DISPLAY,
+    href: BUSINESS_PHONE_TEL,
+  },
 ];
 
 const META_ROWS = [
@@ -26,7 +39,7 @@ const META_ROWS = [
   {
     label: "Headquarters",
     description: "Studio location",
-    value: "Houston, USA",
+    value: BUSINESS_ADDRESS,
     href: null as string | null,
   },
 ];
@@ -46,8 +59,8 @@ export function ContactShowcase() {
             Let&apos;s start a <em>conversation</em>
           </h1>
           <p className="lf-contact-lead">
-            Partnerships, product questions, or support — reach the studio directly.
-            Based in Houston, USA.
+            Partnerships, product questions, or support: reach the studio directly.
+            Based in {BUSINESS_LOCATION_SHORT}.
           </p>
         </header>
 

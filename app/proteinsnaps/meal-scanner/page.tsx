@@ -7,11 +7,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/meal-scanner",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
@@ -62,7 +62,7 @@ export default function MealScannerPage() {
       <PageHero
         eyebrow="AI Meal Scanner"
         title="Snap Any Meal. Know Your Macros."
-        description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds — no manual searching required."
+        description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds, with no manual searching required."
       />
       <section className="ps-meal-scanner-mockups relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
         <div

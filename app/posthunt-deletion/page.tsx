@@ -233,7 +233,7 @@ export default function PostHuntDeletionPage() {
           .
         </p>
         <p>
-          <Brand /> — PostHunt
+          <Brand /> (PostHunt)
         </p>
       </LegalSection>
     </PostHuntLegalShell>

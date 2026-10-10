@@ -1,0 +1,13 @@
+---
+description: Human writing standards for all user-facing text
+alwaysApply: true
+---
+
+Human writing rule (always apply):
+
+- All user-facing text (website copy, legal pages, emails, app text, store listings, metadata, chat assistant replies, commit messages) must read like a real person wrote it.
+- Never use em dashes (—) or en dashes (–) in sentences. Use a comma, period, colon or "and". Number ranges use a hyphen (1-2).
+- Never use AI-style words or phrases: seamless, comprehensive, committed to, leverage, elevate, empower, unlock, delve, cutting-edge, robust, meticulous, game-changer, embark, journey (as filler), "in today's world", "whether you're... or...", "not just X, but Y", "look no further".
+- No forced three-adjective lists, no exaggerated claims, no filler. Short, clear, natural sentences.
+- Do not change facts, prices, legal meaning or numbers when rewriting.
+- Decorative UI symbols (→, ·, ✓) and code comments are exempt.

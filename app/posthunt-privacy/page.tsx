@@ -338,7 +338,7 @@ export default function PostHuntPrivacyPage() {
           </Link>
         </p>
         <p>
-          <Brand /> — PostHunt
+          <Brand /> (PostHunt)
         </p>
       </LegalSection>
     </PostHuntLegalShell>

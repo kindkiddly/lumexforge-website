@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PROTEINSNAPS, SEO_KEYWORDS } from "./constants";
 
 const OG_IMAGE = `${PROTEINSNAPS.lumexforgeUrl}/images/proteinsnaps/proteinsnaps-og.webp`;
-const PAGE_TITLE = "ProteinSnaps — AI Fitness & Nutrition App";
+const PAGE_TITLE = "ProteinSnaps: AI Fitness & Nutrition App";
 const PAGE_DESCRIPTION =
   "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.";
 
@@ -26,7 +26,7 @@ function createProteinSnapsMetadata({ path = "" }: { path?: string }): Metadata 
           url: OG_IMAGE,
           width: 1200,
           height: 630,
-          alt: `${PROTEINSNAPS.name} — AI-Powered Nutrition & Fitness`,
+          alt: `${PROTEINSNAPS.name}: AI-Powered Nutrition & Fitness`,
         },
       ],
     },

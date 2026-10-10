@@ -216,7 +216,7 @@ export default function ProteinSnapsDeletionPage() {
           </a>
         </p>
         <p>
-          <Brand /> — ProteinSnaps iOS App
+          <Brand /> (ProteinSnaps iOS App)
         </p>
       </LegalSection>
     </LegalLayout>

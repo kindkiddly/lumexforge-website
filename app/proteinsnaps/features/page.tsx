@@ -9,11 +9,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/features",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
@@ -54,7 +54,7 @@ export default function FeaturesPage() {
               </div>
               <p className="mx-auto mt-3 max-w-2xl font-serif text-lg font-normal italic tracking-[0.02em] text-[#555555]">
                 Every tool you need to snap meals, track protein, train smarter, and achieve your
-                fitness goals — powered by AI.
+                fitness goals, powered by AI.
               </p>
             </div>
           </FadeInUp>

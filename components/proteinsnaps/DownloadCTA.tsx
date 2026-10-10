@@ -25,7 +25,7 @@ export function DownloadCTA() {
               <StaggerWords text="Start Tracking Smarter Today" />
             </h2>
             <p className="relative z-10 mx-auto mt-4 max-w-xl text-base text-[#555555] sm:text-lg">
-              Download ProteinSnaps and let AI handle the hard part — so you can
+              Download ProteinSnaps and let AI handle the hard part so you can
               focus on hitting your protein goals.
             </p>
             <div className="relative z-10 mt-10 flex justify-center">

@@ -28,7 +28,7 @@ export function FeaturesGrid() {
               Everything You Need to Hit Your Goals
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-[#555555]">
-              From AI meal scanning to workout tracking — ProteinSnaps is your complete
+              From AI meal scanning to workout tracking, ProteinSnaps is your complete
               nutrition and fitness companion.
             </p>
           </div>

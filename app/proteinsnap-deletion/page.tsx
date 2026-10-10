@@ -15,7 +15,7 @@ export default function ProteinSnapDeletionPage() {
         <div className="space-y-4 text-base leading-[1.75]">
           <p>
             At ProteinSnaps, we believe in providing you with full control over your
-            digital footprint. We are committed to transparency regarding how your
+            digital footprint. We aim to be transparent regarding how your
             data is handled, stored, and deleted.
           </p>
         </div>

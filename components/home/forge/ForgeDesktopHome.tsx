@@ -199,7 +199,7 @@ const APPS: AppCard[] = [
   {
     id: "admina",
     name: "ADMINA",
-    tagline: "Business finances simplified — income, invoicing and reports",
+    tagline: "Business finances simplified: income, invoicing and reports",
     status: "In Development",
     statusClass: "bg-[#06B6D4]/15 text-[#06B6D4] ring-[#06B6D4]/30",
     placeholderClass: "lf-placeholder-ps-ios",
@@ -584,7 +584,7 @@ export function ForgeDesktopHome() {
               <em className="lf-text-cyan-gradient">Digital Products.</em>
             </h1>
             <p className="lf-hero-subtitle mt-2">
-              Mobile apps, AI products, and SaaS platforms — built with purpose, precision, and long-term value.
+              Mobile apps, AI products, and SaaS platforms, built with purpose, precision, and long-term value.
             </p>
             <div className="lf-hero-carousel">
               <CoverflowCarousel />

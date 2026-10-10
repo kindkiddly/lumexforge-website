@@ -30,7 +30,7 @@ const JOURNEY = [
   {
     year: "Live",
     title: "ProteinSnaps ships",
-    text: "First major release on iOS and Android — craft, AI, and usefulness shipping together.",
+    text: "First major release on iOS and Android: craft, AI, and usefulness shipping together.",
   },
   {
     year: "Next",
@@ -40,9 +40,9 @@ const JOURNEY = [
 ];
 
 const VALUES = [
-  { n: "01", title: "Innovation", text: "Explore what technology can become — then build what people need." },
+  { n: "01", title: "Innovation", text: "Explore what technology can become, then build what people need." },
   { n: "02", title: "Craft", text: "Every detail is intentional. Quality is the standard we ship with." },
-  { n: "03", title: "Impact", text: "Products should empower, simplify, and endure beyond launch." },
+  { n: "03", title: "Impact", text: "Products should help people, stay simple, and endure beyond launch." },
   { n: "04", title: "Integrity", text: "Clear communication, ethical design, and trust that compounds." },
 ];
 
@@ -68,7 +68,7 @@ export function AboutShowcase() {
             We forge digital products with <em>purpose</em>
           </h1>
           <p className="lf-about-lead">
-            Independent technology studio in <strong>Houston, USA</strong> — mobile apps,
+            Independent technology studio in <strong>Rosenberg, Texas, USA</strong>, building mobile apps,
             AI products, and SaaS built for clarity and lasting value.
           </p>
           <div className="lf-about-bar">
@@ -110,19 +110,19 @@ export function AboutShowcase() {
             <div className="lf-about-prose">
               <p>
                 LumexForge was founded on a simple conviction: technology should feel
-                inevitable — elegant enough to disappear into daily life, powerful enough
+                inevitable: elegant enough to disappear into daily life, powerful enough
                 to change what is possible.
               </p>
               <p>
-                We study real human needs — nutrition, wellness, creativity, companionship,
-                business systems — and forge tools people can rely on. ProteinSnaps is live
+                We study real human needs (nutrition, wellness, creativity, companionship,
+                business systems) and forge tools people can rely on. ProteinSnaps is live
                 on iOS and Android; PostHunt, AMMORA, MiPaw, ADMINA, and more advance with
                 the same bar for craft.
               </p>
             </div>
             <aside className="lf-about-mission">
               <p className="lf-about-mission-quote">
-                Create technology that empowers, simplifies, and inspires — then ship it
+                Create technology that helps people, stays simple, and inspires, then ship it
                 with uncompromising care.
               </p>
               <p className="lf-about-mission-attr">Mission</p>
@@ -191,7 +191,7 @@ export function AboutShowcase() {
           <div className="lf-about-photo">
             <Image
               src="/images/proteinsnaps/BG-M15.webp"
-              alt={`${FOUNDER} — temporary portrait`}
+              alt={`${FOUNDER}, temporary portrait`}
               fill
               sizes="136px"
               className="object-cover object-center"
@@ -203,11 +203,11 @@ export function AboutShowcase() {
               A.R
             </h2>
             <p className="lf-about-founder-role">Founder &amp; Vision</p>
-            <p className="lf-about-founder-loc">Houston, USA</p>
+            <p className="lf-about-founder-loc">Rosenberg, Texas, USA</p>
             <div className="lf-about-prose lf-about-prose--founder">
               <p>
                 {FOUNDER} founded LumexForge to prove an independent studio can compete at a
-                global standard — by building better products, not louder ones.
+                global standard by building better products, not louder ones.
               </p>
               <p>
                 From nutrition and pet wellness to emotional AI and business systems, he
@@ -227,7 +227,7 @@ export function AboutShowcase() {
 
         <section className="lf-about-foot">
           <p className="lf-about-foot-line">
-            Independent Studio · Est. 2026 · Mobile · AI · SaaS · Houston, USA
+            Independent Studio · Est. 2026 · Mobile · AI · SaaS · Rosenberg, Texas, USA
           </p>
           <div className="lf-about-bar lf-about-bar--center">
             <Link href="/products" className="lf-about-btn lf-about-btn--primary">

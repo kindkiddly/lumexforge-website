@@ -6,11 +6,11 @@ import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/blog",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
@@ -51,7 +51,7 @@ const PREVIEW_ARTICLES = [
     category: "AI Coaching",
     title: "How AI is Changing the Way We Track Food",
     teaser:
-      "From photo logging to personalized guidance — how intelligent tools make nutrition tracking faster and more accurate.",
+      "From photo logging to personalized guidance: how intelligent tools make nutrition tracking faster and more accurate.",
     status: "coming-soon" as const,
   },
 ] as const;
@@ -62,7 +62,7 @@ export default function BlogPage() {
       <PageHero
         eyebrow="Coming Soon"
         title="Nutrition. Training. Results."
-        description="Tips, science and strategies from the ProteinSnaps team — launching soon."
+        description="Tips, science and strategies from the ProteinSnaps team. Launching soon."
       />
       <section className="relative min-h-[50vh]">
         <div

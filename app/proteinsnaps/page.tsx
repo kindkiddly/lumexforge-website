@@ -9,7 +9,7 @@ import { ScreenshotsCarousel3D } from "@/components/proteinsnaps/ScreenshotsCaro
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "macro tracker",
   ],
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],

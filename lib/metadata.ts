@@ -51,7 +51,7 @@ export const rootMetadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "LumexForge — Building the Next Generation of Digital Products",
+        alt: "LumexForge: Building the Next Generation of Digital Products",
       },
     ],
   },
@@ -135,42 +135,42 @@ export const productsMetadata = createMetadata({
 export const aboutMetadata = createMetadata({
   title: "About",
   description:
-    "Learn about LumexForge — an independent technology studio building mobile apps, AI products, and SaaS platforms with clarity and craft.",
+    "Learn about LumexForge, an independent technology studio building mobile apps, AI products, and SaaS platforms with clarity and craft.",
   path: "/about",
 });
 
 export const contactMetadata = createMetadata({
   title: "Contact",
   description:
-    "Contact LumexForge for partnerships, business inquiries, or support. Independent technology studio based in Houston, USA.",
+    "Contact LumexForge for partnerships, business inquiries, or support. Independent technology studio based in Rosenberg, Texas, USA.",
   path: "/contact",
 });
 
 export const privacyMetadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "LumexForge privacy policy for lumexforge.com — how we collect, use, and protect information you share with our studio.",
+    "LumexForge privacy policy for lumexforge.com: how we collect, use, and protect information you share with our studio.",
   path: "/privacy",
 });
 
 export const termsMetadata = createMetadata({
   title: "Terms of Service",
   description:
-    "LumexForge terms of service for lumexforge.com — website use, product portfolio, inquiries, and contact.",
+    "LumexForge terms of service for lumexforge.com: website use, product portfolio, inquiries, and contact.",
   path: "/terms",
 });
 
 export const proteinsnapPrivacyMetadata = createMetadata({
   title: "ProteinSnaps Privacy Policy",
   description:
-    "ProteinSnaps privacy policy — how LumexForge collects, uses, and protects your nutrition, fitness, and meal data.",
+    "ProteinSnaps privacy policy: how LumexForge collects, uses, and protects your nutrition, fitness, and meal data.",
   path: "/proteinsnap-privacy",
 });
 
 export const proteinsnapTermsMetadata = createMetadata({
   title: "ProteinSnaps Terms of Service",
   description:
-    "ProteinSnaps terms of service — eligibility, AI disclaimers, subscriptions, acceptable use, and liability.",
+    "ProteinSnaps terms of service: eligibility, AI disclaimers, subscriptions, acceptable use, and liability.",
   path: "/proteinsnap-terms",
 });
 

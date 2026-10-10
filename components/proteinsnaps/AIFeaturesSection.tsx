@@ -10,12 +10,12 @@ const HOME_AI_FEATURE_CARDS = [
   {
     title: "Visual Check-Ins",
     description:
-      "Date-stamped front and side photos with side-by-side compare — separate from the scale, so you see shape change even when weight stalls.",
+      "Date-stamped front and side photos with side-by-side compare, separate from the scale, so you see shape change even when weight stalls.",
   },
   {
     title: "Pattern Alerts",
     description:
-      "Spot weekly gaps — low protein days, weekend calorie spikes, missed logs — with specific fixes, not generic tips.",
+      "Spot weekly gaps (low protein days, weekend calorie spikes, missed logs) with specific fixes, not generic tips.",
   },
 ] as const;
 

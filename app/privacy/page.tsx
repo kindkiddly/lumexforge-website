@@ -1,5 +1,10 @@
 import { LegalLayout, LegalSection } from "@/components/legal/LegalLayout";
-import { CONTACT_EMAILS } from "@/lib/constants";
+import {
+  BUSINESS_ADDRESS,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  CONTACT_EMAILS,
+} from "@/lib/constants";
 import { privacyMetadata } from "@/lib/metadata";
 
 export const metadata = privacyMetadata;
@@ -216,7 +221,16 @@ export default function PrivacyPage() {
             {CONTACT_EMAILS.support}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA</p>
+        <p>
+          Call:{" "}
+          <a
+            href={BUSINESS_PHONE_TEL}
+            className="text-accent-secondary transition-colors hover:underline"
+          >
+            {BUSINESS_PHONE_DISPLAY}
+          </a>
+        </p>
+        <p>LumexForge, {BUSINESS_ADDRESS}</p>
       </LegalSection>
     </LegalLayout>
   );

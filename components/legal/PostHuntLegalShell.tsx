@@ -19,7 +19,7 @@ function PostHuntIdentity() {
         AI Social Media Agent
       </p>
       <p className="mt-3 text-sm leading-relaxed text-foreground-secondary">
-        Available on iOS, Android, and Web — an AI-powered social media management
+        Available on iOS, Android, and Web: an AI-powered social media management
         and content automation platform by{" "}
         <span className="text-accent-secondary">LumexForge</span>.
       </p>

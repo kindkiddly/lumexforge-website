@@ -19,7 +19,7 @@ export default function ProteinSnapPrivacyPage() {
         <p>
           ProteinSnaps is a nutrition and fitness tracking app made by{" "}
           <Brand />. We built it to help you log meals, track
-          macros, monitor progress, and get thoughtful AI coaching — and we
+          macros, monitor progress, and get thoughtful AI coaching, and we
           know that means trusting us with personal health data.
         </p>
         <p>
@@ -94,26 +94,26 @@ export default function ProteinSnapPrivacyPage() {
         <p>We use these services to make the app work:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-foreground">Google Gemini AI</strong> —
+            <strong className="text-foreground">Google Gemini AI</strong>:
             analyzes meal photos to identify foods and estimate macros. Photos
             are sent to Google&apos;s servers for processing. Subject to
             Google&apos;s privacy policy.
           </li>
           <li>
-            <strong className="text-foreground">Anthropic Claude</strong> — used
+            <strong className="text-foreground">Anthropic Claude</strong>: used
             as a backup AI when Gemini is unavailable. Subject to
             Anthropic&apos;s privacy policy.
           </li>
           <li>
-            <strong className="text-foreground">Supabase</strong> — secure
+            <strong className="text-foreground">Supabase</strong>: secure
             database and authentication. Stores your account and app data.
           </li>
           <li>
-            <strong className="text-foreground">Resend</strong> — sends
+            <strong className="text-foreground">Resend</strong>: sends
             transactional emails (verification, password reset).
           </li>
           <li>
-            <strong className="text-foreground">Sentry</strong> — error
+            <strong className="text-foreground">Sentry</strong>: error
             monitoring for app stability.
           </li>
         </ul>
@@ -139,23 +139,23 @@ export default function ProteinSnapPrivacyPage() {
         <p>You have the right to:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-foreground">Access your data</strong> — see
+            <strong className="text-foreground">Access your data</strong>: see
             everything we have about you
           </li>
           <li>
-            <strong className="text-foreground">Correct your data</strong> —
+            <strong className="text-foreground">Correct your data</strong>:
             update inaccurate information
           </li>
           <li>
-            <strong className="text-foreground">Delete your data</strong> —
+            <strong className="text-foreground">Delete your data</strong>:
             request account deletion
           </li>
           <li>
-            <strong className="text-foreground">Export your data</strong> —
+            <strong className="text-foreground">Export your data</strong>:
             request a copy of your data by emailing proteinsnaps@lumexforge.com
           </li>
           <li>
-            <strong className="text-foreground">Withdraw consent</strong> —
+            <strong className="text-foreground">Withdraw consent</strong>:
             stop using the app anytime
           </li>
         </ul>
@@ -270,7 +270,7 @@ export default function ProteinSnapPrivacyPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA</p>
       </LegalSection>
     </LegalLayout>
   );

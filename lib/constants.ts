@@ -37,3 +37,8 @@ export const CONTACT_EMAILS = {
   support: "support@lumexforge.com",
   proteinsnaps: "proteinsnaps@lumexforge.com",
 };
+
+export const BUSINESS_ADDRESS = "6008 Whitewing Rd, Rosenberg, TX 77469, USA";
+export const BUSINESS_LOCATION_SHORT = "Rosenberg, Texas, USA";
+export const BUSINESS_PHONE_DISPLAY = "(713) 344-4544";
+export const BUSINESS_PHONE_TEL = "tel:+17133444544";

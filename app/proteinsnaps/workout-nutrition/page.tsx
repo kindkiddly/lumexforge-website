@@ -7,11 +7,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ProteinSnaps — AI Fitness & Nutrition App",
+  title: "ProteinSnaps: AI Fitness & Nutrition App",
   description:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   openGraph: {
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     url: "https://proteinsnaps.lumexforge.com/workout-nutrition",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProteinSnaps — AI Fitness & Nutrition App",
+    title: "ProteinSnaps: AI Fitness & Nutrition App",
     description:
       "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
     images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
@@ -39,7 +39,7 @@ const WORKOUT_FEATURES = [
   },
   {
     title: "Nutrition Sync",
-    description: "Connect what you eat with how you train — see how nutrition supports your performance.",
+    description: "Connect what you eat with how you train and see how nutrition supports your performance.",
   },
   {
     title: "Recovery Insights",
@@ -61,7 +61,7 @@ export default function WorkoutNutritionPage() {
       <PageHero
         eyebrow="Workout Nutrition"
         title="Fuel Your Training with Precision"
-        description="Connect workout tracking with intelligent nutrition in ProteinSnaps — built for gym-goers and strength athletes."
+        description="Connect workout tracking with intelligent nutrition in ProteinSnaps, built for gym-goers and strength athletes."
       />
       <section className="relative py-8 sm:py-10">
         <div

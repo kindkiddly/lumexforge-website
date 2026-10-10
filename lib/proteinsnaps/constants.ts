@@ -4,7 +4,7 @@ export const PROTEINSNAPS = {
   name: "ProteinSnaps",
   tagline: "AI-Powered Nutrition & Fitness",
   description:
-    "Snap meals, track protein and macros, get personalized AI coaching, and achieve your fitness goals — all in one intelligent app.",
+    "Snap meals, track protein and macros, get personalized AI coaching, and achieve your fitness goals, all in one intelligent app.",
   metaDescription:
     "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
   domain: "https://proteinsnaps.lumexforge.com",
@@ -54,7 +54,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Your All-in-One Fitness Partner.",
     description:
-      "Smart nutrition, workout tracking, AI coaching and body progress — one dashboard for meals, macros and training.",
+      "Smart nutrition, workout tracking, AI coaching and body progress, one dashboard for meals, macros and training.",
     accentWords: ["All-in-One", "Fitness", "Partner."],
     name: "fadeUp",
     duration: 1.0,
@@ -64,7 +64,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Stronger Every Day.",
     description:
-      "Personalized nutrition, custom workout plans and streaks on your phone — train hard and see calories, macros and progress in one place.",
+      "Personalized nutrition, custom workout plans and streaks on your phone, train hard and see calories, macros and progress in one place.",
     accentWords: ["Stronger", "Every", "Day."],
     name: "blurReveal",
     duration: 1.1,
@@ -74,7 +74,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Snap It. Track It. Achieve It.",
     description:
-      "Photograph your meal and get instant AI nutrition — calories, protein, carbs, fat and ingredients logged in seconds.",
+      "Photograph your meal and get instant AI nutrition, calories, protein, carbs, fat and ingredients logged in seconds.",
     accentWords: ["Snap", "Track", "Achieve"],
     name: "stagger",
     duration: 1.2,
@@ -84,7 +84,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Hydrate Well. Track Your Body.",
     description:
-      "Log daily water intake toward your goal and record body measurements — see hydration habits and physical changes over time.",
+      "Log daily water intake toward your goal and record body measurements, see hydration habits and physical changes over time.",
     accentWords: ["Hydrate", "Track", "Body."],
     name: "sweepLeft",
     duration: 1.0,
@@ -94,7 +94,7 @@ export const DESKTOP_SLIDES = [
   {
     headline: "Train Smarter. Get Stronger.",
     description:
-      "Follow live workout sessions — track sets, reps, weight and rest while you build strength and watch completion climb.",
+      "Follow live workout sessions, track sets, reps, weight and rest while you build strength and watch completion climb.",
     accentWords: ["Smarter.", "Get", "Stronger."],
     name: "typewriter",
     duration: 1.2,
@@ -137,7 +137,7 @@ export const MOBILE_COPY_SLIDES = [
   {
     headline: "Snap It. Track It. Achieve It.",
     description:
-      "Point your camera at any meal and get instant nutrition analysis — calories, protein, carbs and fat in seconds.",
+      "Point your camera at any meal and get instant nutrition analysis, calories, protein, carbs and fat in seconds.",
     accentWords: ["Snap", "Track", "Achieve"],
     name: "sweepLeft",
     duration: 1.0,
@@ -171,7 +171,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-1.webp",
     feature: "Your All-in-One Fitness Partner",
     description:
-      "Everything you need to eat smarter, train harder and see real results — all in a single app built around your goals.",
+      "Everything you need to eat smarter, train harder and see real results, all in a single app built around your goals.",
     highlights: [
       "Nutrition, workouts and coaching in one place",
       "Personalized daily plan built around your goals",
@@ -193,7 +193,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-3.webp",
     feature: "AI Meal Recognition",
     description:
-      "Point your camera at any meal and get a full nutrition breakdown in seconds — no barcodes, no manual entry needed.",
+      "Point your camera at any meal and get a full nutrition breakdown in seconds, no barcodes, no manual entry needed.",
     highlights: [
       "Identifies ingredients and portions automatically",
       "98% confidence meal analysis with every snap",
@@ -204,7 +204,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-4.webp",
     feature: "Personalized AI Coach",
     description:
-      "Your coach analyzes your nutrition, workouts and habits daily — then gives you prioritized actions to close the gap.",
+      "Your coach analyzes your nutrition, workouts and habits daily, then gives you prioritized actions to close the gap.",
     highlights: [
       "High, medium and info priority insights daily",
       "Chat with your AI coach anytime for guidance",
@@ -215,10 +215,10 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-5.webp",
     feature: "Progress Analytics & Streaks",
     description:
-      "See exactly how your habits are shifting over time. Protein trends, weight changes and consistency streaks — all in one view.",
+      "See exactly how your habits are shifting over time. Protein trends, weight changes and consistency streaks, all in one view.",
     highlights: [
       "4-week protein goal chart shows your trajectory",
-      "Achievements unlock as you hit real milestones",
+      "Earn achievements as you hit real milestones",
       "Goal accuracy score keeps you honest and motivated",
     ],
   },
@@ -226,7 +226,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-6.webp",
     feature: "Body Transformation Tracking",
     description:
-      "Compare your before and after side by side. Quantified results — weight lost, body fat reduced, muscle gained.",
+      "Compare your before and after side by side. Quantified results, weight lost, body fat reduced, muscle gained.",
     highlights: [
       "Date-stamped photo pairs for clear comparison",
       "Three key metrics tracked: weight, fat, muscle",
@@ -237,7 +237,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-7.webp",
     feature: "Complete Fitness Dashboard",
     description:
-      "Your daily overview — meals logged, workouts done, water tracked and AI coaching — all visible the moment you open the app.",
+      "Your daily overview, meals logged, workouts done, water tracked and AI coaching, all visible the moment you open the app.",
     highlights: [
       "Morning briefing sets your focus for the day",
       "Today's plan shows meals and workouts at a glance",
@@ -281,7 +281,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-11.webp",
     feature: "Training Progress Hub",
     description:
-      "Your full training picture in one screen — weekly volume, workout streak, last session stats and body check-in photos.",
+      "Your full training picture in one screen, weekly volume, workout streak, last session stats and body check-in photos.",
     highlights: [
       "Total volume and streak tracked this week",
       "Last workout summary with vs-average comparison",
@@ -292,7 +292,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-12.webp",
     feature: "Live Workout Session",
     description:
-      "Track your workout in real time — exercises ticked off, time elapsed and reps logged as you push through every set.",
+      "Track your workout in real time, exercises ticked off, time elapsed and reps logged as you push through every set.",
     highlights: [
       "Live session timer keeps your pace consistent",
       "Exercises checked off as you complete each set",
@@ -303,7 +303,7 @@ export const SCREENSHOT_SLIDES = [
     src: "/images/proteinsnaps/PS-13.webp",
     feature: "Meal History & Nutrition Log",
     description:
-      "Your full 30-day nutrition history in one place — average protein, calories logged, active days and weekly macro trends.",
+      "Your full 30-day nutrition history in one place, average protein, calories logged, active days and weekly macro trends.",
     highlights: [
       "30-day protein average tracked against your goal",
       "Every meal logged with calories and macros shown",
@@ -392,7 +392,7 @@ export const HOW_IT_WORKS_STEPS = [
     step: 1,
     title: "Snap Your Meal",
     description:
-      "Log breakfast, lunch, or dinner in seconds — photo or manual — so your day's nutrition is never a guess.",
+      "Log breakfast, lunch, or dinner in seconds, photo or manual, so your day's nutrition is never a guess.",
   },
   {
     step: 2,

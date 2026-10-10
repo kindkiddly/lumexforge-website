@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ProteinSnaps Terms of Use",
   description:
-    "ProteinSnaps iOS app terms of use — subscriptions, acceptable use, intellectual property, and liability.",
+    "ProteinSnaps iOS app terms of use: subscriptions, acceptable use, intellectual property, and liability.",
 };
 
 function Brand() {
@@ -48,7 +48,7 @@ export default function ProteinSnapsTermsPage() {
           <li>You are responsible for maintaining the security of your account credentials</li>
           <li>You are responsible for all activity that occurs under your account</li>
           <li>You must provide accurate information when creating an account</li>
-          <li>One person, one account — account sharing is not permitted</li>
+          <li>One person, one account. Account sharing is not permitted.</li>
         </ul>
       </LegalSection>
 
@@ -204,7 +204,7 @@ export default function ProteinSnapsTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, Houston, Texas, USA — ProteinSnaps iOS App</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps iOS App)</p>
       </LegalSection>
     </LegalLayout>
   );

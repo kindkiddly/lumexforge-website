@@ -22,7 +22,7 @@ type ShowcaseProduct = {
   secondaryBanner?: string;
   /** Secondary aspect: "980" = 1760×980, "974" = 1760×974, "640" = 1760×640 */
   secondaryAspect?: "980" | "974" | "640";
-  /** Portrait phone UI shots — rendered in device frames under the banner */
+  /** Portrait phone UI shots, rendered in device frames under the banner */
   phones?: string[];
   /** Optional landscape thumbs under banner (non-phone apps) */
   gallery?: string[];
@@ -42,7 +42,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     category: "Health & Fitness",
     tagline: "Snap a meal. Know your macros. Train with clarity.",
     description:
-      "ProteinSnaps is LumexForge’s live AI nutrition and fitness companion. Point your camera at a meal, get instant macro insight, and keep protein, calories, and training aligned — without spreadsheet friction. Built for people who want results, not busywork.",
+      "ProteinSnaps is LumexForge’s live AI nutrition and fitness companion. Point your camera at a meal, get instant macro insight, and keep protein, calories, and training aligned, without spreadsheet friction. Built for people who want results, not busywork.",
     status: "live",
     statusLabel: "Live on iOS & Android",
     platforms: "Available now · iOS & Android",
@@ -57,7 +57,7 @@ const PRODUCTS: ShowcaseProduct[] = [
       },
       {
         title: "Fitness-Aware Guidance",
-        detail: "Nutrition that respects how you train — practical, not theoretical.",
+        detail: "Nutrition that respects how you train, practical, not theoretical.",
       },
       {
         title: "Clear Daily Progress",
@@ -80,16 +80,16 @@ const PRODUCTS: ShowcaseProduct[] = [
     indexLabel: "02",
     name: "PostHunt",
     category: "AI Social Media Suite",
-    tagline: "Create. Schedule. Grow. — your all-in-one AI marketing hub.",
+    tagline: "Create. Schedule. Grow.: your all-in-one AI marketing hub.",
     description:
-      "PostHunt is an all-in-one AI social media marketing suite. From AI-powered content creation to automated posting and performance tracking, it helps brands and creators move from idea to published post — across every major platform — without losing brand control.",
+      "PostHunt is an all-in-one AI social media marketing suite. From AI-powered content creation to automated posting and performance tracking, it helps brands and creators move from idea to published post, across every major platform, without losing brand control.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Web first · Mobile planned",
     features: [
       {
         title: "AI Agent",
-        detail: "Posts, engages, and analyzes on autopilot — with review before publish.",
+        detail: "Posts, engages, and analyzes on autopilot, with review before publish.",
       },
       {
         title: "AI Studio",
@@ -119,7 +119,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     category: "Emotional AI Companion",
     tagline: "Love connects. Distance never breaks us.",
     description:
-      "AMMORA brings voices, memories, and moments back to life. It is an AI companion for families who want presence across distance — through voice, photos, and natural conversation — built with privacy, dignity, and emotional care at the center. Real voices. Real memories. Real connection.",
+      "AMMORA brings voices, memories, and moments back to life. It is an AI companion for families who want presence across distance, through voice, photos, and natural conversation, built with privacy, dignity, and emotional care at the center. Real voices. Real memories. Real connection.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Mobile experience",
@@ -134,7 +134,7 @@ const PRODUCTS: ShowcaseProduct[] = [
       },
       {
         title: "Natural Conversations",
-        detail: "Talk in a way that feels human — guided by story, not spectacle.",
+        detail: "Talk in a way that feels human, guided by story, not spectacle.",
       },
       {
         title: "Private & Secure",
@@ -154,18 +154,18 @@ const PRODUCTS: ShowcaseProduct[] = [
     category: "Pet Wellness",
     tagline: "Smarter care for a happier, healthier dog.",
     description:
-      "MiPaw brings track, feed, walk, and play into one app for pet parents. Scan meals for nutrition, log activity, monitor health signals, save photo memories, and follow daily progress — so better nutrition and more activity support longer, healthier lives.",
+      "MiPaw brings track, feed, walk, and play into one app for pet parents. Scan meals for nutrition, log activity, monitor health signals, save photo memories, and follow daily progress, so better nutrition and more activity support longer, healthier lives.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Mobile experience",
     features: [
       {
         title: "Food Tracking & Scan",
-        detail: "Know what they eat — protein, calories, and macros for every meal.",
+        detail: "Know what they eat, protein, calories, and macros for every meal.",
       },
       {
         title: "Walks & Activity",
-        detail: "More steps, better health — with clear daily movement patterns.",
+        detail: "More steps, better health, with clear daily movement patterns.",
       },
       {
         title: "Health Monitoring",
@@ -190,7 +190,7 @@ const PRODUCTS: ShowcaseProduct[] = [
     category: "Business ERP",
     tagline: "Run your entire business. All in one system.",
     description:
-      "ADMINA ERP brings sales, finance, inventory, and HR together for smarter, faster operations. From CRM and purchasing to accounting, projects, and payroll — one secure system for real-time insight, automation, multi-branch control, and scalable growth.",
+      "ADMINA ERP brings sales, finance, inventory, and HR together for smarter, faster operations. From CRM and purchasing to accounting, projects, and payroll, one secure system for real-time insight, automation, multi-branch control, and scalable growth.",
     status: "dev",
     statusLabel: "In Development",
     platforms: "Web first · Mobile planned",
@@ -209,7 +209,7 @@ const PRODUCTS: ShowcaseProduct[] = [
       },
       {
         title: "HR, Payroll & Projects",
-        detail: "Team attendance, salaries, tasks, and timelines — built to scale.",
+        detail: "Team attendance, salaries, tasks, and timelines, built to scale.",
       },
     ],
     banner: "/images/lumexforge/LF-products/Products-Admina.webp",
@@ -223,16 +223,16 @@ const PRODUCTS: ShowcaseProduct[] = [
     indexLabel: "06",
     name: "GhostWriterHunt",
     category: "Ghostwriting & Digital Publishing",
-    tagline: "Expert writers, designers, and editors — your vision, brought to life.",
+    tagline: "Expert writers, designers, and editors, your vision, brought to life.",
     description:
-      "GhostWriterHunt is LumexForge’s live premium ghostwriting platform where expert writers, designers, and editors bring author visions to life. Every book is human-crafted with skill, care, and precision. Pure professional craft. All delivery is digital — ready for every major reading platform.",
+      "GhostWriterHunt is LumexForge’s live premium ghostwriting platform where expert writers, designers, and editors bring author visions to life. Every book is human-crafted with skill, care, and precision. Pure professional craft. All delivery is digital, ready for every major reading platform.",
     status: "live",
     statusLabel: "Live on Web",
     platforms: "Available now · Web & Mobile",
     features: [
       {
         title: "Ghostwriting",
-        detail: "Complete books in your voice — any genre, any length.",
+        detail: "Complete books in your voice, any genre, any length.",
       },
       {
         title: "Book Cover Design",
@@ -326,7 +326,7 @@ function ProductSection({ product, index }: { product: ShowcaseProduct; index: n
             >
               <Image
                 src={product.banner}
-                alt={`${product.name} — ${product.category}`}
+                alt={`${product.name}, ${product.category}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 760px"
                 quality={product.id === "ghostwriterhunt" ? 90 : 80}
@@ -530,7 +530,7 @@ export function ProductsShowcase() {
             Built with <em>intention</em>
           </h1>
           <p className="lf-prod-lead">
-            A curated line of mobile apps, AI products, and SaaS platforms — each crafted
+            A curated line of mobile apps, AI products, and SaaS platforms, each crafted
             for clarity, usefulness, and long-term value.
           </p>
         </header>
@@ -554,7 +554,7 @@ export function ProductsShowcase() {
           </h2>
           <p>
             From concept to launch, LumexForge builds intelligent digital products with
-            disciplined craft — for founders, teams, and ideas that deserve permanence.
+            disciplined craft, for founders, teams, and ideas that deserve permanence.
           </p>
           <div className="lf-prod-actions">
             <Link href="/contact" className="lf-prod-btn lf-prod-btn--primary">

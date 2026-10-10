@@ -366,7 +366,7 @@ export default function PostHuntTermsPage() {
           </Link>
         </p>
         <p>
-          <Brand /> — PostHunt
+          <Brand /> (PostHunt)
         </p>
       </LegalSection>
     </PostHuntLegalShell>
