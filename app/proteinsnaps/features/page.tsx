@@ -84,7 +84,7 @@ export default function FeaturesPage() {
           </FadeInUp>
         </div>
       </section>
-      <section className="relative pb-12 sm:pb-16">
+      <section className="ps-features-grid-section relative pb-12 sm:pb-16">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
@@ -119,7 +119,7 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
-      <section className="relative pb-12 sm:pb-16">
+      <section className="ps-features-screenshots-section relative pb-12 sm:pb-16">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
@@ -134,10 +134,14 @@ export default function FeaturesPage() {
           </>
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:flex lg:flex-row lg:items-start lg:justify-center lg:gap-12">
             {FEATURE_SCREENSHOTS.map((slide, i) => (
-              <FadeInUp key={slide.src} delay={i * 0.1} className="text-center">
-                <div className="relative mx-auto w-[280px] shrink-0">
+              <FadeInUp
+                key={slide.src}
+                delay={i * 0.1}
+                className="flex w-full min-w-0 flex-col items-center text-center lg:max-w-none"
+              >
+                <div className="relative mx-auto w-full max-w-[280px] shrink-0">
                   <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-[#00e6a8]/20 to-[#00c2ff]/10 blur-2xl" />
                   <div className="relative rounded-[2rem] border-[3px] border-white/10 bg-[#0a0f18] p-2 ps-glow-frame shadow-2xl">
                     <div className="absolute left-1/2 top-2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
@@ -154,14 +158,14 @@ export default function FeaturesPage() {
                     </div>
                   </div>
                 </div>
-                <div className="ps-glass-text ps-3d-card mt-5 mx-auto max-w-xs">
+                <article className="ps-features-screenshot-card ps-glow-card ps-glass-panel ps-3d-card mt-5 box-border h-full w-full min-w-0 rounded-2xl p-7 text-center">
                   <p className="font-serif text-lg font-semibold text-[#1A1A1A]">
                     {slide.feature}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#555555]">
+                  <p className="mt-3 text-sm leading-relaxed text-[#555555]">
                     {slide.description}
                   </p>
-                </div>
+                </article>
               </FadeInUp>
             ))}
           </div>

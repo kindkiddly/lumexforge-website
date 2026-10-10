@@ -574,6 +574,42 @@
     color: #f8fafc !important;
   }
 
+  .proteinsnaps-site .ps-features-screenshots-section .ps-features-screenshot-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    background: rgba(5, 8, 17, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    transform: none !important;
+  }
+
+  .proteinsnaps-site .ps-features-screenshots-section .ps-features-screenshot-card:hover {
+    transform: none !important;
+  }
+
+  .proteinsnaps-site .ps-features-screenshots-section .ps-features-screenshot-card :is(h1, h2, h3, h4, p) {
+    color: #f8fafc !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .proteinsnaps-site
+    .ps-features-screenshots-section
+    .ps-features-screenshot-card
+    :is(.text-\[\#00e6a8\], .text-\[\#00c2ff\], .text-\[\#555555\], .text-\[\#1A1A1A\]) {
+    color: #f8fafc !important;
+  }
+
+  .proteinsnaps-site .ps-features-screenshots-section .grid > * {
+    width: 100%;
+    min-width: 0;
+  }
+
   .ps-features-hero-image-wrap.ps-features-hero-kenburns-active .ps-features-hero-image-mobile {
     animation-play-state: running;
   }
@@ -2288,7 +2324,18 @@
 .ps-download-cta-card .ps-hero-desktop-play {
   background: #00e6a8 !important;
   color: #0a0a0a !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (max-width: 1023px) {
+  .proteinsnaps-site .ps-download-cta-card .ps-hero-desktop-play {
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-shadow: none !important;
+  }
+
+  .proteinsnaps-site .ps-download-cta-card .ps-hero-desktop-appstore {
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 /* ── ProteinSnaps Hero Coverflow (copied from LumexForge) ── */
