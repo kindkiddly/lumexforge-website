@@ -21,13 +21,13 @@ export default function ProteinSnapsPrivacyPage() {
     >
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
-          ProteinSnaps is a nutrition and fitness tracking app for iOS, made by{" "}
+          ProteinSnaps is a nutrition and fitness tracking app for iOS and Android, made by{" "}
           <Brand />. We built it to help you log meals, track macros, monitor
           progress, and get AI-powered coaching, and we know that means trusting
           us with personal health data.
         </p>
         <p>
-          This Privacy Policy applies to the ProteinSnaps iOS app and explains
+          This Privacy Policy applies to the ProteinSnaps iOS and Android app and explains
           what information we collect, how we use it, how we protect it, and the
           rights you have over your data.
         </p>
@@ -71,7 +71,7 @@ export default function ProteinSnapsPrivacyPage() {
           ProteinSnaps may request access to your device camera and photo library
           so you can snap or upload meal photos for AI nutrition analysis and
           store progress photos. You can deny or revoke these permissions in your
-          iOS Settings at any time.
+          device Settings at any time.
         </p>
         <p>
           Photos you submit are used to provide app features such as meal
@@ -151,7 +151,7 @@ export default function ProteinSnapsPrivacyPage() {
             Delete your account and associated personal data permanently through
             in-app account deletion or by contacting us
           </li>
-          <li>Withdraw permissions such as camera or photo library access via iOS Settings</li>
+          <li>Withdraw permissions such as camera or photo library access via your device Settings</li>
         </ul>
         <p>
           Account deletion is permanent. Once completed, personal data is removed
@@ -220,7 +220,7 @@ export default function ProteinSnapsPrivacyPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps iOS App)</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps)</p>
       </LegalSection>
     </LegalLayout>
   );

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ProteinSnaps Account Deletion",
   description:
-    "How to delete your ProteinSnaps iOS account, what data is removed, subscription management, and contact information.",
+    "How to delete your ProteinSnaps iOS and Android account, what data is removed, subscription management, and contact information.",
 };
 
 function Brand() {
@@ -24,13 +24,13 @@ export default function ProteinSnapsDeletionPage() {
         <p>
           At ProteinSnaps, we believe you should have full control over your account
           and personal data. This page explains how account deletion works for the{" "}
-          <strong className="text-foreground">ProteinSnaps iOS app</strong>, what
+          <strong className="text-foreground">ProteinSnaps app</strong>, what
           happens when you delete your account, and how to manage related settings
           such as App Store subscriptions.
         </p>
         <p>
-          ProteinSnaps is provided by <Brand />. This page applies only to the
-          ProteinSnaps iOS app and is separate from account deletion information
+          ProteinSnaps is provided by <Brand />. This page applies to the
+          ProteinSnaps app on iOS and Android and is separate from account deletion information
           for other LumexForge products.
         </p>
       </div>
@@ -51,10 +51,10 @@ export default function ProteinSnapsDeletionPage() {
       <LegalSection title="How to Request Account Deletion">
         <p>
           You can request permanent account deletion directly within the ProteinSnaps
-          iOS app:
+          app:
         </p>
         <ol className="list-decimal space-y-2 pl-5">
-          <li>Open the ProteinSnaps app on your iPhone or iPad.</li>
+          <li>Open the ProteinSnaps app on your iPhone, iPad, or Android device.</li>
           <li>Go to the &apos;Me&apos; tab.</li>
           <li>Scroll to the footer of the page.</li>
           <li>Tap &apos;Delete Account&apos; (shown in red text).</li>
@@ -165,25 +165,17 @@ export default function ProteinSnapsDeletionPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Apple App Store Subscriptions">
+      <LegalSection title="Subscriptions">
         <p>
-          If you have an active ProteinSnaps premium subscription purchased through
-          the Apple App Store,{" "}
-          <strong className="text-foreground">
-            deleting your account does not automatically cancel your subscription
-          </strong>
-          .
-        </p>
-        <p>
-          Subscriptions are managed by Apple. To cancel or manage billing, open{" "}
-          <strong className="text-foreground">Settings</strong> on your device, tap
-          your name, then tap <strong className="text-foreground">Subscriptions</strong>,
-          and select ProteinSnaps to cancel or change your plan.
-        </p>
-        <p>
-          Refunds and billing questions for App Store purchases are handled by Apple
-          according to Apple&apos;s policies. LumexForge does not process App Store
-          payment refunds directly.
+          If you have an active ProteinSnaps premium subscription, deleting your
+          account does not automatically cancel your subscription. On iOS: Subscriptions
+          are managed by Apple. Open Settings, tap your name, then tap Subscriptions,
+          and select ProteinSnaps to cancel or change your plan. On Android:
+          Subscriptions are managed by Google. Open the Google Play Store, tap your
+          profile icon, then tap Payments and subscriptions, and select ProteinSnaps
+          to cancel or change your plan. Refunds and billing questions are handled by
+          Apple or Google according to their respective policies. LumexForge does not
+          process payment refunds directly.
         </p>
       </LegalSection>
 
@@ -216,7 +208,7 @@ export default function ProteinSnapsDeletionPage() {
           </a>
         </p>
         <p>
-          <Brand /> (ProteinSnaps iOS App)
+          <Brand /> (ProteinSnaps)
         </p>
       </LegalSection>
     </LegalLayout>

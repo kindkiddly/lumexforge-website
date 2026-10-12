@@ -22,7 +22,7 @@ export default function ProteinSnapsTermsPage() {
       <div className="space-y-4 text-base leading-[1.75]">
         <p>
           These Terms of Use (&quot;Terms&quot;) govern your use of the ProteinSnaps
-          iOS application (&quot;ProteinSnaps&quot; or the &quot;App&quot;) provided
+          iOS and Android application (&quot;ProteinSnaps&quot; or the &quot;App&quot;) provided
           by <Brand />. By downloading, accessing, or using ProteinSnaps, you agree
           to these Terms. If you do not agree, do not use the App.
         </p>
@@ -30,7 +30,7 @@ export default function ProteinSnapsTermsPage() {
 
       <LegalSection title="1. About ProteinSnaps">
         <p>
-          ProteinSnaps is a nutrition and fitness tracking app for iOS that helps
+          ProteinSnaps is a nutrition and fitness tracking app for iOS and Android that helps
           you log meals, track macros, analyze nutrition with AI, monitor body
           stats, and manage workouts. The App is provided by LumexForge for personal,
           non-commercial use unless otherwise agreed in writing.
@@ -72,7 +72,8 @@ export default function ProteinSnapsTermsPage() {
       <LegalSection title="4. Subscriptions">
         <p>
           ProteinSnaps offers optional premium subscriptions billed through the{" "}
-          <strong className="text-foreground">Apple App Store</strong> and managed
+          <strong className="text-foreground">Apple App Store</strong> or{" "}
+          <strong className="text-foreground">Google Play Store</strong> and managed
           via <strong className="text-foreground">RevenueCat</strong>.
         </p>
         <ul className="list-disc space-y-2 pl-5">
@@ -85,6 +86,10 @@ export default function ProteinSnapsTermsPage() {
             per year (USD, or equivalent local pricing)
           </li>
         </ul>
+        <p>
+          Subscriptions on Android are billed through the Google Play Store. Prices
+          may vary by region and are displayed in the App at the time of purchase.
+        </p>
         <p>
           Prices may vary by region and are displayed in the App at the time of
           purchase. Subscriptions automatically renew unless cancelled at least
@@ -100,15 +105,11 @@ export default function ProteinSnapsTermsPage() {
 
       <LegalSection title="5. Refund Policy">
         <p>
-          All purchases are processed by Apple.{" "}
-          <strong className="text-foreground">
-            Refunds are handled exclusively by Apple
-          </strong>{" "}
-          in accordance with Apple App Store policies.
-        </p>
-        <p>
-          To request a refund, visit your Apple purchase history or Apple Support.
-          LumexForge does not process App Store payment refunds directly.
+          All purchases are processed by Apple or Google depending on your platform.{" "}
+          Refunds are handled by Apple (App Store) or Google (Play Store) in
+          accordance with their respective policies. To request a refund, visit your
+          Apple purchase history, Apple Support, or Google Play order history.
+          LumexForge does not process payment refunds directly.
         </p>
       </LegalSection>
 
@@ -204,7 +205,7 @@ export default function ProteinSnapsTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps iOS App)</p>
+        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps)</p>
       </LegalSection>
     </LegalLayout>
   );
