@@ -48,11 +48,13 @@ const PREVIEW_ARTICLES = [
     href: "/blog/progressive-overload",
   },
   {
-    category: "AI Coaching",
-    title: "How AI is Changing the Way We Track Food",
+    category: "Fitness & Nutrition",
+    title: "How to Build Muscle: Protein, Progressive Overload, and Recovery",
     teaser:
-      "From photo logging to personalized guidance: how intelligent tools make nutrition tracking faster and more accurate.",
-    status: "coming-soon" as const,
+      "Learn how training progression, protein intake, balanced nutrition, and recovery work together to support muscle growth.",
+    readingTime: "10 min read",
+    status: "new" as const,
+    href: "/blog/how-to-build-muscle-protein-training-recovery",
   },
 ] as const;
 
@@ -62,7 +64,7 @@ export default function BlogPage() {
       <PageHero
         eyebrow="Coming Soon"
         title="Nutrition. Training. Results."
-        description="Tips, science and strategies from the ProteinSnaps team. Launching soon."
+        description="Practical tips, science-backed insights, and expert guidance to help you build strength, improve nutrition, and reach your fitness goals."
       />
       <section className="relative min-h-[50vh]">
         <div

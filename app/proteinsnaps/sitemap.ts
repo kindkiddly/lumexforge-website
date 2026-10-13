@@ -6,6 +6,7 @@ const routes = [
   "/blog",
   "/blog/how-much-protein-do-you-need-per-day",
   "/blog/progressive-overload",
+  "/blog/how-to-build-muscle-protein-training-recovery",
   "/features",
   "/how-it-works",
   "/meal-scanner",
