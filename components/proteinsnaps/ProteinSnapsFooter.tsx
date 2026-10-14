@@ -8,8 +8,8 @@ export function ProteinSnapsFooter() {
   const { href: psHref } = useProteinSnapsPath();
   return (
     <footer className="ps-site-footer">
-      <div className="ps-site-footer-inner mx-auto max-w-7xl">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
+      <div className="ps-site-footer-inner mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="ps-site-footer-grid grid sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
@@ -21,7 +21,7 @@ export function ProteinSnapsFooter() {
             <p className="mt-1.5 leading-snug">
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
-                className="whitespace-nowrap text-[13px] text-[#00E6A8] transition-colors hover:text-[#00e6a8]"
+                className="break-all text-[13px] text-[#00E6A8] transition-colors hover:text-[#00e6a8] sm:break-normal"
               >
                 {PROTEINSNAPS.contactEmail}
               </a>

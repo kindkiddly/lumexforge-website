@@ -1,9 +1,6 @@
 import { ContactFormPanel } from "@/components/contact/ContactFormPanel";
 import {
-  BUSINESS_ADDRESS,
   BUSINESS_LOCATION_SHORT,
-  BUSINESS_PHONE_DISPLAY,
-  BUSINESS_PHONE_TEL,
   CONTACT_EMAILS,
   SITE_URL,
 } from "@/lib/constants";
@@ -21,12 +18,6 @@ const CHANNELS = [
     value: CONTACT_EMAILS.support,
     href: `mailto:${CONTACT_EMAILS.support}`,
   },
-  {
-    label: "Call:",
-    description: "Studio line",
-    value: BUSINESS_PHONE_DISPLAY,
-    href: BUSINESS_PHONE_TEL,
-  },
 ];
 
 const META_ROWS = [
@@ -39,7 +30,7 @@ const META_ROWS = [
   {
     label: "Headquarters",
     description: "Studio location",
-    value: BUSINESS_ADDRESS,
+    value: BUSINESS_LOCATION_SHORT,
     href: null as string | null,
   },
 ];

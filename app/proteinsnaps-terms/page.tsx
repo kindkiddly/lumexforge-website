@@ -205,7 +205,7 @@ export default function ProteinSnapsTermsPage() {
             {CONTACT_EMAILS.proteinsnaps}
           </a>
         </p>
-        <p>LumexForge, 6008 Whitewing Rd, Rosenberg, TX 77469, USA (ProteinSnaps)</p>
+        <p>LumexForge, Rosenberg, Texas, USA (ProteinSnaps)</p>
       </LegalSection>
     </LegalLayout>
   );

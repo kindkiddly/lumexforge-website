@@ -1,9 +1,7 @@
 import { Logo } from "@/components/shared/Logo";
 import { Container } from "@/components/ui/Container";
 import {
-  BUSINESS_ADDRESS,
-  BUSINESS_PHONE_DISPLAY,
-  BUSINESS_PHONE_TEL,
+  BUSINESS_LOCATION_SHORT,
   CONTACT_EMAILS,
   FOOTER_LINKS,
   FOUNDER,
@@ -50,13 +48,7 @@ export function Footer() {
                   {CONTACT_EMAILS.business}
                 </a>
               </li>
-              <li>
-                <a href={BUSINESS_PHONE_TEL}>
-                  Call: {BUSINESS_PHONE_DISPLAY}
-                </a>
-              </li>
-              <li className="lf-footer-address" aria-label={BUSINESS_ADDRESS}>
-                <span>6008 Whitewing Rd</span>
+              <li className="lf-footer-address" aria-label={BUSINESS_LOCATION_SHORT}>
                 <span>Rosenberg, TX 77469, USA</span>
               </li>
             </ul>
