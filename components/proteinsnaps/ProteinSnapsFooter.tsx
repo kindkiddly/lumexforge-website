@@ -9,30 +9,29 @@ export function ProteinSnapsFooter() {
   return (
     <footer className="ps-site-footer">
       <div className="ps-site-footer-inner mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="ps-site-footer-grid grid sm:grid-cols-2 lg:grid-cols-3">
-          <div>
-            <p className="font-serif text-xl font-semibold text-[#F8FAFC]">
+        <div className="ps-site-footer-grid">
+          <div className="ps-site-footer-brand">
+            <p className="ps-site-footer-brand-title font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">
-              AI nutrition and fitness tracking, made simple.
+            <p className="ps-site-footer-brand-meta text-sm leading-snug text-[#F8FAFC]">
+              AI nutrition and fitness tracking · A LumexForge product
             </p>
-            <p className="mt-1.5 text-sm leading-snug text-[#F8FAFC]">A LumexForge product</p>
-            <p className="mt-1.5 leading-snug">
+            <p className="ps-site-footer-brand-email">
               <a
                 href={`mailto:${PROTEINSNAPS.contactEmail}`}
-                className="break-all text-[13px] text-[#00E6A8] transition-colors hover:text-[#00e6a8] sm:break-normal"
+                className="text-[13px] text-[#00E6A8] transition-colors hover:text-[#00e6a8]"
               >
                 {PROTEINSNAPS.contactEmail}
               </a>
             </p>
           </div>
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
+          <div className="ps-site-footer-col">
+            <p className="ps-site-footer-col-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
               Product
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
+            <ul className="ps-site-footer-links text-sm text-[#94A3B8]">
               <li>
                 <Link href={psHref("/features")} className="transition-colors hover:text-[#00E6A8]">
                   Features
@@ -51,11 +50,11 @@ export function ProteinSnapsFooter() {
             </ul>
           </div>
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
+          <div className="ps-site-footer-col">
+            <p className="ps-site-footer-col-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#00E6A8]">
               Legal
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
+            <ul className="ps-site-footer-links text-sm text-[#94A3B8]">
               <li>
                 <a
                   href={PROTEINSNAPS.lumexforgeUrl}

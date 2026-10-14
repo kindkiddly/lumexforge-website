@@ -523,6 +523,50 @@
 
 @media (max-width: 639px) {
   .lf-footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 1rem;
+  }
+
+  .lf-footer-brand,
+  .lf-footer-contact {
+    grid-column: 1 / -1;
+  }
+
+  .lf-footer-brand {
+    max-width: none;
+  }
+
+  .lf-footer-tagline {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .lf-footer-founded {
+    margin-top: 0.25rem;
+  }
+
+  .lf-footer-col ul {
+    margin-top: 0.25rem;
+    gap: 0.15rem;
+  }
+
+  .lf-footer-col h3 {
+    font-size: 0.6rem;
+  }
+
+  .lf-footer-col a:not(.lf-footer-btn):not(.lf-footer-email) {
+    font-size: 0.75rem;
+  }
+
+  .lf-footer-contact .lf-footer-btn {
+    height: 1.65rem;
+    padding: 0 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .lf-footer-bottom {
+    margin-top: 0.5rem;
+    padding-top: 0.35rem;
   }
 }
