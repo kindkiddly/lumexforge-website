@@ -30,23 +30,20 @@ export default async function RootLayout({
 }>) {
   const headerList = await headers();
   const isProteinSnapsSite = headerList.get("x-proteinsnaps-site") === "1";
-  const isMipawSite = headerList.get("x-mipaw-site") === "1";
 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen font-sans">
-        {!isProteinSnapsSite && !isMipawSite && <JsonLd />}
-        {!isMipawSite ? (
-          <a
-            href="#main-content"
-            className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-accent-primary px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0 focus:outline-none focus:ring-0"
-          >
-            Skip to content
-          </a>
-        ) : null}
-        {!isProteinSnapsSite && !isMipawSite && <Navbar />}
+        {!isProteinSnapsSite && <JsonLd />}
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-accent-primary px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0 focus:outline-none focus:ring-0"
+        >
+          Skip to content
+        </a>
+        {!isProteinSnapsSite && <Navbar />}
         <main id="main-content">{children}</main>
-        {!isProteinSnapsSite && !isMipawSite && <Footer />}
+        {!isProteinSnapsSite && <Footer />}
       </body>
     </html>
   );
