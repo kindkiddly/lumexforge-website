@@ -178,7 +178,7 @@ export default function ProteinSnapsTermsPage() {
           These Terms are governed by the laws of the State of Texas, USA. Any
           disputes arising from
           these Terms or your use of ProteinSnaps shall be subject to the exclusive
-          jurisdiction of the courts of Karachi, Pakistan, unless applicable consumer
+          jurisdiction of the courts located in the State of Texas, USA, unless applicable consumer
           protection law in your jurisdiction requires otherwise.
         </p>
       </LegalSection>

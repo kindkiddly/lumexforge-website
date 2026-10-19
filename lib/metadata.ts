@@ -160,27 +160,6 @@ export const termsMetadata = createMetadata({
   path: "/terms",
 });
 
-export const proteinsnapPrivacyMetadata = createMetadata({
-  title: "ProteinSnaps Privacy Policy",
-  description:
-    "ProteinSnaps privacy policy: how LumexForge collects, uses, and protects your nutrition, fitness, and meal data.",
-  path: "/proteinsnap-privacy",
-});
-
-export const proteinsnapTermsMetadata = createMetadata({
-  title: "ProteinSnaps Terms of Service",
-  description:
-    "ProteinSnaps terms of service: eligibility, AI disclaimers, subscriptions, acceptable use, and liability.",
-  path: "/proteinsnap-terms",
-});
-
-export const proteinsnapDeletionMetadata = createMetadata({
-  title: "ProteinSnaps Account Deletion Policy",
-  description:
-    "How to permanently delete your ProteinSnaps account and what data is removed, retained, and protected.",
-  path: "/proteinsnap-deletion",
-});
-
 export const posthuntPrivacyMetadata = createMetadata({
   title: "PostHunt Privacy Policy",
   description:

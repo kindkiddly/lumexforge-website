@@ -5,6 +5,33 @@
       "destination": "https://www.lumexforge.com/$1",
       "permanent": true,
       "has": [{ "type": "host", "value": "lumexforge.com" }]
+    },
+    {
+      "source": "/proteinsnap-privacy",
+      "destination": "/proteinsnaps-privacy",
+      "permanent": true
+    },
+    {
+      "source": "/proteinsnap-terms",
+      "destination": "/proteinsnaps-terms",
+      "permanent": true
+    },
+    {
+      "source": "/proteinsnap-deletion",
+      "destination": "/proteinsnaps-deletion",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }],
+      "has": [{ "type": "host", "value": "mipaw.lumexforge.com" }]
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }],
+      "has": [{ "type": "host", "value": "mipaw.lumexforge.com" }]
     }
   ]
 }

@@ -1,3 +1,4 @@
+// NEVER DELETE, MOVE OR RENAME — used by the ProteinSnaps app (iOS + Android) for sign-up confirmation and password reset emails. Registered in ProteinSnap Supabase redirect URLs.
 'use client'
 
 import { useEffect, useState } from 'react'

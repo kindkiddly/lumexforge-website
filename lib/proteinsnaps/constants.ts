@@ -12,9 +12,9 @@ export const PROTEINSNAPS = {
     "https://play.google.com/store/apps/details?id=com.proteinsnap.app&pcampaignid=web_share",
   appStoreUrl: "https://apps.apple.com/us/app/proteinsnaps/id6801353318",
   lumexforgeUrl: "https://www.lumexforge.com",
-  privacyUrl: "https://www.lumexforge.com/proteinsnap-privacy",
-  termsUrl: "https://www.lumexforge.com/proteinsnap-terms",
-  deletionUrl: "https://www.lumexforge.com/proteinsnap-deletion",
+  privacyUrl: "https://www.lumexforge.com/proteinsnaps-privacy",
+  termsUrl: "https://www.lumexforge.com/proteinsnaps-terms",
+  deletionUrl: "https://www.lumexforge.com/proteinsnaps-deletion",
   contactEmail: CONTACT_EMAILS.proteinsnaps,
 } as const;
 

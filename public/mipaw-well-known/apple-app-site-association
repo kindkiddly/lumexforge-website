@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "77AX543484.com.mipaw.lumexforge",
+        "paths": [
+          "/auth/confirm",
+          "/auth/callback",
+          "/auth/*"
+        ]
+      }
+    ]
+  }
+}
