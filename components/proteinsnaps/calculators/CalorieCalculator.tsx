@@ -1,14 +1,19 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import BodyInputs, { initialBody, type BodyState } from './BodyInputs';
+import { initialBody, type BodyState } from './BodyInputs';
 import { toMetric } from './bodyParse';
 import { energy, validate, type EnergyResult } from './energyMath';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
-import { CalorieGauge, ErrorBox, ProteinCalcButton } from './Parts';
-import { calcGlass, ui } from './ui';
+import {
+  MintCalcBodyFields,
+  MintCalcHeader,
+  MintCalcSubmit,
+} from './MintCalcForm';
+import { CalorieGauge, ErrorBox } from './Parts';
+import { calcMint, ui } from './ui';
 
 function goalAdjustmentLabel(goal: BodyState['goal']): string {
   if (goal === 'fatloss') return '−400';
@@ -43,18 +48,18 @@ export default function CalorieCalculator() {
   const n = (v: number) => v.toLocaleString('en-US');
 
   return (
-    <section className={calcGlass.section}>
-      <div className={calcGlass.cardGlowWrap}>
-        <div className={calcGlass.cardGlow} aria-hidden />
-        <form onSubmit={calculate} className={calcGlass.cardPad}>
-          <h2 className={calcGlass.cardTitle}>Your Details</h2>
-          <div className={calcGlass.formStack}>
-            <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} glass compact />
-            {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <div className={calcGlass.btnRow}>
-              <ProteinCalcButton compact>Calculate Calories</ProteinCalcButton>
+    <section className={calcMint.section}>
+      <div className={calcMint.cardGlowWrap}>
+        <div className={calcMint.cardGlow} aria-hidden />
+        <form onSubmit={calculate} className={calcMint.card}>
+          <MintCalcHeader unit={s.unit} onUnit={unit => setS(prev => ({ ...prev, unit }))} />
+          <MintCalcBodyFields s={s} set={p => setS(prev => ({ ...prev, ...p }))} />
+          {error ? (
+            <div className="mt-4">
+              <ErrorBox>{error}</ErrorBox>
             </div>
-          </div>
+          ) : null}
+          <MintCalcSubmit>Calculate Calories</MintCalcSubmit>
         </form>
       </div>
 

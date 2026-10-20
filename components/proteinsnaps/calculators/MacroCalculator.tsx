@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import BodyInputs, { initialBody, type BodyState } from './BodyInputs';
+import { initialBody, type BodyState } from './BodyInputs';
 import { toMetric } from './bodyParse';
 import { energy, macros, validate, type Goal, type Macros } from './energyMath';
 import {
@@ -18,16 +18,15 @@ import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
 import {
-  Donut,
-  ErrorBox,
-  MACRO_COLOR,
-  MacroBars,
-  PillButtons,
-  ProteinCalcButton,
-  ProteinInlineField,
-  SoftNote,
-} from './Parts';
-import { calcGlass, ui } from './ui';
+  MintCalcBodyFields,
+  MintCalcField,
+  MintCalcHeader,
+  MintCalcSelect,
+  MintCalcSubmit,
+  MintGoalPills,
+} from './MintCalcForm';
+import { Donut, ErrorBox, MACRO_COLOR, MacroBars, SoftNote } from './Parts';
+import { calcMint, ui } from './ui';
 
 export default function MacroCalculator() {
   const [s, setS] = useState<BodyState>(initialBody);
@@ -71,89 +70,63 @@ export default function MacroCalculator() {
     : [];
 
   return (
-    <section className={calcGlass.section}>
-      <div className={calcGlass.cardGlowWrap}>
-        <div className={calcGlass.cardGlow} aria-hidden />
-        <form onSubmit={calculate} className={calcGlass.cardPad}>
-          <h2 className={calcGlass.cardTitle}>Your Details</h2>
-          <div className={calcGlass.formStack}>
-            <BodyInputs
-              s={s}
-              set={x => setS(prev => ({ ...prev, ...x }))}
-              onGoal={(g: Goal) => setP(onGoalChange(g))}
-              glass
-              compact
-            />
-            <div className="grid gap-2 sm:grid-cols-2 sm:items-end">
-              <ProteinInlineField
-                label="Already know your calories? (optional)"
-                labelClassName={calcGlass.fieldLabel}
-              >
+    <section className={calcMint.section}>
+      <div className={calcMint.cardGlowWrap}>
+        <div className={calcMint.cardGlow} aria-hidden />
+        <form onSubmit={calculate} className={calcMint.card}>
+          <MintCalcHeader unit={s.unit} onUnit={unit => setS(prev => ({ ...prev, unit }))} />
+          <MintCalcBodyFields
+            s={s}
+            set={x => setS(prev => ({ ...prev, ...x }))}
+            onGoal={(g: Goal) => setP(onGoalChange(g))}
+          />
+          <div className={calcMint.macroExtra}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <MintCalcField label="Already know your calories? (optional)">
                 <input
-                  className={calcGlass.input}
+                  className={calcMint.fieldInput}
                   type="number"
                   inputMode="numeric"
                   value={known}
                   onChange={e => setKnown(e.target.value)}
                   placeholder="Leave blank to estimate"
                 />
-              </ProteinInlineField>
-              <div>
-                <p className={calcGlass.legendTight}>Fat (% of calories)</p>
-                <div className={calcGlass.legendMt}>
-                  <PillButtons<number>
-                    label="Fat percent of calories"
-                    value={f}
-                    onChange={setF}
-                    options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
-                    equalWidth
-                    glass
-                    compact
-                  />
-                </div>
-              </div>
+              </MintCalcField>
+              <MintGoalPills
+                label="Fat (% of calories)"
+                value={f}
+                onChange={setF}
+                options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
+              />
             </div>
-            <div>
-              <ProteinInlineField label="Protein" labelClassName={calcGlass.fieldLabel}>
-                <div className={calcGlass.selectWrap}>
-                  <select
-                    className={calcGlass.select}
-                    value={p.value}
-                    onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
-                  >
-                    {PROTEIN_OPTIONS.map(v => (
-                      <option key={v} value={v}>
-                        {proteinLabel(v, s.goal)}
-                      </option>
-                    ))}
-                  </select>
-                  <svg
-                    className={calcGlass.selectChevron}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </div>
-              </ProteinInlineField>
-              <p className={`${ui.hint} mt-1`}>
-                {p.manual
-                  ? 'You picked this protein level. Changing the goal resets it to the app setting.'
-                  : (
-                      <>
-                        Set from the <BrandName /> app&apos;s settings for your goal. You can pick any
-                        option.
-                      </>
-                    )}
-              </p>
-            </div>
-            {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <div className={calcGlass.btnRow}>
-              <ProteinCalcButton compact>Calculate Macros</ProteinCalcButton>
-            </div>
+            <MintCalcSelect
+              label="Protein"
+              value={p.value}
+              onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
+            >
+              {PROTEIN_OPTIONS.map(v => (
+                <option key={v} value={v}>
+                  {proteinLabel(v, s.goal)}
+                </option>
+              ))}
+            </MintCalcSelect>
+            <p className={calcMint.hint}>
+              {p.manual
+                ? 'You picked this protein level. Changing the goal resets it to the app setting.'
+                : (
+                    <>
+                      Set from the <BrandName /> app&apos;s settings for your goal. You can pick any
+                      option.
+                    </>
+                  )}
+            </p>
           </div>
+          {error ? (
+            <div className="mt-4">
+              <ErrorBox>{error}</ErrorBox>
+            </div>
+          ) : null}
+          <MintCalcSubmit>Calculate Macros</MintCalcSubmit>
         </form>
       </div>
 

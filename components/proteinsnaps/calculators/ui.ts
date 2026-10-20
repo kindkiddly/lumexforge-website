@@ -257,5 +257,70 @@ export const calcGlass = {
   btnRow: 'flex justify-stretch pt-0.5 sm:justify-end',
 } as const;
 
+/** Mint glassmorphism input card (calorie + macro calculators). Matches TDEE mock. */
+const mintGlassCard =
+  'rounded-[28px] border border-white/70 bg-white/[0.42] shadow-[0_16px_48px_rgba(0,139,125,0.14),0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-[22px] [-webkit-backdrop-filter:blur(22px)]';
+
+export const calcMint = {
+  section: 'mx-auto mt-6 flex w-full max-w-[920px] flex-col gap-6',
+  cardGlowWrap: 'relative isolate',
+  cardGlow:
+    'pointer-events-none absolute -inset-4 -z-10 rounded-[36px] bg-[radial-gradient(ellipse_at_50%_60%,rgba(0,230,168,0.35),rgba(0,168,142,0.12)_55%,transparent_75%)] blur-2xl',
+  card: `${mintGlassCard} relative z-[1] p-5 sm:p-6`,
+  cardHeader: 'mb-5 flex flex-wrap items-center justify-between gap-3',
+  cardTitle: 'flex items-center gap-2.5 text-base font-semibold text-[#1A1A1A] sm:text-[17px]',
+  cardTitleIcon:
+    'flex h-9 w-9 items-center justify-center rounded-full bg-[#00E6A8]/18 text-[#008B7D]',
+  unitTrack:
+    'inline-flex max-w-full rounded-full bg-white/55 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.06)]',
+  unitBtn:
+    'rounded-full px-2.5 py-2 text-[10px] font-semibold leading-tight transition-all duration-200 sm:px-3.5 sm:text-[11px]',
+  unitOn:
+    'bg-gradient-to-r from-[#00C9A7] to-[#008B7D] text-white shadow-[0_3px_12px_rgba(0,139,125,0.35)]',
+  unitOff: 'text-[#555555] hover:text-[#1A1A1A]',
+  fieldsStack: 'flex flex-col gap-4',
+  sectionLabel: 'mb-2 text-xs font-semibold text-[#1A1A1A]',
+  sexTrack:
+    'grid grid-cols-2 gap-0 rounded-full bg-white/65 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)]',
+  sexBtn:
+    'flex h-11 items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-200',
+  sexOn:
+    'bg-gradient-to-r from-[#00E6A8] to-[#008B7D] text-white shadow-[0_4px_16px_rgba(0,139,125,0.28)]',
+  sexOff: 'bg-transparent text-[#555555]',
+  metrics4: 'grid grid-cols-2 gap-3 sm:grid-cols-4',
+  metrics3: 'grid grid-cols-1 gap-3 sm:grid-cols-3',
+  fieldBox:
+    'rounded-2xl border border-white/90 bg-white px-3 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]',
+  fieldInner: 'flex items-center gap-2',
+  fieldIcon:
+    'flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#00E6A8]/10 text-[#008B7D]',
+  fieldLabel: 'block text-[10px] font-medium text-[#888888]',
+  fieldInput:
+    'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-base font-semibold text-[#1A1A1A] outline-none [appearance:textfield] placeholder:font-normal placeholder:text-[#AAAAAA] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+  stepper: 'flex shrink-0 flex-col gap-0.5 border-l border-black/[0.06] pl-2',
+  stepperBtn:
+    'flex h-5 w-6 items-center justify-center rounded-md text-[#888888] transition-colors hover:bg-[#00E6A8]/12 hover:text-[#008B7D]',
+  activityBox: 'relative rounded-2xl border border-white/90 bg-white px-3 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]',
+  activityValue: 'mt-0.5 truncate text-sm font-semibold text-[#1A1A1A] sm:text-[15px]',
+  activityChevron: 'h-4 w-4 shrink-0 text-[#888888]',
+  activitySelect:
+    'absolute inset-0 z-[2] cursor-pointer opacity-0',
+  goalHeading: 'mb-2 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
+  goalGrid: 'grid grid-cols-2 gap-2 sm:grid-cols-4',
+  goalBtn:
+    'flex min-h-[44px] flex-col items-center justify-center rounded-2xl border border-white bg-white px-1.5 py-2 text-center text-[10px] font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/35 sm:text-[11px]',
+  goalBtnOn:
+    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_3px_rgba(0,230,168,0.18),0_2px_10px_rgba(0,139,125,0.12)]',
+  submitWrap: 'relative mt-5 flex justify-start',
+  submitGlow:
+    'pointer-events-none absolute -bottom-1 left-6 h-10 w-56 rounded-full bg-[#00E6A8]/45 blur-xl',
+  submitBtn:
+    'relative z-[1] inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(0,139,125,0.45)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2',
+  inlineSelect:
+    'w-full appearance-none border-0 bg-transparent py-0.5 pr-6 text-sm font-semibold text-[#1A1A1A] outline-none focus:ring-0',
+  macroExtra: 'mt-4 grid gap-4 border-t border-white/50 pt-4',
+  hint: 'mt-1.5 text-xs leading-relaxed text-[#666666]',
+} as const;
+
 export const STORE_BADGE_BOX = { w: 160, h: 48 } as const;
 export const PROTEIN_CTA_PHONE_SRC = '/images/proteinsnaps/homepageCards-PS2.webp';
