@@ -2,43 +2,46 @@
 
 import { useProteinSnapsPath } from "@/components/proteinsnaps/ProteinSnapsPathContext";
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
-import Image from "next/image";
 import Link from "next/link";
 
-const FOOTER_BADGE_W = 120;
-const FOOTER_BADGE_H = 40;
+const STORE_BTN_CLASS =
+  "inline-flex h-[52px] w-[168px] shrink-0 items-center gap-2.5 rounded-lg border border-[#888888]/45 bg-black px-3 transition-opacity hover:opacity-90";
+
+function AppleLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0 fill-white" aria-hidden>
+      <path d="M17.05 20.28c-.96.95-2.1 1.72-3.4 1.72-1.3 0-2.45-.77-3.4-1.72-1.9-1.88-3.05-4.46-3.05-7.28 0-2.82 1.15-5.4 3.05-7.28.95-.95 2.1-1.72 3.4-1.72s2.45.77 3.4 1.72c1.9 1.88 3.05 4.46 3.05 7.28 0 2.82-1.15 5.4-3.05 7.28zM12.03 3.5c.73-.88 1.22-2.1 1.08-3.5-1.04.04-2.3.72-3.05 1.6-.68.78-1.27 2.02-1.11 3.22 1.18.09 2.38-.6 3.08-1.32z" />
+    </svg>
+  );
+}
+
+function GooglePlayLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0" aria-hidden>
+      <path fill="#EA4335" d="M3.6 2.4 13.2 12 3.6 21.6a1.2 1.2 0 0 1-1.2-1.04V3.44A1.2 1.2 0 0 1 3.6 2.4z" />
+      <path fill="#FBBC04" d="M14.4 10.8 18.6 8.1a1.2 1.2 0 0 1 1.92.96v7.88a1.2 1.2 0 0 1-1.92.96l-4.2-2.7-2.4-1.44z" />
+      <path fill="#4285F4" d="M14.4 13.2 16.8 14.64 18.6 15.9 14.4 18.6 12 17.16z" />
+      <path fill="#34A853" d="M3.6 2.4 12 9.6l2.4-1.44L14.4 10.8 3.6 21.6V3.44z" />
+    </svg>
+  );
+}
 
 function FooterStoreButtons() {
   return (
     <div className="mt-4 flex flex-wrap items-center gap-3">
-      <a
-        href={PROTEINSNAPS.appStoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex h-10 w-[7.5rem] items-center justify-center leading-none"
-      >
-        <Image
-          src="/images/proteinsnaps/badges/app-store.svg"
-          alt="Download on the App Store"
-          width={FOOTER_BADGE_W}
-          height={FOOTER_BADGE_H}
-          className="h-[34px] w-[104px] max-w-full object-contain object-left"
-          unoptimized
-        />
+      <a href={PROTEINSNAPS.appStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
+        <AppleLogo />
+        <span className="min-w-0 text-left leading-tight text-white">
+          <span className="block text-[10px] font-normal tracking-wide">Download on the</span>
+          <span className="block text-[17px] font-semibold leading-none">App Store</span>
+        </span>
       </a>
-      <a
-        href={PROTEINSNAPS.playStoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex h-10 w-[7.5rem] items-center justify-center leading-none"
-      >
-        <Image
-          src="/images/proteinsnaps/badges/google-play.png"
-          alt="Get it on Google Play"
-          width={FOOTER_BADGE_W}
-          height={FOOTER_BADGE_H}
-          className="h-10 w-full object-contain object-left"
-        />
+      <a href={PROTEINSNAPS.playStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
+        <GooglePlayLogo />
+        <span className="min-w-0 text-left leading-tight text-white">
+          <span className="block text-[10px] font-normal uppercase tracking-wide">Get it on</span>
+          <span className="block text-[17px] font-semibold leading-none">Google Play</span>
+        </span>
       </a>
     </div>
   );

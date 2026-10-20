@@ -82,11 +82,8 @@ export default function Page() {
               <p className={ui.body}>
                 Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who
                 are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
-                from the ISSN 2017 position stand. Not exercising means no regular exercise (general
-                adult baseline). Exercising means regular strength, cardio or classes. Pounds are
-                converted at 1 lb = 0.4536 kg. If you
-                are 65 or older and not exercising regularly, we use 1.0–1.2 g/kg (PROT-AGE Study
-                Group). If you exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
+                from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg. If you
+                exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
                 (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the
                 ProteinSnaps app&apos;s setting; the ISSN notes more protein may be needed in a
                 calorie deficit).
@@ -107,11 +104,6 @@ export default function Page() {
                   Morton RW, et al. A systematic review, meta-analysis and meta-regression of the
                   effect of protein supplementation on resistance training-induced gains in muscle
                   mass and strength in healthy adults. Br J Sports Med. 2018;52(6):376-384.
-                </SourceItem>
-                <SourceItem href="https://doi.org/10.1016/j.jamda.2013.05.021">
-                  Bauer J, et al. Evidence-based recommendations for optimal dietary protein intake
-                  in older people: a position paper from the PROT-AGE Study Group. J Am Med Dir
-                  Assoc. 2013;14(8):542-559.
                 </SourceItem>
               </SourceLinks>
             </div>

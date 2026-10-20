@@ -131,43 +131,25 @@ export const proteinGlass = {
   card: `${glassCard}`,
   cardPad: `${glassCard} relative z-[1] p-4 sm:p-5`,
   cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
-  inputGroupLabel:
-    'mb-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#555555]',
-  inputStack: 'mt-3 flex flex-col gap-3',
-  inputRowLg:
-    'hidden lg:grid lg:grid-cols-[minmax(7rem,8rem)_minmax(9rem,11rem)_minmax(9rem,1fr)_minmax(0,1.35fr)] lg:gap-3',
-  inputRow2Lg: 'hidden lg:mt-3 lg:grid lg:grid-cols-[1fr_auto] lg:items-end lg:gap-3',
-  segmentTrack:
-    'relative z-[1] flex h-12 w-full min-w-0 overflow-hidden rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)]',
-  segmentBtn:
-    'relative z-[1] flex h-11 min-w-0 flex-1 cursor-pointer items-center justify-center gap-1 rounded-full border border-transparent px-2 text-xs font-medium whitespace-nowrap text-[#555555] transition-colors sm:px-2.5 sm:text-[13px]',
-  segmentOn:
-    'border-[#00A876]/90 bg-[#00E6A8] font-bold text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
-  segmentOff: 'bg-white/55 hover:text-[#1A1A1A]',
-  segmentIcon: 'h-3.5 w-3.5 shrink-0 opacity-90',
-  weightInput:
-    'h-12 w-full min-w-0 rounded-full border border-white/80 bg-white/70 px-4 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/25',
-  goalRowFade: 'transition-opacity duration-200',
-  goalRowHidden: 'pointer-events-none opacity-40',
+  ageNote: 'mb-1 text-[10px] leading-snug text-[#777777]',
+  inputSelected:
+    'border-2 border-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.22)] font-semibold text-[#1A1A1A]',
   inputRow: 'mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-[7.5rem_minmax(9rem,11rem)_1fr_auto] lg:items-end lg:gap-3',
   inputRowTablet: 'mt-3 grid gap-3 sm:grid-cols-2 lg:hidden',
   fieldLabel:
     'pointer-events-none absolute left-3 top-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
   input:
-    'h-11 w-full rounded-xl border border-white/80 bg-white/70 px-3 pb-1.5 pt-5 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+    'relative z-[1] h-12 w-full rounded-xl border border-white/80 bg-white/70 px-3 pb-1.5 pt-5 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
   toggle:
-    'inline-flex h-11 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
+    'relative z-[1] inline-flex h-12 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
   toggleBtn:
-    'flex-1 rounded-full px-2 py-2 text-center text-xs font-semibold text-[#555555] transition-colors',
-  toggleOn:
-    'border border-[#00A876]/90 bg-[#00E6A8] font-bold text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
-  toggleOff:
-    'border border-transparent bg-white/55 font-medium text-[#555555] hover:text-[#1A1A1A]',
+    'relative z-[1] flex h-11 flex-1 cursor-pointer items-center justify-center rounded-full border border-transparent px-2 text-center text-xs font-semibold text-[#555555] transition-colors',
+  toggleOn: 'bg-white/80',
+  toggleOff: 'bg-white/55 font-medium hover:text-[#1A1A1A]',
   activityCol: 'grid gap-2 sm:grid-cols-2 lg:col-span-1 lg:grid-cols-1',
   pill:
-    'flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/55 px-3 py-2.5 text-center text-xs font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] whitespace-normal',
-  pillOn:
-    'border-[#00A876] bg-[#00E6A8]/45 font-bold text-[#1A1A1A]',
+    'relative z-[1] flex h-12 max-h-12 min-h-12 cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/55 px-2.5 py-0 text-center text-[11px] font-medium leading-none text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] whitespace-nowrap sm:px-3 sm:text-xs',
+  pillOn: 'bg-white/75',
   cardGlowWrap: 'relative isolate',
   cardGlow:
     'pointer-events-none absolute -inset-3 -z-10 rounded-[28px] bg-[#00E6A8]/[0.12] blur-2xl sm:-inset-4',

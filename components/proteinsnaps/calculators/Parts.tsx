@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useId, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import type { Goal } from './energyMath';
-import type { Level, ProteinGoal, WeightUnit } from './proteinMath';
+import type { Level, ProteinGoal } from './proteinMath';
 import { proteinGlass, ui } from './ui';
 
 const svg = {
@@ -779,101 +779,6 @@ export function ProteinGlassCard({
       <div className={glow} aria-hidden />
       <div className="relative z-[1]">{children}</div>
     </div>
-  );
-}
-
-export const RestIcon = () => (
-  <svg {...svg} width={14} height={14} className={proteinGlass.segmentIcon}>
-    <path d="M5 12V8a2 2 0 012-2h0a2 2 0 012 2v4M4 12h8M6 8V6M10 8V6" />
-  </svg>
-);
-
-export const ExerciseIcon = () => (
-  <svg {...svg} width={14} height={14} className={proteinGlass.segmentIcon}>
-    <path d="M6 9H4a2 2 0 00-2 2v2a2 2 0 002 2h2M18 9h2a2 2 0 012 2v2a2 2 0 01-2 2h-2M8 12h8" />
-  </svg>
-);
-
-export const BuildMuscleIcon = () => (
-  <svg {...svg} width={14} height={14} className={proteinGlass.segmentIcon}>
-    <path d="M8 11V7l2-2 2 2v4M12 7V5M8 5h8" />
-  </svg>
-);
-
-export function ProteinInputGroup({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="min-w-0">
-      <p className={proteinGlass.inputGroupLabel}>{label}</p>
-      {children}
-    </div>
-  );
-}
-
-type SegmentOption<T extends string> = {
-  value: T;
-  label: string;
-  icon?: ReactNode;
-};
-
-export function ProteinSegmentedControl<T extends string>({
-  options,
-  value,
-  onChange,
-  ariaLabel,
-  disabled = false,
-}: {
-  options: SegmentOption<T>[];
-  value: T;
-  onChange: (v: T) => void;
-  ariaLabel: string;
-  disabled?: boolean;
-}) {
-  return (
-    <div className={proteinGlass.segmentTrack} role="group" aria-label={ariaLabel}>
-      {options.map(o => {
-        const on = value === o.value;
-        return (
-          <button
-            key={o.value}
-            type="button"
-            disabled={disabled}
-            aria-pressed={on}
-            className={`${proteinGlass.segmentBtn} ${on ? proteinGlass.segmentOn : proteinGlass.segmentOff}`}
-            onClick={() => onChange(o.value)}
-          >
-            {o.icon}
-            <span className="truncate">{o.label}</span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-export function ProteinWeightInput({
-  unit,
-  value,
-  onChange,
-  placeholder,
-}: {
-  unit: WeightUnit;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-}) {
-  return (
-    <ProteinInputGroup label="Body weight">
-      <input
-        className={proteinGlass.weightInput}
-        type="number"
-        inputMode="decimal"
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        placeholder={placeholder}
-        required
-        aria-label={`Body weight in ${unit}`}
-      />
-    </ProteinInputGroup>
   );
 }
 
