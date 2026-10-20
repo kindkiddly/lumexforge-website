@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
-import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
+import { calcMint, proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import MacroCalculator from '@/components/proteinsnaps/calculators/MacroCalculator';
 import {
   CalcGlassHero,
@@ -65,7 +65,7 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} ${proteinGlass.page}`}>
+    <div className={`${ui.main} ${proteinGlass.page} ${calcMint.page}`}>
       <ProteinGlassBackdrop />
       <div className={proteinGlass.content}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

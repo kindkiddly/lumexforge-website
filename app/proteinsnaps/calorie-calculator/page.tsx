@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
+import { calcMint, proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import CalorieCalculator from '@/components/proteinsnaps/calculators/CalorieCalculator';
 import {
   CalcGlassHero,
@@ -64,12 +64,12 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} ${proteinGlass.page}`}>
+    <div className={`${ui.main} ${proteinGlass.page} ${calcMint.page}`}>
       <ProteinGlassBackdrop />
       <div className={proteinGlass.content}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <CalcGlassHero
-          badge="FREE TOOL · MIFFLIN-ST JEOR"
+          badge="FREE TOOL · TDEE CALCULATOR"
           titleBefore="Calorie "
           titleMint="Calculator (TDEE)"
           intro="Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength."

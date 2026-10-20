@@ -89,6 +89,40 @@ function IconCalc({ className }: { className?: string }) {
   );
 }
 
+function IconFlame({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+      <path d="M12 3c1.5 3 4 5 4 8a4 4 0 11-8 0c0-3 2.5-5 4-8z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconDumbbell({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+      <path d="M6 9H4a2 2 0 00-2 2v2a2 2 0 002 2h2M18 9h2a2 2 0 012 2v2a2 2 0 01-2 2h-2M8 12h8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconTrend({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+      <path d="M4 18h16M7 14l3-3 3 2 5-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const GOAL_MINT: Record<
+  Goal,
+  { short: string; Icon: (props: { className?: string }) => ReactNode }
+> = {
+  fatloss: { short: 'Fat loss goal', Icon: IconFlame },
+  maintain: { short: 'Maintain', Icon: IconTarget },
+  recomp: { short: 'Recomp', Icon: IconDumbbell },
+  gain: { short: 'Build / gain', Icon: IconTrend },
+};
+
 function Stepper({
   onInc,
   onDec,
@@ -318,7 +352,7 @@ export function MintCalcBodyFields({
 
       <div className={calcMint.activityBox}>
         <div className={calcMint.fieldInner}>
-          <div className={`${calcMint.fieldIcon} text-[#00A88E]`}>
+          <div className={calcMint.fieldIcon}>
             <IconBolt className="h-5 w-5" />
           </div>
           <div className="min-w-0 flex-1">
@@ -359,11 +393,13 @@ export function MintCalcBodyFields({
         <div className={calcMint.goalGrid} role="group" aria-label="Goal">
           {(Object.keys(GOAL) as Goal[]).map(k => {
             const on = s.goal === k;
+            const { short, Icon } = GOAL_MINT[k];
             return (
               <button
                 key={k}
                 type="button"
                 aria-pressed={on}
+                aria-label={GOAL[k].label}
                 title={GOAL[k].label}
                 className={`${calcMint.goalBtn} ${on ? calcMint.goalBtnOn : ''}`}
                 onClick={() => {
@@ -371,8 +407,8 @@ export function MintCalcBodyFields({
                   onGoal?.(k);
                 }}
               >
-                {on ? <IconTarget className="mb-0.5 h-3.5 w-3.5 text-[#008B7D]" /> : null}
-                {GOAL[k].label}
+                <Icon className={`h-4 w-4 shrink-0 ${on ? 'text-[#008B7D]' : 'text-[#AAAAAA]'}`} />
+                <span>{short}</span>
               </button>
             );
           })}

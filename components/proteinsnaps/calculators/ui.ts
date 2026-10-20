@@ -259,63 +259,64 @@ export const calcGlass = {
 
 /** Mint glassmorphism input card (calorie + macro calculators). Matches TDEE mock. */
 const mintGlassCard =
-  'rounded-[28px] border border-white/70 bg-white/[0.42] shadow-[0_16px_48px_rgba(0,139,125,0.14),0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-[22px] [-webkit-backdrop-filter:blur(22px)]';
+  'rounded-[26px] border border-white/85 bg-gradient-to-br from-white/62 via-white/48 to-white/38 shadow-[0_20px_60px_rgba(0,139,125,0.16),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-[24px] [-webkit-backdrop-filter:blur(24px)]';
 
 export const calcMint = {
-  section: 'mx-auto mt-6 flex w-full max-w-[920px] flex-col gap-6',
-  cardGlowWrap: 'relative isolate',
+  page: 'bg-gradient-to-b from-[#E4F5EF] via-[#EDF8F4] to-[#F4FAF7]',
+  section: 'mt-6 flex w-full max-w-none flex-col gap-6',
+  cardGlowWrap: 'relative isolate w-full',
   cardGlow:
-    'pointer-events-none absolute -inset-4 -z-10 rounded-[36px] bg-[radial-gradient(ellipse_at_50%_60%,rgba(0,230,168,0.35),rgba(0,168,142,0.12)_55%,transparent_75%)] blur-2xl',
-  card: `${mintGlassCard} relative z-[1] p-5 sm:p-6`,
-  cardHeader: 'mb-5 flex flex-wrap items-center justify-between gap-3',
-  cardTitle: 'flex items-center gap-2.5 text-base font-semibold text-[#1A1A1A] sm:text-[17px]',
+    'pointer-events-none absolute -inset-x-1 -inset-y-3 -z-10 rounded-[32px] bg-[radial-gradient(ellipse_80%_70%_at_50%_55%,rgba(0,230,168,0.42),rgba(0,168,142,0.14)_50%,transparent_72%)] blur-2xl',
+  card: `${mintGlassCard} relative z-[1] w-full p-5 sm:p-7 lg:p-8`,
+  cardHeader: 'mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/40 pb-4 sm:mb-5',
+  cardTitle: 'flex items-center gap-2.5 text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
   cardTitleIcon:
-    'flex h-9 w-9 items-center justify-center rounded-full bg-[#00E6A8]/18 text-[#008B7D]',
+    'flex h-9 w-9 items-center justify-center rounded-full bg-[#00E6A8]/22 text-[#008B7D] shadow-[0_2px_8px_rgba(0,139,125,0.12)]',
   unitTrack:
-    'inline-flex max-w-full rounded-full bg-white/55 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.06)]',
+    'inline-flex max-w-full rounded-full border border-white/70 bg-white/50 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)]',
   unitBtn:
-    'rounded-full px-2.5 py-2 text-[10px] font-semibold leading-tight transition-all duration-200 sm:px-3.5 sm:text-[11px]',
+    'rounded-full px-3 py-2 text-[10px] font-semibold leading-tight transition-all duration-200 sm:px-4 sm:text-[11px]',
   unitOn:
-    'bg-gradient-to-r from-[#00C9A7] to-[#008B7D] text-white shadow-[0_3px_12px_rgba(0,139,125,0.35)]',
+    'bg-gradient-to-r from-[#00C9A7] to-[#008B7D] text-white shadow-[0_3px_14px_rgba(0,139,125,0.4)]',
   unitOff: 'text-[#555555] hover:text-[#1A1A1A]',
-  fieldsStack: 'flex flex-col gap-4',
+  fieldsStack: 'flex flex-col gap-4 sm:gap-5',
   sectionLabel: 'mb-2 text-xs font-semibold text-[#1A1A1A]',
   sexTrack:
-    'grid grid-cols-2 gap-0 rounded-full bg-white/65 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)]',
+    'grid grid-cols-2 gap-0 rounded-full border border-white/60 bg-white/55 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)]',
   sexBtn:
-    'flex h-11 items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-200',
+    'flex h-11 items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-200 sm:h-12',
   sexOn:
-    'bg-gradient-to-r from-[#00E6A8] to-[#008B7D] text-white shadow-[0_4px_16px_rgba(0,139,125,0.28)]',
+    'bg-gradient-to-r from-[#00E6A8] to-[#008B7D] text-white shadow-[0_4px_18px_rgba(0,139,125,0.32)]',
   sexOff: 'bg-transparent text-[#555555]',
-  metrics4: 'grid grid-cols-2 gap-3 sm:grid-cols-4',
+  metrics4: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
   metrics3: 'grid grid-cols-1 gap-3 sm:grid-cols-3',
   fieldBox:
-    'rounded-2xl border border-white/90 bg-white px-3 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]',
-  fieldInner: 'flex items-center gap-2',
+    'min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:min-h-[72px] sm:px-4',
+  fieldInner: 'flex h-full min-h-[52px] items-center gap-2.5 sm:gap-3',
   fieldIcon:
-    'flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#00E6A8]/10 text-[#008B7D]',
-  fieldLabel: 'block text-[10px] font-medium text-[#888888]',
+    'flex h-10 w-8 shrink-0 items-center justify-center text-[#00A88E] sm:w-9',
+  fieldLabel: 'block text-[10px] font-medium text-[#999999]',
   fieldInput:
-    'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-base font-semibold text-[#1A1A1A] outline-none [appearance:textfield] placeholder:font-normal placeholder:text-[#AAAAAA] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-  stepper: 'flex shrink-0 flex-col gap-0.5 border-l border-black/[0.06] pl-2',
+    'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-lg font-semibold leading-tight text-[#1A1A1A] outline-none [appearance:textfield] placeholder:font-normal placeholder:text-[#BBBBBB] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+  stepper: 'flex shrink-0 flex-col justify-center gap-0.5 border-l border-black/[0.07] pl-2.5',
   stepperBtn:
-    'flex h-5 w-6 items-center justify-center rounded-md text-[#888888] transition-colors hover:bg-[#00E6A8]/12 hover:text-[#008B7D]',
-  activityBox: 'relative rounded-2xl border border-white/90 bg-white px-3 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]',
-  activityValue: 'mt-0.5 truncate text-sm font-semibold text-[#1A1A1A] sm:text-[15px]',
-  activityChevron: 'h-4 w-4 shrink-0 text-[#888888]',
-  activitySelect:
-    'absolute inset-0 z-[2] cursor-pointer opacity-0',
-  goalHeading: 'mb-2 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
-  goalGrid: 'grid grid-cols-2 gap-2 sm:grid-cols-4',
+    'flex h-[22px] w-7 items-center justify-center rounded-md text-[#999999] transition-colors hover:bg-[#00E6A8]/15 hover:text-[#008B7D]',
+  activityBox:
+    'relative min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:min-h-[72px] sm:px-4',
+  activityValue: 'mt-0.5 truncate text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
+  activityChevron: 'h-5 w-5 shrink-0 text-[#999999]',
+  activitySelect: 'absolute inset-0 z-[2] cursor-pointer opacity-0',
+  goalHeading: 'mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
+  goalGrid: 'grid grid-cols-2 gap-2.5 lg:grid-cols-4',
   goalBtn:
-    'flex min-h-[44px] flex-col items-center justify-center rounded-2xl border border-white bg-white px-1.5 py-2 text-center text-[10px] font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/35 sm:text-[11px]',
+    'flex min-h-[46px] flex-row items-center justify-center gap-1.5 rounded-full border border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
   goalBtnOn:
-    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_3px_rgba(0,230,168,0.18),0_2px_10px_rgba(0,139,125,0.12)]',
-  submitWrap: 'relative mt-5 flex justify-start',
+    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_4px_rgba(0,230,168,0.2),0_4px_14px_rgba(0,139,125,0.14)]',
+  submitWrap: 'relative mt-6 flex w-full justify-start',
   submitGlow:
-    'pointer-events-none absolute -bottom-1 left-6 h-10 w-56 rounded-full bg-[#00E6A8]/45 blur-xl',
+    'pointer-events-none absolute -bottom-2 left-8 h-12 w-[min(100%,22rem)] rounded-full bg-[#00E6A8]/50 blur-2xl',
   submitBtn:
-    'relative z-[1] inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(0,139,125,0.45)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2',
+    'relative z-[1] inline-flex min-h-[50px] w-full min-w-0 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_32px_rgba(0,139,125,0.5)] transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[min(100%,360px)]',
   inlineSelect:
     'w-full appearance-none border-0 bg-transparent py-0.5 pr-6 text-sm font-semibold text-[#1A1A1A] outline-none focus:ring-0',
   macroExtra: 'mt-4 grid gap-4 border-t border-white/50 pt-4',
