@@ -13,11 +13,14 @@ import AppCta from './AppCta';
 import {
   ErrorBox,
   ProteinCalcButton,
+  ProteinGlassCard,
   ProteinInlineField,
+  ProteinRangeRing,
+  ProteinResultStatTiles,
   RangeBarProtein,
   SoftNote,
 } from './Parts';
-import { proteinGlass, ui } from './ui';
+import { proteinGlass, PROTEIN_CTA_PHONE_SRC, ui } from './ui';
 
 function ProteinUnitToggle({
   value,
@@ -45,7 +48,7 @@ function ProteinUnitToggle({
 
 function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
   return (
-    <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-2 min-[480px]:grid-cols-2">
       <label className={`${proteinGlass.pill} ${level === 'rda' ? proteinGlass.pillOn : ''}`}>
         <input
           className="sr-only"
@@ -100,95 +103,105 @@ export default function ProteinCalculator() {
 
   return (
     <section className={ui.stack}>
-      <form onSubmit={calculate} className={proteinGlass.cardPad}>
-        <h2 className={proteinGlass.cardTitle}>Your Details</h2>
+      <ProteinGlassCard tint="mint">
+        <form onSubmit={calculate} className={proteinGlass.cardPad}>
+          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
 
-        <div className="mt-3 hidden lg:grid lg:grid-cols-[7.5rem_minmax(9rem,11rem)_minmax(0,1fr)_auto] lg:items-end lg:gap-3">
-          <ProteinUnitToggle value={unit} onChange={setUnit} />
-          <ProteinInlineField label={`Body weight (${unit})`}>
-            <input
-              className={proteinGlass.input}
-              type="number"
-              inputMode="decimal"
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
-              placeholder={WEIGHT_PLACEHOLDER[unit]}
-              required
-            />
-          </ProteinInlineField>
-          <ActivityPills level={level} onChange={setLevel} />
-          <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
-        </div>
-
-        <div className="mt-3 grid gap-3 lg:hidden md:grid-cols-2 md:items-end">
-          <ProteinUnitToggle value={unit} onChange={setUnit} />
-          <ProteinInlineField label={`Body weight (${unit})`}>
-            <input
-              className={proteinGlass.input}
-              type="number"
-              inputMode="decimal"
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
-              placeholder={WEIGHT_PLACEHOLDER[unit]}
-              required
-            />
-          </ProteinInlineField>
-          <div className="md:col-span-2">
-            <ActivityPills level={level} onChange={setLevel} />
+          <div className="mt-3 hidden lg:block">
+            <div className="grid grid-cols-[7.5rem_minmax(9rem,11rem)_auto] items-end gap-3">
+              <ProteinUnitToggle value={unit} onChange={setUnit} />
+              <ProteinInlineField label={`Body weight (${unit})`}>
+                <input
+                  className={proteinGlass.input}
+                  type="number"
+                  inputMode="decimal"
+                  value={weight}
+                  onChange={e => setWeight(e.target.value)}
+                  placeholder={WEIGHT_PLACEHOLDER[unit]}
+                  required
+                />
+              </ProteinInlineField>
+              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
+            </div>
+            <div className="mt-3">
+              <ActivityPills level={level} onChange={setLevel} />
+            </div>
           </div>
-          {error ? (
+
+          <div className="mt-3 grid gap-3 lg:hidden md:grid-cols-2 md:items-end">
+            <ProteinUnitToggle value={unit} onChange={setUnit} />
+            <ProteinInlineField label={`Body weight (${unit})`}>
+              <input
+                className={proteinGlass.input}
+                type="number"
+                inputMode="decimal"
+                value={weight}
+                onChange={e => setWeight(e.target.value)}
+                placeholder={WEIGHT_PLACEHOLDER[unit]}
+                required
+              />
+            </ProteinInlineField>
             <div className="md:col-span-2">
+              <ActivityPills level={level} onChange={setLevel} />
+            </div>
+            {error ? (
+              <div className="md:col-span-2">
+                <ErrorBox>{error}</ErrorBox>
+              </div>
+            ) : null}
+            <div className="md:col-span-2">
+              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
+            </div>
+          </div>
+
+          {error ? (
+            <div className="mt-3 hidden lg:block">
               <ErrorBox>{error}</ErrorBox>
             </div>
           ) : null}
-          <div className="md:col-span-2">
-            <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
-          </div>
-        </div>
-
-        {error ? (
-          <div className="mt-3 hidden lg:block">
-            <ErrorBox>{error}</ErrorBox>
-          </div>
-        ) : null}
-      </form>
+        </form>
+      </ProteinGlassCard>
 
       {result ? (
         <>
-          <div ref={resultRef} className={proteinGlass.cardPad} aria-live="polite">
-            <p className={ui.resultLabel}>Your daily protein</p>
-            <p className={ui.big}>
-              {result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`}{' '}
-              <span className={ui.bigSuffix}>g</span>
-            </p>
-            <p className={ui.resultLine}>protein per day</p>
-            {result.lo !== result.hi && (
-              <RangeBarProtein lo={result.lo} hi={result.hi} rda={rda} />
-            )}
-            <div className={proteinGlass.chipRow}>
-              <div className={proteinGlass.chip}>
-                <p className={ui.chipLabel}>Per meal (about 0.25 g/kg)</p>
-                <p className={ui.chipValue}>~{result.meal} g</p>
+          <ProteinGlassCard tint="cyan">
+            <div ref={resultRef} className={proteinGlass.cardPad} aria-live="polite">
+              <p className={ui.resultLabel}>Your daily protein</p>
+              <p className={ui.big}>
+                {result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`}{' '}
+                <span className={ui.bigSuffix}>g</span>
+              </p>
+              <p className={ui.resultLine}>protein per day</p>
+
+              <div className="mt-4 flex justify-center lg:hidden">
+                <ProteinRangeRing lo={result.lo} hi={result.hi} />
               </div>
-              <div className={proteinGlass.chip}>
-                <p className={ui.chipLabel}>Factor used</p>
-                <p className={ui.chipValue}>{factorLabel}</p>
+
+              <div className={proteinGlass.resultSplit}>
+                <div className="min-w-0">
+                  <RangeBarProtein lo={result.lo} hi={result.hi} rda={rda} />
+                  <ProteinResultStatTiles meal={result.meal} factorLabel={factorLabel} />
+                  {level === 'active' && (
+                    <p className={ui.resultLine}>
+                      Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN
+                      suggests 20–40 g per dose).
+                    </p>
+                  )}
+                  <SoftNote>
+                    An estimate for healthy adults, not medical advice. If you are pregnant,
+                    breastfeeding, have kidney disease or another condition, talk to your doctor or a
+                    registered dietitian.
+                  </SoftNote>
+                </div>
+                <div className="hidden shrink-0 justify-center lg:flex lg:items-center">
+                  <ProteinRangeRing lo={result.lo} hi={result.hi} />
+                </div>
               </div>
             </div>
-            {level === 'active' && (
-              <p className={ui.resultLine}>
-                Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN
-                suggests 20–40 g per dose).
-              </p>
-            )}
-            <SoftNote>
-              An estimate for healthy adults, not medical advice. If you are pregnant,
-              breastfeeding, have kidney disease or another condition, talk to your doctor or a
-              registered dietitian.
-            </SoftNote>
-          </div>
+          </ProteinGlassCard>
           <AppCta
             glass
+            phoneSrc={PROTEIN_CTA_PHONE_SRC}
             headline="Track this every day with ProteinSnaps."
             text="Snap a photo of your meal for an estimate of protein, macros and calories, scan packaged food barcodes, and let Fill the Gap show what's left for the day."
           />

@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import type { Goal } from './energyMath';
 import { proteinGlass, ui } from './ui';
@@ -21,6 +22,19 @@ const svg = {
 export const ArrowIcon = () => (
   <svg {...svg} width={18} height={18}>
     <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
+
+export const MealIcon = () => (
+  <svg {...svg} width={22} height={22}>
+    <path d="M4 11h16M4 7h16M4 15h10" />
+    <circle cx="18" cy="15" r="2" />
+  </svg>
+);
+
+export const ScaleIcon = () => (
+  <svg {...svg} width={22} height={22}>
+    <path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5" />
   </svg>
 );
 export const WarnIcon = () => (
@@ -589,6 +603,119 @@ export function ProteinGlassBackdrop() {
   );
 }
 
+export function ProteinGlassCard({
+  children,
+  className = '',
+  tint = 'mint',
+}: {
+  children: ReactNode;
+  className?: string;
+  tint?: 'mint' | 'cyan';
+}) {
+  const glow = tint === 'cyan' ? proteinGlass.cardGlowCyan : proteinGlass.cardGlow;
+  return (
+    <div className={`${proteinGlass.cardGlowWrap} ${className}`}>
+      <div className={glow} aria-hidden />
+      {children}
+    </div>
+  );
+}
+
+export function ProteinRangeRing({ lo, hi }: { lo: number; hi: number }) {
+  const gradId = useId();
+  const cap = Math.max(hi, lo, 1) * 1.35;
+  const same = lo === hi;
+  const startPct = lo / cap;
+  const endPct = same ? lo / cap : hi / cap;
+  const arcPct = Math.max((endPct - startPct) * 100, same ? (lo / cap) * 100 : 2);
+  const gap = 100 - arcPct;
+  const offset = 25 - startPct * 100;
+  const center = same ? `${lo} g` : `${lo}–${hi} g`;
+  return (
+    <svg
+      viewBox="0 0 42 42"
+      className="h-36 w-36 shrink-0 sm:h-40 sm:w-40"
+      role="img"
+      aria-label={`Daily protein ${center}`}
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#00E6A8" />
+          <stop offset="100%" stopColor="#00C2FF" />
+        </linearGradient>
+      </defs>
+      <circle
+        cx="21"
+        cy="21"
+        r="15.9155"
+        fill="none"
+        stroke="rgba(0,0,0,0.06)"
+        strokeWidth="4.5"
+      />
+      <circle
+        cx="21"
+        cy="21"
+        r="15.9155"
+        fill="none"
+        stroke={`url(#${gradId})`}
+        strokeWidth="4.5"
+        strokeLinecap="round"
+        strokeDasharray={`${arcPct} ${gap}`}
+        strokeDashoffset={offset}
+      />
+      <text
+        x="21"
+        y="20"
+        textAnchor="middle"
+        className="fill-[#1A1A1A] font-serif"
+        style={{ fontSize: same ? 5.5 : 4.8, fontWeight: 600 }}
+      >
+        {center}
+      </text>
+      <text
+        x="21"
+        y="26.5"
+        textAnchor="middle"
+        className="fill-[#555555]"
+        style={{ fontSize: 2.6 }}
+      >
+        per day
+      </text>
+    </svg>
+  );
+}
+
+export function ProteinResultStatTiles({
+  meal,
+  factorLabel,
+}: {
+  meal: number;
+  factorLabel: string;
+}) {
+  return (
+    <div className={proteinGlass.chipRow}>
+      <div className={proteinGlass.resultTile}>
+        <div className={proteinGlass.resultTileIcon}>
+          <MealIcon />
+        </div>
+        <div className="min-w-0">
+          <p className={ui.chipLabel}>Per meal (about 0.25 g/kg)</p>
+          <p className={`${ui.chipValue} mt-0.5`}>~{meal} g</p>
+        </div>
+      </div>
+      <div className={proteinGlass.resultTile}>
+        <div className={proteinGlass.resultTileIcon}>
+          <ScaleIcon />
+        </div>
+        <div className="min-w-0">
+          <p className={ui.chipLabel}>Factor used</p>
+          <p className={`${ui.chipValue} mt-0.5 text-xl sm:text-2xl`}>{factorLabel}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ProteinCalcHero({
   badge,
   titleBefore,
@@ -603,19 +730,31 @@ export function ProteinCalcHero({
   chips: string[];
 }) {
   return (
-    <header>
-      <p className={proteinGlass.heroBadge}>{badge}</p>
-      <h1 className={`${ui.h1} mt-4`}>
-        {titleBefore}
-        <span className={ui.h1Mint}>{titleMint}</span>
-      </h1>
-      <p className={ui.lead}>{intro}</p>
-      <div className={ui.heroChips}>
-        {chips.map(c => (
-          <span key={c} className={proteinGlass.heroChip}>
-            {c}
-          </span>
-        ))}
+    <header className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,340px)] lg:items-center lg:gap-10">
+      <div>
+        <p className={proteinGlass.heroBadge}>{badge}</p>
+        <h1 className={`${ui.h1} mt-4`}>
+          {titleBefore}
+          <span className={ui.h1Mint}>{titleMint}</span>
+        </h1>
+        <p className={ui.lead}>{intro}</p>
+        <div className={proteinGlass.heroChipGrid}>
+          {chips.map(c => (
+            <span key={c} className={proteinGlass.heroChip}>
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className={proteinGlass.heroImageWrap}>
+        <Image
+          src="/images/proteinsnaps/calculators/protein-bowl.webp"
+          alt="Protein-rich meal bowl with chicken, grains and vegetables"
+          width={680}
+          height={680}
+          className={proteinGlass.heroImage}
+          priority
+        />
       </div>
     </header>
   );
@@ -650,12 +789,14 @@ export function ProteinCalcButton({ children }: { children: ReactNode }) {
 export function ProteinGlassFeatureCards() {
   return (
     <div className={ui.featureGrid}>
-      {FEATURES.map(f => (
-        <div key={f.title} className={proteinGlass.featureCard}>
-          <div className={ui.featureIcon}>{f.icon}</div>
-          <p className={ui.featureTitle}>{f.title}</p>
-          <p className={`${ui.body} mt-2`}>{f.text}</p>
-        </div>
+      {FEATURES.map((f, i) => (
+        <ProteinGlassCard key={f.title} tint={i % 2 ? 'cyan' : 'mint'}>
+          <div className={proteinGlass.featureCard}>
+            <div className={ui.featureIcon}>{f.icon}</div>
+            <p className={ui.featureTitle}>{f.title}</p>
+            <p className={`${ui.body} mt-2`}>{f.text}</p>
+          </div>
+        </ProteinGlassCard>
       ))}
     </div>
   );
@@ -663,6 +804,7 @@ export function ProteinGlassFeatureCards() {
 
 export function ProteinGlassFaqList({ items }: { items: { q: string; a: string }[] }) {
   return (
+    <ProteinGlassCard tint="cyan">
     <div className={proteinGlass.faq}>
       {items.map(f => (
         <details key={f.q} className={proteinGlass.faqItem}>
@@ -676,6 +818,7 @@ export function ProteinGlassFaqList({ items }: { items: { q: string; a: string }
         </details>
       ))}
     </div>
+    </ProteinGlassCard>
   );
 }
 
@@ -720,14 +863,16 @@ export function ProteinGlassMoreFreeTools() {
             </p>
           </>
         );
-        return here ? (
-          <div key={t.id} className={`${proteinGlass.toolCard} ${proteinGlass.toolCardHere}`}>
-            {inner}
-          </div>
-        ) : (
-          <Link key={t.id} href={t.href} className={proteinGlass.toolCard}>
-            {inner}
-          </Link>
+        return (
+          <ProteinGlassCard key={t.id} tint={t.id === 'calorie' ? 'cyan' : 'mint'}>
+            {here ? (
+              <div className={`${proteinGlass.toolCard} ${proteinGlass.toolCardHere}`}>{inner}</div>
+            ) : (
+              <Link href={t.href} className={proteinGlass.toolCard}>
+                {inner}
+              </Link>
+            )}
+          </ProteinGlassCard>
         );
       })}
     </div>

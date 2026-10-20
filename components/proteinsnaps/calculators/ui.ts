@@ -141,25 +141,54 @@ export const proteinGlass = {
     'inline-flex h-11 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
   toggleBtn:
     'flex-1 rounded-full px-2 py-2 text-center text-xs font-semibold text-[#555555] transition-colors',
-  toggleOn: 'bg-white/90 text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
-  toggleOff: 'hover:text-[#1A1A1A]',
+  toggleOn:
+    'border border-[#00A876]/90 bg-[#00E6A8] font-bold text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
+  toggleOff:
+    'border border-transparent bg-white/55 font-medium text-[#555555] hover:text-[#1A1A1A]',
   activityCol: 'grid gap-2 sm:grid-cols-2 lg:col-span-1 lg:grid-cols-1',
   pill:
-    'flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/65 px-2.5 py-2 text-center text-[11px] font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:text-xs lg:text-[11px]',
-  pillOn: 'border-[#00B386]/80 bg-[#00E6A8]/20 font-semibold text-[#1A1A1A]',
+    'flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/55 px-3 py-2.5 text-center text-xs font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] whitespace-normal',
+  pillOn:
+    'border-[#00A876] bg-[#00E6A8]/45 font-bold text-[#1A1A1A]',
+  cardGlowWrap: 'relative isolate',
+  cardGlow:
+    'pointer-events-none absolute -inset-3 -z-10 rounded-[28px] bg-[#00E6A8]/[0.12] blur-2xl sm:-inset-4',
+  cardGlowCyan:
+    'pointer-events-none absolute -inset-3 -z-10 rounded-[28px] bg-[#00C2FF]/[0.1] blur-2xl sm:-inset-4',
+  heroChip:
+    'flex min-h-[40px] items-center justify-center rounded-full border border-white/70 bg-white/50 px-3 py-2 text-center text-xs font-medium text-[#555555] shadow-[0_4px_14px_rgba(0,0,0,0.06)] backdrop-blur-md sm:text-[13px]',
+  heroChipGrid: 'mt-5 grid grid-cols-1 gap-2 min-[480px]:grid-cols-3',
+  heroImageWrap:
+    'relative mx-auto mt-8 max-w-sm overflow-hidden lg:mx-0 lg:mt-0 lg:max-w-none',
+  heroImage:
+    'h-auto w-full max-h-[220px] object-cover object-center [mask-image:radial-gradient(ellipse_85%_75%_at_50%_50%,#000_55%,transparent_100%)] lg:max-h-[280px]',
+  resultSplit: 'mt-4 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center',
+  resultTile:
+    'flex gap-3 rounded-[20px] border border-white/70 bg-white/[0.55] p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px]',
+  resultTileIcon:
+    'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00E6A8]/20 text-[#00B386]',
+  badgeBox: 'flex h-12 w-40 items-center justify-center',
+  badgeImg: 'h-full w-full object-contain object-center',
+  ctaGrid:
+    'grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:items-start lg:gap-6 xl:gap-8',
+  phoneFrame:
+    'relative mx-auto w-[min(100%,200px)] rounded-[2rem] border-[6px] border-[#1A1A1A] bg-[#1A1A1A] p-1 shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:w-[200px]',
+  phoneScreen: 'overflow-hidden rounded-[1.4rem] bg-white',
   button:
     'inline-flex h-11 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-4 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-opacity hover:opacity-95 lg:w-auto lg:min-w-[11.5rem]',
   chipRow: 'mt-4 grid grid-cols-2 gap-3',
   chip: `${glassCard} px-3 py-2.5`,
   heroBadge:
     'inline-flex items-center rounded-full border border-white/70 bg-white/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00785A] backdrop-blur-md',
-  heroChip:
-    'rounded-full border border-white/70 bg-white/50 px-3 py-1.5 text-xs font-medium text-[#555555] backdrop-blur-md sm:text-[13px]',
   panel: `${glassCard} p-5 sm:p-6`,
   featureCard: `${glassCard} p-5`,
   faq: `${glassCard} divide-y divide-white/60 overflow-hidden`,
   faqItem: 'group',
   toolCard: `${glassCard} flex flex-col p-4 transition-colors hover:border-[#00B386]/30`,
   toolCardHere: 'border-[#00B386]/50 bg-white/60',
-  cta: `${glassCard} grid gap-6 p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-start`,
+  cta: `${glassCard} p-5 sm:p-7`,
+  sourcesCard: `${glassCard} p-5 sm:p-6`,
 } as const;
+
+export const STORE_BADGE_BOX = { w: 160, h: 48 } as const;
+export const PROTEIN_CTA_PHONE_SRC = '/images/proteinsnaps/homepageCards-PS2.webp';

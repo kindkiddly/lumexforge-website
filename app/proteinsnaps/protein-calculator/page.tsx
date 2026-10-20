@@ -4,6 +4,7 @@ import ProteinCalculator from '@/components/proteinsnaps/calculators/ProteinCalc
 import {
   ProteinCalcHero,
   ProteinGlassBackdrop,
+  ProteinGlassCard,
   ProteinGlassFaqList,
   ProteinGlassFeatureCards,
   ProteinGlassMoreFreeTools,
@@ -76,22 +77,28 @@ export default function Page() {
           <h2 className={ui.h2}>Keep your numbers on track</h2>
           <ProteinGlassFeatureCards />
           <h2 className={ui.h2}>How it works</h2>
-          <div className={proteinGlass.panel}>
-            <p className={ui.body}>
-              Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who are
-              not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly, from the
-              ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg.
-            </p>
-          </div>
+          <ProteinGlassCard tint="cyan">
+            <div className={`${proteinGlass.cardPad}`}>
+              <p className={ui.body}>
+                Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who
+                are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
+                from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg.
+              </p>
+            </div>
+          </ProteinGlassCard>
           <h2 className={ui.h2}>FAQ</h2>
           <ProteinGlassFaqList items={faqs} />
           <h2 className={ui.h2}>Source</h2>
-          <SourceLinks>
-            <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
-              Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and
-              exercise. J Int Soc Sports Nutr. 2017;14:20.
-            </SourceItem>
-          </SourceLinks>
+          <ProteinGlassCard tint="mint">
+            <div className={`${proteinGlass.cardPad}`}>
+              <SourceLinks>
+                <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
+                  Jäger R, et al. International Society of Sports Nutrition Position Stand: protein
+                  and exercise. J Int Soc Sports Nutr. 2017;14:20.
+                </SourceItem>
+              </SourceLinks>
+            </div>
+          </ProteinGlassCard>
           <h2 className={ui.h2}>More free tools</h2>
           <ProteinGlassMoreFreeTools />
         </div>
