@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useId, useSyncExternalStore, type ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import { textWithBrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import type { Goal } from './energyMath';
@@ -599,18 +599,6 @@ function gaugeAngle(v: number, min: number, max: number) {
   return 180 - Math.max(0, Math.min(1, t)) * 180;
 }
 
-function useMinWidthLg() {
-  return useSyncExternalStore(
-    onStoreChange => {
-      const mq = window.matchMedia('(min-width: 1024px)');
-      mq.addEventListener('change', onStoreChange);
-      return () => mq.removeEventListener('change', onStoreChange);
-    },
-    () => window.matchMedia('(min-width: 1024px)').matches,
-    () => false,
-  );
-}
-
 export function CalorieGauge({
   bmr,
   tdee,
@@ -626,7 +614,6 @@ export function CalorieGauge({
   goal: Goal;
   belowBmr: boolean;
 }) {
-  const showArcLabels = useMinWidthLg();
   const target = goal === 'recomp' ? tdee : low;
   const min = Math.min(bmr, low, tdee) - 150;
   const max = Math.max(bmr, high, tdee) + 150;
@@ -651,31 +638,12 @@ export function CalorieGauge({
       />
     );
   };
-  const marker = (
-    value: number,
-    color: string,
-    id: string,
-    arcLabel: string | null,
-  ) => {
+  const marker = (value: number, color: string, id: string) => {
     const deg = gaugeAngle(value, min, max);
     const p = pt(deg);
-    const outerR = r + 14;
-    const rad = (deg * Math.PI) / 180;
-    const ox = cx + outerR * Math.cos(rad);
-    const oy = cy - outerR * Math.sin(rad);
     return (
       <g key={id}>
         <circle cx={p.x} cy={p.y} r={5} fill="white" stroke={color} strokeWidth={2.5} />
-        {showArcLabels && arcLabel ? (
-          <text
-            x={ox}
-            y={oy}
-            textAnchor="middle"
-            className="fill-[#555555] text-[9px] font-medium"
-          >
-            {arcLabel}
-          </text>
-        ) : null}
       </g>
     );
   };
@@ -719,16 +687,15 @@ export function CalorieGauge({
             arcColor,
             12,
           )}
-        {marker(bmr, '#00785A', 'bmr', 'BMR')}
-        {marker(tdee, '#00C2FF', 'tdee', 'TDEE')}
+        {marker(bmr, '#00785A', 'bmr')}
+        {marker(tdee, '#00C2FF', 'tdee')}
         {marker(
           goal === 'recomp' ? tdee : low,
           belowBmr ? '#c62828' : '#1A1A1A',
           'target',
-          null,
         )}
       </svg>
-      <div className="mt-3 grid grid-cols-1 gap-2 text-[11px] text-[#555555] max-lg:max-w-[240px] max-lg:mx-auto lg:flex lg:flex-wrap lg:justify-center lg:gap-3 lg:text-[10px]">
+      <div className="mt-3 grid grid-cols-1 gap-2 text-[11px] text-[#555555] max-lg:max-w-[240px] max-lg:mx-auto lg:mt-6 lg:flex lg:flex-wrap lg:justify-center lg:gap-4 lg:rounded-full lg:bg-white lg:px-4 lg:py-2.5 lg:text-[10px] lg:shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
         <span className="inline-flex items-center justify-center gap-1.5 lg:justify-start">
           <span className="h-2 w-2 shrink-0 rounded-full bg-[#00785A]" />
           BMR
