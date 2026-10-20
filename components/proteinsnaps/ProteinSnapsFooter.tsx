@@ -9,7 +9,7 @@ export function ProteinSnapsFooter() {
   return (
     <footer className="ps-site-footer">
       <div className="ps-site-footer-inner mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="ps-site-footer-grid lg:!grid-cols-4">
+        <div className="ps-site-footer-grid !grid-cols-3 !gap-x-3 sm:!gap-x-6 lg:!grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="ps-site-footer-brand">
             <p className="ps-site-footer-brand-title font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>

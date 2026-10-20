@@ -6,7 +6,7 @@ const glass =
 const glow =
   'transition-all duration-300 hover:border-[#00E6A8]/35 hover:shadow-[0_0_32px_-8px_rgba(0,230,168,0.35),0_0_48px_-12px_rgba(0,194,255,0.25)]';
 const field =
-  'mt-1 w-full rounded-[20px] border border-black/10 bg-white/60 px-4 py-3 font-sans text-sm text-[#1A1A1A] placeholder:text-[#555555]/60 focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/30';
+  'w-full rounded-[20px] border border-black/10 bg-white/60 pl-11 pr-4 py-3 font-sans text-sm text-[#1A1A1A] placeholder:text-[#555555]/60 focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/30';
 const pill =
   'inline-flex cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white/60 px-4 py-2 text-sm font-medium text-[#1A1A1A] transition-all hover:border-[#00B386]/60';
 const pillOn =
@@ -14,28 +14,30 @@ const pillOn =
 
 export const ui = {
   // page
-  main: 'mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-20 pb-8 lg:pt-28 lg:pb-10',
-  hero: 'ps-page-hero',
-  heroGrid: 'grid items-center gap-6 md:grid-cols-[1.15fr_0.85fr] md:gap-10',
-  heroImage: 'relative hidden aspect-[4/3] overflow-hidden rounded-[20px] border border-white/70 shadow-[0_8px_32px_rgba(0,0,0,0.12)] sm:block',
+  main: 'mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 pb-6 lg:pt-28 lg:pb-8',
+  hero: '',
+  heroGrid: 'grid items-center gap-4 md:grid-cols-[1.3fr_0.7fr] md:gap-8',
+  heroImage: 'relative hidden aspect-[16/10] overflow-hidden rounded-[20px] border border-white/70 shadow-[0_8px_32px_rgba(0,0,0,0.12)] sm:block',
   h1: 'font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#1A1A1A]',
-  h2: 'font-serif text-xl sm:text-2xl font-semibold text-[#1A1A1A] mt-12',
-  lead: 'mt-4 text-base leading-relaxed text-[#555555]',
+  h2: 'font-serif text-xl sm:text-2xl font-semibold text-[#1A1A1A] mt-10',
+  lead: 'mt-3 text-base leading-relaxed text-[#555555]',
   body: 'mt-3 text-sm sm:text-base leading-relaxed text-[#555555]',
   link: 'font-semibold text-[#00B386] transition-colors hover:text-[#00E6A8]',
   prose: 'mx-auto max-w-4xl',
   // layout
-  grid: 'mt-8 grid gap-6 lg:grid-cols-2 lg:items-start',
-  card: `${glass} ${glow} p-5 sm:p-7`,
-  resultCard: `${glass} p-5 sm:p-7 lg:sticky lg:top-24`,
+  grid: 'mt-5 grid gap-5 lg:grid-cols-2 lg:items-stretch',
+  card: `${glass} ${glow} p-5 sm:p-6`,
+  resultCard: `${glass} flex flex-col p-5 sm:p-6`,
   cardTitle: 'font-serif text-lg font-semibold text-[#1A1A1A]',
-  form: 'mt-4 grid gap-5',
+  form: 'mt-4 grid gap-4',
   row: 'grid grid-cols-2 gap-3',
   // form controls
   label: 'block text-sm font-semibold text-[#1A1A1A]',
   fieldset: 'grid gap-2',
   legend: 'text-sm font-semibold text-[#1A1A1A]',
   hint: 'text-xs font-normal text-[#555555]',
+  fieldWrap: 'relative mt-1 block',
+  fieldIcon: 'pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#00B386]',
   input: field,
   select: field,
   pillGroup: 'mt-2 flex flex-wrap gap-2',
@@ -45,31 +47,33 @@ export const ui = {
   optionCard:
     'flex cursor-pointer items-start gap-3 rounded-[20px] border border-black/10 bg-white/60 px-4 py-3 text-sm text-[#1A1A1A] transition-all hover:border-[#00B386]/60 has-[:checked]:!border-[#00B386] has-[:checked]:!bg-[#00E6A8]/15 has-[:checked]:shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)]',
   radio: 'accent-[#00B386]',
-  toggle: 'inline-flex flex-wrap gap-2',
-  toggleOn: `${pill} ${pillOn} !text-[#1A1A1A]`,
-  toggleOff: pill,
+  toggle: 'inline-flex w-fit gap-1 rounded-full border border-black/10 bg-white/50 p-1',
+  toggleOn: 'rounded-full border border-[#00B386] bg-[#00E6A8]/30 px-5 py-1.5 text-sm font-semibold text-[#1A1A1A] shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)]',
+  toggleOff: 'rounded-full border border-transparent px-5 py-1.5 text-sm font-medium text-[#555555] transition-colors hover:text-[#1A1A1A]',
   button: 'ps-btn solid ps-glow-button w-full sm:w-auto',
   note: 'text-xs leading-relaxed text-[#555555]',
   // result card
-  resultLabel: 'text-xs font-semibold uppercase tracking-[0.12em] text-[#00B386]',
+  resultLabel: 'flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#00B386]',
   big: 'mt-2 font-serif text-4xl sm:text-5xl font-semibold leading-tight text-[#1A1A1A]',
   bigUnit: 'font-sans text-lg font-normal text-[#555555] sm:text-xl',
   resultLine: 'mt-3 text-sm leading-relaxed text-[#555555]',
-  placeholder: 'flex min-h-[220px] flex-col items-center justify-center gap-3 text-center text-sm text-[#555555]',
+  placeholder: 'flex min-h-[220px] flex-1 flex-col items-center justify-center gap-3 text-center text-sm text-[#555555]',
   placeholderIcon: 'flex h-12 w-12 items-center justify-center rounded-full border border-[#00B386]/30 bg-[#00E6A8]/15 text-[#00B386]',
   chips: 'mt-5 grid gap-3 sm:grid-cols-2',
-  chip: 'rounded-[16px] border border-white/70 bg-white/60 px-4 py-3',
+  chip: 'flex items-center gap-3 rounded-[16px] border border-white/70 bg-white/60 px-4 py-3',
+  badge: 'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#00B386]/30 bg-[#00E6A8]/15 text-[#00B386]',
   chipLabel: 'text-xs text-[#555555]',
   chipValue: 'font-serif text-lg font-semibold text-[#1A1A1A]',
-  barTrack: 'relative mt-5 h-3 w-full rounded-full bg-black/[0.06]',
-  barFill: 'absolute inset-y-0 left-0 right-0 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00C2FF]',
+  barTrack: 'relative mt-6 h-1.5 w-full rounded-full bg-black/[0.08]',
+  barFill: 'absolute inset-y-0 left-0 right-0 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386]',
+  barDot: 'absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#00B386] shadow-[0_0_10px_rgba(0,230,168,0.7)]',
   barLabels: 'mt-2 flex justify-between text-xs text-[#555555]',
   macroCols: 'mt-5 grid grid-cols-3 gap-2 text-center sm:gap-4',
   macroPct: 'font-serif text-2xl font-semibold text-[#1A1A1A]',
-  notes: 'mt-5 grid gap-3',
+  notes: 'mt-4 grid gap-3',
   // notices
-  error: 'flex items-start gap-3 rounded-[20px] border border-red-300/70 bg-red-500/10 px-4 py-4 text-sm font-semibold leading-relaxed text-red-700 backdrop-blur',
-  softNote: 'flex items-start gap-3 rounded-[16px] border border-[#00B386]/25 bg-[#00E6A8]/10 px-4 py-3 text-xs leading-relaxed text-[#555555]',
+  error: 'flex items-center gap-3 rounded-[20px] border border-red-300/70 bg-red-500/10 px-4 py-4 text-sm font-semibold leading-relaxed text-red-700 backdrop-blur',
+  softNote: 'flex items-center gap-3 rounded-[16px] border border-[#00B386]/25 bg-[#00E6A8]/10 px-4 py-3 text-xs leading-relaxed text-[#555555]',
   // app CTA
   cta: `${glass} ${glow} mt-6 grid items-center gap-6 p-5 sm:p-7 md:grid-cols-[1fr_auto]`,
   ctaButtons: 'mt-4 flex flex-wrap gap-3',
@@ -78,7 +82,7 @@ export const ui = {
   phone: 'relative mx-auto hidden aspect-[9/16] w-[150px] overflow-hidden rounded-[28px] border-[6px] border-[#1A1A1A] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.35)] md:block',
   // content sections
   panel: `${glass} p-5 sm:p-6`,
-  faq: 'mt-4 grid gap-3',
+  faq: 'mt-4 grid gap-2.5',
   faqItem: `${glass} group px-5 py-4`,
   faqSummary: 'flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-base font-semibold text-[#1A1A1A] [&::-webkit-details-marker]:hidden',
   faqAnswer: 'mt-3 text-sm leading-relaxed text-[#555555]',

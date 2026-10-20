@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DEFAULT_WEIGHT_UNIT, WEIGHT_PLACEHOLDER, proteinRange, type Level, type WeightUnit } from './proteinMath';
 import { UnitToggle } from './BodyInputs';
 import AppCta from './AppCta';
-import { CalcButton, ErrorBox, Placeholder, RangeBar, SoftNote } from './Parts';
+import { CalcButton, ErrorBox, Field, Placeholder, RangeBar, ResultLabel, ScaleIcon, SoftNote, TargetIcon } from './Parts';
 import { ui } from './ui';
 
 export default function ProteinCalculator() {
@@ -25,9 +25,9 @@ export default function ProteinCalculator() {
           <h2 className={ui.cardTitle}>Your Details</h2>
           <div className={ui.form}>
             <UnitToggle value={unit} onChange={v => setUnit(v as WeightUnit)} options={[{ value: 'lb', label: 'lb' }, { value: 'kg', label: 'kg' }]} />
-            <label className={ui.label}>Body weight ({unit})
+            <Field label={`Body weight (${unit})`} icon={<ScaleIcon />}>
               <input className={ui.input} type="number" inputMode="decimal" value={weight} onChange={e => setWeight(e.target.value)} placeholder={WEIGHT_PLACEHOLDER[unit]} required />
-            </label>
+            </Field>
             <fieldset className={ui.fieldset}>
               <legend className={ui.legend}>Activity</legend>
               <label className={ui.optionCard}><input className={ui.radio} type="radio" name="level" checked={level === 'rda'} onChange={() => setLevel('rda')} /> Not regularly exercising (general adult baseline)</label>
@@ -38,7 +38,7 @@ export default function ProteinCalculator() {
         </form>
         <div className={ui.resultCard} aria-live="polite">
           {error ? <ErrorBox>{error}</ErrorBox> : result ? (<>
-            <p className={ui.resultLabel}>Daily protein target</p>
+            <ResultLabel icon={<TargetIcon />}>Daily protein target</ResultLabel>
             <p className={ui.big}>{result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`} <span className={ui.bigUnit}>g / day</span></p>
             {result.lo !== result.hi && <RangeBar lo={result.lo} hi={result.hi} />}
             {level === 'active' && <p className={ui.resultLine}>Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN suggests 20–40 g per dose).</p>}

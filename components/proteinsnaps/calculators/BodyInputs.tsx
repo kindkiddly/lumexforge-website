@@ -1,6 +1,6 @@
 'use client';
 import { ACTIVITY, GOAL, type Activity, type Goal, type Sex } from './energyMath';
-import { PillButtons } from './Parts';
+import { BoltIcon, Field, PillButtons, RulerIcon, ScaleIcon, UserIcon } from './Parts';
 import { ui } from './ui';
 export type UnitSystem = 'imperial' | 'metric';
 export interface BodyState { sex: Sex; age: string; unit: UnitSystem; kg: string; cm: string; lb: string; ft: string; inch: string; activity: Activity; goal: Goal }
@@ -31,20 +31,20 @@ export default function BodyInputs({ s, set, onGoal }: { s: BodyState; set: (p: 
           <label className={ui.pillRadio}><input className="sr-only" type="radio" name="sex" checked={s.sex === 'male'} onChange={() => set({ sex: 'male' })} />Male</label>
         </div>
       </fieldset>
-      <label className={ui.label}>Age<input className={ui.input} type="number" inputMode="numeric" value={s.age} onChange={e => set({ age: e.target.value })} placeholder={`e.g. ${PLACEHOLDERS.age}`} required /></label>
+      <Field label="Age" icon={<UserIcon />}><input className={ui.input} type="number" inputMode="numeric" value={s.age} onChange={e => set({ age: e.target.value })} placeholder={`e.g. ${PLACEHOLDERS.age}`} required /></Field>
       {s.unit === 'imperial' ? (<>
         <div className={ui.row}>
-          <label className={ui.label}>Height (ft)<input className={ui.input} type="number" inputMode="numeric" value={s.ft} onChange={e => set({ ft: e.target.value })} placeholder={PLACEHOLDERS.ft} required /></label>
-          <label className={ui.label}>Height (in)<input className={ui.input} type="number" inputMode="decimal" value={s.inch} onChange={e => set({ inch: e.target.value })} placeholder={PLACEHOLDERS.inch} /></label>
+          <Field label="Height (ft)" icon={<RulerIcon />}><input className={ui.input} type="number" inputMode="numeric" value={s.ft} onChange={e => set({ ft: e.target.value })} placeholder={PLACEHOLDERS.ft} required /></Field>
+          <Field label="Height (in)" icon={<RulerIcon />}><input className={ui.input} type="number" inputMode="decimal" value={s.inch} onChange={e => set({ inch: e.target.value })} placeholder={PLACEHOLDERS.inch} /></Field>
         </div>
-        <label className={ui.label}>Weight (lb)<input className={ui.input} type="number" inputMode="decimal" value={s.lb} onChange={e => set({ lb: e.target.value })} placeholder={PLACEHOLDERS.lb} required /></label>
+        <Field label="Weight (lb)" icon={<ScaleIcon />}><input className={ui.input} type="number" inputMode="decimal" value={s.lb} onChange={e => set({ lb: e.target.value })} placeholder={PLACEHOLDERS.lb} required /></Field>
       </>) : (<div className={ui.row}>
-        <label className={ui.label}>Height (cm)<input className={ui.input} type="number" inputMode="decimal" value={s.cm} onChange={e => set({ cm: e.target.value })} placeholder={PLACEHOLDERS.cm} required /></label>
-        <label className={ui.label}>Weight (kg)<input className={ui.input} type="number" inputMode="decimal" value={s.kg} onChange={e => set({ kg: e.target.value })} placeholder={PLACEHOLDERS.kg} required /></label>
+        <Field label="Height (cm)" icon={<RulerIcon />}><input className={ui.input} type="number" inputMode="decimal" value={s.cm} onChange={e => set({ cm: e.target.value })} placeholder={PLACEHOLDERS.cm} required /></Field>
+        <Field label="Weight (kg)" icon={<ScaleIcon />}><input className={ui.input} type="number" inputMode="decimal" value={s.kg} onChange={e => set({ kg: e.target.value })} placeholder={PLACEHOLDERS.kg} required /></Field>
       </div>)}
-      <label className={ui.label}>Activity<select className={ui.select} value={s.activity} onChange={e => set({ activity: e.target.value as Activity })}>
+      <Field label="Activity" icon={<BoltIcon />}><select className={ui.select} value={s.activity} onChange={e => set({ activity: e.target.value as Activity })}>
         {(Object.keys(ACTIVITY) as Activity[]).map(k => <option key={k} value={k}>{ACTIVITY[k].label} (×{ACTIVITY[k].factor})</option>)}
-      </select></label>
+      </select></Field>
       <div><span className={ui.legend}>Goal</span>
         <PillButtons<Goal> label="Goal" value={s.goal} onChange={g => { set({ goal: g }); onGoal?.(g); }}
           options={(Object.keys(GOAL) as Goal[]).map(k => ({ value: k, label: GOAL[k].label }))} />

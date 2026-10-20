@@ -5,7 +5,7 @@ import { toMetric } from './bodyParse';
 import { energy, validate, type EnergyResult } from './energyMath';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
-import { CalcButton, ErrorBox, Placeholder } from './Parts';
+import { BoltIcon, CalcButton, ErrorBox, FlameIcon, Placeholder, ResultLabel, StatChip } from './Parts';
 import { ui } from './ui';
 
 export default function CalorieCalculator() {
@@ -32,11 +32,11 @@ export default function CalorieCalculator() {
         </form>
         <div className={ui.resultCard} aria-live="polite">
           {error ? <ErrorBox>{error}</ErrorBox> : r ? (<>
-            <p className={ui.resultLabel}>Your daily calorie target</p>
-            <p className={ui.big}>{r.low === r.high ? n(r.low) : `${n(r.low)}–${n(r.high)}`} <span className={ui.bigUnit}>kcal / day</span></p>
+            <ResultLabel icon={<FlameIcon />}>Your daily calorie target</ResultLabel>
+            <p className={ui.big}><span className={ui.bigUnit}>About</span> {r.low === r.high ? n(r.low) : `${n(r.low)}–${n(r.high)}`} <span className={ui.bigUnit}>kcal / day</span></p>
             <div className={ui.chips}>
-              <div className={ui.chip}><p className={ui.chipLabel}>Maintenance (TDEE)</p><p className={ui.chipValue}>{n(r.tdee)} kcal</p></div>
-              <div className={ui.chip}><p className={ui.chipLabel}>Resting energy (BMR)</p><p className={ui.chipValue}>{n(r.bmr)} kcal</p></div>
+              <StatChip icon={<FlameIcon />} label="Maintenance (TDEE)" value={`${n(r.tdee)} kcal`} />
+              <StatChip icon={<BoltIcon />} label="Resting energy (BMR)" value={`${n(r.bmr)} kcal`} />
             </div>
             <p className={ui.resultLine}>Goal adjustment uses the ProteinSnaps app&apos;s settings.</p>
             <p className={ui.resultLine}><a className={ui.link} href="/macro-calculator">Turn this into protein, carbs and fat →</a></p>
