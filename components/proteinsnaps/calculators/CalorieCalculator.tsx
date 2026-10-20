@@ -41,7 +41,10 @@ export default function CalorieCalculator() {
     const res = energy(s.sex, kg, cm, age, s.activity, s.goal);
     setR(res);
     requestAnimationFrame(() => {
-      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const el = resultRef.current;
+      if (!el) return;
+      const mobile = window.matchMedia('(max-width: 1023px)').matches;
+      el.scrollIntoView({ behavior: 'smooth', block: mobile ? 'center' : 'start' });
     });
   }
 
@@ -65,11 +68,22 @@ export default function CalorieCalculator() {
 
       {r ? (
         <>
-          <div ref={resultRef} className={ui.cardPad} aria-live="polite">
-            <div className={ui.resultGrid}>
-              <div>
+          <div
+            ref={resultRef}
+            className={`${ui.cardPad} max-lg:scroll-mt-28`}
+            aria-live="polite"
+          >
+            <div className={`${ui.resultGrid} max-lg:flex max-lg:flex-col max-lg:gap-6`}>
+              <div className="min-w-0">
                 <p className={ui.resultLabel}>Your daily calorie target</p>
-                <p className={ui.big}>
+                <div className="mt-2 lg:hidden">
+                  <p className="font-sans text-sm text-[#555555]">About</p>
+                  <p className="mt-1 font-serif text-[2.25rem] font-semibold leading-tight text-[#1A1A1A]">
+                    {r.low === r.high ? n(r.low) : `${n(r.low)}–${n(r.high)}`}
+                  </p>
+                  <p className="mt-1.5 font-sans text-base text-[#555555]">kcal per day</p>
+                </div>
+                <p className={`${ui.big} max-lg:hidden`}>
                   <span className={ui.bigSuffix}>About </span>
                   {r.low === r.high ? n(r.low) : `${n(r.low)}–${n(r.high)}`}
                   <span className={ui.bigSuffix}> kcal per day</span>
@@ -98,14 +112,16 @@ export default function CalorieCalculator() {
                 </p>
                 <SafetyNote belowBmr={r.belowBmr} />
               </div>
-              <CalorieGauge
-                bmr={r.bmr}
-                tdee={r.tdee}
-                low={r.low}
-                high={r.high}
-                goal={s.goal}
-                belowBmr={r.belowBmr}
-              />
+              <div className="max-lg:w-full max-lg:border-t max-lg:border-black/[0.06] max-lg:pt-6 lg:contents">
+                <CalorieGauge
+                  bmr={r.bmr}
+                  tdee={r.tdee}
+                  low={r.low}
+                  high={r.high}
+                  goal={s.goal}
+                  belowBmr={r.belowBmr}
+                />
+              </div>
             </div>
           </div>
           <AppCta

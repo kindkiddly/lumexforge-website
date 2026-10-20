@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useId, type ReactNode } from 'react';
+import { useId, useSyncExternalStore, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import { textWithBrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import type { Goal } from './energyMath';
@@ -599,6 +599,18 @@ function gaugeAngle(v: number, min: number, max: number) {
   return 180 - Math.max(0, Math.min(1, t)) * 180;
 }
 
+function useMinWidthLg() {
+  return useSyncExternalStore(
+    onStoreChange => {
+      const mq = window.matchMedia('(min-width: 1024px)');
+      mq.addEventListener('change', onStoreChange);
+      return () => mq.removeEventListener('change', onStoreChange);
+    },
+    () => window.matchMedia('(min-width: 1024px)').matches,
+    () => false,
+  );
+}
+
 export function CalorieGauge({
   bmr,
   tdee,
@@ -614,6 +626,7 @@ export function CalorieGauge({
   goal: Goal;
   belowBmr: boolean;
 }) {
+  const showArcLabels = useMinWidthLg();
   const target = goal === 'recomp' ? tdee : low;
   const min = Math.min(bmr, low, tdee) - 150;
   const max = Math.max(bmr, high, tdee) + 150;
@@ -638,7 +651,12 @@ export function CalorieGauge({
       />
     );
   };
-  const marker = (value: number, color: string, label: string) => {
+  const marker = (
+    value: number,
+    color: string,
+    id: string,
+    arcLabel: string | null,
+  ) => {
     const deg = gaugeAngle(value, min, max);
     const p = pt(deg);
     const outerR = r + 14;
@@ -646,16 +664,18 @@ export function CalorieGauge({
     const ox = cx + outerR * Math.cos(rad);
     const oy = cy - outerR * Math.sin(rad);
     return (
-      <g key={label}>
+      <g key={id}>
         <circle cx={p.x} cy={p.y} r={5} fill="white" stroke={color} strokeWidth={2.5} />
-        <text
-          x={ox}
-          y={oy}
-          textAnchor="middle"
-          className="fill-[#555555] text-[9px] font-medium"
-        >
-          {label}
-        </text>
+        {showArcLabels && arcLabel ? (
+          <text
+            x={ox}
+            y={oy}
+            textAnchor="middle"
+            className="fill-[#555555] text-[9px] font-medium"
+          >
+            {arcLabel}
+          </text>
+        ) : null}
       </g>
     );
   };
@@ -667,8 +687,21 @@ export function CalorieGauge({
   const baseEnd = Math.max(bmrDeg, tdeeDeg);
 
   return (
-    <div className="mx-auto w-full max-w-[280px]">
-      <svg viewBox="0 0 200 120" className="w-full" role="img" aria-label="Calorie gauge">
+    <div className="mx-auto w-full max-w-[280px] max-lg:mt-0 max-lg:pt-0 lg:mt-0">
+      <svg
+        viewBox="0 0 200 128"
+        className="block w-full max-lg:h-[128px] max-lg:overflow-visible lg:overflow-visible"
+        role="img"
+        aria-label="Calorie gauge"
+      >
+        <text
+          x={cx}
+          y={16}
+          textAnchor="middle"
+          className="fill-[#1A1A1A] text-[11px] font-semibold"
+        >
+          Your target
+        </text>
         <path
           d={`M ${pt(180).x} ${pt(180).y} A ${r} ${r} 0 0 0 ${pt(0).x} ${pt(0).y}`}
           fill="none"
@@ -686,25 +719,26 @@ export function CalorieGauge({
             arcColor,
             12,
           )}
-        {marker(bmr, '#00785A', 'BMR')}
-        {marker(tdee, '#00C2FF', 'TDEE')}
+        {marker(bmr, '#00785A', 'bmr', 'BMR')}
+        {marker(tdee, '#00C2FF', 'tdee', 'TDEE')}
         {marker(
           goal === 'recomp' ? tdee : low,
           belowBmr ? '#c62828' : '#1A1A1A',
-          'Your target',
+          'target',
+          null,
         )}
       </svg>
-      <div className="mt-2 flex flex-wrap justify-center gap-3 text-[10px] text-[#555555]">
-        <span className="inline-flex items-center gap-1">
-          <span className="h-2 w-2 rounded-full bg-[#00785A]" />
+      <div className="mt-3 grid grid-cols-1 gap-2 text-[11px] text-[#555555] max-lg:max-w-[240px] max-lg:mx-auto lg:flex lg:flex-wrap lg:justify-center lg:gap-3 lg:text-[10px]">
+        <span className="inline-flex items-center justify-center gap-1.5 lg:justify-start">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#00785A]" />
           BMR
         </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="h-2 w-2 rounded-full bg-[#1A1A1A]" />
+        <span className="inline-flex items-center justify-center gap-1.5 max-lg:hidden lg:justify-start">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#1A1A1A]" />
           Your Target
         </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="h-2 w-2 rounded-full bg-[#00C2FF]" />
+        <span className="inline-flex items-center justify-center gap-1.5 lg:justify-start">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#00C2FF]" />
           TDEE
         </span>
       </div>
