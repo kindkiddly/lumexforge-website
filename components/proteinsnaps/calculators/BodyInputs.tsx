@@ -1,5 +1,6 @@
 'use client';
 import { ACTIVITY, GOAL, type Activity, type Goal, type Sex } from './energyMath';
+import { PillButtons } from './Parts';
 import { ui } from './ui';
 export type UnitSystem = 'imperial' | 'metric';
 export interface BodyState { sex: Sex; age: string; unit: UnitSystem; kg: string; cm: string; lb: string; ft: string; inch: string; activity: Activity; goal: Goal }
@@ -24,9 +25,11 @@ export default function BodyInputs({ s, set, onGoal }: { s: BodyState; set: (p: 
     <>
       <UnitToggle value={s.unit} onChange={v => set({ unit: v as UnitSystem })}
         options={[{ value: 'imperial', label: 'lb / ft + in' }, { value: 'metric', label: 'kg / cm' }]} />
-      <fieldset className={ui.fieldset}><legend className={ui.legend}>Sex (used by the formula)</legend>
-        <label className={ui.radio}><input type="radio" checked={s.sex === 'female'} onChange={() => set({ sex: 'female' })} /> Female</label>
-        <label className={ui.radio}><input type="radio" checked={s.sex === 'male'} onChange={() => set({ sex: 'male' })} /> Male</label>
+      <fieldset className={ui.fieldset}><legend className={ui.legend}>Sex <span className={ui.hint}>(used by the formula)</span></legend>
+        <div className={ui.pillGroup}>
+          <label className={ui.pillRadio}><input className="sr-only" type="radio" name="sex" checked={s.sex === 'female'} onChange={() => set({ sex: 'female' })} />Female</label>
+          <label className={ui.pillRadio}><input className="sr-only" type="radio" name="sex" checked={s.sex === 'male'} onChange={() => set({ sex: 'male' })} />Male</label>
+        </div>
       </fieldset>
       <label className={ui.label}>Age<input className={ui.input} type="number" inputMode="numeric" value={s.age} onChange={e => set({ age: e.target.value })} placeholder={`e.g. ${PLACEHOLDERS.age}`} required /></label>
       {s.unit === 'imperial' ? (<>
@@ -42,9 +45,10 @@ export default function BodyInputs({ s, set, onGoal }: { s: BodyState; set: (p: 
       <label className={ui.label}>Activity<select className={ui.select} value={s.activity} onChange={e => set({ activity: e.target.value as Activity })}>
         {(Object.keys(ACTIVITY) as Activity[]).map(k => <option key={k} value={k}>{ACTIVITY[k].label} (×{ACTIVITY[k].factor})</option>)}
       </select></label>
-      <label className={ui.label}>Goal<select className={ui.select} value={s.goal} onChange={e => { const g = e.target.value as Goal; set({ goal: g }); onGoal?.(g); }}>
-        {(Object.keys(GOAL) as Goal[]).map(k => <option key={k} value={k}>{GOAL[k].label}</option>)}
-      </select></label>
+      <div><span className={ui.legend}>Goal</span>
+        <PillButtons<Goal> label="Goal" value={s.goal} onChange={g => { set({ goal: g }); onGoal?.(g); }}
+          options={(Object.keys(GOAL) as Goal[]).map(k => ({ value: k, label: GOAL[k].label }))} />
+      </div>
     </>
   );
 }

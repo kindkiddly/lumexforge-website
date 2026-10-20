@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { ui } from '@/components/proteinsnaps/calculators/ui';
 import CalorieCalculator from '@/components/proteinsnaps/calculators/CalorieCalculator';
+import { CalcHero, FaqList } from '@/components/proteinsnaps/calculators/Parts';
 
 const URL = 'https://proteinsnaps.lumexforge.com/calorie-calculator';
 const OG = 'https://proteinsnaps.lumexforge.com/images/proteinsnaps/proteinsnaps-og.webp';
@@ -28,22 +29,23 @@ export default function Page() {
   return (
     <div className={ui.main}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className={ui.hero}>
-        <h1 className={ui.h1}>Calorie Calculator (TDEE)</h1>
-        <p className={ui.lead}>Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength.</p>
-      </header>
+      <CalcHero title="Calorie Calculator (TDEE)" intro="Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength." image="/images/proteinsnaps/calculators/smoothie-bowl.webp" alt="A smoothie bowl topped with banana and fruit" />
       <CalorieCalculator />
+      <div className={ui.prose}>
       <h2 className={ui.h2}>How it works</h2>
+      <div className={ui.panel}>
       <p className={ui.body}>1. Resting energy (BMR) with Mifflin-St Jeor: women 10 × kg + 6.25 × cm − 5 × age − 161; men … + 5. 2. TDEE = BMR × activity factor (1.2, 1.375, 1.55, 1.725 or 1.9). 3. Goal: the app&apos;s settings of −400 (fat loss), 0 (maintain), ±100 (recomp) or +350 kcal (build). Example: a 30-year-old woman, 165 cm, 65 kg has a BMR of about 1,370 kcal; lightly active, that&apos;s about 1,884 kcal to maintain.</p>
       <p className={ui.body}>Next: <a className={ui.link} href="/macro-calculator">split your calories into macros</a> or <a className={ui.link} href="/protein-calculator">find your daily protein</a>.</p>
+      </div>
       <h2 className={ui.h2}>FAQ</h2>
-      <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
+      <FaqList items={faqs} />
       <h2 className={ui.h2}>Sources</h2>
       <ul className={ui.sources}>
         <li><a className={ui.sourceLink} href="https://doi.org/10.1093/ajcn/51.2.241" rel="noopener">Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990;51(2):241-7.</a></li>
         <li><a className={ui.sourceLink} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator, formula and activity factors.</a></li>
       </ul>
       <p className={ui.disclaimer}>Disclaimer: this calculator gives general estimates for healthy adults and is not medical advice. It does not diagnose or treat any condition, and results are not guaranteed.</p>
+      </div>
     </div>
   );
 }

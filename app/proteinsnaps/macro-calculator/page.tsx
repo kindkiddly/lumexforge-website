@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { ui } from '@/components/proteinsnaps/calculators/ui';
 import MacroCalculator from '@/components/proteinsnaps/calculators/MacroCalculator';
+import { CalcHero, FaqList } from '@/components/proteinsnaps/calculators/Parts';
 
 const URL = 'https://proteinsnaps.lumexforge.com/macro-calculator';
 const OG = 'https://proteinsnaps.lumexforge.com/images/proteinsnaps/proteinsnaps-og.webp';
@@ -28,16 +29,16 @@ export default function Page() {
   return (
     <div className={ui.main}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className={ui.hero}>
-        <h1 className={ui.h1}>Macro Calculator</h1>
-        <p className={ui.lead}>See how much protein, carbs and fat could fit your day, in grams, for your goal. Protein comes first, then fat, and carbs fill the rest.</p>
-      </header>
+      <CalcHero title="Macro Calculator" intro="See how much protein, carbs and fat could fit your day, in grams, for your goal. Protein comes first, then fat, and carbs fill the rest." image="/images/proteinsnaps/calculators/grain-bowl.webp" alt="A colorful grain bowl with kale and vegetables" />
       <MacroCalculator />
+      <div className={ui.prose}>
       <h2 className={ui.h2}>How it works</h2>
+      <div className={ui.panel}>
       <p className={ui.body}>Protein (g) = weight (kg) × your protein setting. By default it follows your goal, using the ProteinSnaps app&apos;s settings: fat loss 2.2, maintain 1.6, build 1.8, recomp 2.0 g/kg. You can also pick 0.8 (RDA), 1.4, 1.6, 1.8, 2.0 or 2.2 g/kg yourself; your pick stays until you change the goal. Fat (g) = calories × fat% ÷ 9. Carbs (g) = (calories − protein × 4 − fat × 9) ÷ 4. Example: 1,800 kcal, 143 lb (65 kg), 1.6 g/kg protein, 30% fat → 104 g protein, 60 g fat, 211 g carbs. If you type your own calories, use a number between 800 and 6,000.</p>
       <p className={ui.body}>Don&apos;t know your calories? Try the <a className={ui.link} href="/calorie-calculator">calorie calculator</a>. Just need protein? Use the <a className={ui.link} href="/protein-calculator">protein calculator</a>.</p>
+      </div>
       <h2 className={ui.h2}>FAQ</h2>
-      <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
+      <FaqList items={faqs} />
       <h2 className={ui.h2}>Sources</h2>
       <ul className={ui.sources}>
         <li><a className={ui.sourceLink} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. ISSN Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></li>
@@ -46,6 +47,7 @@ export default function Page() {
         <li><a className={ui.sourceLink} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator.</a></li>
       </ul>
       <p className={ui.disclaimer}>Disclaimer: general estimates for healthy adults, not medical advice. Results are not guaranteed.</p>
+      </div>
     </div>
   );
 }

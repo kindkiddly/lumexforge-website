@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { ui } from '@/components/proteinsnaps/calculators/ui';
 import ProteinCalculator from '@/components/proteinsnaps/calculators/ProteinCalculator';
+import { CalcHero, FaqList } from '@/components/proteinsnaps/calculators/Parts';
 
 const URL = 'https://proteinsnaps.lumexforge.com/protein-calculator';
 const OG = 'https://proteinsnaps.lumexforge.com/images/proteinsnaps/proteinsnaps-og.webp';
@@ -28,17 +29,18 @@ export default function Page() {
   return (
     <div className={ui.main}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className={ui.hero}>
-        <h1 className={ui.h1}>Protein Calculator</h1>
-        <p className={ui.lead}>Find out roughly how much protein you need each day. Enter your weight, choose your activity, and get a range in grams.</p>
-      </header>
+      <CalcHero title="Protein Calculator" intro="Find out roughly how much protein you need each day. Enter your weight, choose your activity, and get a range in grams." image="/images/proteinsnaps/calculators/protein-bowl.webp" alt="A bowl of chicken and chickpea salad" />
       <ProteinCalculator />
+      <div className={ui.prose}>
       <h2 className={ui.h2}>How it works</h2>
+      <div className={ui.panel}>
       <p className={ui.body}>Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly, from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg.</p>
+      </div>
       <h2 className={ui.h2}>FAQ</h2>
-      <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
+      <FaqList items={faqs} />
       <h2 className={ui.h2}>Source</h2>
       <p className={ui.body}><a className={ui.sourceLink} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></p>
+      </div>
     </div>
   );
 }

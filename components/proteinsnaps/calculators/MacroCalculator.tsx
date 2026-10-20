@@ -6,6 +6,7 @@ import { energy, macros, validate, type Macros, type Goal } from './energyMath';
 import { FAT_OPTIONS, PROTEIN_OPTIONS, initialProtein, onGoalChange, parseKnownCalories, pickProtein, proteinLabel, type ProteinPick } from './macroLogic';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
+import { CalcButton, Donut, ErrorBox, MACRO_COLOR, Placeholder, PillButtons, SoftNote } from './Parts';
 import { ui } from './ui';
 
 // Behavior: protein default follows the goal (the ProteinSnaps app's settings: cut 2.2, maintain 1.6,
@@ -28,28 +29,50 @@ export default function MacroCalculator() {
     const kcal = kc.kcal ?? Math.round((en.low + en.high) / 2);
     setError(''); setOut({ kcal, m: macros(kcal, kg, p.value, f), belowBmr: kcal < en.bmr });
   }
+  const cols = out ? [
+    { name: 'Protein', pct: out.m.pPct, g: out.m.protein, color: MACRO_COLOR.protein },
+    { name: 'Carbs', pct: out.m.cPct, g: out.m.carbs, color: MACRO_COLOR.carbs },
+    { name: 'Fat', pct: out.m.fPct, g: out.m.fat, color: MACRO_COLOR.fat },
+  ] : [];
   return (
-    <section className={ui.card}>
-      <form onSubmit={calculate} className={ui.form}>
-        <BodyInputs s={s} set={x => setS(prev => ({ ...prev, ...x }))} onGoal={(g: Goal) => setP(onGoalChange(g))} />
-        <label className={ui.label}>Already know your calories? (optional)<input className={ui.input} type="number" inputMode="numeric" value={known} onChange={e => setKnown(e.target.value)} placeholder="Leave blank to estimate" /></label>
-        <label className={ui.label}>Protein<select className={ui.select} value={p.value} onChange={e => setP(pickProtein(parseFloat(e.target.value)))}>
-          {PROTEIN_OPTIONS.map(v => <option key={v} value={v}>{proteinLabel(v, s.goal)}</option>)}
-        </select></label>
-        <p className={ui.note}>{p.manual ? 'You picked this protein level. Changing the goal resets it to the app setting.' : "Set from the ProteinSnaps app's settings for your goal. You can pick any option."}</p>
-        <label className={ui.label}>Fat (% of calories)<select className={ui.select} value={f} onChange={e => setF(parseInt(e.target.value, 10))}>
-          {FAT_OPTIONS.map(v => <option key={v} value={v}>{v}%</option>)}
-        </select></label>
-        <div><button type="submit" className={ui.button}>Calculate</button></div>
-      </form>
-      {error && <p role="alert" className={ui.error}>{error}</p>}
-      {out && (<div className={ui.result} aria-live="polite">
-        <p className={ui.big}>{out.kcal} kcal: {out.m.protein} g protein · {out.m.carbs} g carbs · {out.m.fat} g fat</p>
-        <p className={ui.body}>That is about {out.m.pPct}% protein, {out.m.cPct}% carbs and {out.m.fPct}% fat.</p>
-        {out.m.warnings.map(w => <p key={w} className={ui.note}>{w}</p>)}
-        <SafetyNote belowBmr={out.belowBmr} />
-      </div>)}
-      {out && <AppCta text="In the app your macros are set automatically for your goal, and you can switch presets (Balanced, High Protein, Keto, Carnivore, Low Fat or Custom) or edit them in Profile. Fill the Gap then shows what's left for the day." />}
+    <section>
+      <div className={ui.grid}>
+        <form onSubmit={calculate} className={ui.card}>
+          <h2 className={ui.cardTitle}>Your Details</h2>
+          <div className={ui.form}>
+            <BodyInputs s={s} set={x => setS(prev => ({ ...prev, ...x }))} onGoal={(g: Goal) => setP(onGoalChange(g))} />
+            <label className={ui.label}>Already know your calories? (optional)<input className={ui.input} type="number" inputMode="numeric" value={known} onChange={e => setKnown(e.target.value)} placeholder="Leave blank to estimate" /></label>
+            <div>
+              <label className={ui.label}>Protein<select className={ui.select} value={p.value} onChange={e => setP(pickProtein(parseFloat(e.target.value)))}>
+                {PROTEIN_OPTIONS.map(v => <option key={v} value={v}>{proteinLabel(v, s.goal)}</option>)}
+              </select></label>
+              <p className={`${ui.note} mt-2`}>{p.manual ? 'You picked this protein level. Changing the goal resets it to the app setting.' : "Set from the ProteinSnaps app's settings for your goal. You can pick any option."}</p>
+            </div>
+            <div><span className={ui.legend}>Fat (% of calories)</span>
+              <PillButtons<number> label="Fat percent of calories" value={f} onChange={setF} options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))} />
+            </div>
+            <div><CalcButton>Calculate Macros</CalcButton></div>
+          </div>
+        </form>
+        <div className={ui.resultCard} aria-live="polite">
+          {error ? <ErrorBox>{error}</ErrorBox> : out ? (<>
+            <p className={ui.resultLabel}>Your macro breakdown</p>
+            <div className="mt-3"><Donut pPct={out.m.pPct} cPct={out.m.cPct} fPct={out.m.fPct} center={out.kcal.toLocaleString('en-US')} caption="kcal / day" /></div>
+            <div className={ui.macroCols}>
+              {cols.map(c => (
+                <div key={c.name}>
+                  <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-[#1A1A1A]"><span className="h-2.5 w-2.5 rounded-full" style={{ background: c.color }} />{c.name}</p>
+                  <p className={ui.macroPct}>{c.pct}%</p>
+                  <p className={ui.chipLabel}>{c.g} g / day</p>
+                </div>
+              ))}
+            </div>
+            {out.m.warnings.length > 0 && <div className={ui.notes}>{out.m.warnings.map(w => <SoftNote key={w}>{w}</SoftNote>)}</div>}
+            <SafetyNote belowBmr={out.belowBmr} />
+          </>) : <Placeholder />}
+        </div>
+      </div>
+      {out && <AppCta image="/images/proteinsnaps/PS-1.webp" text="In the app your macros are set automatically for your goal, and you can switch presets (Balanced, High Protein, Keto, Carnivore, Low Fat or Custom) or edit them in Profile. Fill the Gap then shows what's left for the day." />}
     </section>
   );
 }
