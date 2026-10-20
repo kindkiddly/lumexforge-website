@@ -9,16 +9,66 @@ import {
   type Level,
   type WeightUnit,
 } from './proteinMath';
-import { UnitToggle } from './BodyInputs';
 import AppCta from './AppCta';
 import {
-  CalcButton,
   ErrorBox,
-  InlineField,
+  ProteinCalcButton,
+  ProteinInlineField,
   RangeBarProtein,
   SoftNote,
 } from './Parts';
-import { ui } from './ui';
+import { proteinGlass, ui } from './ui';
+
+function ProteinUnitToggle({
+  value,
+  onChange,
+}: {
+  value: WeightUnit;
+  onChange: (v: WeightUnit) => void;
+}) {
+  return (
+    <div className={proteinGlass.toggle} role="group" aria-label="Units">
+      {(['lb', 'kg'] as WeightUnit[]).map(u => (
+        <button
+          key={u}
+          type="button"
+          aria-pressed={value === u}
+          className={`${proteinGlass.toggleBtn} ${value === u ? proteinGlass.toggleOn : proteinGlass.toggleOff}`}
+          onClick={() => onChange(u)}
+        >
+          {u}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
+  return (
+    <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-2">
+      <label className={`${proteinGlass.pill} ${level === 'rda' ? proteinGlass.pillOn : ''}`}>
+        <input
+          className="sr-only"
+          type="radio"
+          name="level"
+          checked={level === 'rda'}
+          onChange={() => onChange('rda')}
+        />
+        Not regularly exercising (general adult baseline)
+      </label>
+      <label className={`${proteinGlass.pill} ${level === 'active' ? proteinGlass.pillOn : ''}`}>
+        <input
+          className="sr-only"
+          type="radio"
+          name="level"
+          checked={level === 'active'}
+          onChange={() => onChange('active')}
+        />
+        Exercising regularly (strength, cardio or classes)
+      </label>
+    </div>
+  );
+}
 
 export default function ProteinCalculator() {
   const [weight, setWeight] = useState('');
@@ -50,22 +100,14 @@ export default function ProteinCalculator() {
 
   return (
     <section className={ui.stack}>
-      <form onSubmit={calculate} className={ui.cardPad}>
-        <div className={ui.cardTitleRow}>
-          <h2 className={ui.cardTitle}>Your Details</h2>
-          <UnitToggle
-            value={unit}
-            onChange={v => setUnit(v as WeightUnit)}
-            options={[
-              { value: 'lb', label: 'lb' },
-              { value: 'kg', label: 'kg' },
-            ]}
-          />
-        </div>
-        <div className={ui.form}>
-          <InlineField label={`Body weight (${unit})`}>
+      <form onSubmit={calculate} className={proteinGlass.cardPad}>
+        <h2 className={proteinGlass.cardTitle}>Your Details</h2>
+
+        <div className="mt-3 hidden lg:grid lg:grid-cols-[7.5rem_minmax(9rem,11rem)_minmax(0,1fr)_auto] lg:items-end lg:gap-3">
+          <ProteinUnitToggle value={unit} onChange={setUnit} />
+          <ProteinInlineField label={`Body weight (${unit})`}>
             <input
-              className={ui.input}
+              className={proteinGlass.input}
               type="number"
               inputMode="decimal"
               value={weight}
@@ -73,82 +115,80 @@ export default function ProteinCalculator() {
               placeholder={WEIGHT_PLACEHOLDER[unit]}
               required
             />
-          </InlineField>
-          <div>
-            <p className={ui.legend}>Activity</p>
-            <div className={`${ui.pillRow} mt-2`}>
-              <label
-                className={`${ui.pill} flex-1 ${level === 'rda' ? ui.pillOn : ''}`}
-              >
-                <input
-                  className="sr-only"
-                  type="radio"
-                  name="level"
-                  checked={level === 'rda'}
-                  onChange={() => setLevel('rda')}
-                />
-                Not regularly exercising (general adult baseline)
-              </label>
-              <label
-                className={`${ui.pill} flex-1 ${level === 'active' ? ui.pillOn : ''}`}
-              >
-                <input
-                  className="sr-only"
-                  type="radio"
-                  name="level"
-                  checked={level === 'active'}
-                  onChange={() => setLevel('active')}
-                />
-                Exercising regularly (strength, cardio or classes)
-              </label>
-            </div>
+          </ProteinInlineField>
+          <ActivityPills level={level} onChange={setLevel} />
+          <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
+        </div>
+
+        <div className="mt-3 grid gap-3 lg:hidden md:grid-cols-2 md:items-end">
+          <ProteinUnitToggle value={unit} onChange={setUnit} />
+          <ProteinInlineField label={`Body weight (${unit})`}>
+            <input
+              className={proteinGlass.input}
+              type="number"
+              inputMode="decimal"
+              value={weight}
+              onChange={e => setWeight(e.target.value)}
+              placeholder={WEIGHT_PLACEHOLDER[unit]}
+              required
+            />
+          </ProteinInlineField>
+          <div className="md:col-span-2">
+            <ActivityPills level={level} onChange={setLevel} />
           </div>
-          {error ? <ErrorBox>{error}</ErrorBox> : null}
-          <div>
-            <CalcButton>Calculate Protein</CalcButton>
+          {error ? (
+            <div className="md:col-span-2">
+              <ErrorBox>{error}</ErrorBox>
+            </div>
+          ) : null}
+          <div className="md:col-span-2">
+            <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
           </div>
         </div>
+
+        {error ? (
+          <div className="mt-3 hidden lg:block">
+            <ErrorBox>{error}</ErrorBox>
+          </div>
+        ) : null}
       </form>
 
       {result ? (
         <>
-          <div ref={resultRef} className={ui.cardPad} aria-live="polite">
-            <div className={ui.resultGrid}>
-              <div>
-                <p className={ui.resultLabel}>Your daily protein</p>
-                <p className={ui.big}>
-                  {result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`}{' '}
-                  <span className={ui.bigSuffix}>g</span>
-                </p>
-                <p className={ui.resultLine}>protein per day</p>
-                {result.lo !== result.hi && (
-                  <RangeBarProtein lo={result.lo} hi={result.hi} rda={rda} />
-                )}
-                {level === 'active' && (
-                  <p className={ui.resultLine}>
-                    Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN
-                    suggests 20–40 g per dose).
-                  </p>
-                )}
-                <SoftNote>
-                  An estimate for healthy adults, not medical advice. If you are pregnant,
-                  breastfeeding, have kidney disease or another condition, talk to your doctor or a
-                  registered dietitian.
-                </SoftNote>
+          <div ref={resultRef} className={proteinGlass.cardPad} aria-live="polite">
+            <p className={ui.resultLabel}>Your daily protein</p>
+            <p className={ui.big}>
+              {result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`}{' '}
+              <span className={ui.bigSuffix}>g</span>
+            </p>
+            <p className={ui.resultLine}>protein per day</p>
+            {result.lo !== result.hi && (
+              <RangeBarProtein lo={result.lo} hi={result.hi} rda={rda} />
+            )}
+            <div className={proteinGlass.chipRow}>
+              <div className={proteinGlass.chip}>
+                <p className={ui.chipLabel}>Per meal (about 0.25 g/kg)</p>
+                <p className={ui.chipValue}>~{result.meal} g</p>
               </div>
-              <div className={ui.sideChips}>
-                <div className={ui.chip}>
-                  <p className={ui.chipLabel}>Per meal (about 0.25 g/kg)</p>
-                  <p className={ui.chipValue}>~{result.meal} g</p>
-                </div>
-                <div className={ui.chip}>
-                  <p className={ui.chipLabel}>Factor used</p>
-                  <p className={ui.chipValue}>{factorLabel}</p>
-                </div>
+              <div className={proteinGlass.chip}>
+                <p className={ui.chipLabel}>Factor used</p>
+                <p className={ui.chipValue}>{factorLabel}</p>
               </div>
             </div>
+            {level === 'active' && (
+              <p className={ui.resultLine}>
+                Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN
+                suggests 20–40 g per dose).
+              </p>
+            )}
+            <SoftNote>
+              An estimate for healthy adults, not medical advice. If you are pregnant,
+              breastfeeding, have kidney disease or another condition, talk to your doctor or a
+              registered dietitian.
+            </SoftNote>
           </div>
           <AppCta
+            glass
             headline="Track this every day with ProteinSnaps."
             text="Snap a photo of your meal for an estimate of protein, macros and calories, scan packaged food barcodes, and let Fill the Gap show what's left for the day."
           />

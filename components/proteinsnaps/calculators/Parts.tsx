@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import type { Goal } from './energyMath';
-import { ui } from './ui';
+import { proteinGlass, ui } from './ui';
 
 const svg = {
   width: 20,
@@ -573,5 +573,163 @@ export function SourceItem({ href, children }: { href: string; children: ReactNo
         {children}
       </a>
     </li>
+  );
+}
+
+/* ── Protein page only (glass) ── */
+
+export function ProteinGlassBackdrop() {
+  return (
+    <div className={proteinGlass.blobWrap} aria-hidden>
+      <div className={`${proteinGlass.blobMint} -left-24 top-32 h-72 w-72 md:h-96 md:w-96`} />
+      <div className={`${proteinGlass.blobCyan} right-[-4rem] top-[28rem] h-80 w-80 md:right-[-2rem]`} />
+      <div className={`${proteinGlass.blobMint} bottom-48 left-[20%] h-64 w-64 opacity-80`} />
+      <div className={`${proteinGlass.blobCyan} bottom-[8rem] right-[15%] h-56 w-56 opacity-90`} />
+    </div>
+  );
+}
+
+export function ProteinCalcHero({
+  badge,
+  titleBefore,
+  titleMint,
+  intro,
+  chips,
+}: {
+  badge: string;
+  titleBefore: string;
+  titleMint: string;
+  intro: string;
+  chips: string[];
+}) {
+  return (
+    <header>
+      <p className={proteinGlass.heroBadge}>{badge}</p>
+      <h1 className={`${ui.h1} mt-4`}>
+        {titleBefore}
+        <span className={ui.h1Mint}>{titleMint}</span>
+      </h1>
+      <p className={ui.lead}>{intro}</p>
+      <div className={ui.heroChips}>
+        {chips.map(c => (
+          <span key={c} className={proteinGlass.heroChip}>
+            {c}
+          </span>
+        ))}
+      </div>
+    </header>
+  );
+}
+
+export function ProteinInlineField({
+  label,
+  children,
+  className,
+}: {
+  label: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <label className={`relative block ${className ?? ''}`}>
+      <span className={proteinGlass.fieldLabel}>{label}</span>
+      {children}
+    </label>
+  );
+}
+
+export function ProteinCalcButton({ children }: { children: ReactNode }) {
+  return (
+    <button type="submit" className={proteinGlass.button}>
+      {children}
+      <ArrowIcon />
+    </button>
+  );
+}
+
+export function ProteinGlassFeatureCards() {
+  return (
+    <div className={ui.featureGrid}>
+      {FEATURES.map(f => (
+        <div key={f.title} className={proteinGlass.featureCard}>
+          <div className={ui.featureIcon}>{f.icon}</div>
+          <p className={ui.featureTitle}>{f.title}</p>
+          <p className={`${ui.body} mt-2`}>{f.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function ProteinGlassFaqList({ items }: { items: { q: string; a: string }[] }) {
+  return (
+    <div className={proteinGlass.faq}>
+      {items.map(f => (
+        <details key={f.q} className={proteinGlass.faqItem}>
+          <summary className={ui.faqSummary}>
+            {f.q}
+            <span className={ui.faqChevron}>
+              <Chevron />
+            </span>
+          </summary>
+          <p className={ui.faqAnswer}>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  );
+}
+
+export function ProteinGlassMoreFreeTools() {
+  const { href: psHref } = useProteinSnapsPath();
+  const tools = [
+    {
+      id: 'protein' as const,
+      href: psHref('/protein-calculator'),
+      title: 'Protein Calculator',
+      desc: 'Your daily protein range in grams.',
+    },
+    {
+      id: 'calorie' as const,
+      href: psHref('/calorie-calculator'),
+      title: 'Calorie Calculator',
+      desc: 'BMR, TDEE and a target for your goal.',
+    },
+    {
+      id: 'macro' as const,
+      href: psHref('/macro-calculator'),
+      title: 'Macro Calculator',
+      desc: 'Protein, carbs and fat for your goal.',
+    },
+  ];
+  return (
+    <div className={ui.toolsGrid}>
+      {tools.map(t => {
+        const here = t.id === 'protein';
+        const inner = (
+          <>
+            <p className="font-serif text-base font-semibold text-[#1A1A1A]">{t.title}</p>
+            <p className={`${ui.note} mt-1 flex-1`}>{t.desc}</p>
+            <p className="mt-3 text-sm font-semibold text-[#00B386]">
+              {here ? (
+                <span className="text-[#555555]">You are here</span>
+              ) : (
+                <span className="inline-flex items-center gap-1">
+                  Open <ArrowIcon />
+                </span>
+              )}
+            </p>
+          </>
+        );
+        return here ? (
+          <div key={t.id} className={`${proteinGlass.toolCard} ${proteinGlass.toolCardHere}`}>
+            {inner}
+          </div>
+        ) : (
+          <Link key={t.id} href={t.href} className={proteinGlass.toolCard}>
+            {inner}
+          </Link>
+        );
+      })}
+    </div>
   );
 }

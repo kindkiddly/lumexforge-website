@@ -115,3 +115,51 @@ export const PRICING = 'Free to download. Premium is $9.99/month or $59.99/year.
 export const IOS = 'https://apps.apple.com/us/app/proteinsnaps/id6801353318';
 export const ANDROID =
   'https://play.google.com/store/apps/details?id=com.proteinsnap.app';
+
+/** Protein calculator page only (glass + compact). Do not use on calorie/macro yet. */
+const glassCard =
+  'rounded-[20px] border border-white/70 bg-white/[0.55] shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)]';
+
+export const proteinGlass = {
+  page: 'relative overflow-x-hidden bg-[#f2ede4]',
+  blobWrap: 'pointer-events-none absolute inset-0 overflow-hidden',
+  blobMint:
+    'absolute rounded-full bg-[#00E6A8]/[0.14] blur-3xl [-webkit-filter:blur(64px)]',
+  blobCyan:
+    'absolute rounded-full bg-[#00C2FF]/[0.12] blur-3xl [-webkit-filter:blur(64px)]',
+  content: 'relative z-[1]',
+  card: `${glassCard}`,
+  cardPad: `${glassCard} p-4 sm:p-5`,
+  cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
+  inputRow: 'mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-[7.5rem_minmax(9rem,11rem)_1fr_auto] lg:items-end lg:gap-3',
+  inputRowTablet: 'mt-3 grid gap-3 sm:grid-cols-2 lg:hidden',
+  fieldLabel:
+    'pointer-events-none absolute left-3 top-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
+  input:
+    'h-11 w-full rounded-xl border border-white/80 bg-white/70 px-3 pb-1.5 pt-5 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+  toggle:
+    'inline-flex h-11 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
+  toggleBtn:
+    'flex-1 rounded-full px-2 py-2 text-center text-xs font-semibold text-[#555555] transition-colors',
+  toggleOn: 'bg-white/90 text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
+  toggleOff: 'hover:text-[#1A1A1A]',
+  activityCol: 'grid gap-2 sm:grid-cols-2 lg:col-span-1 lg:grid-cols-1',
+  pill:
+    'flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/65 px-2.5 py-2 text-center text-[11px] font-medium leading-snug text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:text-xs lg:text-[11px]',
+  pillOn: 'border-[#00B386]/80 bg-[#00E6A8]/20 font-semibold text-[#1A1A1A]',
+  button:
+    'inline-flex h-11 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-4 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-opacity hover:opacity-95 lg:w-auto lg:min-w-[11.5rem]',
+  chipRow: 'mt-4 grid grid-cols-2 gap-3',
+  chip: `${glassCard} px-3 py-2.5`,
+  heroBadge:
+    'inline-flex items-center rounded-full border border-white/70 bg-white/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00785A] backdrop-blur-md',
+  heroChip:
+    'rounded-full border border-white/70 bg-white/50 px-3 py-1.5 text-xs font-medium text-[#555555] backdrop-blur-md sm:text-[13px]',
+  panel: `${glassCard} p-5 sm:p-6`,
+  featureCard: `${glassCard} p-5`,
+  faq: `${glassCard} divide-y divide-white/60 overflow-hidden`,
+  faqItem: 'group',
+  toolCard: `${glassCard} flex flex-col p-4 transition-colors hover:border-[#00B386]/30`,
+  toolCardHere: 'border-[#00B386]/50 bg-white/60',
+  cta: `${glassCard} grid gap-6 p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-start`,
+} as const;
