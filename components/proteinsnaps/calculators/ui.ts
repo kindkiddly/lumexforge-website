@@ -290,14 +290,16 @@ export const calcMint = {
   sexOff: 'bg-transparent text-[#555555]',
   metrics4: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
   metrics3: 'grid grid-cols-1 gap-3 sm:grid-cols-3',
+  metricsRows: 'flex flex-col gap-3',
+  metrics2: 'grid grid-cols-2 gap-3',
   fieldBox:
-    'min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:min-h-[72px] sm:px-4',
+    'min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] focus-within:border-[#ECECEC] focus-within:outline-none focus-within:ring-0 sm:min-h-[72px] sm:px-4',
   fieldInner: 'flex h-full min-h-[52px] items-center gap-2.5 sm:gap-3',
   fieldIcon:
     'flex h-10 w-8 shrink-0 items-center justify-center text-[#00A88E] sm:w-9',
   fieldLabel: 'block text-[10px] font-medium text-[#999999]',
   fieldInput:
-    'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-lg font-semibold leading-tight text-[#1A1A1A] outline-none [appearance:textfield] placeholder:font-normal placeholder:text-[#BBBBBB] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+    'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-lg font-semibold leading-tight text-[#1A1A1A] shadow-none outline-none ring-0 [appearance:textfield] placeholder:font-normal placeholder:text-[#BBBBBB] focus:border-0 focus:shadow-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 [-webkit-tap-highlight-color:transparent] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
   stepper: 'flex shrink-0 flex-col justify-center gap-0.5 border-l border-black/[0.07] pl-2.5',
   stepperBtn:
     'flex h-[22px] w-7 items-center justify-center rounded-md text-[#999999] transition-colors hover:bg-[#00E6A8]/15 hover:text-[#008B7D]',

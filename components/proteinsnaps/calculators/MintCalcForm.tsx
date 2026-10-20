@@ -184,7 +184,7 @@ function MintNumberField({
     <div className={calcMint.fieldBox}>
       <div className={calcMint.fieldInner}>
         <div className={calcMint.fieldIcon}>{icon}</div>
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 overflow-hidden">
           <span className={calcMint.fieldLabel}>{label}</span>
           <input
             className={calcMint.fieldInput}
@@ -280,73 +280,83 @@ export function MintCalcBodyFields({
       </div>
 
       {s.unit === 'imperial' ? (
-        <div className={calcMint.metrics4}>
-          <MintNumberField
-            icon={<IconCalendar className="h-5 w-5" />}
-            label="Age"
-            value={s.age}
-            onChange={age => set({ age })}
-            placeholder={PLACEHOLDERS.age}
-            required
-          />
-          <MintNumberField
-            icon={<IconHeight className="h-5 w-5" />}
-            label="Height (ft)"
-            value={s.ft}
-            onChange={ft => set({ ft })}
-            placeholder={PLACEHOLDERS.ft}
-            required
-          />
-          <MintNumberField
-            icon={<IconHeight className="h-5 w-5" />}
-            label="Height (in)"
-            value={s.inch}
-            onChange={inch => set({ inch })}
-            placeholder={PLACEHOLDERS.inch}
-            decimals={1}
-            inputMode="decimal"
-          />
-          <MintNumberField
-            icon={<IconScale className="h-5 w-5" />}
-            label="Weight (lb)"
-            value={s.lb}
-            onChange={lb => set({ lb })}
-            placeholder={PLACEHOLDERS.lb}
-            required
-            inputMode="decimal"
-            decimals={1}
-          />
+        <div className={calcMint.metricsRows}>
+          <div className={calcMint.metrics2}>
+            <MintNumberField
+              icon={<IconCalendar className="h-5 w-5" />}
+              label="Age"
+              value={s.age}
+              onChange={age => set({ age })}
+              placeholder={PLACEHOLDERS.age}
+              required
+            />
+            <MintNumberField
+              icon={<IconScale className="h-5 w-5" />}
+              label="Weight (lb)"
+              value={s.lb}
+              onChange={lb => set({ lb })}
+              placeholder={PLACEHOLDERS.lb}
+              required
+              inputMode="decimal"
+              decimals={1}
+            />
+          </div>
+          <div className={calcMint.metrics2}>
+            <MintNumberField
+              icon={<IconHeight className="h-5 w-5" />}
+              label="Height (ft)"
+              value={s.ft}
+              onChange={ft => set({ ft })}
+              placeholder={PLACEHOLDERS.ft}
+              required
+            />
+            <MintNumberField
+              icon={<IconHeight className="h-5 w-5" />}
+              label="Height (in)"
+              value={s.inch}
+              onChange={inch => set({ inch })}
+              placeholder={PLACEHOLDERS.inch}
+              decimals={1}
+              inputMode="decimal"
+            />
+          </div>
         </div>
       ) : (
-        <div className={calcMint.metrics3}>
-          <MintNumberField
-            icon={<IconCalendar className="h-5 w-5" />}
-            label="Age"
-            value={s.age}
-            onChange={age => set({ age })}
-            placeholder={PLACEHOLDERS.age}
-            required
-          />
-          <MintNumberField
-            icon={<IconScale className="h-5 w-5" />}
-            label="Weight (kg)"
-            value={s.kg}
-            onChange={kg => set({ kg })}
-            placeholder={PLACEHOLDERS.kg}
-            required
-            inputMode="decimal"
-            decimals={1}
-          />
-          <MintNumberField
-            icon={<IconHeight className="h-5 w-5" />}
-            label="Height (cm)"
-            value={s.cm}
-            onChange={cm => set({ cm })}
-            placeholder={PLACEHOLDERS.cm}
-            required
-            inputMode="decimal"
-            decimals={1}
-          />
+        <div className={calcMint.metricsRows}>
+          <div className={calcMint.metrics2}>
+            <MintNumberField
+              icon={<IconCalendar className="h-5 w-5" />}
+              label="Age"
+              value={s.age}
+              onChange={age => set({ age })}
+              placeholder={PLACEHOLDERS.age}
+              required
+            />
+            <MintNumberField
+              icon={<IconScale className="h-5 w-5" />}
+              label="Weight (kg)"
+              value={s.kg}
+              onChange={kg => set({ kg })}
+              placeholder={PLACEHOLDERS.kg}
+              required
+              inputMode="decimal"
+              decimals={1}
+            />
+          </div>
+          <div className={calcMint.metrics2}>
+            <div className="col-span-2 min-w-0">
+              <MintNumberField
+                icon={<IconHeight className="h-5 w-5" />}
+                label="Height (cm)"
+                value={s.cm}
+                onChange={cm => set({ cm })}
+                placeholder={PLACEHOLDERS.cm}
+                required
+                inputMode="decimal"
+                decimals={1}
+              />
+            </div>
+          </div>
         </div>
       )}
 
