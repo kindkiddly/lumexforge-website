@@ -24,11 +24,10 @@ import {
   MacroBars,
   PillButtons,
   ProteinCalcButton,
-  ProteinGlassCard,
   ProteinInlineField,
   SoftNote,
 } from './Parts';
-import { proteinGlass, ui } from './ui';
+import { calcGlass, ui } from './ui';
 
 export default function MacroCalculator() {
   const [s, setS] = useState<BodyState>(initialBody);
@@ -72,21 +71,26 @@ export default function MacroCalculator() {
     : [];
 
   return (
-    <section className={ui.stack}>
-      <ProteinGlassCard tint="mint">
-        <form onSubmit={calculate} className={proteinGlass.cardPad}>
-          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
-          <div className="mt-3 grid gap-3">
+    <section className="mt-6 flex flex-col gap-4">
+      <div className={calcGlass.cardGlowWrap}>
+        <div className={calcGlass.cardGlow} aria-hidden />
+        <form onSubmit={calculate} className={calcGlass.cardPad}>
+          <h2 className={calcGlass.cardTitle}>Your Details</h2>
+          <div className={calcGlass.formStack}>
             <BodyInputs
               s={s}
               set={x => setS(prev => ({ ...prev, ...x }))}
               onGoal={(g: Goal) => setP(onGoalChange(g))}
               glass
+              compact
             />
-            <div className="grid gap-3 lg:grid-cols-2 lg:items-end">
-              <ProteinInlineField label="Already know your calories? (optional)">
+            <div className="grid gap-2 lg:grid-cols-2 lg:items-end">
+              <ProteinInlineField
+                label="Already know your calories? (optional)"
+                labelClassName={calcGlass.fieldLabel}
+              >
                 <input
-                  className={proteinGlass.input}
+                  className={calcGlass.input}
                   type="number"
                   inputMode="numeric"
                   value={known}
@@ -95,8 +99,8 @@ export default function MacroCalculator() {
                 />
               </ProteinInlineField>
               <div>
-                <p className={ui.legend}>Fat (% of calories)</p>
-                <div className="mt-2">
+                <p className={calcGlass.legendTight}>Fat (% of calories)</p>
+                <div className={calcGlass.legendMt}>
                   <PillButtons<number>
                     label="Fat percent of calories"
                     value={f}
@@ -104,15 +108,16 @@ export default function MacroCalculator() {
                     options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
                     equalWidth
                     glass
+                    compact
                   />
                 </div>
               </div>
             </div>
             <div>
-              <ProteinInlineField label="Protein">
-                <div className={proteinGlass.selectWrap}>
+              <ProteinInlineField label="Protein" labelClassName={calcGlass.fieldLabel}>
+                <div className={calcGlass.selectWrap}>
                   <select
-                    className={proteinGlass.select}
+                    className={calcGlass.select}
                     value={p.value}
                     onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
                   >
@@ -123,7 +128,7 @@ export default function MacroCalculator() {
                     ))}
                   </select>
                   <svg
-                    className={proteinGlass.selectChevron}
+                    className={calcGlass.selectChevron}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -133,7 +138,7 @@ export default function MacroCalculator() {
                   </svg>
                 </div>
               </ProteinInlineField>
-              <p className={ui.hint}>
+              <p className={`${ui.hint} mt-1`}>
                 {p.manual
                   ? 'You picked this protein level. Changing the goal resets it to the app setting.'
                   : (
@@ -145,10 +150,10 @@ export default function MacroCalculator() {
               </p>
             </div>
             {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <ProteinCalcButton>Calculate Macros</ProteinCalcButton>
+            <ProteinCalcButton compact>Calculate Macros</ProteinCalcButton>
           </div>
         </form>
-      </ProteinGlassCard>
+      </div>
 
       {out ? (
         <>
@@ -182,7 +187,10 @@ export default function MacroCalculator() {
               />
             </div>
           </div>
-          <AppCta text="In the app your macros are set automatically for your goal, and you can switch presets (Balanced, High Protein, Keto, Carnivore, Low Fat or Custom) or edit them in Profile. Fill the Gap then shows what's left for the day." />
+          <AppCta
+            offerGlass
+            text="In the app your macros are set automatically for your goal, and you can switch presets (Balanced, High Protein, Keto, Carnivore, Low Fat or Custom) or edit them in Profile. Fill the Gap then shows what's left for the day."
+          />
         </>
       ) : null}
     </section>

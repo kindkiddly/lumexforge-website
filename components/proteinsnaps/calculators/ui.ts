@@ -213,5 +213,44 @@ export const proteinGlass = {
   goalHidden: 'pointer-events-none opacity-40',
 } as const;
 
+/** Compact glass inputs for calorie + macro calculators only (do not use on protein page). */
+export const calcGlass = {
+  cardPad: `${glassCard} relative z-[1] rounded-[18px] p-3 sm:p-3.5`,
+  cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
+  cardGlowWrap: 'relative isolate',
+  cardGlow:
+    'pointer-events-none absolute -inset-1.5 -z-10 rounded-[22px] bg-[#00E6A8]/10 blur-xl',
+  formStack: 'mt-2 grid gap-2',
+  fieldLabel:
+    'pointer-events-none absolute left-2.5 top-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
+  input:
+    'relative z-[1] h-11 w-full rounded-lg border border-white/80 bg-white/65 px-2.5 pb-0.5 pt-4 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_6px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+  selectWrap: 'relative',
+  select:
+    'relative z-[1] h-11 w-full appearance-none rounded-lg border border-white/80 bg-white/65 px-2.5 pb-0.5 pt-4 pr-8 text-sm text-[#1A1A1A] shadow-[0_2px_6px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+  selectChevron:
+    'pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#555555]',
+  optionBtn:
+    'relative z-[1] flex h-11 max-h-11 min-h-11 w-full cursor-pointer items-center justify-center rounded-lg border-2 border-white/80 bg-white/55 px-1.5 py-1 text-center text-[10px] font-medium leading-snug text-[#555555] shadow-[0_2px_6px_rgba(0,0,0,0.04)] transition-all duration-150 ease-out hover:-translate-y-px hover:border-white active:scale-[0.98] focus:outline-none focus-visible:border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] sm:px-2 sm:text-[11px]',
+  optionBtnSelected:
+    '!border-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A] bg-white/75 focus-visible:!border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)]',
+  toggle:
+    'relative z-[1] inline-flex h-11 w-full max-w-[252px] shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_6px_rgba(0,0,0,0.04)] sm:w-auto',
+  toggleBtn:
+    'relative z-[1] flex h-10 flex-1 cursor-pointer items-center justify-center rounded-full border-2 border-transparent px-1.5 text-center text-[10px] font-semibold leading-tight text-[#555555] transition-all duration-150 sm:px-2 sm:text-[11px]',
+  toggleOn: proteinGlass.toggleOn,
+  toggleOff: proteinGlass.toggleOff,
+  button:
+    'inline-flex h-10 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-3.5 text-sm font-semibold text-white shadow-[0_3px_12px_rgba(0,0,0,0.1)] transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/45 focus-visible:ring-offset-2 lg:w-auto lg:min-w-[10.5rem]',
+  row2: 'grid grid-cols-1 gap-2 sm:grid-cols-2',
+  topRow: 'flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between',
+  legendTight: 'text-xs font-semibold text-[#1A1A1A]',
+  legendMt: 'mt-1',
+  offerPanel:
+    'mt-3 rounded-xl border border-white/75 bg-white/[0.52] p-2.5 sm:p-3 shadow-[0_2px_12px_rgba(0,0,0,0.05)] backdrop-blur-[16px] [-webkit-backdrop-filter:blur(16px)]',
+  pillGridGoal: 'grid grid-cols-2 gap-1.5 min-[520px]:grid-cols-4',
+  pillGridFat: 'grid grid-cols-2 gap-1.5 min-[400px]:grid-cols-4',
+} as const;
+
 export const STORE_BADGE_BOX = { w: 160, h: 48 } as const;
 export const PROTEIN_CTA_PHONE_SRC = '/images/proteinsnaps/homepageCards-PS2.webp';

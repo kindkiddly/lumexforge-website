@@ -2,7 +2,7 @@
 
 import { ACTIVITY, GOAL, type Activity, type Goal, type Sex } from './energyMath';
 import { InlineField, PillButtons, ProteinInlineField } from './Parts';
-import { proteinGlass, ui } from './ui';
+import { calcGlass, proteinGlass, ui } from './ui';
 
 export type UnitSystem = 'imperial' | 'metric';
 export interface BodyState {
@@ -65,10 +65,15 @@ export function UnitToggle({
   );
 }
 
-function SelectChevron({ glass }: { glass?: boolean }) {
+function SelectChevron({ glass, compact }: { glass?: boolean; compact?: boolean }) {
+  const chevronClass = !glass
+    ? ui.selectChevron
+    : compact
+      ? calcGlass.selectChevron
+      : proteinGlass.selectChevron;
   return (
     <svg
-      className={glass ? proteinGlass.selectChevron : ui.selectChevron}
+      className={chevronClass}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -83,23 +88,27 @@ function GlassUnitToggle({
   value,
   onChange,
   options,
+  compact = false,
 }: {
   value: string;
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
+  compact?: boolean;
 }) {
+  const g = compact ? calcGlass : proteinGlass;
+  const wrapClass = compact
+    ? g.toggle
+    : `${proteinGlass.toggle} w-full max-w-[280px] sm:w-auto`;
+  const selectedRing = compact ? calcGlass.optionBtnSelected : proteinGlass.optionBtnSelected;
+
   return (
-    <div
-      className={`${proteinGlass.toggle} w-full max-w-[280px] sm:w-auto`}
-      role="group"
-      aria-label="Units"
-    >
+    <div className={wrapClass} role="group" aria-label="Units">
       {options.map(o => (
         <button
           key={o.value}
           type="button"
           aria-pressed={value === o.value}
-          className={`${proteinGlass.toggleBtn} ${value === o.value ? `${proteinGlass.toggleOn} ${proteinGlass.optionBtnSelected}` : proteinGlass.toggleOff}`}
+          className={`${g.toggleBtn} ${value === o.value ? `${g.toggleOn} ${selectedRing}` : g.toggleOff}`}
           onClick={() => onChange(o.value)}
         >
           {o.label}
@@ -113,10 +122,12 @@ function SexOptions({
   sex,
   onChange,
   glass,
+  compact = false,
 }: {
   sex: Sex;
   onChange: (s: Sex) => void;
   glass?: boolean;
+  compact?: boolean;
 }) {
   if (!glass) {
     return (
@@ -136,14 +147,18 @@ function SexOptions({
       </div>
     );
   }
+  const btn = compact ? calcGlass.optionBtn : proteinGlass.optionBtn;
+  const btnOn = compact ? calcGlass.optionBtnSelected : proteinGlass.optionBtnSelected;
   return (
-    <div className="relative z-[1] mt-2 grid grid-cols-2 gap-2">
+    <div
+      className={`relative z-[1] grid grid-cols-2 ${compact ? 'mt-1 gap-1.5' : 'mt-2 gap-2'}`}
+    >
       {(['female', 'male'] as Sex[]).map(s => (
         <button
           key={s}
           type="button"
           aria-pressed={sex === s}
-          className={`${proteinGlass.optionBtn} ${sex === s ? proteinGlass.optionBtnSelected : ''}`}
+          className={`${btn} ${sex === s ? btnOn : ''}`}
           onClick={() => onChange(s)}
         >
           {s === 'female' ? 'Female' : 'Male'}
@@ -158,28 +173,48 @@ export default function BodyInputs({
   set,
   onGoal,
   glass = false,
+  compact = false,
 }: {
   s: BodyState;
   set: (p: Partial<BodyState>) => void;
   onGoal?: (g: Goal) => void;
   glass?: boolean;
+  compact?: boolean;
 }) {
   const Field = glass ? ProteinInlineField : InlineField;
-  const inputClass = glass ? proteinGlass.input : ui.input;
-  const selectClass = glass ? proteinGlass.select : ui.select;
-  const rowClass = glass ? 'grid grid-cols-1 gap-3 sm:grid-cols-2' : ui.row2;
+  const fieldLabelClass = compact ? calcGlass.fieldLabel : proteinGlass.fieldLabel;
+  const inputClass = glass ? (compact ? calcGlass.input : proteinGlass.input) : ui.input;
+  const selectClass = glass ? (compact ? calcGlass.select : proteinGlass.select) : ui.select;
+  const selectWrapClass = glass
+    ? compact
+      ? calcGlass.selectWrap
+      : proteinGlass.selectWrap
+    : ui.selectWrap;
+  const rowClass = glass ? (compact ? calcGlass.row2 : 'grid grid-cols-1 gap-3 sm:grid-cols-2') : ui.row2;
+  const legendClass = compact ? calcGlass.legendTight : ui.legend;
+  const legendWrap = compact ? calcGlass.legendMt : 'mt-2';
+
+  const fieldProps = glass
+    ? { labelClassName: fieldLabelClass }
+    : ({} as { labelClassName?: string });
 
   return (
     <>
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div className="w-full lg:max-w-md">
-          <p className={ui.legend}>Sex</p>
-          <SexOptions sex={s.sex} onChange={sex => set({ sex })} glass={glass} />
+      <div className={compact ? calcGlass.topRow : 'flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between'}>
+        <div className="w-full min-w-0 lg:max-w-md">
+          <p className={legendClass}>Sex</p>
+          <SexOptions
+            sex={s.sex}
+            onChange={sex => set({ sex })}
+            glass={glass}
+            compact={compact}
+          />
         </div>
         {glass ? (
           <GlassUnitToggle
             value={s.unit}
             onChange={v => set({ unit: v as UnitSystem })}
+            compact={compact}
             options={[
               { value: 'imperial', label: 'lb / ft + in' },
               { value: 'metric', label: 'kg / cm' },
@@ -198,7 +233,7 @@ export default function BodyInputs({
       </div>
 
       <div className={rowClass}>
-        <Field label="Age">
+        <Field label="Age" {...fieldProps}>
           <input
             className={inputClass}
             type="number"
@@ -210,7 +245,7 @@ export default function BodyInputs({
           />
         </Field>
         {s.unit === 'imperial' ? (
-          <Field label="Weight (lb)">
+          <Field label="Weight (lb)" {...fieldProps}>
             <input
               className={inputClass}
               type="number"
@@ -222,7 +257,7 @@ export default function BodyInputs({
             />
           </Field>
         ) : (
-          <Field label="Weight (kg)">
+          <Field label="Weight (kg)" {...fieldProps}>
             <input
               className={inputClass}
               type="number"
@@ -238,7 +273,7 @@ export default function BodyInputs({
 
       {s.unit === 'imperial' ? (
         <div className={rowClass}>
-          <Field label="Height (ft)">
+          <Field label="Height (ft)" {...fieldProps}>
             <input
               className={inputClass}
               type="number"
@@ -249,7 +284,7 @@ export default function BodyInputs({
               required
             />
           </Field>
-          <Field label="Height (in)">
+          <Field label="Height (in)" {...fieldProps}>
             <input
               className={inputClass}
               type="number"
@@ -261,7 +296,7 @@ export default function BodyInputs({
           </Field>
         </div>
       ) : (
-        <Field label="Height (cm)">
+        <Field label="Height (cm)" {...fieldProps}>
           <input
             className={inputClass}
             type="number"
@@ -274,8 +309,8 @@ export default function BodyInputs({
         </Field>
       )}
 
-      <Field label="Activity">
-        <div className={glass ? proteinGlass.selectWrap : ui.selectWrap}>
+      <Field label="Activity" {...fieldProps}>
+        <div className={selectWrapClass}>
           <select
             className={selectClass}
             value={s.activity}
@@ -287,13 +322,13 @@ export default function BodyInputs({
               </option>
             ))}
           </select>
-          <SelectChevron glass={glass} />
+          <SelectChevron glass={glass} compact={compact} />
         </div>
       </Field>
 
       <div>
-        <p className={ui.legend}>Goal</p>
-        <div className="mt-2">
+        <p className={legendClass}>Goal</p>
+        <div className={legendWrap}>
           <PillButtons<Goal>
             label="Goal"
             value={s.goal}
@@ -306,6 +341,7 @@ export default function BodyInputs({
               label: GOAL[k].label,
             }))}
             glass={glass}
+            compact={compact}
           />
         </div>
       </div>

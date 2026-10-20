@@ -7,7 +7,7 @@ import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathC
 import { textWithBrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import type { Goal } from './energyMath';
 import type { Level, ProteinGoal } from './proteinMath';
-import { proteinGlass, ui } from './ui';
+import { calcGlass, proteinGlass, ui } from './ui';
 
 const svg = {
   width: 20,
@@ -331,6 +331,7 @@ export function PillButtons<T extends string | number>({
   label,
   equalWidth,
   glass = false,
+  compact = false,
 }: {
   value: T;
   onChange: (v: T) => void;
@@ -338,14 +339,22 @@ export function PillButtons<T extends string | number>({
   label: string;
   equalWidth?: boolean;
   glass?: boolean;
+  compact?: boolean;
 }) {
   const wrapClass = glass
-    ? equalWidth
-      ? 'grid grid-cols-2 gap-2 sm:grid-cols-4'
-      : 'grid grid-cols-2 gap-2 min-[480px]:grid-cols-4'
+    ? compact
+      ? equalWidth
+        ? calcGlass.pillGridFat
+        : calcGlass.pillGridGoal
+      : equalWidth
+        ? 'grid grid-cols-2 gap-2 sm:grid-cols-4'
+        : 'grid grid-cols-2 gap-2 min-[480px]:grid-cols-4'
     : equalWidth
       ? ui.pillEqual
       : ui.pillRow;
+
+  const btnBase = compact ? calcGlass.optionBtn : proteinGlass.optionBtn;
+  const btnOn = compact ? calcGlass.optionBtnSelected : proteinGlass.optionBtnSelected;
 
   return (
     <div className={wrapClass} role="group" aria-label={label}>
@@ -356,7 +365,7 @@ export function PillButtons<T extends string | number>({
           aria-pressed={value === o.value}
           className={
             glass
-              ? `${proteinGlass.optionBtn} ${value === o.value ? proteinGlass.optionBtnSelected : ''}`
+              ? `${btnBase} ${value === o.value ? btnOn : ''}`
               : `${ui.pill} ${value === o.value ? ui.pillOn : ''}`
           }
           onClick={() => onChange(o.value)}
@@ -940,22 +949,30 @@ export function ProteinInlineField({
   label,
   children,
   className,
+  labelClassName = proteinGlass.fieldLabel,
 }: {
   label: string;
   children: ReactNode;
   className?: string;
+  labelClassName?: string;
 }) {
   return (
     <label className={`relative block ${className ?? ''}`}>
-      <span className={proteinGlass.fieldLabel}>{label}</span>
+      <span className={labelClassName}>{label}</span>
       {children}
     </label>
   );
 }
 
-export function ProteinCalcButton({ children }: { children: ReactNode }) {
+export function ProteinCalcButton({
+  children,
+  compact = false,
+}: {
+  children: ReactNode;
+  compact?: boolean;
+}) {
   return (
-    <button type="submit" className={proteinGlass.button}>
+    <button type="submit" className={compact ? calcGlass.button : proteinGlass.button}>
       {children}
       <ArrowIcon />
     </button>

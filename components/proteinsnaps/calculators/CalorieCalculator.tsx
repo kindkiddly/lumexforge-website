@@ -7,8 +7,8 @@ import { energy, validate, type EnergyResult } from './energyMath';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
-import { CalorieGauge, ErrorBox, ProteinCalcButton, ProteinGlassCard } from './Parts';
-import { proteinGlass, ui } from './ui';
+import { CalorieGauge, ErrorBox, ProteinCalcButton } from './Parts';
+import { calcGlass, ui } from './ui';
 
 function goalAdjustmentLabel(goal: BodyState['goal']): string {
   if (goal === 'fatloss') return '−400';
@@ -43,17 +43,18 @@ export default function CalorieCalculator() {
   const n = (v: number) => v.toLocaleString('en-US');
 
   return (
-    <section className={ui.stack}>
-      <ProteinGlassCard tint="mint">
-        <form onSubmit={calculate} className={proteinGlass.cardPad}>
-          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
-          <div className="mt-3 grid gap-3">
-            <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} glass />
+    <section className="mt-6 flex flex-col gap-4">
+      <div className={calcGlass.cardGlowWrap}>
+        <div className={calcGlass.cardGlow} aria-hidden />
+        <form onSubmit={calculate} className={calcGlass.cardPad}>
+          <h2 className={calcGlass.cardTitle}>Your Details</h2>
+          <div className={calcGlass.formStack}>
+            <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} glass compact />
             {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <ProteinCalcButton>Calculate Calories</ProteinCalcButton>
+            <ProteinCalcButton compact>Calculate Calories</ProteinCalcButton>
           </div>
         </form>
-      </ProteinGlassCard>
+      </div>
 
       {r ? (
         <>
@@ -101,6 +102,7 @@ export default function CalorieCalculator() {
             </div>
           </div>
           <AppCta
+            offerGlass
             text={
               <>
                 <BrandName /> sets your calories the same way during onboarding. After about two
