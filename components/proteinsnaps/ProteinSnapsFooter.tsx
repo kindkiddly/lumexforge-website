@@ -176,22 +176,22 @@ export function ProteinSnapsFooter() {
                   Delete Account
                 </a>
               </li>
+              <li>
+                <a
+                  href={`mailto:${PROTEINSNAPS.contactEmail}`}
+                  className="break-all text-[#00E6A8] transition-colors hover:text-[#00e6a8]"
+                >
+                  {PROTEINSNAPS.contactEmail}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="ps-divider !mt-3" />
-        <div className="flex flex-col gap-1.5 pt-2 text-left sm:flex-row sm:items-center sm:justify-between">
-          <p className="ps-site-footer-copyright !mt-0 text-left">
-            © {year} LumexForge. All rights reserved.
-          </p>
-          <a
-            href={`mailto:${PROTEINSNAPS.contactEmail}`}
-            className="text-sm text-[#00E6A8] transition-colors hover:text-[#00e6a8]"
-          >
-            {PROTEINSNAPS.contactEmail}
-          </a>
-        </div>
+        <p className="ps-site-footer-copyright !mt-0 pt-2 text-left">
+          © {year} LumexForge. All rights reserved.
+        </p>
       </div>
     </footer>
   );
