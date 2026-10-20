@@ -22,7 +22,7 @@ function FooterStoreButtons() {
           alt="Download on the App Store"
           width={FOOTER_BADGE_W}
           height={FOOTER_BADGE_H}
-          className="h-10 w-full object-contain object-left"
+          className="h-[34px] w-[104px] max-w-full object-contain object-left"
           unoptimized
         />
       </a>

@@ -82,7 +82,9 @@ export default function Page() {
               <p className={ui.body}>
                 Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who
                 are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
-                from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg. If you
+                from the ISSN 2017 position stand. Not exercising means no regular exercise (general
+                adult baseline). Exercising means regular strength, cardio or classes. Pounds are
+                converted at 1 lb = 0.4536 kg. If you
                 are 65 or older and not exercising regularly, we use 1.0–1.2 g/kg (PROT-AGE Study
                 Group). If you exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
                 (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the
