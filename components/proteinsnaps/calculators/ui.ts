@@ -143,6 +143,11 @@ export const proteinGlass = {
     'pointer-events-none absolute left-3 top-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
   input:
     'relative z-[1] h-12 w-full rounded-xl border border-white/80 bg-white/70 px-3 pb-1.5 pt-5 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+  selectWrap: 'relative',
+  select:
+    'relative z-[1] h-12 w-full appearance-none rounded-xl border border-white/80 bg-white/70 px-3 pb-1.5 pt-5 pr-9 text-sm text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+  selectChevron:
+    'pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#555555]',
   toggle:
     'relative z-[1] inline-flex h-12 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
   toggleBtn:

@@ -330,25 +330,35 @@ export function PillButtons<T extends string | number>({
   options,
   label,
   equalWidth,
+  glass = false,
 }: {
   value: T;
   onChange: (v: T) => void;
   options: { value: T; label: string }[];
   label: string;
   equalWidth?: boolean;
+  glass?: boolean;
 }) {
+  const wrapClass = glass
+    ? equalWidth
+      ? 'grid grid-cols-2 gap-2 sm:grid-cols-4'
+      : 'grid grid-cols-2 gap-2 min-[480px]:grid-cols-4'
+    : equalWidth
+      ? ui.pillEqual
+      : ui.pillRow;
+
   return (
-    <div
-      className={equalWidth ? ui.pillEqual : ui.pillRow}
-      role="group"
-      aria-label={label}
-    >
+    <div className={wrapClass} role="group" aria-label={label}>
       {options.map(o => (
         <button
           key={String(o.value)}
           type="button"
           aria-pressed={value === o.value}
-          className={`${ui.pill} ${value === o.value ? ui.pillOn : ''}`}
+          className={
+            glass
+              ? `${proteinGlass.optionBtn} ${value === o.value ? proteinGlass.optionBtnSelected : ''}`
+              : `${ui.pill} ${value === o.value ? ui.pillOn : ''}`
+          }
           onClick={() => onChange(o.value)}
         >
           {o.label}

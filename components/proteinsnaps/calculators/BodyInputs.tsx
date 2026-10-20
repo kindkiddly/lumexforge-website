@@ -1,8 +1,8 @@
 'use client';
 
 import { ACTIVITY, GOAL, type Activity, type Goal, type Sex } from './energyMath';
-import { InlineField, PillButtons } from './Parts';
-import { ui } from './ui';
+import { InlineField, PillButtons, ProteinInlineField } from './Parts';
+import { proteinGlass, ui } from './ui';
 
 export type UnitSystem = 'imperial' | 'metric';
 export interface BodyState {
@@ -65,11 +65,91 @@ export function UnitToggle({
   );
 }
 
-function SelectChevron() {
+function SelectChevron({ glass }: { glass?: boolean }) {
   return (
-    <svg className={ui.selectChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className={glass ? proteinGlass.selectChevron : ui.selectChevron}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <path d="m6 9 6 6 6-6" />
     </svg>
+  );
+}
+
+function GlassUnitToggle({
+  value,
+  onChange,
+  options,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <div
+      className={`${proteinGlass.toggle} w-full max-w-[280px] sm:w-auto`}
+      role="group"
+      aria-label="Units"
+    >
+      {options.map(o => (
+        <button
+          key={o.value}
+          type="button"
+          aria-pressed={value === o.value}
+          className={`${proteinGlass.toggleBtn} ${value === o.value ? `${proteinGlass.toggleOn} ${proteinGlass.optionBtnSelected}` : proteinGlass.toggleOff}`}
+          onClick={() => onChange(o.value)}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function SexOptions({
+  sex,
+  onChange,
+  glass,
+}: {
+  sex: Sex;
+  onChange: (s: Sex) => void;
+  glass?: boolean;
+}) {
+  if (!glass) {
+    return (
+      <div className={`${ui.pillEqual} mt-2`}>
+        {(['female', 'male'] as Sex[]).map(s => (
+          <label key={s} className={`${ui.pill} cursor-pointer ${sex === s ? ui.pillOn : ''}`}>
+            <input
+              className={ui.pillRadio}
+              type="radio"
+              name="sex"
+              checked={sex === s}
+              onChange={() => onChange(s)}
+            />
+            {s === 'female' ? 'Female' : 'Male'}
+          </label>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="relative z-[1] mt-2 grid grid-cols-2 gap-2">
+      {(['female', 'male'] as Sex[]).map(s => (
+        <button
+          key={s}
+          type="button"
+          aria-pressed={sex === s}
+          className={`${proteinGlass.optionBtn} ${sex === s ? proteinGlass.optionBtnSelected : ''}`}
+          onClick={() => onChange(s)}
+        >
+          {s === 'female' ? 'Female' : 'Male'}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -77,48 +157,50 @@ export default function BodyInputs({
   s,
   set,
   onGoal,
+  glass = false,
 }: {
   s: BodyState;
   set: (p: Partial<BodyState>) => void;
   onGoal?: (g: Goal) => void;
+  glass?: boolean;
 }) {
+  const Field = glass ? ProteinInlineField : InlineField;
+  const inputClass = glass ? proteinGlass.input : ui.input;
+  const selectClass = glass ? proteinGlass.select : ui.select;
+  const rowClass = glass ? 'grid grid-cols-1 gap-3 sm:grid-cols-2' : ui.row2;
+
   return (
     <>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="w-full lg:max-w-md">
           <p className={ui.legend}>Sex</p>
-          <div className={`${ui.pillEqual} mt-2`}>
-            {(['female', 'male'] as Sex[]).map(sex => (
-              <label
-                key={sex}
-                className={`${ui.pill} cursor-pointer ${s.sex === sex ? ui.pillOn : ''}`}
-              >
-                <input
-                  className={ui.pillRadio}
-                  type="radio"
-                  name="sex"
-                  checked={s.sex === sex}
-                  onChange={() => set({ sex })}
-                />
-                {sex === 'female' ? 'Female' : 'Male'}
-              </label>
-            ))}
-          </div>
+          <SexOptions sex={s.sex} onChange={sex => set({ sex })} glass={glass} />
         </div>
-        <UnitToggle
-          value={s.unit}
-          onChange={v => set({ unit: v as UnitSystem })}
-          options={[
-            { value: 'imperial', label: 'lb / ft + in' },
-            { value: 'metric', label: 'kg / cm' },
-          ]}
-        />
+        {glass ? (
+          <GlassUnitToggle
+            value={s.unit}
+            onChange={v => set({ unit: v as UnitSystem })}
+            options={[
+              { value: 'imperial', label: 'lb / ft + in' },
+              { value: 'metric', label: 'kg / cm' },
+            ]}
+          />
+        ) : (
+          <UnitToggle
+            value={s.unit}
+            onChange={v => set({ unit: v as UnitSystem })}
+            options={[
+              { value: 'imperial', label: 'lb / ft + in' },
+              { value: 'metric', label: 'kg / cm' },
+            ]}
+          />
+        )}
       </div>
 
-      <div className={ui.row2}>
-        <InlineField label="Age">
+      <div className={rowClass}>
+        <Field label="Age">
           <input
-            className={ui.input}
+            className={inputClass}
             type="number"
             inputMode="numeric"
             value={s.age}
@@ -126,11 +208,11 @@ export default function BodyInputs({
             placeholder={PLACEHOLDERS.age}
             required
           />
-        </InlineField>
+        </Field>
         {s.unit === 'imperial' ? (
-          <InlineField label="Weight (lb)">
+          <Field label="Weight (lb)">
             <input
-              className={ui.input}
+              className={inputClass}
               type="number"
               inputMode="decimal"
               value={s.lb}
@@ -138,11 +220,11 @@ export default function BodyInputs({
               placeholder={PLACEHOLDERS.lb}
               required
             />
-          </InlineField>
+          </Field>
         ) : (
-          <InlineField label="Weight (kg)">
+          <Field label="Weight (kg)">
             <input
-              className={ui.input}
+              className={inputClass}
               type="number"
               inputMode="decimal"
               value={s.kg}
@@ -150,15 +232,15 @@ export default function BodyInputs({
               placeholder={PLACEHOLDERS.kg}
               required
             />
-          </InlineField>
+          </Field>
         )}
       </div>
 
       {s.unit === 'imperial' ? (
-        <div className={ui.row2}>
-          <InlineField label="Height (ft)">
+        <div className={rowClass}>
+          <Field label="Height (ft)">
             <input
-              className={ui.input}
+              className={inputClass}
               type="number"
               inputMode="numeric"
               value={s.ft}
@@ -166,22 +248,22 @@ export default function BodyInputs({
               placeholder={PLACEHOLDERS.ft}
               required
             />
-          </InlineField>
-          <InlineField label="Height (in)">
+          </Field>
+          <Field label="Height (in)">
             <input
-              className={ui.input}
+              className={inputClass}
               type="number"
               inputMode="decimal"
               value={s.inch}
               onChange={e => set({ inch: e.target.value })}
               placeholder={PLACEHOLDERS.inch}
             />
-          </InlineField>
+          </Field>
         </div>
       ) : (
-        <InlineField label="Height (cm)">
+        <Field label="Height (cm)">
           <input
-            className={ui.input}
+            className={inputClass}
             type="number"
             inputMode="decimal"
             value={s.cm}
@@ -189,13 +271,13 @@ export default function BodyInputs({
             placeholder={PLACEHOLDERS.cm}
             required
           />
-        </InlineField>
+        </Field>
       )}
 
-      <InlineField label="Activity">
-        <div className={ui.selectWrap}>
+      <Field label="Activity">
+        <div className={glass ? proteinGlass.selectWrap : ui.selectWrap}>
           <select
-            className={ui.select}
+            className={selectClass}
             value={s.activity}
             onChange={e => set({ activity: e.target.value as Activity })}
           >
@@ -205,9 +287,9 @@ export default function BodyInputs({
               </option>
             ))}
           </select>
-          <SelectChevron />
+          <SelectChevron glass={glass} />
         </div>
-      </InlineField>
+      </Field>
 
       <div>
         <p className={ui.legend}>Goal</p>
@@ -223,6 +305,7 @@ export default function BodyInputs({
               value: k,
               label: GOAL[k].label,
             }))}
+            glass={glass}
           />
         </div>
       </div>

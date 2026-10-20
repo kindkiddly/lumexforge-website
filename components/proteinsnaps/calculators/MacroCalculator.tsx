@@ -18,16 +18,17 @@ import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
 import {
-  CalcButton,
   Donut,
   ErrorBox,
-  InlineField,
   MACRO_COLOR,
   MacroBars,
   PillButtons,
+  ProteinCalcButton,
+  ProteinGlassCard,
+  ProteinInlineField,
   SoftNote,
 } from './Parts';
-import { ui } from './ui';
+import { proteinGlass, ui } from './ui';
 
 export default function MacroCalculator() {
   const [s, setS] = useState<BodyState>(initialBody);
@@ -72,79 +73,82 @@ export default function MacroCalculator() {
 
   return (
     <section className={ui.stack}>
-      <form onSubmit={calculate} className={ui.cardPad}>
-        <h2 className={ui.cardTitle}>Your Details</h2>
-        <div className={ui.form}>
-          <BodyInputs
-            s={s}
-            set={x => setS(prev => ({ ...prev, ...x }))}
-            onGoal={(g: Goal) => setP(onGoalChange(g))}
-          />
-          <div className="grid gap-4 lg:grid-cols-2 lg:items-end">
-            <InlineField label="Already know your calories? (optional)">
-              <input
-                className={ui.input}
-                type="number"
-                inputMode="numeric"
-                value={known}
-                onChange={e => setKnown(e.target.value)}
-                placeholder="Leave blank to estimate"
-              />
-            </InlineField>
-            <div>
-              <p className={ui.legend}>Fat (% of calories)</p>
-              <div className="mt-2">
-                <PillButtons<number>
-                  label="Fat percent of calories"
-                  value={f}
-                  onChange={setF}
-                  options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
+      <ProteinGlassCard tint="mint">
+        <form onSubmit={calculate} className={proteinGlass.cardPad}>
+          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
+          <div className="mt-3 grid gap-3">
+            <BodyInputs
+              s={s}
+              set={x => setS(prev => ({ ...prev, ...x }))}
+              onGoal={(g: Goal) => setP(onGoalChange(g))}
+              glass
+            />
+            <div className="grid gap-3 lg:grid-cols-2 lg:items-end">
+              <ProteinInlineField label="Already know your calories? (optional)">
+                <input
+                  className={proteinGlass.input}
+                  type="number"
+                  inputMode="numeric"
+                  value={known}
+                  onChange={e => setKnown(e.target.value)}
+                  placeholder="Leave blank to estimate"
                 />
+              </ProteinInlineField>
+              <div>
+                <p className={ui.legend}>Fat (% of calories)</p>
+                <div className="mt-2">
+                  <PillButtons<number>
+                    label="Fat percent of calories"
+                    value={f}
+                    onChange={setF}
+                    options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
+                    equalWidth
+                    glass
+                  />
+                </div>
               </div>
             </div>
+            <div>
+              <ProteinInlineField label="Protein">
+                <div className={proteinGlass.selectWrap}>
+                  <select
+                    className={proteinGlass.select}
+                    value={p.value}
+                    onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
+                  >
+                    {PROTEIN_OPTIONS.map(v => (
+                      <option key={v} value={v}>
+                        {proteinLabel(v, s.goal)}
+                      </option>
+                    ))}
+                  </select>
+                  <svg
+                    className={proteinGlass.selectChevron}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+              </ProteinInlineField>
+              <p className={ui.hint}>
+                {p.manual
+                  ? 'You picked this protein level. Changing the goal resets it to the app setting.'
+                  : (
+                      <>
+                        Set from the <BrandName /> app&apos;s settings for your goal. You can pick any
+                        option.
+                      </>
+                    )}
+              </p>
+            </div>
+            {error ? <ErrorBox>{error}</ErrorBox> : null}
+            <ProteinCalcButton>Calculate Macros</ProteinCalcButton>
           </div>
-          <div>
-            <InlineField label="Protein">
-              <div className="relative">
-                <select
-                  className={ui.select}
-                  value={p.value}
-                  onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
-                >
-                  {PROTEIN_OPTIONS.map(v => (
-                    <option key={v} value={v}>
-                      {proteinLabel(v, s.goal)}
-                    </option>
-                  ))}
-                </select>
-                <svg
-                  className={ui.selectChevron}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </div>
-            </InlineField>
-            <p className={ui.hint}>
-              {p.manual
-                ? 'You picked this protein level. Changing the goal resets it to the app setting.'
-                : (
-                    <>
-                      Set from the <BrandName /> app&apos;s settings for your goal. You can pick any
-                      option.
-                    </>
-                  )}
-            </p>
-          </div>
-          {error ? <ErrorBox>{error}</ErrorBox> : null}
-          <div>
-            <CalcButton>Calculate Macros</CalcButton>
-          </div>
-        </div>
-      </form>
+        </form>
+      </ProteinGlassCard>
 
       {out ? (
         <>

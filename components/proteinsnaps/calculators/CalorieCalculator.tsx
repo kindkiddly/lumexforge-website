@@ -7,8 +7,8 @@ import { energy, validate, type EnergyResult } from './energyMath';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
-import { CalcButton, CalorieGauge, ErrorBox } from './Parts';
-import { ui } from './ui';
+import { CalorieGauge, ErrorBox, ProteinCalcButton, ProteinGlassCard } from './Parts';
+import { proteinGlass, ui } from './ui';
 
 function goalAdjustmentLabel(goal: BodyState['goal']): string {
   if (goal === 'fatloss') return '−400';
@@ -44,16 +44,16 @@ export default function CalorieCalculator() {
 
   return (
     <section className={ui.stack}>
-      <form onSubmit={calculate} className={ui.cardPad}>
-        <h2 className={ui.cardTitle}>Your Details</h2>
-        <div className={ui.form}>
-          <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} />
-          {error ? <ErrorBox>{error}</ErrorBox> : null}
-          <div>
-            <CalcButton>Calculate Calories</CalcButton>
+      <ProteinGlassCard tint="mint">
+        <form onSubmit={calculate} className={proteinGlass.cardPad}>
+          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
+          <div className="mt-3 grid gap-3">
+            <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} glass />
+            {error ? <ErrorBox>{error}</ErrorBox> : null}
+            <ProteinCalcButton>Calculate Calories</ProteinCalcButton>
           </div>
-        </div>
-      </form>
+        </form>
+      </ProteinGlassCard>
 
       {r ? (
         <>
