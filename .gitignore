@@ -43,3 +43,6 @@ templatemo_*/
 next-env.d.ts
 GhostWriterHunt/
 tmp-edge-profile/
+
+# reference material from another agent
+/calculators-v2/

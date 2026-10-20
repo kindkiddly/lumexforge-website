@@ -12,6 +12,9 @@ const routes = [
   "/meal-scanner",
   "/workout-nutrition",
   "/ai-protein-tracker",
+  "/protein-calculator",
+  "/calorie-calculator",
+  "/macro-calculator",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
