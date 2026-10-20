@@ -50,32 +50,22 @@ function ProteinUnitToggle({
 function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
   return (
     <div className="relative z-[1] grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
-      <label
-        className={`${proteinGlass.pill} ${level === 'rda' ? `${proteinGlass.pillOn} ${proteinGlass.inputSelected}` : ''}`}
-        title="Not regularly exercising (general adult baseline)"
+      <button
+        type="button"
+        aria-pressed={level === 'rda'}
+        className={`${proteinGlass.optionBtn} ${level === 'rda' ? proteinGlass.optionBtnSelected : ''}`}
+        onClick={() => onChange('rda')}
       >
-        <input
-          className="sr-only"
-          type="radio"
-          name="level"
-          checked={level === 'rda'}
-          onChange={() => onChange('rda')}
-        />
         Not regularly exercising (general adult baseline)
-      </label>
-      <label
-        className={`${proteinGlass.pill} ${level === 'active' ? `${proteinGlass.pillOn} ${proteinGlass.inputSelected}` : ''}`}
-        title="Exercising regularly (strength, cardio or classes)"
+      </button>
+      <button
+        type="button"
+        aria-pressed={level === 'active'}
+        className={`${proteinGlass.optionBtn} ${level === 'active' ? proteinGlass.optionBtnSelected : ''}`}
+        onClick={() => onChange('active')}
       >
-        <input
-          className="sr-only"
-          type="radio"
-          name="level"
-          checked={level === 'active'}
-          onChange={() => onChange('active')}
-        />
         Exercising regularly (strength, cardio or classes)
-      </label>
+      </button>
     </div>
   );
 }
@@ -101,20 +91,16 @@ function GoalPills({
       aria-hidden={!visible}
     >
       {GOALS.map(g => (
-        <label
+        <button
           key={g.id}
-          className={`${proteinGlass.pill} ${goal === g.id && visible ? `${proteinGlass.pillOn} ${proteinGlass.inputSelected}` : ''}`}
+          type="button"
+          disabled={!visible}
+          aria-pressed={goal === g.id}
+          className={`${proteinGlass.optionBtn} ${goal === g.id && visible ? proteinGlass.optionBtnSelected : ''}`}
+          onClick={() => onChange(g.id)}
         >
-          <input
-            className="sr-only"
-            type="radio"
-            name="goal"
-            checked={goal === g.id}
-            disabled={!visible}
-            onChange={() => onChange(g.id)}
-          />
           {g.label}
-        </label>
+        </button>
       ))}
     </div>
   );

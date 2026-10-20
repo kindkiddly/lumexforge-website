@@ -133,7 +133,11 @@ export const proteinGlass = {
   cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
   ageNote: 'mb-1 text-[10px] leading-snug text-[#777777]',
   inputSelected:
-    'border-2 border-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.22)] font-semibold text-[#1A1A1A]',
+    'outline outline-2 outline-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A]',
+  optionBtn:
+    'relative z-[1] flex h-12 max-h-12 min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/55 px-2.5 py-0 text-center text-[11px] font-medium leading-none text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] outline-none transition-all duration-150 ease-out hover:-translate-y-px hover:border-white active:scale-[0.98] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] whitespace-nowrap sm:px-3 sm:text-xs',
+  optionBtnSelected:
+    'outline outline-2 outline-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A] bg-white/75',
   inputRow: 'mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-[7.5rem_minmax(9rem,11rem)_1fr_auto] lg:items-end lg:gap-3',
   inputRowTablet: 'mt-3 grid gap-3 sm:grid-cols-2 lg:hidden',
   fieldLabel:

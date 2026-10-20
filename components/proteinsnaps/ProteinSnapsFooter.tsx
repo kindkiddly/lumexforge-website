@@ -5,7 +5,7 @@ import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import Link from "next/link";
 
 const STORE_BTN_CLASS =
-  "inline-flex h-[52px] w-[168px] shrink-0 items-center gap-2.5 rounded-lg border border-[#888888]/45 bg-black px-3 transition-opacity hover:opacity-90";
+  "box-border inline-flex h-[52px] w-[168px] min-w-[168px] max-w-[168px] shrink-0 flex-none items-center gap-2.5 rounded-lg border border-[#888888]/45 bg-black px-3 transition-opacity hover:opacity-90";
 
 function AppleLogo() {
   return (
@@ -28,7 +28,7 @@ function GooglePlayLogo() {
 
 function FooterStoreButtons() {
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-3">
+    <div className="mt-2 flex max-w-[348px] flex-row flex-wrap items-center gap-3">
       <a href={PROTEINSNAPS.appStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
         <AppleLogo />
         <span className="min-w-0 text-left leading-tight text-white">
@@ -51,9 +51,9 @@ export function ProteinSnapsFooter() {
   const { href: psHref } = useProteinSnapsPath();
   const year = new Date().getFullYear();
   return (
-    <footer className="ps-site-footer !shadow-none">
+    <footer className="ps-site-footer !shadow-none !py-5 !pt-6 !pb-3 sm:!px-6 lg:!px-8">
       <div className="ps-site-footer-inner mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="ps-site-footer-grid !grid-cols-1 !gap-y-8 sm:!grid-cols-2 lg:!grid-cols-[1.35fr_1fr_1fr_1fr] lg:!gap-x-8">
+        <div className="ps-site-footer-grid !grid-cols-1 !gap-y-5 sm:!grid-cols-2 lg:!grid-cols-[1.35fr_1fr_1fr_1fr] lg:!gap-x-8 lg:!gap-y-4">
           <div className="ps-site-footer-brand">
             <p className="ps-site-footer-brand-title font-serif text-xl font-semibold text-[#F8FAFC]">
               Protein<span className="text-[#00e6a8]">Snaps</span>
@@ -161,8 +161,8 @@ export function ProteinSnapsFooter() {
           </div>
         </div>
 
-        <div className="ps-divider" />
-        <div className="flex flex-col gap-2 pt-4 text-left sm:flex-row sm:items-center sm:justify-between">
+        <div className="ps-divider !mt-3" />
+        <div className="flex flex-col gap-1.5 pt-2 text-left sm:flex-row sm:items-center sm:justify-between">
           <p className="ps-site-footer-copyright !mt-0 text-left">
             © {year} LumexForge. All rights reserved.
           </p>
