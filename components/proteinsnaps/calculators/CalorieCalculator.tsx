@@ -6,6 +6,7 @@ import { toMetric } from './bodyParse';
 import { energy, validate, type EnergyResult } from './energyMath';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
+import { BrandName } from './BrandName';
 import { CalcButton, CalorieGauge, ErrorBox } from './Parts';
 import { ui } from './ui';
 
@@ -80,7 +81,7 @@ export default function CalorieCalculator() {
                   </div>
                 </div>
                 <p className={ui.resultLine}>
-                  Goal adjustment uses the ProteinSnaps app&apos;s settings.
+                  Goal adjustment uses the <BrandName /> app&apos;s settings.
                 </p>
                 <p className={ui.resultLine}>
                   <a className={ui.link} href="/macro-calculator">
@@ -99,7 +100,16 @@ export default function CalorieCalculator() {
               />
             </div>
           </div>
-          <AppCta text="ProteinSnaps sets your calories the same way during onboarding. After about two weeks of logging, it compares what you ate with your weight trend to estimate your real maintenance calories. Log meals with an AI photo estimate, the barcode scanner, or Fill the Gap." />
+          <AppCta
+            text={
+              <>
+                <BrandName /> sets your calories the same way during onboarding. After about two
+                weeks of logging, it compares what you ate with your weight trend to estimate your
+                real maintenance calories. Log meals with an AI photo estimate, the barcode scanner,
+                or Fill the Gap.
+              </>
+            }
+          />
         </>
       ) : null}
     </section>

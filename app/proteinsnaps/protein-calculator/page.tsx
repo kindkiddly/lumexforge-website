@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import ProteinCalculator from '@/components/proteinsnaps/calculators/ProteinCalculator';
 import {
@@ -84,8 +85,8 @@ export default function Page() {
                 are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
                 from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg. If you
                 exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
-                (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the
-                ProteinSnaps app&apos;s setting; the ISSN notes more protein may be needed in a
+                (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the{' '}
+                <BrandName /> app&apos;s setting; the ISSN notes more protein may be needed in a
                 calorie deficit).
               </p>
             </div>

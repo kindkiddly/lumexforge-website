@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import { ui } from '@/components/proteinsnaps/calculators/ui';
 import MacroCalculator from '@/components/proteinsnaps/calculators/MacroCalculator';
 import {
@@ -80,7 +81,7 @@ export default function Page() {
         <div className={ui.panel}>
           <p className={ui.body}>
             Protein (g) = weight (kg) × your protein setting. By default it follows your goal, using
-            the ProteinSnaps app&apos;s settings: fat loss 2.2, maintain 1.6, build 1.8, recomp 2.0
+            the <BrandName /> app&apos;s settings: fat loss 2.2, maintain 1.6, build 1.8, recomp 2.0
             g/kg. You can also pick 0.8 (RDA), 1.4, 1.6, 1.8, 2.0 or 2.2 g/kg yourself; your pick
             stays until you change the goal. Fat (g) = calories × fat% ÷ 9. Carbs (g) = (calories −
             protein × 4 − fat × 9) ÷ 4. Example: 1,800 kcal, 143 lb (65 kg), 1.6 g/kg protein, 30%

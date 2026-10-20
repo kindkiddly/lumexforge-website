@@ -111,7 +111,6 @@ export const ui = {
   disclaimer: 'mt-8 text-xs leading-relaxed text-[#555555]',
 } as const;
 
-export const PRICING = 'Free to download. Premium is $9.99/month or $59.99/year.';
 export const IOS = 'https://apps.apple.com/us/app/proteinsnaps/id6801353318';
 export const ANDROID =
   'https://play.google.com/store/apps/details?id=com.proteinsnap.app';

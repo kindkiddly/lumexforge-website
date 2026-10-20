@@ -16,6 +16,7 @@ import {
 } from './macroLogic';
 import SafetyNote from './SafetyNote';
 import AppCta from './AppCta';
+import { BrandName } from './BrandName';
 import {
   CalcButton,
   Donut,
@@ -130,7 +131,12 @@ export default function MacroCalculator() {
             <p className={ui.hint}>
               {p.manual
                 ? 'You picked this protein level. Changing the goal resets it to the app setting.'
-                : "Set from the ProteinSnaps app's settings for your goal. You can pick any option."}
+                : (
+                    <>
+                      Set from the <BrandName /> app&apos;s settings for your goal. You can pick any
+                      option.
+                    </>
+                  )}
             </p>
           </div>
           {error ? <ErrorBox>{error}</ErrorBox> : null}

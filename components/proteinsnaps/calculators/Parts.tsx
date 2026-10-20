@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useId, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
+import { textWithBrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import type { Goal } from './energyMath';
 import type { Level, ProteinGoal } from './proteinMath';
 import { proteinGlass, ui } from './ui';
@@ -173,7 +174,9 @@ export function ProteinResultColorTiles({
               {factor.label}
             </p>
             {factor.source ? (
-              <p className="mt-1 text-[10px] font-medium text-[#555555]">{factor.source}</p>
+              <p className="mt-1 text-[10px] font-medium text-[#555555]">
+                {textWithBrandName(factor.source)}
+              </p>
             ) : null}
             <FactorGauge lo={factorLo} hi={factorHi} />
           </div>
@@ -190,7 +193,9 @@ export function ProteinResultColorTiles({
               <p className="mt-0.5 font-serif text-xl font-semibold text-[#1A1A1A]">
                 {goalInfo.title}
               </p>
-              <p className="mt-1 text-[10px] font-medium text-[#555555]">{goalInfo.source}</p>
+              <p className="mt-1 text-[10px] font-medium text-[#555555]">
+                {textWithBrandName(goalInfo.source)}
+              </p>
             </div>
           </div>
         </div>
@@ -268,7 +273,7 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
               <Chevron />
             </span>
           </summary>
-          <p className={ui.faqAnswer}>{f.a}</p>
+          <p className={ui.faqAnswer}>{textWithBrandName(f.a)}</p>
         </details>
       ))}
     </div>
@@ -975,7 +980,7 @@ export function ProteinGlassFaqList({ items }: { items: { q: string; a: string }
               <Chevron />
             </span>
           </summary>
-          <p className={ui.faqAnswer}>{f.a}</p>
+          <p className={ui.faqAnswer}>{textWithBrandName(f.a)}</p>
         </details>
       ))}
     </div>

@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import type { ReactNode } from 'react';
+import { BrandName } from './BrandName';
 import {
   proteinGlass,
   ui,
-  PRICING,
   IOS,
   ANDROID,
   STORE_BADGE_BOX,
@@ -68,15 +69,32 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const defaultHeadline = (
+  <>
+    This page gives a first estimate. The <BrandName /> app keeps adjusting from your real data.
+  </>
+);
+
+function CtaOfferLine() {
+  return (
+    <p className={`${ui.note} mt-3`}>
+      <span className="font-semibold">Grab it now!</span> 2 free AI meal snaps a day for 2 months, a
+      free daily briefing and 3 free AI coach chats a day for your first month, plus much more free
+      for gym-goers and nutrition tracking. Want Premium? Your first month is just $5.99, then
+      $9.99/month or $59.99/year.
+    </p>
+  );
+}
+
 export default function AppCta({
   text,
-  headline = 'This page gives a first estimate. The ProteinSnaps app keeps adjusting from your real data.',
+  headline = defaultHeadline,
   glass = false,
   phoneSrc = PROTEIN_CTA_PHONE_SRC,
   phoneAlt = 'ProteinSnaps app showing protein and nutrition tracking',
 }: {
-  text: string;
-  headline?: string;
+  text: ReactNode;
+  headline?: ReactNode;
   glass?: boolean;
   phoneSrc?: string;
   phoneAlt?: string;
@@ -92,7 +110,7 @@ export default function AppCta({
             {headline}
           </p>
           <p className={`${ui.body} mt-3`}>{text}</p>
-          <p className={`${ui.note} mt-3`}>{PRICING}</p>
+          <CtaOfferLine />
         </div>
         <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-8 lg:justify-center">
           <StoreBadgeBlock

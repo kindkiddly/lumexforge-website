@@ -11,6 +11,7 @@ import {
   type WeightUnit,
 } from './proteinMath';
 import AppCta from './AppCta';
+import { BrandName } from './BrandName';
 import {
   ErrorBox,
   ProteinCalcButton,
@@ -254,7 +255,11 @@ export default function ProteinCalculator() {
           <AppCta
             glass
             phoneSrc={PROTEIN_CTA_PHONE_SRC}
-            headline="Track this every day with ProteinSnaps."
+            headline={
+              <>
+                Track this every day with <BrandName />.
+              </>
+            }
             text="Snap a photo of your meal for an estimate of protein, macros and calories, scan packaged food barcodes, and let Fill the Gap show what's left for the day."
           />
         </>
