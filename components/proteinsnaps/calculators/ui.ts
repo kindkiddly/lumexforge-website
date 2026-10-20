@@ -1,95 +1,117 @@
-// Every class used by the calculators lives here, so styling is remapped in one place.
-// Glass look = the site's own glass-panel values written as utilities (the shared .ps-glass-panel turns dark on mobile).
-// Colors/fonts: cream theme, #1A1A1A / #555555 text, mint #00E6A8 / #00B386, cyan #00C2FF, Playfair + Inter.
-const glass =
-  'rounded-[20px] border border-white/70 bg-white/45 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.9)]';
-const glow =
-  'transition-all duration-300 hover:border-[#00E6A8]/35 hover:shadow-[0_0_32px_-8px_rgba(0,230,168,0.35),0_0_48px_-12px_rgba(0,194,255,0.25)]';
-const field =
-  'w-full rounded-[20px] border border-black/10 bg-white/60 pl-11 pr-4 py-3 font-sans text-sm text-[#1A1A1A] placeholder:text-[#555555]/60 focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/30';
-const pill =
-  'inline-flex cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white/60 px-4 py-2 text-sm font-medium text-[#1A1A1A] transition-all hover:border-[#00B386]/60';
-const pillOn =
-  '!border-[#00B386] !bg-[#00E6A8]/25 font-semibold shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)]';
+// Calculator UI tokens (reference v3: cream, floating shadows, no glow).
+const shadow = 'shadow-[0_4px_14px_rgba(0,0,0,0.06)]';
+const card = `rounded-[20px] border border-black/[0.06] bg-white ${shadow}`;
 
 export const ui = {
-  // page
-  main: 'mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 pb-6 lg:pt-28 lg:pb-8',
-  hero: '',
-  heroGrid: 'grid items-center gap-4 md:grid-cols-[1.3fr_0.7fr] md:gap-8',
-  heroImage: 'relative hidden aspect-[16/10] overflow-hidden rounded-[20px] border border-white/70 shadow-[0_8px_32px_rgba(0,0,0,0.12)] sm:block',
-  h1: 'font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#1A1A1A]',
-  h2: 'font-serif text-xl sm:text-2xl font-semibold text-[#1A1A1A] mt-10',
-  lead: 'mt-3 text-base leading-relaxed text-[#555555]',
-  body: 'mt-3 text-sm sm:text-base leading-relaxed text-[#555555]',
-  link: 'font-semibold text-[#00B386] transition-colors hover:text-[#00E6A8]',
-  prose: 'mx-auto max-w-4xl',
-  // layout
-  grid: 'mt-5 grid gap-5 lg:grid-cols-2 lg:items-stretch',
-  card: `${glass} ${glow} p-5 sm:p-6`,
-  resultCard: `${glass} flex flex-col p-5 sm:p-6`,
-  cardTitle: 'font-serif text-lg font-semibold text-[#1A1A1A]',
-  form: 'mt-4 grid gap-4',
-  row: 'grid grid-cols-2 gap-3',
-  // form controls
-  label: 'block text-sm font-semibold text-[#1A1A1A]',
-  fieldset: 'grid gap-2',
+  main: 'mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 pb-10 lg:pt-28 lg:pb-12',
+  stack: 'mt-6 flex flex-col gap-6',
+  h1: 'font-serif text-[2rem] font-semibold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl lg:text-[2.75rem]',
+  h1Mint: 'text-[#00B386]',
+  h2: 'font-serif text-xl font-semibold text-[#1A1A1A] sm:text-2xl mt-10 mb-4',
+  lead: 'mt-4 max-w-3xl text-base leading-relaxed text-[#555555] sm:text-lg',
+  body: 'text-sm leading-relaxed text-[#555555] sm:text-[15px]',
+  link: 'font-semibold text-[#00B386] underline-offset-2 transition-colors hover:text-[#00785A] hover:underline',
+  prose: 'mx-auto max-w-6xl',
+  badge:
+    'inline-flex items-center rounded-full border border-[#00B386]/25 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00785A]',
+  heroChips: 'mt-5 flex flex-wrap gap-2',
+  heroChip:
+    'rounded-full border border-black/[0.08] bg-white px-3 py-1.5 text-xs font-medium text-[#555555] sm:text-[13px]',
+  card,
+  cardPad: `${card} p-5 sm:p-6 lg:p-8`,
+  cardTitleRow: 'flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between',
+  cardTitle: 'font-serif text-xl font-semibold text-[#1A1A1A] sm:text-2xl',
+  form: 'mt-5 grid gap-4 sm:gap-5',
+  row2: 'grid grid-cols-1 gap-4 sm:grid-cols-2',
+  row3: 'grid grid-cols-1 gap-4 sm:grid-cols-3',
+  // inline label field
+  field: 'relative',
+  fieldLabel:
+    'pointer-events-none absolute left-4 top-2.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
+  input:
+    'w-full rounded-2xl border border-black/[0.08] bg-white px-4 pb-3 pt-7 font-sans text-base text-[#1A1A1A] placeholder:text-[#555555]/50 focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/25',
+  select:
+    'w-full appearance-none rounded-2xl border border-black/[0.08] bg-white px-4 pb-3 pt-7 font-sans text-sm text-[#1A1A1A] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/25',
+  selectWrap: 'relative',
+  selectChevron:
+    'pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#555555]',
   legend: 'text-sm font-semibold text-[#1A1A1A]',
-  hint: 'text-xs font-normal text-[#555555]',
-  fieldWrap: 'relative mt-1 block',
-  fieldIcon: 'pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#00B386]',
-  input: field,
-  select: field,
-  pillGroup: 'mt-2 flex flex-wrap gap-2',
-  pill,
-  pillOn,
-  pillRadio: `${pill} has-[:checked]:!border-[#00B386] has-[:checked]:!bg-[#00E6A8]/25 has-[:checked]:font-semibold has-[:checked]:shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[#00E6A8]/40`,
-  optionCard:
-    'flex cursor-pointer items-start gap-3 rounded-[20px] border border-black/10 bg-white/60 px-4 py-3 text-sm text-[#1A1A1A] transition-all hover:border-[#00B386]/60 has-[:checked]:!border-[#00B386] has-[:checked]:!bg-[#00E6A8]/15 has-[:checked]:shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)]',
-  radio: 'accent-[#00B386]',
-  toggle: 'inline-flex w-fit gap-1 rounded-full border border-black/10 bg-white/50 p-1',
-  toggleOn: 'rounded-full border border-[#00B386] bg-[#00E6A8]/30 px-5 py-1.5 text-sm font-semibold text-[#1A1A1A] shadow-[0_0_16px_-6px_rgba(0,230,168,0.7)]',
-  toggleOff: 'rounded-full border border-transparent px-5 py-1.5 text-sm font-medium text-[#555555] transition-colors hover:text-[#1A1A1A]',
-  button: 'ps-btn solid ps-glow-button w-full sm:w-auto',
+  hint: 'mt-1.5 text-xs leading-relaxed text-[#555555]',
   note: 'text-xs leading-relaxed text-[#555555]',
-  // result card
-  resultLabel: 'flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#00B386]',
-  big: 'mt-2 font-serif text-4xl sm:text-5xl font-semibold leading-tight text-[#1A1A1A]',
-  bigUnit: 'font-sans text-lg font-normal text-[#555555] sm:text-xl',
+  // pills
+  pillRow: 'flex flex-wrap gap-2',
+  pillEqual: 'grid grid-cols-2 gap-2',
+  pill:
+    'flex min-h-[48px] cursor-pointer items-center justify-center rounded-2xl border border-black/[0.08] bg-white px-3 py-2.5 text-center text-sm font-medium leading-snug text-[#555555] transition-colors',
+  pillOn:
+    'border-[#00B386] bg-[#00E6A8]/15 font-semibold text-[#1A1A1A]',
+  pillRadio: 'sr-only',
+  activityPill: 'col-span-1 sm:col-span-1',
+  toggle:
+    'inline-flex w-full max-w-[280px] rounded-full border border-black/[0.08] bg-[#ebe6de] p-1 sm:w-auto',
+  toggleBtn:
+    'flex-1 rounded-full px-3 py-2 text-center text-xs font-semibold text-[#555555] transition-colors sm:px-4 sm:text-sm',
+  toggleOn: 'bg-white text-[#1A1A1A] shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+  toggleOff: 'hover:text-[#1A1A1A]',
+  button:
+    'inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-6 py-3.5 text-base font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-opacity hover:opacity-95 sm:w-auto',
+  // result
+  resultGrid: 'grid gap-8 lg:grid-cols-[1fr_minmax(240px,320px)] lg:items-center',
+  resultLabel: 'text-[11px] font-semibold uppercase tracking-[0.14em] text-[#555555]',
+  big: 'mt-2 font-serif text-4xl font-semibold leading-none text-[#1A1A1A] sm:text-5xl',
+  bigSuffix: 'font-sans text-lg font-normal text-[#555555] sm:text-xl',
   resultLine: 'mt-3 text-sm leading-relaxed text-[#555555]',
-  placeholder: 'flex min-h-[220px] flex-1 flex-col items-center justify-center gap-3 text-center text-sm text-[#555555]',
-  placeholderIcon: 'flex h-12 w-12 items-center justify-center rounded-full border border-[#00B386]/30 bg-[#00E6A8]/15 text-[#00B386]',
-  chips: 'mt-5 grid gap-3 sm:grid-cols-2',
-  chip: 'flex items-center gap-3 rounded-[16px] border border-white/70 bg-white/60 px-4 py-3',
-  badge: 'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#00B386]/30 bg-[#00E6A8]/15 text-[#00B386]',
-  chipLabel: 'text-xs text-[#555555]',
-  chipValue: 'font-serif text-lg font-semibold text-[#1A1A1A]',
-  barTrack: 'relative mt-6 h-1.5 w-full rounded-full bg-black/[0.08]',
-  barFill: 'absolute inset-y-0 left-0 right-0 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386]',
-  barDot: 'absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#00B386] shadow-[0_0_10px_rgba(0,230,168,0.7)]',
-  barLabels: 'mt-2 flex justify-between text-xs text-[#555555]',
-  macroCols: 'mt-5 grid grid-cols-3 gap-2 text-center sm:gap-4',
-  macroPct: 'font-serif text-2xl font-semibold text-[#1A1A1A]',
-  notes: 'mt-4 grid gap-3',
+  chips: 'mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3',
+  chip: `${card} px-4 py-3`,
+  chipLabel: 'text-[10px] font-semibold uppercase tracking-[0.1em] text-[#555555]',
+  chipValue: 'mt-1 font-serif text-2xl font-semibold text-[#1A1A1A]',
+  sideChips: 'mt-4 grid gap-3 sm:mt-0',
   // notices
-  error: 'flex items-center gap-3 rounded-[20px] border border-red-300/70 bg-red-500/10 px-4 py-4 text-sm font-semibold leading-relaxed text-red-700 backdrop-blur',
-  softNote: 'flex items-center gap-3 rounded-[16px] border border-[#00B386]/25 bg-[#00E6A8]/10 px-4 py-3 text-xs leading-relaxed text-[#555555]',
-  // app CTA
-  cta: `${glass} ${glow} mt-6 grid items-center gap-6 p-5 sm:p-7 md:grid-cols-[1fr_auto]`,
-  ctaButtons: 'mt-4 flex flex-wrap gap-3',
-  appStore: 'ps-appstore-button inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm',
-  playStore: 'ps-play-button inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold !text-[#1A1A1A]',
-  phone: 'relative mx-auto hidden aspect-[9/16] w-[150px] overflow-hidden rounded-[28px] border-[6px] border-[#1A1A1A] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.35)] md:block',
-  // content sections
-  panel: `${glass} p-5 sm:p-6`,
-  faq: 'mt-4 grid gap-2.5',
-  faqItem: `${glass} group px-5 py-4`,
-  faqSummary: 'flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-base font-semibold text-[#1A1A1A] [&::-webkit-details-marker]:hidden',
-  faqAnswer: 'mt-3 text-sm leading-relaxed text-[#555555]',
-  sources: 'ps-blog-sources-list mt-3 text-sm text-[#555555]',
-  sourceLink: 'text-sm font-normal not-italic text-[#555555] underline decoration-[#00B386]/50 underline-offset-2 transition-colors hover:text-[#1A1A1A] hover:decoration-[#00E6A8]',
-  disclaimer: 'ps-blog-disclaimer',
+  error:
+    'flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium leading-relaxed text-red-800',
+  warnBox:
+    'flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-800',
+  softNote:
+    'flex items-start gap-3 rounded-2xl border border-[#00B386]/20 bg-[#00E6A8]/10 px-4 py-3 text-xs leading-relaxed text-[#555555]',
+  // macro bars
+  macroBarRow: 'mt-4 space-y-4',
+  macroBarHead: 'mb-1 flex items-center justify-between text-sm',
+  macroBarTrack: 'h-2.5 w-full overflow-hidden rounded-full bg-black/[0.06]',
+  // CTA
+  cta: `${card} mt-0 grid gap-6 bg-gradient-to-br from-white to-[#f7faf8] p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-center`,
+  ctaStoreRow: 'flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start',
+  ctaStoreBlock: 'flex flex-1 flex-col items-stretch gap-2 sm:min-w-[200px] sm:max-w-[240px]',
+  ctaQr: 'flex items-center gap-3 sm:flex-col sm:items-start',
+  ctaQrImg: 'h-[80px] w-[80px] shrink-0 rounded-lg border border-black/[0.06] bg-white p-1',
+  ctaQrCaption: 'text-[10px] font-medium uppercase tracking-wide text-[#555555]',
+  appStoreBtn:
+    'inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90',
+  playStoreBtn:
+    'inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-[#1A1A1A] bg-white px-4 py-2.5 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-black/[0.03]',
+  // sections
+  panel: `${card} p-5 sm:p-6`,
+  featureGrid: 'mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3',
+  featureCard: `${card} p-5`,
+  featureIcon:
+    'mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#00E6A8]/15 text-[#00B386]',
+  featureTitle: 'font-serif text-lg font-semibold text-[#1A1A1A]',
+  toolsGrid: 'mt-4 grid gap-3 sm:grid-cols-3',
+  toolCard: `${card} flex flex-col p-4 transition-colors hover:border-[#00B386]/30`,
+  toolCardHere: 'border-[#00B386]/40 bg-[#00E6A8]/8',
+  faq: 'mt-4 divide-y divide-black/[0.06] overflow-hidden rounded-[20px] border border-black/[0.06] bg-white',
+  faqItem: 'group',
+  faqSummary:
+    'flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-base font-semibold text-[#1A1A1A] [&::-webkit-details-marker]:hidden',
+  faqChevron:
+    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00E6A8]/20 text-[#00B386] transition-transform group-open:rotate-180',
+  faqAnswer: 'px-5 pb-4 text-sm leading-relaxed text-[#555555]',
+  sources: 'mt-3 list-none space-y-2 p-0',
+  sourceLink:
+    'inline-flex items-center gap-2 text-sm text-[#555555] underline decoration-[#00B386]/40 underline-offset-2 hover:text-[#1A1A1A]',
+  disclaimer: 'mt-8 text-xs leading-relaxed text-[#555555]',
 } as const;
+
 export const PRICING = 'Free to download. Premium is $9.99/month or $59.99/year.';
 export const IOS = 'https://apps.apple.com/us/app/proteinsnaps/id6801353318';
-export const ANDROID = 'https://play.google.com/store/apps/details?id=com.proteinsnap.app';
+export const ANDROID =
+  'https://play.google.com/store/apps/details?id=com.proteinsnap.app';
