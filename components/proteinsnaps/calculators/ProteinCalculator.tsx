@@ -37,7 +37,7 @@ function ProteinUnitToggle({
           key={u}
           type="button"
           aria-pressed={value === u}
-          className={`${proteinGlass.toggleBtn} ${value === u ? `${proteinGlass.toggleOn} ${proteinGlass.inputSelected}` : proteinGlass.toggleOff}`}
+          className={`${proteinGlass.toggleBtn} ${value === u ? `${proteinGlass.toggleOn} ${proteinGlass.optionBtnSelected}` : proteinGlass.toggleOff}`}
           onClick={() => onChange(u)}
         >
           {u}

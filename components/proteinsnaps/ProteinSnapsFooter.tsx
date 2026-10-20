@@ -5,7 +5,7 @@ import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import Link from "next/link";
 
 const STORE_BTN_CLASS =
-  "box-border inline-flex h-[52px] w-[168px] min-w-[168px] max-w-[168px] shrink-0 flex-none items-center gap-2.5 rounded-lg border border-[#888888]/45 bg-black px-3 transition-opacity hover:opacity-90";
+  "box-border !inline-flex h-[52px] w-[168px] min-h-[52px] max-h-[52px] min-w-[168px] max-w-[168px] shrink-0 grow-0 basis-[168px] items-center gap-2 rounded-lg border border-[#888888]/45 bg-black px-2.5 transition-opacity hover:opacity-90";
 
 function AppleLogo() {
   return (
@@ -28,19 +28,19 @@ function GooglePlayLogo() {
 
 function FooterStoreButtons() {
   return (
-    <div className="mt-2 flex max-w-[348px] flex-row flex-wrap items-center gap-3">
+    <div className="mt-2 flex w-max max-w-full flex-nowrap items-center gap-3">
       <a href={PROTEINSNAPS.appStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
         <AppleLogo />
-        <span className="min-w-0 text-left leading-tight text-white">
-          <span className="block text-[10px] font-normal tracking-wide">Download on the</span>
-          <span className="block text-[17px] font-semibold leading-none">App Store</span>
+        <span className="min-w-0 flex-1 text-left leading-tight text-white">
+          <span className="block text-[9px] font-normal tracking-wide">Download on the</span>
+          <span className="block text-[15px] font-semibold leading-none">App Store</span>
         </span>
       </a>
       <a href={PROTEINSNAPS.playStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
         <GooglePlayLogo />
-        <span className="min-w-0 text-left leading-tight text-white">
-          <span className="block text-[10px] font-normal uppercase tracking-wide">Get it on</span>
-          <span className="block text-[17px] font-semibold leading-none">Google Play</span>
+        <span className="min-w-0 flex-1 text-left leading-tight text-white">
+          <span className="block text-[9px] font-normal uppercase tracking-wide">Get it on</span>
+          <span className="block text-[15px] font-semibold leading-none">Google Play</span>
         </span>
       </a>
     </div>

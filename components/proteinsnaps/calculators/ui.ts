@@ -135,9 +135,9 @@ export const proteinGlass = {
   inputSelected:
     'outline outline-2 outline-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A]',
   optionBtn:
-    'relative z-[1] flex h-12 max-h-12 min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-white/80 bg-white/55 px-2.5 py-0 text-center text-[11px] font-medium leading-none text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] outline-none transition-all duration-150 ease-out hover:-translate-y-px hover:border-white active:scale-[0.98] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] whitespace-nowrap sm:px-3 sm:text-xs',
+    'relative z-[1] flex h-12 max-h-12 min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border-2 border-white/80 bg-white/55 px-2.5 py-0 text-center text-[11px] font-medium leading-none text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-150 ease-out hover:-translate-y-px hover:border-white active:scale-[0.98] focus:outline-none focus-visible:border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] whitespace-nowrap sm:px-3 sm:text-xs',
   optionBtnSelected:
-    'outline outline-2 outline-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A] bg-white/75',
+    '!border-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A] bg-white/75 focus-visible:!border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)]',
   inputRow: 'mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-[7.5rem_minmax(9rem,11rem)_1fr_auto] lg:items-end lg:gap-3',
   inputRowTablet: 'mt-3 grid gap-3 sm:grid-cols-2 lg:hidden',
   fieldLabel:
@@ -147,7 +147,7 @@ export const proteinGlass = {
   toggle:
     'relative z-[1] inline-flex h-12 w-full shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:w-[7.5rem]',
   toggleBtn:
-    'relative z-[1] flex h-11 flex-1 cursor-pointer items-center justify-center rounded-full border border-transparent px-2 text-center text-xs font-semibold text-[#555555] transition-colors',
+    'relative z-[1] flex h-11 flex-1 cursor-pointer items-center justify-center rounded-full border-2 border-transparent px-2 text-center text-xs font-semibold text-[#555555] transition-all duration-150',
   toggleOn: 'bg-white/80',
   toggleOff: 'bg-white/55 font-medium hover:text-[#1A1A1A]',
   activityCol: 'grid gap-2 sm:grid-cols-2 lg:col-span-1 lg:grid-cols-1',
