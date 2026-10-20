@@ -99,7 +99,7 @@ function GlassUnitToggle({
   const wrapClass = compact
     ? g.toggle
     : `${proteinGlass.toggle} w-full max-w-[280px] sm:w-auto`;
-  const selectedRing = compact ? calcGlass.optionBtnSelected : proteinGlass.optionBtnSelected;
+  const selectedRing = compact ? '' : proteinGlass.optionBtnSelected;
 
   return (
     <div className={wrapClass} role="group" aria-label="Units">
@@ -108,7 +108,7 @@ function GlassUnitToggle({
           key={o.value}
           type="button"
           aria-pressed={value === o.value}
-          className={`${g.toggleBtn} ${value === o.value ? `${g.toggleOn} ${selectedRing}` : g.toggleOff}`}
+          className={`${g.toggleBtn} ${value === o.value ? `${g.toggleOn} ${selectedRing}`.trim() : g.toggleOff}`}
           onClick={() => onChange(o.value)}
         >
           {o.label}
@@ -191,6 +191,7 @@ export default function BodyInputs({
       : proteinGlass.selectWrap
     : ui.selectWrap;
   const rowClass = glass ? (compact ? calcGlass.row2 : 'grid grid-cols-1 gap-3 sm:grid-cols-2') : ui.row2;
+  const metricsClass = compact ? calcGlass.metrics4 : rowClass;
   const legendClass = compact ? calcGlass.legendTight : ui.legend;
   const legendWrap = compact ? calcGlass.legendMt : 'mt-2';
 
@@ -232,19 +233,19 @@ export default function BodyInputs({
         )}
       </div>
 
-      <div className={rowClass}>
-        <Field label="Age" {...fieldProps}>
-          <input
-            className={inputClass}
-            type="number"
-            inputMode="numeric"
-            value={s.age}
-            onChange={e => set({ age: e.target.value })}
-            placeholder={PLACEHOLDERS.age}
-            required
-          />
-        </Field>
-        {s.unit === 'imperial' ? (
+      {compact && s.unit === 'imperial' ? (
+        <div className={metricsClass}>
+          <Field label="Age" {...fieldProps}>
+            <input
+              className={inputClass}
+              type="number"
+              inputMode="numeric"
+              value={s.age}
+              onChange={e => set({ age: e.target.value })}
+              placeholder={PLACEHOLDERS.age}
+              required
+            />
+          </Field>
           <Field label="Weight (lb)" {...fieldProps}>
             <input
               className={inputClass}
@@ -256,23 +257,6 @@ export default function BodyInputs({
               required
             />
           </Field>
-        ) : (
-          <Field label="Weight (kg)" {...fieldProps}>
-            <input
-              className={inputClass}
-              type="number"
-              inputMode="decimal"
-              value={s.kg}
-              onChange={e => set({ kg: e.target.value })}
-              placeholder={PLACEHOLDERS.kg}
-              required
-            />
-          </Field>
-        )}
-      </div>
-
-      {s.unit === 'imperial' ? (
-        <div className={rowClass}>
           <Field label="Height (ft)" {...fieldProps}>
             <input
               className={inputClass}
@@ -295,18 +279,121 @@ export default function BodyInputs({
             />
           </Field>
         </div>
+      ) : compact && s.unit === 'metric' ? (
+        <div className={rowClass}>
+          <Field label="Age" {...fieldProps}>
+            <input
+              className={inputClass}
+              type="number"
+              inputMode="numeric"
+              value={s.age}
+              onChange={e => set({ age: e.target.value })}
+              placeholder={PLACEHOLDERS.age}
+              required
+            />
+          </Field>
+          <Field label="Weight (kg)" {...fieldProps}>
+            <input
+              className={inputClass}
+              type="number"
+              inputMode="decimal"
+              value={s.kg}
+              onChange={e => set({ kg: e.target.value })}
+              placeholder={PLACEHOLDERS.kg}
+              required
+            />
+          </Field>
+          <Field label="Height (cm)" {...fieldProps} className="col-span-2">
+            <input
+              className={inputClass}
+              type="number"
+              inputMode="decimal"
+              value={s.cm}
+              onChange={e => set({ cm: e.target.value })}
+              placeholder={PLACEHOLDERS.cm}
+              required
+            />
+          </Field>
+        </div>
       ) : (
-        <Field label="Height (cm)" {...fieldProps}>
-          <input
-            className={inputClass}
-            type="number"
-            inputMode="decimal"
-            value={s.cm}
-            onChange={e => set({ cm: e.target.value })}
-            placeholder={PLACEHOLDERS.cm}
-            required
-          />
-        </Field>
+        <>
+          <div className={rowClass}>
+            <Field label="Age" {...fieldProps}>
+              <input
+                className={inputClass}
+                type="number"
+                inputMode="numeric"
+                value={s.age}
+                onChange={e => set({ age: e.target.value })}
+                placeholder={PLACEHOLDERS.age}
+                required
+              />
+            </Field>
+            {s.unit === 'imperial' ? (
+              <Field label="Weight (lb)" {...fieldProps}>
+                <input
+                  className={inputClass}
+                  type="number"
+                  inputMode="decimal"
+                  value={s.lb}
+                  onChange={e => set({ lb: e.target.value })}
+                  placeholder={PLACEHOLDERS.lb}
+                  required
+                />
+              </Field>
+            ) : (
+              <Field label="Weight (kg)" {...fieldProps}>
+                <input
+                  className={inputClass}
+                  type="number"
+                  inputMode="decimal"
+                  value={s.kg}
+                  onChange={e => set({ kg: e.target.value })}
+                  placeholder={PLACEHOLDERS.kg}
+                  required
+                />
+              </Field>
+            )}
+          </div>
+
+          {s.unit === 'imperial' ? (
+            <div className={rowClass}>
+              <Field label="Height (ft)" {...fieldProps}>
+                <input
+                  className={inputClass}
+                  type="number"
+                  inputMode="numeric"
+                  value={s.ft}
+                  onChange={e => set({ ft: e.target.value })}
+                  placeholder={PLACEHOLDERS.ft}
+                  required
+                />
+              </Field>
+              <Field label="Height (in)" {...fieldProps}>
+                <input
+                  className={inputClass}
+                  type="number"
+                  inputMode="decimal"
+                  value={s.inch}
+                  onChange={e => set({ inch: e.target.value })}
+                  placeholder={PLACEHOLDERS.inch}
+                />
+              </Field>
+            </div>
+          ) : (
+            <Field label="Height (cm)" {...fieldProps}>
+              <input
+                className={inputClass}
+                type="number"
+                inputMode="decimal"
+                value={s.cm}
+                onChange={e => set({ cm: e.target.value })}
+                placeholder={PLACEHOLDERS.cm}
+                required
+              />
+            </Field>
+          )}
+        </>
       )}
 
       <Field label="Activity" {...fieldProps}>

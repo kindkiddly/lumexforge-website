@@ -213,43 +213,48 @@ export const proteinGlass = {
   goalHidden: 'pointer-events-none opacity-40',
 } as const;
 
-/** Compact glass inputs for calorie + macro calculators only (do not use on protein page). */
+/** Compact glass UI for calorie + macro calculators only (do not use on protein page). */
 export const calcGlass = {
-  cardPad: `${glassCard} relative z-[1] rounded-[18px] p-3 sm:p-3.5`,
-  cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
+  section: 'mx-auto mt-4 flex w-full max-w-4xl flex-col gap-4',
+  cardPad: `${glassCard} relative z-[1] rounded-2xl p-3 shadow-[0_8px_28px_rgba(0,0,0,0.07)] sm:p-3.5`,
+  cardTitle: 'text-xs font-semibold uppercase tracking-[0.14em] text-[#555555]',
   cardGlowWrap: 'relative isolate',
   cardGlow:
-    'pointer-events-none absolute -inset-1.5 -z-10 rounded-[22px] bg-[#00E6A8]/10 blur-xl',
-  formStack: 'mt-2 grid gap-2',
+    'pointer-events-none absolute -inset-2 -z-10 rounded-[26px] bg-gradient-to-br from-[#00E6A8]/22 via-[#00E6A8]/8 to-[#00C2FF]/12 blur-2xl',
+  formStack: 'mt-2.5 grid gap-2',
   fieldLabel:
-    'pointer-events-none absolute left-2.5 top-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#555555]',
+    'pointer-events-none absolute left-2.5 top-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-[#777777] sm:text-[8px]',
   input:
-    'relative z-[1] h-11 w-full rounded-lg border border-white/80 bg-white/65 px-2.5 pb-0.5 pt-4 text-sm text-[#1A1A1A] placeholder:text-[#555555]/50 shadow-[0_2px_6px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+    'relative z-[1] h-10 w-full rounded-[10px] border border-white/90 bg-white/72 px-2.5 pb-0 pt-3.5 text-[13px] text-[#1A1A1A] placeholder:text-[#555555]/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_1px_4px_rgba(0,0,0,0.04)] transition-[border-color,box-shadow] duration-200 focus:border-[#00B386]/80 focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/25',
   selectWrap: 'relative',
   select:
-    'relative z-[1] h-11 w-full appearance-none rounded-lg border border-white/80 bg-white/65 px-2.5 pb-0.5 pt-4 pr-8 text-sm text-[#1A1A1A] shadow-[0_2px_6px_rgba(0,0,0,0.04)] focus:border-[#00B386] focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/20',
+    'relative z-[1] h-10 w-full appearance-none rounded-[10px] border border-white/90 bg-white/72 px-2.5 pb-0 pt-3.5 pr-7 text-[13px] text-[#1A1A1A] shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_1px_4px_rgba(0,0,0,0.04)] transition-[border-color,box-shadow] duration-200 focus:border-[#00B386]/80 focus:outline-none focus:ring-2 focus:ring-[#00E6A8]/25',
   selectChevron:
-    'pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#555555]',
+    'pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#555555]',
   optionBtn:
-    'relative z-[1] flex h-11 max-h-11 min-h-11 w-full cursor-pointer items-center justify-center rounded-lg border-2 border-white/80 bg-white/55 px-1.5 py-1 text-center text-[10px] font-medium leading-snug text-[#555555] shadow-[0_2px_6px_rgba(0,0,0,0.04)] transition-all duration-150 ease-out hover:-translate-y-px hover:border-white active:scale-[0.98] focus:outline-none focus-visible:border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] sm:px-2 sm:text-[11px]',
+    'relative z-[1] flex h-9 min-h-9 max-h-9 w-full cursor-pointer items-center justify-center rounded-[10px] border border-white/85 bg-white/60 px-1 py-1 text-center text-[9px] font-medium leading-tight text-[#555555] shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-200 ease-out hover:-translate-y-px hover:border-white hover:bg-white/75 hover:shadow-[0_3px_8px_rgba(0,0,0,0.06)] active:scale-[0.97] focus:outline-none focus-visible:border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)] sm:px-1.5 sm:text-[10px]',
   optionBtnSelected:
-    '!border-[#00E6A8] shadow-[0_0_0_3px_rgba(0,230,168,0.25)] font-semibold text-[#1A1A1A] bg-white/75 focus-visible:!border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)]',
+    '!border-[#00E6A8] !bg-white/85 font-semibold text-[#1A1A1A] shadow-[0_0_0_3px_rgba(0,230,168,0.22),0_2px_8px_rgba(0,230,168,0.12)] focus-visible:!border-[#00E6A8] focus-visible:shadow-[0_0_0_3px_rgba(0,230,168,0.25)]',
   toggle:
-    'relative z-[1] inline-flex h-11 w-full max-w-[252px] shrink-0 rounded-full border border-white/80 bg-white/45 p-0.5 shadow-[0_2px_6px_rgba(0,0,0,0.04)] sm:w-auto',
+    'relative z-[1] inline-flex h-9 w-full max-w-[240px] shrink-0 rounded-full border border-white/85 bg-black/[0.04] p-0.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] sm:w-auto',
   toggleBtn:
-    'relative z-[1] flex h-10 flex-1 cursor-pointer items-center justify-center rounded-full border-2 border-transparent px-1.5 text-center text-[10px] font-semibold leading-tight text-[#555555] transition-all duration-150 sm:px-2 sm:text-[11px]',
-  toggleOn: proteinGlass.toggleOn,
-  toggleOff: proteinGlass.toggleOff,
+    'relative z-[1] flex h-8 flex-1 cursor-pointer items-center justify-center rounded-full border border-transparent px-1 text-center text-[9px] font-semibold leading-tight text-[#555555] transition-all duration-200 ease-out sm:px-1.5 sm:text-[10px]',
+  toggleOn:
+    'border-white/90 bg-white text-[#1A1A1A] shadow-[0_1px_4px_rgba(0,0,0,0.08)]',
+  toggleOff: 'font-medium hover:text-[#1A1A1A]',
   button:
-    'inline-flex h-10 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-3.5 text-sm font-semibold text-white shadow-[0_3px_12px_rgba(0,0,0,0.1)] transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/45 focus-visible:ring-offset-2 lg:w-auto lg:min-w-[10.5rem]',
-  row2: 'grid grid-cols-1 gap-2 sm:grid-cols-2',
-  topRow: 'flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between',
-  legendTight: 'text-xs font-semibold text-[#1A1A1A]',
+    'inline-flex h-9 w-full shrink-0 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-[#00E6A8] to-[#00B386] px-4 text-[13px] font-semibold text-white shadow-[0_3px_14px_rgba(0,184,130,0.35)] transition-all duration-200 hover:opacity-95 hover:shadow-[0_4px_16px_rgba(0,184,130,0.4)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/45 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[9.5rem]',
+  row2: 'grid grid-cols-2 gap-2',
+  metrics4: 'grid grid-cols-2 gap-2 lg:grid-cols-4',
+  topRow:
+    'grid grid-cols-1 items-end gap-2 min-[420px]:grid-cols-[minmax(0,1fr)_auto]',
+  legendTight: 'text-[11px] font-semibold text-[#1A1A1A]',
   legendMt: 'mt-1',
   offerPanel:
-    'mt-3 rounded-xl border border-white/75 bg-white/[0.52] p-2.5 sm:p-3 shadow-[0_2px_12px_rgba(0,0,0,0.05)] backdrop-blur-[16px] [-webkit-backdrop-filter:blur(16px)]',
-  pillGridGoal: 'grid grid-cols-2 gap-1.5 min-[520px]:grid-cols-4',
-  pillGridFat: 'grid grid-cols-2 gap-1.5 min-[400px]:grid-cols-4',
+    'mt-3 rounded-xl border border-[#00E6A8]/25 bg-white/70 p-2.5 shadow-[0_4px_16px_rgba(0,230,168,0.08)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)] sm:p-3',
+  pillGridGoal: 'grid grid-cols-2 gap-1.5 sm:grid-cols-4',
+  pillGridFat: 'grid grid-cols-4 gap-1.5',
+  btnRow: 'flex justify-stretch pt-0.5 sm:justify-end',
 } as const;
 
 export const STORE_BADGE_BOX = { w: 160, h: 48 } as const;

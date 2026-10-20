@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { ui } from '@/components/proteinsnaps/calculators/ui';
+import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import CalorieCalculator from '@/components/proteinsnaps/calculators/CalorieCalculator';
 import {
-  CalcHero,
+  CalcGlassHero,
   FaqList,
   FeatureCards,
   MoreFreeTools,
+  ProteinGlassBackdrop,
   SourceItem,
   SourceLinks,
 } from '@/components/proteinsnaps/calculators/Parts';
@@ -63,17 +64,21 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} bg-[#f2ede4]`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <CalcHero
-        badge="FREE TOOL · MIFFLIN-ST JEOR"
-        titleBefore="Calorie "
-        titleMint="Calculator (TDEE)"
-        intro="Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength."
-        chips={['BMR + TDEE', 'Goal target', 'lb / ft + in or kg / cm']}
-      />
-      <CalorieCalculator />
-      <div className={ui.prose}>
+    <div className={`${ui.main} ${proteinGlass.page}`}>
+      <ProteinGlassBackdrop />
+      <div className={proteinGlass.content}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <CalcGlassHero
+          badge="FREE TOOL · MIFFLIN-ST JEOR"
+          titleBefore="Calorie "
+          titleMint="Calculator (TDEE)"
+          intro="Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength."
+          chips={['BMR + TDEE', 'Goal target', 'lb / ft + in or kg / cm']}
+          imageSrc="/images/proteinsnaps/calculators/grain-bowl.webp"
+          imageAlt="Balanced grain bowl with vegetables and protein"
+        />
+        <CalorieCalculator />
+        <div className={ui.prose}>
         <h2 className={ui.h2}>Keep your numbers on track</h2>
         <FeatureCards />
         <h2 className={ui.h2}>How it works</h2>
@@ -108,6 +113,7 @@ export default function Page() {
         </p>
         <h2 className={ui.h2}>More free tools</h2>
         <MoreFreeTools current="calorie" />
+        </div>
       </div>
     </div>
   );

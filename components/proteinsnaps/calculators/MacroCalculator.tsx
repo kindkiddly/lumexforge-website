@@ -71,7 +71,7 @@ export default function MacroCalculator() {
     : [];
 
   return (
-    <section className="mt-6 flex flex-col gap-4">
+    <section className={calcGlass.section}>
       <div className={calcGlass.cardGlowWrap}>
         <div className={calcGlass.cardGlow} aria-hidden />
         <form onSubmit={calculate} className={calcGlass.cardPad}>
@@ -84,7 +84,7 @@ export default function MacroCalculator() {
               glass
               compact
             />
-            <div className="grid gap-2 lg:grid-cols-2 lg:items-end">
+            <div className="grid gap-2 sm:grid-cols-2 sm:items-end">
               <ProteinInlineField
                 label="Already know your calories? (optional)"
                 labelClassName={calcGlass.fieldLabel}
@@ -150,7 +150,9 @@ export default function MacroCalculator() {
               </p>
             </div>
             {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <ProteinCalcButton compact>Calculate Macros</ProteinCalcButton>
+            <div className={calcGlass.btnRow}>
+              <ProteinCalcButton compact>Calculate Macros</ProteinCalcButton>
+            </div>
           </div>
         </form>
       </div>
@@ -188,6 +190,7 @@ export default function MacroCalculator() {
             </div>
           </div>
           <AppCta
+            glass
             offerGlass
             text="In the app your macros are set automatically for your goal, and you can switch presets (Balanced, High Protein, Keto, Carnivore, Low Fat or Custom) or edit them in Profile. Fill the Gap then shows what's left for the day."
           />

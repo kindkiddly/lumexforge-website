@@ -43,7 +43,7 @@ export default function CalorieCalculator() {
   const n = (v: number) => v.toLocaleString('en-US');
 
   return (
-    <section className="mt-6 flex flex-col gap-4">
+    <section className={calcGlass.section}>
       <div className={calcGlass.cardGlowWrap}>
         <div className={calcGlass.cardGlow} aria-hidden />
         <form onSubmit={calculate} className={calcGlass.cardPad}>
@@ -51,7 +51,9 @@ export default function CalorieCalculator() {
           <div className={calcGlass.formStack}>
             <BodyInputs s={s} set={p => setS(prev => ({ ...prev, ...p }))} glass compact />
             {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <ProteinCalcButton compact>Calculate Calories</ProteinCalcButton>
+            <div className={calcGlass.btnRow}>
+              <ProteinCalcButton compact>Calculate Calories</ProteinCalcButton>
+            </div>
           </div>
         </form>
       </div>
@@ -102,6 +104,7 @@ export default function CalorieCalculator() {
             </div>
           </div>
           <AppCta
+            glass
             offerGlass
             text={
               <>

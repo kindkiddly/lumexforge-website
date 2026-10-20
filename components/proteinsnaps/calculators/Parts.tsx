@@ -262,6 +262,58 @@ export function CalcHero({
   );
 }
 
+/** Glass hero with image (calorie + macro calculator pages only). */
+export function CalcGlassHero({
+  badge,
+  titleBefore,
+  titleMint,
+  titleAfter,
+  intro,
+  chips,
+  imageSrc,
+  imageAlt,
+}: {
+  badge: string;
+  titleBefore: string;
+  titleMint: string;
+  titleAfter?: string;
+  intro: string;
+  chips: string[];
+  imageSrc: string;
+  imageAlt: string;
+}) {
+  return (
+    <header className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,340px)] lg:items-center lg:gap-10">
+      <div>
+        <p className={proteinGlass.heroBadge}>{badge}</p>
+        <h1 className={`${ui.h1} mt-4`}>
+          {titleBefore}
+          <span className={ui.h1Mint}>{titleMint}</span>
+          {titleAfter}
+        </h1>
+        <p className={ui.lead}>{intro}</p>
+        <div className={proteinGlass.heroChipGrid}>
+          {chips.map(c => (
+            <span key={c} className={proteinGlass.heroChip}>
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className={proteinGlass.heroImageWrap}>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          width={680}
+          height={680}
+          className={proteinGlass.heroImage}
+          priority
+        />
+      </div>
+    </header>
+  );
+}
+
 export function FaqList({ items }: { items: { q: string; a: string }[] }) {
   return (
     <div className={ui.faq}>

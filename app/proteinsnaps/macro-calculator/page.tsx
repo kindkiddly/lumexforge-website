@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
-import { ui } from '@/components/proteinsnaps/calculators/ui';
+import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import MacroCalculator from '@/components/proteinsnaps/calculators/MacroCalculator';
 import {
-  CalcHero,
+  CalcGlassHero,
   FaqList,
   FeatureCards,
   MoreFreeTools,
+  ProteinGlassBackdrop,
   SourceItem,
   SourceLinks,
 } from '@/components/proteinsnaps/calculators/Parts';
@@ -64,17 +65,21 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} bg-[#f2ede4]`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <CalcHero
-        badge="FREE TOOL · ISSN + IOM RANGES"
-        titleBefore="Macro "
-        titleMint="Calculator"
-        intro="See how much protein, carbs and fat could fit your day, in grams, for your goal. Protein comes first, then fat, and carbs fill the rest."
-        chips={['Protein, carbs and fat', 'Follows your goal', 'Grams and %']}
-      />
-      <MacroCalculator />
-      <div className={ui.prose}>
+    <div className={`${ui.main} ${proteinGlass.page}`}>
+      <ProteinGlassBackdrop />
+      <div className={proteinGlass.content}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <CalcGlassHero
+          badge="FREE TOOL · ISSN + IOM RANGES"
+          titleBefore="Macro "
+          titleMint="Calculator"
+          intro="See how much protein, carbs and fat could fit your day, in grams, for your goal. Protein comes first, then fat, and carbs fill the rest."
+          chips={['Protein, carbs and fat', 'Follows your goal', 'Grams and %']}
+          imageSrc="/images/proteinsnaps/calculators/smoothie-bowl.webp"
+          imageAlt="Colorful smoothie bowl with fruit and seeds"
+        />
+        <MacroCalculator />
+        <div className={ui.prose}>
         <h2 className={ui.h2}>Keep your numbers on track</h2>
         <FeatureCards />
         <h2 className={ui.h2}>How it works</h2>
@@ -118,6 +123,7 @@ export default function Page() {
         </p>
         <h2 className={ui.h2}>More free tools</h2>
         <MoreFreeTools current="macro" />
+        </div>
       </div>
     </div>
   );
