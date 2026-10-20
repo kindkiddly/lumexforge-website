@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useId, type ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import type { Goal } from './energyMath';
+import type { Level, ProteinGoal } from './proteinMath';
 import { proteinGlass, ui } from './ui';
 
 const svg = {
@@ -37,6 +38,166 @@ export const ScaleIcon = () => (
     <path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5" />
   </svg>
 );
+
+export const HeartGoalIcon = () => (
+  <svg {...svg} width={20} height={20} fill="currentColor" stroke="none">
+    <path d="M12 21s-6.5-4.35-9-8.35C1.05 9.5 2.5 5 6.5 5c2.1 0 3.35 1.1 4 2.1.65-1 1.9-2.1 4-2.1 4 0 5.45 4.5 3.5 7.65C18.5 16.65 12 21 12 21z" />
+  </svg>
+);
+
+export const DumbbellGoalIcon = () => (
+  <svg {...svg} width={20} height={20}>
+    <path d="M6 9H4a2 2 0 00-2 2v2a2 2 0 002 2h2M18 9h2a2 2 0 012 2v2a2 2 0 01-2 2h-2M8 12h8" />
+  </svg>
+);
+
+export const FlameGoalIcon = () => (
+  <svg {...svg} width={20} height={20}>
+    <path d="M12 3c1 3 3 4.5 3 7a3 3 0 11-6 0c0-2.5 2-4 3-7z" />
+  </svg>
+);
+
+function FactorGauge({ lo, hi }: { lo: number; hi: number }) {
+  const min = 0.8;
+  const max = 2.2;
+  const span = max - min;
+  const left = ((lo - min) / span) * 100;
+  const width = Math.max(((hi - lo) / span) * 100, hi === lo ? 4 : 2);
+  return (
+    <div className="mt-3">
+      <div className="relative h-2 w-full rounded-full bg-black/[0.08]">
+        <div
+          className="absolute inset-y-0 rounded-full bg-gradient-to-r from-[#00C2FF] to-[#00B386]"
+          style={{ left: `${left}%`, width: `${width}%` }}
+        />
+      </div>
+      <div className="mt-1 flex justify-between text-[9px] font-medium text-[#555555]">
+        <span>0.8</span>
+        <span>2.2 g/kg</span>
+      </div>
+    </div>
+  );
+}
+
+function MealDots({ meal }: { meal: number }) {
+  const filled = meal >= 30 ? 4 : meal >= 22 ? 3 : meal >= 15 ? 2 : 1;
+  return (
+    <div className="mt-3 flex gap-1.5" aria-hidden>
+      {[1, 2, 3, 4].map(i => (
+        <span
+          key={i}
+          className={`h-2.5 w-2.5 rounded-full ${i <= filled ? 'bg-[#00B386]' : 'bg-black/[0.08]'}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function factorMeta(
+  level: Level,
+  age65: boolean,
+  goal: ProteinGoal,
+  factorLo: number,
+  factorHi: number,
+): { label: string; source?: string } {
+  if (level === 'rda') {
+    if (age65) return { label: '1.0–1.2 g/kg', source: 'PROT-AGE 2013' };
+    return { label: '0.8 g/kg' };
+  }
+  if (factorLo === factorHi) return { label: `${factorLo} g/kg`, source: 'ProteinSnaps app setting' };
+  if (goal === 'build') return { label: '1.6–2.2 g/kg', source: 'Morton et al. 2018' };
+  return { label: '1.4–2.0 g/kg', source: 'ISSN 2017' };
+}
+
+function goalMeta(goal: ProteinGoal): {
+  title: string;
+  source: string;
+  Icon: () => React.JSX.Element;
+} {
+  if (goal === 'build') {
+    return { title: 'Build muscle', source: 'Morton et al. 2018', Icon: DumbbellGoalIcon };
+  }
+  if (goal === 'fatloss') {
+    return {
+      title: 'Fat loss',
+      source: 'ProteinSnaps app setting',
+      Icon: FlameGoalIcon,
+    };
+  }
+  return { title: 'General fitness', source: 'ISSN 2017', Icon: HeartGoalIcon };
+}
+
+export function ProteinResultColorTiles({
+  meal,
+  level,
+  age65,
+  goal,
+  factorLo,
+  factorHi,
+}: {
+  meal: number;
+  level: Level;
+  age65: boolean;
+  goal: ProteinGoal;
+  factorLo: number;
+  factorHi: number;
+}) {
+  const factor = factorMeta(level, age65, goal, factorLo, factorHi);
+  const showGoal = level === 'active';
+  const goalInfo = goalMeta(goal);
+
+  return (
+    <div
+      className={`${proteinGlass.resultTileGrid} ${showGoal ? '' : 'lg:max-w-2xl lg:grid-cols-2'}`}
+    >
+      <div className={proteinGlass.resultTileMint}>
+        <div className="flex gap-3">
+          <div className={proteinGlass.resultTileIconMint}>
+            <MealIcon />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className={ui.chipLabel}>Per meal (about 0.25 g/kg)</p>
+            <p className={`${ui.chipValue} mt-0.5`}>~{meal} g</p>
+            <MealDots meal={meal} />
+          </div>
+        </div>
+      </div>
+      <div className={proteinGlass.resultTileCyan}>
+        <div className="flex gap-3">
+          <div className={proteinGlass.resultTileIconCyan}>
+            <ScaleIcon />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className={ui.chipLabel}>Factor used</p>
+            <p className="mt-0.5 font-serif text-xl font-semibold text-[#1A1A1A] sm:text-2xl">
+              {factor.label}
+            </p>
+            {factor.source ? (
+              <p className="mt-1 text-[10px] font-medium text-[#555555]">{factor.source}</p>
+            ) : null}
+            <FactorGauge lo={factorLo} hi={factorHi} />
+          </div>
+        </div>
+      </div>
+      {showGoal ? (
+        <div className={`${proteinGlass.resultTileGreen} min-[480px]:col-span-2 lg:col-span-1`}>
+          <div className="flex gap-3">
+            <div className={proteinGlass.resultTileIconGreen}>
+              <goalInfo.Icon />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className={ui.chipLabel}>Goal</p>
+              <p className="mt-0.5 font-serif text-xl font-semibold text-[#1A1A1A]">
+                {goalInfo.title}
+              </p>
+              <p className="mt-1 text-[10px] font-medium text-[#555555]">{goalInfo.source}</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 export const WarnIcon = () => (
   <svg {...svg} width={18} height={18} className="shrink-0">
     <path d="M12 3 2.5 20h19L12 3z" />

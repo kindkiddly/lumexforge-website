@@ -2,32 +2,43 @@
 
 import { useProteinSnapsPath } from "@/components/proteinsnaps/ProteinSnapsPathContext";
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
+import Image from "next/image";
 import Link from "next/link";
+
+const FOOTER_BADGE_W = 120;
+const FOOTER_BADGE_H = 40;
 
 function FooterStoreButtons() {
   return (
-    <div className="mt-4 flex flex-wrap gap-2">
+    <div className="mt-4 flex flex-wrap items-center gap-3">
       <a
         href={PROTEINSNAPS.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-[#1A1A1A] transition-opacity hover:opacity-90"
+        className="flex h-10 w-[7.5rem] items-center justify-center leading-none"
       >
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M17.05 20.28c-.96.95-2.1 1.72-3.4 1.72-1.3 0-2.45-.77-3.4-1.72-1.9-1.88-3.05-4.46-3.05-7.28 0-2.82 1.15-5.4 3.05-7.28.95-.95 2.1-1.72 3.4-1.72s2.45.77 3.4 1.72c1.9 1.88 3.05 4.46 3.05 7.28 0 2.82-1.15 5.4-3.05 7.28zM12.03 3.5c.73-.88 1.22-2.1 1.08-3.5-1.04.04-2.3.72-3.05 1.6-.68.78-1.27 2.02-1.11 3.22 1.18.09 2.38-.6 3.08-1.32z" />
-        </svg>
-        App Store
+        <Image
+          src="/images/proteinsnaps/badges/app-store.svg"
+          alt="Download on the App Store"
+          width={FOOTER_BADGE_W}
+          height={FOOTER_BADGE_H}
+          className="h-10 w-full object-contain object-left"
+          unoptimized
+        />
       </a>
       <a
         href={PROTEINSNAPS.playStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg border border-white/25 bg-transparent px-3 py-2 text-xs font-semibold text-[#F8FAFC] transition-colors hover:bg-white/10"
+        className="flex h-10 w-[7.5rem] items-center justify-center leading-none"
       >
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M3.609 1.814L13.792 12 3.61 22.186a1.006 1.006 0 01-.61-.92V2.734a1.006 1.006 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1.002 1.002 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
-        </svg>
-        Google Play
+        <Image
+          src="/images/proteinsnaps/badges/google-play.png"
+          alt="Get it on Google Play"
+          width={FOOTER_BADGE_W}
+          height={FOOTER_BADGE_H}
+          className="h-10 w-full object-contain object-left"
+        />
       </a>
     </div>
   );

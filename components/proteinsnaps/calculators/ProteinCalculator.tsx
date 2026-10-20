@@ -7,6 +7,7 @@ import {
   WEIGHT_PLACEHOLDER,
   proteinRange,
   type Level,
+  type ProteinGoal,
   type WeightUnit,
 } from './proteinMath';
 import AppCta from './AppCta';
@@ -16,7 +17,7 @@ import {
   ProteinGlassCard,
   ProteinInlineField,
   ProteinRangeRing,
-  ProteinResultStatTiles,
+  ProteinResultColorTiles,
   RangeBarProtein,
   SoftNote,
 } from './Parts';
@@ -46,9 +47,22 @@ function ProteinUnitToggle({
   );
 }
 
+function Age65Pill({ on, onChange }: { on: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <button
+      type="button"
+      aria-pressed={on}
+      className={`${proteinGlass.pill} w-full ${on ? proteinGlass.pillOn : ''}`}
+      onClick={() => onChange(!on)}
+    >
+      65 or older
+    </button>
+  );
+}
+
 function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
   return (
-    <div className="grid grid-cols-1 gap-2 min-[480px]:grid-cols-2">
+    <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
       <label className={`${proteinGlass.pill} ${level === 'rda' ? proteinGlass.pillOn : ''}`}>
         <input
           className="sr-only"
@@ -73,17 +87,67 @@ function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level)
   );
 }
 
+const GOALS: { id: ProteinGoal; label: string }[] = [
+  { id: 'general', label: 'General fitness' },
+  { id: 'build', label: 'Build muscle' },
+  { id: 'fatloss', label: 'Fat loss' },
+];
+
+function GoalPills({
+  goal,
+  onChange,
+  visible,
+}: {
+  goal: ProteinGoal;
+  onChange: (g: ProteinGoal) => void;
+  visible: boolean;
+}) {
+  return (
+    <div
+      className={`${proteinGlass.goalFade} grid grid-cols-1 gap-2 min-[480px]:grid-cols-3 ${visible ? '' : proteinGlass.goalHidden}`}
+      aria-hidden={!visible}
+    >
+      {GOALS.map(g => (
+        <label
+          key={g.id}
+          className={`${proteinGlass.pill} ${goal === g.id && visible ? proteinGlass.pillOn : ''}`}
+        >
+          <input
+            className="sr-only"
+            type="radio"
+            name="goal"
+            checked={goal === g.id}
+            disabled={!visible}
+            onChange={() => onChange(g.id)}
+          />
+          {g.label}
+        </label>
+      ))}
+    </div>
+  );
+}
+
+type ResultState = {
+  lo: number;
+  hi: number;
+  meal: number;
+  factorLo: number;
+  factorHi: number;
+};
+
 export default function ProteinCalculator() {
   const [weight, setWeight] = useState('');
   const [unit, setUnit] = useState<WeightUnit>(DEFAULT_WEIGHT_UNIT);
   const [level, setLevel] = useState<Level>('active');
-  const [result, setResult] = useState<null | { lo: number; hi: number; meal: number }>(null);
+  const [age65, setAge65] = useState(false);
+  const [goal, setGoal] = useState<ProteinGoal>('general');
+  const [result, setResult] = useState<null | ResultState>(null);
   const [error, setError] = useState('');
   const resultRef = useRef<HTMLDivElement>(null);
 
   function calculate(e: React.FormEvent) {
     e.preventDefault();
-    const r = proteinRange(parseFloat(weight), unit, level);
+    const r = proteinRange(parseFloat(weight), unit, level, { age65, goal });
     if ('error' in r) {
       setResult(null);
       setError(r.error);
@@ -99,7 +163,7 @@ export default function ProteinCalculator() {
   const w = parseFloat(weight);
   const kg = unit === 'lb' ? w * LB_TO_KG : w;
   const rda = Number.isFinite(kg) ? Math.round(kg * 0.8) : 0;
-  const factorLabel = level === 'active' ? '1.4–2.0 g/kg' : '0.8 g/kg';
+  const goalsVisible = level === 'active';
 
   return (
     <section className={ui.stack}>
@@ -108,7 +172,7 @@ export default function ProteinCalculator() {
           <h2 className={proteinGlass.cardTitle}>Your Details</h2>
 
           <div className="mt-3 hidden lg:block">
-            <div className="grid grid-cols-[7.5rem_minmax(9rem,11rem)_auto] items-end gap-3">
+            <div className="grid grid-cols-[7.5rem_minmax(9rem,11rem)_7.5rem_minmax(0,1fr)] items-end gap-3">
               <ProteinUnitToggle value={unit} onChange={setUnit} />
               <ProteinInlineField label={`Body weight (${unit})`}>
                 <input
@@ -121,37 +185,35 @@ export default function ProteinCalculator() {
                   required
                 />
               </ProteinInlineField>
-              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
-            </div>
-            <div className="mt-3">
+              <Age65Pill on={age65} onChange={setAge65} />
               <ActivityPills level={level} onChange={setLevel} />
+            </div>
+            <div className="mt-3 grid grid-cols-[1fr_auto] items-end gap-3">
+              <GoalPills goal={goal} onChange={setGoal} visible={goalsVisible} />
+              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
             </div>
           </div>
 
-          <div className="mt-3 grid gap-3 lg:hidden md:grid-cols-2 md:items-end">
-            <ProteinUnitToggle value={unit} onChange={setUnit} />
-            <ProteinInlineField label={`Body weight (${unit})`}>
-              <input
-                className={proteinGlass.input}
-                type="number"
-                inputMode="decimal"
-                value={weight}
-                onChange={e => setWeight(e.target.value)}
-                placeholder={WEIGHT_PLACEHOLDER[unit]}
-                required
-              />
-            </ProteinInlineField>
-            <div className="md:col-span-2">
-              <ActivityPills level={level} onChange={setLevel} />
+          <div className="mt-3 grid gap-3 lg:hidden">
+            <div className="grid gap-3 min-[480px]:grid-cols-2 min-[480px]:items-end">
+              <ProteinUnitToggle value={unit} onChange={setUnit} />
+              <ProteinInlineField label={`Body weight (${unit})`}>
+                <input
+                  className={proteinGlass.input}
+                  type="number"
+                  inputMode="decimal"
+                  value={weight}
+                  onChange={e => setWeight(e.target.value)}
+                  placeholder={WEIGHT_PLACEHOLDER[unit]}
+                  required
+                />
+              </ProteinInlineField>
             </div>
-            {error ? (
-              <div className="md:col-span-2">
-                <ErrorBox>{error}</ErrorBox>
-              </div>
-            ) : null}
-            <div className="md:col-span-2">
-              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
-            </div>
+            <Age65Pill on={age65} onChange={setAge65} />
+            <ActivityPills level={level} onChange={setLevel} />
+            <GoalPills goal={goal} onChange={setGoal} visible={goalsVisible} />
+            {error ? <ErrorBox>{error}</ErrorBox> : null}
+            <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
           </div>
 
           {error ? (
@@ -180,7 +242,14 @@ export default function ProteinCalculator() {
               <div className={proteinGlass.resultSplit}>
                 <div className="min-w-0">
                   <RangeBarProtein lo={result.lo} hi={result.hi} rda={rda} />
-                  <ProteinResultStatTiles meal={result.meal} factorLabel={factorLabel} />
+                  <ProteinResultColorTiles
+                    meal={result.meal}
+                    level={level}
+                    age65={age65}
+                    goal={goal}
+                    factorLo={result.factorLo}
+                    factorHi={result.factorHi}
+                  />
                   {level === 'active' && (
                     <p className={ui.resultLine}>
                       Spread across meals, roughly {result.meal} g per meal (about 0.25 g/kg; ISSN

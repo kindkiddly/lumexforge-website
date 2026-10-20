@@ -188,6 +188,21 @@ export const proteinGlass = {
   toolCardHere: 'border-[#00B386]/50 bg-white/60',
   cta: `${glassCard} p-5 sm:p-7`,
   sourcesCard: `${glassCard} p-5 sm:p-6`,
+  resultTileGrid: 'mt-4 grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 lg:grid-cols-3',
+  resultTileMint:
+    'relative overflow-hidden rounded-[20px] border border-white/70 bg-gradient-to-br from-white/60 to-[#00E6A8]/15 p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px]',
+  resultTileCyan:
+    'relative overflow-hidden rounded-[20px] border border-white/70 bg-gradient-to-br from-white/60 to-[#00C2FF]/12 p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px]',
+  resultTileGreen:
+    'relative overflow-hidden rounded-[20px] border border-white/70 bg-gradient-to-br from-white/55 to-[#00785A]/12 p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px]',
+  resultTileIconMint:
+    'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00E6A8] to-[#00B386] text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+  resultTileIconCyan:
+    'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#00C2FF] to-[#00B386] text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+  resultTileIconGreen:
+    'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00785A] text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
+  goalFade: 'transition-opacity duration-200',
+  goalHidden: 'pointer-events-none opacity-40',
 } as const;
 
 export const STORE_BADGE_BOX = { w: 160, h: 48 } as const;
