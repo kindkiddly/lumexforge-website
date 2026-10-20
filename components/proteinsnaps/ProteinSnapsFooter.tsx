@@ -7,21 +7,36 @@ import Link from "next/link";
 const STORE_BTN_CLASS =
   "box-border !inline-flex h-[52px] w-[168px] min-h-[52px] max-h-[52px] min-w-[168px] max-w-[168px] shrink-0 grow-0 basis-[168px] items-center gap-2 rounded-lg border border-[#888888]/45 bg-black px-2.5 transition-opacity hover:opacity-90";
 
+/** Apple logo paths from the official App Store badge SVG in /public/images/proteinsnaps/badges/ */
 function AppleLogo() {
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0 fill-white" aria-hidden>
-      <path d="M17.05 20.28c-.96.95-2.1 1.72-3.4 1.72-1.3 0-2.45-.77-3.4-1.72-1.9-1.88-3.05-4.46-3.05-7.28 0-2.82 1.15-5.4 3.05-7.28.95-.95 2.1-1.72 3.4-1.72s2.45.77 3.4 1.72c1.9 1.88 3.05 4.46 3.05 7.28 0 2.82-1.15 5.4-3.05 7.28zM12.03 3.5c.73-.88 1.22-2.1 1.08-3.5-1.04.04-2.3.72-3.05 1.6-.68.78-1.27 2.02-1.11 3.22 1.18.09 2.38-.6 3.08-1.32z" />
+    <svg viewBox="17 8 12 16" className="h-[26px] w-[22px] shrink-0" aria-hidden>
+      <path
+        fill="#ffffff"
+        d="M24.76888,20.30068a4.94881,4.94881,0,0,1,2.35656-4.15206,5.06566,5.06566,0,0,0-3.99116-2.15768c-1.67924-.17626-3.30719,1.00483-4.1629,1.00483-.87227,0-2.18977-.98733-3.6085-.95814a5.31529,5.31529,0,0,0-4.47292,2.72787c-1.934,3.34842-.49141,8.26947,1.3612,10.97608.9269,1.32535,2.01018,2.8058,3.42763,2.7533,1.38706-.05753,1.9051-.88448,3.5794-.88448,1.65876,0,2.14479.88448,3.591.8511,1.48838-.02416,2.42613-1.33124,3.32051-2.66914a10.962,10.962,0,0,0,1.51842-3.09251A4.78205,4.78205,0,0,1,24.76888,20.30068Z"
+      />
+      <path
+        fill="#ffffff"
+        d="M22.03725,12.21089a4.87248,4.87248,0,0,0,1.11452-3.49062,4.95746,4.95746,0,0,0-3.20758,1.65961,4.63634,4.63634,0,0,0-1.14371,3.36139A4.09905,4.09905,0,0,0,22.03725,12.21089Z"
+      />
     </svg>
   );
 }
 
+/** Google Play mark (four-color triangle, same geometry as the official badge) */
 function GooglePlayLogo() {
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0" aria-hidden>
-      <path fill="#EA4335" d="M3.6 2.4 13.2 12 3.6 21.6a1.2 1.2 0 0 1-1.2-1.04V3.44A1.2 1.2 0 0 1 3.6 2.4z" />
-      <path fill="#FBBC04" d="M14.4 10.8 18.6 8.1a1.2 1.2 0 0 1 1.92.96v7.88a1.2 1.2 0 0 1-1.92.96l-4.2-2.7-2.4-1.44z" />
-      <path fill="#4285F4" d="M14.4 13.2 16.8 14.64 18.6 15.9 14.4 18.6 12 17.16z" />
-      <path fill="#34A853" d="M3.6 2.4 12 9.6l2.4-1.44L14.4 10.8 3.6 21.6V3.44z" />
+    <svg viewBox="0 0 24 24" className="h-[26px] w-[26px] shrink-0" aria-hidden>
+      <path
+        fill="#4285F4"
+        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5Z"
+      />
+      <path fill="#34A853" d="M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12Z" />
+      <path fill="#FBBC04" d="M3.84,2.15C3.34,2.39 3,2.91 3,3.5V12L14.54,12.85L3.84,2.15Z" />
+      <path
+        fill="#EA4335"
+        d="M16.81,8.88L20.16,10.96C20.67,11.24 21,11.77 21,12.35C21,12.93 20.67,13.46 20.16,13.74L16.81,15.82L14.54,13.55L16.81,11.28V8.88Z"
+      />
     </svg>
   );
 }
@@ -30,14 +45,18 @@ function FooterStoreButtons() {
   return (
     <div className="mt-2 flex w-max max-w-full flex-nowrap items-center gap-3">
       <a href={PROTEINSNAPS.appStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
-        <AppleLogo />
+        <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center">
+          <AppleLogo />
+        </span>
         <span className="min-w-0 flex-1 text-left leading-tight text-white">
           <span className="block text-[9px] font-normal tracking-wide">Download on the</span>
           <span className="block text-[15px] font-semibold leading-none">App Store</span>
         </span>
       </a>
       <a href={PROTEINSNAPS.playStoreUrl} target="_blank" rel="noopener noreferrer" className={STORE_BTN_CLASS}>
-        <GooglePlayLogo />
+        <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center">
+          <GooglePlayLogo />
+        </span>
         <span className="min-w-0 flex-1 text-left leading-tight text-white">
           <span className="block text-[9px] font-normal uppercase tracking-wide">Get it on</span>
           <span className="block text-[15px] font-semibold leading-none">Google Play</span>
