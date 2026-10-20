@@ -40,8 +40,8 @@ export default function Page() {
       <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
       <h2 className={ui.h2}>Sources</h2>
       <ul className={ui.sources}>
-        <li><a className={ui.link} href="https://doi.org/10.1093/ajcn/51.2.241" rel="noopener">Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990;51(2):241-7.</a></li>
-        <li><a className={ui.link} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator, formula and activity factors.</a></li>
+        <li><a className={ui.sourceLink} href="https://doi.org/10.1093/ajcn/51.2.241" rel="noopener">Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990;51(2):241-7.</a></li>
+        <li><a className={ui.sourceLink} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator, formula and activity factors.</a></li>
       </ul>
       <p className={ui.disclaimer}>Disclaimer: this calculator gives general estimates for healthy adults and is not medical advice. It does not diagnose or treat any condition, and results are not guaranteed.</p>
     </div>

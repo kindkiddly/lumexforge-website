@@ -2,7 +2,7 @@
 // ps-* names below are the live site's OWN classes (from /_next/static/css/9308ac51e38e1c1c.css).
 // Tailwind utilities were seen in the live HTML of /, /features, /how-it-works (see STYLE-ELEMENTS.md).
 export const ui = {
-  main: 'mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28',
+  main: 'mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-20 pb-8 lg:pt-28 lg:pb-10',
   hero: 'ps-page-hero',
   h1: 'font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-[#1A1A1A]',
   h2: 'font-serif text-xl font-semibold text-[#1A1A1A] mt-10',
@@ -15,17 +15,17 @@ export const ui = {
   label: 'block text-sm font-semibold text-[#1A1A1A]',
   fieldset: 'grid gap-2',
   legend: 'text-sm font-semibold text-[#1A1A1A]',
-  radio: 'inline-flex items-center gap-2 text-sm text-[#555555]',
+  radio: 'accent-[#00B386] inline-flex items-center gap-2 text-sm text-[#555555]',
   // developer to map: the live site has no styled form inputs; these use only site colors.
   input: 'mt-1 w-full rounded-[20px] border border-black/10 bg-white/60 px-4 py-3 font-sans text-sm text-[#1A1A1A] placeholder:text-[#555555]/60 focus:border-[#00B386] focus:outline-none',
   select: 'mt-1 w-full rounded-[20px] border border-black/10 bg-white/60 px-4 py-3 font-sans text-sm text-[#1A1A1A] placeholder:text-[#555555]/60 focus:border-[#00B386] focus:outline-none',
   toggle: 'inline-flex flex-wrap gap-2',
-  toggleOn: 'ps-play-button inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold',
+  toggleOn: 'ps-play-button !text-[#1A1A1A] inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold',
   toggleOff: 'ps-pill',
   button: 'ps-btn solid ps-glow-button w-full sm:w-auto',
-  result: 'ps-blog-quick-answer mt-6 block',
-  big: 'font-serif text-3xl font-semibold text-[#1A1A1A]',
-  note: 'mt-3 text-xs leading-relaxed text-[#555555]',
+  result: 'ps-blog-quick-answer mt-6 !flex !w-full !flex-col !items-stretch !gap-0 [&>p+p]:!mt-3',
+  big: '!font-serif !text-3xl sm:!text-4xl !font-semibold !leading-tight !text-[#1A1A1A]',
+  note: '!mt-3 !text-xs !leading-relaxed !text-[#555555]',
   // developer to map: closest live colors are .bg-red-500/10 and .text-red-600 (410eaed6f992b30e.css).
   error: 'mt-4 rounded-xl bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-600',
   cta: 'ps-glass-panel mt-6 p-6',
@@ -36,6 +36,7 @@ export const ui = {
   faq: 'ps-blog-faq',
   faqItem: 'ps-blog-faq-item',
   sources: 'ps-blog-sources-list mt-3 text-sm text-[#555555]',
+  sourceLink: 'text-sm font-normal not-italic text-[#555555] underline decoration-[#00B386]/50 underline-offset-2 transition-colors hover:text-[#1A1A1A] hover:decoration-[#00E6A8]',
   disclaimer: 'ps-blog-disclaimer',
 } as const;
 export const PRICING = 'Free to download. Premium is $9.99/month or $59.99/year.';

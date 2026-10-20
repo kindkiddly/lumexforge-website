@@ -38,7 +38,7 @@ export default function Page() {
       <h2 className={ui.h2}>FAQ</h2>
       <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
       <h2 className={ui.h2}>Source</h2>
-      <p className={ui.body}><a className={ui.link} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></p>
+      <p className={ui.body}><a className={ui.sourceLink} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></p>
     </div>
   );
 }

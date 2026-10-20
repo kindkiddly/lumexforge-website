@@ -15,7 +15,9 @@ export function ProteinSnapsFooter() {
               Protein<span className="text-[#00e6a8]">Snaps</span>
             </p>
             <p className="ps-site-footer-brand-meta text-sm leading-snug text-[#F8FAFC]">
-              AI nutrition and fitness tracking · A LumexForge product
+              AI nutrition and fitness tracking
+              <br />
+              A LumexForge product
             </p>
             <p className="ps-site-footer-brand-email">
               <a

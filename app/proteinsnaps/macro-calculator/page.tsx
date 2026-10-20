@@ -40,10 +40,10 @@ export default function Page() {
       <div className={ui.faq}>{faqs.map(f => (<div key={f.q} className={ui.faqItem}><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
       <h2 className={ui.h2}>Sources</h2>
       <ul className={ui.sources}>
-        <li><a className={ui.link} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. ISSN Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></li>
-        <li><a className={ui.link} href="https://extensionpubs.unl.edu/publication/g2207/2013/html/view" rel="noopener">University of Nebraska–Lincoln Extension: Nutrient Recommendations for Adults (IOM AMDRs).</a></li>
-        <li><a className={ui.link} href="https://www.nal.usda.gov/programs/fnic" rel="noopener">USDA National Agricultural Library, FNIC: calories per gram.</a></li>
-        <li><a className={ui.link} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator.</a></li>
+        <li><a className={ui.sourceLink} href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" rel="noopener">Jäger R, et al. ISSN Position Stand: protein and exercise. J Int Soc Sports Nutr. 2017;14:20.</a></li>
+        <li><a className={ui.sourceLink} href="https://extensionpubs.unl.edu/publication/g2207/2013/html/view" rel="noopener">University of Nebraska–Lincoln Extension: Nutrient Recommendations for Adults (IOM AMDRs).</a></li>
+        <li><a className={ui.sourceLink} href="https://www.nal.usda.gov/programs/fnic" rel="noopener">USDA National Agricultural Library, FNIC: calories per gram.</a></li>
+        <li><a className={ui.sourceLink} href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation" rel="noopener">Medscape (QxMD): Mifflin-St Jeor Equation Calculator.</a></li>
       </ul>
       <p className={ui.disclaimer}>Disclaimer: general estimates for healthy adults, not medical advice. Results are not guaranteed.</p>
     </div>
