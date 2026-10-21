@@ -126,7 +126,7 @@ export const proteinGlass = {
     'absolute rounded-full bg-[#00E6A8]/[0.14] blur-3xl [-webkit-filter:blur(64px)]',
   blobCyan:
     'absolute rounded-full bg-[#00C2FF]/[0.12] blur-3xl [-webkit-filter:blur(64px)]',
-  content: 'relative z-[1]',
+  content: 'relative z-[1] min-w-0 w-full max-w-full',
   card: `${glassCard}`,
   cardPad: `${glassCard} relative z-[1] p-4 sm:p-5`,
   cardTitle: 'text-sm font-semibold text-[#1A1A1A]',
@@ -255,6 +255,9 @@ export const calcGlass = {
   pillGridGoal: 'grid grid-cols-2 gap-1.5 sm:grid-cols-4',
   pillGridFat: 'grid grid-cols-4 gap-1.5',
   btnRow: 'flex justify-stretch pt-0.5 sm:justify-end',
+  /** White crystal strip above calculator feature cards (not .ps-3d-card; that adds dark shadows). */
+  featuresIntro:
+    'rounded-2xl border border-white/90 bg-gradient-to-br from-white/82 via-white/68 to-white/52 shadow-[0_12px_40px_rgba(0,139,125,0.12),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-[22px] [-webkit-backdrop-filter:blur(22px)]',
 } as const;
 
 /** Mint glassmorphism input card (calorie + macro calculators). Matches TDEE mock. */
@@ -268,7 +271,7 @@ export const calcMint = {
   cardGlowWrap: 'relative isolate w-full max-lg:overflow-x-hidden lg:overflow-visible',
   cardGlow:
     'ps-calc-card-glow pointer-events-none absolute -inset-x-1 -inset-y-3 -z-10 rounded-[32px] bg-[radial-gradient(ellipse_80%_70%_at_50%_55%,rgba(0,230,168,0.42),rgba(0,168,142,0.14)_50%,transparent_72%)] blur-2xl',
-  card: `${mintGlassCard} relative z-[1] w-full p-5 sm:p-7 lg:p-8 max-lg:box-border max-lg:overflow-x-hidden max-lg:p-4 lg:overflow-visible`,
+  card: `${mintGlassCard} ps-mint-calc-form relative z-[1] box-border w-full max-w-full p-5 sm:p-7 lg:p-8 max-lg:overflow-x-hidden max-lg:p-4 lg:overflow-visible`,
   cardHeader: 'mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/40 pb-4 sm:mb-5',
   cardTitle: 'flex items-center gap-2.5 text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
   cardTitleIcon:
@@ -294,11 +297,12 @@ export const calcMint = {
   metricsRows: 'flex flex-col gap-3',
   metrics2: 'grid grid-cols-2 gap-3',
   fieldBox:
-    'min-h-[68px] w-full min-w-0 max-w-full rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] focus-within:border-[#ECECEC] focus-within:outline-none focus-within:ring-0 sm:min-h-[72px] sm:px-4',
+    'box-border min-h-[68px] w-full min-w-0 max-w-full overflow-hidden rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] focus-within:border-[#ECECEC] focus-within:outline-none focus-within:ring-0 sm:min-h-[72px] sm:px-4',
   fieldInner: 'flex h-full min-h-[52px] items-center gap-2.5 sm:gap-3',
   fieldIcon:
     'flex h-10 w-8 shrink-0 items-center justify-center text-[#00A88E] sm:w-9',
-  fieldLabel: 'block text-[10px] font-medium text-[#999999]',
+  fieldLabel:
+    'block text-[10px] font-medium leading-snug text-[#999999] max-lg:whitespace-normal max-lg:pr-0',
   fieldInput:
     'mt-0.5 w-full min-w-0 border-0 bg-transparent p-0 text-lg font-semibold leading-tight text-[#1A1A1A] shadow-none outline-none ring-0 [appearance:textfield] placeholder:font-normal placeholder:text-[#BBBBBB] focus:border-0 focus:shadow-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 [-webkit-tap-highlight-color:transparent] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
   stepper: 'flex shrink-0 flex-col justify-center gap-0.5 border-l border-black/[0.07] pl-2.5',
@@ -323,11 +327,17 @@ export const calcMint = {
   activityOptionMetaOn: 'text-[#00A88E]',
   goalHeading: 'mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
   goalGrid: 'grid grid-cols-2 gap-2.5 lg:grid-cols-4',
-  fatPillGrid: 'grid grid-cols-4 gap-1 max-lg:gap-1 lg:gap-2.5',
+  fatPillGrid: 'grid w-full min-w-0 max-w-full grid-cols-4 gap-1.5 max-lg:gap-1 lg:gap-2.5',
+  fatPillBtn:
+    'flex min-h-[44px] min-w-0 w-full max-w-full flex-row items-center justify-center rounded-full border-2 border-[#E8E8E8] bg-white px-1 py-2 text-center text-[11px] font-medium leading-none text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 max-lg:min-h-[42px] max-lg:text-[11px] sm:min-h-[46px] sm:px-2 sm:text-[11px]',
+  fatPillBtnOn:
+    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_2px_rgba(0,230,168,0.28),0_2px_10px_rgba(0,139,125,0.12)]',
   goalBtn:
-    'flex min-h-[46px] min-w-0 flex-row items-center justify-center gap-1.5 rounded-full border border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 max-lg:px-1.5 max-lg:text-[9px] sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
+    'flex min-h-[46px] min-w-0 w-full max-w-full flex-row items-center justify-center gap-1.5 rounded-full border-2 border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 max-lg:px-1.5 max-lg:text-[10px] sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
   goalBtnOn:
-    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_4px_rgba(0,230,168,0.2),0_4px_14px_rgba(0,139,125,0.14)]',
+    'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_3px_rgba(0,230,168,0.22),0_4px_14px_rgba(0,139,125,0.14)]',
+  macroSplitRow: 'grid min-w-0 w-full max-w-full grid-cols-1 gap-4 lg:grid-cols-2',
+  macroSplitCell: 'min-w-0 w-full max-w-full',
   submitWrap: 'relative z-0 mt-6 flex w-full justify-start',
   submitGlow:
     'pointer-events-none absolute -bottom-2 left-8 h-12 w-[min(100%,22rem)] rounded-full bg-[#00E6A8]/50 blur-2xl',
@@ -335,7 +345,8 @@ export const calcMint = {
     'relative z-0 inline-flex min-h-[50px] w-full min-w-0 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_32px_rgba(0,139,125,0.5)] transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[min(100%,360px)]',
   inlineSelect:
     'w-full appearance-none border-0 bg-transparent py-0.5 pr-6 text-sm font-semibold text-[#1A1A1A] outline-none focus:ring-0',
-  macroExtra: 'mt-4 min-w-0 w-full max-lg:overflow-x-hidden gap-4 border-t border-white/50 pt-4',
+  macroExtra:
+    'mt-4 flex min-w-0 w-full max-w-full flex-col gap-4 border-t border-white/50 pt-4 max-lg:overflow-x-hidden',
   hint: 'mt-1.5 text-xs leading-relaxed text-[#666666]',
 } as const;
 

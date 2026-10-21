@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { useProteinSnapsPath } from '@/components/proteinsnaps/ProteinSnapsPathContext';
 import { textWithBrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import { ArrowIcon, CALC_FEATURE_CARDS } from './Parts';
-import { ui } from './ui';
+import { calcGlass, ui } from './ui';
 
 const homeFeatureGrid =
   'mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6';
@@ -30,7 +30,9 @@ export function CalcHomeGlassFeatures() {
   return (
     <section className="calc-home-glass mt-10 sm:mt-12">
       <div className="text-center">
-        <div className="ps-calc-glass-intro ps-3d-card mx-auto max-w-2xl rounded-2xl px-5 py-4 text-left sm:text-center">
+        <div
+          className={`ps-calc-glass-intro ${calcGlass.featuresIntro} mx-auto w-full max-w-2xl px-5 py-4 text-left sm:text-center`}
+        >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
             In the app
           </p>

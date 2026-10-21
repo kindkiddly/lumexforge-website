@@ -491,15 +491,19 @@ export function MintGoalPills<T extends string | number>({
   onChange,
   options,
   gridClassName = calcMint.goalGrid,
+  btnClassName = calcMint.goalBtn,
+  btnClassNameOn = calcMint.goalBtnOn,
 }: {
   label: string;
   value: T;
   onChange: (v: T) => void;
   options: { value: T; label: string }[];
   gridClassName?: string;
+  btnClassName?: string;
+  btnClassNameOn?: string;
 }) {
   return (
-    <div className="min-w-0 max-lg:w-full">
+    <div className="min-w-0 w-full max-w-full">
       <p className={calcMint.sectionLabel}>{label}</p>
       <div className={gridClassName} role="group" aria-label={label}>
         {options.map(o => {
@@ -509,7 +513,7 @@ export function MintGoalPills<T extends string | number>({
               key={String(o.value)}
               type="button"
               aria-pressed={on}
-              className={`${calcMint.goalBtn} ${on ? calcMint.goalBtnOn : ''}`}
+              className={`${btnClassName} ${on ? btnClassNameOn : ''}`}
               onClick={() => onChange(o.value)}
             >
               {o.label}

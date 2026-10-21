@@ -90,24 +90,30 @@ export default function MacroCalculator() {
             onGoal={(g: Goal) => setP(onGoalChange(g))}
           />
           <div className={calcMint.macroExtra}>
-            <div className="grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
-              <MintCalcField label="Already know your calories? (optional)">
-                <input
-                  className={calcMint.fieldInput}
-                  type="number"
-                  inputMode="numeric"
-                  value={known}
-                  onChange={e => setKnown(e.target.value)}
-                  placeholder="Leave blank to estimate"
+            <div className={calcMint.macroSplitRow}>
+              <div className={calcMint.macroSplitCell}>
+                <MintCalcField label="Already know your calories? (optional)">
+                  <input
+                    className={calcMint.fieldInput}
+                    type="number"
+                    inputMode="numeric"
+                    value={known}
+                    onChange={e => setKnown(e.target.value)}
+                    placeholder="Leave blank to estimate"
+                  />
+                </MintCalcField>
+              </div>
+              <div className={calcMint.macroSplitCell}>
+                <MintGoalPills
+                  label="Fat (% of calories)"
+                  value={f}
+                  onChange={setF}
+                  gridClassName={calcMint.fatPillGrid}
+                  btnClassName={calcMint.fatPillBtn}
+                  btnClassNameOn={calcMint.fatPillBtnOn}
+                  options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
                 />
-              </MintCalcField>
-              <MintGoalPills
-                label="Fat (% of calories)"
-                value={f}
-                onChange={setF}
-                gridClassName={calcMint.fatPillGrid}
-                options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
-              />
+              </div>
             </div>
             <MintGlassDropdown
               icon={
