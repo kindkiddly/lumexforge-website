@@ -167,9 +167,9 @@ export const proteinGlass = {
     'flex min-h-[40px] items-center justify-center rounded-full border border-white/70 bg-white/50 px-3 py-2 text-center text-xs font-medium text-[#555555] shadow-[0_4px_14px_rgba(0,0,0,0.06)] backdrop-blur-md sm:text-[13px]',
   heroChipGrid: 'mt-5 grid grid-cols-1 gap-2 min-[480px]:grid-cols-3',
   heroImageWrap:
-    'relative mx-auto mt-8 max-w-sm overflow-hidden lg:mx-0 lg:mt-0 lg:max-w-none',
+    'relative mx-auto mt-8 max-w-sm overflow-visible lg:mx-0 lg:mt-0 lg:max-w-none before:pointer-events-none before:absolute before:-inset-3 before:-z-10 before:rounded-[40%] before:bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(0,230,168,0.12),transparent_70%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(ellipse_90%_82%_at_50%_48%,transparent_42%,rgba(255,252,248,0.82)_100%)]',
   heroImage:
-    'h-auto w-full max-h-[220px] object-cover object-center [mask-image:radial-gradient(ellipse_85%_75%_at_50%_50%,#000_55%,transparent_100%)] lg:max-h-[280px]',
+    'relative z-[1] h-auto w-full max-h-[220px] object-cover object-center opacity-[0.97] [mask-image:radial-gradient(ellipse_88%_80%_at_50%_46%,#000_48%,transparent_100%)] lg:max-h-[280px]',
   resultSplit: 'mt-4 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center',
   resultTile:
     'flex gap-3 rounded-[20px] border border-white/70 bg-white/[0.55] p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px]',
@@ -251,7 +251,7 @@ export const calcGlass = {
   legendTight: 'text-[11px] font-semibold text-[#1A1A1A]',
   legendMt: 'mt-1',
   offerPanel:
-    'mt-3 rounded-xl border border-[#00E6A8]/25 bg-white/70 p-2.5 shadow-[0_4px_16px_rgba(0,230,168,0.08)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)] sm:p-3',
+    'ps-glass-panel ps-3d-card mt-4 rounded-2xl border border-[#00C9A7]/45 bg-gradient-to-br from-white/78 via-[#00E6A8]/14 to-white/62 p-4 shadow-[0_10px_36px_rgba(0,139,125,0.2),inset_0_1px_0_rgba(255,255,255,0.95)] backdrop-blur-[20px] [-webkit-backdrop-filter:blur(20px)] sm:p-5',
   pillGridGoal: 'grid grid-cols-2 gap-1.5 sm:grid-cols-4',
   pillGridFat: 'grid grid-cols-4 gap-1.5',
   btnRow: 'flex justify-stretch pt-0.5 sm:justify-end',
@@ -264,10 +264,10 @@ const mintGlassCard =
 export const calcMint = {
   page: 'bg-gradient-to-b from-[#E4F5EF] via-[#EDF8F4] to-[#F4FAF7]',
   section: 'mt-6 flex w-full max-w-none flex-col gap-6',
-  cardGlowWrap: 'relative isolate w-full',
+  cardGlowWrap: 'relative isolate w-full overflow-visible',
   cardGlow:
     'pointer-events-none absolute -inset-x-1 -inset-y-3 -z-10 rounded-[32px] bg-[radial-gradient(ellipse_80%_70%_at_50%_55%,rgba(0,230,168,0.42),rgba(0,168,142,0.14)_50%,transparent_72%)] blur-2xl',
-  card: `${mintGlassCard} relative z-[1] w-full p-5 sm:p-7 lg:p-8`,
+  card: `${mintGlassCard} relative z-[1] w-full overflow-visible p-5 sm:p-7 lg:p-8`,
   cardHeader: 'mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/40 pb-4 sm:mb-5',
   cardTitle: 'flex items-center gap-2.5 text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
   cardTitleIcon:
@@ -279,7 +279,7 @@ export const calcMint = {
   unitOn:
     'bg-gradient-to-r from-[#00C9A7] to-[#008B7D] text-white shadow-[0_3px_14px_rgba(0,139,125,0.4)]',
   unitOff: 'text-[#555555] hover:text-[#1A1A1A]',
-  fieldsStack: 'flex flex-col gap-4 sm:gap-5',
+  fieldsStack: 'relative flex flex-col gap-4 overflow-visible sm:gap-5',
   sectionLabel: 'mb-2 text-xs font-semibold text-[#1A1A1A]',
   sexTrack:
     'grid grid-cols-2 gap-0 rounded-full border border-white/60 bg-white/55 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)]',
@@ -304,21 +304,33 @@ export const calcMint = {
   stepperBtn:
     'flex h-[22px] w-7 items-center justify-center rounded-md text-[#999999] transition-colors hover:bg-[#00E6A8]/15 hover:text-[#008B7D]',
   activityBox:
-    'relative min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:min-h-[72px] sm:px-4',
+    'relative z-[1] min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-[border-color,box-shadow,background-color] sm:min-h-[72px] sm:px-4',
+  activityBoxIdle: 'hover:border-[#00C9A7]/35 hover:shadow-[0_4px_16px_rgba(0,139,125,0.08)]',
+  activityBoxOpen:
+    'z-[50] border-[#00C9A7]/45 bg-white/95 shadow-[0_6px_24px_rgba(0,139,125,0.14),inset_0_1px_0_rgba(255,255,255,0.9)]',
+  activityTrigger:
+    'w-full cursor-pointer rounded-[10px] text-left transition-colors hover:bg-white/55 [-webkit-tap-highlight-color:transparent]',
   activityValue: 'mt-0.5 truncate text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
-  activityChevron: 'h-5 w-5 shrink-0 text-[#999999]',
-  activitySelect: 'absolute inset-0 z-[2] cursor-pointer opacity-0',
+  activityChevron: 'h-5 w-5 shrink-0 text-[#999999] transition-transform duration-200',
+  activityMenuPortal:
+    'max-h-[min(18rem,70vh)] overflow-y-auto rounded-[14px] border border-white/85 bg-white/58 p-1.5 shadow-[0_16px_48px_rgba(0,139,125,0.22),inset_0_1px_0_rgba(255,255,255,0.95)] backdrop-blur-[22px] [-webkit-backdrop-filter:blur(22px)]',
+  activityOption:
+    'flex w-full items-start justify-between gap-3 rounded-[10px] px-3 py-2.5 text-left text-sm font-medium text-[#1A1A1A] transition-colors hover:bg-white/80 hover:shadow-[0_2px_8px_rgba(0,139,125,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/45',
+  activityOptionOn:
+    'bg-[#00E6A8]/16 font-semibold text-[#008B7D] shadow-[inset_0_0_0_1px_rgba(0,201,167,0.25)]',
+  activityOptionMeta: 'shrink-0 text-xs font-semibold tabular-nums text-[#888888]',
+  activityOptionMetaOn: 'text-[#00A88E]',
   goalHeading: 'mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
   goalGrid: 'grid grid-cols-2 gap-2.5 lg:grid-cols-4',
   goalBtn:
     'flex min-h-[46px] flex-row items-center justify-center gap-1.5 rounded-full border border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
   goalBtnOn:
     'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_4px_rgba(0,230,168,0.2),0_4px_14px_rgba(0,139,125,0.14)]',
-  submitWrap: 'relative mt-6 flex w-full justify-start',
+  submitWrap: 'relative z-0 mt-6 flex w-full justify-start',
   submitGlow:
     'pointer-events-none absolute -bottom-2 left-8 h-12 w-[min(100%,22rem)] rounded-full bg-[#00E6A8]/50 blur-2xl',
   submitBtn:
-    'relative z-[1] inline-flex min-h-[50px] w-full min-w-0 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_32px_rgba(0,139,125,0.5)] transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[min(100%,360px)]',
+    'relative z-0 inline-flex min-h-[50px] w-full min-w-0 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_32px_rgba(0,139,125,0.5)] transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[min(100%,360px)]',
   inlineSelect:
     'w-full appearance-none border-0 bg-transparent py-0.5 pr-6 text-sm font-semibold text-[#1A1A1A] outline-none focus:ring-0',
   macroExtra: 'mt-4 grid gap-4 border-t border-white/50 pt-4',

@@ -1,0 +1,7 @@
+# Calculator hero images
+
+calculator-1.webp — Calorie calculator (user-provided source: Downloads/calculator-1.jpg)
+calculator-2.webp — Macro calculator (user-provided source: Downloads/calculator-2.jpg)
+calculator-3.webp — Protein calculator (user-provided source: Downloads/calculator-3.jpg)
+
+Legacy Unsplash files (grain-bowl.webp, smoothie-bowl.webp, protein-bowl.webp) may remain in this folder but are no longer referenced by the site.

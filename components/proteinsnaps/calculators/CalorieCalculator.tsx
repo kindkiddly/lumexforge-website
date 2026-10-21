@@ -70,7 +70,7 @@ export default function CalorieCalculator() {
         <>
           <div
             ref={resultRef}
-            className={`${ui.cardPad} max-lg:scroll-mt-28`}
+            className="ps-glass-panel ps-3d-card max-lg:scroll-mt-28 rounded-2xl p-5 sm:p-6 lg:p-8"
             aria-live="polite"
           >
             <div className={`${ui.resultGrid} max-lg:flex max-lg:flex-col max-lg:gap-6`}>
@@ -112,7 +112,7 @@ export default function CalorieCalculator() {
                 </p>
                 <SafetyNote belowBmr={r.belowBmr} />
               </div>
-              <div className="max-lg:w-full max-lg:border-t max-lg:border-black/[0.06] max-lg:pt-6 lg:contents">
+              <div className="max-lg:w-full max-lg:border-t max-lg:border-black/[0.06] max-lg:pt-6 lg:col-start-2 lg:row-start-1 lg:self-center">
                 <CalorieGauge
                   bmr={r.bmr}
                   tdee={r.tdee}

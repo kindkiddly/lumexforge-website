@@ -89,12 +89,19 @@ function CtaOfferText() {
 
 function CtaOfferLine({ offerGlass }: { offerGlass?: boolean }) {
   const copy = (
-    <p className={`${ui.note} ${offerGlass ? 'mt-0 leading-snug' : 'mt-3'}`}>
+    <p className={`${ui.note} ${offerGlass ? 'mt-2 leading-relaxed text-[#444444]' : 'mt-3'}`}>
       <CtaOfferText />
     </p>
   );
   if (offerGlass) {
-    return <div className={calcGlass.offerPanel}>{copy}</div>;
+    return (
+      <div className={calcGlass.offerPanel}>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#00A88E]">
+          Limited-time free perks
+        </p>
+        {copy}
+      </div>
+    );
   }
   return copy;
 }

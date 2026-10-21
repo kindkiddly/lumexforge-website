@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 import { calcMint, proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import CalorieCalculator from '@/components/proteinsnaps/calculators/CalorieCalculator';
 import {
+  CalcHomeGlassFaq,
+  CalcHomeGlassFeatures,
+  CalcHomeGlassPanel,
+  CalcHomeGlassSources,
+  CalcHomeGlassTools,
+} from '@/components/proteinsnaps/calculators/CalcHomeGlassSections';
+import {
   CalcGlassHero,
-  FaqList,
-  FeatureCards,
-  MoreFreeTools,
   ProteinGlassBackdrop,
   SourceItem,
   SourceLinks,
@@ -74,15 +78,14 @@ export default function Page() {
           titleMint="Calculator (TDEE)"
           intro="Get a friendly first estimate of how many calories your body uses each day, and a target for your goal, whether that is maintaining, a gentle fat loss goal, or building strength."
           chips={['BMR + TDEE', 'Goal target', 'lb / ft + in or kg / cm']}
-          imageSrc="/images/proteinsnaps/calculators/grain-bowl.webp"
-          imageAlt="Balanced grain bowl with vegetables and protein"
+          imageSrc="/images/proteinsnaps/calculators/calculator-1.webp"
+          imageAlt="Healthy breakfast flat lay with fruit, yogurt, avocado and coffee"
         />
         <CalorieCalculator />
+        <CalcHomeGlassFeatures />
         <div className={ui.prose}>
-        <h2 className={ui.h2}>Keep your numbers on track</h2>
-        <FeatureCards />
         <h2 className={ui.h2}>How it works</h2>
-        <div className={ui.panel}>
+        <CalcHomeGlassPanel>
           <p className={ui.body}>
             1. Resting energy (BMR) with Mifflin-St Jeor: women 10 × kg + 6.25 × cm − 5 × age − 161;
             men … + 5. 2. TDEE = BMR × activity factor (1.2, 1.375, 1.55, 1.725 or 1.9). 3. Goal:
@@ -94,25 +97,27 @@ export default function Page() {
             Next: <a className={ui.link} href="/macro-calculator">split your calories into macros</a>{' '}
             or <a className={ui.link} href="/protein-calculator">find your daily protein</a>.
           </p>
-        </div>
+        </CalcHomeGlassPanel>
         <h2 className={ui.h2}>FAQ</h2>
-        <FaqList items={faqs} />
+        <CalcHomeGlassFaq items={faqs} />
         <h2 className={ui.h2}>Sources</h2>
-        <SourceLinks>
-          <SourceItem href="https://doi.org/10.1093/ajcn/51.2.241">
-            Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure
-            in healthy individuals. Am J Clin Nutr. 1990;51(2):241-7.
-          </SourceItem>
-          <SourceItem href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">
-            Medscape (QxMD): Mifflin-St Jeor Equation Calculator, formula and activity factors.
-          </SourceItem>
-        </SourceLinks>
+        <CalcHomeGlassSources>
+          <SourceLinks>
+            <SourceItem href="https://doi.org/10.1093/ajcn/51.2.241">
+              Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure
+              in healthy individuals. Am J Clin Nutr. 1990;51(2):241-7.
+            </SourceItem>
+            <SourceItem href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">
+              Medscape (QxMD): Mifflin-St Jeor Equation Calculator, formula and activity factors.
+            </SourceItem>
+          </SourceLinks>
+        </CalcHomeGlassSources>
         <p className={ui.disclaimer}>
           Disclaimer: this calculator gives general estimates for healthy adults and is not medical
           advice. It does not diagnose or treat any condition, and results are not guaranteed.
         </p>
         <h2 className={ui.h2}>More free tools</h2>
-        <MoreFreeTools current="calorie" />
+        <CalcHomeGlassTools current="calorie" />
         </div>
       </div>
     </div>

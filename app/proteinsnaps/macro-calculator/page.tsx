@@ -3,10 +3,14 @@ import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
 import { calcMint, proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import MacroCalculator from '@/components/proteinsnaps/calculators/MacroCalculator';
 import {
+  CalcHomeGlassFaq,
+  CalcHomeGlassFeatures,
+  CalcHomeGlassPanel,
+  CalcHomeGlassSources,
+  CalcHomeGlassTools,
+} from '@/components/proteinsnaps/calculators/CalcHomeGlassSections';
+import {
   CalcGlassHero,
-  FaqList,
-  FeatureCards,
-  MoreFreeTools,
   ProteinGlassBackdrop,
   SourceItem,
   SourceLinks,
@@ -75,15 +79,14 @@ export default function Page() {
           titleMint="Calculator"
           intro="See how much protein, carbs and fat could fit your day, in grams, for your goal. Protein comes first, then fat, and carbs fill the rest."
           chips={['Protein, carbs and fat', 'Follows your goal', 'Grams and %']}
-          imageSrc="/images/proteinsnaps/calculators/smoothie-bowl.webp"
-          imageAlt="Colorful smoothie bowl with fruit and seeds"
+          imageSrc="/images/proteinsnaps/calculators/calculator-2.webp"
+          imageAlt="Salmon poke bowl with rice, edamame and vegetables"
         />
         <MacroCalculator />
+        <CalcHomeGlassFeatures />
         <div className={ui.prose}>
-        <h2 className={ui.h2}>Keep your numbers on track</h2>
-        <FeatureCards />
         <h2 className={ui.h2}>How it works</h2>
-        <div className={ui.panel}>
+        <CalcHomeGlassPanel>
           <p className={ui.body}>
             Protein (g) = weight (kg) × your protein setting. By default it follows your goal, using
             the <BrandName /> app&apos;s settings: fat loss 2.2, maintain 1.6, build 1.8, recomp 2.0
@@ -98,31 +101,33 @@ export default function Page() {
             <a className={ui.link} href="/calorie-calculator">calorie calculator</a>. Just need
             protein? Use the <a className={ui.link} href="/protein-calculator">protein calculator</a>.
           </p>
-        </div>
+        </CalcHomeGlassPanel>
         <h2 className={ui.h2}>FAQ</h2>
-        <FaqList items={faqs} />
+        <CalcHomeGlassFaq items={faqs} />
         <h2 className={ui.h2}>Sources</h2>
-        <SourceLinks>
-          <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
-            Jäger R, et al. ISSN Position Stand: protein and exercise. J Int Soc Sports Nutr.
-            2017;14:20.
-          </SourceItem>
-          <SourceItem href="https://extensionpubs.unl.edu/publication/g2207/2013/html/view">
-            University of Nebraska–Lincoln Extension: Nutrient Recommendations for Adults (IOM AMDRs).
-          </SourceItem>
-          <SourceItem href="https://www.nal.usda.gov/programs/fnic">
-            USDA National Agricultural Library, FNIC: calories per gram.
-          </SourceItem>
-          <SourceItem href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">
-            Medscape (QxMD): Mifflin-St Jeor Equation Calculator.
-          </SourceItem>
-        </SourceLinks>
+        <CalcHomeGlassSources>
+          <SourceLinks>
+            <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
+              Jäger R, et al. ISSN Position Stand: protein and exercise. J Int Soc Sports Nutr.
+              2017;14:20.
+            </SourceItem>
+            <SourceItem href="https://extensionpubs.unl.edu/publication/g2207/2013/html/view">
+              University of Nebraska–Lincoln Extension: Nutrient Recommendations for Adults (IOM AMDRs).
+            </SourceItem>
+            <SourceItem href="https://www.nal.usda.gov/programs/fnic">
+              USDA National Agricultural Library, FNIC: calories per gram.
+            </SourceItem>
+            <SourceItem href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">
+              Medscape (QxMD): Mifflin-St Jeor Equation Calculator.
+            </SourceItem>
+          </SourceLinks>
+        </CalcHomeGlassSources>
         <p className={ui.disclaimer}>
           Disclaimer: general estimates for healthy adults, not medical advice. Results are not
           guaranteed.
         </p>
         <h2 className={ui.h2}>More free tools</h2>
-        <MoreFreeTools current="macro" />
+        <CalcHomeGlassTools current="macro" />
         </div>
       </div>
     </div>

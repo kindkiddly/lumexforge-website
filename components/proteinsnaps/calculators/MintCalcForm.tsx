@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { ACTIVITY, GOAL, type Activity, type Goal, type Sex } from './energyMath';
+import { MintGlassDropdown } from './MintGlassDropdown';
 import {
   PLACEHOLDERS,
   type BodyState,
@@ -243,6 +244,14 @@ export function MintCalcHeader({
   );
 }
 
+const ACTIVITY_KEYS = Object.keys(ACTIVITY) as Activity[];
+
+const ACTIVITY_DROPDOWN_OPTIONS = ACTIVITY_KEYS.map(k => ({
+  value: k,
+  label: ACTIVITY[k].label,
+  meta: `×${ACTIVITY[k].factor}`,
+}));
+
 export function MintCalcBodyFields({
   s,
   set,
@@ -360,40 +369,15 @@ export function MintCalcBodyFields({
         </div>
       )}
 
-      <div className={calcMint.activityBox}>
-        <div className={calcMint.fieldInner}>
-          <div className={calcMint.fieldIcon}>
-            <IconBolt className="h-5 w-5" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <span className={calcMint.fieldLabel}>Activity</span>
-            <p className={calcMint.activityValue}>
-              {ACTIVITY[s.activity].label} (×{ACTIVITY[s.activity].factor})
-            </p>
-          </div>
-          <svg
-            className={calcMint.activityChevron}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </div>
-        <select
-          className={calcMint.activitySelect}
-          value={s.activity}
-          aria-label="Activity level"
-          onChange={e => set({ activity: e.target.value as Activity })}
-        >
-          {(Object.keys(ACTIVITY) as Activity[]).map(k => (
-            <option key={k} value={k}>
-              {ACTIVITY[k].label} (×{ACTIVITY[k].factor})
-            </option>
-          ))}
-        </select>
-      </div>
+      <MintGlassDropdown
+        icon={<IconBolt className="h-5 w-5" />}
+        label="Activity"
+        listLabel="Activity level"
+        value={s.activity}
+        options={ACTIVITY_DROPDOWN_OPTIONS}
+        onChange={activity => set({ activity })}
+        formatDisplay={opt => `${opt.label} (${opt.meta})`}
+      />
 
       <div>
         <p className={calcMint.goalHeading}>

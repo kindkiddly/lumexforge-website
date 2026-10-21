@@ -624,10 +624,13 @@ export function CalorieGauge({
     const rad = (deg * Math.PI) / 180;
     return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
   };
-  const arc = (a0: number, a1: number, color: string, sw = 10) => {
-    const p0 = pt(a0);
-    const p1 = pt(a1);
-    const large = a0 - a1 > 180 ? 1 : 0;
+  /** Draw along the top semicircle (180° → 0°). Always pass the larger angle first. */
+  const arc = (angleFrom: number, angleTo: number, color: string, sw = 10) => {
+    const start = Math.max(angleFrom, angleTo);
+    const end = Math.min(angleFrom, angleTo);
+    const p0 = pt(start);
+    const p1 = pt(end);
+    const large = start - end > 180 ? 1 : 0;
     return (
       <path
         d={`M ${p0.x} ${p0.y} A ${r} ${r} 0 ${large} 0 ${p1.x} ${p1.y}`}
@@ -638,6 +641,11 @@ export function CalorieGauge({
       />
     );
   };
+  const arcCalories = (calLo: number, calHi: number, color: string, sw = 10) => {
+    const lo = Math.min(calLo, calHi);
+    const hi = Math.max(calLo, calHi);
+    return arc(gaugeAngle(lo, min, max), gaugeAngle(hi, min, max), color, sw);
+  };
   const marker = (value: number, color: string, id: string) => {
     const deg = gaugeAngle(value, min, max);
     const p = pt(deg);
@@ -647,12 +655,7 @@ export function CalorieGauge({
       </g>
     );
   };
-  const bmrDeg = gaugeAngle(bmr, min, max);
-  const tdeeDeg = gaugeAngle(tdee, min, max);
-  const targetDeg = gaugeAngle(target, min, max);
   const arcColor = belowBmr ? '#e57373' : '#00B386';
-  const baseStart = Math.min(bmrDeg, tdeeDeg);
-  const baseEnd = Math.max(bmrDeg, tdeeDeg);
 
   return (
     <div className="mx-auto w-full max-w-[280px] max-lg:mt-0 max-lg:pt-0 lg:mt-0">
@@ -677,16 +680,9 @@ export function CalorieGauge({
           strokeWidth={10}
           strokeLinecap="round"
         />
-        {arc(baseEnd, baseStart, '#00C2FF', 10)}
-        {goal === 'recomp' &&
-          arc(gaugeAngle(tdee + 100, min, max), gaugeAngle(tdee - 100, min, max), '#00E6A8', 12)}
-        {goal !== 'recomp' &&
-          arc(
-            Math.max(targetDeg, baseStart),
-            Math.min(targetDeg, baseEnd),
-            arcColor,
-            12,
-          )}
+        {arcCalories(bmr, tdee, '#00C2FF', 10)}
+        {goal === 'recomp' && arcCalories(tdee - 100, tdee + 100, '#00E6A8', 12)}
+        {goal !== 'recomp' && arcCalories(Math.min(target, tdee), Math.max(target, tdee), arcColor, 12)}
         {marker(bmr, '#00785A', 'bmr')}
         {marker(tdee, '#00C2FF', 'tdee')}
         {marker(
@@ -713,7 +709,7 @@ export function CalorieGauge({
   );
 }
 
-const FEATURES = [
+export const CALC_FEATURE_CARDS = [
   {
     title: 'AI meal photo estimates',
     text: 'Snap a photo of your meal for an estimate of protein, macros and calories.',
@@ -747,7 +743,7 @@ const FEATURES = [
 export function FeatureCards() {
   return (
     <div className={ui.featureGrid}>
-      {FEATURES.map(f => (
+      {CALC_FEATURE_CARDS.map(f => (
         <div key={f.title} className={ui.featureCard}>
           <div className={ui.featureIcon}>{f.icon}</div>
           <p className={ui.featureTitle}>{f.title}</p>
@@ -986,8 +982,8 @@ export function ProteinCalcHero({
       </div>
       <div className={proteinGlass.heroImageWrap}>
         <Image
-          src="/images/proteinsnaps/calculators/protein-bowl.webp"
-          alt="Protein-rich meal bowl with chicken, grains and vegetables"
+          src="/images/proteinsnaps/calculators/calculator-3.webp"
+          alt="Protein-rich buddha bowl with tofu, eggs and vegetables"
           width={680}
           height={680}
           className={proteinGlass.heroImage}
@@ -1035,7 +1031,7 @@ export function ProteinCalcButton({
 export function ProteinGlassFeatureCards() {
   return (
     <div className={ui.featureGrid}>
-      {FEATURES.map((f, i) => (
+      {CALC_FEATURE_CARDS.map((f, i) => (
         <ProteinGlassCard key={f.title} tint={i % 2 ? 'cyan' : 'mint'}>
           <div className={proteinGlass.featureCard}>
             <div className={ui.featureIcon}>{f.icon}</div>

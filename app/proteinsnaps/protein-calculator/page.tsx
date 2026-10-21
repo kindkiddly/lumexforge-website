@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import { BrandName } from '@/components/proteinsnaps/calculators/BrandName';
-import { proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
+import {
+  CalcHomeGlassFaq,
+  CalcHomeGlassFeatures,
+  CalcHomeGlassPanel,
+  CalcHomeGlassSources,
+  CalcHomeGlassTools,
+} from '@/components/proteinsnaps/calculators/CalcHomeGlassSections';
+import { calcMint, proteinGlass, ui } from '@/components/proteinsnaps/calculators/ui';
 import ProteinCalculator from '@/components/proteinsnaps/calculators/ProteinCalculator';
 import {
   ProteinCalcHero,
   ProteinGlassBackdrop,
-  ProteinGlassCard,
-  ProteinGlassFaqList,
-  ProteinGlassFeatureCards,
-  ProteinGlassMoreFreeTools,
   SourceItem,
   SourceLinks,
 } from '@/components/proteinsnaps/calculators/Parts';
@@ -62,7 +65,7 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} ${proteinGlass.page}`}>
+    <div className={`${ui.main} ${proteinGlass.page} ${calcMint.page}`}>
       <ProteinGlassBackdrop />
       <div className={proteinGlass.content}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -74,43 +77,42 @@ export default function Page() {
           chips={['Daily range in grams', 'Per-meal guide', 'lb or kg']}
         />
         <ProteinCalculator />
+        <CalcHomeGlassFeatures />
         <div className={ui.prose}>
-          <h2 className={ui.h2}>Keep your numbers on track</h2>
-          <ProteinGlassFeatureCards />
           <h2 className={ui.h2}>How it works</h2>
-          <ProteinGlassCard tint="cyan">
-            <div className={`${proteinGlass.cardPad}`}>
-              <p className={ui.body}>
-                Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who
-                are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
-                from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg. If you
-                exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
-                (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the{' '}
-                <BrandName /> app&apos;s setting; the ISSN notes more protein may be needed in a
-                calorie deficit).
-              </p>
-            </div>
-          </ProteinGlassCard>
+          <CalcHomeGlassPanel>
+            <p className={ui.body}>
+              Daily protein = body weight (kg) × a factor. We use 0.8 g/kg (the RDA) for adults who
+              are not regularly exercising, and 1.4–2.0 g/kg for people who exercise regularly,
+              from the ISSN 2017 position stand. Pounds are converted at 1 lb = 0.4536 kg. If you
+              exercise, your goal sets the range: general fitness 1.4–2.0 g/kg
+              (ISSN), build muscle 1.6–2.2 g/kg (Morton et al. 2018), or fat loss 2.2 g/kg (the{' '}
+              <BrandName /> app&apos;s setting; the ISSN notes more protein may be needed in a
+              calorie deficit).
+            </p>
+          </CalcHomeGlassPanel>
           <h2 className={ui.h2}>FAQ</h2>
-          <ProteinGlassFaqList items={faqs} />
+          <CalcHomeGlassFaq items={faqs} />
           <h2 className={ui.h2}>Source</h2>
-          <ProteinGlassCard tint="mint">
-            <div className={`${proteinGlass.cardPad}`}>
-              <SourceLinks>
-                <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
-                  Jäger R, et al. International Society of Sports Nutrition Position Stand: protein
-                  and exercise. J Int Soc Sports Nutr. 2017;14:20.
-                </SourceItem>
-                <SourceItem href="https://bjsm.bmj.com/content/52/6/376">
-                  Morton RW, et al. A systematic review, meta-analysis and meta-regression of the
-                  effect of protein supplementation on resistance training-induced gains in muscle
-                  mass and strength in healthy adults. Br J Sports Med. 2018;52(6):376-384.
-                </SourceItem>
-              </SourceLinks>
-            </div>
-          </ProteinGlassCard>
+          <CalcHomeGlassSources>
+            <SourceLinks>
+              <SourceItem href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8">
+                Jäger R, et al. International Society of Sports Nutrition Position Stand: protein
+                and exercise. J Int Soc Sports Nutr. 2017;14:20.
+              </SourceItem>
+              <SourceItem href="https://bjsm.bmj.com/content/52/6/376">
+                Morton RW, et al. A systematic review, meta-analysis and meta-regression of the
+                effect of protein supplementation on resistance training-induced gains in muscle
+                mass and strength in healthy adults. Br J Sports Med. 2018;52(6):376-384.
+              </SourceItem>
+            </SourceLinks>
+          </CalcHomeGlassSources>
+          <p className={ui.disclaimer}>
+            Disclaimer: general estimates for healthy adults, not medical advice. Results are not
+            guaranteed.
+          </p>
           <h2 className={ui.h2}>More free tools</h2>
-          <ProteinGlassMoreFreeTools />
+          <CalcHomeGlassTools current="protein" />
         </div>
       </div>
     </div>

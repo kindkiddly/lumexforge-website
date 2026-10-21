@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { initialBody, type BodyState } from './BodyInputs';
 import { toMetric } from './bodyParse';
 import { energy, macros, validate, type Goal, type Macros } from './energyMath';
@@ -21,10 +21,10 @@ import {
   MintCalcBodyFields,
   MintCalcField,
   MintCalcHeader,
-  MintCalcSelect,
   MintCalcSubmit,
   MintGoalPills,
 } from './MintCalcForm';
+import { MintGlassDropdown } from './MintGlassDropdown';
 import { Donut, ErrorBox, MACRO_COLOR, MacroBars, SoftNote } from './Parts';
 import { calcMint, ui } from './ui';
 
@@ -60,6 +60,15 @@ export default function MacroCalculator() {
       resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+
+  const proteinDropdownOptions = useMemo(
+    () =>
+      PROTEIN_OPTIONS.map(v => ({
+        value: String(v),
+        label: proteinLabel(v, s.goal),
+      })),
+    [s.goal],
+  );
 
   const cols = out
     ? [
@@ -99,17 +108,18 @@ export default function MacroCalculator() {
                 options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
               />
             </div>
-            <MintCalcSelect
+            <MintGlassDropdown
+              icon={
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+                  <path d="M12 3c2 4 4 6 4 9a4 4 0 0 1-8 0c0-3 2-5 4-9z" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              }
               label="Protein"
-              value={p.value}
-              onChange={e => setP(pickProtein(parseFloat(e.target.value)))}
-            >
-              {PROTEIN_OPTIONS.map(v => (
-                <option key={v} value={v}>
-                  {proteinLabel(v, s.goal)}
-                </option>
-              ))}
-            </MintCalcSelect>
+              listLabel="Protein level"
+              value={String(p.value)}
+              options={proteinDropdownOptions}
+              onChange={v => setP(pickProtein(parseFloat(v)))}
+            />
             <p className={calcMint.hint}>
               {p.manual
                 ? 'You picked this protein level. Changing the goal resets it to the app setting.'
@@ -132,7 +142,11 @@ export default function MacroCalculator() {
 
       {out ? (
         <>
-          <div ref={resultRef} className={ui.cardPad} aria-live="polite">
+          <div
+            ref={resultRef}
+            className="ps-glass-panel ps-3d-card rounded-2xl p-5 sm:p-6 lg:p-8"
+            aria-live="polite"
+          >
             <div className={ui.resultGrid}>
               <div>
                 <p className={ui.resultLabel}>Your daily macros</p>

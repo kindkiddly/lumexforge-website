@@ -12,17 +12,36 @@ import {
 } from './proteinMath';
 import AppCta from './AppCta';
 import { BrandName } from './BrandName';
+import { MintCalcSubmit } from './MintCalcForm';
 import {
   ErrorBox,
-  ProteinCalcButton,
-  ProteinGlassCard,
   ProteinInlineField,
   ProteinRangeRing,
   ProteinResultColorTiles,
   RangeBarProtein,
   SoftNote,
 } from './Parts';
-import { proteinGlass, PROTEIN_CTA_PHONE_SRC, ui } from './ui';
+import { MintGlassDropdown } from './MintGlassDropdown';
+import { calcMint, proteinGlass, PROTEIN_CTA_PHONE_SRC, ui } from './ui';
+
+function IconActivity({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+      <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const LEVEL_DROPDOWN_OPTIONS = [
+  {
+    value: 'rda' as const,
+    label: 'Not regularly exercising (general adult baseline)',
+  },
+  {
+    value: 'active' as const,
+    label: 'Exercising regularly (strength, cardio or classes)',
+  },
+];
 
 function ProteinUnitToggle({
   value,
@@ -44,29 +63,6 @@ function ProteinUnitToggle({
           {u}
         </button>
       ))}
-    </div>
-  );
-}
-
-function ActivityPills({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
-  return (
-    <div className="relative z-[1] grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
-      <button
-        type="button"
-        aria-pressed={level === 'rda'}
-        className={`${proteinGlass.optionBtn} ${level === 'rda' ? proteinGlass.optionBtnSelected : ''}`}
-        onClick={() => onChange('rda')}
-      >
-        Not regularly exercising (general adult baseline)
-      </button>
-      <button
-        type="button"
-        aria-pressed={level === 'active'}
-        className={`${proteinGlass.optionBtn} ${level === 'active' ? proteinGlass.optionBtnSelected : ''}`}
-        onClick={() => onChange('active')}
-      >
-        Exercising regularly (strength, cardio or classes)
-      </button>
     </div>
   );
 }
@@ -172,46 +168,46 @@ export default function ProteinCalculator() {
   const goalsVisible = level === 'active';
 
   return (
-    <section className={ui.stack}>
-      <ProteinGlassCard tint="mint">
-        <form onSubmit={calculate} className={proteinGlass.cardPad}>
-          <h2 className={proteinGlass.cardTitle}>Your Details</h2>
+    <section className={calcMint.section}>
+      <div className={calcMint.cardGlowWrap}>
+        <div className={calcMint.cardGlow} aria-hidden />
+        <form onSubmit={calculate} className={calcMint.card}>
+          <h2 className={`${calcMint.cardTitle} mb-4 border-b border-white/40 pb-4`}>
+            <span className={calcMint.cardTitleIcon} aria-hidden>
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+                <path d="M12 3v18M3 12h18" strokeLinecap="round" />
+              </svg>
+            </span>
+            Your details
+          </h2>
 
-          <div className="mt-3 hidden lg:block">
-            <div className="grid grid-cols-[7.5rem_minmax(9rem,11rem)_minmax(0,1fr)] items-end gap-3">
-              <ProteinUnitToggle value={unit} onChange={setUnit} />
-              <WeightField unit={unit} weight={weight} onWeightChange={setWeight} />
-              <ActivityPills level={level} onChange={setLevel} />
-            </div>
-            <div className="mt-3 grid grid-cols-[1fr_auto] items-end gap-3">
-              <GoalPills goal={goal} onChange={setGoal} visible={goalsVisible} />
-              <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
-            </div>
-          </div>
-
-          <div className="mt-3 grid gap-3 lg:hidden">
-            <div className="grid gap-3 min-[480px]:grid-cols-2 min-[480px]:items-end">
+          <div className="flex flex-col gap-4">
+            <div className="grid gap-3 min-[480px]:grid-cols-[7.5rem_minmax(0,1fr)] min-[480px]:items-end lg:max-w-md">
               <ProteinUnitToggle value={unit} onChange={setUnit} />
               <WeightField unit={unit} weight={weight} onWeightChange={setWeight} />
             </div>
-            <ActivityPills level={level} onChange={setLevel} />
+            <MintGlassDropdown
+              icon={<IconActivity className="h-5 w-5" />}
+              label="Activity"
+              listLabel="Exercise level"
+              value={level}
+              options={LEVEL_DROPDOWN_OPTIONS}
+              onChange={setLevel}
+            />
             <GoalPills goal={goal} onChange={setGoal} visible={goalsVisible} />
             {error ? <ErrorBox>{error}</ErrorBox> : null}
-            <ProteinCalcButton>Calculate Protein</ProteinCalcButton>
+            <MintCalcSubmit>Calculate Protein</MintCalcSubmit>
           </div>
-
-          {error ? (
-            <div className="mt-3 hidden lg:block">
-              <ErrorBox>{error}</ErrorBox>
-            </div>
-          ) : null}
         </form>
-      </ProteinGlassCard>
+      </div>
 
       {result ? (
         <>
-          <ProteinGlassCard tint="cyan">
-            <div ref={resultRef} className={proteinGlass.cardPad} aria-live="polite">
+          <div
+            ref={resultRef}
+            className="ps-glass-panel ps-3d-card rounded-2xl p-5 sm:p-6 lg:p-8"
+            aria-live="polite"
+          >
               <p className={ui.resultLabel}>Your daily protein</p>
               <p className={ui.big}>
                 {result.lo === result.hi ? result.lo : `${result.lo}–${result.hi}`}{' '}
@@ -250,10 +246,10 @@ export default function ProteinCalculator() {
                   <ProteinRangeRing lo={result.lo} hi={result.hi} />
                 </div>
               </div>
-            </div>
-          </ProteinGlassCard>
+          </div>
           <AppCta
             glass
+            offerGlass
             phoneSrc={PROTEIN_CTA_PHONE_SRC}
             headline={
               <>
