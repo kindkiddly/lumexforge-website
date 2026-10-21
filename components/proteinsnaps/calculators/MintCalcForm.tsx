@@ -490,16 +490,18 @@ export function MintGoalPills<T extends string | number>({
   value,
   onChange,
   options,
+  gridClassName = calcMint.goalGrid,
 }: {
   label: string;
   value: T;
   onChange: (v: T) => void;
   options: { value: T; label: string }[];
+  gridClassName?: string;
 }) {
   return (
-    <div>
+    <div className="min-w-0 max-lg:w-full">
       <p className={calcMint.sectionLabel}>{label}</p>
-      <div className={calcMint.goalGrid} role="group" aria-label={label}>
+      <div className={gridClassName} role="group" aria-label={label}>
         {options.map(o => {
           const on = value === o.value;
           return (

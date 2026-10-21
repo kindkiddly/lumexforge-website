@@ -68,7 +68,9 @@ const jsonLd = {
 
 export default function Page() {
   return (
-    <div className={`${ui.main} ${proteinGlass.page} ${calcMint.page}`}>
+    <div
+      className={`${ui.main} ${proteinGlass.page} ${calcMint.page} ps-calc-page max-lg:min-w-0 max-lg:w-full max-lg:max-w-[100vw] max-lg:overflow-x-clip`}
+    >
       <ProteinGlassBackdrop />
       <div className={proteinGlass.content}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

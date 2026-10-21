@@ -30,7 +30,7 @@ export function CalcHomeGlassFeatures() {
   return (
     <section className="calc-home-glass mt-10 sm:mt-12">
       <div className="text-center">
-        <div className="ps-glass-text ps-3d-card mx-auto inline-block max-w-2xl rounded-2xl px-5 py-4 text-left sm:text-center">
+        <div className="ps-calc-glass-intro ps-3d-card mx-auto max-w-2xl rounded-2xl px-5 py-4 text-left sm:text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00e6a8]">
             In the app
           </p>

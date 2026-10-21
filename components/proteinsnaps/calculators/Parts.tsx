@@ -828,7 +828,7 @@ export function SourceItem({ href, children }: { href: string; children: ReactNo
 
 export function ProteinGlassBackdrop() {
   return (
-    <div className={proteinGlass.blobWrap} aria-hidden>
+    <div className={`${proteinGlass.blobWrap} ps-calc-backdrop`} aria-hidden>
       <div className={`${proteinGlass.blobMint} -left-24 top-32 h-72 w-72 md:h-96 md:w-96`} />
       <div className={`${proteinGlass.blobCyan} right-[-4rem] top-[28rem] h-80 w-80 md:right-[-2rem]`} />
       <div className={`${proteinGlass.blobMint} bottom-48 left-[20%] h-64 w-64 opacity-80`} />

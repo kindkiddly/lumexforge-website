@@ -458,6 +458,18 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
+/* Calculator pages: light intro strip (never use .ps-glass-text here; mobile parallax CSS darkens it) */
+.ps-calc-glass-intro {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 252, 248, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 @media (min-width: 1024px) {
   .proteinsnaps-site > header.ps-site-navbar {
     z-index: 50;
@@ -886,6 +898,53 @@
     color: #00e6a8 !important;
   }
 
+  /* Calculator pages: keep intro glass readable on mobile (override dark parallax glass) */
+  .proteinsnaps-site .calc-home-glass .ps-glass-text.ps-3d-card {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 42rem;
+    background: rgba(255, 252, 248, 0.92) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .proteinsnaps-site .calc-home-glass .ps-glass-text.ps-3d-card :is(h2, h3) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+
+  .proteinsnaps-site .calc-home-glass .ps-glass-text.ps-3d-card p {
+    color: #555555 !important;
+    text-shadow: none !important;
+  }
+
+  .proteinsnaps-site .calc-home-glass .ps-glass-text.ps-3d-card .text-\[\#00e6a8\] {
+    color: #00a88e !important;
+    text-shadow: none !important;
+  }
+
+  /* Calculator pages: less mint cast in hero/header zone on mobile */
+  .proteinsnaps-site .ps-calc-page {
+    background: #f5edd8 !important;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  .proteinsnaps-site .ps-calc-backdrop > div {
+    opacity: 0.28 !important;
+  }
+
+  .proteinsnaps-site .ps-calc-card-glow {
+    opacity: 0.38;
+  }
+
+  .proteinsnaps-site:has(.ps-calc-page) > header.ps-site-navbar,
+  .proteinsnaps-site:has(.ps-calc-page) > header.ps-site-navbar > div.overflow-hidden.border-t {
+    background-color: #f5edd8 !important;
+  }
+
   .ps-ai-section-outer {
     background: transparent !important;
     backdrop-filter: none !important;
@@ -1052,6 +1111,48 @@
   .ps-parallax-bg-right-ai .ps-glow-card.ps-glass-panel.ps-3d-card p {
     color: #cbd5e1 !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Calculator mobile (repeat at end of block so it wins over generic .ps-glass-text rules) */
+  .proteinsnaps-site .ps-calc-glass-intro.ps-3d-card {
+    display: block;
+    width: 100%;
+    max-width: 42rem;
+    background: rgba(255, 252, 248, 0.95) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .proteinsnaps-site .ps-calc-glass-intro.ps-3d-card :is(h2, h3) {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+
+  .proteinsnaps-site .ps-calc-glass-intro.ps-3d-card p {
+    color: #555555 !important;
+    text-shadow: none !important;
+  }
+
+  .proteinsnaps-site .ps-calc-glass-intro.ps-3d-card .text-\[\#00e6a8\] {
+    color: #00a88e !important;
+    text-shadow: none !important;
+  }
+
+  .proteinsnaps-site .ps-calc-page {
+    background: #f5edd8 !important;
+    overflow-x: clip;
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .proteinsnaps-site .ps-calc-backdrop > div {
+    opacity: 0.25 !important;
+  }
+
+  .proteinsnaps-site .ps-calc-card-glow {
+    opacity: 0.35;
   }
 }
 

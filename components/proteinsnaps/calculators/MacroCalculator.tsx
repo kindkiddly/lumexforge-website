@@ -90,7 +90,7 @@ export default function MacroCalculator() {
             onGoal={(g: Goal) => setP(onGoalChange(g))}
           />
           <div className={calcMint.macroExtra}>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
               <MintCalcField label="Already know your calories? (optional)">
                 <input
                   className={calcMint.fieldInput}
@@ -105,6 +105,7 @@ export default function MacroCalculator() {
                 label="Fat (% of calories)"
                 value={f}
                 onChange={setF}
+                gridClassName={calcMint.fatPillGrid}
                 options={FAT_OPTIONS.map(v => ({ value: v, label: `${v}%` }))}
               />
             </div>

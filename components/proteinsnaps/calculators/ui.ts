@@ -262,12 +262,13 @@ const mintGlassCard =
   'rounded-[26px] border border-white/85 bg-gradient-to-br from-white/62 via-white/48 to-white/38 shadow-[0_20px_60px_rgba(0,139,125,0.16),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-[24px] [-webkit-backdrop-filter:blur(24px)]';
 
 export const calcMint = {
-  page: 'bg-gradient-to-b from-[#E4F5EF] via-[#EDF8F4] to-[#F4FAF7]',
+  page:
+    'bg-gradient-to-b from-[#E4F5EF] via-[#EDF8F4] to-[#F4FAF7] max-lg:from-[#f5edd8] max-lg:via-[#f5edd8] max-lg:to-[#f5edd8]',
   section: 'mt-6 flex w-full max-w-none flex-col gap-6',
-  cardGlowWrap: 'relative isolate w-full overflow-visible',
+  cardGlowWrap: 'relative isolate w-full max-lg:overflow-x-hidden lg:overflow-visible',
   cardGlow:
-    'pointer-events-none absolute -inset-x-1 -inset-y-3 -z-10 rounded-[32px] bg-[radial-gradient(ellipse_80%_70%_at_50%_55%,rgba(0,230,168,0.42),rgba(0,168,142,0.14)_50%,transparent_72%)] blur-2xl',
-  card: `${mintGlassCard} relative z-[1] w-full overflow-visible p-5 sm:p-7 lg:p-8`,
+    'ps-calc-card-glow pointer-events-none absolute -inset-x-1 -inset-y-3 -z-10 rounded-[32px] bg-[radial-gradient(ellipse_80%_70%_at_50%_55%,rgba(0,230,168,0.42),rgba(0,168,142,0.14)_50%,transparent_72%)] blur-2xl',
+  card: `${mintGlassCard} relative z-[1] w-full p-5 sm:p-7 lg:p-8 max-lg:box-border max-lg:overflow-x-hidden max-lg:p-4 lg:overflow-visible`,
   cardHeader: 'mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/40 pb-4 sm:mb-5',
   cardTitle: 'flex items-center gap-2.5 text-[15px] font-semibold text-[#1A1A1A] sm:text-base',
   cardTitleIcon:
@@ -279,7 +280,7 @@ export const calcMint = {
   unitOn:
     'bg-gradient-to-r from-[#00C9A7] to-[#008B7D] text-white shadow-[0_3px_14px_rgba(0,139,125,0.4)]',
   unitOff: 'text-[#555555] hover:text-[#1A1A1A]',
-  fieldsStack: 'relative flex flex-col gap-4 overflow-visible sm:gap-5',
+  fieldsStack: 'relative flex min-w-0 w-full flex-col gap-4 max-lg:overflow-x-hidden sm:gap-5 lg:overflow-visible',
   sectionLabel: 'mb-2 text-xs font-semibold text-[#1A1A1A]',
   sexTrack:
     'grid grid-cols-2 gap-0 rounded-full border border-white/60 bg-white/55 p-1 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)]',
@@ -293,7 +294,7 @@ export const calcMint = {
   metricsRows: 'flex flex-col gap-3',
   metrics2: 'grid grid-cols-2 gap-3',
   fieldBox:
-    'min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] focus-within:border-[#ECECEC] focus-within:outline-none focus-within:ring-0 sm:min-h-[72px] sm:px-4',
+    'min-h-[68px] w-full min-w-0 max-w-full rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] focus-within:border-[#ECECEC] focus-within:outline-none focus-within:ring-0 sm:min-h-[72px] sm:px-4',
   fieldInner: 'flex h-full min-h-[52px] items-center gap-2.5 sm:gap-3',
   fieldIcon:
     'flex h-10 w-8 shrink-0 items-center justify-center text-[#00A88E] sm:w-9',
@@ -304,7 +305,7 @@ export const calcMint = {
   stepperBtn:
     'flex h-[22px] w-7 items-center justify-center rounded-md text-[#999999] transition-colors hover:bg-[#00E6A8]/15 hover:text-[#008B7D]',
   activityBox:
-    'relative z-[1] min-h-[68px] rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-[border-color,box-shadow,background-color] sm:min-h-[72px] sm:px-4',
+    'relative z-[1] min-h-[68px] w-full min-w-0 max-w-full rounded-[14px] border border-[#ECECEC] bg-white px-3 py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-[border-color,box-shadow,background-color] sm:min-h-[72px] sm:px-4',
   activityBoxIdle: 'hover:border-[#00C9A7]/35 hover:shadow-[0_4px_16px_rgba(0,139,125,0.08)]',
   activityBoxOpen:
     'z-[50] border-[#00C9A7]/45 bg-white/95 shadow-[0_6px_24px_rgba(0,139,125,0.14),inset_0_1px_0_rgba(255,255,255,0.9)]',
@@ -322,8 +323,9 @@ export const calcMint = {
   activityOptionMetaOn: 'text-[#00A88E]',
   goalHeading: 'mb-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A]',
   goalGrid: 'grid grid-cols-2 gap-2.5 lg:grid-cols-4',
+  fatPillGrid: 'grid grid-cols-4 gap-1 max-lg:gap-1 lg:gap-2.5',
   goalBtn:
-    'flex min-h-[46px] flex-row items-center justify-center gap-1.5 rounded-full border border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
+    'flex min-h-[46px] min-w-0 flex-row items-center justify-center gap-1.5 rounded-full border border-[#E8E8E8] bg-white px-2 py-2.5 text-center text-[10px] font-medium leading-tight text-[#555555] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#00E6A8]/40 max-lg:px-1.5 max-lg:text-[9px] sm:min-h-[48px] sm:gap-2 sm:px-3 sm:text-[11px]',
   goalBtnOn:
     'border-2 border-[#00C9A7] bg-white font-semibold text-[#008B7D] shadow-[0_0_0_4px_rgba(0,230,168,0.2),0_4px_14px_rgba(0,139,125,0.14)]',
   submitWrap: 'relative z-0 mt-6 flex w-full justify-start',
@@ -333,7 +335,7 @@ export const calcMint = {
     'relative z-0 inline-flex min-h-[50px] w-full min-w-0 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#00E6A8] via-[#00B895] to-[#008B7D] px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_32px_rgba(0,139,125,0.5)] transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E6A8]/50 focus-visible:ring-offset-2 sm:w-auto sm:min-w-[min(100%,360px)]',
   inlineSelect:
     'w-full appearance-none border-0 bg-transparent py-0.5 pr-6 text-sm font-semibold text-[#1A1A1A] outline-none focus:ring-0',
-  macroExtra: 'mt-4 grid gap-4 border-t border-white/50 pt-4',
+  macroExtra: 'mt-4 min-w-0 w-full max-lg:overflow-x-hidden gap-4 border-t border-white/50 pt-4',
   hint: 'mt-1.5 text-xs leading-relaxed text-[#666666]',
 } as const;
 
