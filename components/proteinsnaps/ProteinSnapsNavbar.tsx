@@ -1,6 +1,10 @@
 "use client";
 
 import { useProteinSnapsPath } from "@/components/proteinsnaps/ProteinSnapsPathContext";
+import {
+  ProteinSnapsNavCalculatorsDesktop,
+  ProteinSnapsNavCalculatorsMobile,
+} from "@/components/proteinsnaps/ProteinSnapsNavCalculators";
 import { PROTEINSNAPS, PROTEINSNAPS_NAV } from "@/lib/proteinsnaps/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,6 +18,8 @@ export function ProteinSnapsNavbar() {
   const pathname = usePathname();
   const { href: psHref } = useProteinSnapsPath();
   const activePath = pathname.replace(/^\/proteinsnaps/, "") || "/";
+  const navMain = PROTEINSNAPS_NAV.filter((link) => link.href !== "/blog");
+  const blogLink = PROTEINSNAPS_NAV.find((link) => link.href === "/blog")!;
 
   return (
     <header className="ps-site-navbar fixed inset-x-0 top-0 border-b border-black/[0.08]">
@@ -43,7 +49,7 @@ export function ProteinSnapsNavbar() {
           >
             Home
           </Link>
-          {PROTEINSNAPS_NAV.map((link) => {
+          {navMain.map((link) => {
             const active = activePath === link.href;
             return (
               <Link
@@ -60,6 +66,18 @@ export function ProteinSnapsNavbar() {
               </Link>
             );
           })}
+          <ProteinSnapsNavCalculatorsDesktop activePath={activePath} />
+          <Link
+            href={psHref(blogLink.href)}
+            className={cn(
+              "ps-nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              activePath === blogLink.href || activePath.startsWith("/blog")
+                ? "active text-[#00B386]"
+                : "text-[#1A1A1A] hover:text-[#00E6A8]"
+            )}
+          >
+            {blogLink.label}
+          </Link>
         </nav>
 
         <div className="hidden lg:block">
@@ -110,7 +128,7 @@ export function ProteinSnapsNavbar() {
               >
                 Home
               </Link>
-              {PROTEINSNAPS_NAV.map((link) => {
+              {navMain.map((link) => {
                 const active = activePath === link.href;
                 return (
                   <Link
@@ -128,6 +146,22 @@ export function ProteinSnapsNavbar() {
                   </Link>
                 );
               })}
+              <ProteinSnapsNavCalculatorsMobile
+                activePath={activePath}
+                onNavigate={() => setOpen(false)}
+              />
+              <Link
+                href={psHref(blogLink.href)}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "ps-nav-link rounded-lg px-3 py-3 text-base font-medium transition-colors",
+                  activePath === blogLink.href || activePath.startsWith("/blog")
+                    ? "active text-[#00B386]"
+                    : "text-[#1A1A1A] hover:text-[#00E6A8]"
+                )}
+              >
+                {blogLink.label}
+              </Link>
               <a
                 href={PROTEINSNAPS.playStoreUrl}
                 target="_blank"

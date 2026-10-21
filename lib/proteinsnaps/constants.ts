@@ -27,6 +27,28 @@ export const PROTEINSNAPS_NAV = [
   { label: "Blog", href: "/blog" },
 ] as const;
 
+export const PROTEINSNAPS_CALCULATOR_NAV = [
+  {
+    label: "Protein Calculator",
+    href: "/protein-calculator",
+    description: "Daily protein range in grams",
+  },
+  {
+    label: "Calorie Calculator",
+    href: "/calorie-calculator",
+    description: "BMR, TDEE and goal calories",
+  },
+  {
+    label: "Macro Calculator",
+    href: "/macro-calculator",
+    description: "Protein, carbs and fat in grams",
+  },
+] as const;
+
+export const PROTEINSNAPS_CALCULATOR_PATHS = PROTEINSNAPS_CALCULATOR_NAV.map(
+  (item) => item.href,
+);
+
 export const HERO_SLIDES = [
   {
     src: "/images/proteinsnaps/PSL-1.webp",
