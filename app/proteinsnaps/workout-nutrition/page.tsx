@@ -3,30 +3,12 @@ import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
 import { StaggerWords } from "@/components/proteinsnaps/animations/StaggerWords";
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
+import { PS_PAGE_SEO, proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "ProteinSnaps: AI Fitness & Nutrition App",
-  description:
-    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-  openGraph: {
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    url: "https://proteinsnaps.lumexforge.com/workout-nutrition",
-    siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1200, height: 630 }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
-  },
-};
+export const metadata: Metadata = proteinSnapsPageMetadata(PS_PAGE_SEO.workoutNutrition);
 
 const WORKOUT_FEATURES = [
   {
@@ -136,6 +118,45 @@ export default function WorkoutNutritionPage() {
                 />
               </div>
             </FadeInUp>
+          </div>
+        </div>
+      </section>
+      <section className="relative py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="ps-glass-panel ps-3d-card rounded-2xl p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-semibold text-[#1A1A1A]">
+              Protein around your workouts
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Most lifters do well with a balanced meal a few hours before training and a protein-rich
+              meal or snack afterward. Aim for roughly 20–40 g of protein in that post-workout meal
+              if it fits your day. Your total daily protein still matters most, spread across meals,
+              not one perfect window.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Use the{" "}
+              <BlogArticleLink
+                href="/protein-calculator"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                protein calculator
+              </BlogArticleLink>{" "}
+              for your daily target, pack{" "}
+              <BlogArticleLink
+                href="/blog/high-protein-low-calorie-snacks"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                high protein low calorie snacks
+              </BlogArticleLink>{" "}
+              for busy days, and pair training with{" "}
+              <BlogArticleLink
+                href="/blog/progressive-overload"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                progressive overload
+              </BlogArticleLink>{" "}
+              in the gym.
+            </p>
           </div>
         </div>
       </section>

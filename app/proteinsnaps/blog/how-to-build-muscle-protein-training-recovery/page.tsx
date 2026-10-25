@@ -1,3 +1,4 @@
+import { BlogArticleJsonLd } from "@/components/proteinsnaps/BlogArticleJsonLd";
 import {
   BlogAlsoLike,
   BlogArticleLayout,
@@ -11,7 +12,8 @@ import type { Metadata } from "next";
 const ARTICLE_SLUG = "/blog/how-to-build-muscle-protein-training-recovery";
 const ARTICLE_URL = `${PROTEINSNAPS.domain}${ARTICLE_SLUG}`;
 const BLOG_IMAGES = "/images/blog/how-to-build-muscle";
-const HERO_IMAGE = `${BLOG_IMAGES}/hero.webp`;
+const HERO_IMAGE =
+  "/blog/how-to-build-muscle-protein-training-recovery/img/hero.jpg";
 const MEAL_IMAGE = `${BLOG_IMAGES}/protein-meal.webp`;
 const RECOVERY_IMAGE = `${BLOG_IMAGES}/recovery.webp`;
 const OG_IMAGE = HERO_IMAGE;
@@ -48,11 +50,22 @@ const ALSO_LIKE = {
 
 export default function HowToBuildMuscleArticlePage() {
   return (
+    <>
+      <BlogArticleJsonLd
+        headline="How to Build Muscle: Protein, Progressive Overload, and Recovery"
+        description="Learn how to build muscle with progressive overload, practical protein targets, balanced nutrition, and recovery habits that support long-term progress."
+        path={ARTICLE_SLUG}
+        datePublished="2026-09-20"
+        dateModified="2026-10-25"
+        image={`${PROTEINSNAPS.domain}${HERO_IMAGE}`}
+      />
     <BlogArticleLayout
       title="How to Build Muscle"
       subtitle="Protein, Progressive Overload, and Recovery"
       category="Fitness & Nutrition"
       readingTime="10 min read"
+      heroImage={HERO_IMAGE}
+      heroImageAlt="Athlete deadlifting a barbell in a bright gym"
       author="ProteinSnaps Fitness Team"
       reviewer="ProteinSnaps Health Experts"
       publishedDate="October 2026"
@@ -938,5 +951,6 @@ export default function HowToBuildMuscleArticlePage() {
         vary.
       </p>
     </BlogArticleLayout>
+    </>
   );
 }

@@ -1,3 +1,5 @@
+import { BlogArticleJsonLd } from "@/components/proteinsnaps/BlogArticleJsonLd";
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
 import {
   BlogAlsoLike,
   BlogArticleLayout,
@@ -5,36 +7,21 @@ import {
   BlogSectionHeading,
 } from "@/components/proteinsnaps/BlogArticleLayout";
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
+import { proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 
+const ARTICLE_PATH = "/blog/progressive-overload";
 const ARTICLE_TITLE = "Progressive Overload: How to Keep Getting Stronger";
 const ARTICLE_DESCRIPTION =
   "Learn what progressive overload is, how it works, practical examples, beginner tips, and how to track strength and muscle-building progress.";
-const ARTICLE_URL =
-  "https://proteinsnaps.lumexforge.com/blog/progressive-overload";
-const OG_IMAGE = "/images/proteinsnaps/proteinsnaps-og.webp";
 
 export const metadata: Metadata = {
-  title: ARTICLE_TITLE,
-  description: ARTICLE_DESCRIPTION,
-  openGraph: {
-    title:
-      "The Science Behind Progressive Overload: Keep Getting Stronger",
-    description:
-      "Learn how progressive overload works, how to apply it, and how tracking training and nutrition can support long-term progress.",
-    url: ARTICLE_URL,
-    siteName: "ProteinSnaps",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
-    type: "article",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "The Science Behind Progressive Overload: Keep Getting Stronger",
-    description:
-      "Learn how progressive overload works, how to apply it, and how tracking training and nutrition can support long-term progress.",
-    images: [OG_IMAGE],
-  },
+  ...proteinSnapsPageMetadata({
+    title: ARTICLE_TITLE,
+    description: ARTICLE_DESCRIPTION,
+    path: ARTICLE_PATH,
+    openGraphType: "article",
+  }),
 };
 
 const ALSO_LIKE = {
@@ -46,11 +33,21 @@ const ALSO_LIKE = {
 
 export default function ProgressiveOverloadArticlePage() {
   return (
+    <>
+      <BlogArticleJsonLd
+        headline={ARTICLE_TITLE}
+        description={ARTICLE_DESCRIPTION}
+        path={ARTICLE_PATH}
+        datePublished="2026-09-15"
+        dateModified="2026-10-25"
+      />
     <BlogArticleLayout
-      title="The Science Behind Progressive Overload"
-      subtitle="How to Keep Getting Stronger"
+      title="Progressive Overload: How to Keep Getting Stronger"
+      subtitle="The science of getting stronger over time"
       category="Workouts"
       readingTime="8 min read"
+      heroImage="/blog/progressive-overload/img/hero.jpg"
+      heroImageAlt="Athlete lifting weights in a bright gym"
       author="ProteinSnaps Fitness Team"
       reviewer="ProteinSnaps Health Experts"
       publishedDate="September 2026"
@@ -692,11 +689,23 @@ export default function ProgressiveOverloadArticlePage() {
           <h3>How does nutrition affect progressive overload?</h3>
           <p>
             Nutrition supports the energy and recovery demands created
-            by training. Adequate protein, sufficient overall nutrition,
-            and appropriate carbohydrate intake can help support
-            resistance-training performance and adaptation. Individual
-            needs vary based on body size, activity, goals, and other
-            factors.
+            by training. See{" "}
+            <BlogArticleLink
+              href="/blog/how-much-protein-do-you-need-per-day"
+              className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+            >
+              how much protein you need per day
+            </BlogArticleLink>{" "}
+            and our{" "}
+            <BlogArticleLink
+              href="/blog/how-to-build-muscle-protein-training-recovery"
+              className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+            >
+              muscle building guide
+            </BlogArticleLink>
+            . Adequate protein, sufficient overall nutrition, and
+            appropriate carbohydrate intake can help support
+            resistance-training performance and adaptation.
           </p>
         </div>
       </div>
@@ -754,5 +763,6 @@ export default function ProgressiveOverloadArticlePage() {
         Individual results vary.
       </p>
     </BlogArticleLayout>
+    </>
   );
 }

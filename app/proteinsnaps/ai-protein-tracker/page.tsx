@@ -2,30 +2,12 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
+import { PS_PAGE_SEO, proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "ProteinSnaps: AI Fitness & Nutrition App",
-  description:
-    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-  openGraph: {
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    url: "https://proteinsnaps.lumexforge.com/ai-protein-tracker",
-    siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1200, height: 630 }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
-  },
-};
+export const metadata: Metadata = proteinSnapsPageMetadata(PS_PAGE_SEO.aiTracker);
 
 const TRACKER_FEATURES = [
   {
@@ -76,7 +58,7 @@ export default function AIProteinTrackerPage() {
     <>
       <PageHero
         eyebrow="AI Protein Tracker"
-        title="Track Protein Smarter with AI"
+        title="AI Protein Tracker: Track Protein Smarter"
         description="ProteinSnaps combines intelligent meal recognition with real-time macro tracking so hitting your protein goals feels easier."
       />
       <section className="relative py-8 sm:py-10">
@@ -153,6 +135,51 @@ export default function AIProteinTrackerPage() {
                 </FadeInUp>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="relative py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="ps-glass-panel ps-3d-card rounded-2xl p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-semibold text-[#1A1A1A]">
+              Why track protein first?
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Protein supports muscle repair, helps you stay full during a cut, and gives you a
+              clear daily number to aim for. ProteinSnaps puts protein on the home screen, then
+              shows calories and macros around it. Snap a meal with the{" "}
+              <BlogArticleLink
+                href="/meal-scanner"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                AI meal scanner
+              </BlogArticleLink>
+              , check Fill the Gap for what is left today, and log workouts in the same app.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Not sure how much to eat? Start with our{" "}
+              <BlogArticleLink
+                href="/blog/how-much-protein-do-you-need-per-day"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                protein per day guide
+              </BlogArticleLink>{" "}
+              or the{" "}
+              <BlogArticleLink
+                href="/protein-calculator"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                free protein calculator
+              </BlogArticleLink>
+              . For app options, see{" "}
+              <BlogArticleLink
+                href="/blog/best-free-protein-tracker-apps"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                best free protein tracker apps
+              </BlogArticleLink>
+              .
+            </p>
           </div>
         </div>
       </section>

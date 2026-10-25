@@ -1,3 +1,5 @@
+import { BlogArticleJsonLd } from "@/components/proteinsnaps/BlogArticleJsonLd";
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
 import {
   BlogAlsoLike,
   BlogArticleLayout,
@@ -6,33 +8,21 @@ import {
   BlogStep,
 } from "@/components/proteinsnaps/BlogArticleLayout";
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
+import { proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 
-const ARTICLE_TITLE =
-  "How Much Protein Do You Need Per Day? Guide by Weight & Goal";
+const ARTICLE_PATH = "/blog/how-much-protein-do-you-need-per-day";
+const ARTICLE_TITLE = "How Much Protein Do I Need a Day? By Weight & Goal";
 const ARTICLE_DESCRIPTION =
   "How much protein do you need each day? Learn how to calculate protein intake by body weight, goal and activity, plus practical food examples and tracking tips.";
-const ARTICLE_URL =
-  "https://proteinsnaps.lumexforge.com/blog/how-much-protein-do-you-need-per-day";
-const OG_IMAGE = "/images/proteinsnaps/proteinsnaps-og.webp";
 
 export const metadata: Metadata = {
-  title: ARTICLE_TITLE,
-  description: ARTICLE_DESCRIPTION,
-  openGraph: {
+  ...proteinSnapsPageMetadata({
     title: ARTICLE_TITLE,
     description: ARTICLE_DESCRIPTION,
-    url: ARTICLE_URL,
-    siteName: "ProteinSnaps",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
-    type: "article",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: ARTICLE_TITLE,
-    description: ARTICLE_DESCRIPTION,
-    images: [OG_IMAGE],
-  },
+    path: ARTICLE_PATH,
+    openGraphType: "article",
+  }),
 };
 
 const ALSO_LIKE = {
@@ -44,11 +34,21 @@ const ALSO_LIKE = {
 
 export default function HowMuchProteinArticlePage() {
   return (
+    <>
+      <BlogArticleJsonLd
+        headline="How Much Protein Do You Need Per Day?"
+        description={ARTICLE_DESCRIPTION}
+        path={ARTICLE_PATH}
+        datePublished="2026-09-01"
+        dateModified="2026-10-25"
+      />
     <BlogArticleLayout
       title="How Much Protein Do You Need Per Day?"
       subtitle="A Simple Guide by Weight, Goal & Activity"
       category="Nutrition & Fitness"
       readingTime="8 min read"
+      heroImage="/blog/how-much-protein-do-you-need-per-day/img/hero.jpg"
+      heroImageAlt="Colorful high-protein meal with chicken, grains and vegetables"
       author="ProteinSnaps Nutrition Team"
       reviewer="ProteinSnaps Health Experts"
       publishedDate="September 2026"
@@ -243,6 +243,23 @@ export default function HowMuchProteinArticlePage() {
         For example, if you weigh 80 kg and use a target of 1.6 g/kg:
       </p>
       <p className="ps-blog-calc">80 × 1.6 = 128 grams of protein per day</p>
+      <p>
+        Use the free{" "}
+        <BlogArticleLink
+          href="/protein-calculator"
+          className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+        >
+          protein calculator
+        </BlogArticleLink>{" "}
+        for a range based on your weight and goal, or the{" "}
+        <BlogArticleLink
+          href="/macro-calculator"
+          className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+        >
+          macro calculator
+        </BlogArticleLink>{" "}
+        if you want full macros too.
+      </p>
       <p>The target you choose depends on your circumstances.</p>
 
       <h3>General Health and Lower Activity</h3>
@@ -578,18 +595,31 @@ export default function HowMuchProteinArticlePage() {
         <BlogStep number={1} title="Start With Protein at Breakfast">
           <p>
             If breakfast contains very little protein, you may find
-            yourself trying to make up a large amount at dinner. Eggs,
-            Greek yogurt, cottage cheese, milk, or a protein-rich smoothie
-            can help you start the day with a meaningful amount of protein.
+            yourself trying to make up a large amount at dinner. See our{" "}
+            <BlogArticleLink
+              href="/blog/high-protein-breakfast-without-eggs"
+              className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+            >
+              high protein breakfast without eggs
+            </BlogArticleLink>{" "}
+            guide, or choose eggs, Greek yogurt, cottage cheese, milk, or a
+            protein-rich smoothie to start the day with a meaningful amount of
+            protein.
           </p>
         </BlogStep>
 
         <BlogStep number={2} title="Include Protein at Lunch">
           <p>
-            Do not leave most of your protein for the evening. Chicken,
-            fish, lean meat, tofu, beans, lentils, dairy products, or
-            other protein-rich foods can make lunch contribute
-            significantly toward your daily target.
+            Do not leave most of your protein for the evening. Use our{" "}
+            <BlogArticleLink
+              href="/blog/protein-in-foods-chart"
+              className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+            >
+              protein in foods chart
+            </BlogArticleLink>{" "}
+            for chicken, eggs, fish, tofu and more, or build lunch from lean
+            meat, beans, lentils and dairy so it contributes toward your daily
+            target.
           </p>
         </BlogStep>
 
@@ -918,5 +948,6 @@ export default function HowMuchProteinArticlePage() {
         individual circumstances.
       </p>
     </BlogArticleLayout>
+    </>
   );
 }

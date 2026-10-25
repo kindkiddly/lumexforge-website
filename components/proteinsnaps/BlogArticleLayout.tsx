@@ -1,13 +1,13 @@
-// PROTEINSNAPS BLOG TEMPLATE — LOCKED STANDARD DESIGN
-// Use this component for every new ProteinSnaps blog article.
-// Do not modify the layout — only pass new content as props.
+// PROTEINSNAPS BLOG TEMPLATE — content via props; shell matches SEO package posts.
 
 import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
+import { SeoBlogFonts } from "@/components/proteinsnaps/SeoBlogFonts";
 import {
   BlogTableOfContents,
   type BlogTocItem,
 } from "@/components/proteinsnaps/BlogTableOfContents";
 import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
+import { SEO_BLOG_SHARED_CSS } from "@/lib/proteinsnaps/seo-blog/shared-theme.css";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -36,6 +36,8 @@ export type BlogArticleLayoutProps = {
   author: string;
   reviewer: string;
   publishedDate: string;
+  heroImage: string;
+  heroImageAlt?: string;
   keyTakeaways: string[];
   tableOfContents: BlogTocItem[];
   alsoLike: BlogAlsoLikeItem;
@@ -141,6 +143,8 @@ export function BlogArticleLayout({
   author,
   reviewer,
   publishedDate,
+  heroImage,
+  heroImageAlt,
   keyTakeaways,
   tableOfContents,
   alsoLike,
@@ -148,107 +152,108 @@ export function BlogArticleLayout({
   references,
   children,
 }: BlogArticleLayoutProps) {
+  const kicker = `${category} · ${readingTime}`;
+  const summaryLine = keyTakeaways[0] ?? subtitle;
+
   return (
     <>
-      <article className="ps-blog-article" data-ps-also-like={alsoLike.title}>
-        <header className="ps-blog-hero">
-          <div className="ps-blog-hero-deco ps-blog-hero-deco--tr" aria-hidden="true" />
-          <div className="ps-blog-hero-deco ps-blog-hero-deco--bl" aria-hidden="true" />
-          <div className="ps-blog-hero-inner">
-            <div className="ps-blog-hero-meta">
-              <span className="ps-blog-hero-badge">{category}</span>
-              <span className="ps-blog-hero-dot" aria-hidden="true">
-                ·
-              </span>
-              <span>{readingTime}</span>
+      <SeoBlogFonts />
+      <style>{SEO_BLOG_SHARED_CSS}</style>
+      <article
+        className="seo-package-blog-post seo-legacy-blog ps-blog-article relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen max-w-[100vw] overflow-x-clip"
+        data-ps-also-like={alsoLike.title}
+      >
+        <header className="hero">
+          <div className="wide">
+            <div>
+              <span className="kicker">{kicker}</span>
+              <h1>{title}</h1>
+              <p className="lede">{subtitle}</p>
+              <p className="meta">
+                By {author} · Reviewed by {reviewer} · Published {publishedDate}
+              </p>
             </div>
-            <h1>{title}</h1>
-            <p className="ps-blog-hero-subtitle">{subtitle}</p>
-            <div className="ps-blog-author">
-              <svg
-                className="ps-blog-author-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.75"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
-              <span>Written by: {author}</span>
-              <span className="ps-blog-author-sep" aria-hidden="true">
-                ·
-              </span>
-              <span>Reviewed by: {reviewer}</span>
-              <span className="ps-blog-author-sep" aria-hidden="true">
-                ·
-              </span>
-              <span>
-                Published: {publishedDate} · {readingTime}
-              </span>
-            </div>
+            <figure className="hero-img">
+              <Image
+                src={heroImage}
+                alt={heroImageAlt ?? title}
+                width={640}
+                height={800}
+                priority
+                sizes="(max-width: 860px) 90vw, 420px"
+              />
+            </figure>
           </div>
         </header>
 
-        <div className="ps-blog-body">
-          <aside className="ps-blog-takeaways">
-            <p className="ps-blog-takeaways-title">
-              <span className="ps-blog-takeaways-icon" aria-hidden="true">
-                ⚡
-              </span>
-              Key Takeaways
-            </p>
-            <ul className="ps-blog-takeaways-list">
-              {keyTakeaways.map((item) => (
-                <li key={item}>
-                  <span className="ps-blog-takeaways-check" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
+        <section className="answer" aria-label="Quick answer">
+          <div className="wide">
+            <p className="big">{summaryLine}</p>
+          </div>
+        </section>
 
-          <BlogTableOfContents items={tableOfContents} />
+        <section className="pad cream">
+          <div className="wrap">
+            <span className="label">At a glance</span>
+            <aside className="ps-blog-takeaways">
+              <p className="ps-blog-takeaways-title">
+                <span className="ps-blog-takeaways-icon" aria-hidden="true">
+                  ⚡
+                </span>
+                Key Takeaways
+              </p>
+              <ul className="ps-blog-takeaways-list">
+                {keyTakeaways.map((item) => (
+                  <li key={item}>
+                    <span className="ps-blog-takeaways-check" aria-hidden="true">
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </section>
 
-          {children}
+        <section className="pad">
+          <div className="wrap seo-legacy-body ps-blog-body">
+            <BlogTableOfContents items={tableOfContents} />
 
-          <section className="ps-blog-related" aria-label="Related articles">
-            <h2 className="ps-blog-related-heading">Related Articles</h2>
-            <div className="ps-blog-related-grid">
-              {relatedArticles.map((article) => (
-                <BlogArticleLink
-                  key={article.title}
-                  href={article.href}
-                  className="ps-blog-related-card"
-                >
-                  <span className="ps-blog-related-badge">{article.category}</span>
-                  <p className="ps-blog-related-title">{article.title}</p>
-                  <div className="ps-blog-related-meta">
-                    <span>{article.readingTime}</span>
-                    {article.comingSoon !== false ? (
-                      <span className="ps-blog-related-soon">Coming Soon</span>
-                    ) : null}
-                  </div>
-                </BlogArticleLink>
-              ))}
-            </div>
-          </section>
+            {children}
 
-          <section className="ps-blog-sources" aria-label="References">
-            <p className="ps-blog-sources-heading">References</p>
-            <ol className="ps-blog-sources-list">
-              {references.map((source) => (
-                <li key={source}>{source}</li>
-              ))}
-            </ol>
-          </section>
-        </div>
+            <section className="ps-blog-related" aria-label="Related articles">
+              <h2 className="ps-blog-related-heading">Related Articles</h2>
+              <div className="ps-blog-related-grid">
+                {relatedArticles.map((article) => (
+                  <BlogArticleLink
+                    key={article.title}
+                    href={article.href}
+                    className="ps-blog-related-card"
+                  >
+                    <span className="ps-blog-related-badge">{article.category}</span>
+                    <p className="ps-blog-related-title">{article.title}</p>
+                    <div className="ps-blog-related-meta">
+                      <span>{article.readingTime}</span>
+                      {article.comingSoon !== false ? (
+                        <span className="ps-blog-related-soon">Coming Soon</span>
+                      ) : null}
+                    </div>
+                  </BlogArticleLink>
+                ))}
+              </div>
+            </section>
+
+            <section className="ps-blog-sources" aria-label="References">
+              <p className="ps-blog-sources-heading">References</p>
+              <ol className="ps-blog-sources-list">
+                {references.map((source) => (
+                  <li key={source}>{source}</li>
+                ))}
+              </ol>
+            </section>
+          </div>
+        </section>
       </article>
 
       <DownloadCTA />

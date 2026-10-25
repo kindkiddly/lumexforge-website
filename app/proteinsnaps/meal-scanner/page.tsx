@@ -2,31 +2,13 @@ import { DownloadCTA } from "@/components/proteinsnaps/DownloadCTA";
 import { PageHero } from "@/components/proteinsnaps/PageHero";
 import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { FadeInUp } from "@/components/proteinsnaps/animations/FadeInUp";
+import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
 import { SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
+import { PS_PAGE_SEO, proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "ProteinSnaps: AI Fitness & Nutrition App",
-  description:
-    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-  openGraph: {
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    url: "https://proteinsnaps.lumexforge.com/meal-scanner",
-    siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1200, height: 630 }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
-  },
-};
+export const metadata: Metadata = proteinSnapsPageMetadata(PS_PAGE_SEO.mealScanner);
 
 const MEAL_SCANNER_SCREENSHOT_SRC = [
   "/images/proteinsnaps/PS-3.webp",
@@ -61,7 +43,7 @@ export default function MealScannerPage() {
     <>
       <PageHero
         eyebrow="AI Meal Scanner"
-        title="Snap Any Meal. Know Your Macros."
+        title="AI Meal Scanner: Snap Any Meal, Know Your Macros"
         description="ProteinSnaps AI food scanner identifies meals from photos and estimates nutrition in seconds, with no manual searching required."
       />
       <section className="ps-meal-scanner-mockups relative pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
@@ -165,6 +147,46 @@ export default function MealScannerPage() {
                 ))}
               </div>
             </FadeInUp>
+          </div>
+        </div>
+      </section>
+      <section className="relative py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="ps-glass-panel ps-3d-card rounded-2xl p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-semibold text-[#1A1A1A]">
+              How accurate is an AI meal scanner?
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Photo-based AI is strong at naming foods and giving a useful ballpark for protein and
+              calories on simple plates. It can miss hidden oils, sauces and exact portions, so
+              treat each log as an estimate and adjust when you know the real serving size. Many
+              people log more consistently with a camera than with a scale, and consistency matters
+              more than perfect numbers.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#555555] sm:text-base">
+              Read our guide on{" "}
+              <BlogArticleLink
+                href="/blog/ai-calorie-counter-accuracy"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                AI calorie counter accuracy
+              </BlogArticleLink>
+              , compare{" "}
+              <BlogArticleLink
+                href="/blog/best-free-protein-tracker-apps"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                free protein tracker apps
+              </BlogArticleLink>
+              , or try the{" "}
+              <BlogArticleLink
+                href="/protein-calculator"
+                className="font-semibold text-[#00B386] underline-offset-2 hover:underline"
+              >
+                protein calculator
+              </BlogArticleLink>{" "}
+              to set a daily target first.
+            </p>
           </div>
         </div>
       </section>

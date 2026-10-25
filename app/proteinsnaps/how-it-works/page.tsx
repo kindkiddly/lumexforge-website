@@ -4,30 +4,11 @@ import { ParallaxImage } from "@/components/proteinsnaps/ParallaxImage";
 import { ScreenshotsSection } from "@/components/proteinsnaps/ScreenshotsSection";
 import { SunburstAnimation } from "@/components/proteinsnaps/SunburstAnimation";
 import { HOW_IT_WORKS_STEPS, SCREENSHOT_SLIDES } from "@/lib/proteinsnaps/constants";
+import { PS_PAGE_SEO, proteinSnapsPageMetadata } from "@/lib/proteinsnaps/page-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "ProteinSnaps: AI Fitness & Nutrition App",
-  description:
-    "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-  openGraph: {
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    url: "https://proteinsnaps.lumexforge.com/how-it-works",
-    siteName: "ProteinSnaps",
-    images: [{ url: "/images/proteinsnaps/proteinsnaps-og.webp", width: 1200, height: 630 }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ProteinSnaps: AI Fitness & Nutrition App",
-    description:
-      "AI-powered nutrition and gym app. Snap meals, track macros, log workouts and get personalized AI coaching for iOS and Android.",
-    images: ["/images/proteinsnaps/proteinsnaps-og.webp"],
-  },
-};
+export const metadata: Metadata = proteinSnapsPageMetadata(PS_PAGE_SEO.howItWorks);
 
 const VISUAL_STEP_SRC = [
   "/images/proteinsnaps/PS-3.webp",
