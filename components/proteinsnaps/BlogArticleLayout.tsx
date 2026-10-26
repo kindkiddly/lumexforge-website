@@ -217,7 +217,8 @@ export function BlogArticleLayout({
         </section>
 
         <section className="pad">
-          <div className="wrap seo-legacy-body ps-blog-body">
+          <div className="wrap">
+            <div className="seo-legacy-body ps-blog-body">
             <BlogTableOfContents items={tableOfContents} />
 
             {children}
@@ -252,6 +253,7 @@ export function BlogArticleLayout({
                 ))}
               </ol>
             </section>
+            </div>
           </div>
         </section>
       </article>

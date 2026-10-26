@@ -149,13 +149,6 @@ export default function HowToBuildMuscleArticlePage() {
         "Kraemer WJ, Adams K, Cafarelli E, et al. American College of Sports Medicine position stand: Progression models in resistance training for healthy adults. Medicine & Science in Sports & Exercise. 2002;34(2):364-380. https://pubmed.ncbi.nlm.nih.gov/11828249/",
       ]}
     >
-      <BlogImagePlaceholder
-        src={HERO_IMAGE}
-        alt="Athlete performing a barbell squat in a gym during strength training"
-        width={1600}
-        height={900}
-      />
-
       <div className="ps-blog-lead">
         <p>
           Building muscle is not just about lifting heavier weights or eating as

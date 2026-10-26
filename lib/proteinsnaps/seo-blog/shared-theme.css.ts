@@ -144,11 +144,13 @@ export const SEO_BLOG_LEGACY_SHELL_CSS = `
   margin-bottom: 4px;
 }
 .seo-legacy-blog .seo-legacy-body {
-  max-width: none;
+  max-width: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background: transparent;
   color: #1a1a1a;
+  box-sizing: border-box;
 }
 .seo-legacy-blog .seo-legacy-body :is(h2, h3) {
   font-family: "Bricolage Grotesque", Inter, sans-serif;
@@ -215,6 +217,86 @@ export const SEO_BLOG_LEGACY_SHELL_CSS = `
   border-radius: 18px;
   background: #fff;
   box-shadow: 0 10px 30px rgba(0, 139, 125, 0.12);
+}
+.proteinsnaps-site .seo-legacy-blog.ps-blog-article {
+  background: #f8fafc !important;
+  color: #1a1a1a !important;
+}
+.seo-legacy-blog .wrap .seo-legacy-body.ps-blog-body {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+.seo-legacy-blog.ps-blog-article :is(p, li) {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #334155;
+}
+.seo-legacy-blog.ps-blog-article h2 {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 2.5rem 0 1rem;
+  padding-left: 0;
+  border-left: none;
+  scroll-margin-top: 5.5rem;
+}
+.seo-legacy-blog.ps-blog-article h3 {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 1.75rem 0 0.75rem;
+}
+.seo-legacy-blog .ps-blog-section-label {
+  font-family: Caveat, cursive;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #00b386;
+  margin: 2rem 0 0.25rem;
+}
+.seo-legacy-blog .ps-blog-lead {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 8px solid #00e6a8;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(5, 8, 17, 0.06);
+}
+.seo-legacy-blog .ps-blog-lead p {
+  color: #334155;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.seo-legacy-blog .ps-blog-quick-answer {
+  border-radius: 18px;
+  border: 1px solid rgba(0, 230, 168, 0.35);
+  background: rgba(0, 230, 168, 0.12);
+  margin: 1.5rem 0 2rem;
+}
+.seo-legacy-blog .ps-blog-article-image {
+  max-width: 100%;
+  margin: 2rem 0;
+}
+.seo-legacy-blog .ps-blog-table-wrap {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+.seo-legacy-blog .ps-blog-article table {
+  min-width: 0;
+  font-size: 0.95rem;
+}
+.seo-legacy-blog .ps-blog-article th,
+.seo-legacy-blog .ps-blog-article td {
+  white-space: normal;
 }
 `;
 

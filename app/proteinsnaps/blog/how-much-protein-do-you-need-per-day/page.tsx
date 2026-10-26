@@ -125,13 +125,6 @@ export default function HowMuchProteinArticlePage() {
         "Helms ER, et al. A systematic review of dietary protein during caloric restriction in resistance trained lean athletes. Journal of the International Society of Sports Nutrition. 2014.",
       ]}
     >
-      <BlogImagePlaceholder
-        src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=1200&q=80"
-        alt="High protein meal for a balanced nutrition plan"
-        width={1200}
-        height={630}
-      />
-
       <BlogSectionHeading label="Overview" accent="blue">
         How Much Protein Do You Actually Need?
       </BlogSectionHeading>

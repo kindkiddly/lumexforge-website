@@ -122,13 +122,6 @@ export default function ProgressiveOverloadArticlePage() {
         "Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and exercise.",
       ]}
     >
-      <BlogImagePlaceholder
-        src="https://images.unsplash.com/photo-1646072508462-a802209a16f3?w=1200&q=80"
-        alt="Athlete performing resistance training to demonstrate progressive overload"
-        width={1200}
-        height={630}
-      />
-
       <p>
         Getting stronger is not simply about working harder every time
         you enter the gym. Your body needs a reason to adapt, but it
