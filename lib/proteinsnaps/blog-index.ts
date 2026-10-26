@@ -1,4 +1,8 @@
 import { SEO_BLOG_LISTINGS, SEO_BLOG_SLUGS } from "@/lib/proteinsnaps/seo-blog/load-post";
+import {
+  SEO_BLOG_PKG2_LISTINGS,
+  SEO_BLOG_PKG2_SLUGS,
+} from "@/lib/proteinsnaps/seo-blog/load-post-pkg2";
 
 export type BlogIndexArticle = {
   category: string;
@@ -41,6 +45,19 @@ export const LEGACY_BLOG_ARTICLES: BlogIndexArticle[] = [
   },
 ];
 
+export const SEO_PACKAGE_2_BLOG_ARTICLES: BlogIndexArticle[] =
+  SEO_BLOG_PKG2_SLUGS.map(slug => {
+    const item = SEO_BLOG_PKG2_LISTINGS[slug];
+    return {
+      category: item.category,
+      title: item.title,
+      teaser: item.teaser,
+      readingTime: item.readingTime,
+      href: `/blog/${slug}`,
+      heroImage: item.heroImage,
+    };
+  });
+
 export const SEO_PACKAGE_BLOG_ARTICLES: BlogIndexArticle[] = SEO_BLOG_SLUGS.map(
   slug => {
     const item = SEO_BLOG_LISTINGS[slug];
@@ -57,6 +74,7 @@ export const SEO_PACKAGE_BLOG_ARTICLES: BlogIndexArticle[] = SEO_BLOG_SLUGS.map(
 
 /** Newest first for the blog index. */
 export const ALL_BLOG_ARTICLES: BlogIndexArticle[] = [
+  ...SEO_PACKAGE_2_BLOG_ARTICLES,
   ...SEO_PACKAGE_BLOG_ARTICLES,
   ...LEGACY_BLOG_ARTICLES,
 ];

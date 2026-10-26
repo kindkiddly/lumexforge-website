@@ -123,7 +123,7 @@ function extractBodyHtml(html: string, slug: SeoBlogSlug): string {
 }
 
 export type LoadedSeoBlogPost = {
-  slug: SeoBlogSlug;
+  slug: string;
   title: string;
   description: string;
   canonicalPath: string;
@@ -131,6 +131,8 @@ export type LoadedSeoBlogPost = {
   jsonLd: object[];
   css: string;
   bodyHtml: string;
+  lang?: string;
+  dir?: "ltr" | "rtl";
 };
 
 export function loadSeoBlogPost(slug: SeoBlogSlug): LoadedSeoBlogPost {

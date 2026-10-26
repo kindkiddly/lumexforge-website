@@ -1,8 +1,10 @@
 import { PROTEINSNAPS } from "@/lib/proteinsnaps/constants";
 import { SEO_BLOG_SLUGS } from "@/lib/proteinsnaps/seo-blog/load-post";
+import { SEO_BLOG_PKG2_SLUGS } from "@/lib/proteinsnaps/seo-blog/load-post-pkg2";
 import type { MetadataRoute } from "next";
 
 const LASTMOD = new Date("2026-10-25");
+const PKG2_LASTMOD = new Date("2026-10-26");
 
 const staticRoutes: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"]; priority: number }[] = [
   { path: "", changeFrequency: "weekly", priority: 1.0 },
@@ -34,6 +36,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LASTMOD,
       changeFrequency: "monthly",
       priority: 0.8,
+    });
+  }
+
+  const xDefaultFoodsChart = `${PROTEINSNAPS.domain}/blog/protein-in-foods-chart`;
+
+  for (const slug of SEO_BLOG_PKG2_SLUGS) {
+    const url = `${PROTEINSNAPS.domain}/blog/${slug}`;
+    entries.push({
+      url,
+      lastModified: PKG2_LASTMOD,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      ...(slug === "ar-gulf-high-protein-foods"
+        ? {
+            alternates: {
+              languages: {
+                ar: url,
+                "x-default": xDefaultFoodsChart,
+              },
+            },
+          }
+        : {}),
     });
   }
 
