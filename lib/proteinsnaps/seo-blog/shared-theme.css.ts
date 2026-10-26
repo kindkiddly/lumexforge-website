@@ -298,6 +298,17 @@ export const SEO_BLOG_LEGACY_SHELL_CSS = `
 .seo-legacy-blog .ps-blog-article td {
   white-space: normal;
 }
+.seo-legacy-blog .ps-blog-ps-card h2 {
+  color: #ffffff;
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+}
+.seo-legacy-blog .ps-blog-ps-card :is(p, li) {
+  color: #90cdf4;
+}
+.seo-legacy-blog .ps-blog-ps-card-label {
+  color: #68d391;
+}
 `;
 
 export const SEO_BLOG_SHARED_CSS = `${SEO_BLOG_KICKER_3D_CSS}\n${SEO_BLOG_LEGACY_SHELL_CSS}`;
