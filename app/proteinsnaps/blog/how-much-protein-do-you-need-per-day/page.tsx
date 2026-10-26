@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 };
 
 const ALSO_LIKE = {
-  title: "The Science Behind Progressive Overload",
+  title: "Progressive Overload: How to Keep Getting Stronger",
   category: "Workouts",
-  readingTime: "Coming Soon",
-  href: "/blog",
+  readingTime: "8 min read",
+  href: "/blog/progressive-overload",
 } as const;
 
 export default function HowMuchProteinArticlePage() {
@@ -106,16 +106,16 @@ export default function HowMuchProteinArticlePage() {
       alsoLike={ALSO_LIKE}
       relatedArticles={[
         {
-          title: "The Science Behind Progressive Overload",
+          title: "Progressive Overload: How to Keep Getting Stronger",
           category: "Workouts",
           readingTime: "8 min read",
-          href: "/blog",
+          href: "/blog/progressive-overload",
         },
         {
-          title: "How AI Is Changing the Way We Track Food",
-          category: "AI Coaching",
-          readingTime: "6 min read",
-          href: "/blog",
+          title: "How to Build Muscle: Protein, Progressive Overload, and Recovery",
+          category: "Fitness & Nutrition",
+          readingTime: "10 min read",
+          href: "/blog/how-to-build-muscle-protein-training-recovery",
         },
       ]}
       references={[

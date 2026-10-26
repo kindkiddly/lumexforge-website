@@ -1,4 +1,4 @@
-/** Shared SEO-package blog visuals (hero, kicker, sections). Used by HTML posts + legacy articles. */
+/** Legacy React articles: SEO package shell + body typography. SEO HTML posts: kicker 3D only (see SeoPackageBlogPost). */
 
 export const SEO_BLOG_KICKER_3D_CSS = `
 .seo-package-blog-post .kicker {
@@ -289,14 +289,46 @@ export const SEO_BLOG_LEGACY_SHELL_CSS = `
 .seo-legacy-blog .ps-blog-table-wrap {
   max-width: 100%;
   margin: 1.5rem 0;
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(5, 8, 17, 0.08);
 }
 .seo-legacy-blog .ps-blog-article table {
+  width: 100%;
   min-width: 0;
-  font-size: 0.95rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
 }
-.seo-legacy-blog .ps-blog-article th,
-.seo-legacy-blog .ps-blog-article td {
+.seo-legacy-blog .ps-blog-article th {
+  background: #050811;
+  color: #fff;
+  text-align: left;
+  padding: 14px 16px;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-weight: 600;
   white-space: normal;
+}
+.seo-legacy-blog .ps-blog-article td {
+  padding: 12px 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #334155;
+  white-space: normal;
+}
+.seo-legacy-blog .ps-blog-article tbody tr:nth-child(even) td {
+  background: #f0fdf9;
+}
+.seo-legacy-blog .ps-blog-related-heading {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  color: #1a1a1a;
+  border-left: none;
+  padding-left: 0;
 }
 .seo-legacy-blog .ps-blog-ps-card h2 {
   color: #ffffff;

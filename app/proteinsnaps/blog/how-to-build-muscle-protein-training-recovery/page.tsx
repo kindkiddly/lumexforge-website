@@ -137,10 +137,10 @@ export default function HowToBuildMuscleArticlePage() {
           comingSoon: false,
         },
         {
-          title: "How AI Is Changing the Way We Track Food",
-          category: "AI Coaching",
-          readingTime: "6 min read",
-          href: "/blog",
+          title: "How Accurate Are AI Calorie Counters from Photos?",
+          category: "AI & tracking",
+          readingTime: "7 min read",
+          href: "/blog/ai-calorie-counter-accuracy",
         },
       ]}
       references={[

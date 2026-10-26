@@ -4,26 +4,7 @@ import type { LoadedSeoBlogPost } from "@/lib/proteinsnaps/seo-blog/load-post";
 import { SeoBlogFonts } from "@/components/proteinsnaps/SeoBlogFonts";
 
 export function SeoPackageBlogPost({ post }: { post: LoadedSeoBlogPost }) {
-  const rtlCss =
-    post.dir === "rtl"
-      ? `
-    .seo-package-blog-post[dir="rtl"] .kicker {
-      text-transform: none;
-      letter-spacing: 0.06em;
-    }
-    .seo-package-blog-post[dir="rtl"] .stores {
-      direction: ltr;
-    }
-  `
-      : "";
-
-  const scopedCss = `
-    .seo-package-blog-post { margin-top: 0; }
-    .seo-package-blog-post .nav { display: none !important; }
-    ${post.css}
-    ${SEO_BLOG_KICKER_3D_CSS}
-    ${rtlCss}
-  `;
+  const scopedCss = `${post.css}\n${SEO_BLOG_KICKER_3D_CSS}`;
 
   const Fonts = post.lang === "ar" ? SeoBlogFontsArabic : SeoBlogFonts;
 

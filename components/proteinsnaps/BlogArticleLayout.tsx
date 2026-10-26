@@ -1,4 +1,4 @@
-// PROTEINSNAPS BLOG TEMPLATE — content via props; shell matches SEO package posts.
+// PROTEINSNAPS BLOG TEMPLATE — React body content; shell matches SEO package posts.
 
 import { BlogArticleLink } from "@/components/proteinsnaps/BlogArticleLink";
 import { SeoBlogFonts } from "@/components/proteinsnaps/SeoBlogFonts";
@@ -219,40 +219,40 @@ export function BlogArticleLayout({
         <section className="pad">
           <div className="wrap">
             <div className="seo-legacy-body ps-blog-body">
-            <BlogTableOfContents items={tableOfContents} />
+              <BlogTableOfContents items={tableOfContents} />
 
-            {children}
+              {children}
 
-            <section className="ps-blog-related" aria-label="Related articles">
-              <h2 className="ps-blog-related-heading">Related Articles</h2>
-              <div className="ps-blog-related-grid">
-                {relatedArticles.map((article) => (
-                  <BlogArticleLink
-                    key={article.title}
-                    href={article.href}
-                    className="ps-blog-related-card"
-                  >
-                    <span className="ps-blog-related-badge">{article.category}</span>
-                    <p className="ps-blog-related-title">{article.title}</p>
-                    <div className="ps-blog-related-meta">
-                      <span>{article.readingTime}</span>
-                      {article.comingSoon !== false ? (
-                        <span className="ps-blog-related-soon">Coming Soon</span>
-                      ) : null}
-                    </div>
-                  </BlogArticleLink>
-                ))}
-              </div>
-            </section>
+              <section className="ps-blog-related" aria-label="Related articles">
+                <h2 className="ps-blog-related-heading">Related Articles</h2>
+                <div className="ps-blog-related-grid">
+                  {relatedArticles.map((article) => (
+                    <BlogArticleLink
+                      key={article.title}
+                      href={article.href}
+                      className="ps-blog-related-card"
+                    >
+                      <span className="ps-blog-related-badge">{article.category}</span>
+                      <p className="ps-blog-related-title">{article.title}</p>
+                      <div className="ps-blog-related-meta">
+                        <span>{article.readingTime}</span>
+                        {article.comingSoon ? (
+                          <span className="ps-blog-related-soon">Coming Soon</span>
+                        ) : null}
+                      </div>
+                    </BlogArticleLink>
+                  ))}
+                </div>
+              </section>
 
-            <section className="ps-blog-sources" aria-label="References">
-              <p className="ps-blog-sources-heading">References</p>
-              <ol className="ps-blog-sources-list">
-                {references.map((source) => (
-                  <li key={source}>{source}</li>
-                ))}
-              </ol>
-            </section>
+              <section className="ps-blog-sources" aria-label="References">
+                <p className="ps-blog-sources-heading">References</p>
+                <ol className="ps-blog-sources-list">
+                  {references.map((source) => (
+                    <li key={source}>{source}</li>
+                  ))}
+                </ol>
+              </section>
             </div>
           </div>
         </section>

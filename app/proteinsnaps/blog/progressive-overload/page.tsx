@@ -108,10 +108,10 @@ export default function ProgressiveOverloadArticlePage() {
           comingSoon: false,
         },
         {
-          title: "How AI Is Changing the Way We Track Food",
-          category: "AI Coaching",
-          readingTime: "6 min read",
-          href: "/blog",
+          title: "How to Build Muscle: Protein, Progressive Overload, and Recovery",
+          category: "Fitness & Nutrition",
+          readingTime: "10 min read",
+          href: "/blog/how-to-build-muscle-protein-training-recovery",
         },
       ]}
       references={[

@@ -1539,7 +1539,7 @@
 }
 
 .ps-blog-body {
-  max-width: 48rem;
+  max-width: 780px;
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
   background: #f7f9fc;
