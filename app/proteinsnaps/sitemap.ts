@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  const xDefaultFoodsChart = `${PROTEINSNAPS.domain}/blog/protein-in-foods-chart`;
+  const xDefaultBlog = `${PROTEINSNAPS.domain}/blog`;
 
   for (const slug of SEO_BLOG_PKG2_SLUGS) {
     const url = `${PROTEINSNAPS.domain}/blog/${slug}`;
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             alternates: {
               languages: {
                 ar: url,
-                "x-default": xDefaultFoodsChart,
+                "x-default": xDefaultBlog,
               },
             },
           }

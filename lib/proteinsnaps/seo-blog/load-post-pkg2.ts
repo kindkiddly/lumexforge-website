@@ -204,7 +204,7 @@ export function seoBlogPostMetadataPkg2(slug: SeoBlogPkg2Slug): Metadata {
   const post = loadSeoBlogPostPkg2(slug);
   const url = `${PROTEINSNAPS.domain}${post.canonicalPath}`;
   const ogImageAbs = `${PROTEINSNAPS.domain}${post.ogImage}`;
-  const xDefault = `${PROTEINSNAPS.domain}/blog/protein-in-foods-chart`;
+  const xDefault = `${PROTEINSNAPS.domain}/blog`;
 
   const languages: Record<string, string> =
     slug === "ar-gulf-high-protein-foods"
