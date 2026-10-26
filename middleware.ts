@@ -10,11 +10,21 @@ function isProteinSnapsHost(host: string) {
   );
 }
 
+/** Public files under public/blog/; must not rewrite to /proteinsnaps/blog/... */
+function isBlogStaticAsset(pathname: string) {
+  if (pathname.includes("/img/")) return true;
+  return /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(pathname);
+}
+
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
   const { pathname } = request.nextUrl;
 
   if (isProteinSnapsHost(host)) {
+    if (pathname.startsWith("/blog/") && isBlogStaticAsset(pathname)) {
+      return NextResponse.next();
+    }
+
     const url = request.nextUrl.clone();
     url.pathname =
       pathname === "/" || pathname === ""
@@ -46,7 +56,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|images|blog/|\\.well-known).*)",
-  ],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|images|\\.well-known).*)"],
 };
